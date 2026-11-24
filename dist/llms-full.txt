@@ -1,16 +1,18 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.3.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.4.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.3.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.4.0) --emit-ai-spec`.
 
-## 1. Architectural Rules
-1. **Native MSI, MSM, MST, MSP & SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`) and `fci.h` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.3.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
-3. **Hybrid `.rsip` + `.rsis` + `.rsii` Model**: Build a single `.rsip` standalone, share common blocks via `@include "common.rsii"`, or orchestrate multi-package fleets via `.rsis`.
-4. **Deterministic SHA-1 UUIDv5 Component GUIDs**: Derived from `UpgradeCode + arch + targetRelPath`.
-5. **True OS & Silicon Detection**: `RtlGetVersion` (`Build >= 22000`) + `IsWow64Process2` (pierces ARM64 Prism emulation).
-6. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
+## 1. Architectural Rules & AI Pre-Flight Checklist
+1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
+2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.4.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
+4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
+5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
+6. **Microsoft Component Rules (`RSW031` & `RSW032`)**: Every `[Payload.*]` assigned to an explicit `[Component.<Id>]` must share one destination directory (`RSW031`), and components targeting per-user folders (`AppDataFolder`, `LocalAppDataFolder`, `StartMenu`, `Desktop`) must use `KeyPathKind = registry` (`HKCU`, `RSW032`).
+7. **Pre-MSI `[Prerequisite.<Id>]` Execution**: Runtimes (`DotNet10Desktop`, `DotNet10AspNet`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`, or `Custom`) execute BEFORE `msiexec` under a single UAC prompt (`download`, `embedded` LZMS, or `side-by-side` `Redist\`) and latch `RebootExitCodes` (`3010, 1641, 23`).
+8. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.3`)
+## 2. Complete `.rsip` Project Schema (`v0.4`)
 
 ### `[Package]` (*Required*)
 Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
@@ -248,16 +250,16 @@ Adds a native MSI control ([MsiControl.<id>]: Text, Edit, CheckBox, RadioButtonG
 | `Text` | `string` | No | — | Control label or rich text (`{\DlgFontBold8}...`). |
 | `Items` | `string` | No | — | Pipe-separated `Value:Caption` entries for `RadioButtonGroup`, `ComboBox`, or `ListBox` controls. |
 
-## 3. `.rsis` Multi-Project Suite Schema (Optional — Like Visual Studio `.slnx`)
+## 3. `.rsis` Multi-Project Suite Schema (Optional — Multi-Package Workspace)
 
 ```ini
 [Suite]
-Name          = Acme Enterprise Suite
+Name          = Sample Studio Workspace
 Version       = 1.0.0
 Architectures = arm64|x64
 
 [Variable]
-PUBLISHER     = Acme Corporation
+PUBLISHER     = Sample Studio
 
 [Project.CoreMsm]
 Path          = shared\core-runtime.rsip
@@ -270,36 +272,142 @@ Category      = CoreApps
 BuildOrder    = 20
 ```
 
-## 4. Minimal Annotated `.rsip` Project Example
+## 4. Minimal From-Scratch `.rsip` Project Blueprint
 
 ```ini
-; Sample RaggieSoft Installer Project (.rsip) — builds both x64 and arm64!
+; Minimal standalone RaggieSoft Installer Project (.rsip) — compiles x64 and arm64!
 [Package]
-Name              = Hello App
+Name              = Hello Studio App
 Tagline           = Fast, Accessible Native Windows Application
 Version           = 1.0.0
-Manufacturer      = Acme Open Source
+Manufacturer      = Sample Studio
 UpgradeCode       = {A18F4E20-7C93-4D62-9B44-524147474945}
 Architecture      = $(ARCH)
+Scope             = machine
 BuildBootstrapper = true
 
 [Install]
-DefaultSubdir     = Acme\Hello App
+DefaultSubdir     = Sample Studio\Hello App
 MainExecutable    = HelloApp.exe
 
 [UI]
-WizardLayout      = standard
+WizardLayout      = aerowizard
 AccentPrimaryHex  = #2563EB
 AccentSecondaryHex= #FBBF24
-LicenseRtf        = License.rtf
 InstallButtonText = &Install
 
 [Payload.App]
 Source            = ..\..\bin\$(ARCH)\HelloApp.exe
 
 [Shortcut.StartMenu]
-Name              = Hello App
+Name              = Hello Studio App
 TargetFile        = HelloApp.exe
 Location          = StartMenu
-Description       = Launch Hello App
+Description       = Launch Hello Studio App
+```
+
+## 5. Complete Enterprise `.rsip` Blueprint (SelectionTree Features, Pre-MSI Runtimes, `.MSM`, FileAssoc & Custom MSI Dialog)
+
+```ini
+; Full-featured enterprise .rsip demonstrating SelectionTree hierarchy, Pre-MSI
+; Prerequisites, 64-bit .MSM Merge Modules, File Associations, & Custom MSI SQL Dialogs.
+[Package]
+Name              = Studio Workbench
+Tagline           = Accessible Desktop Authoring Environment
+WebsiteLabel      = raggiesoftstudio.com
+Version           = 2.1.0
+Manufacturer      = RaggieSoft
+UpgradeCode       = {7F4E91C2-58B4-4D21-8E77-314159265358}
+Architecture      = $(ARCH)
+Scope             = machine
+OutputName        = studio-workbench-$(ARCH)
+OutputDir         = out
+BuildBootstrapper = true
+
+[Requirements]
+MinWindowsBuild   = 22000
+
+[Install]
+DefaultSubdir     = RaggieSoft\Studio Workbench
+StartMenuFolder   = RaggieSoft Studio Workbench
+MainExecutable    = Workbench.exe
+
+[UI]
+WizardLayout          = aerowizard
+MsiDialogPreset       = express_custom
+AccentPrimaryHex      = #2563EB
+AccentSecondaryHex    = #FBBF24
+LicenseRtf            = License.rtf
+InstallButtonText     = &Install
+FinishLaunchCheckbox  = &Launch Studio Workbench when setup finishes
+
+; Hierarchical MSI SelectionTree Features (Core locked via DisallowAbsent = true)
+[Feature.Main]
+Title                 = Core Workbench Application
+Description           = Primary executable and core authoring engine.
+Level                 = 1
+DisallowAbsent        = true
+
+[Feature.Templates]
+Parent                = Main
+Title                 = Starter Project Templates
+Description           = Optional starter blueprints and offline documentation.
+Level                 = 1
+
+; Pre-MSI Runtime Prerequisite (runs BEFORE msiexec under one UAC prompt)
+[Prerequisite.DotNet10]
+Preset                = DotNet10Desktop
+Distribution          = download
+RebootExitCodes       = 3010, 1641, 23
+
+; Optional 64-Bit Merge Module (.msm) merged natively into Product.msi
+[MergeModule.SharedCodec]
+Source                = ..\shared\out\shared-codec-$(ARCH).msm
+Feature               = Main
+TargetRoot            = INSTALLDIR
+
+[Component.CoreExeComp]
+Feature               = Main
+TargetRoot            = INSTALLDIR
+Guid                  = *
+KeyPathKind           = file
+KeyPathTarget         = Workbench.exe
+
+[Payload.MainExe]
+Source                = ..\bin\$(ARCH)\Workbench.exe
+Component             = CoreExeComp
+
+[Payload.TemplatesDir]
+Source                = ..\templates
+TargetRoot            = INSTALLDIR
+TargetSubdir          = templates
+Feature               = Templates
+
+[FileAssociation.WorkbenchDoc]
+Extension             = .rswb
+ProgId                = RaggieSoft.Workbench.Document
+Description           = Studio Workbench Project
+TargetFile            = Workbench.exe
+Verbs                 = open:&Open in Workbench:"%1"
+Advertise             = false
+
+[Shortcut.StartMenuApp]
+Name                  = Studio Workbench
+TargetFile            = Workbench.exe
+Location              = StartMenu
+
+[MsiDialog.WorkspaceUrlDlg]
+HeaderTitle           = Default Asset Endpoint
+PrevDialog            = SetupTypeDlg
+NextDialog            = VerifyReadyDlg
+
+[MsiControl.EndpointEdit]
+Dialog                = WorkspaceUrlDlg
+Type                  = Edit
+X                     = 20
+Y                     = 74
+Width                 = 330
+Height                = 18
+Property              = ASSET_ENDPOINT
+DefaultValue          = https://assets.raggiesoft.com
 ```

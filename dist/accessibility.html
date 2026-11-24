@@ -40,10 +40,10 @@
     <meta name="twitter:title" content="Accessible Windows Installer Architecture | RaggieSoft" />
     <meta name="twitter:description" content="Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.3.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility#webpage","url":"https://raggiesoftstudio.com/accessibility","name":"Accessible Windows Installer Architecture | RaggieSoft","description":"Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility#webpage","url":"https://raggiesoftstudio.com/accessibility","name":"Accessible Windows Installer Architecture | RaggieSoft","description":"Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
-    <script type="module" crossorigin src="/assets/index-Cszb4bjL.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CnrUfXn8.css">
+    <script type="module" crossorigin src="/assets/index-B24nbPCh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BFdgJJ43.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -70,7 +70,7 @@
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.1)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.0)</span>
         </a>
 
         <button
@@ -97,7 +97,7 @@
         <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
           <nav aria-label="Primary Project Navigation">
             <ul class="nav-list">
-              <li><a class="nav-link" href="/">Announcement & Preview</a></li><li><a class="nav-link" href="/docs">Docs & .rsip Spec</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security & Architecture</a></li>
+              <li><a class="nav-link" href="/">Preview & Gallery</a></li><li><a class="nav-link" href="/docs">Docs & AI Spec</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
               <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
               <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
             </ul>
@@ -114,7 +114,8 @@
       <p class="lead">
         Accessibility shouldn't start only after an app is installed—users relying on screen readers, keyboard navigation,
         or Windows Contrast Themes have to get through the installer first. RaggieSoft Installer Studio engineers WCAG 2.2 AA
-        and Revised Section 508 conformance directly into <code>SetupWizard.exe</code> and <code>instbuild.exe</code>.
+        and Revised Section 508 conformance directly into <code>SetupWizard.exe</code>, <code>InstallerStudio.exe</code>,
+        <code>RaggieSoftHelp.exe</code>, and <code>instbuild.exe</code>.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/vpat/raggiesoft-installer-studio-vpat-2.5.html">Open Sample Live VPAT 2.5 Report (HTML5)</a>
@@ -123,7 +124,7 @@
     </section>
 
     <section aria-labelledby="proof-heading">
-      <h2 id="proof-heading">How SetupWizard.exe Fixes Legacy Installer Accessibility Gaps</h2>
+      <h2 id="proof-heading">How Our Native Win32 Suite Guarantees Accessibility &amp; Dark Mode Contrast</h2>
       <div class="card-grid">
         <article class="card">
           <div>
@@ -137,10 +138,11 @@
         </article>
         <article class="card">
           <div>
-            <h3>High-Contrast Focus Rings &amp; Enforced Mnemonics</h3>
+            <h3>Dark-Mode Checkboxes &amp; <code>SysListView32</code> Headers</h3>
             <p>
-              Draws unmistakable <code>2.5px</code> keyboard focus rings (<code>12.6:1</code> in Dark Mode, <code>7.8:1</code> in Light Mode,
-              exceeding WCAG 2.4.11/2.4.13) and statically verifies <code>&amp;</code> keyboard mnemonics via <code>instbuild --validate</code>.
+              Shared Win32 subclasses override stock <code>ComCtl32 v6</code> black-on-dark checkbox labels and white
+              <code>SysHeader32</code> bars so every checkbox, report column header, and focus ring holds <code>&ge; 12.6:1</code> to
+              <code>17.4:1</code> contrast.
             </p>
           </div>
         </article>
@@ -148,8 +150,8 @@
           <div>
             <h3>Windows Contrast Themes &amp; Per-Monitor V2 DPI</h3>
             <p>
-              Honors <code>SPI_GETHIGHCONTRAST</code> using pure OS <code>GetSysColor</code> tokens, themes RichEdit license text for
-              <code>&ge; 15:1</code> contrast in Dark &amp; Light Mode, and scales cleanly with Windows 11's <code>TextScaleFactor</code>.
+              Honors <code>SPI_GETHIGHCONTRAST</code> using pure OS <code>GetSysColor</code> tokens, themes RichEdit license &amp;
+              offline help articles for <code>&ge; 15:1</code> contrast, and scales cleanly with Windows 11's <code>TextScaleFactor</code>.
             </p>
           </div>
         </article>
@@ -168,13 +170,13 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Header Banner Typography (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
+              <th scope="row">Header Banner &amp; ListView Column Headers (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
               <td>17.4:1 relative luminance ratio</td>
               <td>WCAG 2.2 SC 1.4.3 / 1.4.6</td>
               <td><strong>Supports (AAA)</strong></td>
             </tr>
             <tr>
-              <th scope="row">Dark Mode Surface Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
+              <th scope="row">Dark Mode Surface &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
               <td>16.9:1 relative luminance ratio + Mica frame</td>
               <td>WCAG 2.2 SC 1.4.3</td>
               <td><strong>Supports (AAA)</strong></td>
@@ -207,8 +209,9 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-links">
-          <a href="/">Announcement &amp; Preview</a>
-          <a href="/docs">Docs &amp; .rsip Spec</a>
+          <a href="/">Preview &amp; Gallery</a>
+          <a href="/docs">Docs &amp; AI Spec</a>
+          <a href="/changelog">Version History (v0.4.0)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/llms.txt">/llms.txt</a>

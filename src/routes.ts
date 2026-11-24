@@ -9,19 +9,24 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.3.0`)**:
- *       1. `/`              — Vision Announcement, Preview Downloads, 3-Tab Split
- *                             Preview, Zero-Bloat Matrix, & Open Roadmap
- *       2. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
+ *     public **Project Announcement & Open Technical Preview (`v0.4.0`)**:
+ *       1. `/`              — Vision Announcement, Preview Downloads, Live Win32
+ *                             Screenshot Gallery, 3-Tab Split Preview, 5-Binary
+ *                             Suite Spotlight, & Open Engineering Roadmap
+ *       2. `/docs`          — Searchable `.rsip` v0.4 / `.rsis` / `.rsii` schema
+ *                             reference & AI coding agent workflow (`/llms.txt`)
+ *       3. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.0`) &
+ *                             upcoming Phase B–D roadmap milestones
+ *       4. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
- *       3. `/accessibility` — Canonical alias view for `/vpat`
- *       4. `/docs`          — Searchable `.rsip` v0.3 / `.rsis` / `.rsii` schema
- *                             reference (Components, KeyPaths, FileAssoc, Dialogs)
- *       5. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
+ *       5. `/accessibility` — Canonical alias view for `/vpat`
+ *       6. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
  *                             signing, & Permanent Zero-Telemetry / Zero-Crypto pledge
  *
  *   Note: Commercial pricing tiers are intentionally omitted while RaggieSoft
- *   Installer Studio is in active Technical Preview & dogfood validation.
+ *   Installer Studio is in active Technical Preview & dogfood validation. Every
+ *   route strictly honors RaggieSoft's zero-competitor-mention policy so the
+ *   suite stands 100% on its own original engineering merits.
  * ============================================================================
  */
 
@@ -33,15 +38,125 @@ export interface StudioRoute {
   readonly renderBody: () => string;
 }
 
-const DOWNLOAD_X64_URL =
-  'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-x64-setup.exe';
-const DOWNLOAD_ARM64_URL =
-  'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-arm64-setup.exe';
+const ASSET_BASE =
+  'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
+const DOWNLOAD_X64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-x64-setup.exe`;
+const DOWNLOAD_ARM64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-arm64-setup.exe`;
+const SHOT_BASE = `${ASSET_BASE}/screenshots`;
 const GITHUB_REPO_URL = 'https://github.com/raggiesoft/installer-studio';
 const LIVE_VPAT_URL = '/vpat/raggiesoft-installer-studio-vpat-2.5.html';
 
 const FICTITIOUS_DISCLAIMER =
   'Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.';
+
+/**
+ * Renders the live native Win32 C++20 screenshot showcase captured directly from the `v0.4.0` binaries.
+ */
+function renderLiveScreenshotShowcase(): string {
+  return `
+    <section aria-labelledby="screenshots-heading">
+      <span class="eyebrow">Real Native Win32 C++20 Captures • Windows 11 Dark Mode</span>
+      <h2 id="screenshots-heading">See RaggieSoft Installer Studio v0.4.0 in Action</h2>
+      <p>
+        Every window below is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables using stock Windows 11
+        system libraries (<code>gdiplus.dll</code>, <code>comctl32.dll</code>, <code>Msftedit.dll</code>, and <code>msi.dll</code>)—with
+        custom Dark Mode checkbox and <code>SysListView32</code> column-header subclasses ensuring <code>&ge; 15.8:1</code> WCAG AAA contrast.
+      </p>
+      <div class="shot-grid">
+        <!-- Screenshot 1: Visual IDE Destination Computer Tree & Dark-Header ListView -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/ide-destination-folders.png"
+            alt="RaggieSoft Installer Studio Visual IDE showing the hierarchical Destination Computer folder tree on the left and Dark Mode payload component grid on the right."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>1. Visual IDE — Destination Computer &amp; Components</strong>
+            Map payloads to 9 standard Windows Installer folder roots with automatic deterministic SHA-1 UUIDv5 Component GUIDs and dark-themed report headers.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 2: Visual IDE Pre-MSI Runtimes & .MSM Merge Modules -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/ide-runtimes-msm.png"
+            alt="RaggieSoft Installer Studio View 4 showing Pre-MSI Runtime Prerequisites, delivery mode selector, custom reboot exit codes, and 64-bit Merge Module controls."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>2. Visual IDE — Pre-MSI Runtimes &amp; .MSM Merge Modules</strong>
+            Stage unlimited <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes (<code>WinHTTP</code> download, <code>LZMS</code> embed, or <code>Redist\\</code>) plus 64-bit <code>.msm</code> modules.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 3: Visual IDE Live GDI+ Wizard Designer -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/ide-wizard-designer.png"
+            alt="RaggieSoft Installer Studio C++ Wizard Designer previewing the Windows Installer SelectionTree step live on a GDI+ canvas."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>3. Visual IDE — Live GDI+ C++ Wizard Designer</strong>
+            Customize accent palettes, icons, and <code>aerowizard</code>, <code>standard</code> Glass, or <code>autorun16x9</code> layouts with instant live preview.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 4: SetupWizard.exe Accessible Option Cards -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/setupwizard-setup-type.png"
+            alt="SetupWizard.exe displaying Express, Compact, and Custom Setup option cards with 48x48 vector badges and high-contrast footer buttons."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>4. SetupWizard.exe — Accessible 48&times;48 Vector Option Cards</strong>
+            Genuine subclassed <code>BS_AUTORADIOBUTTON</code> cards expose full UI Automation roles to screen readers with unmistakable keyboard focus rings.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 5: SetupWizard.exe Authentic MSI SelectionTree -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/setupwizard-selection-tree.png"
+            alt="SetupWizard.exe Custom Features page showing the Windows Installer SelectionTree with 32-bit ARGB drive state icons and live disk space cost card."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>5. SetupWizard.exe — Authentic MSI SelectionTree</strong>
+            Reads embedded <code>Feature</code> tables directly from <code>Product.msi</code>, rendering 32-bit ARGB split-dropdown state icons and live per-feature byte costs.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 6: Native C++20 RaggieSoftHelp.exe Offline Viewer -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/helpviewer-search.png"
+            alt="RaggieSoftHelp.exe native C++20 offline Help Viewer showing full-text search results, dark-mode checkbox, and formatted documentation reader."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>6. RaggieSoftHelp.exe — Zero-Dependency C++20 Help Viewer</strong>
+            Press <code>F1</code> in any IDE view to jump straight to offline HTML5 topics via Named Pipe IPC—with zero <code>.NET</code> or <code>WebView2</code> dependencies.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 7: RaggieSoft MSI Prism 64-Bit SQL Inspector -->
+        <figure class="shot-card">
+          <img
+            src="${SHOT_BASE}/msiprism-sql-inspector.png"
+            alt="RaggieSoft MSI Prism opening raggiesoft-installer-studio-arm64.msi and displaying all 44 SQL tables alongside Feature rows in Dark Mode."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>7. msiprism.exe — Native 64-Bit Dark Mode SQL Inspector</strong>
+            Inspect relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> packages, run ICE80 audits, and diff transforms or patches.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  `;
+}
 
 /**
  * Renders the honest Engineering Vision & Active Technical Preview Roadmap section.
@@ -52,39 +167,41 @@ function renderVisionAndRoadmapSection(): string {
       <span class="eyebrow">Why I'm Building This • Open Engineering Roadmap</span>
       <h2 id="roadmap-heading" style="margin-top: 0.25rem;">What RaggieSoft Installer Studio Aims to Solve</h2>
       <p>
-        Every major Windows installer suite ultimately marshals calls down into the exact same <code>msi.dll</code> and
+        Every Windows installer ultimately marshals calls down into the exact same <code>msi.dll</code> and
         <code>cabinet.dll</code> libraries Microsoft already ships inside <code>C:\\Windows\\System32</code> on every copy of Windows.
-        Yet developers are routinely forced to choose between multi-thousand-dollar legacy tools, steep XML learning curves,
-        unlabeled non-accessible wizard forms, or opaque binary project files that fight Git version control and AI coding agents.
+        Yet developers are routinely forced to choose between multi-gigabyte legacy toolchains, steep XML boilerplate,
+        unlabeled non-accessible wizard forms, or opaque project files that fight Git version control and AI coding agents.
       </p>
       <p>
-        <strong>RaggieSoft Installer Studio</strong> is an active, open-source MIT engineering effort to build a modern,
+        <strong>RaggieSoft Installer Studio</strong> is an active, open-source MIT engineering effort to build an original,
         zero-dependency native Win32 C++20 packaging suite from the ground up—combining visual convenience with clean plain-text
-        <code>.rsip</code> manifests and 100% WCAG 2.2 AA accessibility.
+        <code>.rsip</code> manifests, first-class AI specifications, and 100% WCAG 2.2 AA accessibility.
       </p>
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.3.0</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.4.0</code>)</h3>
             <ul class="feature-list">
-              <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong> (Project Assistant, Runtime Prerequisites &amp; <code>.MSM</code>, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
-              <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: Real Windows Installer split-icon feature tree in <code>Setup.exe</code>, plus unlimited <code>[Prerequisite.*]</code> runtimes (<code>WinHTTP</code> download, <code>LZMS</code> offline embed, &amp; <code>Redist\\</code>) and native 64-bit <code>.MSM</code> Merge Module consumption</li>
-              <li><strong>Destination Computer Tree &amp; Setup Design</strong> enforcing Microsoft's Official Component Rules (Single-Directory Rule, File KeyPaths, ICE38 <code>HKCU</code> Registry KeyPaths, &amp; ICE18 <code>CreateFolder</code>)</li>
+              <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong>—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
+              <li><strong>Zero-Dependency Native C++20 Help System (<code>RaggieSoftHelp.exe</code>)</strong>: Pluggable <code>module.rshm.json</code> offline documentation viewer with Contents, Index, Search, and instant Named Pipe <code>F1</code> navigation</li>
+              <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: 32-bit ARGB split-icon feature tree in <code>Setup.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching, and 64-bit <code>.MSM</code> Merge Module merging</li>
               <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables</li>
-              <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL table inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
+              <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
             </ul>
           </div>
+          <a class="btn btn-outline" href="/changelog">Read Full v0.1 &rarr; v0.4 Version History</a>
         </article>
         <article class="card">
           <div>
-            <h3>Next Milestones on the Workbench</h3>
+            <h3>Next Milestones on the Workbench (Phases B–D)</h3>
             <ul class="feature-list">
-              <li><strong>Full Dogfood Rollout</strong>: Validating real-world upgrades, repairs, and uninstalls across all 77 RaggieSoft Windows apps, interactive novels, and audio archives</li>
-              <li><strong>System Services &amp; Environment Tables</strong>: Visual &amp; declarative authoring for Windows Services (<code>ServiceInstall</code> / <code>ServiceControl</code>) and <code>PATH</code> environment variables</li>
-              <li><strong>Custom Actions &amp; Prerequisite Checks</strong>: Guided AeroWizards for safe deferred system actions and runtime detection</li>
-              <li><strong>Community Feedback First</strong>: Free, open-source MIT previews with zero registration walls while the architecture matures in public</li>
+              <li><strong>Authenticode Signing UX &amp; Azure Artifact Signing</strong>: Interactive Windows Certificate Store picker, PFX / hardware token setup, and Dual-Layer <code>WinVerifyTrust</code> verification</li>
+              <li><strong>Native Installer Engine, <code>.rssc</code> Scripting &amp; <code>Sd*()</code> Dialogs</strong>: Event hooks, wizard flow overrides, procedural standard dialogs, and optional <code>.rswpak</code> Web Media Blocks</li>
+              <li><strong>Setup Capture ("Repackager") + Disposable Windows Sandbox (<code>.wsb</code>)</strong>: Snapshot-diff legacy <code>.exe</code> installers into clean <code>.rsip</code> + <code>.msi</code> + <code>.mst</code> packages—isolated inside Windows 11 Pro Sandbox</li>
+              <li><strong>Open-Format Import Wizard &amp; Visual Studio Extension (<code>.vsix</code>)</strong>: One-click import from existing <code>.msi</code>/<code>.msm</code> databases, Visual Studio <code>.slnx</code>/<code>.csproj</code>/<code>.vcxproj</code> solutions, and open XML/INI manifests, plus right-click packaging inside Visual Studio</li>
             </ul>
           </div>
+          <a class="btn btn-outline" href="/docs">Explore AI-Ready .rsip v0.4 Spec</a>
         </article>
       </div>
     </section>
@@ -94,19 +211,19 @@ function renderVisionAndRoadmapSection(): string {
 function renderHomeBody(): string {
   return `
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.3.0) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.0) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
-        An in-development, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
-        Design projects visually with modern <strong>AeroWizards</strong>, Destination Computer folder trees, and a Dual C++ &amp;
-        <code>MSI.DLL</code> Dialog Designer—or let coding agents author plain-text, comment-preserving <code>.rsip</code> manifests
-        that compile straight into real <code>.msi</code>, <code>.msm</code>, <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA
-        <code>Setup.exe</code> installers.
+        An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
+        Design projects visually with modern <strong>AeroWizards</strong>, Destination Computer folder trees, Dual C++ &amp;
+        <code>MSI.DLL</code> Dialog Designers, and a built-in native C++ <code>F1</code> Help Viewer—or let coding agents author
+        comment-preserving <code>.rsip</code> manifests from scratch into real <code>.msi</code>, <code>.msm</code>,
+        <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview (x64)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.0 (x64)</a>
         <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
-        <a class="btn btn-outline" href="${GITHUB_REPO_URL}">Explore Source &amp; Roadmap on GitHub</a>
+        <a class="btn btn-outline" href="/changelog">View Version History (v0.4.0)</a>
       </div>
 
       <!-- Interactive 3-Tab Split Preview Toggle (AeroWizard & Glass UI / MSI.DLL Express-Custom / Plain-Text .rsip) -->
@@ -122,23 +239,23 @@ function renderHomeBody(): string {
           </button>
           <button type="button" class="btn" :class="previewTab === 'rsip' ? 'btn-primary' : 'btn-outline'"
                   role="tab" :aria-selected="String(previewTab === 'rsip')" @click="previewTab = 'rsip'">
-            3. Plain-Text .rsip v0.3 Manifest
+            3. AI-Friendly .rsip v0.4 Manifest
           </button>
         </div>
 
         <div x-show="previewTab === 'aero'" style="margin-top: 1rem;">
           <pre aria-label="Modern Win32 AeroWizard and RaggieSoft Glass SetupWizard.exe Preview">+--------------------------------------------------------------------------+
-| (&lt;-) Sample Studio App Setup                                  [ - ][ x ] |
-|  Choose how you would like to install Sample Studio App                  |
+|  RAGGIESOFT  •  SAMPLE STUDIO APP SETUP                        [ - ][ x ]|
+|  Choose how you would like to install Sample Studio App         [60x60]  |
 +--------------------------------------------------------------------------+
 |  [48x48 Bolt]    (o) Express Setup (Recommended)                         |
 |                      One-click setup into default folder &amp; shortcuts     |
 |  [48x48 Cube]    ( ) Compact Core Setup                                  |
 |                      Essential core feature files with minimal footprint |
-|  [48x48 Sliders] ( ) Custom Setup (Choose Folder, Features &amp; Shortcuts)  |
-|                      Pick destination path, Start Menu &amp; file extensions |
+|  [48x48 Sliders] ( ) Custom Setup (Choose Features, Folder &amp; Shortcuts)  |
+|                      Pick MSI SelectionTree features, path &amp; extensions  |
 |                                                                          |
-|  [Sample Studio • 100% WCAG 2.2 AA Accessible]     [ &amp;Next &gt; ] [ Cancel ]|
+|  [Sample Studio • WCAG 2.2 AA]          [ &lt; Back ] [ &amp;Next &gt; ] [ Cancel ]|
 +--------------------------------------------------------------------------+</pre>
         </div>
 
@@ -146,10 +263,10 @@ function renderHomeBody(): string {
           <pre aria-label="Native MSI.DLL Express vs Custom Dialog Table Preview">+--------------------------------------------------------------------------+
 |  Sample Studio App Setup — Native MSI.DLL Dialog Table (370x270 DLU)     |
 +--------------------------------------------------------------------------+
-|  Choose Setup Mode (SetupTypeDlg -> CustomizeDlg / VerifyReadyDlg)       |
+|  Choose Setup Mode (SetupTypeDlg -&gt; CustomizeDlg / VerifyReadyDlg)       |
 |                                                                          |
 |  Every compiled .msi also carries the full Express / Compact / Custom +  |
-|  SelectionTree + BrowseDlg + Office-style Quick Repair (pecms) vs Full   |
+|  SelectionTree + BrowseDlg + Quick Check &amp; Repair (pecms) vs Full        |
 |  Reinstall (vomus) workflow directly in relational MSI SQL tables—plus   |
 |  custom [MsiDialog.*] &amp; [MsiControl.*] forms designed in the IDE!        |
 |                                                                          |
@@ -158,9 +275,7 @@ function renderHomeBody(): string {
         </div>
 
         <div x-show="previewTab === 'rsip'" style="margin-top: 1rem; display: none;">
-          <pre aria-label="Plain-Text .rsip v0.3 Project Manifest Example">; Comment-preserving .rsip v0.3 manifest — survives GUI edits byte-for-byte!
-@include "templates/dialogs/express-vs-custom-workflow.rsii"
-
+          <pre aria-label="Plain-Text .rsip v0.4 Project Manifest Example">; Comment-preserving .rsip v0.4 manifest — survives GUI edits byte-for-byte!
 [Package]
 Name              = Sample Studio IDE
 Version           = 1.0.0
@@ -175,27 +290,20 @@ MainExecutable    = SampleIde.exe
 
 [UI]
 WizardLayout      = aerowizard
-MsiDialogPreset   = express_custom
+InstallButtonText = &amp;Install
 
-[Component.CoreBin]
-Feature           = Main
-TargetRoot        = INSTALLDIR
-KeyPathKind       = file
-KeyPathTarget     = SampleIde.exe
+[Prerequisite.DotNet10]
+Preset            = DotNet10Desktop
+Distribution      = download
+RebootExitCodes   = 3010, 1641, 23
 
 [Payload.App]
-Source            = ..\publish\win-$(ARCH)\SampleIde.exe
-Component         = CoreBin
-
-[FileAssociation.ProjectFile]
-Extension         = .sproj
-ProgId            = SampleStudio.IDE.Project
-Description       = Sample Studio Project
-TargetFile        = SampleIde.exe
-Verbs             = open:&amp;Open:"%1"</pre>
+Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
         </div>
       </div>
     </section>
+
+    ${renderLiveScreenshotShowcase()}
 
     ${renderVisionAndRoadmapSection()}
 
@@ -215,28 +323,28 @@ Verbs             = open:&amp;Open:"%1"</pre>
           <tbody>
             <tr>
               <th scope="row">Toolchain Footprint</th>
-              <td><strong>Under 3 MB per architecture</strong> (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code> &amp; <code>msiprism.exe</code>)</td>
-              <td>Instant startup on local developer workstations and CI runners without multi-gigabyte framework installs.</td>
+              <td><strong>Compact static <code>/MT</code> binaries</strong> (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code> &amp; <code>RaggieSoftHelp.exe</code>)</td>
+              <td>Instant cold startup on local developer workstations and CI runners without multi-gigabyte framework installs.</td>
             </tr>
             <tr>
               <th scope="row">Runtime Dependencies</th>
-              <td><strong>Zero third-party DLLs</strong> (<code>System32\\msi.dll</code>, <code>cabinet.dll</code>, &amp; <code>gdiplus.dll</code> only)</td>
-              <td>Runs cold on stock Windows 11 (<code>x64</code> &amp; native <code>ARM64</code>) with no .NET or VC++ redistributable prerequisites.</td>
+              <td><strong>Zero third-party DLLs</strong> (<code>System32\\msi.dll</code>, <code>cabinet.dll</code>, <code>gdiplus.dll</code> &amp; <code>Msftedit.dll</code> only)</td>
+              <td>Even the offline <code>F1</code> Help Viewer runs natively in C++20 on stock Windows 11 (<code>x64</code> &amp; <code>ARM64</code>) with zero <code>.NET</code> or <code>WebView2</code> requirements.</td>
             </tr>
             <tr>
-              <th scope="row">Microsoft MSI Rules</th>
+              <th scope="row">Windows Installer Rules</th>
               <td><strong>ICE18, ICE38, ICE64 &amp; ICE80 Enforced</strong></td>
               <td>Validates Single-Directory Component rules, <code>HKCU</code> user-profile KeyPaths, <code>CreateFolder</code>, and 64-bit component attributes before <code>msi.dll</code> runs.</td>
             </tr>
             <tr>
-              <th scope="row">White-Label Output</th>
-              <td><strong>100% Author-Owned <code>VERSIONINFO</code></strong></td>
-              <td>Compiled <code>Setup.exe</code> and <code>.msi</code> packages display your publisher name, icon, and copyright—zero third-party watermarks.</td>
+              <th scope="row">White-Label &amp; Parity</th>
+              <td><strong><code>Community == Premier</code> + 100% Author-Owned <code>VERSIONINFO</code></strong></td>
+              <td>Community Edition enjoys full Premier feature parity, and compiled <code>Setup.exe</code> / <code>.msi</code> files carry your publisher identity with zero watermarks.</td>
             </tr>
             <tr>
-              <th scope="row">Offline &amp; Privacy First</th>
-              <td><strong>Zero Telemetry / Zero Crypto Gimmicks</strong></td>
-              <td>No mandatory cloud accounts, no background network calls, and no cryptocurrency/blockchain bundles.</td>
+              <th scope="row">AI Agent Native</th>
+              <td><strong><code>--emit-ai-spec</code> + <code>--diagnostics=json</code></strong></td>
+              <td>Coding agents read deterministic <code>/llms-full.txt</code> and <code>SKILL.md</code> specs to write, lint, and compile installers from scratch.</td>
             </tr>
           </tbody>
         </table>
@@ -244,19 +352,19 @@ Verbs             = open:&amp;Open:"%1"</pre>
     </section>
 
     <section aria-labelledby="suite-heading">
-      <span class="eyebrow">Four Native Binaries in One Cohesive Toolkit</span>
-      <h2 id="suite-heading">Suite Spotlight: AeroWizard IDE, CLI Compiler &amp; MSI Prism</h2>
+      <span class="eyebrow">Five Native Binaries in One Cohesive Toolkit</span>
+      <h2 id="suite-heading">Suite Spotlight: IDE, CLI Compiler, Setup Wizard, MSI Prism &amp; Help Viewer</h2>
       <div class="card-grid">
         <article class="card">
           <div>
-            <h3><code>InstallerStudio.exe</code> — 9-View C++20 Visual IDE</h3>
+            <h3><code>InstallerStudio.exe</code> — 10-View C++20 Visual IDE</h3>
             <p>
-              Features 4 guided Win32 <strong>AeroWizards</strong>, an InstallShield-style Destination Computer folder tree,
-              Setup Design (Features &rarr; Components &rarr; KeyPaths), File Associations, Dual C++ &amp; <code>MSI.DLL</code>
-              Dialog Designers, and a 100% comment-preserving <code>.rsip</code> AST!
+              Features 5 guided Win32 <strong>AeroWizards</strong>, a hierarchical Destination Computer folder tree,
+              Setup Design (Features &rarr; Components &rarr; KeyPaths), Pre-MSI Runtimes &amp; <code>.MSM</code> modules,
+              Dual Dialog Designers, and a 100% comment-preserving <code>.rsip</code> AST!
             </p>
           </div>
-          <a class="btn btn-outline" href="/docs">Explore .rsip v0.3 Schema</a>
+          <a class="btn btn-outline" href="/docs">Explore .rsip v0.4 Schema</a>
         </article>
 
         <article class="card card-highlight">
@@ -268,19 +376,99 @@ Verbs             = open:&amp;Open:"%1"</pre>
               <code>SKILL.md</code>) emitted directly from the C++20 <code>constexpr</code> grammar.
             </p>
           </div>
-          <a class="btn btn-primary" href="/llms.txt">View Live /llms.txt Spec</a>
+          <a class="btn btn-primary" href="/llms-full.txt">View Complete /llms-full.txt</a>
         </article>
 
         <article class="card">
           <div>
-            <h3><code>msiprism.exe</code> — Native 64-Bit MSI &amp; MST Inspector</h3>
+            <h3><code>msiprism.exe</code> &amp; <code>RaggieSoftHelp.exe</code></h3>
             <p>
-              A clean, modern 64-bit (<code>x64</code> &amp; <code>ARM64</code>) Dark Mode replacement for Microsoft's 1999 32-bit
-              <code>Orca.exe</code>—inspecting relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> databases.
+              Inspect relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> databases in 64-bit Dark Mode
+              with <strong>MSI Prism</strong>, and browse searchable offline HTML5 documentation in under 5ms via Named Pipe <code>F1</code> IPC
+              inside <strong>RaggieSoft Help Viewer</strong>.
             </p>
           </div>
-          <a class="btn btn-outline" href="/security">Review Security Architecture</a>
+          <a class="btn btn-outline" href="/changelog">Inspect v0.4.0 Release Notes</a>
         </article>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.0`).
+ */
+function renderChangelogBody(): string {
+  return `
+    <section class="hero" aria-labelledby="chg-title">
+      <span class="eyebrow">Public Engineering Log • x64 &amp; Native ARM64</span>
+      <h1 id="chg-title">Version History &amp; Release Notes</h1>
+      <p class="lead">
+        Follow every milestone of <strong>RaggieSoft Installer Studio</strong> as it evolves in public as original,
+        zero-dependency native Win32 C++20 software.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Latest v0.4.0 (x64)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Latest v0.4.0 (ARM64)</a>
+        <a class="btn btn-outline" href="${GITHUB_REPO_URL}">View Commits on GitHub</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="v040-heading" class="calc-panel">
+      <span class="release-badge">Latest Release • November 2026</span>
+      <h2 id="v040-heading" style="margin-top: 0.25rem;">v0.4.0 — Native C++20 Help System, Dark-Mode UI Subclasses &amp; AI Blueprints</h2>
+      <ul class="feature-list">
+        <li><strong>New <code>RaggieSoftHelp.exe</code> Native C++20 Help Viewer</strong>: Converted RaggieSoft's modular <code>.rshm.json</code> documentation viewer into a 100% static <code>/MT</code> Win32 C++20 binary (zero <code>.NET</code> and zero <code>WebView2</code> dependencies!) featuring Contents, Index, full-text Search, in-process HTML5-to-RTF typography (<code>Msftedit.dll</code>), and single-instance Named Pipe <code>F1</code> IPC.</li>
+        <li><strong>Bundled <code>raggiesoft.installer-studio</code> Offline Help Module</strong>: Shipped 8 comprehensive offline HTML5 chapters wired directly to <code>F1</code> across all 10 views of <code>InstallerStudio.exe</code>.</li>
+        <li><strong>Global Win32 Dark Mode Checkbox &amp; ListView Header Subclasses</strong>: Added <code>AttachAccessibleCheckboxSubclass</code> and <code>AttachDarkAwareListViewSubclass</code> in <code>RswGlassRenderer.hpp</code> so checkboxes and <code>SysListView32</code> column headers maintain <code>&ge; 15.8:1</code> WCAG AAA contrast across Dark, Light, and High Contrast modes.</li>
+        <li><strong>Expanded From-Scratch AI Agent Blueprints</strong>: Upgraded <code>instbuild.exe --emit-ai-spec</code> (<code>/llms.txt</code>, <code>/llms-full.txt</code>, <code>/SKILL.md</code>) with an AI Pre-Flight Checklist and complete enterprise <code>.rsip</code> blueprint.</li>
+        <li><strong>Automated WIC Window Screenshot Exporter</strong>: Added <code>--export-screenshots</code> across GUI tools for reproducible visual QA.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="v030-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v030-heading" style="margin-top: 0.25rem;">v0.3.0 — Editions Parity, LZMS Compression, Pre-MSI Runtimes, .MSM &amp; SelectionTree</h2>
+        <ul class="feature-list">
+          <li><strong>IDE Editions (<code>Community == Premier</code>)</strong>: Defined <code>Community</code>, <code>Express</code>, <code>Professional</code>, and <code>Premier</code> tiers with <code>Community</code> permanently maintaining 100% feature parity with <code>Premier</code>.</li>
+          <li><strong>Windows <code>LZMS</code> Solid Compression</strong>: Integrated <code>COMPRESS_ALGORITHM_LZMS</code> (<code>Cabinet.lib</code>) to shrink embedded <code>Product.msi</code> and offline runtime payloads inside <code>Setup.exe</code>.</li>
+          <li><strong>Unlimited Pre-MSI <code>[Prerequisite.*]</code> Runtime Broker</strong>: Added curated (<code>.NET 8/9/10</code>, <code>WebView2</code>, <code>VC++</code>) and custom runtime execution before <code>msiexec</code> via <code>WinHTTP</code> download, <code>LZMS</code> offline embed, or <code>Redist\\</code>—capturing standardized and custom <code>RebootExitCodes</code> (<code>3010, 1641, 23, ...</code>) under one UAC prompt.</li>
+          <li><strong>Native 64-Bit <code>[MergeModule.*]</code> (<code>.MSM</code>) Merger</strong>: Built a pure 64-bit SQL + <code>Cabinet.lib</code> FDI Merge Module consumer with zero 32-bit COM dependencies.</li>
+          <li><strong>Authentic Windows Installer <code>SelectionTree</code> &amp; Clean Status Formatting</strong>: Added 32-bit ARGB split-dropdown feature icons, live byte-cost cards, <code>DisallowAbsent</code> core locks, and <code>MsiFormatRecordW</code> formatting so status text never prints unexpanded <code>[1]</code> tokens.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v021-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Bugfix &amp; Polish • November 2026</span>
+        <h2 id="v021-heading" style="margin-top: 0.25rem;">v0.2.1 — Real-World Setup Fixes, Dark Mode Checkboxes &amp; UAC Elevation Broker</h2>
+        <ul class="feature-list">
+          <li><strong>Dark Mode Checkbox Subclassing in <code>SetupWizard.exe</code></strong>: Eliminated <code>ComCtl32 v6</code> black-on-black checkbox labels on Dark Mode wizard pages.</li>
+          <li><strong>Consistent Footer Navigation</strong>: Placed <code>&lt; &amp;Back</code> in the bottom-right footer bar alongside <code>Next &gt;</code> and <code>Cancel</code> and streamlined the AeroWizard command header.</li>
+          <li><strong>Windows Installer Engine &amp; UAC Fixes</strong>: Added persistent <code>Signature</code> / <code>AppSearch</code> locator SQL tables (fixing MSI Error 2228), Type 35 <code>STARTMENUFOLDER</code> directory formatting, unshimmed OS build properties, and seamless <code>asInvoker</code> &rarr; <code>--elevated-msi-worker</code> UAC elevation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v020-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Feature Milestone • November 2026</span>
+        <h2 id="v020-heading" style="margin-top: 0.25rem;">v0.2.0 — Destination Computer Tree, Component Rules &amp; Dual Dialog Designers</h2>
+        <ul class="feature-list">
+          <li>Added the Destination Computer folder tree, Setup Design view enforcing Microsoft Component Rules (<code>ICE18</code>, <code>ICE38</code>, <code>ICE64</code>, <code>ICE80</code>), File Associations &amp; Shell Verbs, guided Win32 AeroWizards, and the <code>370&times;270</code> <code>MSI.DLL</code> SQL Dialog Designer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v010-heading" class="card">
+      <div>
+        <span class="release-badge">Initial Preview • November 2026</span>
+        <h2 id="v010-heading" style="margin-top: 0.25rem;">v0.1.0 — Zero-Dependency Win32 C++20 Toolchain Foundation</h2>
+        <ul class="feature-list">
+          <li>Initial <code>x64</code> + <code>ARM64</code> static <code>/MT</code> release of <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>insttests.exe</code> with deterministic SHA-1 UUIDv5 GUIDs, <code>RtlGetVersion</code> + <code>IsWow64Process2</code> detection, <code>.rsip</code>/<code>.rsis</code>/<code>.rsii</code> lossless AST, <code>--emit-ai-spec</code>, and <code>--emit-vpat</code>.</li>
+        </ul>
       </div>
     </section>
   `;
@@ -294,7 +482,8 @@ function renderVpatBody(): string {
       <p class="lead">
         Accessibility shouldn't start only after an app is installed—users relying on screen readers, keyboard navigation,
         or Windows Contrast Themes have to get through the installer first. RaggieSoft Installer Studio engineers WCAG 2.2 AA
-        and Revised Section 508 conformance directly into <code>SetupWizard.exe</code> and <code>instbuild.exe</code>.
+        and Revised Section 508 conformance directly into <code>SetupWizard.exe</code>, <code>InstallerStudio.exe</code>,
+        <code>RaggieSoftHelp.exe</code>, and <code>instbuild.exe</code>.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="${LIVE_VPAT_URL}">Open Sample Live VPAT 2.5 Report (HTML5)</a>
@@ -303,7 +492,7 @@ function renderVpatBody(): string {
     </section>
 
     <section aria-labelledby="proof-heading">
-      <h2 id="proof-heading">How SetupWizard.exe Fixes Legacy Installer Accessibility Gaps</h2>
+      <h2 id="proof-heading">How Our Native Win32 Suite Guarantees Accessibility &amp; Dark Mode Contrast</h2>
       <div class="card-grid">
         <article class="card">
           <div>
@@ -317,10 +506,11 @@ function renderVpatBody(): string {
         </article>
         <article class="card">
           <div>
-            <h3>High-Contrast Focus Rings &amp; Enforced Mnemonics</h3>
+            <h3>Dark-Mode Checkboxes &amp; <code>SysListView32</code> Headers</h3>
             <p>
-              Draws unmistakable <code>2.5px</code> keyboard focus rings (<code>12.6:1</code> in Dark Mode, <code>7.8:1</code> in Light Mode,
-              exceeding WCAG 2.4.11/2.4.13) and statically verifies <code>&amp;</code> keyboard mnemonics via <code>instbuild --validate</code>.
+              Shared Win32 subclasses override stock <code>ComCtl32 v6</code> black-on-dark checkbox labels and white
+              <code>SysHeader32</code> bars so every checkbox, report column header, and focus ring holds <code>&ge; 12.6:1</code> to
+              <code>17.4:1</code> contrast.
             </p>
           </div>
         </article>
@@ -328,8 +518,8 @@ function renderVpatBody(): string {
           <div>
             <h3>Windows Contrast Themes &amp; Per-Monitor V2 DPI</h3>
             <p>
-              Honors <code>SPI_GETHIGHCONTRAST</code> using pure OS <code>GetSysColor</code> tokens, themes RichEdit license text for
-              <code>&ge; 15:1</code> contrast in Dark &amp; Light Mode, and scales cleanly with Windows 11's <code>TextScaleFactor</code>.
+              Honors <code>SPI_GETHIGHCONTRAST</code> using pure OS <code>GetSysColor</code> tokens, themes RichEdit license &amp;
+              offline help articles for <code>&ge; 15:1</code> contrast, and scales cleanly with Windows 11's <code>TextScaleFactor</code>.
             </p>
           </div>
         </article>
@@ -348,13 +538,13 @@ function renderVpatBody(): string {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Header Banner Typography (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
+              <th scope="row">Header Banner &amp; ListView Column Headers (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
               <td>17.4:1 relative luminance ratio</td>
               <td>WCAG 2.2 SC 1.4.3 / 1.4.6</td>
               <td><strong>Supports (AAA)</strong></td>
             </tr>
             <tr>
-              <th scope="row">Dark Mode Surface Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
+              <th scope="row">Dark Mode Surface &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
               <td>16.9:1 relative luminance ratio + Mica frame</td>
               <td>WCAG 2.2 SC 1.4.3</td>
               <td><strong>Supports (AAA)</strong></td>
@@ -387,31 +577,32 @@ function renderVpatBody(): string {
 function renderDocsBody(): string {
   return `
     <section class="hero" aria-labelledby="docs-title">
-      <span class="eyebrow">Human &amp; AI-Agent Technical Reference (Schema v0.3)</span>
-      <h1 id="docs-title">Documentation, .rsip / .rsis Reference &amp; CI Quickstarts</h1>
+      <span class="eyebrow">Human &amp; AI-Agent Technical Reference (Schema v0.4)</span>
+      <h1 id="docs-title">Documentation, .rsip / .rsis Reference &amp; AI Authoring</h1>
       <p class="lead">
-        Author single-file <code>.rsip</code> projects, reuse dialog and signing blocks via <code>@include "preset.rsii"</code>,
-        or orchestrate multi-package workspaces inside an <code>.rsis</code> Suite. Point coding agents at
-        <a href="/llms.txt">raggiesoftstudio.com/llms.txt</a> for zero-hallucination schema support.
+        Author single-file <code>.rsip</code> projects from scratch, reuse dialog and signing blocks via
+        <code>@include "preset.rsii"</code>, or orchestrate multi-package workspaces inside an <code>.rsis</code> Suite.
+        Point coding agents directly at <a href="/llms-full.txt">raggiesoftstudio.com/llms-full.txt</a> or press <code>F1</code>
+        inside <code>InstallerStudio.exe</code> to open <code>RaggieSoftHelp.exe</code> offline!
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/llms.txt">Open /llms.txt</a>
         <a class="btn btn-outline" href="/llms-full.txt">Open Complete /llms-full.txt</a>
-        <a class="btn btn-outline" href="${GITHUB_REPO_URL}">View Source on GitHub</a>
+        <a class="btn btn-outline" href="/SKILL.md">Download AI SKILL.md</a>
       </div>
     </section>
 
     <section aria-labelledby="search-schema-heading" x-data="{ q: '' }">
-      <h2 id="search-schema-heading">Interactive .rsip v0.3 &amp; .rsis Section Filter</h2>
+      <h2 id="search-schema-heading">Interactive .rsip v0.4 &amp; .rsis Section Filter</h2>
       <div class="field-group" style="max-width: 32rem; margin-bottom: 1rem;">
         <label for="schema-filter">Filter manifest sections &amp; capabilities:</label>
-        <input id="schema-filter" type="search" placeholder="Type Component, KeyPath, FileAssociation, MsiDialog, Suite..."
+        <input id="schema-filter" type="search" placeholder="Type Prerequisite, MergeModule, Component, KeyPath, MsiDialog..."
                x-model="q" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--surface); color: var(--text);" />
       </div>
 
       <div class="table-wrap">
         <table>
-          <caption>Complete .rsip v0.3 Project, .rsis Suite &amp; .rsii Include Sections</caption>
+          <caption>Complete .rsip v0.4 Project, .rsis Suite &amp; .rsii Include Sections</caption>
           <thead>
             <tr>
               <th scope="col">Section / Directive</th>
@@ -430,10 +621,20 @@ function renderDocsBody(): string {
               <td><code>.rsip</code> (Required)</td>
               <td><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
             </tr>
-            <tr x-show="!q || 'feature parent subfeature level'.includes(q.toLowerCase())">
+            <tr x-show="!q || 'feature parent subfeature level disallowabsent selectiontree'.includes(q.toLowerCase())">
               <th scope="row"><code>[Feature.&lt;Id&gt;]</code></th>
               <td><code>.rsip</code> (Optional)</td>
-              <td><code>Title</code>, <code>Description</code>, <code>Level</code> (<code>1</code> = Compact/Core, <code>2+</code> = Express/Custom), and optional <code>Parent</code> sub-feature hierarchy.</td>
+              <td><code>Title</code>, <code>Description</code>, <code>Level</code>, <code>Parent</code> hierarchy, <code>DisallowAbsent</code> core lock, and <code>AllowAdvertise</code> for the MSI <code>SelectionTree</code>.</td>
+            </tr>
+            <tr x-show="!q || 'prerequisite runtime dotnet webview2 vcredist reboot lzms'.includes(q.toLowerCase())">
+              <th scope="row"><code>[Prerequisite.&lt;Id&gt;]</code></th>
+              <td><code>.rsip</code> (Optional)</td>
+              <td><code>Preset</code> (<code>DotNet10Desktop</code>, <code>EdgeWebView2</code>, <code>VcRedist2022</code>, <code>Custom</code>), <code>Distribution</code> (<code>download|embedded|side-by-side</code>), and <code>RebootExitCodes</code>.</td>
+            </tr>
+            <tr x-show="!q || 'mergemodule msm shared library cab'.includes(q.toLowerCase())">
+              <th scope="row"><code>[MergeModule.&lt;Id&gt;]</code></th>
+              <td><code>.rsip</code> (Optional)</td>
+              <td>Merges 64-bit <code>.msm</code> SQL tables and CAB payloads into <code>TargetRoot</code> / <code>Feature</code> using native C++20 <code>msi.dll</code> + <code>Cabinet.lib</code> FDI.</td>
             </tr>
             <tr x-show="!q || 'component keypath keyfile ice18 ice38 permanent'.includes(q.toLowerCase())">
               <th scope="row"><code>[Component.&lt;Id&gt;]</code></th>
@@ -471,7 +672,7 @@ function renderDocsBody(): string {
     </section>
 
     <section aria-labelledby="ci-heading">
-      <h2 id="ci-heading">GitHub Actions CI Quickstart</h2>
+      <h2 id="ci-heading">GitHub Actions &amp; AI Agent CLI Quickstart</h2>
       <pre aria-label="GitHub Actions x64 and ARM64 Packaging Workflow">name: Package Windows x64 &amp; ARM64 Installers
 on: [push]
 jobs:
@@ -481,7 +682,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Lint .rsis Suite &amp; Microsoft Component Rules (JSON)
         run: .\\bin\\x64\\instbuild.exe .\\MySuite.rsis --validate --diagnostics=json
-      - name: Compile .MSI, AeroWizard/Glass Setup.exe &amp; VPAT 2.5 ACR
+      - name: Compile .MSI, LZMS Setup.exe &amp; VPAT 2.5 HTML5 Report
         run: .\\bin\\x64\\instbuild.exe .\\MySuite.rsis --with-vpat</pre>
     </section>
   `;
@@ -494,7 +695,7 @@ function renderSecurityBody(): string {
       <h1 id="sec-title">Security, Dual-Signing &amp; Zero-Telemetry Pledge</h1>
       <p class="lead">
         RaggieSoft Installer Studio is compiled directly from first-party C++20 source with <code>cl.exe /MT</code> and the stock
-        Windows 11 SDK—linking only OS-resident <code>System32</code> libraries with zero third-party packages, zero outbound network
+        Windows 11 SDK—linking only OS-resident <code>System32</code> libraries with zero third-party packages, zero outbound IDE
         telemetry, and zero cryptocurrency/blockchain code.
       </p>
     </section>
@@ -506,8 +707,8 @@ function renderSecurityBody(): string {
           <div>
             <h3>1. Static <code>/MT</code> Compilation &amp; Minimal SBOM</h3>
             <p>
-              No NuGet dependency graph, no npm runtime, no Electron Chromium bundle, and no external DLLs. Both the IDE/compiler
-              and <code>SetupWizard.exe</code> call Microsoft's OS-serviced <code>msi.dll</code>, <code>cabinet.dll</code>, and <code>bcrypt.dll</code> directly.
+              No NuGet dependency graph, no npm runtime, no Electron Chromium bundle, and no external DLLs—even
+              <code>RaggieSoftHelp.exe</code> renders offline topics natively via <code>System32\\Msftedit.dll</code>.
             </p>
           </div>
         </article>
@@ -533,8 +734,8 @@ function renderSecurityBody(): string {
           <div>
             <h3>4. Permanent Zero-Telemetry &amp; Zero-Crypto Pledge</h3>
             <p>
-              Neither <code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>msiprism.exe</code>, nor <code>SetupWizard.exe</code> opens a network
-              socket, phones home to a license server, or bundles cryptocurrency payment SDKs.
+              Neither <code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>msiprism.exe</code>, nor <code>RaggieSoftHelp.exe</code> phones home
+              to a license server or bundles cryptocurrency payment SDKs.
             </p>
           </div>
         </article>
@@ -546,26 +747,34 @@ function renderSecurityBody(): string {
 export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
-    navLabel: 'Announcement & Preview',
-    seoTitle: 'RaggieSoft Installer Studio — Technical Preview',
+    navLabel: 'Preview & Gallery',
+    seoTitle: 'RaggieSoft Installer Studio — v0.4.0 Technical Preview',
     seoDescription:
-      'Open-source Win32 C++20 Windows installer IDE and MSI compiler for x64 and ARM64 with AeroWizards, Dual Dialog Designer, and WCAG 2.2 AA accessibility.',
+      'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.',
     renderBody: renderHomeBody
   },
   {
     path: '/docs',
-    navLabel: 'Docs & .rsip Spec',
-    seoTitle: 'Documentation & .rsip v0.3 Spec | Installer Studio',
+    navLabel: 'Docs & AI Spec',
+    seoTitle: 'Documentation & .rsip v0.4 Spec | Installer Studio',
     seoDescription:
-      'Searchable .rsip v0.3 project and .rsis suite reference covering Components, KeyPaths, File Associations, MSI Dialogs, and AI /llms.txt endpoints.',
+      'Searchable .rsip v0.4 project and .rsis suite reference covering Prerequisites, Merge Modules, Components, SelectionTree, and AI /llms.txt specs.',
     renderBody: renderDocsBody
+  },
+  {
+    path: '/changelog',
+    navLabel: 'Version History',
+    seoTitle: 'Version History & Changelog (v0.4.0) | Installer Studio',
+    seoDescription:
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.0 across Windows 11 x64 and ARM64.',
+    renderBody: renderChangelogBody
   },
   {
     path: '/vpat',
     navLabel: 'Accessibility & VPAT',
     seoTitle: 'WCAG 2.2 AA & VPAT 2.5 Engineering | Installer Studio',
     seoDescription:
-      'Inspect how SetupWizard.exe and instbuild.exe deliver native Win32 UI Automation, High Contrast support, and automated HTML5 VPAT 2.5 reports.',
+      'Inspect how SetupWizard.exe, InstallerStudio.exe, and RaggieSoftHelp.exe deliver UI Automation, Dark Mode contrast, and VPAT 2.5 reports.',
     renderBody: renderVpatBody
   },
   {
@@ -577,7 +786,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   },
   {
     path: '/security',
-    navLabel: 'Security & Architecture',
+    navLabel: 'Security',
     seoTitle: 'Security, Static /MT C++20 & Signing | Installer Studio',
     seoDescription:
       'Static /MT Win32 C++20 compilation, dual-layer Authenticode signing, offline CI builds, and our permanent zero-telemetry, zero-crypto pledge.',
@@ -617,7 +826,7 @@ export function renderStudioPage(routePath: string): { html: string } {
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.1)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.0)</span>
         </a>
 
         <button
@@ -660,8 +869,9 @@ export function renderStudioPage(routePath: string): { html: string } {
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-links">
-          <a href="/">Announcement &amp; Preview</a>
-          <a href="/docs">Docs &amp; .rsip Spec</a>
+          <a href="/">Preview &amp; Gallery</a>
+          <a href="/docs">Docs &amp; AI Spec</a>
+          <a href="/changelog">Version History (v0.4.0)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/llms.txt">/llms.txt</a>
