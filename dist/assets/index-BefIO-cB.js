@@ -35,7 +35,7 @@ ${r?'Expression: "'+r+`"
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.2.0</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.2.1</code>)</h3>
             <ul class="feature-list">
               <li><strong>9-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 4 native <strong>AeroWizards</strong> (Project Assistant, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)</li>
               <li><strong>Destination Computer Tree &amp; Setup Design</strong> enforcing Microsoft's Official Component Rules (Single-Directory Rule, File KeyPaths, ICE38 <code>HKCU</code> Registry KeyPaths, &amp; ICE18 <code>CreateFolder</code>)</li>
@@ -60,7 +60,7 @@ ${r?'Expression: "'+r+`"
     </section>
   `}function Uo(){return`
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.0) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.1) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
         An in-development, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
@@ -509,7 +509,7 @@ jobs:
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.0)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.1)</span>
         </a>
 
         <button

@@ -9,7 +9,7 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.2.0`)**:
+ *     public **Project Announcement & Open Technical Preview (`v0.2.1`)**:
  *       1. `/`              — Vision Announcement, Preview Downloads, 3-Tab Split
  *                             Preview, Zero-Bloat Matrix, & Open Roadmap
  *       2. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
@@ -65,7 +65,7 @@ function renderVisionAndRoadmapSection(): string {
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.2.0</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.2.1</code>)</h3>
             <ul class="feature-list">
               <li><strong>9-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 4 native <strong>AeroWizards</strong> (Project Assistant, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)</li>
               <li><strong>Destination Computer Tree &amp; Setup Design</strong> enforcing Microsoft's Official Component Rules (Single-Directory Rule, File KeyPaths, ICE38 <code>HKCU</code> Registry KeyPaths, &amp; ICE18 <code>CreateFolder</code>)</li>
@@ -94,7 +94,7 @@ function renderVisionAndRoadmapSection(): string {
 function renderHomeBody(): string {
   return `
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.0) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.1) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
         An in-development, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
@@ -617,7 +617,7 @@ export function renderStudioPage(routePath: string): { html: string } {
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.0)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.1)</span>
         </a>
 
         <button

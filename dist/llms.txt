@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.1.0
+# RaggieSoft Installer Studio (Install Without Limits) — v0.2.1
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` Visual IDE, `instbuild.exe` CLI compiler, `SetupWizard.exe` accessible runtime wizard, and `msiprism.exe` 64-bit MSI/MST/MSP SQL inspector) targeting `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
 
