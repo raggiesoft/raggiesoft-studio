@@ -41,6 +41,8 @@ export interface StudioRoute {
 
 const ASSET_BASE =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
+const BOX_SHOWCASE_URL =
+  'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
 const DOWNLOAD_X64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-x64-setup.exe`;
 const DOWNLOAD_ARM64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-arm64-setup.exe`;
 const SHOT_BASE = `${ASSET_BASE}/screenshots`;
@@ -211,9 +213,9 @@ function renderVisionAndRoadmapSection(): string {
             <h3>Next Milestones on the Workbench (Phases B–G)</h3>
             <ul class="feature-list">
               <li><strong>Authenticode Signing UX, <code>.NET 11</code> Presets &amp; Universal Single-EXE</strong>: Windows Cert Store / Azure Artifact Signing tester, curated <code>.NET 11</code> + <code>.NET 10 LTS</code> detection, dual-arch <code>universal</code> <code>Setup.exe</code>, and optional <code>Engine = native</code> direct extraction</li>
-              <li><strong>Skinning (<code>.rswskin</code>, <code>Wizard95</code> &amp; True <code>AeroWizard</code>), Custom Dialogs &amp; <code>RsDialog</code> Scripting</strong>: WYSIWYG custom dialogs paired with procedural <code>Rs*()</code> functions and <code>.rswpak</code> Web Media Blocks</li>
-              <li><strong>Setup Capture ("Repackager") + Disposable Windows Sandbox (<code>.wsb</code>)</strong>: Snapshot-diff legacy <code>.exe</code> installers into clean <code>.rsip</code> + <code>.msi</code> + <code>.mst</code> packages inside Windows 11 Pro Sandbox</li>
-              <li><strong>Open-Format Import Wizard (Including VB6 <code>.vbp</code> Reg-Free COM!) &amp; VS <code>.vsix</code></strong>: Import from <code>.msi</code>/<code>.msm</code>, Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code>, and XML/INI manifests—followed by White-Label <code>RsUpdate.exe</code> Auto-Updater, native <code>.MSIX</code>/<code>.MSIXBUNDLE</code>, and SPDX/CycloneDX <code>--emit-sbom</code></li>
+              <li><strong>8 Wizard Styles (<code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code> &amp; <code>Autorun16x9</code>)</strong> + automatic <code>SPI_GETHIGHCONTRAST</code> contrast-theme override</li>
+              <li><strong>WCAG-Guarded Publisher Branding &amp; From-Scratch Dual Dialog Builders</strong>: Full Light/Dark brand colors with live WCAG 2.2 AA contrast enforcement, custom C++ &amp; raw <code>370&times;270</code> <code>MSI.DLL</code> dialogs, <code>RsDialog</code> (<code>Rs*()</code>) scripting, and <code>.rswpak</code> On-Demand Feature Packs</li>
+              <li><strong>Setup Capture (<code>.wsb</code> Sandbox), VB6 <code>.vbp</code> Reg-Free COM Import &amp; White-Label <code>RsUpdate.exe</code></strong>: Snapshot-diff repackager, Visual Studio <code>.slnx</code> / VB6 <code>.vbp</code> importers, guided <code>.MSP</code> servicing, native <code>.MSIXBUNDLE</code>, and SPDX/CycloneDX <code>--emit-sbom</code></li>
             </ul>
           </div>
           <a class="btn btn-primary" href="/roadmap">Read Full Public Roadmap (Phases B–G)</a>
@@ -226,20 +228,32 @@ function renderVisionAndRoadmapSection(): string {
 function renderHomeBody(): string {
   return `
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.1) • x64 &amp; ARM64</span>
-      <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
-      <p class="lead">
-        An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
-        Design projects visually with modern <strong>AeroWizards</strong>, Destination Computer folder trees, Dual C++ &amp;
-        <code>MSI.DLL</code> Dialog Designers, and a built-in native C++ <code>F1</code> Help Viewer—or let coding agents author
-        comment-preserving <code>.rsip</code> manifests from scratch into real <code>.msi</code>, <code>.msm</code>,
-        <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
-      </p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.1 (x64)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
-        <a class="btn btn-outline" href="/roadmap">Explore Public Roadmap</a>
-        <a class="btn btn-outline" href="/changelog">Version History (v0.4.1)</a>
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.1) • x64 &amp; ARM64</span>
+          <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
+          <p class="lead">
+            An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
+            Design projects visually with modern <strong>AeroWizards</strong>, Destination Computer folder trees, Dual C++ &amp;
+            <code>MSI.DLL</code> Dialog Designers, and a built-in native C++ <code>F1</code> Help Viewer—or let coding agents author
+            comment-preserving <code>.rsip</code> manifests from scratch into real <code>.msi</code>, <code>.msm</code>,
+            <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.1 (x64)</a>
+            <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
+            <a class="btn btn-outline" href="/roadmap">Explore Public Roadmap</a>
+            <a class="btn btn-outline" href="/changelog">Version History (v0.4.1)</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${BOX_SHOWCASE_URL}"
+            width="1200"
+            height="630"
+            alt="Collector's Edition boxed software render of RaggieSoft Installer Studio — Install Without Limits (Native C++20 for x64 and ARM64)."
+          />
+        </figure>
       </div>
 
       <!-- Interactive 3-Tab Split Preview Toggle (AeroWizard & Glass UI / MSI.DLL Express-Custom / Plain-Text .rsip) -->
@@ -459,7 +473,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row">Phase B (<code>v0.5.0</code>)</th>
-              <td>Authenticode Signing Studio, <code>.rswskin</code> skinning (<code>Wizard95</code> &amp; circular <code>AeroWizard</code>), Custom Dialogs + <code>RsDialog</code> (<code>Rs*()</code>) scripting, <code>.rswpak</code> Web Media Blocks, <code>.NET 11</code> presets, &amp; Universal Single-EXE</td>
+              <td>Authenticode Signing Studio, 8 Wizard Styles (<code>Wizard95</code>..<code>FluentMica</code>..<code>FullScreenBlue</code>), WCAG-guarded Publisher Branding, From-Scratch C++ &amp; Raw <code>MSI.DLL</code> Dialog Builders + <code>RsDialog</code> scripting, <code>.rswpak</code> On-Demand Feature Packs, <code>.NET 11</code>, &amp; Universal Single-EXE</td>
               <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
@@ -522,12 +536,25 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'b'" aria-labelledby="phase-b-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill status-next">Phase B • Target v0.5.0 (Next Up)</span>
-          <h2 id="phase-b-heading" style="margin-top: 0.5rem;">Signing Studio, Skinning (<code>Wizard95</code> &amp; True <code>AeroWizard</code>), Custom Dialogs, <code>RsDialog</code> Scripting, <code>.NET 11</code> &amp; Universal Single-EXE</h2>
+          <h2 id="phase-b-heading" style="margin-top: 0.5rem;">Signing Studio, 8 Wizard Styles, WCAG-Guarded Branding, From-Scratch C++ &amp; MSI Dialog Builders, <code>RsDialog</code> Scripting, <code>.rswpak</code> Feature Packs, <code>.NET 11</code> &amp; Universal Single-EXE</h2>
           <ul class="feature-list">
             <li><strong>First-Class Authenticode Signing UX</strong>: Interactive Windows Certificate Store picker (<code>CryptUIDlgSelectCertificateFromStore</code>), local <code>.pfx</code> / hardware token configuration, Azure Artifact Signing (<code>dlib</code> + <code>MetadataJson</code>) tester, and one-click Dual-Layer Signature Verifier (<code>WinVerifyTrust</code> on both inner <code>Product.msi</code> and outer <code>Setup.exe</code>).</li>
-            <li><strong>Installer Skinning Engine (<code>.rswskin</code>) + <code>Wizard95</code> &amp; Circular <code>AeroWizard</code></strong>: Custom palettes with live WCAG contrast checks, a retro Windows 95 / NT 4.0 3D beveled mode (<code>WizardLayout = wizard95</code> with <code>164&times;314</code> left bitmap rail), and a pixel-perfect vector <code>30&times;30</code> circular <code>&larr;</code> AeroWizard command-bar button.</li>
-            <li><strong>WYSIWYG Custom Dialog Designer &amp; <code>RsDialog</code> (<code>Rs*()</code>) Scripting</strong>: Visual drag-and-drop canvas for arbitrary <code>[Dialog.&lt;Id&gt;]</code> wizard pages paired with <code>.rssc</code> event hooks and our procedural <strong><code>RsDialog</code></strong> standard library (<code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, <code>RsAskText()</code>, <code>RsAskOptions()</code>, <code>RsStartCopy()</code>, <code>RsFinish()</code>, <code>RsFinishReboot()</code>).</li>
-            <li><strong>Optional Web Media Blocks (<code>.rswpak</code>)</strong>: Split multi-gigabyte optional features into external LZMS-compressed <code>.rswpak</code> blocks downloaded on demand via <code>WinHTTP</code> with SHA-256 verification.</li>
+            <li><strong>Eight First-Party Wizard Layout Variations (<code>[UI] WizardLayout</code>)</strong>:
+              <ul class="feature-list" style="margin-top: 0.35rem; margin-bottom: 0.35rem;">
+                <li><strong><code>Wizard95</code></strong>: Classic 1995 desktop 3D beveled dialog sheet (<code>#C0C0C0</code> surface, etched dividers, <code>164&times;314</code> left bitmap rail, and beveled buttons).</li>
+                <li><strong><code>Wizard97</code></strong>: Classic enterprise header-banner layout with right-side emblem and bottom-right <code>&lt; Back</code> / <code>Next &gt;</code> / <code>Cancel</code> footer—modernized for Dark &amp; Light Mode.</li>
+                <li><strong><code>AeroWizard</code></strong>: Command-bar layout featuring a vector GDI+ <code>30&times;30</code> circular <code>&larr;</code> Back glyph in the top-left command area.</li>
+                <li><strong><code>FluentMica</code></strong>: Modern Windows 11 native backdrop via <code>DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)</code> with a unified borderless header, left-hand vertical step-progress rail (<code>Welcome &rarr; License &rarr; Options &rarr; Install &rarr; Finish</code>), and rounded <code>8px</code> cards in pure zero-dependency C++20.</li>
+                <li><strong><code>OneClickSplash</code></strong>: Compact centered <code>~480&times;280</code> friction-free card with one primary <strong>Install</strong> button, live progress bar, and a subtle <em>"Customize installation..."</em> disclosure button that expands into the full Custom Setup flow only when clicked.</li>
+                <li><strong><code>PassiveToast</code></strong>: Clean non-interactive <code>/passive</code> &amp; <code>/qb</code> enterprise status surface (centered or docked near the bottom-right system tray) with Dark/Light/High-Contrast styling and UI Automation live-region percentage announcements.</li>
+                <li><strong><code>FullScreenBlue</code></strong>: Nostalgic 1990s cobalt-blue (<code>#000080 &rarr; #000000</code>) full-screen <code>SETUP.EXE</code> backdrop wash with a shadow-boxed serif title in the top-left corner, floating 3D beveled setup dialogs, <strong>optional rotating installation billboards</strong>, and a floating <strong>3D Beveled Progress Gauge</strong> that sits centered or docks at the <strong>bottom-center / bottom-right</strong> beneath billboards—while keeping full modern DPI scaling, keyboard navigation, and screen-reader accessibility under the hood.</li>
+                <li><strong><code>Autorun16x9</code></strong>: Widescreen <code>16:9</code> Collector's Edition &amp; digital media launcher menu.</li>
+              </ul>
+            </li>
+            <li><strong>Non-Negotiable Windows Contrast Theme Auto-Override (<code>SPI_GETHIGHCONTRAST</code>)</strong>: Across every single <code>WizardLayout</code> and custom skin, <code>SetupWizard.exe</code> checks <code>SPI_GETHIGHCONTRAST</code> at startup and live on <code>WM_SETTINGCHANGE</code> / <code>WM_SYSCOLORCHANGE</code>—automatically bypassing custom gradients, bitmaps, and Mica backdrops whenever a Windows Contrast Theme (<em>Aquatic</em>, <em>Desert</em>, <em>Dusk</em>, <em>Night Sky</em>) is active to paint strictly with <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, <code>COLOR_HIGHLIGHT</code>, and <code>2px</code> solid borders.</li>
+            <li><strong>Complete Publisher Branding, Custom Imagery &amp; Enforced WCAG 2.2 AA Contrast Guardrails (<code>[Branding]</code> &amp; <code>.rswskin</code>)</strong>: Customize every Light &amp; Dark Mode brand color, header banner, sidebar rail, product badge, background wash, and install billboard—backed by a live W3C relative luminance contrast enforcer inside <code>InstallerStudio.exe</code> (with a one-click <em>"Auto-Adjust Nearest Accessible Shade"</em> button preserving brand hue) and automated CI checks in <code>instbuild.exe --validate</code>.</li>
+            <li><strong>From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>MSI.DLL</code>) &amp; <code>RsDialog</code> (<code>Rs*()</code>) Scripting</strong>: Build completely custom wizard dialogs from a blank canvas for <strong>both</strong> C++ <code>SetupWizard.exe</code> (<code>[Dialog.*]</code>) AND raw <code>370&times;270</code> DLU relational <code>MSI.DLL</code> SQL tables (<code>[MsiDialog.*]</code> / <code>[MsiControl.*]</code>), paired with <code>.rssc</code> event hooks and our procedural <strong><code>RsDialog</code></strong> standard library (<code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, <code>RsAskText()</code>, <code>RsAskOptions()</code>, <code>RsStartCopy()</code>, <code>RsFinish()</code>, <code>RsFinishReboot()</code>).</li>
+            <li><strong>Optional On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Split multi-gigabyte optional features into external LZMS-compressed <code>.rswpak</code> packs downloaded on demand via <code>WinHTTP</code> with SHA-256 verification only when selected.</li>
             <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>, verifying native <code>arm64</code> and <code>x64</code>-on-ARM64 runtimes in <code>&lt; 1ms</code>.</li>
             <li><strong>Universal Dual-Architecture (<code>x64</code> + <code>ARM64</code>) Single-EXE &amp; Native Direct Engine (<code>Engine = native</code>)</strong>: Ship one unified <code>Setup.exe</code> that auto-selects native <code>ARM64</code> or <code>x64</code> silicon via <code>IsWow64Process2</code> with zero CPU jargon—plus an optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>.</li>
           </ul>

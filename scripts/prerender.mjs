@@ -34,8 +34,8 @@ const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
 
 const SITE_ORIGIN = 'https://raggiesoftstudio.com';
-const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg';
-const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg';
+const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
+const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg';
 const INDEXNOW_KEY = '726167676965736f6674696e6465786e';
 
 function escapeHtml(value) {
@@ -64,6 +64,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         name: 'RaggieSoft Installer Studio',
         alternateName: 'Install Without Limits',
         url: `${SITE_ORIGIN}/`,
+        image: OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
         softwareVersion: '0.4.1',
@@ -110,11 +111,15 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
     `<meta property="og:description" content="${escapeHtml(seoDescription)}" />`,
     `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
     `<meta property="og:image" content="${escapeHtml(OG_IMAGE)}" />`,
-    `<meta property="og:image:alt" content="RaggieSoft Installer Studio — Zero-Dependency Win32 C++20 Windows Packaging Suite" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escapeHtml(seoTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(seoDescription)}" />`,
     `<meta name="twitter:image" content="${escapeHtml(OG_IMAGE)}" />`,
+    `<meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />`,
     `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`
   ].join('\n    ');
 }

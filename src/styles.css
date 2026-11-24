@@ -229,13 +229,41 @@ body {
   padding: 2.25rem 1.25rem 3.5rem;
 }
 
-/* Hero Banner Card */
+/* Hero Banner Card & Responsive Boxed-Software Split Layout */
 .hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 1rem;
   padding: clamp(1.5rem, 3.5vw, 2.75rem);
   margin-bottom: 2.25rem;
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.9fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.hero-box-showcase {
+  margin: 0;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #070d1c;
+  box-shadow: 0 12px 30px rgba(7, 13, 28, 0.22);
+}
+
+.hero-box-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+  }
 }
 
 .eyebrow {
