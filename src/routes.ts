@@ -613,19 +613,43 @@ export function renderStudioPage(routePath: string): { html: string } {
     `;
 
   const html = `
-    <header class="site-header">
+    <header class="site-header" data-theme="dark">
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
           <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.0)</span>
         </a>
-        <nav aria-label="Primary Project Navigation">
-          <ul class="nav-list">
-            ${navItems}
-            <li><a class="nav-link" href="${GITHUB_REPO_URL}">GitHub</a></li>
-            <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
-          </ul>
-        </nav>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open Installer Studio and RaggieSoft network menu"
+          data-close-label="Close Installer Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open Installer Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="Primary Project Navigation">
+            <ul class="nav-list">
+              ${navItems}
+              <li><a class="nav-link" href="${GITHUB_REPO_URL}">GitHub</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
 

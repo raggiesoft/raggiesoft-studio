@@ -6,9 +6,9 @@
  * ============================================================================
  * PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
  *   Initializes Alpine.js (`Alpine.start()`) on pre-rendered static HTML pages
- *   so interactive controls—our 3-mode Wizard/Manifest split preview, 3-Year
- *   Enterprise TCO Calculator, and live `.rsip` schema search—become reactive
- *   immediately in the browser while preserving 100% static HTML SEO & speed!
+ *   so interactive controls—our 3-mode AeroWizard / MSI.DLL / `.rsip` split
+ *   preview and live `.rsip` v0.3 schema filter—become reactive immediately
+ *   in the browser while preserving 100% static HTML SEO & speed!
  * ============================================================================
  */
 

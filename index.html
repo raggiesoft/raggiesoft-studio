@@ -8,11 +8,15 @@
   ============================================================================
   PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
     This HTML5 document is the master shell for `raggiesoftstudio.com`
-    (RaggieSoft Installer Studio — "Install Without Limits"). During
-    `npm run build`, `scripts/prerender.mjs` replaces the two placeholder
-    markers below with pre-rendered route SEO/OpenGraph tags and full semantic
-    HTML5 page content so every visitor, screen reader, and search engine
-    receives complete HTML on the very first network packet!
+    (RaggieSoft Installer Studio: "Install Without Limits").
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content so every visitor, screen reader, and
+         search engine receives complete HTML on the very first network packet!
   ============================================================================
 -->
 <html lang="en">
@@ -21,12 +25,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <!--SSR_HEAD-->
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 Installer Studio</a></li>
+          <li><a href="https://a11y.raggiesoft.com">♿ A11y Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div id="app"><!--SSR_OUTLET--></div>
     <script type="module" src="/src/main.ts"></script>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261123a" defer></script>
   </body>
 </html>

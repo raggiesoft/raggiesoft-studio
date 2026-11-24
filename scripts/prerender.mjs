@@ -8,8 +8,8 @@
  * PLAIN-ENGLISH OVERVIEW (100-LEVEL NODE.JS SSG BUILD SCRIPT):
  *   What does this script do at the end of `npm run build`?
  *     1. Compiles `src/entry-server.ts` into `.ssr-temp/` via Vite.
- *     2. Pre-renders all 6 storefront routes (`/`, `/vpat`, `/accessibility`,
- *        `/pricing`, `/docs`, `/security`) PLUS `/404.html` into static HTML5.
+ *     2. Pre-renders all 5 Technical Preview routes (`/`, `/docs`, `/vpat`,
+ *        `/accessibility`, `/security`) PLUS `/404.html` into static HTML5.
  *     3. Enforces `<= 60` character `<title>` and `<= 155` character
  *        `<meta description>`, emits OpenGraph + Twitter Card tags and
  *        Schema.org `SoftwareApplication` JSON-LD.
