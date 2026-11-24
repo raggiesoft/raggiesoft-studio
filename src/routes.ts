@@ -9,18 +9,19 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.4.0`)**:
+ *     public **Project Announcement & Open Technical Preview (`v0.4.1`)**:
  *       1. `/`              — Vision Announcement, Preview Downloads, Live Win32
  *                             Screenshot Gallery, 3-Tab Split Preview, 5-Binary
- *                             Suite Spotlight, & Open Engineering Roadmap
- *       2. `/docs`          — Searchable `.rsip` v0.4 / `.rsis` / `.rsii` schema
+ *                             Suite Spotlight, & Open Engineering Summary
+ *       2. `/roadmap`       — Full Human-Readable Public Engineering Roadmap
+ *                             (`v0.1.0` -> `v1.0.0 GA`, Phases B through G)
+ *       3. `/docs`          — Searchable `.rsip` v0.4 / `.rsis` / `.rsii` schema
  *                             reference & AI coding agent workflow (`/llms.txt`)
- *       3. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.0`) &
- *                             upcoming Phase B–D roadmap milestones
- *       4. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
+ *       4. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.1`)
+ *       5. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
- *       5. `/accessibility` — Canonical alias view for `/vpat`
- *       6. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
+ *       6. `/accessibility` — Canonical alias view for `/vpat`
+ *       7. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
  *                             signing, & Permanent Zero-Telemetry / Zero-Crypto pledge
  *
  *   Note: Commercial pricing tiers are intentionally omitted while RaggieSoft
@@ -55,12 +56,13 @@ const FICTITIOUS_DISCLAIMER =
 function renderLiveScreenshotShowcase(): string {
   return `
     <section aria-labelledby="screenshots-heading">
-      <span class="eyebrow">Real Native Win32 C++20 Captures • Windows 11 Dark Mode</span>
-      <h2 id="screenshots-heading">See RaggieSoft Installer Studio v0.4.0 in Action</h2>
+      <span class="eyebrow">Real Native Win32 C++20 Captures • Windows 11 Dark &amp; Light Mode</span>
+      <h2 id="screenshots-heading">See RaggieSoft Installer Studio v0.4.1 in Action</h2>
       <p>
         Every window below is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables using stock Windows 11
         system libraries (<code>gdiplus.dll</code>, <code>comctl32.dll</code>, <code>Msftedit.dll</code>, and <code>msi.dll</code>)—with
-        custom Dark Mode checkbox and <code>SysListView32</code> column-header subclasses ensuring <code>&ge; 15.8:1</code> WCAG AAA contrast.
+        custom Dark Mode push-button, checkbox, and <code>SysListView32</code> column-header subclasses plus live
+        <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> Light &harr; Dark hot-swapping.
       </p>
       <div class="shot-grid">
         <!-- Screenshot 1: Visual IDE Destination Computer Tree & Dark-Header ListView -->
@@ -214,7 +216,7 @@ function renderVisionAndRoadmapSection(): string {
               <li><strong>Open-Format Import Wizard (Including VB6 <code>.vbp</code> Reg-Free COM!) &amp; VS <code>.vsix</code></strong>: Import from <code>.msi</code>/<code>.msm</code>, Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code>, and XML/INI manifests—followed by White-Label <code>RsUpdate.exe</code> Auto-Updater, native <code>.MSIX</code>/<code>.MSIXBUNDLE</code>, and SPDX/CycloneDX <code>--emit-sbom</code></li>
             </ul>
           </div>
-          <a class="btn btn-outline" href="/docs">Explore AI-Ready .rsip v0.4 Spec</a>
+          <a class="btn btn-primary" href="/roadmap">Read Full Public Roadmap (Phases B–G)</a>
         </article>
       </div>
     </section>
@@ -236,7 +238,8 @@ function renderHomeBody(): string {
       <div class="btn-row">
         <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.1 (x64)</a>
         <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
-        <a class="btn btn-outline" href="/changelog">View Version History (v0.4.1)</a>
+        <a class="btn btn-outline" href="/roadmap">Explore Public Roadmap</a>
+        <a class="btn btn-outline" href="/changelog">Version History (v0.4.1)</a>
       </div>
 
       <!-- Interactive 3-Tab Split Preview Toggle (AeroWizard & Glass UI / MSI.DLL Express-Custom / Plain-Text .rsip) -->
@@ -401,7 +404,7 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
               inside <strong>RaggieSoft Help Viewer</strong>.
             </p>
           </div>
-          <a class="btn btn-outline" href="/changelog">Inspect v0.4.0 Release Notes</a>
+          <a class="btn btn-outline" href="/changelog">Inspect v0.4.1 Release Notes</a>
         </article>
       </div>
     </section>
@@ -409,7 +412,197 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
 }
 
 /**
- * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.0`).
+ * Renders the `/roadmap` Public Engineering Roadmap page (`v0.1.0` -> `v1.0.0 GA`).
+ * 100-Level Progressive Enhancement Lesson:
+ *   All 7 milestone sections are pre-rendered into semantic static HTML5 so search engines,
+ *   screen readers, and visitors with JavaScript disabled can read 100% of the roadmap.
+ *   When Alpine.js hydrates in the browser, `phaseFilter` lets readers focus on a single
+ *   engineering phase (`shipped`, `b`, `c`, `d`, `e`, `f`, or `g`) with zero page reloads!
+ */
+function renderRoadmapBody(): string {
+  return `
+    <section class="hero" aria-labelledby="roadmap-page-title">
+      <span class="eyebrow">Open Engineering Plan • v0.4.1 Shipped &rarr; v1.0.0 GA</span>
+      <h1 id="roadmap-page-title">Public Engineering Roadmap</h1>
+      <p class="lead">
+        <strong>RaggieSoft Installer Studio</strong> is built in the open as original, zero-dependency native Win32 C++20
+        software for Windows 11 <code>x64</code> and <code>ARM64</code>. Below is our complete human-readable roadmap—from
+        what ships today in <code>v0.4.1</code> through General Availability (<code>v1.0.0 GA</code>)—guided by a permanent
+        pledge that <strong>Community Edition maintains 100% technical feature parity with Premier Edition</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${GITHUB_REPO_URL}/blob/main/ROADMAP.md">View ROADMAP.md on GitHub</a>
+        <a class="btn btn-outline" href="/ROADMAP.md">Open Raw /ROADMAP.md</a>
+        <a class="btn btn-outline" href="/changelog">View Shipped Changelog (v0.4.1)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_X64_URL}">Download v0.4.1 Preview</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="roadmap-matrix-heading">
+      <span class="eyebrow">At-a-Glance Schedule</span>
+      <h2 id="roadmap-matrix-heading">Milestone Overview Matrix</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>RaggieSoft Installer Studio Milestones from Technical Preview to v1.0.0 GA</caption>
+          <thead>
+            <tr>
+              <th scope="col">Phase / Target</th>
+              <th scope="col">Primary Focus</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>v0.1.0</code> – <code>v0.4.1</code></th>
+              <td>Core C++20 compiler, 10-View Visual IDE, MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, Dark Mode push buttons, &amp; live <code>ImmersiveColorSet</code> hot-swapping</td>
+              <td><span class="status-pill status-shipped">Shipped</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase B (<code>v0.5.0</code>)</th>
+              <td>Authenticode Signing Studio, <code>.rswskin</code> skinning (<code>Wizard95</code> &amp; circular <code>AeroWizard</code>), Custom Dialogs + <code>RsDialog</code> (<code>Rs*()</code>) scripting, <code>.rswpak</code> Web Media Blocks, <code>.NET 11</code> presets, &amp; Universal Single-EXE</td>
+              <td><span class="status-pill status-next">Next Up</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase C (<code>v0.6.0</code>)</th>
+              <td>Snapshot-Diff Setup Capture ("Repackager") &amp; one-click disposable Windows 11 Pro Sandbox (<code>.wsb</code>) capture</td>
+              <td><span class="status-pill">Planned</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase D (<code>v0.7.0</code>)</th>
+              <td>Open-Format Import Wizard (<code>.msi</code>/<code>.msm</code>, Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code> Reg-Free COM, XML/INI) &amp; Visual Studio <code>.vsix</code> extension</td>
+              <td><span class="status-pill">Planned</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase E (<code>v0.8.0</code>)</th>
+              <td>Windows Services, safe <code>PATH</code> / Firewall / Scheduled Tasks, JSON/XML/INI Config Patchers, &amp; Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
+              <td><span class="status-pill">Planned</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase F (<code>v0.9.0</code>)</th>
+              <td>White-label <code>RsUpdate.exe</code> Auto-Updater, guided <code>.MSP</code> servicing (<code>--plan-update</code>), native <code>.MSIX</code>/<code>.MSIXBUNDLE</code>, <code>I18N</code> + RTL, &amp; SPDX/CycloneDX <code>--emit-sbom</code></td>
+              <td><span class="status-pill">Planned</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Phase G (<code>v1.0.0 GA</code>)</th>
+              <td>Turnkey GitHub Actions &amp; Azure DevOps tasks + 100% RaggieSoft production cutover across all apps, interactive books, and supporter audio archives</td>
+              <td><span class="status-pill">Planned</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div x-data="{ phaseFilter: 'all' }">
+      <section aria-label="Filter Roadmap Phases" style="margin-bottom: 1.5rem;">
+        <div class="btn-row" role="group" aria-label="Show all phases or focus on one milestone">
+          <button type="button" class="btn" :class="phaseFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'all'">All Phases</button>
+          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.1)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'b' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'b'">Phase B (v0.5)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'c' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'c'">Phase C (v0.6)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'd' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'd'">Phase D (v0.7)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'e' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'e'">Phase E (v0.8)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'f' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'f'">Phase F (v0.9)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'g' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'g'">Phase G (v1.0 GA)</button>
+        </div>
+      </section>
+
+      <!-- Shipped Foundation -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'shipped'" aria-labelledby="phase-shipped-heading" class="calc-panel">
+        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.1</span>
+        <h2 id="phase-shipped-heading" style="margin-top: 0.5rem;">Foundation Shipped in Technical Preview</h2>
+        <ul class="feature-list">
+          <li><strong>Five Native Static <code>/MT</code> C++20 Executables (<code>x64</code> &amp; <code>ARM64</code>)</strong>: <code>InstallerStudio.exe</code> (10-view visual IDE + 5 guided AeroWizards), <code>instbuild.exe</code> (headless CLI compiler, JSON linter, AI spec &amp; VPAT 2.5 generator), <code>SetupWizard.exe</code> (accessible runtime bootstrapper), <code>msiprism.exe</code> (64-bit Dark Mode SQL inspector), and <code>RaggieSoftHelp.exe</code> (offline HTML5 documentation viewer with Named Pipe <code>F1</code> IPC).</li>
+          <li><strong>Complete Win32 Dark Mode &amp; Live OS Palette Hot-Swapping (<code>v0.4.1</code>)</strong>: Custom-subclassed push buttons (<code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, <code>Cancel</code>), checkboxes, <code>SysListView32</code> headers, and ComboBoxes that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> (including automatic day/night schedulers like Auto Dark Mode) without restarting.</li>
+          <li><strong>Pre-MSI Runtimes, 64-Bit <code>.MSM</code> Merging &amp; Authentic <code>SelectionTree</code> (<code>v0.3.0</code>)</strong>: Unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching before <code>msiexec</code>, pure 64-bit <code>.msm</code> SQL + CAB merging, <code>COMPRESS_ALGORITHM_LZMS</code> solid compression, and 32-bit ARGB split-dropdown feature trees.</li>
+        </ul>
+        <a class="btn btn-outline" href="/changelog">Read Detailed v0.1.0 &rarr; v0.4.1 Release Notes</a>
+      </section>
+
+      <!-- Phase B -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'b'" aria-labelledby="phase-b-heading" class="card" style="margin-bottom: 1.5rem;">
+        <div>
+          <span class="status-pill status-next">Phase B • Target v0.5.0 (Next Up)</span>
+          <h2 id="phase-b-heading" style="margin-top: 0.5rem;">Signing Studio, Skinning (<code>Wizard95</code> &amp; True <code>AeroWizard</code>), Custom Dialogs, <code>RsDialog</code> Scripting, <code>.NET 11</code> &amp; Universal Single-EXE</h2>
+          <ul class="feature-list">
+            <li><strong>First-Class Authenticode Signing UX</strong>: Interactive Windows Certificate Store picker (<code>CryptUIDlgSelectCertificateFromStore</code>), local <code>.pfx</code> / hardware token configuration, Azure Artifact Signing (<code>dlib</code> + <code>MetadataJson</code>) tester, and one-click Dual-Layer Signature Verifier (<code>WinVerifyTrust</code> on both inner <code>Product.msi</code> and outer <code>Setup.exe</code>).</li>
+            <li><strong>Installer Skinning Engine (<code>.rswskin</code>) + <code>Wizard95</code> &amp; Circular <code>AeroWizard</code></strong>: Custom palettes with live WCAG contrast checks, a retro Windows 95 / NT 4.0 3D beveled mode (<code>WizardLayout = wizard95</code> with <code>164&times;314</code> left bitmap rail), and a pixel-perfect vector <code>30&times;30</code> circular <code>&larr;</code> AeroWizard command-bar button.</li>
+            <li><strong>WYSIWYG Custom Dialog Designer &amp; <code>RsDialog</code> (<code>Rs*()</code>) Scripting</strong>: Visual drag-and-drop canvas for arbitrary <code>[Dialog.&lt;Id&gt;]</code> wizard pages paired with <code>.rssc</code> event hooks and our procedural <strong><code>RsDialog</code></strong> standard library (<code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, <code>RsAskText()</code>, <code>RsAskOptions()</code>, <code>RsStartCopy()</code>, <code>RsFinish()</code>, <code>RsFinishReboot()</code>).</li>
+            <li><strong>Optional Web Media Blocks (<code>.rswpak</code>)</strong>: Split multi-gigabyte optional features into external LZMS-compressed <code>.rswpak</code> blocks downloaded on demand via <code>WinHTTP</code> with SHA-256 verification.</li>
+            <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>, verifying native <code>arm64</code> and <code>x64</code>-on-ARM64 runtimes in <code>&lt; 1ms</code>.</li>
+            <li><strong>Universal Dual-Architecture (<code>x64</code> + <code>ARM64</code>) Single-EXE &amp; Native Direct Engine (<code>Engine = native</code>)</strong>: Ship one unified <code>Setup.exe</code> that auto-selects native <code>ARM64</code> or <code>x64</code> silicon via <code>IsWow64Process2</code> with zero CPU jargon—plus an optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Phase C -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'c'" aria-labelledby="phase-c-heading" class="card" style="margin-bottom: 1.5rem;">
+        <div>
+          <span class="status-pill">Phase C • Target v0.6.0</span>
+          <h2 id="phase-c-heading" style="margin-top: 0.5rem;">Setup Capture ("Repackager") &amp; Disposable Windows Sandbox (<code>.wsb</code>) Mode</h2>
+          <ul class="feature-list">
+            <li><strong>Snapshot-Diff Repackager (<code>Legacy Setup.exe &rarr; .rsip &rarr; .msi + .mst</code>)</strong>: Capture fast pre/post filesystem and <code>HKLM</code>/<code>HKCU</code>/<code>HKCR</code> registry baselines while tracking child sub-installers inside a Win32 Job Object (<code>CreateJobObjectW</code>), filter OS background noise, tokenize paths into <code>[ProgramFiles64Folder]</code>, harvest <code>.lnk</code> shortcuts and Windows Services, and emit editable <code>.rsip</code> projects plus enterprise <code>.mst</code> transforms.</li>
+            <li><strong>One-Click Disposable Windows Sandbox (<code>.wsb</code>) Capture</strong>: Detect Windows 11 Pro, Enterprise, and Education hosts via <code>GetProductInfo</code>, spin up a pristine throwaway Windows Sandbox VM automatically, run the legacy installer + capture agent in isolation, and return the clean <code>.rsip</code> + captured files without touching the developer's PC.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Phase D -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'd'" aria-labelledby="phase-d-heading" class="card" style="margin-bottom: 1.5rem;">
+        <div>
+          <span class="status-pill">Phase D • Target v0.7.0</span>
+          <h2 id="phase-d-heading" style="margin-top: 0.5rem;">Open-Format Setup Conversion Wizard (Including VB6 <code>.vbp</code>!) &amp; Visual Studio Extension (<code>.vsix</code>)</h2>
+          <ul class="feature-list">
+            <li><strong><code>.msi</code> / <code>.msm</code> &amp; Visual Studio <code>.slnx</code> / <code>.csproj</code> / <code>.vcxproj</code> / <code>CMakeLists.txt</code> Importers</strong>: Decompile existing Windows Installer databases via <code>msiprism</code> SQL + FDI CAB extraction, or inspect Visual Studio solutions in one click to auto-configure <code>.NET 11</code> / <code>.NET 10 LTS</code> / <code>VC++</code> / <code>WebView2</code> prerequisites and <code>x64</code> + <code>ARM64</code> outputs.</li>
+            <li><strong>Visual Basic 6.0 (<code>.vbp</code>) Importer with Windows 11 WRP &amp; Reg-Free COM Modes</strong>: Parse <code>ExeName32</code>, <code>Reference=</code>, and <code>Object=*.ocx</code> entries directly from <code>.vbp</code> projects; respect Windows 11 Resource Protection on built-in <code>SysWOW64</code> runtimes (<code>msvbvm60.dll</code>); and offer either classic local SP6 <code>.MSM</code> consumption or modern zero-elevation <strong>Reg-Free COM</strong> (<code>&lt;comClass&gt;</code> / <code>&lt;typelib&gt;</code> side-by-side manifests).</li>
+            <li><strong>Open XML &amp; INI Script Importers + Visual Studio <code>.vsix</code> Extension</strong>: Convert structured XML/INI installer manifests into <code>.rsip</code> (flagging custom procedural blocks for AI translation into <code>.rssc</code> + <code>RsDialog</code>), and add <code>.rsip</code>/<code>.rsis</code> templates, syntax highlighting, and right-click packaging directly inside Visual Studio.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Phase E -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'e'" aria-labelledby="phase-e-heading" class="card" style="margin-bottom: 1.5rem;">
+        <div>
+          <span class="status-pill">Phase E • Target v0.8.0</span>
+          <h2 id="phase-e-heading" style="margin-top: 0.5rem;">Enterprise System Primitives, Config Patchers &amp; Windows Restart Manager</h2>
+          <ul class="feature-list">
+            <li><strong>Windows Services, Safe <code>PATH</code>, Firewall Rules &amp; Scheduled Tasks</strong>: Declarative <code>[Service.*]</code> (<code>ServiceInstall</code>/<code>ServiceControl</code> + SCM recovery), non-destructive <code>[Environment.*]</code> <code>PATH</code> updates (<code>[~]</code> semantics), <code>[FirewallRule.*]</code> (<code>INetFwPolicy2</code>), and <code>[ScheduledTask.*]</code> with automatic rollback and uninstall cleanup.</li>
+            <li><strong>Declarative Config Patchers (<code>[JsonPatch.*]</code>, <code>[XmlConfig.*]</code>, <code>[IniFile.*]</code>)</strong>: Stamp install-time wizard properties cleanly into <code>appsettings.json</code>, <code>.xml</code>/<code>.config</code>, and <code>.ini</code> files while preserving user customizations across upgrades.</li>
+            <li><strong>Windows Restart Manager (<code>Rstrtmgr.dll</code>) Integration</strong>: Detect running processes locking target files via <code>RmStartSession</code> / <code>RmGetList</code> and guide users through a WCAG-accessible <em>"Close Running Applications &amp; Continue"</em> flow to avoid unnecessary reboots.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Phase F -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'f'" aria-labelledby="phase-f-heading" class="card" style="margin-bottom: 1.5rem;">
+        <div>
+          <span class="status-pill">Phase F • Target v0.9.0</span>
+          <h2 id="phase-f-heading" style="margin-top: 0.5rem;">White-Label Auto-Updater, Guided <code>.MSP</code> Patching, Native <code>.MSIX</code> &amp; Global <code>I18N</code> / SBOM</h2>
+          <ul class="feature-list">
+            <li><strong>Royalty-Free White-Label Auto-Updater (<code>RsUpdate.exe</code> / <code>[AutoUpdate]</code>)</strong>: Unlocked across all editions (including Community!), stamped with your own <code>.ico</code>, <code>ProductName</code>, and <code>CompanyName</code>, verifying SHA-256 + <code>WinVerifyTrust</code> signatures over HTTPS to apply <code>.msp</code> patches, <code>.msi</code> Major Upgrades, or Native Engine updates.</li>
+            <li><strong>Guided Microsoft-Compliant Update &amp; <code>.MSP</code> Servicing (<code>--plan-update</code>)</strong>: Diff against a shipped baseline <code>.msi</code>, enforce official Windows Installer Component rules automatically, emit binary-delta <code>.msp</code> Minor Updates when eligible, or guide one-click Major Upgrade transitions in plain English.</li>
+            <li><strong>In-Process <code>.MSIX</code> / <code>.MSIXBUNDLE</code> Compiler (<code>AppxPackaging.dll</code>) &amp; <code>--emit-winget</code></strong>: Emit single-arch <code>.msix</code>, unified <code>x64 + ARM64</code> <code>.msixbundle</code> packages, optional Windows 11 Sparse Package Identity, and <code>winget-pkgs</code> YAML manifests directly from C++20 with zero external SDK downloads.</li>
+            <li><strong>Multi-Language Localization (<code>I18N</code> + RTL) &amp; Procurement SBOMs (<code>--emit-sbom</code>)</strong>: UTF-8 <code>.rslang</code> tables for 20+ languages (including <code>WS_EX_LAYOUTRTL</code> right-to-left mirroring) plus <strong>SPDX 2.3 / CycloneDX JSON SBOM</strong> generation alongside HTML5 <strong>VPAT 2.5</strong> reports.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Phase G -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'g'" aria-labelledby="phase-g-heading" class="card">
+        <div>
+          <span class="status-pill">Phase G • Target v1.0.0 GA</span>
+          <h2 id="phase-g-heading" style="margin-top: 0.5rem;">Turnkey CI/CD Actions &amp; 100% Production Cutover Gate</h2>
+          <ul class="feature-list">
+            <li><strong>First-Party CI/CD Tasks (<code>GitHub Actions</code> &amp; <code>Azure DevOps</code>)</strong>: Turnkey <code>raggiesoft/setup-installer-studio</code> workflows supporting headless JSON linting, matrix <code>x64</code> + <code>ARM64</code> + <code>universal</code> builds, Azure Artifact Signing, <code>--emit-vpat</code>, <code>--emit-sbom</code>, and <code>--emit-winget</code>.</li>
+            <li><strong>Production Validation Gate</strong>: Complete build, Authenticode signing, clean install, upgrade, repair, silent deploy (<code>/s</code>), and uninstall verification across every RaggieSoft desktop application, interactive book, and supporter audio archive on clean Windows 11 <code>x64</code> and <code>ARM64</code> hardware.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+/**
+ * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.1`).
  */
 function renderChangelogBody(): string {
   return `
@@ -772,10 +965,18 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
     navLabel: 'Preview & Gallery',
-    seoTitle: 'RaggieSoft Installer Studio — v0.4.0 Technical Preview',
+    seoTitle: 'RaggieSoft Installer Studio — v0.4.1 Technical Preview',
     seoDescription:
       'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.',
     renderBody: renderHomeBody
+  },
+  {
+    path: '/roadmap',
+    navLabel: 'Roadmap',
+    seoTitle: 'Public Engineering Roadmap | RaggieSoft Installer Studio',
+    seoDescription:
+      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.1 through v1.0 GA across Windows 11 x64 and ARM64.',
+    renderBody: renderRoadmapBody
   },
   {
     path: '/docs',
@@ -788,9 +989,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/changelog',
     navLabel: 'Version History',
-    seoTitle: 'Version History & Changelog (v0.4.0) | Installer Studio',
+    seoTitle: 'Version History & Changelog (v0.4.1) | Installer Studio',
     seoDescription:
-      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.0 across Windows 11 x64 and ARM64.',
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.1 across Windows 11 x64 and ARM64.',
     renderBody: renderChangelogBody
   },
   {
@@ -894,10 +1095,12 @@ export function renderStudioPage(routePath: string): { html: string } {
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Preview &amp; Gallery</a>
+          <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
           <a href="/changelog">Version History (v0.4.1)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
+          <a href="/ROADMAP.md">/ROADMAP.md</a>
           <a href="/llms.txt">/llms.txt</a>
           <a href="/llms-full.txt">/llms-full.txt</a>
           <a href="${GITHUB_REPO_URL}">GitHub Repository</a>

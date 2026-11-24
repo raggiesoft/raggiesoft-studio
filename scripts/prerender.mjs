@@ -179,6 +179,13 @@ async function main() {
     }
   }
 
+  // Copy human-readable Markdown roadmap (`ROADMAP.md`) directly from `desktop-apps/installer-studio/ROADMAP.md`
+  // into `dist/ROADMAP.md` so `https://raggiesoftstudio.com/ROADMAP.md` and GitHub never drift!
+  const srcRoadmap = path.join(installerStudioRoot, 'ROADMAP.md');
+  if (fs.existsSync(srcRoadmap)) {
+    fs.copyFileSync(srcRoadmap, path.join(distDir, 'ROADMAP.md'));
+  }
+
   // Copy live HTML5 VPAT 2.5 Conformance Report into `dist/vpat/raggiesoft-installer-studio-vpat-2.5.html`
   const vpatDestDir = path.join(distDir, 'vpat');
   fs.mkdirSync(vpatDestDir, { recursive: true });

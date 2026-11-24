@@ -165,7 +165,7 @@ body {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 .nav-link {
@@ -174,8 +174,8 @@ body {
   color: #e2e8f0;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.45rem 0.8rem;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.68rem;
   border-radius: 0.45rem;
   border: 1px solid transparent;
 }
@@ -541,11 +541,35 @@ code {
   margin-bottom: 0.5rem;
 }
 
+/* Accessible Roadmap Milestone Status Pills (WCAG 2.2 AA Contrast in Light, Dark & Forced Colors) */
+.status-pill {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.status-shipped {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.status-next {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 @media (forced-colors: active) {
   .card,
   .hero,
   .calc-panel,
-  .btn {
+  .btn,
+  .status-pill {
     border: 1px solid CanvasText;
   }
 }
