@@ -1,0 +1,23 @@
+{
+  "name": "raggiesoft-studio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RaggieSoft Installer Studio official B2B & open-source portal (raggiesoftstudio.com, 301 target of installwithoutlimits.com) — Alpine.js + TypeScript + Vite Static SSG",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --port 4340",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4340"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.8"
+  },
+  "devDependencies": {
+    "@types/alpinejs": "^3.13.11",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}

@@ -1,0 +1,187 @@
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.1.0)
+
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.1.0) --emit-ai-spec`.
+
+## 1. Architectural Rules
+1. **Native MSI, MSM, MST, MSP & SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`) and `fci.h` (`Cabinet.lib`) directly from static `/MT` C++20.
+2. **100% White-Label Attribution**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.1.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+3. **Hybrid `.rsip` + `.rsis` + `.rsii` Model**: Build a single `.rsip` standalone, share common blocks via `@include "common.rsii"`, or orchestrate multi-package fleets via `.rsis`.
+4. **Deterministic SHA-1 UUIDv5 Component GUIDs**: Derived from `UpgradeCode + arch + targetRelPath`.
+5. **True OS & Silicon Detection**: `RtlGetVersion` (`Build >= 22000`) + `IsWow64Process2` (pierces ARM64 Prism emulation).
+6. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
+
+## 2. Complete `.rsip` Project Schema (`v0.2`)
+
+### `[Package]` (*Required*)
+Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `SchemaVersion` | `string` | No | `0.1` | Manifest grammar version (`0.1`). |
+| `Name` | `string` | **Yes** | — | Consumer-facing ProductName written to MSI Property table and VERSIONINFO. |
+| `Version` | `msi_version (Major.Minor.Build)` | **Yes** | — | Three-part Windows Installer version (`Major.Minor.Build`, max `255.255.65535`). |
+| `Manufacturer` | `string` | **Yes** | — | Publisher name written to MSI `Manufacturer` property and VERSIONINFO `CompanyName`. |
+| `UpgradeCode` | `guid ({XXXXXXXX-...})` | **Yes** | — | Permanent `{GUID}` shared across all releases of this product for Major Upgrades and UUIDv5 seeding. |
+| `ProductCode` | `guid_or_auto ('*' or {GUID})` | No | `*` | `*` generates a fresh ProductCode GUID on each build, or specify an explicit `{GUID}`. |
+| `Description` | `string` | No | — | Summary Information description and Setup.exe `FileDescription`. |
+| `Language` | `integer` | No | `1033` | Numeric Windows LCID (`1033` = English - United States). |
+| `Architecture` | `enum` | No | `arm64` | Allowed: `x64|arm64`. Target silicon (`x64` -> `x64;1033`, `arm64` -> `Arm64;1033`). Overridable via `--arch=<x64|arm64>`. |
+| `Scope` | `enum` | No | `machine` | Allowed: `machine|user`. `machine` (`ALLUSERS=1`, `ProgramFiles64Folder`) or `user` (per-user `LocalAppDataFolder`, zero UAC). |
+| `OutputName` | `string` | No | — | Base filename stem (supports `$(ARCH)`); defaults to `<kebab-name>-$(ARCH)`. |
+| `OutputDir` | `path (supports $(ARCH))` | No | `out` | Output folder for `<OutputName>.msi` and `<OutputName>-setup.exe` (relative to `.rsw` folder or absolute). |
+| `BuildBootstrapper` | `bool (true|false)` | No | `true` | When `true`, emits branded `<OutputName>-setup.exe` embedding `Product.msi` alongside the standalone `.msi`. |
+| `CabinetCompression` | `enum` | No | `lzx` | Allowed: `lzx|mszip`. Compression algorithm for embedded `#payload.cab` (`lzx` = high-ratio LZX:21, `mszip` = fast DEFLATE). |
+| `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
+| `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
+| `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm`. `msi` builds a standalone Enterprise `.msi` (+ optional `-setup.exe`); `msm` builds a reusable Merge Module (`.msm`). |
+| `Tagline` | `string` | No | — | Short subtitle displayed beneath the product title in `SetupWizard.exe` and `InstallerStudio.exe`. |
+| `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
+
+### `[Requirements]` (*Optional*)
+Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition) and downgrade protection.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `MinWindowsBuild` | `integer` | No | `22000` | Minimum Windows 10/11 build number (`22000` = Windows 11 21H2+, matching .NET 10 Desktop Runtime). |
+| `OsLaunchMessage` | `string` | No | `This application requires Windows 11 (Build 22000) or later.` | Friendly message shown by LaunchCondition / rswsetup.exe when the host OS is older than MinWindowsBuild. |
+| `BlockDowngrades` | `bool (true|false)` | No | `true` | Adds a newer-version Upgrade row + LaunchCondition preventing accidental downgrades. |
+
+### `[Install]` (*Required*)
+Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `DefaultSubdir` | `relpath` | **Yes** | — | Default target folder path under `ProgramFiles64Folder` (or `LocalAppDataFolder`), e.g. `MyCompany\MyApp`. |
+| `StartMenuFolder` | `relpath` | No | — | Program Menu subfolder name created when `[Shortcut.*]` targets `StartMenu` (defaults to `[Package] Manufacturer`). |
+| `MainExecutable` | `relpath` | No | — | Optional primary `.exe` relative to `INSTALLDIR` (used for `ARPPRODUCTICON` default & Finish launch). |
+
+### `[UI]` (*Optional*)
+Branding, RTF license, icon, and accessible & accelerator labels for Wizard 97 MSI and rswsetup.exe.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `LicenseRtf` | `path (supports $(ARCH))` | No | — | Optional `.rtf` license file displayed in Wizard 97 `LicenseAgreementDlg` and `rswsetup.exe`. |
+| `IconFile` | `path (supports $(ARCH))` | No | — | Optional `.ico` file embedded into MSI `Icon` table (`ARPPRODUCTICON`) and `Setup.exe` resources. |
+| `BannerTitle` | `string` | No | — | Optional subtitle displayed in the wizard header bar. |
+| `WelcomeHeadline` | `string` | No | — | Optional custom headline on the Welcome screen. |
+| `InstallButtonText` | `accel_string (must include '&')` | No | `&Install` | Accessible primary install button caption; MUST include a `&` keyboard mnemonic. |
+| `FinishLaunchCheckbox` | `accel_string (must include '&')` | No | `&Launch application when setup finishes` | Accessible finish-screen launch checkbox caption; MUST include a `&` keyboard mnemonic. |
+| `OfferLaunchOnFinish` | `bool (true|false)` | No | `true` | Shows the optional launch checkbox on the completion screen when `MainExecutable` is set. |
+| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|autorun16x9`. `standard` shows the full Express/Compact/Custom Setup Wizard; `autorun16x9` shows the 640x480 16:9 widescreen Autorun micro-installer. |
+| `AccentPrimaryHex` | `string` | No | `#2563EB` | Primary header accent hex color (e.g. `#2563EB` Cobalt, `#38BDF8` Sky Cyan, `#14B8A6` Teal). |
+| `AccentSecondaryHex` | `string` | No | `#FBBF24` | Secondary gradient accent hex color (e.g. `#FBBF24` Warm Gold, `#10B981` Emerald, `#EC4899` Rose). |
+| `ArtworkPng` | `path (supports $(ARCH))` | No | — | Optional `.png` 16:9 banner or square product/album/book cover rendered inside `SetupWizard.exe`. |
+| `ExpressDescription` | `string` | No | `One-click setup into the default installation folder with recommended shortcuts. Skips extra prompts.` | Helper caption for the Express Setup mode card in `SetupWizard.exe`. |
+| `CompactDescription` | `string` | No | `Installs essential application files with minimal disk footprint using recommended folder defaults.` | Helper caption for the Compact Setup mode card in `SetupWizard.exe`. |
+| `CustomDescription` | `string` | No | `Choose a custom destination folder and review installation options step by step before installing.` | Helper caption for the Custom Setup mode card in `SetupWizard.exe`. |
+| `AuthorOrArtist` | `string` | No | — | Optional author or band credit badge displayed in `autorun16x9` book/album micro-installers. |
+
+### `[Signing]` (*Optional*)
+Optional dual-layer Authenticode code signing (Product.msi first, then outer Setup.exe) via signtool.exe.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Enabled` | `bool (true|false)` | No | `false` | Signs `Product.msi` first, embeds it into `Setup.exe`, and signs `Setup.exe` via `signtool.exe`. |
+| `Thumbprint` | `string` | No | — | Optional SHA-1 certificate thumbprint in the local Windows Certificate Store. |
+| `TimestampUrl` | `string` | No | `http://timestamp.acs.microsoft.com` | RFC 3161 Authenticode timestamp server URL. |
+| `DlibPath` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing `Azure.CodeSigning.Dlib.dll`. |
+| `MetadataJson` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing metadata `.json` file. |
+
+### `[Feature.<id>]` (*Optional*)
+Named MSI Feature definition ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Title` | `string` | **Yes** | — | Consumer-facing title of this MSI Feature. |
+| `Description` | `string` | No | — | Plain-English description of this MSI Feature. |
+| `Level` | `integer` | No | `1` | MSI InstallLevel (`1` = installed by default, `0` = hidden/disabled). |
+
+### `[Payload.<id>]` (*Required*)
+Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic MSI Components.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Source` | `path (supports $(ARCH))` | **Yes** | — | Source file or directory on the build machine (supports `$(ARCH)` expansion). |
+| `TargetSubdir` | `relpath` | No | — | Optional destination subfolder inside `INSTALLDIR` (`""` = root of `INSTALLDIR`). |
+| `Recursive` | `bool (true|false)` | No | `true` | Recursively includes subdirectories when `Source` points to a directory. |
+| `Feature` | `string` | No | `Main` | Feature ID owning the generated file component(s). |
+
+### `[Shortcut.<id>]` (*Optional*)
+Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE64 RemoveFolder cleanup.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Name` | `string` | **Yes** | — | Display name of the shortcut in Start Menu or Desktop. |
+| `TargetFile` | `relpath` | **Yes** | — | Relative path under `INSTALLDIR` to the target executable packaged by `[Payload.*]`. |
+| `Location` | `enum` | No | `StartMenu` | Allowed: `StartMenu|Desktop`. Where to place the shortcut (`StartMenu` or `Desktop`). |
+| `Description` | `string` | No | — | Accessible screen-reader/tooltip description for the shortcut. |
+| `Arguments` | `string` | No | — | Optional command-line arguments passed when the shortcut launches `TargetFile`. |
+| `Feature` | `string` | No | `Main` | Feature ID owning this shortcut. |
+
+### `[Registry.<id>]` (*Optional*)
+Writes an HKLM/HKCU/HKCR registry value ([Registry.<id>]) tied to a deterministic 64-bit MSI Component.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Root` | `enum` | No | `HKLM` | Allowed: `HKLM|HKCU|HKCR`. Registry hive (`HKLM` for machine installs, `HKCU` for per-user installs, `HKCR` for classes). |
+| `Key` | `string` | **Yes** | — | Registry key path without hive prefix, e.g. `Software\RaggieSoft\MyApp`. |
+| `Name` | `string` | **Yes** | — | Registry value name (use `@` for the key's default value). |
+| `Value` | `string` | **Yes** | — | Registry value data (supports MSI formatted tokens like `[INSTALLDIR]` and `[ProductVersion]`). |
+| `Type` | `enum` | No | `string` | Allowed: `string|expand_string|dword`. Registry value type (`string` = REG_SZ, `expand_string` = REG_EXPAND_SZ, `dword` = REG_DWORD). |
+| `Feature` | `string` | No | `Main` | Feature ID owning this registry value. |
+
+## 3. `.rsis` Multi-Project Suite Schema (Optional — Like Visual Studio `.slnx`)
+
+```ini
+[Suite]
+Name          = Acme Enterprise Suite
+Version       = 1.0.0
+Architectures = arm64|x64
+
+[Variable]
+PUBLISHER     = Acme Corporation
+
+[Project.CoreMsm]
+Path          = shared\core-runtime.rsip
+Category      = MergeModules
+BuildOrder    = 10
+
+[Project.DesktopApp]
+Path          = apps\desktop-client.rsip
+Category      = CoreApps
+BuildOrder    = 20
+```
+
+## 4. Minimal Annotated `.rsip` Project Example
+
+```ini
+; Sample RaggieSoft Installer Project (.rsip) — builds both x64 and arm64!
+[Package]
+Name              = Hello App
+Tagline           = Fast, Accessible Native Windows Application
+Version           = 1.0.0
+Manufacturer      = Acme Open Source
+UpgradeCode       = {A18F4E20-7C93-4D62-9B44-524147474945}
+Architecture      = $(ARCH)
+BuildBootstrapper = true
+
+[Install]
+DefaultSubdir     = Acme\Hello App
+MainExecutable    = HelloApp.exe
+
+[UI]
+WizardLayout      = standard
+AccentPrimaryHex  = #2563EB
+AccentSecondaryHex= #FBBF24
+LicenseRtf        = License.rtf
+InstallButtonText = &Install
+
+[Payload.App]
+Source            = ..\..\bin\$(ARCH)\HelloApp.exe
+
+[Shortcut.StartMenu]
+Name              = Hello App
+TargetFile        = HelloApp.exe
+Location          = StartMenu
+Description       = Launch Hello App
+```

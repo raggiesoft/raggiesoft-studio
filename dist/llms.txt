@@ -1,0 +1,40 @@
+# RaggieSoft Installer Studio (Install Without Limits) — v0.1.0
+
+> First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` Visual IDE, `instbuild.exe` CLI compiler, `SetupWizard.exe` accessible runtime wizard, and `msiprism.exe` 64-bit MSI/MST/MSP SQL inspector) targeting `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
+
+## Hybrid Project Architecture (`.rsip` + `.rsis` + `.rsii`)
+- **`.rsip` (*RaggieSoft Installer Project*)**: 100% standalone single-file project manifest (like Inno Setup `.iss` or `.csproj`).
+- **`.rsis` (*RaggieSoft Installer Suite*)**: Optional multi-project workspace (like Visual Studio `.slnx`) with `[Suite]`, `[Variable]`, and ordered `[Project.<Id>]` entries.
+- **`.rsii` (*RaggieSoft Installer Include*)**: Optional `@include "shared.rsii"` header inherited losslessly across projects.
+
+## Why Comment-Preserving `.rsip` Beats JSON & XML
+- **Beats JSON**: No backslash double-escaping (`C:\\Program Files\\...`) and full `;` / `#` comments allowed.
+- **Beats XML**: Zero closing-tag bloat; minimal LLM token footprint.
+- **100% Lossless IDE Parity & White-Label Output**: `InstallerStudio.exe` preserves every comment and `@include` byte-for-byte, and Community/Indie/Enterprise builds contain zero UI watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
+
+## Core Commands
+- `instbuild.exe --validate --diagnostics=json <project.rsip|suite.rsis> [--arch=x64|arm64]`: Sub-millisecond structural, GUID, MSI 3-part version, filesystem, and `&` mnemonic linter.
+- `instbuild.exe <project.rsip|suite.rsis> [--arch=x64|arm64] [--category=<cat>] [--project=<id>]`: Compiles standalone Enterprise `<OutputName>.msi` + accessible `<OutputName>-setup.exe` (or `<OutputName>.msm` when `PackageKind = msm`).
+- `instbuild.exe --emit-vpat <project.rsip> <out-dir>`: Generates an audited WCAG 2.2 AA & Revised Section 508 HTML5 VPAT 2.5 Conformance Report.
+- `instbuild.exe --emit-msm <project.rsip> <out.msm> [--arch=x64|arm64]`: Compiles a Merge Module (`.msm`).
+- `instbuild.exe --generate-mst <base.msi> <target.msi> <out.mst>`: Generates a GPO Transform (`.mst`).
+- `instbuild.exe --generate-msp <base.msi> <upgraded.msi> <out.msp>`: Generates a Patch Package (`.msp`).
+- `instbuild.exe --verify-msi <file.msi>`: Runs SQL & ICE80 consistency checks on a compiled `.msi`.
+- `instbuild.exe --emit-ai-spec <dir>`: Regenerates `llms.txt`, `llms-full.txt`, and `SKILL.md`.
+- `msiprism.exe [file.msi|msm|msp]`: Opens any Windows Installer database in RaggieSoft MSI Prism.
+- `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for Intune / SCCM / GPO.
+
+## `.rsip` Manifest Sections (`v0.2`)
+- `[Package]`: Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
+- `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition) and downgrade protection.
+- `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
+- `[UI]`: Branding, RTF license, icon, and accessible & accelerator labels for Wizard 97 MSI and rswsetup.exe.
+- `[Signing]`: Optional dual-layer Authenticode code signing (Product.msi first, then outer Setup.exe) via signtool.exe.
+- `[Feature.<id>]`: Named MSI Feature definition ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
+- `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic MSI Components.
+- `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE64 RemoveFolder cleanup.
+- `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR registry value ([Registry.<id>]) tied to a deterministic 64-bit MSI Component.
+
+## Detailed Reference
+- [llms-full.txt](llms-full.txt): Complete `constexpr` `.rsip` & `.rsis` field tables and annotated examples.
+- [SKILL.md](SKILL.md): Autonomous AI agent authoring workflow.

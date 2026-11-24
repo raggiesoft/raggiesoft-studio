@@ -1,0 +1,32 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Installer Studio — "Install Without Limits"). During
+    `npm run build`, `scripts/prerender.mjs` replaces the two placeholder
+    markers below with pre-rendered route SEO/OpenGraph tags and full semantic
+    HTML5 page content so every visitor, screen reader, and search engine
+    receives complete HTML on the very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!--SSR_HEAD-->
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div id="app"><!--SSR_OUTLET--></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
