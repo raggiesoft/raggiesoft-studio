@@ -40,9 +40,9 @@
     <meta name="twitter:title" content="RaggieSoft Installer Studio — v0.4.0 Technical Preview" />
     <meta name="twitter:description" content="Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/#webpage","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio — v0.4.0 Technical Preview","description":"Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/#webpage","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio — v0.4.0 Technical Preview","description":"Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
-    <script type="module" crossorigin src="/assets/index-B24nbPCh.js"></script>
+    <script type="module" crossorigin src="/assets/index-Ek5St_A5.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BFdgJJ43.css">
   </head>
   <body>
@@ -70,7 +70,7 @@
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.0)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.1)</span>
         </a>
 
         <button
@@ -109,7 +109,7 @@
     <main id="main-content" class="container" tabindex="-1">
       
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.0) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.1) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
         An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
@@ -119,9 +119,9 @@
         <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-x64-setup.exe">Download Technical Preview v0.4.0 (x64)</a>
+        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-x64-setup.exe">Download Technical Preview v0.4.1 (x64)</a>
         <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-arm64-setup.exe">Download Native ARM64 Preview</a>
-        <a class="btn btn-outline" href="/changelog">View Version History (v0.4.0)</a>
+        <a class="btn btn-outline" href="/changelog">View Version History (v0.4.1)</a>
       </div>
 
       <!-- Interactive 3-Tab Split Preview Toggle (AeroWizard & Glass UI / MSI.DLL Express-Custom / Plain-Text .rsip) -->
@@ -250,20 +250,33 @@ Source            = ..publishwin-$(ARCH)SampleIde.exe</pre>
           </figcaption>
         </figure>
 
-        <!-- Screenshot 4: SetupWizard.exe Accessible Option Cards -->
+        <!-- Screenshot 4: SetupWizard.exe Accessible Option Cards & Dark Push Buttons -->
         <figure class="shot-card">
           <img
             src="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/screenshots/setupwizard-setup-type.png"
-            alt="SetupWizard.exe displaying Express, Compact, and Custom Setup option cards with 48x48 vector badges and high-contrast footer buttons."
+            alt="SetupWizard.exe in Windows 11 Dark Mode displaying Express, Compact, and Custom Setup option cards alongside slate-navy Back and Cancel buttons and a Royal Cobalt Next button."
             loading="lazy"
           />
           <figcaption>
-            <strong>4. SetupWizard.exe — Accessible 48&times;48 Vector Option Cards</strong>
-            Genuine subclassed <code>BS_AUTORADIOBUTTON</code> cards expose full UI Automation roles to screen readers with unmistakable keyboard focus rings.
+            <strong>4. SetupWizard.exe — Dark Mode Cards &amp; Custom-Subclassed Buttons</strong>
+            Genuine <code>BS_AUTORADIOBUTTON</code> cards and dark-themed <code>&lt; Back</code> / Royal Cobalt <code>Next &gt;</code> / <code>Cancel</code> buttons with full UI Automation support.
           </figcaption>
         </figure>
 
-        <!-- Screenshot 5: SetupWizard.exe Authentic MSI SelectionTree -->
+        <!-- Screenshot 5: Live OS Light Mode Hot-Swap via WM_SETTINGCHANGE(ImmersiveColorSet) -->
+        <figure class="shot-card">
+          <img
+            src="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/screenshots/setupwizard-setup-type-light.png"
+            alt="The exact same open SetupWizard.exe window after receiving WM_SETTINGCHANGE ImmmersiveColorSet, dynamically flipped into crisp Windows 11 Light Mode without restarting."
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>5. Live OS Theme Hot-Swap (<code>ImmersiveColorSet</code>)</strong>
+            Toggle Windows 11 between Dark Mode, Light Mode, or High Contrast mid-install and the open wizard flips palettes live in <code>&lt; 16ms</code> without restarting.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 6: SetupWizard.exe Authentic MSI SelectionTree -->
         <figure class="shot-card">
           <img
             src="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/screenshots/setupwizard-selection-tree.png"
@@ -271,25 +284,25 @@ Source            = ..publishwin-$(ARCH)SampleIde.exe</pre>
             loading="lazy"
           />
           <figcaption>
-            <strong>5. SetupWizard.exe — Authentic MSI SelectionTree</strong>
+            <strong>6. SetupWizard.exe — Authentic MSI SelectionTree</strong>
             Reads embedded <code>Feature</code> tables directly from <code>Product.msi</code>, rendering 32-bit ARGB split-dropdown state icons and live per-feature byte costs.
           </figcaption>
         </figure>
 
-        <!-- Screenshot 6: Native C++20 RaggieSoftHelp.exe Offline Viewer -->
+        <!-- Screenshot 7: Native C++20 RaggieSoftHelp.exe Offline Viewer -->
         <figure class="shot-card">
           <img
             src="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/screenshots/helpviewer-search.png"
-            alt="RaggieSoftHelp.exe native C++20 offline Help Viewer showing full-text search results, dark-mode checkbox, and formatted documentation reader."
+            alt="RaggieSoftHelp.exe native C++20 offline Help Viewer showing full-text search results, dark-mode checkbox, dark buttons, and formatted documentation reader."
             loading="lazy"
           />
           <figcaption>
-            <strong>6. RaggieSoftHelp.exe — Zero-Dependency C++20 Help Viewer</strong>
+            <strong>7. RaggieSoftHelp.exe — Zero-Dependency C++20 Help Viewer</strong>
             Press <code>F1</code> in any IDE view to jump straight to offline HTML5 topics via Named Pipe IPC—with zero <code>.NET</code> or <code>WebView2</code> dependencies.
           </figcaption>
         </figure>
 
-        <!-- Screenshot 7: RaggieSoft MSI Prism 64-Bit SQL Inspector -->
+        <!-- Screenshot 8: RaggieSoft MSI Prism 64-Bit SQL Inspector -->
         <figure class="shot-card">
           <img
             src="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/screenshots/msiprism-sql-inspector.png"
@@ -297,7 +310,7 @@ Source            = ..publishwin-$(ARCH)SampleIde.exe</pre>
             loading="lazy"
           />
           <figcaption>
-            <strong>7. msiprism.exe — Native 64-Bit Dark Mode SQL Inspector</strong>
+            <strong>8. msiprism.exe — Native 64-Bit Dark Mode SQL Inspector</strong>
             Inspect relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> packages, run ICE80 audits, and diff transforms or patches.
           </figcaption>
         </figure>
@@ -323,25 +336,25 @@ Source            = ..publishwin-$(ARCH)SampleIde.exe</pre>
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.4.0</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.4.1</code>)</h3>
             <ul class="feature-list">
+              <li><strong>100% Dark-Mode-Complete Win32 UI + Live OS Theme Hot-Swapping</strong>: Custom-subclassed push buttons, checkboxes, <code>SysListView32</code> headers, and RichEdit panels that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> without restarting</li>
               <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong>—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
               <li><strong>Zero-Dependency Native C++20 Help System (<code>RaggieSoftHelp.exe</code>)</strong>: Pluggable <code>module.rshm.json</code> offline documentation viewer with Contents, Index, Search, and instant Named Pipe <code>F1</code> navigation</li>
               <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: 32-bit ARGB split-icon feature tree in <code>Setup.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching, and 64-bit <code>.MSM</code> Merge Module merging</li>
-              <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables</li>
               <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
             </ul>
           </div>
-          <a class="btn btn-outline" href="/changelog">Read Full v0.1 &rarr; v0.4 Version History</a>
+          <a class="btn btn-outline" href="/changelog">Read Full v0.1 &rarr; v0.4.1 Version History</a>
         </article>
         <article class="card">
           <div>
-            <h3>Next Milestones on the Workbench (Phases B–D)</h3>
+            <h3>Next Milestones on the Workbench (Phases B–G)</h3>
             <ul class="feature-list">
-              <li><strong>Authenticode Signing UX &amp; Azure Artifact Signing</strong>: Interactive Windows Certificate Store picker, PFX / hardware token setup, and Dual-Layer <code>WinVerifyTrust</code> verification</li>
-              <li><strong>Native Installer Engine, <code>.rssc</code> Scripting &amp; <code>Sd*()</code> Dialogs</strong>: Event hooks, wizard flow overrides, procedural standard dialogs, and optional <code>.rswpak</code> Web Media Blocks</li>
-              <li><strong>Setup Capture ("Repackager") + Disposable Windows Sandbox (<code>.wsb</code>)</strong>: Snapshot-diff legacy <code>.exe</code> installers into clean <code>.rsip</code> + <code>.msi</code> + <code>.mst</code> packages—isolated inside Windows 11 Pro Sandbox</li>
-              <li><strong>Open-Format Import Wizard &amp; Visual Studio Extension (<code>.vsix</code>)</strong>: One-click import from existing <code>.msi</code>/<code>.msm</code> databases, Visual Studio <code>.slnx</code>/<code>.csproj</code>/<code>.vcxproj</code> solutions, and open XML/INI manifests, plus right-click packaging inside Visual Studio</li>
+              <li><strong>Authenticode Signing UX, <code>.NET 11</code> Presets &amp; Universal Single-EXE</strong>: Windows Cert Store / Azure Artifact Signing tester, curated <code>.NET 11</code> + <code>.NET 10 LTS</code> detection, dual-arch <code>universal</code> <code>Setup.exe</code>, and optional <code>Engine = native</code> direct extraction</li>
+              <li><strong>Skinning (<code>.rswskin</code>, <code>Wizard95</code> &amp; True <code>AeroWizard</code>), Custom Dialogs &amp; <code>RsDialog</code> Scripting</strong>: WYSIWYG custom dialogs paired with procedural <code>Rs*()</code> functions and <code>.rswpak</code> Web Media Blocks</li>
+              <li><strong>Setup Capture ("Repackager") + Disposable Windows Sandbox (<code>.wsb</code>)</strong>: Snapshot-diff legacy <code>.exe</code> installers into clean <code>.rsip</code> + <code>.msi</code> + <code>.mst</code> packages inside Windows 11 Pro Sandbox</li>
+              <li><strong>Open-Format Import Wizard (Including VB6 <code>.vbp</code> Reg-Free COM!) &amp; VS <code>.vsix</code></strong>: Import from <code>.msi</code>/<code>.msm</code>, Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code>, and XML/INI manifests—followed by White-Label <code>RsUpdate.exe</code> Auto-Updater, native <code>.MSIX</code>/<code>.MSIXBUNDLE</code>, and SPDX/CycloneDX <code>--emit-sbom</code></li>
             </ul>
           </div>
           <a class="btn btn-outline" href="/docs">Explore AI-Ready .rsip v0.4 Spec</a>
@@ -443,7 +456,7 @@ Source            = ..publishwin-$(ARCH)SampleIde.exe</pre>
         <div class="footer-links">
           <a href="/">Preview &amp; Gallery</a>
           <a href="/docs">Docs &amp; AI Spec</a>
-          <a href="/changelog">Version History (v0.4.0)</a>
+          <a href="/changelog">Version History (v0.4.1)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/llms.txt">/llms.txt</a>

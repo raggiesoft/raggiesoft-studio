@@ -40,9 +40,9 @@
     <meta name="twitter:title" content="Version History &amp; Changelog (v0.4.0) | Installer Studio" />
     <meta name="twitter:description" content="Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.0 across Windows 11 x64 and ARM64." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/changelog#webpage","url":"https://raggiesoftstudio.com/changelog","name":"Version History & Changelog (v0.4.0) | Installer Studio","description":"Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.0 across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/changelog#webpage","url":"https://raggiesoftstudio.com/changelog","name":"Version History & Changelog (v0.4.0) | Installer Studio","description":"Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.0 across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
-    <script type="module" crossorigin src="/assets/index-B24nbPCh.js"></script>
+    <script type="module" crossorigin src="/assets/index-Ek5St_A5.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BFdgJJ43.css">
   </head>
   <body>
@@ -70,7 +70,7 @@
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.0)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.1)</span>
         </a>
 
         <button
@@ -116,14 +116,24 @@
         zero-dependency native Win32 C++20 software.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-x64-setup.exe">Download Latest v0.4.0 (x64)</a>
-        <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-arm64-setup.exe">Download Latest v0.4.0 (ARM64)</a>
+        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-x64-setup.exe">Download Latest v0.4.1 (x64)</a>
+        <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-arm64-setup.exe">Download Latest v0.4.1 (ARM64)</a>
         <a class="btn btn-outline" href="https://github.com/raggiesoft/installer-studio">View Commits on GitHub</a>
       </div>
     </section>
 
-    <section aria-labelledby="v040-heading" class="calc-panel">
+    <section aria-labelledby="v041-heading" class="calc-panel">
       <span class="release-badge">Latest Release • November 2026</span>
+      <h2 id="v041-heading" style="margin-top: 0.25rem;">v0.4.1 — Dark-Mode Push Buttons &amp; Live OS Theme Hot-Swapping</h2>
+      <ul class="feature-list">
+        <li><strong>Dark-Mode-Aware Accessible Push Buttons (<code>AttachAccessiblePushButtonSubclass</code>)</strong>: Replaced stock <code>ComCtl32 v6</code> light-mode white push buttons across <code>SetupWizard.exe</code> (<code>&lt; Back</code>, <code>Next &gt;</code>, <code>Cancel</code>), <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 100% public-API <code>SetWindowSubclass</code> + GDI+ vector buttons (Royal Cobalt primary CTA fills, Slate-Navy secondary fills, inline UAC shield icons via <code>BCM_SETSHIELD</code>, and <code>SPI_GETHIGHCONTRAST</code> system-brush fallback) while keeping native UI Automation <code>Button</code> roles and <code>Alt+Key</code> mnemonics intact.</li>
+        <li><strong>Live <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> Palette Hot-Swapping</strong>: All four Win32 GUI binaries now listen for live Windows 11 Light &harr; Dark Mode and Contrast Theme broadcasts, flipping DWM frames, cards, buttons, checkboxes, ListView headers, dropdowns, and RichEdit typography in <code>&lt; 16ms</code> without restarting.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="v040-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+      <span class="release-badge">Milestone • November 2026</span>
       <h2 id="v040-heading" style="margin-top: 0.25rem;">v0.4.0 — Native C++20 Help System, Dark-Mode UI Subclasses &amp; AI Blueprints</h2>
       <ul class="feature-list">
         <li><strong>New <code>RaggieSoftHelp.exe</code> Native C++20 Help Viewer</strong>: Converted RaggieSoft's modular <code>.rshm.json</code> documentation viewer into a 100% static <code>/MT</code> Win32 C++20 binary (zero <code>.NET</code> and zero <code>WebView2</code> dependencies!) featuring Contents, Index, full-text Search, in-process HTML5-to-RTF typography (<code>Msftedit.dll</code>), and single-instance Named Pipe <code>F1</code> IPC.</li>
@@ -132,6 +142,7 @@
         <li><strong>Expanded From-Scratch AI Agent Blueprints</strong>: Upgraded <code>instbuild.exe --emit-ai-spec</code> (<code>/llms.txt</code>, <code>/llms-full.txt</code>, <code>/SKILL.md</code>) with an AI Pre-Flight Checklist and complete enterprise <code>.rsip</code> blueprint.</li>
         <li><strong>Automated WIC Window Screenshot Exporter</strong>: Added <code>--export-screenshots</code> across GUI tools for reproducible visual QA.</li>
       </ul>
+      </div>
     </section>
 
     <section aria-labelledby="v030-heading" class="card" style="margin-bottom: 1.5rem;">
@@ -187,7 +198,7 @@
         <div class="footer-links">
           <a href="/">Preview &amp; Gallery</a>
           <a href="/docs">Docs &amp; AI Spec</a>
-          <a href="/changelog">Version History (v0.4.0)</a>
+          <a href="/changelog">Version History (v0.4.1)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/llms.txt">/llms.txt</a>
