@@ -24,16 +24,21 @@
 - `msiprism.exe [file.msi|msm|msp]`: Opens any Windows Installer database in RaggieSoft MSI Prism.
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for Intune / SCCM / GPO.
 
-## `.rsip` Manifest Sections (`v0.2`)
+## `.rsip` Manifest Sections (`v0.3`)
 - `[Package]`: Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition) and downgrade protection.
 - `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
-- `[UI]`: Branding, RTF license, icon, and accessible & accelerator labels for Wizard 97 MSI and rswsetup.exe.
+- `[UI]`: Branding, RTF license, icon, C++ Glass layout, and MSI.DLL Express/Custom dialog workflow preset.
 - `[Signing]`: Optional dual-layer Authenticode code signing (Product.msi first, then outer Setup.exe) via signtool.exe.
-- `[Feature.<id>]`: Named MSI Feature definition ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
-- `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic MSI Components.
-- `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE64 RemoveFolder cleanup.
-- `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR registry value ([Registry.<id>]) tied to a deterministic 64-bit MSI Component.
+- `[Feature.<id>]`: Named MSI Feature or Sub-Feature ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
+- `[Component.<id>]`: Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
+- `[Folder.<id>]`: Creates a destination subdirectory ([Folder.<id>]) via MSI CreateFolder + ICE64 RemoveFolder cleanup.
+- `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic or explicit MSI Components.
+- `[FileAssociation.<id>]`: Registers a file extension, ProgId, document icon, MIME type, and Explorer shell verbs ([FileAssociation.<id>]).
+- `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE38 HKCU KeyPath & ICE64 RemoveFolder.
+- `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto or explicit 64-bit MSI Component.
+- `[MsiDialog.<id>]`: Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.
+- `[MsiControl.<id>]`: Adds a native MSI control ([MsiControl.<id>]: Text, Edit, CheckBox, RadioButtonGroup, etc.) to a new or built-in MSI Dialog.
 
 ## Detailed Reference
 - [llms-full.txt](llms-full.txt): Complete `constexpr` `.rsip` & `.rsis` field tables and annotated examples.

@@ -36,8 +36,8 @@
     <meta name="twitter:title" content="Accessible Windows Installer Architecture | RaggieSoft" />
     <meta name="twitter:description" content="Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.1.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":[{"@type":"Offer","name":"Community Edition","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Indie / Professional Perpetual","price":"249","priceCurrency":"USD"},{"@type":"Offer","name":"Enterprise & Compliance Team","price":"2499","priceCurrency":"USD"}]},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility#webpage","url":"https://raggiesoftstudio.com/accessibility","name":"Accessible Windows Installer Architecture | RaggieSoft","description":"Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
-    <script type="module" crossorigin src="/assets/index-A-hE919H.js"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.2.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility#webpage","url":"https://raggiesoftstudio.com/accessibility","name":"Accessible Windows Installer Architecture | RaggieSoft","description":"Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <script type="module" crossorigin src="/assets/index-8beWVZVB.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BNvY2ePX.css">
   </head>
   <body>
@@ -48,12 +48,13 @@
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Native Win32 C++20 Packaging</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.2.0)</span>
         </a>
-        <nav aria-label="Primary Storefront Navigation">
+        <nav aria-label="Primary Project Navigation">
           <ul class="nav-list">
-            <li><a class="nav-link" href="/">Overview</a></li><li><a class="nav-link" href="/vpat">VPAT & Accessibility</a></li><li><a class="nav-link" href="/pricing">Pricing & POs</a></li><li><a class="nav-link" href="/docs">Docs & CLI</a></li><li><a class="nav-link" href="/security">Security & SBOM</a></li>
-            <li><a class="nav-link" href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a></li>
+            <li><a class="nav-link" href="/">Announcement & Preview</a></li><li><a class="nav-link" href="/docs">Docs & .rsip Spec</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security & Architecture</a></li>
+            <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
+            <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
           </ul>
         </nav>
       </div>
@@ -63,36 +64,37 @@
       
     <section class="hero" aria-labelledby="vpat-title">
       <span class="eyebrow">WCAG 2.2 Level AA • ADA Title II • Revised Section 508</span>
-      <h1 id="vpat-title">Accessibility &amp; Compliance Center</h1>
+      <h1 id="vpat-title">Accessibility &amp; VPAT 2.5 Engineering</h1>
       <p class="lead">
-        State agencies, public universities, healthcare systems, and federal contractors require an Accessibility Conformance Report (VPAT 2.5)
-        covering the entire software lifecycle—including the Windows installer. RaggieSoft Installer Studio is the first native Win32 C++20
-        packaging suite engineered for screen-reader, keyboard, and High Contrast compliance from frame one.
+        Accessibility shouldn't start only after an app is installed—users relying on screen readers, keyboard navigation,
+        or Windows Contrast Themes have to get through the installer first. RaggieSoft Installer Studio engineers WCAG 2.2 AA
+        and Revised Section 508 conformance directly into <code>SetupWizard.exe</code> and <code>instbuild.exe</code>.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/vpat/raggiesoft-installer-studio-vpat-2.5.html">Open Live VPAT 2.5 Conformance Report (HTML5)</a>
-        <a class="btn btn-outline" href="/pricing#procurement">Request Signed Enterprise ACR Bundle</a>
+        <a class="btn btn-primary" href="/vpat/raggiesoft-installer-studio-vpat-2.5.html">Open Sample Live VPAT 2.5 Report (HTML5)</a>
+        <a class="btn btn-outline" href="https://github.com/raggiesoft/installer-studio">Inspect C++20 Accessibility Source</a>
       </div>
     </section>
 
     <section aria-labelledby="proof-heading">
-      <h2 id="proof-heading">Concrete Win32 Assistive Technology &amp; UI Proof</h2>
+      <h2 id="proof-heading">How SetupWizard.exe Fixes Legacy Installer Accessibility Gaps</h2>
       <div class="card-grid">
         <article class="card">
           <div>
-            <h3>Screen-Reader Live Progress (NVDA, JAWS &amp; Narrator)</h3>
+            <h3>Full-Card Subclassed <code>BS_AUTORADIOBUTTON</code> Targets</h3>
             <p>
-              Uses native Win32 Common Controls v6 (<code>BUTTON</code>, <code>EDIT</code>, <code>MSFTEDIT_CLASS</code>, <code>PROGRESS_CLASSW</code>)
-              and fires <code>NotifyWinEvent(EVENT_OBJECT_NAMECHANGE)</code> on step transitions while driving real-time progress via <code>MsiSetExternalUIRecord</code>.
+              Instead of tiny unlabeled radio dots paired with non-focusable graphic labels, every setup option card is a true
+              Win32 <code>BS_AUTORADIOBUTTON</code> (<code>&ge; 68px</code> tall, exceeding WCAG 2.5.8) exposing native UI Automation
+              <code>RadioButton</code> roles and full descriptions to Narrator, NVDA, and JAWS.
             </p>
           </div>
         </article>
         <article class="card">
           <div>
-            <h3>100% Keyboard Tab Order &amp; Enforced Mnemonics</h3>
+            <h3>High-Contrast Focus Rings &amp; Enforced Mnemonics</h3>
             <p>
-              Clears <code>UISF_HIDEFOCUS</code> and <code>UISF_HIDEACCEL</code> immediately on <code>WM_CREATE</code> so focus rings and <code>Alt</code>
-              access-key underlines are always visible—backed by static <code>instbuild --validate</code> checks flagging any missing <code>&amp;</code> mnemonic.
+              Draws unmistakable <code>2.5px</code> keyboard focus rings (<code>12.6:1</code> in Dark Mode, <code>7.8:1</code> in Light Mode,
+              exceeding WCAG 2.4.11/2.4.13) and statically verifies <code>&amp;</code> keyboard mnemonics via <code>instbuild --validate</code>.
             </p>
           </div>
         </article>
@@ -100,8 +102,8 @@
           <div>
             <h3>Windows Contrast Themes &amp; Per-Monitor V2 DPI</h3>
             <p>
-              Honors <code>SPI_GETHIGHCONTRAST</code> using system <code>GetSysColor</code> tokens, scales crisply from <code>100%</code> to <code>300%+</code> DPI,
-              and multiplies typography by Windows 11's <code>TextScaleFactor</code> accessibility slider.
+              Honors <code>SPI_GETHIGHCONTRAST</code> using pure OS <code>GetSysColor</code> tokens, themes RichEdit license text for
+              <code>&ge; 15:1</code> contrast in Dark &amp; Light Mode, and scales cleanly with Windows 11's <code>TextScaleFactor</code>.
             </p>
           </div>
         </article>
@@ -139,7 +141,7 @@
             </tr>
             <tr>
               <th scope="row">Forced High Contrast Themes (<code>SPI_GETHIGHCONTRAST</code>)</th>
-              <td>Switches custom gradients to <code>COLOR_WINDOW</code> / <code>COLOR_WINDOWTEXT</code> / <code>COLOR_HIGHLIGHT</code></td>
+              <td>Switches decorative gradients to <code>COLOR_WINDOW</code> / <code>COLOR_WINDOWTEXT</code> / <code>COLOR_HIGHLIGHT</code></td>
               <td>WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
               <td><strong>Supports</strong></td>
             </tr>
@@ -159,19 +161,19 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-links">
-          <a href="/">Overview</a>
-          <a href="/vpat">VPAT 2.5 &amp; Accessibility</a>
-          <a href="/pricing">Pricing &amp; Net-30 POs</a>
-          <a href="/docs">Docs &amp; CLI</a>
-          <a href="/security">Security &amp; SBOM</a>
+          <a href="/">Announcement &amp; Preview</a>
+          <a href="/docs">Docs &amp; .rsip Spec</a>
+          <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
+          <a href="/security">Security &amp; Architecture</a>
           <a href="/llms.txt">/llms.txt</a>
           <a href="/llms-full.txt">/llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">GitHub Repository</a>
           <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
           <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
         </div>
         <p>
-          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Core compiler &amp; runtime source licensed under the MIT License.
-          Enterprise &amp; PO inquiries: <a href="mailto:enterprise@raggiesoftstudio.com">enterprise@raggiesoftstudio.com</a>.
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source Technical Preview licensed under the MIT License.
+          Feedback &amp; engineering inquiries: <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
         </p>
         <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
       </div>

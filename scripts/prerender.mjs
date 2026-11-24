@@ -66,18 +66,19 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         url: `${SITE_ORIGIN}/`,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
-        softwareVersion: '0.1.0',
+        softwareVersion: '0.2.0',
         license: 'https://opensource.org/licenses/MIT',
         author: {
           '@type': 'Organization',
           name: 'RaggieSoft',
           url: 'https://raggiesoft.dev'
         },
-        offers: [
-          { '@type': 'Offer', name: 'Community Edition', price: '0', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Indie / Professional Perpetual', price: '249', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Enterprise & Compliance Team', price: '2499', priceCurrency: 'USD' }
-        ]
+        offers: {
+          '@type': 'Offer',
+          name: 'Open-Source Technical Preview (MIT)',
+          price: '0',
+          priceCurrency: 'USD'
+        }
       },
       {
         '@type': 'WebSite',
