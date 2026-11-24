@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.2.1)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.3.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.2.1) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.3.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules
 1. **Native MSI, MSM, MST, MSP & SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`) and `fci.h` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.2.1)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.3.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **Hybrid `.rsip` + `.rsis` + `.rsii` Model**: Build a single `.rsip` standalone, share common blocks via `@include "common.rsii"`, or orchestrate multi-package fleets via `.rsis`.
 4. **Deterministic SHA-1 UUIDv5 Component GUIDs**: Derived from `UpgradeCode + arch + targetRelPath`.
 5. **True OS & Silicon Detection**: `RtlGetVersion` (`Build >= 22000`) + `IsWow64Process2` (pierces ARM64 Prism emulation).
@@ -38,13 +38,14 @@ Core product identity, MSI Summary Information, target CPU architecture (x64/arm
 | `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
 
 ### `[Requirements]` (*Optional*)
-Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition) and downgrade protection.
+Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
 | `MinWindowsBuild` | `integer` | No | `22000` | Minimum Windows 10/11 build number (`22000` = Windows 11 21H2+, matching .NET 10 Desktop Runtime). |
 | `OsLaunchMessage` | `string` | No | `This application requires Windows 11 (Build 22000) or later.` | Friendly message shown by LaunchCondition / SetupWizard.exe when the host OS is older than MinWindowsBuild. |
 | `BlockDowngrades` | `bool (true|false)` | No | `true` | Adds a newer-version Upgrade row + LaunchCondition preventing accidental downgrades. |
+| `SilentRebootExitCode` | `integer` | No | `3010` | Process exit code returned in silent mode (`/s` / `/qn`) when a runtime prerequisite or MSI requests a Windows restart (`3010` standard MSI, or `9001` for RaggieSoft Launcher). |
 
 ### `[Install]` (*Required*)
 Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
@@ -56,7 +57,7 @@ Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and
 | `MainExecutable` | `relpath` | No | — | Optional primary `.exe` relative to `INSTALLDIR` (used for `ARPPRODUCTICON` default & Finish launch). |
 
 ### `[UI]` (*Optional*)
-Branding, RTF license, icon, C++ Glass layout, and MSI.DLL Express/Custom dialog workflow preset.
+Branding, RTF license, icon, C++ Glass/AeroWizard layout, and MSI.DLL Express/Custom dialog workflow preset.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -67,7 +68,7 @@ Branding, RTF license, icon, C++ Glass layout, and MSI.DLL Express/Custom dialog
 | `InstallButtonText` | `accel_string (must include '&')` | No | `&Install` | Accessible primary install button caption; MUST include a `&` keyboard mnemonic. |
 | `FinishLaunchCheckbox` | `accel_string (must include '&')` | No | `&Launch application when setup finishes` | Accessible finish-screen launch checkbox caption; MUST include a `&` keyboard mnemonic. |
 | `OfferLaunchOnFinish` | `bool (true|false)` | No | `true` | Shows the optional launch checkbox on the completion screen when `MainExecutable` is set. |
-| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|aerowizard|autorun16x9`. `standard` shows the RaggieSoft Glass Setup Wizard; `aerowizard` uses modern Windows AeroWizard chrome with top-left DWM Back glyph; `autorun16x9` shows the 640x480 16:9 Autorun stage. |
+| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|aerowizard|autorun16x9`. `standard` shows the RaggieSoft Glass Setup Wizard; `aerowizard` uses modern Windows AeroWizard header chrome; `autorun16x9` shows the 640x480 16:9 Autorun stage. |
 | `MsiDialogPreset` | `enum` | No | `express_custom` | Allowed: `express_custom|minimal`. `express_custom` builds the full Express / Compact / Custom + SelectionTree + BrowseDlg + Shortcuts + Office Repair Mode workflow inside MSI.DLL's Dialog table; `minimal` builds a compact 3-screen MSI UI. |
 | `AccentPrimaryHex` | `string` | No | `#2563EB` | Primary header accent hex color (e.g. `#2563EB` Cobalt, `#38BDF8` Sky Cyan, `#14B8A6` Teal). |
 | `AccentSecondaryHex` | `string` | No | `#FBBF24` | Secondary gradient accent hex color (e.g. `#FBBF24` Warm Gold, `#10B981` Emerald, `#EC4899` Rose). |
@@ -76,7 +77,7 @@ Branding, RTF license, icon, C++ Glass layout, and MSI.DLL Express/Custom dialog
 | `ReadMeText` | `string` | No | — | Optional edition liner notes or ReadMe summary displayed in the ReadMe view of `autorun16x9` installers. |
 | `ExpressDescription` | `string` | No | `One-click setup into the default installation folder with recommended shortcuts. Skips extra prompts.` | Helper caption for the Express Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `CompactDescription` | `string` | No | `Installs essential core application files (`Level = 1`) with minimal disk footprint.` | Helper caption for the Compact Core Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
-| `CustomDescription` | `string` | No | `Choose a custom destination folder, features, Start Menu group, and shortcuts step by step.` | Helper caption for the Custom Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
+| `CustomDescription` | `string` | No | `Choose features in the MSI SelectionTree, destination folder, Start Menu group, and shortcuts step by step.` | Helper caption for the Custom Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `AuthorOrArtist` | `string` | No | — | Optional author or band credit badge displayed in `autorun16x9` book/album micro-installers. |
 
 ### `[Signing]` (*Optional*)
@@ -90,8 +91,43 @@ Optional dual-layer Authenticode code signing (Product.msi first, then outer Set
 | `DlibPath` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing `Azure.CodeSigning.Dlib.dll`. |
 | `MetadataJson` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing metadata `.json` file. |
 
+### `[Prerequisite.<id>]` (*Optional*)
+Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Preset` | `enum` | No | `Custom` | Allowed: `Custom|DotNet10Desktop|DotNet10AspNet|DotNet9Desktop|DotNet8Desktop|EdgeWebView2|VcRedist2022`. One-click curated preset (`DotNet10Desktop`, `DotNet10AspNet`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`) or `Custom`. |
+| `Name` | `string` | No | — | Consumer-friendly runtime display name (auto-filled when `Preset` != `Custom`). |
+| `Distribution` | `enum` | No | `download` | Allowed: `download|embedded|side-by-side`. `download` streams over WinHTTP HTTPS on demand; `embedded` packs `SourceFile` inside `Setup.exe` for offline installs; `side-by-side` reads `Redist\<FileName>` next to `Setup.exe` (with URL fallback). |
+| `SourceFile` | `path (supports $(ARCH))` | No | — | Local runtime `.exe` or `.msi` on the build machine (required for `Distribution = embedded`, optional for `side-by-side`, supports `$(ARCH)`). |
+| `FileName` | `string` | No | — | Runtime installer filename used inside `Redist\` or `%TEMP%` (auto-filled for presets). |
+| `Url` | `string` | No | — | Architecture-neutral HTTPS download URL (or fallback URL for `side-by-side`). |
+| `UrlX64` | `string` | No | — | Optional `x64`-specific HTTPS download URL (auto-filled for `aka.ms` presets). |
+| `UrlArm64` | `string` | No | — | Optional `arm64`-specific HTTPS download URL (auto-filled for `aka.ms` presets). |
+| `Sha256` | `string` | No | — | Optional expected SHA-256 hex digest verified via `bcrypt.dll` before executing a downloaded runtime. |
+| `SilentArgs` | `string` | No | — | Command-line switches passed to the runtime installer (auto-filled for presets, e.g. `/install /quiet /norestart`). |
+| `SuccessExitCodes` | `string` | No | `0, 1638` | Comma-separated exit codes treated as clean success (`0` = OK, `1638` = newer redistributable already installed). |
+| `RebootExitCodes` | `string` | No | `3010, 1641` | Comma-separated exit codes treated as success WITH a Windows restart requested (`3010`, `1641`, `23`, or any custom vendor codes). |
+| `DetectRegistryHive` | `enum` | No | `HKLM` | Allowed: `HKLM|HKCU`. Registry hive checked before running a `Custom` prerequisite (`HKLM` or `HKCU`, probed in native 64-bit view). |
+| `DetectRegistryKey` | `string` | No | — | Optional registry key checked to skip an already-installed `Custom` prerequisite. |
+| `DetectRegistryValue` | `string` | No | — | Optional registry value name under `DetectRegistryKey` (non-empty / non-zero means installed). |
+| `DetectMinVersion` | `string` | No | — | Optional minimum dotted version compared against `DetectRegistryValue` or `DetectFilePath`. |
+| `DetectFilePath` | `string` | No | — | Optional file path (supports `%ProgramW6432%` / `%SystemRoot%`) whose presence/version skips the prerequisite. |
+| `DetectUpgradeCode` | `guid ({XXXXXXXX-...})` | No | — | Optional MSI `{UpgradeCode}` probed via `MsiEnumRelatedProductsW` to skip an already-installed MSI runtime. |
+| `RequiresElevation` | `bool (true|false)` | No | `true` | When `true` (default), executes inside the single unified elevated UAC session right before `Product.msi`. |
+| `Optional` | `bool (true|false)` | No | `false` | When `true`, logs a warning and continues installing `Product.msi` even if this prerequisite fails. |
+
+### `[MergeModule.<id>]` (*Optional*)
+Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Source` | `path (supports $(ARCH))` | **Yes** | — | Path to the `.msm` Merge Module database on the build machine (supports `$(ARCH)`). |
+| `Feature` | `string` | No | `Main` | Parent `[Feature.<id>]` in `Product.msi` that receives the Merge Module's components. |
+| `TargetRoot` | `enum` | No | `INSTALLDIR` | Allowed: `INSTALLDIR|CommonFiles64Folder|CommonAppDataFolder|AppDataFolder|LocalAppDataFolder|ProgramMenuFolder|ApplicationProgramsFolder|DesktopFolder|System64Folder|FontsFolder`. Destination root folder to which the Merge Module's `TARGETDIR` / `MergeRedirectFolder` maps. |
+
 ### `[Feature.<id>]` (*Optional*)
-Named MSI Feature or Sub-Feature ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
+Named MSI Feature or Sub-Feature ([Feature.<id>]) displayed in SetupWizard.exe and MSI SelectionTree.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -99,6 +135,8 @@ Named MSI Feature or Sub-Feature ([Feature.<id>]); defaults to a single 'Main' f
 | `Description` | `string` | No | — | Plain-English description of this MSI Feature shown in SelectionTree. |
 | `Level` | `integer` | No | `1` | MSI InstallLevel (`1` = core/Compact & Express, `2..100` = Express/Custom optional, `0` = hidden). |
 | `Parent` | `string` | No | — | Optional parent Feature ID (`Feature_Parent`) creating a hierarchical sub-feature in `SelectionTree`. |
+| `DisallowAbsent` | `bool (true|false)` | No | `false` | Sets `msidbFeatureAttributesUIDisallowAbsent` (`16`) locking a required core feature so users cannot disable it in `SelectionTree`. |
+| `AllowAdvertise` | `bool (true|false)` | No | `false` | When `false` (default), sets `msidbFeatureAttributesDisallowAdvertise` (`8`) hiding MSI on-demand advertisement; set `true` to enable 'Feature will be installed when required'. |
 
 ### `[Component.<id>]` (*Optional*)
 Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).

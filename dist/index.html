@@ -40,9 +40,9 @@
     <meta name="twitter:title" content="RaggieSoft Installer Studio — Technical Preview" />
     <meta name="twitter:description" content="Open-source Win32 C++20 Windows installer IDE and MSI compiler for x64 and ARM64 with AeroWizards, Dual Dialog Designer, and WCAG 2.2 AA accessibility." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.2.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/#webpage","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio — Technical Preview","description":"Open-source Win32 C++20 Windows installer IDE and MSI compiler for x64 and ARM64 with AeroWizards, Dual Dialog Designer, and WCAG 2.2 AA accessibility.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.3.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/#webpage","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio — Technical Preview","description":"Open-source Win32 C++20 Windows installer IDE and MSI compiler for x64 and ARM64 with AeroWizards, Dual Dialog Designer, and WCAG 2.2 AA accessibility.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
-    <script type="module" crossorigin src="/assets/index-BefIO-cB.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cszb4bjL.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CnrUfXn8.css">
   </head>
   <body>
@@ -109,7 +109,7 @@
     <main id="main-content" class="container" tabindex="-1">
       
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.1) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.3.0) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
         An in-development, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
@@ -230,13 +230,13 @@ Verbs             = open:&amp;Open:"%1"</pre>
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.2.1</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.3.0</code>)</h3>
             <ul class="feature-list">
-              <li><strong>9-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 4 native <strong>AeroWizards</strong> (Project Assistant, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)</li>
+              <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong> (Project Assistant, Runtime Prerequisites &amp; <code>.MSM</code>, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
+              <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: Real Windows Installer split-icon feature tree in <code>Setup.exe</code>, plus unlimited <code>[Prerequisite.*]</code> runtimes (<code>WinHTTP</code> download, <code>LZMS</code> offline embed, &amp; <code>Redist\</code>) and native 64-bit <code>.MSM</code> Merge Module consumption</li>
               <li><strong>Destination Computer Tree &amp; Setup Design</strong> enforcing Microsoft's Official Component Rules (Single-Directory Rule, File KeyPaths, ICE38 <code>HKCU</code> Registry KeyPaths, &amp; ICE18 <code>CreateFolder</code>)</li>
-              <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables (Express / Compact / Custom workflow)</li>
-              <li><strong>First-Class File Associations</strong> supporting both zero-popup <code>HKMU\Software\Classes</code> registration and native MSI <code>ProgId</code> / <code>Extension</code> / <code>Verb</code> / <code>MIME</code> tables</li>
-              <li><strong><code>msiprism.exe</code></strong> 64-bit Dark Mode SQL table inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
+              <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables</li>
+              <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL table inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
             </ul>
           </div>
         </article>

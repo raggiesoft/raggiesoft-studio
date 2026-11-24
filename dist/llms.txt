@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.2.1
+# RaggieSoft Installer Studio (Install Without Limits) — v0.3.0
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` Visual IDE, `instbuild.exe` CLI compiler, `SetupWizard.exe` accessible runtime wizard, and `msiprism.exe` 64-bit MSI/MST/MSP SQL inspector) targeting `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
 
@@ -26,11 +26,13 @@
 
 ## `.rsip` Manifest Sections (`v0.3`)
 - `[Package]`: Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
-- `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition) and downgrade protection.
+- `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
 - `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
-- `[UI]`: Branding, RTF license, icon, C++ Glass layout, and MSI.DLL Express/Custom dialog workflow preset.
+- `[UI]`: Branding, RTF license, icon, C++ Glass/AeroWizard layout, and MSI.DLL Express/Custom dialog workflow preset.
 - `[Signing]`: Optional dual-layer Authenticode code signing (Product.msi first, then outer Setup.exe) via signtool.exe.
-- `[Feature.<id>]`: Named MSI Feature or Sub-Feature ([Feature.<id>]); defaults to a single 'Main' feature if omitted.
+- `[Prerequisite.<id>]`: Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
+- `[MergeModule.<id>]`: Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
+- `[Feature.<id>]`: Named MSI Feature or Sub-Feature ([Feature.<id>]) displayed in SetupWizard.exe and MSI SelectionTree.
 - `[Component.<id>]`: Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
 - `[Folder.<id>]`: Creates a destination subdirectory ([Folder.<id>]) via MSI CreateFolder + ICE64 RemoveFolder cleanup.
 - `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic or explicit MSI Components.

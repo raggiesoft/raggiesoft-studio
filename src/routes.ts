@@ -9,7 +9,7 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.2.1`)**:
+ *     public **Project Announcement & Open Technical Preview (`v0.3.0`)**:
  *       1. `/`              — Vision Announcement, Preview Downloads, 3-Tab Split
  *                             Preview, Zero-Bloat Matrix, & Open Roadmap
  *       2. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
@@ -65,13 +65,13 @@ function renderVisionAndRoadmapSection(): string {
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.2.1</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.3.0</code>)</h3>
             <ul class="feature-list">
-              <li><strong>9-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 4 native <strong>AeroWizards</strong> (Project Assistant, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)</li>
+              <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong> (Project Assistant, Runtime Prerequisites &amp; <code>.MSM</code>, Component &amp; KeyPath, File Associations, and Release / <code>.MST</code> / <code>.MSP</code>)—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
+              <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: Real Windows Installer split-icon feature tree in <code>Setup.exe</code>, plus unlimited <code>[Prerequisite.*]</code> runtimes (<code>WinHTTP</code> download, <code>LZMS</code> offline embed, &amp; <code>Redist\\</code>) and native 64-bit <code>.MSM</code> Merge Module consumption</li>
               <li><strong>Destination Computer Tree &amp; Setup Design</strong> enforcing Microsoft's Official Component Rules (Single-Directory Rule, File KeyPaths, ICE38 <code>HKCU</code> Registry KeyPaths, &amp; ICE18 <code>CreateFolder</code>)</li>
-              <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables (Express / Compact / Custom workflow)</li>
-              <li><strong>First-Class File Associations</strong> supporting both zero-popup <code>HKMU\\Software\\Classes</code> registration and native MSI <code>ProgId</code> / <code>Extension</code> / <code>Verb</code> / <code>MIME</code> tables</li>
-              <li><strong><code>msiprism.exe</code></strong> 64-bit Dark Mode SQL table inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
+              <li><strong>Dual Dialog Designer</strong> authoring both C++20 Glass / AeroWizard <code>SetupWizard.exe</code> screens AND native <code>370&times;270</code> <code>MSI.DLL</code> <code>Dialog</code> SQL tables</li>
+              <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL table inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
             </ul>
           </div>
         </article>
@@ -94,7 +94,7 @@ function renderVisionAndRoadmapSection(): string {
 function renderHomeBody(): string {
   return `
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
-      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.2.1) • x64 &amp; ARM64</span>
+      <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.3.0) • x64 &amp; ARM64</span>
       <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
       <p class="lead">
         An in-development, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.

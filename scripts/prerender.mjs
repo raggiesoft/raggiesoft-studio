@@ -66,7 +66,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         url: `${SITE_ORIGIN}/`,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
-        softwareVersion: '0.2.1',
+        softwareVersion: '0.3.0',
         license: 'https://opensource.org/licenses/MIT',
         author: {
           '@type': 'Organization',
