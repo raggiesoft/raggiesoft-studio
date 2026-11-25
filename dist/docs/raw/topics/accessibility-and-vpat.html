@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/accessibility-and-vpat.html
+  OVERVIEW: Offline Help Topic 7 detailing WCAG 2.2 Level AA, Section 508,
+  Win32 Dark Mode checkbox & ListView header subclasses, and --emit-vpat HTML5 reports.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</h1>
+  <p>
+    Users who rely on screen readers (<code>Narrator</code>, <code>NVDA</code>, <code>JAWS</code>), full keyboard navigation,
+    Windows Contrast Themes, or Dark Mode must complete your installer before they can ever open your application. Every binary
+    in RaggieSoft Installer Studio enforces WCAG 2.2 Level AA and Revised Section 508 engineering rules.
+  </p>
+
+  <!-- Key Win32 accessibility & Dark Mode engineering details -->
+  <h2>Native Win32 Accessibility &amp; Dark Mode Safeguards</h2>
+  <ul>
+    <li><strong>Genuine BS_AUTORADIOBUTTON Option Cards</strong>: Every wizard mode card is a full-width Win32 radio control (<code>&gt;= 68px</code> tall, exceeding WCAG 2.5.8 target size) subclassed via <code>SetWindowSubclass</code> so UI Automation announces its native <code>RadioButton</code> role, state, and description while GDI+ draws crisp vector icons and a <code>2.5px</code> focus ring.</li>
+    <li><strong>Dark-Mode-Safe Checkboxes (AttachAccessibleCheckboxSubclass)</strong>: Standard Win32 <code>ComCtl32 v6</code> checkboxes ignore <code>WM_CTLCOLORSTATIC</code> and paint black text on dark backgrounds. Our shared subclass renders crisp <code>15.8:1</code> WCAG AAA labels and focus rings across <code>SetupWizard.exe</code>, <code>InstallerStudio.exe</code>, and <code>RaggieSoftHelp.exe</code>.</li>
+    <li><strong>Dark-Mode-Safe ListView Column Headers (AttachDarkAwareListViewSubclass)</strong>: Custom-paints <code>SysHeader32</code> (including trailing unoccupied header space) in Midnight Navy (<code>#0B132B</code>) with <code>#F8FAFC</code> labels in Dark Mode and Slate (<code>#E2E8F0</code>) in Light Mode.</li>
+    <li><strong>Dark-Mode-Safe Push Buttons &amp; Combos (AttachAccessiblePushButtonSubclass)</strong>: Custom-paints native Win32 <code>BS_PUSHBUTTON</code> and <code>BS_DEFPUSHBUTTON</code> controls (with Royal Cobalt primary fills, Slate-Navy secondary fills, UAC shield icons, and High-Contrast fallback) while keeping 100% native UI Automation <code>Button</code> semantics and <code>Alt+Key</code> mnemonics.</li>
+    <li><strong>Live OS Light &lt;-&gt; Dark Hot-Swapping (ImmersiveColorSet)</strong>: All four GUI apps listen for <code>WM_SETTINGCHANGE</code> (<code>ImmersiveColorSet</code> &amp; <code>SPI_SETHIGHCONTRAST</code>), <code>WM_SYSCOLORCHANGE</code>, and <code>WM_THEMECHANGED</code> to flip DWM frames, controls, and RichEdit typography live on screen without restarting.</li>
+    <li><strong>Windows Contrast Themes (SPI_GETHIGHCONTRAST)</strong>: Automatically steps aside decorative gradients in favor of pure OS <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, and <code>COLOR_HIGHLIGHT</code> tokens.</li>
+  </ul>
+
+  <!-- Anchor target for VPAT 2.5 HTML5 export -->
+  <h2 id="vpat-export">Automated Per-Project VPAT 2.5 Conformance Reports</h2>
+  <p>
+    Run <code>instbuild.exe --emit-vpat MyApp.rsip out</code> (or click <strong>VPAT 2.5</strong> on the IDE toolbar) to
+    audit your manifest's foreground/background hex contrast ratios, keyboard mnemonics, and silent enterprise CLI switches
+    and emit a standalone HTML5 Accessibility Conformance Report ready for institutional procurement review.
+  </p>
+</body>
+</html>

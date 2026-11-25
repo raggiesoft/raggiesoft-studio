@@ -181,18 +181,27 @@ function renderLiveScreenshotShowcase(): string {
 function renderVisionAndRoadmapSection(): string {
   return `
     <section class="calc-panel" aria-labelledby="roadmap-heading">
-      <span class="eyebrow">Why I'm Building This • Open Engineering Roadmap</span>
-      <h2 id="roadmap-heading" style="margin-top: 0.25rem;">What RaggieSoft Installer Studio Aims to Solve</h2>
+      <span class="eyebrow">28 Years in the Making (1998–2026) • Why I Built This</span>
+      <h2 id="roadmap-heading" style="margin-top: 0.25rem;">From Visual Basic 6.0 in 1998 to Zero-Bloat Win32 C++20</h2>
       <p>
-        Every Windows installer ultimately marshals calls down into the exact same <code>msi.dll</code> and
-        <code>cabinet.dll</code> libraries Microsoft already ships inside <code>C:\\Windows\\System32</code> on every copy of Windows.
-        Yet developers are routinely forced to choose between multi-gigabyte legacy toolchains, steep XML boilerplate,
-        unlabeled non-accessible wizard forms, or opaque project files that fight Git version control and AI coding agents.
+        Ever since I started learning Visual Basic 6.0 back in 1998, I spent 28 years searching for the right Windows
+        installation tool—shipping software across more than a dozen packaging engines spanning every era of Windows
+        deployment: the limited-edition setup wizard bundled in the Visual Studio 6.0 box, classic procedural script
+        installers, 3D-beveled commercial suites, interactive CD-ROM multimedia autorun builders (yes, at one point I even
+        tried bending an autorun menu builder into an application installer!), lightweight open-source script packagers, and
+        heavyweight enterprise MSI and XML toolchains.
       </p>
       <p>
-        <strong>RaggieSoft Installer Studio</strong> is an active, open-source MIT engineering effort to build an original,
-        zero-dependency native Win32 C++20 packaging suite from the ground up—combining visual convenience with clean plain-text
-        <code>.rsip</code> manifests, first-class AI specifications, and 100% WCAG 2.2 AA accessibility.
+        Every Windows installer ultimately marshals calls down into the exact same <code>msi.dll</code> and
+        <code>cabinet.dll</code> libraries Microsoft already ships inside <code>C:\\Windows\\System32</code>. Yet every tool I
+        tried forced a painful tradeoff between multi-gigabyte IDE bloat, 32-bit legacy debt, opaque binary project files,
+        steep XML boilerplate, or broken Windows 11 Dark Mode and screen-reader accessibility.
+      </p>
+      <p>
+        <strong>RaggieSoft Installer Studio</strong> takes everything those eras got right—plain-text diffable manifests,
+        authentic relational <code>.msi</code> compliance, single-file <code>LZMS</code> solid compression, and classic-to-modern
+        wizard ergonomics—and rebuilds it from first principles as original, MIT-licensed native Win32 C++20 software for
+        <code>x64</code> and <code>ARM64</code>.
       </p>
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
@@ -821,18 +830,112 @@ function renderVpatBody(): string {
 function renderDocsBody(): string {
   return `
     <section class="hero" aria-labelledby="docs-title">
-      <span class="eyebrow">Human &amp; AI-Agent Technical Reference (Schema v0.4)</span>
-      <h1 id="docs-title">Documentation, .rsip / .rsis Reference &amp; AI Authoring</h1>
+      <span class="eyebrow">Single-Source Offline &amp; Web Manual • Schema v0.4</span>
+      <h1 id="docs-title">User Guide, .rsip Reference &amp; AI Specifications</h1>
       <p class="lead">
-        Author single-file <code>.rsip</code> projects from scratch, reuse dialog and signing blocks via
-        <code>@include "preset.rsii"</code>, or orchestrate multi-package workspaces inside an <code>.rsis</code> Suite.
-        Point coding agents directly at <a href="/llms-full.txt">raggiesoftstudio.com/llms-full.txt</a> or press <code>F1</code>
-        inside <code>InstallerStudio.exe</code> to open <code>RaggieSoftHelp.exe</code> offline!
+        Every chapter below is compiled from the <strong>exact same HTML5 documentation module</strong>
+        (<code>help/raggiesoft.installer-studio/</code>) distributed inside RaggieSoft Installer Studio and displayed offline
+        by <code>RaggieSoftHelp.exe</code> whenever you press <code>F1</code> in the IDE—alongside our machine-readable
+        <a href="/llms-full.txt">/llms-full.txt</a> and <a href="/SKILL.md">SKILL.md</a> coding-agent specs.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/llms.txt">Open /llms.txt</a>
+        <a class="btn btn-primary" href="/docs/welcome-overview">Start Reading Chapter 1 &rarr;</a>
+        <a class="btn btn-outline" href="/llms.txt">Open /llms.txt</a>
         <a class="btn btn-outline" href="/llms-full.txt">Open Complete /llms-full.txt</a>
         <a class="btn btn-outline" href="/SKILL.md">Download AI SKILL.md</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="manual-chapters-heading">
+      <span class="eyebrow">Official Distributed Help Module (8 Chapters)</span>
+      <h2 id="manual-chapters-heading">Browse Documentation Chapters</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 1 • Getting Started</span>
+            <h3><a href="/docs/welcome-overview" style="color: inherit; text-decoration: none;">Overview, Editions &amp; Hybrid .rsip Architecture</a></h3>
+            <p>Meet the 5 static <code>/MT</code> C++20 executables, the <code>Community == Premier</code> parity pledge, and <code>.rsip</code> / <code>.rsis</code> / <code>.rsii</code> manifests.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/welcome-overview">Read Chapter 1</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 2 • Visual IDE &amp; Wizards</span>
+            <h3><a href="/docs/ide-and-aerowizards" style="color: inherit; text-decoration: none;">10-View Visual IDE &amp; 5 Guided AeroWizards</a></h3>
+            <p>Tour all 10 views of <code>InstallerStudio.exe</code>, the 5 native Win32 AeroWizards, File Associations, and lossless AST saving.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/ide-and-aerowizards">Read Chapter 2</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 3 • Windows Installer Engine</span>
+            <h3><a href="/docs/components-and-keypaths" style="color: inherit; text-decoration: none;">Destination Folders, Components &amp; KeyPath Rules</a></h3>
+            <p>Enforce Microsoft Single-Directory (<code>RSW031</code>), <code>ICE38</code> HKCU User-Profile KeyPaths (<code>RSW032</code>), and <code>ICE18</code> <code>CreateFolder</code> rules.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/components-and-keypaths">Read Chapter 3</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 4 • Windows Installer Engine</span>
+            <h3><a href="/docs/runtimes-and-merge-modules" style="color: inherit; text-decoration: none;">Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></h3>
+            <p>Distribute <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes via <code>WinHTTP</code> download, <code>LZMS</code> embed, or <code>Redist\\</code> plus 64-bit <code>.MSM</code> merging.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules">Read Chapter 4</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 5 • Wizard UI &amp; Dialogs</span>
+            <h3><a href="/docs/selection-tree-and-dialogs" style="color: inherit; text-decoration: none;">MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a></h3>
+            <p>Customize <code>SetupWizard.exe</code>, the authentic 32-bit ARGB MSI <code>SelectionTree</code>, and <code>370&times;270</code> <code>MSI.DLL</code> SQL dialogs.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/selection-tree-and-dialogs">Read Chapter 5</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 6 • CLI &amp; AI Automation</span>
+            <h3><a href="/docs/cli-and-ai-agents" style="color: inherit; text-decoration: none;">Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></h3>
+            <p>Compile <code>x64</code> and <code>ARM64</code> packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/cli-and-ai-agents">Read Chapter 6</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 7 • Compliance &amp; Security</span>
+            <h3><a href="/docs/accessibility-and-vpat" style="color: inherit; text-decoration: none;">WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></h3>
+            <p>UI Automation roles, High Contrast themes, Dark Mode button/checkbox/header subclasses, and automated HTML5 VPAT 2.5 exports.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/accessibility-and-vpat">Read Chapter 7</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 8 • Compliance &amp; Security</span>
+            <h3><a href="/docs/msiprism-and-patches" style="color: inherit; text-decoration: none;">MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></h3>
+            <p>Inspect <code>.msi</code>/<code>.msm</code>/<code>.msp</code> relational tables in <code>msiprism.exe</code>, apply Dual-Layer Authenticode signing, and emit <code>.mst</code>/<code>.msp</code> deltas.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/msiprism-and-patches">Read Chapter 8</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="quick-index-heading">
+      <span class="eyebrow">Direct Topic Anchors (Synced with module.rshm.json)</span>
+      <h2 id="quick-index-heading" style="margin-top: 0.25rem;">Quick Keyword Index</h2>
+      <div class="btn-row">
+        <a class="btn btn-outline" href="/docs/welcome-overview#editions">Community == Premier Parity</a>
+        <a class="btn btn-outline" href="/docs/components-and-keypaths#component-rules">ICE18 &amp; ICE38 Component Rules</a>
+        <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules#prerequisites">[Prerequisite.*] Pre-MSI Runtimes</a>
+        <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules#mergemodules">[MergeModule.*] (.MSM)</a>
+        <a class="btn btn-outline" href="/docs/selection-tree-and-dialogs#selection-tree">MSI SelectionTree</a>
+        <a class="btn btn-outline" href="/docs/cli-and-ai-agents#ai-specs">llms.txt &amp; SKILL.md</a>
+        <a class="btn btn-outline" href="/docs/accessibility-and-vpat#vpat-export">VPAT 2.5 Export</a>
+        <a class="btn btn-outline" href="/docs/msiprism-and-patches#msiprism">MSI Prism Inspector</a>
       </div>
     </section>
 
@@ -1050,28 +1153,31 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
  * Renders the complete shell (Header + `<main id="main-content">` + Global Footer with Fictitious Disclaimer)
  * for any canonical route or `/404.html`.
  */
-export function renderStudioPage(routePath: string): { html: string } {
+export function renderStudioPage(routePath: string, customMainInnerHtml?: string): { html: string } {
   const match = STUDIO_ROUTES.find((r) => r.path === routePath);
+  const activeNavPath = routePath.startsWith('/docs/') ? '/docs' : routePath;
   const navItems = STUDIO_ROUTES.filter((r) => Boolean(r.navLabel))
     .map((r) => {
-      const current = r.path === routePath ? ' aria-current="page"' : '';
+      const current = r.path === activeNavPath ? ' aria-current="page"' : '';
       return `<li><a class="nav-link" href="${r.path}"${current}>${r.navLabel}</a></li>`;
     })
     .join('');
 
-  const mainInner = match
-    ? match.renderBody()
-    : `
-      <section class="hero" aria-labelledby="err-title">
-        <span class="eyebrow">HTTP 404 • Route Not Found</span>
-        <h1 id="err-title">Page Not Found</h1>
-        <p class="lead">The requested RaggieSoft Installer Studio documentation or preview route could not be found.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/">Return to Project Announcement</a>
-          <a class="btn btn-outline" href="/docs">Browse .rsip &amp; CLI Documentation</a>
-        </div>
-      </section>
-    `;
+  const mainInner = customMainInnerHtml
+    ? customMainInnerHtml
+    : match
+      ? match.renderBody()
+      : `
+        <section class="hero" aria-labelledby="err-title">
+          <span class="eyebrow">HTTP 404 • Route Not Found</span>
+          <h1 id="err-title">Page Not Found</h1>
+          <p class="lead">The requested RaggieSoft Installer Studio documentation or preview route could not be found.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/">Return to Project Announcement</a>
+            <a class="btn btn-outline" href="/docs">Browse .rsip &amp; CLI Documentation</a>
+          </div>
+        </section>
+      `;
 
   const html = `
     <header class="site-header" data-theme="dark">

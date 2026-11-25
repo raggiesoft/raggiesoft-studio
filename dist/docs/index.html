@@ -46,8 +46,8 @@
     <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/docs#webpage","url":"https://raggiesoftstudio.com/docs","name":"Documentation & .rsip v0.4 Spec | Installer Studio","description":"Searchable .rsip v0.4 project and .rsis suite reference covering Prerequisites, Merge Modules, Components, SelectionTree, and AI /llms.txt specs.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
-    <script type="module" crossorigin src="/assets/index-oM9yAmfg.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BZE6m41k.css">
+    <script type="module" crossorigin src="/assets/index-DkzA8-vi.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DXpplN3c.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -113,18 +113,112 @@
     <main id="main-content" class="container" tabindex="-1">
       
     <section class="hero" aria-labelledby="docs-title">
-      <span class="eyebrow">Human &amp; AI-Agent Technical Reference (Schema v0.4)</span>
-      <h1 id="docs-title">Documentation, .rsip / .rsis Reference &amp; AI Authoring</h1>
+      <span class="eyebrow">Single-Source Offline &amp; Web Manual • Schema v0.4</span>
+      <h1 id="docs-title">User Guide, .rsip Reference &amp; AI Specifications</h1>
       <p class="lead">
-        Author single-file <code>.rsip</code> projects from scratch, reuse dialog and signing blocks via
-        <code>@include "preset.rsii"</code>, or orchestrate multi-package workspaces inside an <code>.rsis</code> Suite.
-        Point coding agents directly at <a href="/llms-full.txt">raggiesoftstudio.com/llms-full.txt</a> or press <code>F1</code>
-        inside <code>InstallerStudio.exe</code> to open <code>RaggieSoftHelp.exe</code> offline!
+        Every chapter below is compiled from the <strong>exact same HTML5 documentation module</strong>
+        (<code>help/raggiesoft.installer-studio/</code>) distributed inside RaggieSoft Installer Studio and displayed offline
+        by <code>RaggieSoftHelp.exe</code> whenever you press <code>F1</code> in the IDE—alongside our machine-readable
+        <a href="/llms-full.txt">/llms-full.txt</a> and <a href="/SKILL.md">SKILL.md</a> coding-agent specs.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/llms.txt">Open /llms.txt</a>
+        <a class="btn btn-primary" href="/docs/welcome-overview">Start Reading Chapter 1 &rarr;</a>
+        <a class="btn btn-outline" href="/llms.txt">Open /llms.txt</a>
         <a class="btn btn-outline" href="/llms-full.txt">Open Complete /llms-full.txt</a>
         <a class="btn btn-outline" href="/SKILL.md">Download AI SKILL.md</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="manual-chapters-heading">
+      <span class="eyebrow">Official Distributed Help Module (8 Chapters)</span>
+      <h2 id="manual-chapters-heading">Browse Documentation Chapters</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 1 • Getting Started</span>
+            <h3><a href="/docs/welcome-overview" style="color: inherit; text-decoration: none;">Overview, Editions &amp; Hybrid .rsip Architecture</a></h3>
+            <p>Meet the 5 static <code>/MT</code> C++20 executables, the <code>Community == Premier</code> parity pledge, and <code>.rsip</code> / <code>.rsis</code> / <code>.rsii</code> manifests.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/welcome-overview">Read Chapter 1</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 2 • Visual IDE &amp; Wizards</span>
+            <h3><a href="/docs/ide-and-aerowizards" style="color: inherit; text-decoration: none;">10-View Visual IDE &amp; 5 Guided AeroWizards</a></h3>
+            <p>Tour all 10 views of <code>InstallerStudio.exe</code>, the 5 native Win32 AeroWizards, File Associations, and lossless AST saving.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/ide-and-aerowizards">Read Chapter 2</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 3 • Windows Installer Engine</span>
+            <h3><a href="/docs/components-and-keypaths" style="color: inherit; text-decoration: none;">Destination Folders, Components &amp; KeyPath Rules</a></h3>
+            <p>Enforce Microsoft Single-Directory (<code>RSW031</code>), <code>ICE38</code> HKCU User-Profile KeyPaths (<code>RSW032</code>), and <code>ICE18</code> <code>CreateFolder</code> rules.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/components-and-keypaths">Read Chapter 3</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 4 • Windows Installer Engine</span>
+            <h3><a href="/docs/runtimes-and-merge-modules" style="color: inherit; text-decoration: none;">Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></h3>
+            <p>Distribute <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes via <code>WinHTTP</code> download, <code>LZMS</code> embed, or <code>Redist\</code> plus 64-bit <code>.MSM</code> merging.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules">Read Chapter 4</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 5 • Wizard UI &amp; Dialogs</span>
+            <h3><a href="/docs/selection-tree-and-dialogs" style="color: inherit; text-decoration: none;">MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a></h3>
+            <p>Customize <code>SetupWizard.exe</code>, the authentic 32-bit ARGB MSI <code>SelectionTree</code>, and <code>370&times;270</code> <code>MSI.DLL</code> SQL dialogs.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/selection-tree-and-dialogs">Read Chapter 5</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 6 • CLI &amp; AI Automation</span>
+            <h3><a href="/docs/cli-and-ai-agents" style="color: inherit; text-decoration: none;">Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></h3>
+            <p>Compile <code>x64</code> and <code>ARM64</code> packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/cli-and-ai-agents">Read Chapter 6</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 7 • Compliance &amp; Security</span>
+            <h3><a href="/docs/accessibility-and-vpat" style="color: inherit; text-decoration: none;">WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></h3>
+            <p>UI Automation roles, High Contrast themes, Dark Mode button/checkbox/header subclasses, and automated HTML5 VPAT 2.5 exports.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/accessibility-and-vpat">Read Chapter 7</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="eyebrow">Chapter 8 • Compliance &amp; Security</span>
+            <h3><a href="/docs/msiprism-and-patches" style="color: inherit; text-decoration: none;">MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></h3>
+            <p>Inspect <code>.msi</code>/<code>.msm</code>/<code>.msp</code> relational tables in <code>msiprism.exe</code>, apply Dual-Layer Authenticode signing, and emit <code>.mst</code>/<code>.msp</code> deltas.</p>
+          </div>
+          <a class="btn btn-outline" href="/docs/msiprism-and-patches">Read Chapter 8</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="quick-index-heading">
+      <span class="eyebrow">Direct Topic Anchors (Synced with module.rshm.json)</span>
+      <h2 id="quick-index-heading" style="margin-top: 0.25rem;">Quick Keyword Index</h2>
+      <div class="btn-row">
+        <a class="btn btn-outline" href="/docs/welcome-overview#editions">Community == Premier Parity</a>
+        <a class="btn btn-outline" href="/docs/components-and-keypaths#component-rules">ICE18 &amp; ICE38 Component Rules</a>
+        <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules#prerequisites">[Prerequisite.*] Pre-MSI Runtimes</a>
+        <a class="btn btn-outline" href="/docs/runtimes-and-merge-modules#mergemodules">[MergeModule.*] (.MSM)</a>
+        <a class="btn btn-outline" href="/docs/selection-tree-and-dialogs#selection-tree">MSI SelectionTree</a>
+        <a class="btn btn-outline" href="/docs/cli-and-ai-agents#ai-specs">llms.txt &amp; SKILL.md</a>
+        <a class="btn btn-outline" href="/docs/accessibility-and-vpat#vpat-export">VPAT 2.5 Export</a>
+        <a class="btn btn-outline" href="/docs/msiprism-and-patches#msiprism">MSI Prism Inspector</a>
       </div>
     </section>
 

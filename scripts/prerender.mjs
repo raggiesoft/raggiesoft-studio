@@ -46,6 +46,25 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
+function truncateClean(text, maxLen) {
+  const s = String(text).trim();
+  if (s.length <= maxLen) return s;
+  return s.slice(0, maxLen - 1).replace(/\s+\S*$/, '').trim() + '…';
+}
+
+function extractBodyInnerHtml(rawTopicHtml) {
+  // Extract inner `<body>...</body>` markup and strip HTML comments so `--` inside
+  // offline source comments never violates HTML5 strict comment rules on the web!
+  const bodyMatch = rawTopicHtml.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  const bodyHtml = bodyMatch ? bodyMatch[1] : rawTopicHtml;
+  // Also strip the trailing duplicate `<blockquote>Fictitious Persons...</blockquote>` + `<hr />`
+  // because `renderStudioPage` already renders the global Fictitious Disclaimer in `<footer>`!
+  return bodyHtml
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<hr\s*\/?>\s*<blockquote>\s*Fictitious Persons[\s\S]*?<\/blockquote>/i, '')
+    .trim();
+}
+
 function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false }) {
   if (seoTitle.length > 60) {
     throw new Error(`SEO Title exceeds 60 chars (${seoTitle.length}): "${seoTitle}"`);
@@ -191,6 +210,91 @@ async function main() {
     fs.copyFileSync(srcRoadmap, path.join(distDir, 'ROADMAP.md'));
   }
 
+  // Publish Single-Source `/docs/<topicId>` chapters & `/docs/module.rshm.json` directly from the
+  // distributed offline help module (`desktop-apps/installer-studio/help/raggiesoft.installer-studio/`)!
+  const helpModuleDir = path.join(installerStudioRoot, 'help', 'raggiesoft.installer-studio');
+  const helpManifestPath = path.join(helpModuleDir, 'module.rshm.json');
+  const docRoutePaths = [];
+  if (fs.existsSync(helpManifestPath)) {
+    const docsDistRoot = path.join(distDir, 'docs');
+    fs.mkdirSync(docsDistRoot, { recursive: true });
+    fs.copyFileSync(helpManifestPath, path.join(docsDistRoot, 'module.rshm.json'));
+
+    const helpManifest = JSON.parse(fs.readFileSync(helpManifestPath, 'utf8'));
+    const topics = Array.isArray(helpManifest.topics) ? helpManifest.topics : [];
+
+    for (let i = 0; i < topics.length; i++) {
+      const topic = topics[i];
+      const srcTopicPath = path.join(helpModuleDir, topic.fileName);
+      if (!fs.existsSync(srcTopicPath)) continue;
+
+      const rawTopicHtml = fs.readFileSync(srcTopicPath, 'utf8');
+      const rawOutPath = path.join(docsDistRoot, 'raw', topic.fileName);
+      fs.mkdirSync(path.dirname(rawOutPath), { recursive: true });
+      fs.copyFileSync(srcTopicPath, rawOutPath);
+
+      const routePath = `/docs/${topic.id}`;
+      const canonicalUrl = `${SITE_ORIGIN}${routePath}`;
+      const seoTitle = truncateClean(`${topic.title} | Installer Studio`, 60);
+      const seoDescription = truncateClean(topic.summary || helpManifest.description, 155);
+
+      const tocHtml = topics
+        .map((t, idx) => {
+          const cur = t.id === topic.id ? ' aria-current="page"' : '';
+          return `<li><a class="docs-toc-link" href="/docs/${escapeHtml(t.id)}"${cur}>${idx + 1}. ${escapeHtml(t.title)}</a></li>`;
+        })
+        .join('\n              ');
+
+      const prevTopic = i > 0 ? topics[i - 1] : null;
+      const nextTopic = i + 1 < topics.length ? topics[i + 1] : null;
+      const prevBtn = prevTopic
+        ? `<a class="btn btn-outline" href="/docs/${escapeHtml(prevTopic.id)}">&larr; ${escapeHtml(prevTopic.title)}</a>`
+        : `<a class="btn btn-outline" href="/docs">&larr; All Documentation</a>`;
+      const nextBtn = nextTopic
+        ? `<a class="btn btn-primary" href="/docs/${escapeHtml(nextTopic.id)}">${escapeHtml(nextTopic.title)} &rarr;</a>`
+        : `<a class="btn btn-primary" href="/roadmap">Explore Engineering Roadmap &rarr;</a>`;
+
+      const articleInner = extractBodyInnerHtml(rawTopicHtml);
+      const readerMarkup = `
+        <div class="docs-reader-grid">
+          <aside class="docs-sidebar" aria-label="Documentation Chapters">
+            <span class="eyebrow">F1 Help Manual (v${escapeHtml(helpManifest.productVersion || '0.4.1')})</span>
+            <h2 style="font-size: 1.05rem; margin: 0.15rem 0 0.5rem;">Chapters</h2>
+            <ul class="docs-toc-list">
+              <li><a class="docs-toc-link" href="/docs">Documentation Index</a></li>
+              ${tocHtml}
+            </ul>
+          </aside>
+          <article class="docs-article">
+            <span class="eyebrow">Chapter ${i + 1} of ${topics.length} • ${escapeHtml(topic.category || 'User Guide')}</span>
+            ${articleInner}
+            <nav class="docs-pager" aria-label="Chapter Pagination">
+              ${prevBtn}
+              ${nextBtn}
+            </nav>
+          </article>
+        </div>
+      `;
+
+      const { html } = renderStudioPage(routePath, readerMarkup);
+      const headMarkup = buildSeoHead({
+        seoTitle,
+        seoDescription,
+        canonicalUrl,
+        noindex: false
+      });
+      const finalTopicPage = templateHtml
+        .replace('<!--SSR_HEAD-->', headMarkup)
+        .replace('<!--SSR_OUTLET-->', html);
+
+      const topicFolder = path.join(docsDistRoot, topic.id);
+      fs.mkdirSync(topicFolder, { recursive: true });
+      fs.writeFileSync(path.join(topicFolder, 'index.html'), finalTopicPage, 'utf8');
+      fs.writeFileSync(path.join(docsDistRoot, `${topic.id}.html`), finalTopicPage, 'utf8');
+      docRoutePaths.push(routePath);
+    }
+  }
+
   // Copy live HTML5 VPAT 2.5 Conformance Report into `dist/vpat/raggiesoft-installer-studio-vpat-2.5.html`
   const vpatDestDir = path.join(distDir, 'vpat');
   fs.mkdirSync(vpatDestDir, { recursive: true });
@@ -207,12 +311,13 @@ async function main() {
 
   // Generate `sitemap.xml`, `robots.txt`, and IndexNow verification file
   const today = new Date().toISOString().slice(0, 10);
+  const allSitemapPaths = [...STUDIO_ROUTES.map((r) => r.path), ...docRoutePaths];
   const sitemapXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...STUDIO_ROUTES.map((r) => {
-      const loc = r.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${r.path}`;
-      const priority = r.path === '/' ? '1.0' : '0.8';
+    ...allSitemapPaths.map((p) => {
+      const loc = p === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${p}`;
+      const priority = p === '/' ? '1.0' : p.startsWith('/docs/') ? '0.75' : '0.8';
       return `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${priority}</priority></url>`;
     }),
     '</urlset>',
@@ -223,7 +328,7 @@ async function main() {
   fs.writeFileSync(path.join(distDir, `${INDEXNOW_KEY}.txt`), `${INDEXNOW_KEY}\n`, 'utf8');
 
   fs.rmSync(ssrDir, { recursive: true, force: true });
-  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} routes + /llms.txt + VPAT 2.5 + sitemap.xml for ${SITE_ORIGIN}`);
+  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} core routes + ${docRoutePaths.length} /docs/* chapters + /llms.txt + VPAT 2.5 + sitemap.xml for ${SITE_ORIGIN}`);
 }
 
 main().catch((err) => {

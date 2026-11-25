@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "moduleId": "raggiesoft.installer-studio",
+  "productName": "RaggieSoft Installer Studio",
+  "productVersion": "0.4.1",
+  "publisher": "RaggieSoft",
+  "description": "Offline documentation for RaggieSoft Installer Studio (InstallerStudio.exe, instbuild.exe, SetupWizard.exe, msiprism.exe, and RaggieSoftHelp.exe).",
+  "defaultTopicId": "welcome-overview",
+  "onlineDocsUrl": "https://raggiesoftstudio.com/docs",
+  "topics": [
+    {
+      "id": "welcome-overview",
+      "fileName": "topics/welcome-overview.html",
+      "category": "Getting Started",
+      "title": "Overview, Editions & Hybrid .rsip Architecture",
+      "summary": "Meet the 5 static /MT C++20 executables, the Community == Premier parity pledge, and .rsip / .rsis / .rsii manifests.",
+      "keywords": ["overview", "editions", "community", "premier", "rsip", "rsis", "rsii", "architecture"]
+    },
+    {
+      "id": "ide-and-aerowizards",
+      "fileName": "topics/ide-and-aerowizards.html",
+      "category": "Visual IDE & Wizards",
+      "title": "10-View Visual IDE & 5 Guided AeroWizards",
+      "summary": "Tour all 10 views of InstallerStudio.exe, the 5 native Win32 AeroWizards, File Associations, and lossless AST saving.",
+      "keywords": ["ide", "aerowizard", "project assistant", "file associations", "shortcuts", "registry", "f1"]
+    },
+    {
+      "id": "components-and-keypaths",
+      "fileName": "topics/components-and-keypaths.html",
+      "category": "Windows Installer Engine",
+      "title": "Destination Folders, Components & KeyPath Rules",
+      "summary": "Enforce Microsoft Single-Directory (RSW031), ICE38 HKCU User-Profile KeyPaths (RSW032), and ICE18 CreateFolder rules.",
+      "keywords": ["component", "keypath", "ice18", "ice38", "ice64", "ice80", "installdir", "folder"]
+    },
+    {
+      "id": "runtimes-and-merge-modules",
+      "fileName": "topics/runtimes-and-merge-modules.html",
+      "category": "Windows Installer Engine",
+      "title": "Pre-MSI Runtime Prerequisites & .MSM Merge Modules",
+      "summary": "Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\\ plus 64-bit .MSM merging.",
+      "keywords": ["prerequisite", "runtime", "dotnet", "webview2", "msm", "merge module", "lzms", "reboot", "3010"]
+    },
+    {
+      "id": "selection-tree-and-dialogs",
+      "fileName": "topics/selection-tree-and-dialogs.html",
+      "category": "Wizard UI & Dialogs",
+      "title": "MSI SelectionTree, C++ Glass Wizard & MSI.DLL Dialogs",
+      "summary": "Customize SetupWizard.exe (Glass, AeroWizard, 16:9 Autorun), the authentic MSI SelectionTree, and 370x270 MSI.DLL SQL dialogs.",
+      "keywords": ["selectiontree", "feature tree", "setupwizard", "dialogs", "msidialog", "autorun", "actiontext"]
+    },
+    {
+      "id": "cli-and-ai-agents",
+      "fileName": "topics/cli-and-ai-agents.html",
+      "category": "CLI & AI Automation",
+      "title": "Headless CLI (instbuild.exe) & AI Agent Authoring",
+      "summary": "Compile x64 and ARM64 packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents.",
+      "keywords": ["cli", "instbuild", "llms.txt", "skill.md", "json", "validate", "ai", "automation"]
+    },
+    {
+      "id": "accessibility-and-vpat",
+      "fileName": "topics/accessibility-and-vpat.html",
+      "category": "Compliance & Security",
+      "title": "WCAG 2.2 AA Accessibility, Dark Mode & VPAT 2.5",
+      "summary": "UI Automation roles, High Contrast themes, Dark Mode checkbox/header engineering, and automated HTML5 VPAT 2.5 exports.",
+      "keywords": ["accessibility", "wcag", "section 508", "vpat", "dark mode", "high contrast", "screen reader"]
+    },
+    {
+      "id": "msiprism-and-patches",
+      "fileName": "topics/msiprism-and-patches.html",
+      "category": "Compliance & Security",
+      "title": "MSI Prism SQL Inspector, Signing, .MST & .MSP",
+      "summary": "Inspect .msi/.msm/.msp relational tables in msiprism.exe, apply Dual-Layer Authenticode signing, and emit .mst/.msp deltas.",
+      "keywords": ["msiprism", "sql", "mst", "transform", "msp", "patch", "signing", "authenticode", "azure"]
+    }
+  ],
+  "indexEntries": [
+    {
+      "entryId": "idx-prereq",
+      "displayText": "[Prerequisite.<Id>] Pre-MSI Runtimes",
+      "category": "Manifest",
+      "badge": ".rsip",
+      "subtitle": "Run .NET, WebView2, or custom installers before msiexec",
+      "topicId": "runtimes-and-merge-modules",
+      "anchorId": "prerequisites"
+    },
+    {
+      "entryId": "idx-msm",
+      "displayText": "[MergeModule.<Id>] (.MSM) Consumption",
+      "category": "Manifest",
+      "badge": ".msm",
+      "subtitle": "Native 64-bit SQL & CAB extraction into Product.msi",
+      "topicId": "runtimes-and-merge-modules",
+      "anchorId": "mergemodules"
+    },
+    {
+      "entryId": "idx-selectiontree",
+      "displayText": "MSI SelectionTree (Feature State Icons)",
+      "category": "Wizard UI",
+      "badge": "UI",
+      "subtitle": "32-bit ARGB split icons, DisallowAbsent, and ADDLOCAL",
+      "topicId": "selection-tree-and-dialogs",
+      "anchorId": "selection-tree"
+    },
+    {
+      "entryId": "idx-ice38",
+      "displayText": "ICE38 & ICE18 Component KeyPath Rules",
+      "category": "Compiler",
+      "badge": "MSI",
+      "subtitle": "Single-directory components and HKCU profile KeyPaths",
+      "topicId": "components-and-keypaths",
+      "anchorId": "component-rules"
+    },
+    {
+      "entryId": "idx-llms",
+      "displayText": "llms.txt, llms-full.txt & SKILL.md",
+      "category": "AI Agents",
+      "badge": "CLI",
+      "subtitle": "Deterministic constexpr specs via instbuild --emit-ai-spec",
+      "topicId": "cli-and-ai-agents",
+      "anchorId": "ai-specs"
+    },
+    {
+      "entryId": "idx-vpat",
+      "displayText": "VPAT 2.5 HTML5 Accessibility Report",
+      "category": "Compliance",
+      "badge": "WCAG 2.2",
+      "subtitle": "Automated Section 508 & WCAG 2.2 AA report generation",
+      "topicId": "accessibility-and-vpat",
+      "anchorId": "vpat-export"
+    },
+    {
+      "entryId": "idx-msiprism",
+      "displayText": "msiprism.exe SQL Database Inspector",
+      "category": "Tools",
+      "badge": "64-Bit",
+      "subtitle": "Inspect .msi, .msm, and .msp tables in Dark & Light Mode",
+      "topicId": "msiprism-and-patches",
+      "anchorId": "msiprism"
+    },
+    {
+      "entryId": "idx-editions",
+      "displayText": "Community Edition == Premier Parity",
+      "category": "Editions",
+      "badge": "Policy",
+      "subtitle": "100% unlocked features and zero watermarks",
+      "topicId": "welcome-overview",
+      "anchorId": "editions"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Installer Studio: "Install Without Limits").
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content so every visitor, screen reader, and
+         search engine receives complete HTML on the very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5 |…</title>
+    <meta name="description" content="UI Automation roles, High Contrast themes, Dark Mode checkbox/header engineering, and automated HTML5 VPAT 2.5 exports." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/docs/accessibility-and-vpat" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Installer Studio" />
+    <meta property="og:title" content="WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5 |…" />
+    <meta property="og:description" content="UI Automation roles, High Contrast themes, Dark Mode checkbox/header engineering, and automated HTML5 VPAT 2.5 exports." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/docs/accessibility-and-vpat" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5 |…" />
+    <meta name="twitter:description" content="UI Automation roles, High Contrast themes, Dark Mode checkbox/header engineering, and automated HTML5 VPAT 2.5 exports." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/docs/accessibility-and-vpat#webpage","url":"https://raggiesoftstudio.com/docs/accessibility-and-vpat","name":"WCAG 2.2 AA Accessibility, Dark Mode & VPAT 2.5 |…","description":"UI Automation roles, High Contrast themes, Dark Mode checkbox/header engineering, and automated HTML5 VPAT 2.5 exports.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
+    <script type="module" crossorigin src="/assets/index-DkzA8-vi.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DXpplN3c.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 Installer Studio</a></li>
+          <li><a href="https://a11y.raggiesoft.com">♿ A11y Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Installer Studio</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.1)</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open Installer Studio and RaggieSoft network menu"
+          data-close-label="Close Installer Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open Installer Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="Primary Project Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Preview & Gallery</a></li><li><a class="nav-link" href="/roadmap">Roadmap</a></li><li><a class="nav-link" href="/docs" aria-current="page">Docs & AI Spec</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
+              <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+        <div class="docs-reader-grid">
+          <aside class="docs-sidebar" aria-label="Documentation Chapters">
+            <span class="eyebrow">F1 Help Manual (v0.4.1)</span>
+            <h2 style="font-size: 1.05rem; margin: 0.15rem 0 0.5rem;">Chapters</h2>
+            <ul class="docs-toc-list">
+              <li><a class="docs-toc-link" href="/docs">Documentation Index</a></li>
+              <li><a class="docs-toc-link" href="/docs/welcome-overview">1. Overview, Editions &amp; Hybrid .rsip Architecture</a></li>
+              <li><a class="docs-toc-link" href="/docs/ide-and-aerowizards">2. 10-View Visual IDE &amp; 5 Guided AeroWizards</a></li>
+              <li><a class="docs-toc-link" href="/docs/components-and-keypaths">3. Destination Folders, Components &amp; KeyPath Rules</a></li>
+              <li><a class="docs-toc-link" href="/docs/runtimes-and-merge-modules">4. Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></li>
+              <li><a class="docs-toc-link" href="/docs/selection-tree-and-dialogs">5. MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a></li>
+              <li><a class="docs-toc-link" href="/docs/cli-and-ai-agents">6. Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></li>
+              <li><a class="docs-toc-link" href="/docs/accessibility-and-vpat" aria-current="page">7. WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></li>
+              <li><a class="docs-toc-link" href="/docs/msiprism-and-patches">8. MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></li>
+            </ul>
+          </aside>
+          <article class="docs-article">
+            <span class="eyebrow">Chapter 7 of 8 • Compliance &amp; Security</span>
+            <h1>WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</h1>
+  <p>
+    Users who rely on screen readers (<code>Narrator</code>, <code>NVDA</code>, <code>JAWS</code>), full keyboard navigation,
+    Windows Contrast Themes, or Dark Mode must complete your installer before they can ever open your application. Every binary
+    in RaggieSoft Installer Studio enforces WCAG 2.2 Level AA and Revised Section 508 engineering rules.
+  </p>
+
+  
+  <h2>Native Win32 Accessibility &amp; Dark Mode Safeguards</h2>
+  <ul>
+    <li><strong>Genuine BS_AUTORADIOBUTTON Option Cards</strong>: Every wizard mode card is a full-width Win32 radio control (<code>&gt;= 68px</code> tall, exceeding WCAG 2.5.8 target size) subclassed via <code>SetWindowSubclass</code> so UI Automation announces its native <code>RadioButton</code> role, state, and description while GDI+ draws crisp vector icons and a <code>2.5px</code> focus ring.</li>
+    <li><strong>Dark-Mode-Safe Checkboxes (AttachAccessibleCheckboxSubclass)</strong>: Standard Win32 <code>ComCtl32 v6</code> checkboxes ignore <code>WM_CTLCOLORSTATIC</code> and paint black text on dark backgrounds. Our shared subclass renders crisp <code>15.8:1</code> WCAG AAA labels and focus rings across <code>SetupWizard.exe</code>, <code>InstallerStudio.exe</code>, and <code>RaggieSoftHelp.exe</code>.</li>
+    <li><strong>Dark-Mode-Safe ListView Column Headers (AttachDarkAwareListViewSubclass)</strong>: Custom-paints <code>SysHeader32</code> (including trailing unoccupied header space) in Midnight Navy (<code>#0B132B</code>) with <code>#F8FAFC</code> labels in Dark Mode and Slate (<code>#E2E8F0</code>) in Light Mode.</li>
+    <li><strong>Dark-Mode-Safe Push Buttons &amp; Combos (AttachAccessiblePushButtonSubclass)</strong>: Custom-paints native Win32 <code>BS_PUSHBUTTON</code> and <code>BS_DEFPUSHBUTTON</code> controls (with Royal Cobalt primary fills, Slate-Navy secondary fills, UAC shield icons, and High-Contrast fallback) while keeping 100% native UI Automation <code>Button</code> semantics and <code>Alt+Key</code> mnemonics.</li>
+    <li><strong>Live OS Light &lt;-&gt; Dark Hot-Swapping (ImmersiveColorSet)</strong>: All four GUI apps listen for <code>WM_SETTINGCHANGE</code> (<code>ImmersiveColorSet</code> &amp; <code>SPI_SETHIGHCONTRAST</code>), <code>WM_SYSCOLORCHANGE</code>, and <code>WM_THEMECHANGED</code> to flip DWM frames, controls, and RichEdit typography live on screen without restarting.</li>
+    <li><strong>Windows Contrast Themes (SPI_GETHIGHCONTRAST)</strong>: Automatically steps aside decorative gradients in favor of pure OS <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, and <code>COLOR_HIGHLIGHT</code> tokens.</li>
+  </ul>
+
+  
+  <h2 id="vpat-export">Automated Per-Project VPAT 2.5 Conformance Reports</h2>
+  <p>
+    Run <code>instbuild.exe --emit-vpat MyApp.rsip out</code> (or click <strong>VPAT 2.5</strong> on the IDE toolbar) to
+    audit your manifest's foreground/background hex contrast ratios, keyboard mnemonics, and silent enterprise CLI switches
+    and emit a standalone HTML5 Accessibility Conformance Report ready for institutional procurement review.
+  </p>
+            <nav class="docs-pager" aria-label="Chapter Pagination">
+              <a class="btn btn-outline" href="/docs/cli-and-ai-agents">&larr; Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a>
+              <a class="btn btn-primary" href="/docs/msiprism-and-patches">MSI Prism SQL Inspector, Signing, .MST &amp; .MSP &rarr;</a>
+            </nav>
+          </article>
+        </div>
+      
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Preview &amp; Gallery</a>
+          <a href="/roadmap">Public Roadmap</a>
+          <a href="/docs">Docs &amp; AI Spec</a>
+          <a href="/changelog">Version History (v0.4.1)</a>
+          <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
+          <a href="/security">Security &amp; Architecture</a>
+          <a href="/ROADMAP.md">/ROADMAP.md</a>
+          <a href="/llms.txt">/llms.txt</a>
+          <a href="/llms-full.txt">/llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">GitHub Repository</a>
+          <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source Technical Preview licensed under the MIT License.
+          Feedback &amp; engineering inquiries: <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261123a" defer></script>
+  </body>
+</html>

@@ -592,6 +592,90 @@ code {
   color: var(--primary);
 }
 
+/* Single-Source `/docs/<topic>` Documentation Reader Layout (Mirrors `RaggieSoftHelp.exe`) */
+.docs-reader-grid {
+  display: grid;
+  grid-template-columns: minmax(15rem, 18.5rem) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.docs-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 1.15rem;
+  position: sticky;
+  top: 4.75rem;
+}
+
+.docs-toc-list {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.docs-toc-link {
+  display: block;
+  padding: 0.48rem 0.7rem;
+  border-radius: 0.45rem;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.docs-toc-link:hover,
+.docs-toc-link[aria-current='page'] {
+  background: var(--surface-alt);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.docs-article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.95rem;
+  padding: clamp(1.35rem, 3vw, 2.35rem);
+}
+
+.docs-article h1 {
+  margin-top: 0.25rem;
+}
+
+.docs-article blockquote {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 4px solid var(--primary);
+  background: var(--surface-alt);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.docs-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .docs-reader-grid {
+    grid-template-columns: 1fr;
+  }
+  .docs-sidebar {
+    position: static;
+  }
+}
+
 @media (forced-colors: active) {
   .card,
   .hero,

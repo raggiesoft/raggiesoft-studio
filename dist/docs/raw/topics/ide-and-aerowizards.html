@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/ide-and-aerowizards.html
+  OVERVIEW: Offline Help Topic 2 documenting all 10 views of InstallerStudio.exe,
+  the 5 native Win32 AeroWizards, File Associations, Shortcuts, and F1 navigation.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header and keyboard shortcut summary -->
+  <h1>10-View Visual IDE &amp; 5 Guided AeroWizards</h1>
+  <p>
+    <strong>InstallerStudio.exe</strong> pairs a 10-view left navigation sidebar with an in-memory lossless Abstract Syntax Tree
+    (AST). Whenever you change a field in any visual form or wizard, only the targeted key-value line updates while every
+    <code>;</code> comment, <code>#</code> comment, and <code>@include</code> directive stays intact.
+  </p>
+
+  <!-- Walkthrough of all 10 sidebar views -->
+  <h2>The 10 Workspace Views</h2>
+  <ol>
+    <li><strong>Package &amp; Identity</strong>: Product name, tagline, 3-part MSI version (<code>Major.Minor.Build</code>), publisher, permanent <code>UpgradeCode</code> GUID, and install scope (<code>machine</code> vs. <code>user</code>).</li>
+    <li><strong>Destination Files &amp; Folders</strong>: Hierarchical Destination Computer folder tree paired with a filtered payload and folder list.</li>
+    <li><strong>Setup Design (Components)</strong>: Visual <code>Features -&gt; Sub-Features -&gt; Components -&gt; KeyPaths</code> hierarchy.</li>
+    <li><strong>Runtimes &amp; Merge Modules</strong>: Manage Pre-MSI <code>[Prerequisite.*]</code> runtimes and 64-bit <code>[MergeModule.*]</code> (<code>.msm</code>) libraries.</li>
+    <li><strong>File Associations &amp; Verbs</strong>: Register document extensions (<code>.ext</code>), ProgIds, MIME types, and shell verbs in clean <code>HKMU\Software\Classes</code> or advertised MSI tables.</li>
+    <li><strong>Shortcuts &amp; Registry</strong>: Author Start Menu / Desktop shortcuts and 64-bit registry values.</li>
+    <li><strong>C++ Wizard Designer</strong>: Real-time GDI+ preview of <code>SetupWizard.exe</code> across <code>standard</code> Glass, <code>aerowizard</code>, and <code>autorun16x9</code> layouts.</li>
+    <li><strong>MSI.DLL Dialog Designer</strong>: Visual <code>370x270</code> DLU canvas for relational Windows Installer <code>Dialog</code> and <code>Control</code> SQL tables.</li>
+    <li><strong>Signing, .MST &amp; .MSP</strong>: Configure Dual-Layer Authenticode signing and generate GPO Transforms (<code>.mst</code>) or Patch Packages (<code>.msp</code>).</li>
+    <li><strong>.RSIP Source (AST)</strong>: Direct monospace source editor synchronized live with every visual view.</li>
+  </ol>
+
+  <!-- Summary of the 5 guided AeroWizards -->
+  <h2>Five Guided Native AeroWizards</h2>
+  <ul>
+    <li><strong>New Project Assistant (Ctrl+W)</strong>: Creates a complete <code>.rsip</code> manifest with fresh GUIDs, payload discovery, and shortcuts in five steps.</li>
+    <li><strong>Runtime Prerequisite &amp; .MSM Wizard</strong>: Adds curated or custom runtime installers and Merge Modules with automatic exit-code handling.</li>
+    <li><strong>Component &amp; KeyPath Wizard</strong>: Guides you through Microsoft's Single-Directory and <code>HKCU</code> profile KeyPath rules.</li>
+    <li><strong>File Association Wizard</strong>: Maps document extensions, icons, and shell verbs cleanly to your main executable.</li>
+    <li><strong>Release, Transform (.MST) &amp; Patch (.MSP) Wizard</strong>: Builds release artifacts, VPAT 2.5 reports, and binary database diffs.</li>
+  </ul>
+
+  <!-- Keyboard shortcuts built into InstallerStudio.exe -->
+  <h2>Essential IDE Keyboard Shortcuts</h2>
+  <table>
+    <tr><th>Shortcut</th><th>Action</th></tr>
+    <tr><td><code>F1</code></td><td>Opens <strong>RaggieSoftHelp.exe</strong> directly to the topic matching your active IDE view via Named Pipe IPC.</td></tr>
+    <tr><td><code>Ctrl+W</code></td><td>Launches the 5-step New Project AeroWizard.</td></tr>
+    <tr><td><code>F7</code></td><td>Runs <code>instbuild.exe --validate</code> and prints structured diagnostics in the bottom console.</td></tr>
+    <tr><td><code>F5</code></td><td>Compiles the standalone <code>.msi</code> and self-extracting <code>Setup.exe</code> bootstrapper.</td></tr>
+    <tr><td><code>F6</code></td><td>Compiles a reusable 64-bit Windows Installer Merge Module (<code>.msm</code>).</td></tr>
+  </table>
+</body>
+</html>

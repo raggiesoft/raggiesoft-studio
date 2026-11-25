@@ -1,0 +1,60 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/welcome-overview.html
+  OVERVIEW: Offline Help Topic 1 covering the 5 native C++20 executables,
+  the Community == Premier feature-parity pledge, and .rsip / .rsis / .rsii files.
+-->
+<html lang="en">
+<body>
+  <!-- Primary topic heading rendered by RaggieSoftHelp.exe -->
+  <h1>Overview, Editions &amp; Hybrid .rsip Architecture</h1>
+  <p>
+    <strong>RaggieSoft Installer Studio</strong> (<em>Install Without Limits</em>) is a zero-dependency native Win32 C++20
+    packaging suite targeting Windows 11 <code>x64</code> and <code>ARM64</code>. Every tool in the suite compiles directly
+    with <code>cl.exe /MT</code> against stock Windows 11 SDK system libraries (<code>msi.dll</code>, <code>cabinet.dll</code>,
+    <code>gdiplus.dll</code>, and <code>Msftedit.dll</code>) so neither your developer workstation nor your customer's PC
+    needs external frameworks pre-installed.
+  </p>
+
+  <!-- Breakdown of the 5 executables included in bin\arm64 and bin\x64 -->
+  <h2>Five Native Binaries in One Suite</h2>
+  <ul>
+    <li><strong>InstallerStudio.exe</strong>: 10-view native Win32 Visual IDE and 5 guided AeroWizards with a 100% comment-preserving AST.</li>
+    <li><strong>instbuild.exe</strong>: Headless CLI compiler, sub-millisecond JSON validator, AI spec emitter, and HTML5 VPAT 2.5 generator.</li>
+    <li><strong>SetupWizard.exe</strong>: White-label WCAG 2.2 Level AA external-UI bootstrapper with Windows LZMS solid compression, Pre-MSI Runtime Prerequisites, and an authentic Windows Installer SelectionTree.</li>
+    <li><strong>msiprism.exe</strong>: Native 64-bit Dark Mode SQL database inspector and differ for <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> packages.</li>
+    <li><strong>RaggieSoftHelp.exe</strong>: Zero-dependency native C++20 offline Help Viewer with Named Pipe <code>F1</code> context navigation, Contents tree, keyword Index, and instant full-text Search.</li>
+  </ul>
+
+  <!-- Anchor target for the Index entry 'Community Edition == Premier Parity' -->
+  <h2 id="editions">Product Editions: Community Equals Premier</h2>
+  <p>
+    RaggieSoft Installer Studio defines four IDE edition badges: <strong>Community</strong>, <strong>Express</strong>,
+    <strong>Professional</strong>, and <strong>Premier</strong>. By permanent architectural design, <strong>Community Edition
+    maintains 100% technical feature parity with Premier Edition</strong>:
+  </p>
+  <ul>
+    <li>Zero locked IDE views, zero disabled CLI flags, and zero artificial feature gates.</li>
+    <li>100% white-label output: compiled <code>Setup.exe</code> and <code>.msi</code> files carry your own <code>[Package] Manufacturer</code>, product title, icon, and <code>VERSIONINFO</code> with zero visible third-party watermarks.</li>
+    <li>Zero mandatory online accounts, zero background telemetry, and zero cryptocurrency bundles.</li>
+  </ul>
+
+  <!-- Explanation of standalone .rsip projects, .rsis suites, and .rsii includes -->
+  <h2>Hybrid Project Files (.rsip + .rsis + .rsii)</h2>
+  <ol>
+    <li><strong>.rsip (RaggieSoft Installer Project)</strong>: Standalone plain-text INI-style manifest describing one installer or Merge Module. Comments (<code>;</code> and <code>#</code>) survive GUI edits byte-for-byte.</li>
+    <li><strong>.rsis (RaggieSoft Installer Suite)</strong>: Optional multi-project workspace grouping multiple <code>.rsip</code> manifests with shared <code>[Variable]</code> tokens and deterministic <code>BuildOrder</code> sorting.</li>
+    <li><strong>.rsii (RaggieSoft Installer Include)</strong>: Optional <code>@include "shared.rsii"</code> header inherited cleanly across projects.</li>
+  </ol>
+
+  <hr />
+  <blockquote>
+    Fictitious Persons &amp; Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine),
+    biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU,
+    The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire),
+    transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are
+    works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft
+    Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.
+  </blockquote>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/selection-tree-and-dialogs.html
+  OVERVIEW: Offline Help Topic 5 covering the authentic MSI SelectionTree,
+  SetupWizard.exe layouts, ActionData MsiFormatRecordW formatting, and MSI.DLL dialogs.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</h1>
+  <p>
+    Every project compiled with <code>BuildBootstrapper = true</code> delivers two synchronized user-interface layers:
+    the high-DPI GDI+ <strong>SetupWizard.exe</strong> external UI for interactive desktop installs, and a complete relational
+    <strong>MSI.DLL Dialog</strong> SQL sequence inside <code>Product.msi</code> for direct enterprise <code>msiexec /i</code> runs.
+  </p>
+
+  <!-- Anchor target for SelectionTree -->
+  <h2 id="selection-tree">Authentic Windows Installer SelectionTree</h2>
+  <p>
+    When a user selects <strong>Custom Setup</strong> or <strong>Maintenance -&gt; Modify</strong>,
+    <code>SetupWizard.exe</code> opens the embedded <code>Product.msi</code> read-only and renders an authentic Windows
+    Installer <code>SelectionTree</code> with crisp 32-bit ARGB split-dropdown icons (zero 1-bit white/magenta halos in Dark Mode!):
+  </p>
+  <ul>
+    <li><strong>Local Drive Icon</strong>: Will be installed on local hard drive.</li>
+    <li><strong>Cascaded Dual-Drive Icon</strong>: Entire feature and all subfeatures will be installed locally.</li>
+    <li><strong>Partial Drive Icon</strong>: Some subfeatures are selected while others are excluded.</li>
+    <li><strong>On-Demand Badge (1)</strong>: Feature will be installed when required (when <code>AllowAdvertise = true</code>).</li>
+    <li><strong>Crimson X Icon</strong>: Entire feature will be unavailable (automatically blocked when <code>DisallowAbsent = true</code>).</li>
+  </ul>
+  <p>
+    Selecting any node updates the live <strong>Feature Details &amp; Disk Cost</strong> card on the right and translates choices
+    into exact <code>ADDLOCAL</code>, <code>REMOVE</code>, and <code>ADVERTISE</code> property lists passed to <code>msi.dll</code>.
+  </p>
+
+  <!-- ActionText & MsiFormatRecordW status hygiene -->
+  <h2>Clean Live Progress Text (Zero Unexpanded [1] Placeholders)</h2>
+  <p>
+    <code>instbuild.exe</code> stores action descriptions (such as <code>Copying new files</code>) separately from
+    <code>ActionText.Template</code> (<code>[1]</code>), and <code>SetupWizard.exe</code> formats every
+    <code>INSTALLMESSAGE_ACTIONDATA</code> record through <code>MsiFormatRecordW</code> so users see real filenames
+    instead of raw <code>[1]</code> placeholders.
+  </p>
+
+  <!-- Custom MSI.DLL SQL Dialog splicing -->
+  <h2>Custom 370x270 MSI.DLL Dialogs</h2>
+  <p>
+    Need an extra configuration form inside <code>Product.msi</code> itself? Declare <code>[MsiDialog.&lt;Id&gt;]</code> and
+    <code>[MsiControl.&lt;Id&gt;]</code> sections (or design them visually in View 8 of <code>InstallerStudio.exe</code>) to
+    splice custom edit boxes, path pickers, radio groups, and checkboxes directly into the <code>Dialog</code> and
+    <code>ControlEvent</code> SQL tables.
+  </p>
+</body>
+</html>

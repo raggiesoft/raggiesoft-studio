@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/msiprism-and-patches.html
+  OVERVIEW: Offline Help Topic 8 covering msiprism.exe SQL database inspection,
+  Dual-Layer Authenticode signing, GPO Transforms (.mst), and Patch Packages (.msp).
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</h1>
+  <p>
+    Enterprise deployment teams routinely inspect compiled Windows Installer tables, customize properties via Group Policy
+    Transforms (<code>.mst</code>), distribute binary delta Patches (<code>.msp</code>), and verify dual-layer Authenticode
+    digital signatures.
+  </p>
+
+  <!-- Anchor target for msiprism.exe -->
+  <h2 id="msiprism">Inspecting Databases with RaggieSoft MSI Prism (msiprism.exe)</h2>
+  <ul>
+    <li>Opens any <code>.msi</code> (Installation Database), <code>.msm</code> (Merge Module), or <code>.msp</code> (Patch Package via <code>MSIDBOPEN_PATCHFILE</code>) in native 64-bit <code>x64</code> and <code>ARM64</code> Dark or Light Mode.</li>
+    <li>Displays all OLE <code>SummaryInformation</code> properties (including <code>PID_TEMPLATE</code> architecture/LCID and <code>PID_REVNUMBER</code> PackageCode) alongside every relational SQL table in <code>_Tables</code>.</li>
+    <li>Runs one-click ICE80 64-bit attribute and relational schema verification, and supports headless CI verification via <code>msiprism.exe --inspect-summary &lt;file&gt;</code>.</li>
+  </ul>
+
+  <!-- Dual-Layer Authenticode & Azure Artifact Signing -->
+  <h2>Dual-Layer Authenticode Code Signing</h2>
+  <p>
+    When <code>[Signing] Enabled = true</code> in your <code>.rsip</code> manifest (using either a local certificate store
+    <code>Thumbprint</code> or Azure Artifact Signing <code>DlibPath</code> + <code>MetadataJson</code>),
+    <code>instbuild.exe</code> signs in strict two-stage order:
+  </p>
+  <ol>
+    <li>Signs the inner compiled <code>Product.msi</code> database first so Windows Installer's UAC prompt displays your verified publisher name.</li>
+    <li>Compresses and embeds that signed <code>Product.msi</code> into <code>Setup.exe</code> via <code>UpdateResourceW</code>, then signs the outer <code>Setup.exe</code> executable!</li>
+  </ol>
+
+  <!-- Enterprise .MST Transforms & .MSP Patches -->
+  <h2>Generating .MST Transforms &amp; .MSP Patch Packages</h2>
+  <p>
+    Use <strong>View 9 (Signing, .MST &amp; .MSP)</strong>, the <strong>Release AeroWizard</strong>, or
+    <code>msiprism.exe</code> to diff a baseline <code>.msi</code> against a customized or upgraded <code>.msi</code> and emit
+    standard <code>.mst</code> Transforms (<code>msiexec /i Product.msi TRANSFORMS=Org.mst /qn</code>) or <code>.msp</code>
+    Patch Packages.
+  </p>
+</body>
+</html>

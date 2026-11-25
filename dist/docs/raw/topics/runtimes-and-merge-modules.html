@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/runtimes-and-merge-modules.html
+  OVERVIEW: Offline Help Topic 4 covering Pre-MSI [Prerequisite.*] runtimes,
+  Windows LZMS compression, RebootExitCodes, and 64-bit [MergeModule.*] (.msm) merging.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</h1>
+  <p>
+    Windows Installer allows only one active <code>msiexec</code> Execute sequence at a time (otherwise returning error
+    <code>1618: Another installation is already in progress</code>). Because third-party framework installers often invoke
+    <code>msiexec.exe</code> internally, <strong>SetupWizard.exe</strong> stages and executes all <code>[Prerequisite.&lt;Id&gt;]</code>
+    runtimes <em>after</em> the user clicks <strong>Install</strong> on the wizard summary screen and <em>before</em>
+    <code>Product.msi</code> starts—all under a single unified UAC elevation prompt!
+  </p>
+
+  <!-- Anchor target for [Prerequisite.<Id>] -->
+  <h2 id="prerequisites">Three Flexible Runtime Delivery Modes</h2>
+  <ul>
+    <li><strong>download (Small Web Bootstrapper)</strong>: Streams the runtime over HTTPS via native OS <code>WinHTTP</code> with live byte progress, optional <code>Sha256</code> verification, and an accessible Retry / Cancel prompt if offline.</li>
+    <li><strong>embedded (Single-File Offline Setup.exe)</strong>: Compresses your local runtime binary with Windows <code>COMPRESS_ALGORITHM_LZMS</code> (<code>Cabinet.lib</code>) straight into Win32 resources (<code>#300+</code>) alongside <code>Product.msi</code>.</li>
+    <li><strong>side-by-side (ISO / USB Media Layout)</strong>: Launches from a sibling <code>Redist\</code> folder next to <code>Setup.exe</code>, automatically falling back to HTTPS if <code>Url</code> is also supplied.</li>
+  </ul>
+
+  <!-- Curated presets and reboot exit code latching -->
+  <h2>Curated Presets &amp; Reboot Exit Code Latching</h2>
+  <p>
+    Built-in presets (<code>DotNet10Desktop</code>, <code>DotNet10AspNet</code>, <code>DotNet9Desktop</code>,
+    <code>DotNet8Desktop</code>, <code>EdgeWebView2</code>, and <code>VcRedist2022</code>) include architecture-aware
+    detection probes and standardized reboot codes (<code>3010</code>, <code>1641</code>, and <code>23</code>). For
+    <code>Preset = Custom</code> runtimes, specify <code>SuccessExitCodes</code> and <code>RebootExitCodes</code> directly:
+    if any prerequisite requests a restart, <code>SetupWizard.exe</code> latches that flag, finishes installing your main
+    <code>Product.msi</code>, and cleanly reports the restart notice at the end!
+  </p>
+  <pre>
+; Curated .NET 10 Desktop Runtime downloaded on demand
+[Prerequisite.DotNet10]
+Preset           = DotNet10Desktop
+Distribution     = download
+
+; Custom offline vendor runtime compressed with LZMS inside Setup.exe
+[Prerequisite.AudioDriver]
+Preset           = Custom
+Name             = Studio Low-Latency Audio Runtime
+Distribution     = embedded
+SourceFile       = ..\redist\$(ARCH)\AudioRuntimeSetup.exe
+SilentArgs       = /quiet /norestart
+DetectRegKey     = HKLM\Software\SampleStudio\AudioRuntime
+DetectRegValue   = InstalledVersion
+DetectMinVersion = 2.4.0
+SuccessExitCodes = 0, 1638
+RebootExitCodes  = 3010, 1641, 23
+  </pre>
+
+  <!-- Anchor target for [MergeModule.<Id>] -->
+  <h2 id="mergemodules">Native 64-Bit .MSM Merge Module Consumption</h2>
+  <p>
+    Add as many <code>[MergeModule.&lt;Id&gt;]</code> sections as your project requires. Unlike legacy 32-bit COM
+    <code>mergemod.dll</code> pipelines, <code>instbuild.exe</code> merges <code>.msm</code> SQL tables (<code>Component</code>,
+    <code>File</code>, <code>Directory</code>, <code>Registry</code>, <code>MsiFileHash</code>) and extracts embedded
+    <code>MergeModule.CABinet</code> payloads natively in 64-bit C++20 via <code>msi.dll</code> and <code>Cabinet.lib</code> FDI!
+  </p>
+  <pre>
+[MergeModule.SharedCore]
+Source     = ..\..\out\shared-core-$(ARCH).msm
+Feature    = Main
+TargetRoot = INSTALLDIR
+  </pre>
+</body>
+</html>

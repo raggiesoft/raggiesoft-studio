@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/cli-and-ai-agents.html
+  OVERVIEW: Offline Help Topic 6 documenting instbuild.exe CLI flags, JSON linting,
+  and autonomous AI coding agent workflows via llms.txt, llms-full.txt, and SKILL.md.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>Headless CLI (instbuild.exe) &amp; AI Agent Authoring</h1>
+  <p>
+    RaggieSoft Installer Studio was designed from Day 1 so human engineers and autonomous AI coding agents can create,
+    validate, and compile production Windows installers from scratch without touching a mouse or fighting opaque XML/binary files.
+  </p>
+
+  <!-- Complete CLI command reference -->
+  <h2>Core instbuild.exe Commands</h2>
+  <pre>
+; 1. Sub-millisecond schema, GUID, 3-part version, Component rule &amp; mnemonic linter
+instbuild.exe --validate --diagnostics=json MyProject.rsip --arch=arm64
+
+; 2. Compile standalone Enterprise .msi + LZMS-compressed Setup.exe (+ VPAT 2.5 HTML5)
+instbuild.exe MyProject.rsip --arch=arm64 --with-vpat
+instbuild.exe MyProject.rsip --arch=x64   --with-vpat
+
+; 3. Build an entire multi-project .rsis Suite in deterministic BuildOrder
+instbuild.exe MyWorkspace.rsis --with-vpat
+
+; 4. Emit a reusable 64-bit Merge Module (.msm), GPO Transform (.mst), or Patch (.msp)
+instbuild.exe --emit-msm MyLibrary.rsip out\MyLibrary-x64.msm --arch=x64
+instbuild.exe --generate-mst Base.msi CustomOrg.msi OrgPolicy.mst
+instbuild.exe --generate-msp v1.0.0.msi v1.1.0.msi Update-1.1.0.msp
+
+; 5. Regenerate constexpr AI specifications (llms.txt, llms-full.txt, SKILL.md)
+instbuild.exe --emit-ai-spec .\specs
+  </pre>
+
+  <!-- Anchor target for AI Specs -->
+  <h2 id="ai-specs">Zero-Drift AI Specifications (llms.txt &amp; SKILL.md)</h2>
+  <p>
+    Because <code>instbuild.exe --emit-ai-spec</code> generates <code>llms.txt</code>, <code>llms-full.txt</code>, and
+    <code>SKILL.md</code> directly from the compiler's own C++20 <code>constexpr</code> field descriptors in
+    <code>RswSchema.hpp</code>, the AI documentation can never drift out of sync with the validator!
+  </p>
+  <ol>
+    <li><strong>Step 1 — Read</strong>: Point your AI agent at <code>specs/llms-full.txt</code> (or <code>https://raggiesoftstudio.com/llms-full.txt</code>).</li>
+    <li><strong>Step 2 — Author</strong>: Have the agent write a commented <code>.rsip</code> manifest using <code>$(ARCH)</code> payload paths, a permanent <code>UpgradeCode</code> GUID, 3-part <code>Major.Minor.Build</code> version numbers, and <code>&amp;</code> keyboard mnemonics.</li>
+    <li><strong>Step 3 — Validate</strong>: Run <code>instbuild.exe --validate --diagnostics=json</code> and confirm <code>"ok": true</code> before compiling.</li>
+    <li><strong>Step 4 — Compile &amp; Inspect</strong>: Compile <code>arm64</code> and <code>x64</code> outputs and verify with <code>msiprism.exe --inspect-summary</code>.</li>
+  </ol>
+</body>
+</html>

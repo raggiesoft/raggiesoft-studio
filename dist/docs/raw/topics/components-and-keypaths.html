@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/components-and-keypaths.html
+  OVERVIEW: Offline Help Topic 3 explaining Destination Roots, deterministic UUIDv5
+  Component GUIDs, and ICE18 / ICE38 / ICE64 / ICE80 validation rules.
+-->
+<html lang="en">
+<body>
+  <!-- Topic header -->
+  <h1>Destination Folders, Components &amp; KeyPath Rules</h1>
+  <p>
+    Windows Installer tracks every installed file, registry entry, and folder through atomic units called
+    <strong>Components</strong>. RaggieSoft Installer Studio automates best-practice Component generation by default while
+    giving advanced authors full declarative control via <code>[Component.&lt;Id&gt;]</code> and <code>[Folder.&lt;Id&gt;]</code>.
+  </p>
+
+  <!-- Standard MSI root directories supported out of the box -->
+  <h2>Nine Standard Destination Roots</h2>
+  <ul>
+    <li><code>INSTALLDIR</code>: Primary application directory under <code>ProgramFiles64Folder</code> (per-machine) or <code>LocalAppDataFolder</code> (per-user).</li>
+    <li><code>CommonFiles64Folder</code>: Shared 64-bit components under <code>C:\Program Files\Common Files</code>.</li>
+    <li><code>CommonAppDataFolder</code>: Machine-wide data under <code>C:\ProgramData</code>.</li>
+    <li><code>AppDataFolder</code> &amp; <code>LocalAppDataFolder</code>: Roaming and Local per-user profile directories (automatically enforced with ICE38 <code>HKCU</code> KeyPaths).</li>
+    <li><code>ApplicationProgramsFolder</code> &amp; <code>DesktopFolder</code>: Start Menu program group and Desktop shortcut folders.</li>
+    <li><code>System64Folder</code> &amp; <code>FontsFolder</code>: Native 64-bit <code>System32</code> and Windows <code>Fonts</code> directories.</li>
+  </ul>
+
+  <!-- Anchor target for ICE18 / ICE38 / ICE64 / ICE80 rules -->
+  <h2 id="component-rules">Enforced Windows Installer Component Rules</h2>
+  <ol>
+    <li><strong>Deterministic SHA-1 UUIDv5 Component GUIDs</strong>: When <code>Guid = *</code> (or when payloads auto-generate 1-file components), <code>instbuild.exe</code> derives a repeatable GUID from <code>UpgradeCode + Architecture + TargetPath</code> so major and minor upgrades never orphan resources.</li>
+    <li><strong>Single-Directory Rule (RSW031)</strong>: Every payload bound to an explicit <code>[Component.&lt;Id&gt;]</code> must target the exact same <code>TargetRoot</code> and <code>TargetSubdir</code>.</li>
+    <li><strong>User-Profile HKCU KeyPath Rule (ICE38 / RSW032)</strong>: Any component installing into a per-user folder (<code>AppDataFolder</code>, <code>LocalAppDataFolder</code>, <code>StartMenu</code>, or <code>Desktop</code>) must use a <code>HKCU</code> registry KeyPath rather than a file KeyPath.</li>
+    <li><strong>Empty Folder Creation &amp; Cleanup (ICE18 &amp; ICE64)</strong>: Explicit <code>[Folder.&lt;Id&gt;]</code> sections emit both <code>CreateFolder</code> and <code>RemoveFolder</code> rows so uninstalls leave zero empty directories behind.</li>
+    <li><strong>Native 64-Bit Component Attributes (ICE80)</strong>: On <code>x64</code> and <code>ARM64</code> packages, <code>msidbComponentAttributes64bit</code> (<code>256</code>) is set automatically across components and verified post-compile.</li>
+  </ol>
+
+  <!-- Example .rsip block showing explicit Component and Folder sections -->
+  <h2>Declarative .rsip Example</h2>
+  <pre>
+[Component.CoreExe]
+Feature       = Main
+TargetRoot    = INSTALLDIR
+Guid          = *
+KeyPathKind   = file
+KeyPathTarget = MyStudioApp.exe
+
+[Folder.PluginCache]
+TargetRoot    = LocalAppDataFolder
+TargetSubdir  = RaggieSoft\MyStudioApp\Cache
+Feature       = Main
+  </pre>
+</body>
+</html>
