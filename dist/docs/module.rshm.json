@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "moduleId": "raggiesoft.installer-studio",
   "productName": "RaggieSoft Installer Studio",
-  "productVersion": "0.4.1",
+  "productVersion": "0.4.2",
   "publisher": "RaggieSoft",
   "description": "Offline documentation for RaggieSoft Installer Studio (InstallerStudio.exe, instbuild.exe, SetupWizard.exe, msiprism.exe, and RaggieSoftHelp.exe).",
   "defaultTopicId": "welcome-overview",
