@@ -9,19 +9,19 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.4.4`)**:
+ *     public **Project Announcement & Open Technical Preview (`v0.4.5`)**:
  *       1. `/`              — Vision Announcement, Universal Single-Download
- *                             Installers, SmartScreen / Azure Signing Status,
+ *                             Installers, Microsoft Azure Artifact Signing Status,
  *                             28-Year Origin Story, & Suite Spotlight
  *       2. `/screenshots`   — Dedicated Visual Feature Tour with 10 real native
  *                             Win32 C++20 captures & full-size HTML5 `<dialog>` modals
  *       3. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
  *                             (`v0.5.0` -> `v1.0.0 GA` + `v1.1+` Expansion)
  *       4. `/docs`          — Single-source offline & web manual + AI `/llms.txt`
- *       5. `/faq`           — Frequently Asked Questions (SmartScreen & Azure
+ *       5. `/faq`           — Frequently Asked Questions (Microsoft Azure Artifact
  *                             Signing, Why No IA-64 or x86 Host Builds, Setup
  *                             Types vs. InstallLevel, & Community == Premier)
- *       6. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.4`)
+ *       6. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.5`)
  *       7. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
  *       8. `/accessibility` — Canonical alias view for `/vpat`
@@ -71,9 +71,9 @@ const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-ide-features',
     fileName: 'ide-features-tree.png',
-    badge: 'Updated in v0.4.4 • Setup Architecture',
+    badge: 'v0.4.5 • Setup Architecture',
     title: '1. Dedicated Features Hierarchy & Plain-English Inclusion Tiers',
-    alt: 'RaggieSoft Installer Studio v0.4.4 Visual IDE showing the categorized 12-view left sidebar tree and the dedicated All Features hierarchy with plain-English Minimal and Typical inclusion badges, Move Up/Down ordering, DisallowAbsent lock, and Included In dropdown.',
+    alt: 'RaggieSoft Installer Studio v0.4.5 Visual IDE showing the categorized 12-view left sidebar tree and the dedicated All Features hierarchy with plain-English Minimal and Typical inclusion badges, Move Up/Down ordering, DisallowAbsent lock, and Included In dropdown.',
     summaryHtml:
       'Organize root features and nested sub-features inside an <code>All Features</code> <code>SysTreeView32</code>, choose plain-English <strong>Included In</strong> tiers (<em>Minimal / Compact</em>, <em>Typical / Express</em>, <em>Complete Only</em>, or <em>Hidden</em>) instead of raw MSI <code>InstallLevel</code> numbers, and reorder display priority with <strong>Move Up / Move Down</strong>.',
     detailHtml:
@@ -82,9 +82,9 @@ const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-ide-registry',
     fileName: 'ide-registry-tree.png',
-    badge: 'New in v0.4.2 • Setup Architecture',
+    badge: 'Setup Architecture • RegEdit Hierarchy',
     title: '2. RegEdit-Style Registry Tree, Feature Filter & .REG Importer',
-    alt: 'RaggieSoft Installer Studio Registry view displaying HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE\\Software\\RaggieSoft\\Installer Studio, HKEY_USERS, and HKMU folders on the left alongside typed REG_SZ values on the right.',
+    alt: 'RaggieSoft Installer Studio v0.4.5 Registry view displaying HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE\\Software\\RaggieSoft\\Installer Studio, HKEY_USERS, and HKMU folders on the left alongside typed REG_SZ values on the right.',
     summaryHtml:
       'Navigate target registry keys just like Windows Registry Editor across <code>HKCR</code>, <code>HKCU</code>, <code>HKLM</code>, <code>HKU</code>, and <code>HKMU</code> nested folders, inspect typed <code>REG_SZ</code> / <code>REG_EXPAND_SZ</code> / <code>REG_DWORD</code> values on the right, filter keys by Feature, or import <code>.reg</code> scripts in one click.',
     detailHtml:
@@ -95,7 +95,7 @@ const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'ide-destination-folders.png',
     badge: 'Dual-Tree Explorer • ICE18 / ICE38 / ICE64',
     title: '3. Destination Computer & Folder Contents Dual Trees',
-    alt: 'RaggieSoft Installer Studio Files and Folders view showing the Destination Computer folder tree on the left and the filtered Staged Contents tree with Component and KeyPath badges on the right.',
+    alt: 'RaggieSoft Installer Studio v0.4.5 Files and Folders view showing the Destination Computer folder tree on the left and the filtered Staged Contents tree with Component and KeyPath badges on the right.',
     summaryHtml:
       'Map files and <code>CreateFolder</code> directories across 9 standard Windows Installer roots (<code>INSTALLDIR</code>, <code>ProgramData</code>, <code>AppData</code>, <code>StartMenu</code>, <code>Desktop</code>, <code>System32</code>, <code>Fonts</code>) with automatic UUIDv5 File KeyPaths and <code>ICE38</code> per-user registry KeyPaths.',
     detailHtml:
@@ -106,7 +106,7 @@ const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'ide-runtimes-msm.png',
     badge: 'Application Information • Pre-MSI Broker',
     title: '4. Pre-MSI Application Runtimes & 64-Bit .MSM Tree',
-    alt: 'RaggieSoft Installer Studio Application Runtimes and Merge Modules tree grouping Pre-MSI Runtime Prerequisites and Windows Installer .MSM Merge Modules with 32-bit ARGB vector icons.',
+    alt: 'RaggieSoft Installer Studio v0.4.5 Application Runtimes and Merge Modules tree grouping Pre-MSI Runtime Prerequisites and Windows Installer .MSM Merge Modules with 32-bit ARGB vector icons.',
     summaryHtml:
       'Stage unlimited <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes (<code>WinHTTP</code> download, <code>LZMS</code> offline embed, or <code>Redist\\</code>) with custom reboot exit-code latching (<code>3010, 1641, 23</code>) alongside native 64-bit <code>.msm</code> Merge Modules.',
     detailHtml:
@@ -117,7 +117,7 @@ const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'ide-wizard-designer.png',
     badge: 'User Interface • Live GDI+ Canvas',
     title: '5. Live GDI+ C++ Wizard & 370×270 MSI.DLL Designers',
-    alt: 'RaggieSoft Installer Studio C++ Wizard Designer rendering a live GDI+ preview of the Windows Installer SelectionTree step next to palette and icon controls.',
+    alt: 'RaggieSoft Installer Studio v0.4.5 C++ Wizard Designer rendering a live GDI+ preview of the Windows Installer SelectionTree step next to palette and icon controls.',
     summaryHtml:
       'Preview customer-facing <code>SetupWizard.exe</code> layouts (<code>aerowizard</code>, <code>standard</code> Glass, and <code>autorun16x9</code>), brand colors, icons, and <code>SelectionTree</code> cards live in GDI+ alongside a dedicated <code>370&times;270</code> DLU <code>MSI.DLL</code> SQL dialog designer.',
     detailHtml:
@@ -131,7 +131,7 @@ const WIZARD_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'setupwizard-setup-type.png',
     badge: 'SetupWizard.exe • Windows 11 Dark Mode',
     title: '6. Accessible Option Cards & Custom-Subclassed Dark Buttons',
-    alt: 'SetupWizard.exe running in Windows 11 Dark Mode displaying Express, Compact, and Custom Setup option cards alongside slate-navy Back and Cancel buttons and a Royal Cobalt Next button.',
+    alt: 'SetupWizard.exe v0.4.5 running in Windows 11 Dark Mode displaying Express, Compact, and Custom Setup option cards alongside slate-navy Back and Cancel buttons and a Royal Cobalt Next button.',
     summaryHtml:
       'Genuine Win32 <code>BS_AUTORADIOBUTTON</code> option cards (<code>&ge; 68px</code> tall, exceeding WCAG 2.5.8) and custom-subclassed <code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, and <code>Cancel</code> buttons expose full UI Automation roles and keyboard mnemonics.',
     detailHtml:
@@ -142,7 +142,7 @@ const WIZARD_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'setupwizard-setup-type-light.png',
     badge: 'Live Broadcast • WM_SETTINGCHANGE(ImmersiveColorSet)',
     title: '7. Sub-16ms Live OS Dark ↔ Light Palette Hot-Swap',
-    alt: 'The exact same open SetupWizard.exe window after receiving WM_SETTINGCHANGE ImmersiveColorSet, dynamically flipped into crisp Windows 11 Light Mode without restarting.',
+    alt: 'The exact same open SetupWizard.exe v0.4.5 window after receiving WM_SETTINGCHANGE ImmersiveColorSet, dynamically flipped into crisp Windows 11 Light Mode without restarting.',
     summaryHtml:
       'Toggle Windows 11 (or automatic sunset/sunrise utilities like Auto Dark Mode) between Dark Mode, Light Mode, or Contrast Themes mid-install and the open wizard flips its titlebar, cards, and buttons live in under 16 milliseconds.',
     detailHtml:
@@ -153,7 +153,7 @@ const WIZARD_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'setupwizard-selection-tree.png',
     badge: 'SetupWizard.exe • Custom Setup & Modify',
     title: '8. Authentic 32-Bit ARGB Windows Installer SelectionTree',
-    alt: 'SetupWizard.exe Custom Features page showing the Windows Installer SelectionTree with 32-bit ARGB split-dropdown state icons and live disk space cost card.',
+    alt: 'SetupWizard.exe v0.4.5 Custom Features page showing the Windows Installer SelectionTree with 32-bit ARGB split-dropdown state icons and live disk space cost card.',
     summaryHtml:
       'Reads <code>Feature</code>, <code>FeatureComponents</code>, and <code>File</code> SQL tables directly from <code>Product.msi</code> in under 2ms—rendering crisp 32-bit ARGB split-dropdown icons, <code>DisallowAbsent</code> locks, and live byte costing.',
     detailHtml:
@@ -167,7 +167,7 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'helpviewer-contents.png',
     badge: 'RaggieSoftHelp.exe • Named Pipe F1 IPC',
     title: '9. Zero-Dependency Native C++20 Offline Help Viewer',
-    alt: 'RaggieSoftHelp.exe v0.4.4 native C++20 offline Help Viewer showing the 32-bit ARGB Contents tree on the left and formatted MSI SelectionTree documentation on the right.',
+    alt: 'RaggieSoftHelp.exe v0.4.5 native C++20 offline Help Viewer showing the 32-bit ARGB Contents tree on the left and formatted MSI SelectionTree documentation on the right.',
     summaryHtml:
       'Press <code>F1</code> inside any IDE view to open searchable offline HTML5 chapters in under 5ms via Named Pipe IPC—rendered natively through <code>System32\\Msftedit.dll</code> with zero <code>.NET</code> or <code>WebView2</code> dependencies.',
     detailHtml:
@@ -178,7 +178,7 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'msiprism-sql-inspector.png',
     badge: 'msiprism.exe • Categorized SQL Schema Tree',
     title: '10. Native 64-Bit Dark Mode MSI, MSM, MST & MSP SQL Inspector',
-    alt: 'RaggieSoft MSI Prism v0.4.4 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
+    alt: 'RaggieSoft MSI Prism v0.4.5 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
     summaryHtml:
       'Open any <code>.msi</code>, <code>.msm</code>, or <code>.msp</code> database into a categorized 5-group <code>SysTreeView32</code> schema tree, inspect relational rows in Dark or Light Mode, audit <code>ICE80</code> flags, and generate <code>.mst</code> or <code>.msp</code> deltas.',
     detailHtml:
@@ -187,23 +187,22 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
 ];
 
 /**
- * Renders the transparent Windows SmartScreen & Microsoft Azure Artifact Signing status notice
- * beneath preview download buttons so visitors know why Technical Preview binaries show an
- * Unknown Publisher prompt until Microsoft finishes issuing our signing certificate.
+ * Renders the verified Microsoft Azure Artifact Signing (Public Trust Authenticode + RFC 3161
+ * Timestamp) assurance callout beneath download buttons across `/`, `/screenshots`, and `/security`.
  */
-function renderSmartScreenSigningNotice(): string {
+function renderAzureSigningAssuranceNotice(): string {
   return `
-    <aside class="calc-panel" aria-label="Windows SmartScreen and Microsoft Azure Artifact Signing Status" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
-      <span class="eyebrow" style="margin-bottom: 0.25rem;">Code Signing Status • Waiting on Microsoft Azure Artifact Signing Certificate</span>
+    <aside class="calc-panel" aria-label="Microsoft Azure Artifact Signing Authenticode Verification" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
+      <span class="eyebrow" style="margin-bottom: 0.25rem;">Verified Code Signing • Microsoft Azure Artifact Signing (Public Trust + RFC 3161 Timestamp)</span>
       <p style="margin: 0; font-size: 0.95rem;">
-        <strong>Why does Windows SmartScreen currently show a "Windows protected your PC" prompt?</strong>
-        Because RaggieSoft Installer Studio is brand-new open-source software in Technical Preview, we are currently
-        waiting on <strong>Microsoft</strong> to complete identity validation and issue our official
-        <strong>Azure Artifact Signing</strong> certificate. Dual-layer Authenticode &amp; Azure Artifact Signing support
-        is already built into <code>instbuild.exe</code>, and every official download will be cryptographically signed the
-        moment Microsoft activates our certificate. During Technical Preview, click <strong>More info &rarr; Run anyway</strong>
-        (or inspect and compile 100% of the C++20 source directly on <a href="${GITHUB_REPO_URL}">GitHub</a>).
-        <a href="/faq#smartscreen">Read more in the FAQ &rarr;</a>
+        <strong>100% Cryptographically Signed (<code>v0.4.5+</code>):</strong>
+        Every official download—including the outer Universal Web &amp; Offline <code>Setup.exe</code> launchers, inner
+        <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all 5 installed C++20 executables
+        (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>,
+        and <code>RaggieSoftHelp.exe</code>)—is Dual-Layer Authenticode-signed by verified publisher
+        <strong>Michael Ragsdale</strong> via <strong>Microsoft Azure Artifact Signing</strong> and verified with
+        <code>signtool verify /pa</code>.
+        <a href="/faq#smartscreen">Details in the FAQ &rarr;</a>
       </p>
     </aside>
   `;
@@ -258,7 +257,7 @@ function renderScreenshotCardAndModal(item: ScreenshotFeatureItem): string {
 function renderScreenshotsBody(): string {
   return `
     <section class="hero" aria-labelledby="tour-title">
-      <span class="eyebrow">Real Native Win32 C++20 Captures • v0.4.4 on Windows 11</span>
+      <span class="eyebrow">Real Native Win32 C++20 Captures • v0.4.5 on Windows 11</span>
       <h1 id="tour-title">Visual Feature Tour &amp; Full-Size Screenshots</h1>
       <p class="lead">
         Every window on this page is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables
@@ -269,12 +268,12 @@ function renderScreenshotsBody(): string {
         <strong>Click or press Enter on any screenshot to inspect it at full 1:1 native size.</strong>
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.4 (Auto-Detects CPU)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.5 (Auto-Detects CPU)</a>
         <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
         <a class="btn btn-outline" href="/faq">Read FAQ</a>
         <a class="btn btn-outline" href="/roadmap">Explore v1.0 Roadmap</a>
       </div>
-      ${renderSmartScreenSigningNotice()}
+      ${renderAzureSigningAssuranceNotice()}
     </section>
 
     <section aria-labelledby="tour-ide-heading">
@@ -344,11 +343,11 @@ function renderVisionAndRoadmapSection(): string {
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.4.4</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.4.5</code>)</h3>
             <ul class="feature-list">
+              <li><strong>Dual-Layer Microsoft Azure Artifact Signing (New in <code>v0.4.5</code>)</strong>: Every inner C++20 binary, inner <code>.msi</code> database, and outer <code>Setup.exe</code> is cryptographically Authenticode-signed with a verified Public Trust certificate and RFC 3161 SHA-256 timestamp</li>
               <li><strong>Single-Download CPU-Aware Web &amp; Offline Universal Installers</strong>: Users never have to guess whether they own an <code>AMD64</code> (<code>x64</code>) or <code>ARM64</code> PC—ship one compact <strong>Smart Web Stub</strong> (<code>IsWow64Process2</code> + <code>WinHTTP</code> + SHA-256) or one <strong>Combined Offline Universal EXE</strong> bundling both architectures</li>
-              <li><strong>Plain-English Feature Inclusion Tiers (New in <code>v0.4.4</code>)</strong>: Decide whether each feature belongs to a <em>Minimal / Compact</em>, <em>Typical / Express</em>, or <em>Complete</em> setup without memorizing cryptic numeric Windows Installer <code>InstallLevel</code> codes</li>
-              <li><strong>12-View Tree-First Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong>: Categorized sidebar, dedicated <strong>Features</strong> tree (<code>Move Up</code>/<code>Down</code>), <strong><code>RegEdit</code>-style Registry</strong> tree (<code>.REG</code> import + Feature filter), Dual Folder trees, and 5 guided <strong>AeroWizards</strong>—with <strong><code>Community == 100% Premier</code> parity</strong></li>
+              <li><strong>Plain-English Feature Inclusion Tiers &amp; 12-View Tree-First IDE</strong>: Decide whether each feature belongs to a <em>Minimal / Compact</em>, <em>Typical / Express</em>, or <em>Complete</em> setup, edit <strong><code>RegEdit</code>-style Registry</strong> &amp; Dual Folder trees, and enjoy permanent <strong><code>Community == 100% Premier</code> parity</strong></li>
               <li><strong>100% Dark-Mode-Complete UI, Native C++20 <code>F1</code> Help &amp; <code>msiprism.exe</code></strong>: Live <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> palette hot-swapping, zero-dependency <code>RaggieSoftHelp.exe</code>, 32-bit ARGB <code>SelectionTree</code>, unlimited <code>[Prerequisite.*]</code> runtimes, 64-bit <code>.MSM</code> merging, and <code>--emit-vpat</code></li>
             </ul>
           </div>
@@ -364,7 +363,7 @@ function renderVisionAndRoadmapSection(): string {
               <li><strong><code>v0.5.0</code> — 8 Wizard Styles, Custom Setup Types &amp; WCAG-Guarded Branding</strong>: <code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code>, &amp; <code>Autorun16x9</code> + classic Windows 95-style &amp; custom Setup Types (<code>Typical</code>, <code>Compact</code>, <code>Complete</code>, <code>Custom</code>, &amp; <code>[SetupType.*]</code>) + live WCAG 2.2 AA contrast enforcer</li>
               <li><strong><code>v0.6.0</code> — Self-Extracting <code>.EXE</code> Builder, <code>.rswpak</code> Feature Packs, <code>.NET 11</code> &amp; <code>Engine = native</code></strong>: Build simple folder/ZIP-to-SFX <code>.exe</code> extractors (that optionally launch an <code>.exe</code> or open a document in the user's viewer), stream <code>.rswpak</code> packs, and run zero-<code>msi.dll</code> extraction</li>
               <li><strong><code>v0.7.0</code> &amp; <code>v0.8.0</code> — From-Scratch Dialog Builders, <code>RsDialog</code> Scripting &amp; VB6 <code>.vbp</code> / <code>.slnx</code> Importers</strong>: Blank-canvas C++ &amp; raw <code>MSI.DLL</code> dialog designers plus Reg-Free COM VB6 <code>.vbp</code> importing for classic utilities like <em>StoreTrainer</em></li>
-              <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Azure Artifact Signing, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
+              <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Interactive Signing Studio UI, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
             </ul>
           </div>
           <a class="btn btn-primary" href="/roadmap">Read Full v1.0 Engineering Roadmap</a>
@@ -379,22 +378,22 @@ function renderHomeBody(): string {
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.4) • Universal x64 &amp; ARM64</span>
+          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.5) • Signed Universal x64 &amp; ARM64</span>
           <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
           <p class="lead">
             An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
             Design projects visually inside a <strong>12-View Tree-First IDE</strong>—with plain-English <strong>Minimal / Typical / Complete</strong>
             feature tiers, a <strong><code>RegEdit</code>-style Registry</strong> tree, 5 guided <strong>AeroWizards</strong>, Dual Dialog
-            Designers, and a built-in C++ <code>F1</code> Help Viewer—and ship <strong>one universal <code>Setup.exe</code></strong>
+            Designers, and a built-in C++ <code>F1</code> Help Viewer—and ship <strong>one signed universal <code>Setup.exe</code></strong>
             that automatically detects your user's processor.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.4 (Auto-Detects CPU)</a>
+            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.5 (Auto-Detects CPU)</a>
             <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
             <a class="btn btn-outline" href="/screenshots">Visual Tour &amp; Screenshots</a>
             <a class="btn btn-outline" href="/faq">FAQ</a>
           </div>
-          ${renderSmartScreenSigningNotice()}
+          ${renderAzureSigningAssuranceNotice()}
         </div>
         <figure class="hero-box-showcase">
           <img
@@ -584,7 +583,7 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
 function renderRoadmapBody(): string {
   return `
     <section class="hero" aria-labelledby="roadmap-page-title">
-      <span class="eyebrow">Open Engineering Plan • v0.4.4 Shipped &rarr; v1.0.0 GA Dogfood Cutover</span>
+      <span class="eyebrow">Open Engineering Plan • v0.4.5 Shipped &rarr; v1.0.0 GA Dogfood Cutover</span>
       <h1 id="roadmap-page-title">Public Engineering Roadmap</h1>
       <p class="lead">
         <strong>RaggieSoft Installer Studio</strong> is built in the open as original, zero-dependency native Win32 C++20
@@ -597,7 +596,7 @@ function renderRoadmapBody(): string {
       <div class="btn-row">
         <a class="btn btn-primary" href="${GITHUB_REPO_URL}/blob/main/ROADMAP.md">View ROADMAP.md on GitHub</a>
         <a class="btn btn-outline" href="/ROADMAP.md">Open Raw /ROADMAP.md</a>
-        <a class="btn btn-outline" href="/screenshots">Visual Tour (v0.4.4)</a>
+        <a class="btn btn-outline" href="/screenshots">Visual Tour (v0.4.5)</a>
         <a class="btn btn-outline" href="/faq">Read FAQ</a>
       </div>
     </section>
@@ -617,8 +616,8 @@ function renderRoadmapBody(): string {
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><code>v0.1.0</code> – <code>v0.4.4</code></th>
-              <td>Core C++20 compiler, CPU-aware Smart Web Stub &amp; Combined Offline Universal EXE (<code>x64 + ARM64</code>), plain-English Feature Inclusion Tiers (<code>Minimal</code> / <code>Typical</code> / <code>Complete</code>), 12-View Tree-First IDE, MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, &amp; live Dark Mode</td>
+              <th scope="row"><code>v0.1.0</code> – <code>v0.4.5</code></th>
+              <td>Core C++20 compiler, Microsoft Azure Artifact Signing (Public Trust Authenticode), CPU-aware Smart Web Stub &amp; Combined Offline Universal EXE (<code>x64 + ARM64</code>), plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, &amp; live Dark Mode</td>
               <td><span class="status-pill status-shipped">Shipped</span></td>
             </tr>
             <tr>
@@ -643,7 +642,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.9.0</code></th>
-              <td>First-Class Authenticode &amp; Azure Artifact Signing Studio, white-label <code>RsUpdate.exe</code> Auto-Updater, &amp; guided Microsoft-compliant <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
+              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater, &amp; guided Microsoft-compliant <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
@@ -665,7 +664,7 @@ function renderRoadmapBody(): string {
       <section aria-label="Filter Roadmap Milestones" style="margin-bottom: 1.5rem;">
         <div class="btn-row" role="group" aria-label="Show all milestones or focus on one release">
           <button type="button" class="btn" :class="phaseFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'all'">All Milestones</button>
-          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.4)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.5)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v05' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v05'">v0.5 (Wizards &amp; Setup Types)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v06' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v06'">v0.6 (.rswpak &amp; .NET 11)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v07' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v07'">v0.7 (Dialog Builders)</button>
@@ -677,17 +676,17 @@ function renderRoadmapBody(): string {
 
       <!-- Shipped Foundation -->
       <section x-show="phaseFilter === 'all' || phaseFilter === 'shipped'" aria-labelledby="phase-shipped-heading" class="calc-panel">
-        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.4</span>
+        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.5</span>
         <h2 id="phase-shipped-heading" style="margin-top: 0.5rem;">Foundation Shipped in Technical Preview</h2>
         <ul class="feature-list">
+          <li><strong>Microsoft Azure Artifact Signing &amp; ARM64 <code>/dlib</code> Dispatch (<code>v0.4.5</code>)</strong>: Dual-layer Public Trust Authenticode signing across every inner C++20 binary, <code>.msi</code> database, and Universal <code>Setup.exe</code>—backed by automatic PE <code>Machine</code> matching for <code>Azure.CodeSigning.Dlib.dll</code> on Windows 11 <code>ARM64</code> workstations and <code>ImageRemoveCertificate</code> pre-signed template stripping.</li>
           <li><strong>Plain-English Feature Inclusion Tiers (<code>v0.4.4</code>)</strong>: Replaced cryptic numeric Windows Installer <code>InstallLevel</code> inputs with human-friendly <strong>Included In</strong> tiers (<em>Minimal / Compact</em>, <em>Typical / Express</em>, <em>Complete Only</em>, and <em>Hidden</em>) across the Visual IDE and <code>.rsip</code> grammar.</li>
           <li><strong>CPU-Aware Smart Web Stub &amp; Combined Offline Universal EXE (<code>v0.4.3</code>)</strong>: Eliminates separate <code>x64</code> vs. <code>ARM64</code> download confusion via a compact 64-bit universal outer launcher that pierces Windows 11 Prism emulation through <code>IsWow64Process2</code> to download or unpack the genuine native silicon installer with SHA-256 verification.</li>
-          <li><strong>12-View Tree-First Win32 C++20 Visual IDE (<code>v0.4.2</code>)</strong>: Categorized sidebar tree, dedicated <strong>Features</strong> hierarchy with <code>Move Up</code> / <code>Move Down</code> ordering, <strong><code>RegEdit</code>-style Registry</strong> tree with <code>.REG</code> file importing and Feature filtering, Dual Destination Folder &amp; Contents trees, and a 5-category SQL schema tree in <code>msiprism.exe</code>.</li>
-          <li><strong>Complete Win32 Dark Mode, Live Palette Hot-Swapping &amp; Native <code>F1</code> Help (<code>v0.3.0</code>–<code>v0.4.1</code>)</strong>: Custom-subclassed push buttons, checkboxes, and 32-bit ARGB tree icons flipping live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code>, zero-dependency <code>RaggieSoftHelp.exe</code>, Pre-MSI <code>[Prerequisite.*]</code> runtimes, and 64-bit <code>.MSM</code> merging.</li>
+          <li><strong>12-View Tree-First Win32 C++20 Visual IDE, Live Dark Mode &amp; Native <code>F1</code> Help (<code>v0.3.0</code>–<code>v0.4.2</code>)</strong>: Categorized sidebar tree, dedicated <strong>Features</strong> and <strong><code>RegEdit</code>-style Registry</strong> trees, custom-subclassed Dark Mode push buttons and checkboxes flipping live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code>, zero-dependency <code>RaggieSoftHelp.exe</code>, Pre-MSI <code>[Prerequisite.*]</code> runtimes, and 64-bit <code>.MSM</code> merging.</li>
         </ul>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/screenshots">Explore Live v0.4.4 Screenshots</a>
-          <a class="btn btn-outline" href="/changelog">Read Full v0.1.0 &rarr; v0.4.4 Changelog</a>
+          <a class="btn btn-primary" href="/screenshots">Explore Live v0.4.5 Screenshots</a>
+          <a class="btn btn-outline" href="/changelog">Read Full v0.1.0 &rarr; v0.4.5 Changelog</a>
         </div>
       </section>
 
@@ -705,7 +704,7 @@ function renderRoadmapBody(): string {
                 <li><strong><code>FluentMica</code></strong>: Modern Windows 11 native backdrop via <code>DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)</code> with a unified borderless surface, left-hand vertical step-progress rail, and rounded <code>8px</code> cards.</li>
                 <li><strong><code>OneClickSplash</code></strong>: Compact centered <code>~480&times;280</code> friction-free card with one primary <strong>Install</strong> button and a <em>"Customize installation..."</em> disclosure toggle.</li>
                 <li><strong><code>PassiveToast</code></strong>: Clean non-interactive <code>/passive</code> &amp; <code>/qb</code> progress banner (centered or docked near the system tray) with UI Automation live-region percentage announcements.</li>
-                <li><strong><code>FullScreenBlue</code></strong>: Nostalgic 1990s cobalt-blue (<code>#000080 &rarr; #000000</code>) full-screen <code>SETUP.EXE</code> wash with a drop-shadowed serif title, floating 3D beveled dialogs, <strong>optional rotating installation billboards</strong>, and a floating <strong>3D Beveled Progress Gauge</strong> (centered or docked beneath billboards—ideal for retro utilities like <em>StoreTrainer</em>) while keeping modern DPI scaling and screen-reader accessibility.</li>
+                <li><strong><code>FullScreenBlue</code> &amp; <code>FullScreenTeal</code></strong>: Nostalgic 1990s full-screen <code>SETUP.EXE</code> backdrop offering both the classic <strong>Cobalt-Blue (<code>#000080 &rarr; #000000</code>)</strong> gradient wash and the classic <strong>1995 Desktop Teal (<code>#008080</code>)</strong> solid setup screen—complete with a drop-shadowed serif title, floating 3D beveled dialogs, <strong>optional rotating installation billboards</strong>, and a floating <strong>3D Beveled Progress Gauge</strong> while keeping modern DPI scaling and screen-reader accessibility.</li>
                 <li><strong><code>Autorun16x9</code></strong>: Widescreen <code>16:9</code> Collector's Edition &amp; digital media launcher menu.</li>
               </ul>
             </li>
@@ -783,33 +782,45 @@ function renderRoadmapBody(): string {
 }
 
 /**
- * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.4`).
+ * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.5`).
  */
 function renderChangelogBody(): string {
   return `
     <section class="hero" aria-labelledby="chg-title">
-      <span class="eyebrow">Public Engineering Log • Universal x64 &amp; Native ARM64</span>
+      <span class="eyebrow">Public Engineering Log • Signed Universal x64 &amp; Native ARM64</span>
       <h1 id="chg-title">Version History &amp; Release Notes</h1>
       <p class="lead">
         Follow every milestone of <strong>RaggieSoft Installer Studio</strong> as it evolves in public as original,
         zero-dependency native Win32 C++20 software.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Latest v0.4.4 (Auto-Detects CPU)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Latest v0.4.5 (Auto-Detects CPU)</a>
         <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
-        <a class="btn btn-outline" href="/screenshots">Inspect v0.4.4 Screenshots</a>
+        <a class="btn btn-outline" href="/screenshots">Inspect v0.4.5 Screenshots</a>
         <a class="btn btn-outline" href="/faq">Read FAQ</a>
       </div>
     </section>
 
-    <section aria-labelledby="v044-heading" class="calc-panel">
+    <section aria-labelledby="v045-heading" class="calc-panel">
       <span class="release-badge">Latest Release • November 2026</span>
-      <h2 id="v044-heading" style="margin-top: 0.25rem;">v0.4.4 — Plain-English Feature Inclusion Tiers Replacing Raw InstallLevel Jargon, FAQ &amp; SmartScreen Signing Transparency</h2>
+      <h2 id="v045-heading" style="margin-top: 0.25rem;">v0.4.5 — Microsoft Azure Artifact Signing (Public Trust Authenticode), ARM64 /dlib SignTool Dispatch &amp; Pre-Signed Template Safety</h2>
       <ul class="feature-list">
-        <li><strong>Plain-English <code>Included In</code> Feature Tiers (<code>minimal</code>, <code>typical</code>, <code>complete</code>, <code>hidden</code>)</strong>: Replaced cryptic numeric Windows Installer <code>InstallLevel</code> textboxes across <code>InstallerStudio.exe</code> (<code>Features</code> and <code>Components &amp; KeyPaths</code> views) and <code>.rsip</code> manifests with human-friendly setup tiers—compiling cleanly down to standard MSI <code>Feature.Level</code> + <code>INSTALLLEVEL</code> SQL thresholds (<code>1</code>, <code>50</code>, <code>150</code>, and <code>0</code>) while keeping 100% compatibility with explicit numeric overrides.</li>
-        <li><strong>Smart Compact / Typical / Complete Runtime Tiering</strong>: Upgraded Minimal / Compact setup in <code>SetupWizard.exe</code> to <code>INSTALLLEVEL=20</code> alongside Typical / Express (<code>INSTALLLEVEL=100</code>) and Custom <code>SelectionTree</code> defaults—laying the direct foundation for customizable Windows 95-style Setup Types (<code>Typical</code>, <code>Compact</code>, <code>Complete</code>, <code>Custom</code>, &amp; <code>[SetupType.*]</code>) in <code>v0.5.0</code>.</li>
-        <li><strong>New Public <code>/faq</code> Page &amp; Microsoft Azure Artifact Signing Status</strong>: Added comprehensive <a href="/faq">Frequently Asked Questions</a> covering why Windows SmartScreen warns while awaiting Microsoft's Azure Artifact Signing certificate issuance, why 32-bit <code>x86</code> and <code>IA-64</code> Itanium host OS builds are skipped (and how <code>x64;1033</code> / <code>Arm64;1033</code> avoids the <code>Intel64;1033</code> trap), and how 64-bit <code>instbuild.exe</code> will still package legacy 32-bit VB6 apps.</li>
+        <li><strong>100% Cryptographically Signed Release via Microsoft Azure Artifact Signing</strong>: Every inner suite executable (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>, <code>RaggieSoftHelp.exe</code>), both inner <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all four outer installers (<code>-setup.exe</code> Smart Web Stub, <code>-offline-setup.exe</code> Universal Offline EXE, <code>-x64-setup.exe</code>, and <code>-arm64-setup.exe</code>) are Dual-Layer Authenticode-signed with verified Public Trust identity and RFC 3161 SHA-256 timestamps (<code>http://timestamp.acs.microsoft.com</code>).</li>
+        <li><strong>Architecture-Aware <code>/dlib</code> SignTool Dispatch on Windows 11 ARM64</strong>: Upgraded <code>LocateWindowsSdkSignTool</code> in <code>instbuild.exe</code> to inspect the PE <code>IMAGE_FILE_HEADER::Machine</code> of external <code>Azure.CodeSigning.Dlib.dll</code> plugins and automatically invoke the matching <code>x64\\signtool.exe</code> or <code>arm64\\signtool.exe</code>—eliminating <code>0x800700C1</code> (<code>ERROR_BAD_EXE_FORMAT</code>) in-process DLL load failures on ARM64 developer workstations.</li>
+        <li><strong>Clean Pre-Signed Bootstrapper Resource Stamping (<code>StripExistingPeCertificates</code>)</strong>: Added <code>ImageEnumerateCertificates</code> / <code>ImageRemoveCertificate</code> (<code>imagehlp.dll</code>) cleanup prior to <code>BeginUpdateResourceW</code> so pre-signed <code>SetupWizard.exe</code> templates never leave dangling <code>IMAGE_DIRECTORY_ENTRY_SECURITY</code> offsets when stamping customer <code>Setup.exe</code> resources, alongside headless CI/CD <code>RSW_SIGN_*</code> environment-variable overrides.</li>
       </ul>
+    </section>
+
+    <section aria-labelledby="v044-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v044-heading" style="margin-top: 0.25rem;">v0.4.4 — Plain-English Feature Inclusion Tiers Replacing Raw InstallLevel Jargon &amp; Public FAQ</h2>
+        <ul class="feature-list">
+          <li><strong>Plain-English <code>Included In</code> Feature Tiers (<code>minimal</code>, <code>typical</code>, <code>complete</code>, <code>hidden</code>)</strong>: Replaced cryptic numeric Windows Installer <code>InstallLevel</code> textboxes across <code>InstallerStudio.exe</code> (<code>Features</code> and <code>Components &amp; KeyPaths</code> views) and <code>.rsip</code> manifests with human-friendly setup tiers—compiling cleanly down to standard MSI <code>Feature.Level</code> + <code>INSTALLLEVEL</code> SQL thresholds (<code>1</code>, <code>50</code>, <code>150</code>, and <code>0</code>) while keeping 100% compatibility with explicit numeric overrides.</li>
+          <li><strong>Smart Compact / Typical / Complete Runtime Tiering</strong>: Upgraded Minimal / Compact setup in <code>SetupWizard.exe</code> to <code>INSTALLLEVEL=20</code> alongside Typical / Express (<code>INSTALLLEVEL=100</code>) and Custom <code>SelectionTree</code> defaults—laying the direct foundation for customizable Windows 95-style Setup Types (<code>Typical</code>, <code>Compact</code>, <code>Complete</code>, <code>Custom</code>, &amp; <code>[SetupType.*]</code>) in <code>v0.5.0</code>.</li>
+          <li><strong>New Public <code>/faq</code> Page</strong>: Added comprehensive <a href="/faq">Frequently Asked Questions</a> covering code signing, why 32-bit <code>x86</code> and <code>IA-64</code> Itanium host OS builds are skipped (and how <code>x64;1033</code> / <code>Arm64;1033</code> avoids the <code>Intel64;1033</code> trap), and how 64-bit <code>instbuild.exe</code> will still package legacy 32-bit VB6 apps.</li>
+        </ul>
+      </div>
     </section>
 
     <section aria-labelledby="v043-heading" class="card" style="margin-bottom: 1.5rem;">
@@ -1148,10 +1159,10 @@ function renderDocsBody(): string {
               <td><code>.rsip</code> (Required)</td>
               <td><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
             </tr>
-            <tr x-show="!q || 'feature parent subfeature level disallowabsent selectiontree'.includes(q.toLowerCase())">
+            <tr x-show="!q || 'feature parent subfeature inclusion level minimal typical complete disallowabsent selectiontree'.includes(q.toLowerCase())">
               <th scope="row"><code>[Feature.&lt;Id&gt;]</code></th>
               <td><code>.rsip</code> (Optional)</td>
-              <td><code>Title</code>, <code>Description</code>, <code>Level</code>, <code>Parent</code> hierarchy, <code>DisallowAbsent</code> core lock, and <code>AllowAdvertise</code> for the MSI <code>SelectionTree</code>.</td>
+              <td><code>Title</code>, <code>Description</code>, plain-English <code>Inclusion</code> (<code>minimal|typical|complete|hidden</code>), <code>Parent</code> hierarchy, <code>DisallowAbsent</code>, and <code>AllowAdvertise</code>.</td>
             </tr>
             <tr x-show="!q || 'registry hklm hkcu hkcr hku hkmu dword reg'.includes(q.toLowerCase())">
               <th scope="row"><code>[Registry.&lt;Id&gt;]</code></th>
@@ -1226,23 +1237,23 @@ jobs:
 }
 
 /**
- * Renders the `/faq` Frequently Asked Questions page covering Windows SmartScreen & Azure
- * Artifact Signing, why IA-64 and 32-bit x86 host OS builds are skipped, universal CPU-aware
- * downloads, plain-English Feature Inclusion vs. InstallLevel, Setup Types, and licensing.
+ * Renders the `/faq` Frequently Asked Questions page covering Microsoft Azure Artifact Signing,
+ * why IA-64 and 32-bit x86 host OS builds are skipped, universal CPU-aware downloads,
+ * plain-English Feature Inclusion vs. InstallLevel, Setup Types, and licensing.
  */
 function renderFaqBody(): string {
   return `
     <section class="hero" aria-labelledby="faq-title">
-      <span class="eyebrow">Technical &amp; Consumer Questions Answered • v0.4.4</span>
+      <span class="eyebrow">Technical &amp; Consumer Questions Answered • v0.4.5</span>
       <h1 id="faq-title">Frequently Asked Questions</h1>
       <p class="lead">
-        Clear, honest answers about Windows SmartScreen &amp; Microsoft Azure Artifact Signing, why our universal installer
-        targets 64-bit <code>x64</code> and <code>ARM64</code> (skipping extinct <code>IA-64</code> and 32-bit <code>x86</code>
+        Clear, honest answers about Dual-Layer Microsoft Azure Artifact Signing, why our universal installer targets
+        64-bit <code>x64</code> and <code>ARM64</code> (skipping extinct <code>IA-64</code> and 32-bit <code>x86</code>
         host OS builds while still supporting legacy 32-bit app payloads), plain-English setup tiers, accessibility, and our
         permanent <code>Community == Premier</code> pledge.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.4 (Auto-Detects CPU)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.5 (Auto-Detects CPU)</a>
         <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
         <a class="btn btn-outline" href="/docs">Read Distributed Manual</a>
         <a class="btn btn-outline" href="/roadmap">View v1.0 Roadmap</a>
@@ -1250,24 +1261,23 @@ function renderFaqBody(): string {
     </section>
 
     <section aria-labelledby="faq-downloads-heading">
-      <span class="eyebrow">Part 1 • Downloads, SmartScreen &amp; Supported Processors</span>
+      <span class="eyebrow">Part 1 • Downloads, Authenticode Signing &amp; Supported Processors</span>
       <h2 id="faq-downloads-heading" style="margin-top: 0.25rem;">Code Signing, CPU Detection &amp; Architecture Choices</h2>
       <div class="card-grid">
         <article id="smartscreen" class="card card-highlight">
           <div>
-            <h3>1. Why does Windows SmartScreen currently say "Windows protected your PC / Unknown publisher"?</h3>
+            <h3>1. Are RaggieSoft Installer Studio downloads cryptographically signed for Windows SmartScreen &amp; UAC?</h3>
             <p>
-              Because <strong>RaggieSoft Installer Studio</strong> is brand-new independent open-source software in Technical
-              Preview, <strong>we are currently waiting on Microsoft to complete identity verification and issue our official
-              Azure Artifact Signing certificate</strong> (<code>raggiesoft-signing</code>).
+              <strong>Yes! Starting in <code>v0.4.5</code>, 100% of our official downloads and inner binaries are cryptographically
+              Authenticode-signed via Microsoft Azure Artifact Signing</strong> under verified Public Trust identity
+              (<strong>Michael Ragsdale</strong>) with RFC 3161 SHA-256 timestamps (<code>http://timestamp.acs.microsoft.com</code>).
             </p>
             <p>
-              Dual-layer Authenticode and Azure Artifact Signing support (<code>signtool.exe /dlib Azure.CodeSigning.Dlib.dll</code>
-              signing the inner <code>Product.msi</code> database first and the outer <code>Setup.exe</code> second) is
-              <strong>already engineered into <code>instbuild.exe</code> today</strong>. Every official download on this site
-              will be cryptographically signed the moment Microsoft activates our certificate. Until then, click
-              <strong>More info &rarr; Run anyway</strong>—or audit and compile 100% of the C++20 source yourself from
-              <a href="${GITHUB_REPO_URL}">GitHub</a>.
+              Our build pipeline signs every inner suite executable first (<code>InstallerStudio.exe</code>,
+              <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>, and
+              <code>RaggieSoftHelp.exe</code>), then Dual-Layer signs both the inner <code>.msi</code> database and outer
+              Universal <code>Setup.exe</code> launchers—verified against <code>WinVerifyTrust</code> (<code>signtool verify /pa</code>)
+              before upload.
             </p>
           </div>
         </article>
@@ -1280,8 +1290,8 @@ function renderFaqBody(): string {
               Windows on ARM <code>ARM64</code> computers automatically:
             </p>
             <ul class="feature-list">
-              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~790 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
-              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.6 MB)</strong>: Packs <em>both</em> <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
+              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~790 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native signed installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
+              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.6 MB)</strong>: Packs <em>both</em> signed <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
             </ul>
           </div>
         </article>
@@ -1396,7 +1406,7 @@ function renderFaqBody(): string {
               <code>&lt;App&gt;-setup.exe /s INSTALLDIR="C:\\Apps\\MyApp"</code> for completely silent prerequisite + MSI
               installation (with configurable <code>SilentRebootExitCode</code>), or run
               <code>&lt;App&gt;-setup.exe --extract-msi C:\\Temp\\Out</code> (works on both per-arch and Universal Offline EXEs!)
-              to extract the raw <code>.msi</code> alongside <code>.mst</code> Transforms and <code>.msp</code> Patches.
+              to extract the signed <code>.msi</code> alongside <code>.mst</code> Transforms and <code>.msp</code> Patches.
             </p>
           </div>
         </article>
@@ -1429,7 +1439,7 @@ function renderSecurityBody(): string {
         Windows 11 SDK—linking only OS-resident <code>System32</code> libraries with zero third-party packages, zero outbound IDE
         telemetry, and zero cryptocurrency/blockchain code.
       </p>
-      ${renderSmartScreenSigningNotice()}
+      ${renderAzureSigningAssuranceNotice()}
     </section>
 
     <section aria-labelledby="sec-pillars">
@@ -1448,8 +1458,10 @@ function renderSecurityBody(): string {
           <div>
             <h3>2. Dual-Layer Authenticode &amp; Azure Artifact Signing</h3>
             <p>
-              When <code>[Signing] Enabled = true</code>, <code>instbuild.exe</code> signs the inner <code>Product.msi</code> first, embeds the signed
-              database into <code>Setup.exe</code> via <code>UpdateResourceW</code>, and signs the outer executable—supporting both local certificate thumbprints and Microsoft Azure Artifact Signing (<code>Azure.CodeSigning.Dlib.dll</code>).
+              When <code>[Signing] Enabled = true</code> (or <code>RSW_SIGN_ENABLED=1</code>), <code>instbuild.exe</code> signs the inner
+              <code>Product.msi</code> first, strips any template certificate table cleanly via <code>ImageRemoveCertificate</code>, embeds
+              the signed database into <code>Setup.exe</code> via <code>UpdateResourceW</code>, and signs the outer executable—automatically
+              matching <code>x64</code>/<code>ARM64</code> <code>signtool.exe</code> to <code>Azure.CodeSigning.Dlib.dll</code>.
             </p>
           </div>
         </article>
@@ -1480,9 +1492,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
     navLabel: 'Overview',
-    seoTitle: 'RaggieSoft Installer Studio — v0.4.4 Technical Preview',
+    seoTitle: 'RaggieSoft Installer Studio — v0.4.5 Technical Preview',
     seoDescription:
-      'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, universal x64/ARM64 Setup.exe, and offline Help Viewer.',
+      'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, signed universal x64/ARM64 Setup.exe, and offline Help Viewer.',
     renderBody: renderHomeBody
   },
   {
@@ -1490,7 +1502,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Visual Tour',
     seoTitle: 'Visual Tour & Screenshots | RaggieSoft Installer Studio',
     seoDescription:
-      'Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.4.4: Features & Registry trees, Dark/Light SetupWizard, and MSI Prism.',
+      'Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.4.5: Features & Registry trees, Dark/Light SetupWizard, and MSI Prism.',
     renderBody: renderScreenshotsBody
   },
   {
@@ -1498,7 +1510,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Roadmap',
     seoTitle: 'Public Engineering Roadmap | RaggieSoft Installer Studio',
     seoDescription:
-      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.4 through v1.0 GA across Windows 11 x64 and ARM64.',
+      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.5 through v1.0 GA across Windows 11 x64 and ARM64.',
     renderBody: renderRoadmapBody
   },
   {
@@ -1512,17 +1524,17 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/faq',
     navLabel: 'FAQ',
-    seoTitle: 'FAQ — SmartScreen, ARM64/x64 & Setup Types | RaggieSoft',
+    seoTitle: 'FAQ — Azure Signing, ARM64/x64 & Setup Types | RaggieSoft',
     seoDescription:
-      'Answers on Windows SmartScreen & Azure signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity.',
+      'Answers on Microsoft Azure Artifact Signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity.',
     renderBody: renderFaqBody
   },
   {
     path: '/changelog',
     navLabel: 'Version History',
-    seoTitle: 'Version History & Changelog (v0.4.4) | Installer Studio',
+    seoTitle: 'Version History & Changelog (v0.4.5) | Installer Studio',
     seoDescription:
-      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.4 across Windows 11 x64 and ARM64.',
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.5 across Windows 11 x64 and ARM64.',
     renderBody: renderChangelogBody
   },
   {
@@ -1545,7 +1557,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Security',
     seoTitle: 'Security, Static /MT C++20 & Signing | Installer Studio',
     seoDescription:
-      'Static /MT Win32 C++20 compilation, dual-layer Authenticode signing, offline CI builds, and our permanent zero-telemetry, zero-crypto pledge.',
+      'Static /MT Win32 C++20 compilation, dual-layer Azure Artifact Signing, offline CI builds, and our permanent zero-telemetry, zero-crypto pledge.',
     renderBody: renderSecurityBody
   }
 ];
@@ -1586,7 +1598,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.4)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.5)</span>
         </a>
 
         <button
@@ -1634,7 +1646,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
           <a href="/faq">Frequently Asked Questions</a>
-          <a href="/changelog">Version History (v0.4.4)</a>
+          <a href="/changelog">Version History (v0.4.5)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/ROADMAP.md">/ROADMAP.md</a>

@@ -21,7 +21,7 @@
 
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
-| **`v0.1.0` – `v0.4.4`** | **Core C++20 Toolchain, Universal Web & Offline EXEs (`x64 + ARM64`), Plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
+| **`v0.1.0` – `v0.4.5`** | **Core C++20 Toolchain, Microsoft Azure Artifact Signing (Public Trust Authenticode), Universal Web & Offline EXEs (`x64 + ARM64`), Plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
 | **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom` & `[SetupType.*]`), Publisher Branding & Live WCAG Contrast Enforcer** | **Next Up** |
 | **`v0.6.0`** | **Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx`), Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & `Engine = native`** | Planned |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
@@ -32,8 +32,12 @@
 
 ---
 
-## Shipped Milestones (`v0.1.0` – `v0.4.4`)
+## Shipped Milestones (`v0.1.0` – `v0.4.5`)
 
+- **`v0.4.5` — Microsoft Azure Artifact Signing (Public Trust Authenticode), ARM64 `/dlib` Architecture Matching & Pre-Signed Stub Safety**:
+  - Cryptographically signed 100% of **RaggieSoft Installer Studio** inner suite executables (`InstallerStudio.exe`, `instbuild.exe`, `SetupWizard.exe`, `msiprism.exe`, `RaggieSoftHelp.exe`), inner `.msi` databases (`x64` & `ARM64`), and outer installers (`raggiesoft-installer-studio-setup.exe`, `-offline-setup.exe`, `-x64-setup.exe`, and `-arm64-setup.exe`) with a verified **Microsoft Azure Artifact Signing** Public Trust certificate and RFC 3161 SHA-256 timestamp (`http://timestamp.acs.microsoft.com`).
+  - Upgraded `LocateWindowsSdkSignTool` in `instbuild.exe` to inspect the PE `IMAGE_FILE_HEADER::Machine` of `Azure.CodeSigning.Dlib.dll` (`0x8664` `x64` vs. `0xAA64` `ARM64` vs. `0x014C` `x86`) and automatically invoke the matching Windows SDK `signtool.exe` architecture on Windows 11 `ARM64` workstations—preventing in-process `LoadLibraryW` `0x800700C1` (`ERROR_BAD_EXE_FORMAT`) mismatches.
+  - Added `StripExistingPeCertificates` (`ImageEnumerateCertificates` / `ImageRemoveCertificate` via `imagehlp.dll`) prior to `BeginUpdateResourceW` so pre-signed `SetupWizard.exe` templates never leave dangling `IMAGE_DIRECTORY_ENTRY_SECURITY` offsets when stamping customer `Setup.exe` resources, plus CI/release `RSW_SIGN_*` environment-variable overrides.
 - **`v0.4.4` — Plain-English Feature Inclusion Tiers (`Minimal`, `Typical`, `Complete`, `Hidden`) Replacing Raw `InstallLevel` Jargon**:
   - Replaced cryptic numeric Windows Installer `InstallLevel` inputs across `InstallerStudio.exe` (`Features` and `Components & KeyPaths` views) and `.rsip` manifests with a plain-English **`Included In` (`[Feature.<Id>] Inclusion`)** selector so authors never have to memorize MSI `INSTALLLEVEL` thresholds:
     - **`minimal` (*Minimal / Compact & All Setups*)** -> `Level = 1` (core application files installed in Minimal/Compact `INSTALLLEVEL=20`, Typical/Express `100`, and Complete `1000`).
@@ -76,7 +80,7 @@
    - **`FluentMica` (`fluentmica`)**: Modern Windows 11 native backdrop in zero-dependency Win32 C++20 via `DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)` with a unified borderless surface, left-hand vertical step-progress rail (`Welcome -> License -> Options -> Install -> Finish`), and rounded `8px` cards.
    - **`OneClickSplash` (`oneclick`)**: Friction-free single-card express installer (`~480x280`) with one primary **Install** button, live progress bar, and a *"Customize installation..."* disclosure button that expands into the full Custom Setup (`SelectionTree` + folder picker) flow on demand.
    - **`PassiveToast` (`passivetoast`)**: Clean non-interactive `/passive` & `/qb` progress surface (centered or docked near the bottom-right system tray) with UI Automation live-region percentage announcements.
-   - **`FullScreenBlue` (`fullscreenblue`)**: Nostalgic 1990s cobalt-blue (`#000080 -> #000000`) full-screen `SETUP.EXE` backdrop wash with a drop-shadowed serif product title in the top-left corner, floating 3D beveled setup dialogs, **optional rotating installation billboards**, and a floating **3D Beveled Progress Gauge** (centered or docked at the bottom-center / bottom-right beneath billboards—ideal for retro tools like *StoreTrainer*) while keeping modern DPI scaling, keyboard navigation, and UI Automation accessibility under the hood.
+   - **`FullScreenBlue` (`fullscreenblue` / `fullscreenteal`)**: Nostalgic 1990s full-screen `SETUP.EXE` backdrop supporting **both** the classic **Cobalt-Blue (`#000080 -> #000000`)** gradient wash and the classic **1995 Desktop Teal (`#008080`)** solid backdrop (the unmistakable mid-1990s Windows 95 / ACME-era setup look!), complete with a drop-shadowed serif product title in the top-left corner, floating 3D beveled setup dialogs, **optional rotating installation billboards**, and a floating **3D Beveled Progress Gauge** (centered or docked at the bottom-center / bottom-right beneath billboards—ideal for retro tools like *StoreTrainer*) while keeping modern DPI scaling, keyboard navigation, and UI Automation accessibility under the hood.
    - **`Autorun16x9` (`autorun16x9`)**: Widescreen `16:9` Collector's Edition & digital media launcher menu.
    - **Non-Negotiable Windows Contrast Theme Auto-Override (`SPI_GETHIGHCONTRAST`)**: Across every `WizardLayout` and custom brand skin, whenever a Windows Contrast Theme (*Aquatic*, *Desert*, *Dusk*, *Night Sky*) is active, `SetupWizard.exe` automatically bypasses custom gradients, bitmaps, and Mica backdrops and paints strictly with semantic OS colors (`COLOR_WINDOW`, `COLOR_WINDOWTEXT`, `COLOR_HIGHLIGHT`, `COLOR_BTNTEXT`) and `2px` solid borders.
 2. **Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom`, & Custom `[SetupType.<Id>]` Presets)**:

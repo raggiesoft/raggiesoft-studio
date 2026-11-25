@@ -86,7 +86,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         image: OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
-        softwareVersion: '0.4.4',
+        softwareVersion: '0.4.5',
         license: 'https://opensource.org/licenses/MIT',
         author: {
           '@type': 'Organization',
