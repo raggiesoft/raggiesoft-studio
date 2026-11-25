@@ -1,137 +1,125 @@
 # RaggieSoft Installer Studio — Public Engineering Roadmap
 
 **Product:** RaggieSoft Installer Studio (*Install Without Limits*)  
-**Official Portal:** [https://raggiesoftstudio.com](https://raggiesoftstudio.com) • **Web Roadmap:** [https://raggiesoftstudio.com/roadmap](https://raggiesoftstudio.com/roadmap) • **Developer Hub:** [https://raggiesoft.dev](https://raggiesoft.dev)  
+**Official Portal:** [https://raggiesoftstudio.com](https://raggiesoftstudio.com) • **Visual Tour:** [https://raggiesoftstudio.com/screenshots](https://raggiesoftstudio.com/screenshots) • **Web Roadmap:** [https://raggiesoftstudio.com/roadmap](https://raggiesoftstudio.com/roadmap)  
 **License:** MIT License (Open-Source Technical Preview)
 
 ---
 
-## Core Engineering Charter
+## Core Engineering Charter & `v1.0.0 GA` North Star
 
-1. **Zero Third-Party Runtime Dependencies**: Every binary in the suite (`InstallerStudio.exe`, `instbuild.exe`, `SetupWizard.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe`) is compiled as static `/MT` native Win32 C++20 for both **`x64`** and **`ARM64`**—relying solely on stock Windows 11 `System32` libraries (`msi.dll`, `cabinet.dll`, `gdiplus.dll`, and `Msftedit.dll`).
-2. **100% WCAG 2.2 Level AA & Live OS Theme Support**: Full keyboard navigation, native Windows UI Automation semantics (`Narrator`, `NVDA`, `JAWS`), Windows Contrast Themes (`SPI_GETHIGHCONTRAST`), custom-subclassed Dark Mode controls, live `WM_SETTINGCHANGE(ImmersiveColorSet)` Light/Dark hot-swapping, enforced WCAG contrast checks on custom publisher branding, and compiler-generated HTML5 **VPAT 2.5** conformance reports (`--emit-vpat`).
-3. **First-Class AI Coding Agent Support**: Plain-text, comment-preserving `.rsip` projects, `.rsis` suites, and `.rsii` includes paired with compiler-emitted `/llms.txt`, `/llms-full.txt`, and `SKILL.md` specifications (`--emit-ai-spec`) so AI agents can author and validate installers from scratch.
-4. **Community == 100% Premier Parity**: Community Edition permanently maintains **100% technical feature parity with Premier Edition**, with zero watermarks and 100% publisher-owned `VERSIONINFO` metadata.
-5. **Original Engineering Identity**: Built cleanly from first principles on documented Microsoft Windows APIs—standing strictly on its own merits with zero telemetry and zero cryptocurrency/blockchain bloat.
+1. **The `v1.0.0 GA` Dogfood North Star**: Version `1.0.0` is defined by a concrete real-world bar—reaching the exact milestone where **100% of RaggieSoft's own Windows desktop applications, classic VB6 utilities (*StoreTrainer*), interactive novels, and supporter audio archives** are packaged, signed, updated, and distributed exclusively with **RaggieSoft Installer Studio**.
+2. **Zero Third-Party Runtime Dependencies**: Every binary in the suite (`InstallerStudio.exe`, `instbuild.exe`, `SetupWizard.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe`) is compiled as static `/MT` native Win32 C++20 for both **`x64`** and **`ARM64`**—relying solely on stock Windows 11 `System32` libraries (`msi.dll`, `cabinet.dll`, `gdiplus.dll`, and `Msftedit.dll`).
+3. **100% WCAG 2.2 Level AA & Live OS Theme Support**: Full keyboard navigation, native Windows UI Automation semantics (`Narrator`, `NVDA`, `JAWS`), Windows Contrast Themes (`SPI_GETHIGHCONTRAST`), custom-subclassed Dark Mode controls, 32-bit ARGB vector `SysTreeView32` hierarchies, live `WM_SETTINGCHANGE(ImmersiveColorSet)` Light/Dark hot-swapping, enforced WCAG contrast checks on custom publisher branding, and compiler-generated HTML5 **VPAT 2.5** conformance reports (`--emit-vpat`).
+4. **First-Class AI Coding Agent Support**: Plain-text, comment-preserving `.rsip` projects, `.rsis` suites, and `.rsii` includes paired with compiler-emitted `/llms.txt`, `/llms-full.txt`, and `SKILL.md` specifications (`--emit-ai-spec`) so AI agents can author and validate installers from scratch.
+5. **Community == 100% Premier Parity**: Community Edition permanently maintains **100% technical feature parity with Premier Edition**, with zero watermarks and 100% publisher-owned `VERSIONINFO` metadata.
+6. **Original Engineering Identity**: Built cleanly from first principles on documented Microsoft Windows APIs—standing strictly on its own merits with zero telemetry and zero cryptocurrency/blockchain bloat.
 
 ---
 
-## Milestone Overview
+## Milestone Overview (`v0.1.0` → `v1.0.0 GA` & Post-1.0)
 
-| Phase / Target | Focus Area | Status |
+| Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
-| **`v0.1.0` – `v0.4.1`** | **Core C++20 Toolchain, 10-View IDE, SelectionTree, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
-| **Phase B (`v0.5.0`)** | **Signing Studio, 8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), WCAG-Guarded Branding, From-Scratch C++ & MSI Dialog Builders + `RsDialog` Scripting, `.rswpak` Feature Packs, `.NET 11` & Universal Single-EXE** | **Next Up** |
-| **Phase C (`v0.6.0`)** | **Setup Capture ("Repackager") & One-Click Disposable Windows Sandbox (`.wsb`) Mode** | Planned |
-| **Phase D (`v0.7.0`)** | **Open-Format Import Wizard (`.msi`, `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM, XML/INI) & Visual Studio `.vsix`** | Planned |
-| **Phase E (`v0.8.0`)** | **Windows Services, Safe `PATH` / Firewall / Tasks, Config File Patchers & Windows Restart Manager** | Planned |
-| **Phase F (`v0.9.0`)** | **White-Label `RsUpdate.exe` Auto-Updater, Guided `.MSP` Servicing, Native `.MSIX`/`.MSIXBUNDLE`, `I18N` & `--emit-sbom`** | Planned |
-| **Phase G (`v1.0.0 GA`)** | **GitHub Actions / Azure DevOps Tasks & 100% RaggieSoft Production Cutover** | Planned |
+| **`v0.1.0` – `v0.4.2`** | **Core C++20 Toolchain, 12-View Tree-First IDE (`Features` & `RegEdit` `Registry` Trees), `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
+| **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Complete Publisher Branding (`.rswskin` + Billboards) & Live WCAG 2.2 AA Contrast Enforcer** | **Next Up** |
+| **`v0.6.0`** | **Single-Download CPU-Aware Web Installer (`.rswpak` On-Demand Feature Packs), All-in-One Offline Universal Single-EXE, `.NET 11` Presets & `Engine = native`** | Planned |
+| **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
+| **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
+| **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
+| **`v1.0.0 GA`** | **Turnkey CI/CD Actions, `winget` Export & 100% RaggieSoft Production Dogfood Cutover** | Planned |
+| **`v1.1+` (Post-1.0)** | **Disposable Windows Sandbox (`.wsb`) Setup Capture, Visual Studio `.vsix`, Windows Services/Firewall/Config Patchers, `.MSIXBUNDLE`, 20-Lang `I18N` & `--emit-sbom`** | Post-1.0 Expansion |
 
 ---
 
-## Shipped Milestones (`v0.1.0` – `v0.4.1`)
+## Shipped Milestones (`v0.1.0` – `v0.4.2`)
 
+- **`v0.4.2` — 12-View Tree-First Visual IDE Overhaul, Dedicated `Features` & `RegEdit` `Registry` Trees, Categorized `MSI Prism` Schema & Inspector Fixes**:
+  - Replaced flat `LISTBOX` and `SysListView32` overuse across `InstallerStudio.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe` with **20 anti-aliased 32-bit premultiplied ARGB vector tree icons (`StudioTreeIcon`)** and `ApplyDarkTreeViewTheme` (`DarkMode_Explorer` / `Explorer` chevrons, connector lines, and 24px accessible row height).
+  - Upgraded the left IDE sidebar into a categorized `SysTreeView32` (`Application Information`, `Setup Architecture`, `User Interface`, and `Deployment & Source`) spanning **12 dedicated views**:
+    - **New Dedicated `Features` View**: `All Features` hierarchical tree with live `Move Up` / `Move Down` `SelectionTree` AST reordering, `+ New Feature`, `+ Sub-Feature`, `Core Required (DisallowAbsent)` toggle, and a bottom `Feature Description` inspector.
+    - **New `RegEdit`-Style `Registry` View**: Left hive/key hierarchy (`HKEY_CLASSES_ROOT`, `HKEY_CURRENT_USER`, `HKEY_LOCAL_MACHINE`, `HKEY_USERS` `HKU`, and `HKEY_USER_MACHINE_DEFAULT` `HKMU` with nested subkey folders), right-hand typed values tree (`REG_SZ`, `REG_EXPAND_SZ`, `REG_DWORD`), `Filter Keys by Feature`, and a UTF-8 / UTF-16LE `.REG` file importer.
+    - **Dual-Tree `Files & Folders`**, **Hierarchical `Application Runtimes & .MSM`**, **`File Associations` (`.ext -> ProgId -> Verbs`)**, and **`Shortcuts` (`Start Menu` & `Desktop`)** views, plus fixed `TVN_SELCHANGEDW` click-to-inspect and empty-field clearing in `Components & KeyPaths`.
+  - Upgraded `msiprism.exe` into a 5-category SQL schema tree (`Metadata & Streams`, `Core Packaging Tables`, `Registry, Shortcuts & Classes`, `Dialogs & UI Controls`, and `Sequences, Locators & Actions`).
 - **`v0.4.1` — Dark-Mode Push Button Subclassing & Live `ImmersiveColorSet` Palette Hot-Swapping**:
-  - Added `AttachAccessiblePushButtonSubclass` (`SetWindowSubclass` + GDI+ on genuine `BS_PUSHBUTTON` / `BS_DEFPUSHBUTTON` controls with `BCM_SETSHIELD` UAC shield rendering, Royal Cobalt primary fills, Slate-Navy secondary fills, and `SPI_GETHIGHCONTRAST` fallback) plus `ApplyDarkComboBoxTheme` (`DarkMode_CFD`) across `SetupWizard.exe`, `InstallerStudio.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe`—eliminating `ComCtl32 v6`'s bright `#FFFFFF` light-mode push buttons in Dark Mode while keeping 100% native UI Automation `Button` semantics.
-  - Wired `IsLiveThemeBroadcast` (`WM_SETTINGCHANGE` `lParam == L"ImmersiveColorSet"`, `SPI_SETHIGHCONTRAST`, `WM_SYSCOLORCHANGE`, and `WM_THEMECHANGED`) + `RedrawWindow(..., RDW_ALLCHILDREN)` across all four GUI executables so toggling Windows 11 (or automatic day/night utilities like Auto Dark Mode) between Light Mode, Dark Mode, and High Contrast flips every open window live in `< 16ms` without restarting.
+  - Added `AttachAccessiblePushButtonSubclass` (`SetWindowSubclass` + GDI+ on genuine `BS_PUSHBUTTON` / `BS_DEFPUSHBUTTON` controls with `BCM_SETSHIELD` UAC shield rendering, Royal Cobalt primary fills, Slate-Navy secondary fills, and `SPI_GETHIGHCONTRAST` fallback) plus `ApplyDarkComboBoxTheme` (`DarkMode_CFD`) across `SetupWizard.exe`, `InstallerStudio.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe`.
+  - Wired `IsLiveThemeBroadcast` (`WM_SETTINGCHANGE` `lParam == L"ImmersiveColorSet"`, `SPI_SETHIGHCONTRAST`, `WM_SYSCOLORCHANGE`, and `WM_THEMECHANGED`) across all four GUI executables so toggling Windows 11 (or automatic day/night schedulers like Auto Dark Mode) flips every open window live in `< 16ms` without restarting.
 - **`v0.4.0` — Native C++20 Help Viewer, Dark-Mode Control Polish, Screenshot Exporter & Standalone Identity**:
-  - Added **`RaggieSoftHelp.exe`**, a static `/MT` native Win32 C++20 offline documentation viewer (`x64` & `ARM64`, zero `.NET` and zero `WebView2` dependencies) supporting pluggable `module.rshm.json` manifests, Contents / Index / Search navigation, in-process HTML5-to-RTF typography (`Msftedit.dll`), and instant single-instance `F1` Named Pipe IPC (`\\.\pipe\RaggieSoft.HelpViewer.IPC.<User>`).
-  - Authored the 8-chapter `raggiesoft.installer-studio` offline HTML5 help module and wired `F1` context navigation across all 10 views of `InstallerStudio.exe`.
-  - Added shared Win32 Dark Mode subclasses (`AttachAccessibleCheckboxSubclass`, `AttachDarkAwareListViewSubclass`, and `ApplyDarkScrollbarTheme`) across `InstallerStudio.exe`, `SetupWizard.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe` so checkboxes and `SysListView32` column headers never render black-on-dark text or bright white strips.
-  - Added `--export-screenshots` WIC PNG window capture and published the `/changelog` Version History and live UI gallery on `https://raggiesoftstudio.com`.
+  - Added **`RaggieSoftHelp.exe`**, a static `/MT` native Win32 C++20 offline documentation viewer (`x64` & `ARM64`, zero `.NET` and zero `WebView2` dependencies) supporting pluggable `module.rshm.json` manifests, Contents / Index / Search navigation, in-process HTML5-to-RTF typography (`Msftedit.dll`), and instant single-instance `F1` Named Pipe IPC.
+  - Authored the 8-chapter `raggiesoft.installer-studio` offline HTML5 help module (mirrored 1:1 to `/docs/*` on the web) and added shared Dark Mode checkbox and `SysListView32` column-header subclasses plus `--export-screenshots`.
 - **`v0.3.0` — Editions (`Community == Premier`), LZMS Solid Compression, Pre-MSI Runtimes, `.MSM` & `SelectionTree`**:
-  - Introduced `Community`, `Express`, `Professional`, and `Premier` edition badges (`Community == 100% Premier` capability).
-  - Added Windows `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) solid payload compression inside `Setup.exe`.
-  - Built the unlimited Pre-MSI `[Prerequisite.<Id>]` runtime broker (`WinHTTP` download, `LZMS` offline embed, and `Redist\`) running before `msiexec` under one UAC prompt and latching standardized or custom `RebootExitCodes` (`3010, 1641, 23, ...`).
-  - Added native 64-bit `[MergeModule.<Id>]` (`.msm`) SQL + CAB merging (`Cabinet.lib` FDI, zero 32-bit `mergemod.dll` dependency).
-  - Added the authentic Windows Installer `SelectionTree` (`WizardPage::CustomFeatures`) with 32-bit ARGB split-dropdown icons, live byte costing, `DisallowAbsent` locks, and `MsiFormatRecordW` status formatting (eliminating unexpanded `[1]` strings).
-- **`v0.2.0` & `v0.2.1` — 10-View AeroWizard IDE, Microsoft Component Rules & UAC Broker**:
-  - Added the Destination Computer folder tree, Setup Design (`Features -> Components -> KeyPaths` enforcing `ICE18`, `ICE38`, `ICE64`, and `ICE80`), File Associations, Dual C++ & `370x270` `MSI.DLL` Dialog Designers, 5 native Win32 AeroWizards, Dark Mode checkbox subclassing, Wizard97 footer `< Back` navigation, `Signature`/`AppSearch` SQL tables, and the `--elevated-msi-worker` UAC broker.
+  - Introduced `Community`, `Express`, `Professional`, and `Premier` edition badges (`Community == 100% Premier` capability), Windows `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) solid compression, the unlimited Pre-MSI `[Prerequisite.<Id>]` runtime broker with custom `RebootExitCodes`, native 64-bit `[MergeModule.<Id>]` (`.msm`) SQL + CAB merging, and the authentic 32-bit ARGB Windows Installer `SelectionTree`.
+- **`v0.2.0` & `v0.2.1` — AeroWizard IDE, Microsoft Component Rules & UAC Broker**:
+  - Added the Destination Computer folder tree, `ICE18`/`ICE38`/`ICE64`/`ICE80` Component validation, File Associations, Dual C++ & `370x270` `MSI.DLL` Dialog Designers, 5 native Win32 AeroWizards, `Signature`/`AppSearch` SQL tables, and the `--elevated-msi-worker` UAC broker.
 - **`v0.1.0` — Initial Native C++20 Vertical Slice**:
   - Shipped `instbuild.exe`, `SetupWizard.exe`, `InstallerStudio.exe`, `msiprism.exe`, and `insttests.exe` with deterministic SHA-1 UUIDv5 Component GUIDs, `RtlGetVersion` + `IsWow64Process2` silicon detection, `--emit-ai-spec`, and `--emit-vpat`.
 
 ---
 
-## Upcoming Engineering Phases
+## Focused Milestones to `v1.0.0 GA` (Shipping RaggieSoft's Own Software)
 
-### Phase B (`v0.5.0`) — Authenticode Signing Studio, 8 Wizard Layout Variations, WCAG-Guarded Publisher Branding, From-Scratch C++ & Raw MSI Dialog Builders, `RsDialog` Scripting, `.rswpak` Feature Packs, `.NET 11` & Universal Single-EXE
-1. **First-Class Authenticode Signing UX (Ready for Azure Artifact Signing & Cert Stores)**:
-   - Add an interactive Windows Certificate Store picker (`CryptUIDlgSelectCertificateFromStore`), local `.pfx` / hardware token configuration, Azure Artifact Signing (`dlib` + `MetadataJson`) profile tester, and one-click Dual-Layer Signature Verifier (`WinVerifyTrust` on both inner `Product.msi` and outer `Setup.exe`) in View 9 of `InstallerStudio.exe`.
-2. **Eight First-Party Wizard Layout Variations (`[UI] WizardLayout`) Spanning Every Era & Deployment Style**:
+### `v0.5.0` — 8 Wizard Layout Variations, White-Label Branding Studio & Enforced WCAG 2.2 AA Contrast Guardrails
+1. **Eight First-Party Wizard Layout Variations (`[UI] WizardLayout`) Spanning Every Era of Windows UX**:
    - **`Wizard95` (`wizard95`)**: Classic 1995 desktop 3D beveled dialog geometry (`#C0C0C0` surface, sunken etched dividers, `164x314` left vertical bitmap rail, and classic 3D beveled `< Back` / `Next >` / `Cancel` push buttons).
-   - **`Wizard97` (`wizard97` / `standard`)**: Classic header-banner enterprise wizard with top banner + right-side emblem, crisp workspace sheet, and bottom-right `< Back` / `Next >` / `Cancel` footer—modernized for Dark Mode and Light Mode.
-   - **`AeroWizard` (`aerowizard`)**: Command-bar layout with a vector GDI+ `30x30` circular `<-` Back glyph (normal, hover, pressed, disabled, and keyboard focus states + UI Automation `"Back"` label) in the top-left command area, with author choice between top-left `<-` or bottom-right `< Back`.
-   - **`FluentMica` (`fluentmica`)**: Native Windows 11 modern aesthetic in pure zero-dependency Win32 C++20 via `DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)`—replacing the legacy horizontal top banner divider with a unified surface, generous breathing room, a left-hand vertical step-indicator rail (`Welcome -> License -> Options -> Install -> Finish`), and rounded `8px` cards.
-   - **`OneClickSplash` (`oneclick`)**: Friction-free single-card express installer (`~480x280`) featuring the app icon, product title, one prominent primary **Install** button, live progress bar, and a subtle *"Customize installation..."* disclosure button that dynamically expands into the full Custom Setup (`SelectionTree` + folder picker) flow only when clicked.
-   - **`PassiveToast` (`passivetoast`)**: Unattended `/passive` & `/qb` enterprise progress banner (centered or docked cleanly near the bottom-right system tray) displaying the publisher's app badge, deterministic progress bar, Dark/Light/High-Contrast styling, and screen-reader UI Automation live-region percentage announcements without interactive `Next`/`Back`/`Cancel` clutter.
-   - **`FullScreenBlue` (`fullscreenblue`)**: Nostalgic 1990s cobalt-blue (`#000080 -> #000000`) full-screen `SETUP.EXE` backdrop wash with a crisp drop-shadowed serif product title in the top-left corner, floating 3D beveled setup dialogs, **optional rotating installation billboards**, and a classic floating **3D Beveled Progress Gauge** that can sit centered or dock at the **bottom-center / bottom-right** beneath active billboards (ideal for retro tools like *StoreTrainer*)—while maintaining full modern Per-Monitor V2 DPI scaling, keyboard navigation, and UI Automation screen-reader accessibility under the hood.
-   - **`Autorun16x9` (`autorun16x9`)**: Widescreen `16:9` Collector's Edition & digital media menu.
-   - **Non-Negotiable Windows Contrast Theme Auto-Override (`SPI_GETHIGHCONTRAST`)**: Regardless of which `WizardLayout` or custom brand skin an author configures, `SetupWizard.exe` checks `SystemParametersInfoW(SPI_GETHIGHCONTRAST, ...)` at startup and live on `WM_SETTINGCHANGE` / `WM_SYSCOLORCHANGE`. Whenever a Windows Contrast Theme (*Aquatic*, *Desert*, *Dusk*, *Night Sky*) is active, **every** variation automatically bypasses custom gradients, bitmaps, and Mica backdrops and paints strictly with semantic OS colors (`COLOR_WINDOW`, `COLOR_WINDOWTEXT`, `COLOR_HIGHLIGHT`, `COLOR_BTNTEXT`) and `2px` solid borders so VPAT 2.5 / WCAG 2.2 AA conformance holds 100% true across every skin.
-3. **Complete Publisher Branding, Custom Imagery & Enforced WCAG 2.2 AA Color Contrast Guardrails (`[Branding]` & `.rswskin`)**:
-   - **100% White-Label Brand Customization**: Customize Light & Dark Mode color palettes, header banners, `164x314` wizard sidebars, product icons/badges, background washes, and rotating install **billboard** images.
-   - **Built-In WCAG 2.2 AA Contrast Enforcer (IDE + CLI Compiler)**: Every color picker in `InstallerStudio.exe` computes live W3C relative luminance contrast ratios across both Light and Dark palettes (`>= 4.5:1` AA for normal text, `>= 3.0:1` for large headings, focus rings, and interactive control borders), displays live AA/AAA badges, and offers a one-click *"Auto-Adjust Nearest Accessible Shade"* button that preserves the publisher's chosen brand hue while nudging lightness until contrast passes. Headless `instbuild.exe --validate` and `--emit-vpat` enforce the exact same contrast checks in CI.
-4. **From-Scratch Dual Dialog Builder (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting**:
-   - **From-Scratch Native C++ Dialog Builder (`[Dialog.<Id>]` + `[Control.<DialogId>.<CtrlId>]`)**: Blank-canvas WYSIWYG designer in `InstallerStudio.exe` for building arbitrary custom wizard pages in `SetupWizard.exe` (headings, rich text, text/masked inputs, folder & file pickers, checkboxes, radio card groups, combo boxes, listviews, custom hero/banner art, Tab-order editor, live property binding, and conditional visibility).
-   - **From-Scratch Raw `MSI.DLL` Dialog Builder (`[MsiDialog.<Id>]` + `[MsiControl.<DialogId>.<CtrlId>]`)**: Full `370x270` DLU visual canvas compiling directly into standard relational `Dialog`, `Control`, `ControlEvent`, `ControlCondition`, `RadioButton`, `ComboBox`, `ListBox`, and `Binary` SQL tables inside `Product.msi` so standalone `msiexec /i Product.msi` installs render the author's custom dialogs natively too.
-   - **`RsDialog` Standard Library + `.rssc` Bytecode Engine**: Event hooks (`OnBegin`, `OnPrerequisitesComplete`, `OnFeatureSelected`, `OnBeforeInstall`, `OnAfterInstall`), `wizard { step }` state-machine control, `RsShowDialog("<CustomId>")`, and our first-party **`RsDialog`** procedural dialog family (`RsWelcome()`, `RsLicense()`, `RsSetupType()`, `RsFeatureTree()`, `RsAskDestPath()`, `RsAskText()`, `RsAskOptions()`, `RsStartCopy()`, `RsFinish()`, `RsFinishReboot()`).
-5. **On-Demand Feature Packs (`.rswpak`) & CPU-Aware Universal Web Installer**:
-   - **Eliminating Separate `x64` vs. `ARM64` Download Links**: Today, websites must offer separate `x64` and `ARM64` installers. With `.rswpak` **On-Demand Feature Packs**, publishers ship **one** compact `Setup.exe` web bootstrapper that queries `IsWow64Process2` at launch to detect true native host silicon (`ARM64` vs. `x64`, piercing Windows 11 Prism emulation) and downloads **only** the matching CPU edition's LZMS-compressed `.rswpak` pack (plus any selected optional feature packs) over `WinHTTP` with SHA-256 + Authenticode verification—so users never guess their processor architecture or waste bandwidth downloading unused binaries.
-6. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`, GA Nov 2026) Runtime Presets & Detection**:
-   - Support **`DotNet11Desktop`** (`Microsoft .NET 11.0 Desktop Runtime` — `x64` & `arm64`, WinGet `Microsoft.DotNet.DesktopRuntime.11`), **`DotNet11AspNet`**, and **`DotNet11Runtime` / `DotNet10Runtime`** (`Microsoft.NETCore.App` base console/service runtimes) alongside `.NET 10.0 LTS`, `.NET 9.0`, and `.NET 8.0 LTS`.
-   - Expose `.NET 11.0 (STS)` and `.NET 10.0 (LTS)` side-by-side in the New Project AeroWizard, Prerequisites Picker, offline `RaggieSoftHelp.exe` documentation, and compiler-emitted `llms.txt` / `SKILL.md` specs—verifying both native `arm64` and `x64`-on-ARM64 installations in `< 1ms`.
-7. **All-in-One Offline Universal Single-EXE (`Architecture = universal`, `Distribution = offline`) & Native Direct Engine (`Engine = native | msi`)**:
-   - **Dual Single-File Distribution (`Web Setup.exe` + `Full Offline Setup.exe`)**: Alongside the lightweight `.rswpak` Web Installer, emit a **single self-contained Offline `Setup.exe`** packing **both** `x64` and `ARM64` LZMS solid payloads (and bundled offline prerequisites) inside one portable executable for air-gapped enterprise networks, IT USB drives, and archival preservation—automatically installing the 100% native `ARM64` or `x64` edition at runtime.
-   - **Native Direct Engine (`Engine = native`)**: Optional zero-`msi.dll` direct extraction backend with an atomic transactional rollback journal, `HKLM`/`HKCU` `Uninstall` registration, and a signed native `Uninstall.exe`—eliminating `Global\_MSIExecute` mutex collisions when Windows Update is running in the background and installing multi-hundred-file content packs in milliseconds.
+   - **`Wizard97` (`wizard97` / `standard`)**: Classic enterprise header-banner wizard with top banner + right-side emblem, crisp workspace sheet, and bottom-right `< Back` / `Next >` / `Cancel` footer—modernized for Dark Mode and Light Mode.
+   - **`AeroWizard` (`aerowizard`)**: Command-bar layout with a vector GDI+ `30x30` circular `<-` Back glyph in the top-left command area (or author-selected bottom-right `< Back`).
+   - **`FluentMica` (`fluentmica`)**: Modern Windows 11 native backdrop in zero-dependency Win32 C++20 via `DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)` with a unified borderless surface, left-hand vertical step-progress rail (`Welcome -> License -> Options -> Install -> Finish`), and rounded `8px` cards.
+   - **`OneClickSplash` (`oneclick`)**: Friction-free single-card express installer (`~480x280`) with one primary **Install** button, live progress bar, and a *"Customize installation..."* disclosure button that expands into the full Custom Setup (`SelectionTree` + folder picker) flow on demand.
+   - **`PassiveToast` (`passivetoast`)**: Clean non-interactive `/passive` & `/qb` progress surface (centered or docked near the bottom-right system tray) with UI Automation live-region percentage announcements.
+   - **`FullScreenBlue` (`fullscreenblue`)**: Nostalgic 1990s cobalt-blue (`#000080 -> #000000`) full-screen `SETUP.EXE` backdrop wash with a drop-shadowed serif product title in the top-left corner, floating 3D beveled setup dialogs, **optional rotating installation billboards**, and a floating **3D Beveled Progress Gauge** (centered or docked at the bottom-center / bottom-right beneath billboards—ideal for retro tools like *StoreTrainer*) while keeping modern DPI scaling, keyboard navigation, and UI Automation accessibility under the hood.
+   - **`Autorun16x9` (`autorun16x9`)**: Widescreen `16:9` Collector's Edition & digital media launcher menu.
+   - **Non-Negotiable Windows Contrast Theme Auto-Override (`SPI_GETHIGHCONTRAST`)**: Across every `WizardLayout` and custom brand skin, whenever a Windows Contrast Theme (*Aquatic*, *Desert*, *Dusk*, *Night Sky*) is active, `SetupWizard.exe` automatically bypasses custom gradients, bitmaps, and Mica backdrops and paints strictly with semantic OS colors (`COLOR_WINDOW`, `COLOR_WINDOWTEXT`, `COLOR_HIGHLIGHT`, `COLOR_BTNTEXT`) and `2px` solid borders.
+2. **Complete Publisher Branding & Live WCAG 2.2 AA Contrast Enforcer (`[Branding]` & `.rswskin`)**:
+   - Customize Light & Dark Mode color palettes, header banners, `164x314` wizard sidebars, product badges, background washes, and rotating install billboards.
+   - Every color picker in `InstallerStudio.exe` computes live W3C relative luminance contrast ratios across both Light and Dark palettes (`>= 4.5:1` AA normal text, `>= 3.0:1` large text & UI borders), displays live AA/AAA badges, and offers a one-click *"Auto-Adjust Nearest Accessible Shade"* button preserving brand hue—enforced identically in CI via `instbuild.exe --validate` and `--emit-vpat`.
 
-### Phase C (`v0.6.0`) — Setup Capture ("Repackager") & Disposable Windows Sandbox (`.wsb`) Mode
-1. **Snapshot-Diff Repackager (`Legacy Setup.exe -> .rsip -> .msi + .mst`)**:
-   - Capture fast pre/post filesystem and `HKLM`/`HKCU`/`HKCR` registry baselines while running legacy `.exe` installers inside a Win32 Job Object (`CreateJobObjectW`) so child sub-installers are tracked to completion.
-   - Apply smart Windows background noise filtering, tokenize hard-coded paths (`C:\Program Files\...` -> `[ProgramFiles64Folder]`), harvest `.lnk` shortcuts (`IShellLinkW`) and Windows Services, emit a clean `.rsip` manifest, and generate enterprise `.mst` transforms via `MsiDatabaseGenerateTransformW`.
-2. **Windows Edition Detection (`GetProductInfo`) + One-Click Windows Sandbox (`.wsb`) Capture**:
-   - Query `GetProductInfo` alongside `RtlGetVersion` to detect **Windows 11 Pro, Enterprise, and Education** hosts where Microsoft Windows Sandbox is supported.
-   - Offer one-click **"Capture Inside Disposable Windows Sandbox"**: automatically generate a `.wsb` configuration mapping a staging folder, execute the legacy installer + capture agent inside a pristine throwaway VM, return the clean `.rsip` + captured payload files to the host IDE, and discard the sandbox without touching the developer's workstation.
+### `v0.6.0` — Single-Download Universal Web & Offline Installers (`.rswpak`), `.NET 11` Presets & Native Direct Engine
+1. **CPU-Aware Universal Web Installer via On-Demand Feature Packs (`.rswpak`)**:
+   - Eliminate separate `x64` vs. `ARM64` download links on product websites. Ship **one** compact `Setup.exe` web bootstrapper that queries `IsWow64Process2` at launch (piercing Windows 11 Prism emulation) to detect true host silicon (`ARM64` vs. `x64`) and downloads **only** the matching CPU edition's LZMS-compressed `.rswpak` pack (plus selected optional feature packs) over `WinHTTP` with SHA-256 + Authenticode verification.
+2. **All-in-One Offline Universal Single-EXE (`Architecture = universal`, `Distribution = offline`)**:
+   - Alongside the lightweight `.rswpak` Web Installer, emit **one self-contained Offline `Setup.exe`** packing **both** `x64` and `ARM64` LZMS solid payloads and prerequisites inside a single portable file for air-gapped PCs, USB media, and archival preservation.
+3. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
+   - Curated `DotNet11Desktop`, `DotNet11AspNet`, and `DotNet11Runtime` / `DotNet10Runtime` presets alongside `.NET 10.0 LTS`, `.NET 9.0`, and `.NET 8.0 LTS`, probing native `arm64` and `x64`-on-ARM64 installations in `< 1ms`.
+4. **Native Direct Engine (`Engine = native | msi`)**:
+   - Optional zero-`msi.dll` direct extraction backend with an atomic transactional rollback journal, `HKLM`/`HKCU` `Uninstall` registration, and a signed native `Uninstall.exe`—eliminating `Global\_MSIExecute` mutex collisions and installing multi-hundred-file interactive book and supporter audio packs in milliseconds.
 
-### Phase D (`v0.7.0`) — Setup Conversion / Import Wizard (Including VB6 `.vbp`!) & Visual Studio Extension (`.vsix`)
-1. **Open-Format Setup Conversion Wizard (`New Project -> Import / Convert...`)**:
-   - **Existing `.msi` / `.msm` -> `.rsip`**: Extend `msiprism`'s SQL reader + `<fdi.h>` CAB extractor to decompile existing Windows Installer databases directly into editable `.rsip` projects.
-   - **Visual Studio `.slnx` / `.sln` / `.csproj` / `.vcxproj` / `CMakeLists.txt` -> `.rsip`**: Auto-detect `.NET 11` / `.NET 10 LTS` / `.NET 9` / `.NET 8 LTS` (`net11.0-windows`, `net11.0`, `net10.0-windows`, etc. -> mapping `<UseWPF>`/`<UseWindowsForms>`, `Sdk.Web`, or console apps to `DotNet11Desktop` / `DotNet11AspNet` / `DotNet11Runtime`), `VC++`, and `WebView2` runtime prerequisites, `x64` + `ARM64` build output paths, `.ico` assets, and PE versions in one click.
-   - **Visual Basic 6.0 (`.vbp`) -> `.rsip` with Windows 11 WRP & Reg-Free COM Modes**:
-     - Parse `ExeName32`, `Reference=*\G{...}`, and `Object={GUID}#ver#0; File.ocx` lines directly from `.vbp` projects.
-     - **Windows 11 WRP Awareness**: Automatically skip or guard (`VersionNT < 600`) OS-protected `SysWOW64` core runtime files (`msvbvm60.dll`, `oleaut32.tlb`/`oleaut32.dll`, `stdole2.tlb`) that already ship inside Windows 11 (`x64` & `ARM64` Prism), while packaging required extended ActiveX controls (`COMCT232.OCX`, `Comdlg32.ocx`, `MSCOMCTL.OCX`, `RICHTX32.OCX`, `MSWINSCK.OCX`).
-     - **Dual VB6 Packaging Choice**: Offer **(a) Classic Local `.MSM` Merge Module Mode** (discovering local SP6 `.msm` modules from `%CommonProgramFiles(x86)%\Merge Modules\` or a user redist folder without bundling proprietary redistributables in Git) OR **(b) Modern Windows 11 Reg-Free COM Mode** (staging `.ocx` files privately beside `<App>.exe` and auto-generating `<App>.exe.manifest` `<comClass>` / `<typelib>` SxS entries for zero-elevation, zero-`regsvr32`, zero-`SysWOW64` installs!).
-   - **Open XML & Structured Script Importers (`AppxManifest.xml`, XML installer schemas, & INI setup scripts -> `.rsip`)**: Convert directory trees, components, shortcuts, registry keys, and file associations into `.rsip`, flagging custom procedural script blocks so an AI coding agent (using our emitted `SKILL.md`) can translate custom hooks into `.rssc` + `RsDialog` calls automatically.
-2. **Visual Studio Add-In / Extension (`.vsix`)**:
-   - Ship a Visual Studio extension providing `.rsip` / `.rsis` solution item templates, syntax highlighting, schema hover tooltips, MSBuild packaging targets, and right-click *"Build Installer Studio Package (`x64` + `ARM64`)"* integration.
+### `v0.7.0` — From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` Scripting
+1. **From-Scratch Native C++ Dialog Builder (`[Dialog.<Id>]` + `[Control.<DialogId>.<CtrlId>]`)**:
+   - Blank-canvas WYSIWYG designer in `InstallerStudio.exe` for building custom wizard pages in `SetupWizard.exe` (headings, rich text, text/masked inputs, folder & file pickers, checkboxes, radio card groups, combo boxes, trees, Tab-order editor, live property binding, and conditional visibility).
+2. **From-Scratch Raw `MSI.DLL` Dialog Builder (`[MsiDialog.<Id>]` + `[MsiControl.<DialogId>.<CtrlId>]`)**:
+   - Full `370x270` DLU visual canvas compiling directly into relational `Dialog`, `Control`, `ControlEvent`, `ControlCondition`, `RadioButton`, `ComboBox`, `ListBox`, and `Binary` SQL tables inside `Product.msi`.
+3. **`RsDialog` Standard Library + `.rssc` Event Scripting**:
+   - Event hooks (`OnBegin`, `OnPrerequisitesComplete`, `OnFeatureSelected`, `OnBeforeInstall`, `OnAfterInstall`), `wizard { step }` state-machine control, `RsShowDialog("<CustomId>")`, and our procedural **`RsDialog`** library (`RsWelcome()`, `RsLicense()`, `RsSetupType()`, `RsFeatureTree()`, `RsAskDestPath()`, `RsAskText()`, `RsAskOptions()`, `RsStartCopy()`, `RsFinish()`, `RsFinishReboot()`).
 
-### Phase E (`v0.8.0`) — Enterprise System Primitives, Config Patchers & Windows Restart Manager
-1. **Windows Services, Environment Variables, Firewall Rules & Scheduled Tasks**:
-   - **`[Service.<Id>]`**: Native MSI `ServiceInstall`/`ServiceControl` SQL generation + Native Engine SCM (`CreateServiceW`) lifecycle management (install, start, stop, failure recovery actions, and clean uninstall teardown).
-   - **`[Environment.<Id>]`**: Safe `PATH` prefix/suffix manipulation (`[~]` semantics that never truncate or wipe existing `HKLM`/`HKCU` `PATH` entries) + immediate `WM_SETTINGCHANGE` broadcast.
-   - **`[FirewallRule.<Id>]` & `[ScheduledTask.<Id>]`**: Declarative Windows Defender Firewall rules (`INetFwPolicy2`) and Task Scheduler jobs with automatic rollback and uninstall cleanup.
-2. **Declarative Config File Patchers (`[JsonPatch.*]`, `[XmlConfig.*]`, `[IniFile.*]`)**:
-   - Stamp install-time wizard properties (endpoints, ports, install paths, license/channel flags) cleanly into `appsettings.json`, `.xml`/`.config`, and `.ini` files during install while preserving user settings across upgrades.
-3. **Windows Restart Manager (`Rstrtmgr.dll`) "Files-in-Use" Resolution**:
-   - Integrate `RmStartSession` / `RmRegisterResources` / `RmGetList` into `SetupWizard.exe` so upgrades detect running processes locking target `.exe`/`.dll` files, offer a WCAG-accessible *"Close Running Applications & Continue"* step, and prevent unnecessary OS reboots.
+### `v0.8.0` — Solution & Legacy Project Importers (`.slnx`, VB6 `.vbp` Reg-Free COM & `.msi`) + Windows Restart Manager
+1. **Visual Studio `.slnx` / `.sln` / `.csproj` / `.vcxproj` / `CMakeLists.txt` Importer**:
+   - Auto-detect `.NET 11` / `.NET 10 LTS` / `VC++` / `WebView2` runtime prerequisites, `x64` + `ARM64` publish outputs, `.ico` assets, and PE versions in one click.
+2. **Visual Basic 6.0 (`.vbp`) Importer with Windows 11 WRP & Reg-Free COM Modes (Built for *StoreTrainer*!)**:
+   - Parse `ExeName32`, `Reference=`, and `Object=*.ocx` entries directly from `.vbp` projects; respect Windows 11 Resource Protection on built-in `SysWOW64` runtimes (`msvbvm60.dll`, `oleaut32.dll`, `stdole2.tlb`); and offer either **(a) Classic Local `.MSM` Merge Module Mode** or **(b) Modern Zero-Elevation Reg-Free COM Mode** (`<App>.exe.manifest` `<comClass>` / `<typelib>` side-by-side manifests with zero `SysWOW64` clutter).
+3. **Existing `.msi` / `.msm` Decompiler & Windows Restart Manager (`Rstrtmgr.dll`)**:
+   - Decompile existing `.msi`/`.msm` databases into editable `.rsip` projects, and integrate `RmStartSession` / `RmGetList` into `SetupWizard.exe` so upgrades gracefully close running app processes without unnecessary OS reboots.
 
-### Phase F (`v0.9.0`) — White-Label Redistributable Auto-Updater, Guided `.MSP` Patching, Native `.MSIX` & Global `I18N` / SBOM
-1. **Royalty-Free White-Label Redistributable Auto-Updater (`RsUpdate.exe` / `[AutoUpdate]`)**:
-   - Ship a zero-dependency `/MT` Win32 C++20 auto-updater redistributable (`x64` & `ARM64`, unlocked across all editions including Community!) that Installer Studio stamps with the **publisher's own `.ico`, `ProductName`, and `CompanyName` (`VERSIONINFO`, 100% white-label)** and bundles right into their installed directory (`[AutoUpdate] Enabled = true`).
-   - Emit static HTTPS update-feed JSON manifests (`stable` / `beta` channels), verify SHA-256 + `WinVerifyTrust` Authenticode signatures via `WinHTTP`, support both WCAG-accessible interactive release-notes prompts and silent background updates, and automatically apply `.msp` binary delta patches, `.msi` Major Upgrades, or Native Direct Engine updates.
-2. **Guided Microsoft-Compliant Update & `.MSP` Patch Authoring (`New Update / Patch AeroWizard` & `--plan-update`)**:
-   - Make authoring updates *the right way* effortless per official Microsoft Windows Installer servicing rules (`Small Update`, `Minor Update` `.msp`, and `Major Upgrade` `.msi`):
-     - **Baseline Diff & Servicing Rule Linter (`instbuild.exe --plan-update <baseline.msi> <current.rsip>`)**: Diff the current project against the shipped baseline `.msi` and enforce Microsoft's strict `.msp` Component rules automatically (preserving `UpgradeCode` + `ProductCode`, rotating `PackageCode`, blocking illegal Component GUID/KeyPath mutations or un-flagged file removals from existing Components, and routing new files into fresh Components).
-     - **One-Click `.MSP` Generation vs. Major Upgrade Guidance**: When changes qualify for a Minor Update, emit a compact binary-delta `.msp` with populated `MsiPatchMetadata` and `MsiPatchSequence` superseding tables (plus optional `Setup.exe` patch wrapper passing `REINSTALL=ALL REINSTALLMODE=omus`); when structural removals require a **Major Upgrade**, explain why in plain English and rotate `ProductCode` + `Upgrade` table scheduling in one click.
-3. **In-Process Native `.MSIX` & Dual-Architecture `.MSIXBUNDLE` Compiler (`AppxPackaging.dll`) + `winget` Export**:
-   - Call Windows' built-in `AppxPackaging.dll` COM APIs (`IAppxFactory`, `IAppxPackageWriter`, and `IAppxBundleWriter`) directly in C++20—zero external SDK tools required—to emit `AppxManifest.xml`, SHA-256 `AppxBlockMap.xml`, single-arch `.msix`, and unified `x64 + ARM64` **`.msixbundle`** packages from the exact same `.rsip` project, auto-matching `Publisher` to the `[Signing]` certificate `Subject`!
-   - Keep **Optional Windows 11 Sparse Package Identity** for classic Win32 `.msi` / Native installs needing modern Win11 Explorer context menus and Toast notifications without container virtualization, plus **`instbuild.exe --emit-winget`** (`winget-pkgs` multi-file YAML manifests).
-4. **Multi-Language Localization (`I18N` + RTL Mirroring)**:
-   - UTF-8 `.rslang` localization tables for 20+ languages (including `WS_EX_LAYOUTRTL` right-to-left layout mirroring for Arabic and Hebrew), auto-selecting via `GetUserDefaultUILanguage()` with an optional language picker in `SetupWizard.exe`.
-5. **Procurement Compliance Pack (`--emit-sbom` Alongside `--emit-vpat`)**:
-   - Generate **SPDX 2.3 / CycloneDX JSON Software Bills of Materials (`SBOM`)** listing every packaged payload file, PE version, SHA-256 hash, and runtime prerequisite alongside the HTML5 **VPAT 2.5** Accessibility Conformance Report—emitting **AI Specs + VPAT 2.5 + SBOM** straight from the compiler.
+### `v0.9.0` — Authenticode Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing
+1. **First-Class Authenticode & Azure Artifact Signing Studio**:
+   - Interactive Windows Certificate Store picker (`CryptUIDlgSelectCertificateFromStore`), `.pfx` / hardware token configuration, Azure Artifact Signing (`dlib` + `MetadataJson`) profile tester, and one-click Dual-Layer `WinVerifyTrust` verifier on both inner `Product.msi` and outer `Setup.exe`.
+2. **Royalty-Free White-Label Auto-Updater (`RsUpdate.exe` / `[AutoUpdate]`)**:
+   - Zero-dependency `/MT` Win32 C++20 auto-updater (`x64` & `ARM64`, unlocked across all editions including Community!) stamped with the publisher's own `.ico`, `ProductName`, and `CompanyName`, verifying SHA-256 + `WinVerifyTrust` signatures over HTTPS to apply `.msp` patches, `.msi` Major Upgrades, or Native Engine updates.
+3. **Guided Microsoft-Compliant `.MSP` & Major Upgrade Servicing (`--plan-update`)**:
+   - Diff against a shipped baseline `.msi`, enforce official Windows Installer Component servicing rules automatically, emit binary-delta `.msp` Minor Updates when eligible, or guide one-click Major Upgrade `ProductCode` transitions in plain English.
 
-### Phase G (`v1.0.0 GA`) — CI/CD Actions, Full Production Dogfood Validation & General Availability
-1. **Turnkey CI/CD Integration (`GitHub Actions` & `Azure DevOps`)**:
-   - Publish a first-party GitHub Action (`raggiesoft/setup-installer-studio`) and Azure Pipelines task supporting headless `--validate --diagnostics=json`, matrix `x64` + `ARM64` + `universal` builds, Azure Artifact Signing, `--emit-vpat`, `--emit-sbom`, and `--emit-winget`.
-2. **Production Cutover Gate**:
-   - Keep existing parallel release pipelines active until RaggieSoft Installer Studio completes full build, Authenticode signing, clean install, upgrade, repair, silent deploy (`/s`), and uninstall validation across every RaggieSoft desktop application, interactive book, and supporter audio archive on clean Windows 11 `x64` and `ARM64` systems.
+### `v1.0.0 GA` — Turnkey CI/CD Automation, `winget` Export & 100% RaggieSoft Dogfood Cutover
+1. **CI/CD & Package Manager Automation**:
+   - First-party GitHub Action (`raggiesoft/setup-installer-studio`), Azure Pipelines task, and `instbuild.exe --emit-winget` (`winget-pkgs` multi-file YAML generator).
+2. **100% RaggieSoft Production Cutover Gate**:
+   - Complete signed build, clean install, upgrade, repair, silent deploy (`/s`), and uninstall validation across every RaggieSoft desktop application (*RaggieSoft Launcher*, *Accessibility Studio*, *Installer Studio*, *Help Viewer*, and *StoreTrainer*), interactive Story Crossroads book, and Engine Room Records supporter archive on clean Windows 11 `x64` and `ARM64` hardware.
+
+---
+
+## Post-`1.0` Enterprise & Ecosystem Expansion (`v1.1+`)
+
+Once `v1.0.0 GA` is actively powering 100% of RaggieSoft's own software distributions, post-`1.0` releases expand into third-party IT enterprise repackaging and store formats:
+
+1. **Snapshot-Diff Setup Capture ("Repackager") & One-Click Disposable Windows 11 Pro Sandbox (`.wsb`) Mode**: Capture legacy installers inside a throwaway Windows Sandbox VM and emit clean `.rsip` + `.mst` packages without touching the host workstation.
+2. **Visual Studio Extension (`.vsix`)**: Syntax highlighting, schema hover tooltips, and right-click packaging inside Visual Studio.
+3. **Enterprise System Primitives & Config Patchers**: Declarative `[Service.*]`, safe `[Environment.*]` `PATH` updates, `[FirewallRule.*]`, `[ScheduledTask.*]`, and `[JsonPatch.*]` / `[XmlConfig.*]` / `[IniFile.*]` config stampers.
+4. **In-Process `.MSIX` / `.MSIXBUNDLE` (`AppxPackaging.dll`), `I18N` + RTL & Procurement SBOMs (`--emit-sbom`)**: Native dual-arch `.msixbundle` generation, Sparse Package Identity, 20+ language `.rslang` tables with `WS_EX_LAYOUTRTL` mirroring, and SPDX 2.3 / CycloneDX JSON SBOMs alongside HTML5 VPAT 2.5 reports.
