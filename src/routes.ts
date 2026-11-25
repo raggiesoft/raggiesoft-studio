@@ -362,7 +362,7 @@ function renderVisionAndRoadmapSection(): string {
             <h3>Focused Path to <code>v1.0.0 GA</code> (Dogfood North Star)</h3>
             <ul class="feature-list">
               <li><strong><code>v0.5.0</code> — 8 Wizard Styles, Custom Setup Types &amp; WCAG-Guarded Branding</strong>: <code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code>, &amp; <code>Autorun16x9</code> + classic Windows 95-style &amp; custom Setup Types (<code>Typical</code>, <code>Compact</code>, <code>Complete</code>, <code>Custom</code>, &amp; <code>[SetupType.*]</code>) + live WCAG 2.2 AA contrast enforcer</li>
-              <li><strong><code>v0.6.0</code> — Granular <code>.rswpak</code> On-Demand Feature Packs + <code>.NET 11</code> + <code>Engine = native</code></strong>: Stream optional multi-gigabyte feature packs on demand, curated <code>.NET 11</code> presets, and zero-<code>msi.dll</code> transactional extraction</li>
+              <li><strong><code>v0.6.0</code> — Self-Extracting <code>.EXE</code> Builder, <code>.rswpak</code> Feature Packs, <code>.NET 11</code> &amp; <code>Engine = native</code></strong>: Build simple folder/ZIP-to-SFX <code>.exe</code> extractors (that optionally launch an <code>.exe</code> or open a document in the user's viewer), stream <code>.rswpak</code> packs, and run zero-<code>msi.dll</code> extraction</li>
               <li><strong><code>v0.7.0</code> &amp; <code>v0.8.0</code> — From-Scratch Dialog Builders, <code>RsDialog</code> Scripting &amp; VB6 <code>.vbp</code> / <code>.slnx</code> Importers</strong>: Blank-canvas C++ &amp; raw <code>MSI.DLL</code> dialog designers plus Reg-Free COM VB6 <code>.vbp</code> importing for classic utilities like <em>StoreTrainer</em></li>
               <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Azure Artifact Signing, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
             </ul>
@@ -628,7 +628,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Granular On-Demand Feature Packs (<code>.rswpak</code>), curated <code>.NET 11</code> runtime presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
+              <td>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), granular On-Demand Feature Packs (<code>.rswpak</code>), curated <code>.NET 11</code> presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
@@ -720,8 +720,9 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v06'" aria-labelledby="phase-v06-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill">Target v0.6.0</span>
-          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Granular On-Demand Feature Packs (<code>.rswpak</code>), <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
+          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), Granular <code>.rswpak</code> Packs, <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
           <ul class="feature-list">
+            <li><strong>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + Folder/ZIP-to-SFX AeroWizard)</strong>: Turn any folder or <code>.zip</code> archive into a zero-dependency, Dark-Mode-aware <code>LZMS</code> self-extracting <code>.exe</code> (zero UAC or Installed Apps registration required) that unpacks to a chosen destination folder and <strong>optionally runs a bundled <code>.exe</code> (<code>PostExtractRun</code>) or opens a bundled document (<code>PostExtractOpen</code>, such as a PDF, HTML, or ReadMe guide via the user's default Windows viewer when installed)</strong>.</li>
             <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Building on <code>v0.4.3</code>'s CPU-aware Smart Web Stub and Combined Offline Universal EXE, split optional multi-gigabyte features (high-DPI assets, offline docs, or language packs) into external LZMS-compressed <code>.rswpak</code> blocks fetched on demand via <code>WinHTTP</code> with SHA-256 + Authenticode verification when selected in <code>SelectionTree</code>.</li>
             <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>.</li>
             <li><strong>Native Direct Engine (<code>Engine = native | msi</code>)</strong>: Optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>—installing multi-hundred-file interactive book and supporter audio packs in milliseconds.</li>

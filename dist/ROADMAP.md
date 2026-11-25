@@ -23,7 +23,7 @@
 | :--- | :--- | :--- |
 | **`v0.1.0` – `v0.4.4`** | **Core C++20 Toolchain, Universal Web & Offline EXEs (`x64 + ARM64`), Plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
 | **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom` & `[SetupType.*]`), Publisher Branding & Live WCAG Contrast Enforcer** | **Next Up** |
-| **`v0.6.0`** | **Granular On-Demand Feature Packs (`.rswpak`), Curated `.NET 11` Runtime Presets & Zero-`msi.dll` `Engine = native`** | Planned |
+| **`v0.6.0`** | **Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx`), Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & `Engine = native`** | Planned |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
 | **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
@@ -85,12 +85,14 @@
    - Customize Light & Dark Mode color palettes, header banners, `164x314` wizard sidebars, product badges, background washes, and rotating install billboards.
    - Every color picker in `InstallerStudio.exe` computes live W3C relative luminance contrast ratios across both Light and Dark palettes (`>= 4.5:1` AA normal text, `>= 3.0:1` large text & UI borders), displays live AA/AAA badges, and offers a one-click *"Auto-Adjust Nearest Accessible Shade"* button preserving brand hue—enforced identically in CI via `instbuild.exe --validate` and `--emit-vpat`.
 
-### `v0.6.0` — Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & Native Direct Engine
-1. **Granular On-Demand Feature Packs (`.rswpak`)**:
+### `v0.6.0` — Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx`), Granular `.rswpak` Packs, `.NET 11` Presets & Native Direct Engine
+1. **Lightweight Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx` + Folder/ZIP-to-SFX AeroWizard)**:
+   - When a publisher or creator doesn't need Windows Installed Apps registration and simply wants a clean, accessible, zero-dependency **Self-Extracting `.EXE`** (compressed with Windows `LZMS`, Dark/Light/High-Contrast UI, zero UAC required), turn any folder or `.zip` archive into a portable `.exe` that extracts to a user-chosen directory (or temporary staging folder) and **optionally launches a bundled `.exe` (`PostExtractRun`) or opens a bundled document (`PostExtractOpen`, such as a `.pdf`, `.html`, `.txt`, or `.rtf` guide via `ShellExecuteExW` when the user has a compatible viewer installed)**.
+2. **Granular On-Demand Feature Packs (`.rswpak`)**:
    - Building on `v0.4.3`'s CPU-aware Smart Web Stub and Combined Offline Universal Single-EXE, split optional multi-gigabyte features (high-DPI asset libraries, offline documentation packs, or language modules) into external LZMS-compressed `.rswpak` blocks fetched on demand via `WinHTTP` with SHA-256 + Authenticode verification when selected in `SelectionTree`.
-2. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
+3. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
    - Curated `DotNet11Desktop`, `DotNet11AspNet`, and `DotNet11Runtime` / `DotNet10Runtime` presets alongside `.NET 10.0 LTS`, `.NET 9.0`, and `.NET 8.0 LTS`, probing native `arm64` and `x64`-on-ARM64 installations in `< 1ms`.
-3. **Native Direct Engine (`Engine = native | msi`)**:
+4. **Native Direct Engine (`Engine = native | msi`)**:
    - Optional zero-`msi.dll` direct extraction backend with an atomic transactional rollback journal, `HKLM`/`HKCU` `Uninstall` registration, and a signed native `Uninstall.exe`—eliminating `Global\_MSIExecute` mutex collisions and installing multi-hundred-file interactive book and supporter audio packs in milliseconds.
 
 ### `v0.7.0` — From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` Scripting
