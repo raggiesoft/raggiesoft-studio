@@ -1,28 +1,31 @@
 <!doctype html>
 <!--
   FILE: help/raggiesoft.installer-studio/topics/ide-and-aerowizards.html
-  OVERVIEW: Offline Help Topic 2 documenting all 10 views of InstallerStudio.exe,
-  the 5 native Win32 AeroWizards, File Associations, Shortcuts, and F1 navigation.
+  OVERVIEW: Offline Help Topic 2 documenting all 12 views of InstallerStudio.exe,
+  32-bit ARGB SysTreeView32 hierarchies, the 5 native Win32 AeroWizards, and F1 IPC.
 -->
 <html lang="en">
 <body>
   <!-- Topic header and keyboard shortcut summary -->
-  <h1>10-View Visual IDE &amp; 5 Guided AeroWizards</h1>
+  <h1>12-View Tree-First Visual IDE &amp; 5 Guided AeroWizards</h1>
   <p>
-    <strong>InstallerStudio.exe</strong> pairs a 10-view left navigation sidebar with an in-memory lossless Abstract Syntax Tree
-    (AST). Whenever you change a field in any visual form or wizard, only the targeted key-value line updates while every
-    <code>;</code> comment, <code>#</code> comment, and <code>@include</code> directive stays intact.
+    <strong>InstallerStudio.exe</strong> pairs a categorized 12-view <code>SysTreeView32</code> navigation sidebar (with 32-bit
+    premultiplied ARGB vector icons and <code>DarkMode_Explorer</code> chevrons) with an in-memory lossless Abstract Syntax Tree
+    (AST). Whenever you change a field, reorder a feature, or import a <code>.reg</code> script, only the targeted AST lines
+    update while every <code>;</code> comment, <code>#</code> comment, and <code>@include</code> directive stays intact.
   </p>
 
-  <!-- Walkthrough of all 10 sidebar views -->
-  <h2>The 10 Workspace Views</h2>
+  <!-- Walkthrough of all 12 categorized workspace views -->
+  <h2>The 12 Categorized Workspace Views</h2>
   <ol>
     <li><strong>Package &amp; Identity</strong>: Product name, tagline, 3-part MSI version (<code>Major.Minor.Build</code>), publisher, permanent <code>UpgradeCode</code> GUID, and install scope (<code>machine</code> vs. <code>user</code>).</li>
-    <li><strong>Destination Files &amp; Folders</strong>: Hierarchical Destination Computer folder tree paired with a filtered payload and folder list.</li>
-    <li><strong>Setup Design (Components)</strong>: Visual <code>Features -&gt; Sub-Features -&gt; Components -&gt; KeyPaths</code> hierarchy.</li>
-    <li><strong>Runtimes &amp; Merge Modules</strong>: Manage Pre-MSI <code>[Prerequisite.*]</code> runtimes and 64-bit <code>[MergeModule.*]</code> (<code>.msm</code>) libraries.</li>
-    <li><strong>File Associations &amp; Verbs</strong>: Register document extensions (<code>.ext</code>), ProgIds, MIME types, and shell verbs in clean <code>HKMU\Software\Classes</code> or advertised MSI tables.</li>
-    <li><strong>Shortcuts &amp; Registry</strong>: Author Start Menu / Desktop shortcuts and 64-bit registry values.</li>
+    <li><strong>Application Runtimes &amp; .MSM</strong>: Hierarchical tree of Pre-MSI <code>[Prerequisite.*]</code> runtimes and 64-bit <code>[MergeModule.*]</code> (<code>.msm</code>) libraries.</li>
+    <li><strong>Features</strong>: Dedicated <code>All Features</code> hierarchy tree with <strong>Move Up / Move Down</strong> <code>SelectionTree</code> display ordering, <code>+ New Feature</code>, <code>+ Sub-Feature</code>, <code>DisallowAbsent</code> core locks, and a live <code>Feature Description</code> inspector.</li>
+    <li><strong>Files &amp; Folders</strong>: Dual-tree explorer pairing the 9-root Destination Computer folder tree on the left with a filtered Staged Contents &amp; KeyPath tree on the right.</li>
+    <li><strong>Components &amp; KeyPaths</strong>: Visual <code>Features -&gt; Sub-Features -&gt; Components -&gt; KeyPaths</code> tree with live click-to-inspect editing.</li>
+    <li><strong>Registry</strong>: <code>RegEdit</code>-style target hive/subkey folder tree (<code>HKCR</code>, <code>HKCU</code>, <code>HKLM</code>, <code>HKU</code>, and <code>HKMU</code>) on the left, typed <code>REG_SZ</code> / <code>REG_EXPAND_SZ</code> / <code>REG_DWORD</code> values on the right, per-Feature filtering, and one-click <code>.REG</code> file importing.</li>
+    <li><strong>File Associations</strong>: Hierarchical <code>.ext -&gt; ProgId -&gt; Shell Verbs</code> tree supporting clean <code>HKMU\Software\Classes</code> or advertised MSI tables.</li>
+    <li><strong>Shortcuts</strong>: Dedicated <code>Start Menu</code> and <code>Desktop</code> shortcut folder hierarchy with automatic <code>ICE38</code> KeyPaths.</li>
     <li><strong>C++ Wizard Designer</strong>: Real-time GDI+ preview of <code>SetupWizard.exe</code> across <code>standard</code> Glass, <code>aerowizard</code>, and <code>autorun16x9</code> layouts.</li>
     <li><strong>MSI.DLL Dialog Designer</strong>: Visual <code>370x270</code> DLU canvas for relational Windows Installer <code>Dialog</code> and <code>Control</code> SQL tables.</li>
     <li><strong>Signing, .MST &amp; .MSP</strong>: Configure Dual-Layer Authenticode signing and generate GPO Transforms (<code>.mst</code>) or Patch Packages (<code>.msp</code>).</li>

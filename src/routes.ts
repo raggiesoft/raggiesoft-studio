@@ -9,19 +9,19 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.4.1`)**:
- *       1. `/`              — Vision Announcement, Preview Downloads, Live Win32
- *                             Screenshot Gallery, 3-Tab Split Preview, 5-Binary
- *                             Suite Spotlight, & Open Engineering Summary
- *       2. `/roadmap`       — Full Human-Readable Public Engineering Roadmap
- *                             (`v0.1.0` -> `v1.0.0 GA`, Phases B through G)
- *       3. `/docs`          — Searchable `.rsip` v0.4 / `.rsis` / `.rsii` schema
- *                             reference & AI coding agent workflow (`/llms.txt`)
- *       4. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.1`)
- *       5. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
+ *     public **Project Announcement & Open Technical Preview (`v0.4.2`)**:
+ *       1. `/`              — Vision Announcement, Preview Downloads, 28-Year
+ *                             Origin Story, 3-Tab Split Preview, & Suite Spotlight
+ *       2. `/screenshots`   — Dedicated Visual Feature Tour with 10 real native
+ *                             Win32 C++20 captures & full-size HTML5 `<dialog>` modals
+ *       3. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
+ *                             (`v0.5.0` -> `v1.0.0 GA` + `v1.1+` Expansion)
+ *       4. `/docs`          — Single-source offline & web manual + AI `/llms.txt`
+ *       5. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.2`)
+ *       6. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
- *       6. `/accessibility` — Canonical alias view for `/vpat`
- *       7. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
+ *       7. `/accessibility` — Canonical alias view for `/vpat`
+ *       8. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
  *                             signing, & Permanent Zero-Telemetry / Zero-Crypto pledge
  *
  *   Note: Commercial pricing tiers are intentionally omitted while RaggieSoft
@@ -39,6 +39,16 @@ export interface StudioRoute {
   readonly renderBody: () => string;
 }
 
+interface ScreenshotFeatureItem {
+  readonly dialogId: string;
+  readonly fileName: string;
+  readonly badge: string;
+  readonly title: string;
+  readonly alt: string;
+  readonly summaryHtml: string;
+  readonly detailHtml: string;
+}
+
 const ASSET_BASE =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
 const BOX_SHOWCASE_URL =
@@ -52,131 +62,231 @@ const LIVE_VPAT_URL = '/vpat/raggiesoft-installer-studio-vpat-2.5.html';
 const FICTITIOUS_DISCLAIMER =
   'Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.';
 
-/**
- * Renders the live native Win32 C++20 screenshot showcase captured directly from the `v0.4.0` binaries.
- */
-function renderLiveScreenshotShowcase(): string {
+// Curated visual tour entries grouped by subsystem; every card opens a native HTML5 `<dialog>` modal!
+const IDE_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
+  {
+    dialogId: 'dlg-ide-features',
+    fileName: 'ide-features-tree.png',
+    badge: 'New in v0.4.2 • Setup Architecture',
+    title: '1. Dedicated Features Hierarchy & Display Ordering',
+    alt: 'RaggieSoft Installer Studio Visual IDE showing the categorized 12-view left sidebar tree and the dedicated All Features hierarchy with Move Up, Move Down, DisallowAbsent lock, and Feature Description inspector.',
+    summaryHtml:
+      'Organize root features and nested sub-features inside an <code>All Features</code> <code>SysTreeView32</code> with 32-bit ARGB icons, reorder <code>SelectionTree</code> display priority via <strong>Move Up / Move Down</strong>, lock core features with <code>DisallowAbsent</code>, and edit descriptions losslessly.',
+    detailHtml:
+      'Clicking any node in the <code>All Features</code> tree populates its ID, display title, install level, parent feature, <code>DisallowAbsent</code> lock, and consumer description—updating the underlying <code>.rsip</code> AST while preserving 100% of comments and <code>@include</code> directives.'
+  },
+  {
+    dialogId: 'dlg-ide-registry',
+    fileName: 'ide-registry-tree.png',
+    badge: 'New in v0.4.2 • Setup Architecture',
+    title: '2. RegEdit-Style Registry Tree, Feature Filter & .REG Importer',
+    alt: 'RaggieSoft Installer Studio Registry view displaying HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE\\Software\\RaggieSoft\\Installer Studio, HKEY_USERS, and HKMU folders on the left alongside typed REG_SZ values on the right.',
+    summaryHtml:
+      'Navigate target registry keys just like Windows Registry Editor across <code>HKCR</code>, <code>HKCU</code>, <code>HKLM</code>, <code>HKU</code>, and <code>HKMU</code> nested folders, inspect typed <code>REG_SZ</code> / <code>REG_EXPAND_SZ</code> / <code>REG_DWORD</code> values on the right, filter keys by Feature, or import <code>.reg</code> scripts in one click.',
+    detailHtml:
+      'Every registry value automatically receives either a deterministic 64-bit MSI Component GUID or binds to an explicit <code>[Component.*]</code> KeyPath—supporting formatted Windows Installer tokens like <code>[INSTALLDIR]</code> and <code>[ProductVersion]</code>.'
+  },
+  {
+    dialogId: 'dlg-ide-folders',
+    fileName: 'ide-destination-folders.png',
+    badge: 'Dual-Tree Explorer • ICE18 / ICE38 / ICE64',
+    title: '3. Destination Computer & Folder Contents Dual Trees',
+    alt: 'RaggieSoft Installer Studio Files and Folders view showing the Destination Computer folder tree on the left and the filtered Staged Contents tree with Component and KeyPath badges on the right.',
+    summaryHtml:
+      'Map files and <code>CreateFolder</code> directories across 9 standard Windows Installer roots (<code>INSTALLDIR</code>, <code>ProgramData</code>, <code>AppData</code>, <code>StartMenu</code>, <code>Desktop</code>, <code>System32</code>, <code>Fonts</code>) with automatic UUIDv5 File KeyPaths and <code>ICE38</code> per-user registry KeyPaths.',
+    detailHtml:
+      'Selecting any root or subfolder on the left immediately filters the right-hand <code>Staged Contents</code> tree, showing each payload’s owning Feature, deterministic or explicit Component, and KeyPath rule.'
+  },
+  {
+    dialogId: 'dlg-ide-runtimes',
+    fileName: 'ide-runtimes-msm.png',
+    badge: 'Application Information • Pre-MSI Broker',
+    title: '4. Pre-MSI Application Runtimes & 64-Bit .MSM Tree',
+    alt: 'RaggieSoft Installer Studio Application Runtimes and Merge Modules tree grouping Pre-MSI Runtime Prerequisites and Windows Installer .MSM Merge Modules with 32-bit ARGB vector icons.',
+    summaryHtml:
+      'Stage unlimited <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes (<code>WinHTTP</code> download, <code>LZMS</code> offline embed, or <code>Redist\\</code>) with custom reboot exit-code latching (<code>3010, 1641, 23</code>) alongside native 64-bit <code>.msm</code> Merge Modules.',
+    detailHtml:
+      'All prerequisites execute under one unified UAC elevation session before <code>msiexec</code> starts, while 64-bit <code>.msm</code> modules merge SQL rows and CAB streams directly in C++20 without 32-bit COM dependencies.'
+  },
+  {
+    dialogId: 'dlg-ide-designer',
+    fileName: 'ide-wizard-designer.png',
+    badge: 'User Interface • Live GDI+ Canvas',
+    title: '5. Live GDI+ C++ Wizard & 370×270 MSI.DLL Designers',
+    alt: 'RaggieSoft Installer Studio C++ Wizard Designer rendering a live GDI+ preview of the Windows Installer SelectionTree step next to palette and icon controls.',
+    summaryHtml:
+      'Preview customer-facing <code>SetupWizard.exe</code> layouts (<code>aerowizard</code>, <code>standard</code> Glass, and <code>autorun16x9</code>), brand colors, icons, and <code>SelectionTree</code> cards live in GDI+ alongside a dedicated <code>370&times;270</code> DLU <code>MSI.DLL</code> SQL dialog designer.',
+    detailHtml:
+      'Every compiled package pairs modern external C++20 wizard ergonomics with genuine relational Windows Installer <code>Dialog</code> and <code>Control</code> SQL tables inside <code>Product.msi</code>.'
+  }
+];
+
+const WIZARD_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
+  {
+    dialogId: 'dlg-wiz-dark',
+    fileName: 'setupwizard-setup-type.png',
+    badge: 'SetupWizard.exe • Windows 11 Dark Mode',
+    title: '6. Accessible Option Cards & Custom-Subclassed Dark Buttons',
+    alt: 'SetupWizard.exe running in Windows 11 Dark Mode displaying Express, Compact, and Custom Setup option cards alongside slate-navy Back and Cancel buttons and a Royal Cobalt Next button.',
+    summaryHtml:
+      'Genuine Win32 <code>BS_AUTORADIOBUTTON</code> option cards (<code>&ge; 68px</code> tall, exceeding WCAG 2.5.8) and custom-subclassed <code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, and <code>Cancel</code> buttons expose full UI Automation roles and keyboard mnemonics.',
+    detailHtml:
+      'Screen readers (Narrator, NVDA, and JAWS) announce every option card’s title, recommendation, description, and <code>Alt+Key</code> accelerator cleanly—with zero jarring white legacy buttons in Dark Mode.'
+  },
+  {
+    dialogId: 'dlg-wiz-light',
+    fileName: 'setupwizard-setup-type-light.png',
+    badge: 'Live Broadcast • WM_SETTINGCHANGE(ImmersiveColorSet)',
+    title: '7. Sub-16ms Live OS Dark ↔ Light Palette Hot-Swap',
+    alt: 'The exact same open SetupWizard.exe window after receiving WM_SETTINGCHANGE ImmersiveColorSet, dynamically flipped into crisp Windows 11 Light Mode without restarting.',
+    summaryHtml:
+      'Toggle Windows 11 (or automatic sunset/sunrise utilities like Auto Dark Mode) between Dark Mode, Light Mode, or Contrast Themes mid-install and the open wizard flips its titlebar, cards, and buttons live in under 16 milliseconds.',
+    detailHtml:
+      'No process restart required: <code>IsLiveThemeBroadcast</code> refreshes DWM immersive titlebars, GDI brushes, vector glyphs, checkboxes, and push buttons on the fly.'
+  },
+  {
+    dialogId: 'dlg-wiz-tree',
+    fileName: 'setupwizard-selection-tree.png',
+    badge: 'SetupWizard.exe • Custom Setup & Modify',
+    title: '8. Authentic 32-Bit ARGB Windows Installer SelectionTree',
+    alt: 'SetupWizard.exe Custom Features page showing the Windows Installer SelectionTree with 32-bit ARGB split-dropdown state icons and live disk space cost card.',
+    summaryHtml:
+      'Reads <code>Feature</code>, <code>FeatureComponents</code>, and <code>File</code> SQL tables directly from <code>Product.msi</code> in under 2ms—rendering crisp 32-bit ARGB split-dropdown icons, <code>DisallowAbsent</code> locks, and live byte costing.',
+    detailHtml:
+      'User choices translate directly into canonical <code>ADDLOCAL</code>, <code>REMOVE</code>, and <code>ADVERTISE</code> properties passed to <code>MsiInstallProductW</code> during fresh installs and Maintenance Modify.'
+  }
+];
+
+const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
+  {
+    dialogId: 'dlg-help-viewer',
+    fileName: 'helpviewer-contents.png',
+    badge: 'RaggieSoftHelp.exe • Named Pipe F1 IPC',
+    title: '9. Zero-Dependency Native C++20 Offline Help Viewer',
+    alt: 'RaggieSoftHelp.exe v0.4.2 native C++20 offline Help Viewer showing the 32-bit ARGB Contents tree on the left and formatted MSI SelectionTree documentation on the right.',
+    summaryHtml:
+      'Press <code>F1</code> inside any IDE view to open searchable offline HTML5 chapters in under 5ms via Named Pipe IPC—rendered natively through <code>System32\\Msftedit.dll</code> with zero <code>.NET</code> or <code>WebView2</code> dependencies.',
+    detailHtml:
+      'The exact same <code>help/raggiesoft.installer-studio/</code> HTML5 topics ship inside the installer and power the web documentation under <a href="/docs">/docs</a>.'
+  },
+  {
+    dialogId: 'dlg-msiprism',
+    fileName: 'msiprism-sql-inspector.png',
+    badge: 'msiprism.exe • Categorized SQL Schema Tree',
+    title: '10. Native 64-Bit Dark Mode MSI, MSM, MST & MSP SQL Inspector',
+    alt: 'RaggieSoft MSI Prism v0.4.2 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
+    summaryHtml:
+      'Open any <code>.msi</code>, <code>.msm</code>, or <code>.msp</code> database into a categorized 5-group <code>SysTreeView32</code> schema tree, inspect relational rows in Dark or Light Mode, audit <code>ICE80</code> flags, and generate <code>.mst</code> or <code>.msp</code> deltas.',
+    detailHtml:
+      'Groups all 44+ Windows Installer SQL tables into <em>Metadata &amp; Streams</em>, <em>Core Packaging Tables</em>, <em>Registry, Shortcuts &amp; Classes</em>, <em>Dialogs &amp; UI Controls</em>, and <em>Sequences, Locators &amp; Actions</em>.'
+  }
+];
+
+function renderScreenshotCardAndModal(item: ScreenshotFeatureItem): string {
+  const imgUrl = `${SHOT_BASE}/${item.fileName}`;
   return `
-    <section aria-labelledby="screenshots-heading">
-      <span class="eyebrow">Real Native Win32 C++20 Captures • Windows 11 Dark &amp; Light Mode</span>
-      <h2 id="screenshots-heading">See RaggieSoft Installer Studio v0.4.1 in Action</h2>
-      <p>
-        Every window below is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables using stock Windows 11
-        system libraries (<code>gdiplus.dll</code>, <code>comctl32.dll</code>, <code>Msftedit.dll</code>, and <code>msi.dll</code>)—with
-        custom Dark Mode push-button, checkbox, and <code>SysListView32</code> column-header subclasses plus live
+    <figure class="shot-card">
+      <button
+        type="button"
+        class="shot-preview-btn"
+        data-open-dialog="${item.dialogId}"
+        aria-haspopup="dialog"
+        aria-label="Open full-size screenshot: ${item.title}"
+      >
+        <img src="${imgUrl}" alt="${item.alt}" loading="lazy" />
+        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+      </button>
+      <figcaption>
+        <span class="eyebrow" style="margin-bottom: 0;">${item.badge}</span>
+        <strong>${item.title}</strong>
+        <span>${item.summaryHtml}</span>
+      </figcaption>
+    </figure>
+
+    <dialog id="${item.dialogId}" class="shot-lightbox" aria-labelledby="${item.dialogId}-title">
+      <div class="shot-lightbox-panel">
+        <div class="shot-lightbox-header">
+          <div>
+            <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">${item.badge}</span>
+            <h3 id="${item.dialogId}-title" class="shot-lightbox-title">${item.title}</h3>
+          </div>
+          <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+            Close (Esc)
+          </button>
+        </div>
+        <div class="shot-lightbox-stage">
+          <img src="${imgUrl}" alt="${item.alt}" loading="lazy" />
+        </div>
+        <div class="shot-lightbox-caption">
+          ${item.detailHtml}
+        </div>
+      </div>
+    </dialog>
+  `;
+}
+
+/**
+ * Renders the dedicated `/screenshots` Visual Feature Tour page with native HTML5 `<dialog>` lightboxes.
+ */
+function renderScreenshotsBody(): string {
+  return `
+    <section class="hero" aria-labelledby="tour-title">
+      <span class="eyebrow">Real Native Win32 C++20 Captures • v0.4.2 on Windows 11</span>
+      <h1 id="tour-title">Visual Feature Tour &amp; Full-Size Screenshots</h1>
+      <p class="lead">
+        Every window on this page is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables
+        (<code>InstallerStudio.exe</code>, <code>SetupWizard.exe</code>, <code>RaggieSoftHelp.exe</code>, and
+        <code>msiprism.exe</code>) using stock Windows 11 system libraries—featuring 32-bit ARGB vector
+        <code>SysTreeView32</code> hierarchies, custom-subclassed Dark Mode controls, and live
         <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> Light &harr; Dark hot-swapping.
+        <strong>Click or press Enter on any screenshot to inspect it at full 1:1 native size.</strong>
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.2 (x64)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
+        <a class="btn btn-outline" href="/roadmap">Explore v1.0 Engineering Roadmap</a>
+        <a class="btn btn-outline" href="/docs">Read Distributed F1 Manual</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="tour-ide-heading">
+      <span class="eyebrow">Part 1 • 12-View Tree-First Visual IDE (InstallerStudio.exe)</span>
+      <h2 id="tour-ide-heading" style="margin-top: 0.25rem;">Hierarchical Project Authoring Without Legacy ListView Clutter</h2>
+      <p>
+        Instead of cramming features, folders, registry keys, runtimes, and shortcuts into flat spreadsheets,
+        <code>InstallerStudio.exe</code> organizes every subsystem into keyboard-accessible <code>SysTreeView32</code>
+        hierarchies with 20 anti-aliased 32-bit ARGB icons—synchronized 1:1 with a comment-preserving plain-text
+        <code>.rsip</code> AST.
       </p>
       <div class="shot-grid">
-        <!-- Screenshot 1: Visual IDE Destination Computer Tree & Dark-Header ListView -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/ide-destination-folders.png"
-            alt="RaggieSoft Installer Studio Visual IDE showing the hierarchical Destination Computer folder tree on the left and Dark Mode payload component grid on the right."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>1. Visual IDE — Destination Computer &amp; Components</strong>
-            Map payloads to 9 standard Windows Installer folder roots with automatic deterministic SHA-1 UUIDv5 Component GUIDs and dark-themed report headers.
-          </figcaption>
-        </figure>
+        ${IDE_SCREENSHOT_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
+      </div>
+    </section>
 
-        <!-- Screenshot 2: Visual IDE Pre-MSI Runtimes & .MSM Merge Modules -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/ide-runtimes-msm.png"
-            alt="RaggieSoft Installer Studio View 4 showing Pre-MSI Runtime Prerequisites, delivery mode selector, custom reboot exit codes, and 64-bit Merge Module controls."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>2. Visual IDE — Pre-MSI Runtimes &amp; .MSM Merge Modules</strong>
-            Stage unlimited <code>.NET</code>, <code>WebView2</code>, <code>VC++</code>, or custom runtimes (<code>WinHTTP</code> download, <code>LZMS</code> embed, or <code>Redist\\</code>) plus 64-bit <code>.msm</code> modules.
-          </figcaption>
-        </figure>
+    <section aria-labelledby="tour-wiz-heading">
+      <span class="eyebrow">Part 2 • Accessible Customer Runtime (SetupWizard.exe)</span>
+      <h2 id="tour-wiz-heading" style="margin-top: 0.25rem;">WCAG 2.2 AA Setup Cards, Live OS Theme Switching &amp; MSI SelectionTree</h2>
+      <p>
+        Customer-facing installers respect the user's Windows 11 Dark Mode, Light Mode, and Contrast Theme settings from
+        the very first pixel—and flip palettes live in under 16ms if sunset hits mid-installation.
+      </p>
+      <div class="shot-grid">
+        ${WIZARD_SCREENSHOT_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
+      </div>
+    </section>
 
-        <!-- Screenshot 3: Visual IDE Live GDI+ Wizard Designer -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/ide-wizard-designer.png"
-            alt="RaggieSoft Installer Studio C++ Wizard Designer previewing the Windows Installer SelectionTree step live on a GDI+ canvas."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>3. Visual IDE — Live GDI+ C++ Wizard Designer</strong>
-            Customize accent palettes, icons, and <code>aerowizard</code>, <code>standard</code> Glass, or <code>autorun16x9</code> layouts with instant live preview.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 4: SetupWizard.exe Accessible Option Cards & Dark Push Buttons -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/setupwizard-setup-type.png"
-            alt="SetupWizard.exe in Windows 11 Dark Mode displaying Express, Compact, and Custom Setup option cards alongside slate-navy Back and Cancel buttons and a Royal Cobalt Next button."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>4. SetupWizard.exe — Dark Mode Cards &amp; Custom-Subclassed Buttons</strong>
-            Genuine <code>BS_AUTORADIOBUTTON</code> cards and dark-themed <code>&lt; Back</code> / Royal Cobalt <code>Next &gt;</code> / <code>Cancel</code> buttons with full UI Automation support.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 5: Live OS Light Mode Hot-Swap via WM_SETTINGCHANGE(ImmersiveColorSet) -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/setupwizard-setup-type-light.png"
-            alt="The exact same open SetupWizard.exe window after receiving WM_SETTINGCHANGE ImmmersiveColorSet, dynamically flipped into crisp Windows 11 Light Mode without restarting."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>5. Live OS Theme Hot-Swap (<code>ImmersiveColorSet</code>)</strong>
-            Toggle Windows 11 between Dark Mode, Light Mode, or High Contrast mid-install and the open wizard flips palettes live in <code>&lt; 16ms</code> without restarting.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 6: SetupWizard.exe Authentic MSI SelectionTree -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/setupwizard-selection-tree.png"
-            alt="SetupWizard.exe Custom Features page showing the Windows Installer SelectionTree with 32-bit ARGB drive state icons and live disk space cost card."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>6. SetupWizard.exe — Authentic MSI SelectionTree</strong>
-            Reads embedded <code>Feature</code> tables directly from <code>Product.msi</code>, rendering 32-bit ARGB split-dropdown state icons and live per-feature byte costs.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 7: Native C++20 RaggieSoftHelp.exe Offline Viewer -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/helpviewer-search.png"
-            alt="RaggieSoftHelp.exe native C++20 offline Help Viewer showing full-text search results, dark-mode checkbox, dark buttons, and formatted documentation reader."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>7. RaggieSoftHelp.exe — Zero-Dependency C++20 Help Viewer</strong>
-            Press <code>F1</code> in any IDE view to jump straight to offline HTML5 topics via Named Pipe IPC—with zero <code>.NET</code> or <code>WebView2</code> dependencies.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 8: RaggieSoft MSI Prism 64-Bit SQL Inspector -->
-        <figure class="shot-card">
-          <img
-            src="${SHOT_BASE}/msiprism-sql-inspector.png"
-            alt="RaggieSoft MSI Prism opening raggiesoft-installer-studio-arm64.msi and displaying all 44 SQL tables alongside Feature rows in Dark Mode."
-            loading="lazy"
-          />
-          <figcaption>
-            <strong>8. msiprism.exe — Native 64-Bit Dark Mode SQL Inspector</strong>
-            Inspect relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> packages, run ICE80 audits, and diff transforms or patches.
-          </figcaption>
-        </figure>
+    <section aria-labelledby="tour-tools-heading">
+      <span class="eyebrow">Part 3 • Built-In Companion Tools (RaggieSoftHelp.exe &amp; msiprism.exe)</span>
+      <h2 id="tour-tools-heading" style="margin-top: 0.25rem;">Instant F1 Offline Documentation &amp; 64-Bit SQL Database Inspection</h2>
+      <div class="shot-grid">
+        ${TOOLS_SCREENSHOT_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
       </div>
     </section>
   `;
 }
 
 /**
- * Renders the honest Engineering Vision & Active Technical Preview Roadmap section.
+ * Renders the honest 28-Year Origin Story & Active Technical Preview Summary section on `/`.
  */
 function renderVisionAndRoadmapSection(): string {
   return `
@@ -199,35 +309,37 @@ function renderVisionAndRoadmapSection(): string {
       </p>
       <p>
         <strong>RaggieSoft Installer Studio</strong> takes everything those eras got right—plain-text diffable manifests,
-        authentic relational <code>.msi</code> compliance, single-file <code>LZMS</code> solid compression, and classic-to-modern
-        wizard ergonomics—and rebuilds it from first principles as original, MIT-licensed native Win32 C++20 software for
-        <code>x64</code> and <code>ARM64</code>.
+        authentic relational <code>.msi</code> compliance, hierarchical tree editors, single-file <code>LZMS</code> solid
+        compression, and classic-to-modern wizard ergonomics—and rebuilds it from first principles as original, MIT-licensed
+        native Win32 C++20 software for <code>x64</code> and <code>ARM64</code>.
       </p>
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.4.1</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.4.2</code>)</h3>
             <ul class="feature-list">
-              <li><strong>100% Dark-Mode-Complete Win32 UI + Live OS Theme Hot-Swapping</strong>: Custom-subclassed push buttons, checkboxes, <code>SysListView32</code> headers, and RichEdit panels that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> without restarting</li>
-              <li><strong>10-View Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong> with 5 native <strong>AeroWizards</strong>—with <strong>Community Edition maintaining 100% feature parity with Premier</strong></li>
-              <li><strong>Zero-Dependency Native C++20 Help System (<code>RaggieSoftHelp.exe</code>)</strong>: Pluggable <code>module.rshm.json</code> offline documentation viewer with Contents, Index, Search, and instant Named Pipe <code>F1</code> navigation</li>
-              <li><strong>Authentic MSI <code>SelectionTree</code> &amp; Pre-MSI Runtime Engine</strong>: 32-bit ARGB split-icon feature tree in <code>Setup.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching, and 64-bit <code>.MSM</code> Merge Module merging</li>
-              <li><strong>Windows <code>LZMS</code> Solid Compression + <code>msiprism.exe</code></strong> 64-bit Dark Mode SQL inspector + <code>instbuild.exe --emit-ai-spec</code> &amp; <code>--emit-vpat</code></li>
+              <li><strong>12-View Tree-First Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong>: Categorized sidebar, dedicated <strong>Features</strong> tree (<code>Move Up</code>/<code>Down</code>), <strong><code>RegEdit</code>-style Registry</strong> tree (<code>.REG</code> import + Feature filter), Dual Folder trees, and 5 guided <strong>AeroWizards</strong>—with <strong><code>Community == 100% Premier</code> parity</strong></li>
+              <li><strong>100% Dark-Mode-Complete UI + Live OS Theme Hot-Swapping</strong>: Custom-subclassed push buttons, checkboxes, 32-bit ARGB vector tree icons, and RichEdit panels that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code></li>
+              <li><strong>Zero-Dependency Native C++20 Help System (<code>RaggieSoftHelp.exe</code>)</strong>: Pluggable <code>module.rshm.json</code> offline manual with Contents tree, Index, Search, and Named Pipe <code>F1</code> IPC</li>
+              <li><strong>Authentic MSI <code>SelectionTree</code>, Pre-MSI Runtimes &amp; Categorized <code>msiprism.exe</code></strong>: 32-bit ARGB split-icon feature tree in <code>Setup.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes, 64-bit <code>.MSM</code> merging, and <code>--emit-ai-spec</code> / <code>--emit-vpat</code></li>
             </ul>
           </div>
-          <a class="btn btn-outline" href="/changelog">Read Full v0.1 &rarr; v0.4.1 Version History</a>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/screenshots">Take the Visual Screenshot Tour &rarr;</a>
+            <a class="btn btn-outline" href="/changelog">v0.4.2 Release Notes</a>
+          </div>
         </article>
         <article class="card">
           <div>
-            <h3>Next Milestones on the Workbench (Phases B–G)</h3>
+            <h3>Focused Path to <code>v1.0.0 GA</code> (Dogfood North Star)</h3>
             <ul class="feature-list">
-              <li><strong>Single-Download Universal Web &amp; Offline Installers + <code>.NET 11</code> Presets</strong>: Replace separate <code>x64</code> / <code>ARM64</code> links with one CPU-aware Web <code>Setup.exe</code> (fetching only the right architecture via <code>.rswpak</code> On-Demand Feature Packs) plus one All-in-One Offline <code>Setup.exe</code>, alongside curated <code>.NET 11</code> + <code>.NET 10 LTS</code> detection and optional <code>Engine = native</code></li>
-              <li><strong>8 Wizard Styles (<code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code> &amp; <code>Autorun16x9</code>)</strong> + automatic <code>SPI_GETHIGHCONTRAST</code> contrast-theme override</li>
-              <li><strong>WCAG-Guarded Publisher Branding &amp; From-Scratch Dual Dialog Builders</strong>: Full Light/Dark brand colors with live WCAG 2.2 AA contrast enforcement, custom C++ &amp; raw <code>370&times;270</code> <code>MSI.DLL</code> dialogs, <code>RsDialog</code> (<code>Rs*()</code>) scripting, and Authenticode / Azure Artifact Signing UX</li>
-              <li><strong>Setup Capture (<code>.wsb</code> Sandbox), VB6 <code>.vbp</code> Reg-Free COM Import &amp; White-Label <code>RsUpdate.exe</code></strong>: Snapshot-diff repackager, Visual Studio <code>.slnx</code> / VB6 <code>.vbp</code> importers, guided <code>.MSP</code> servicing, native <code>.MSIXBUNDLE</code>, and SPDX/CycloneDX <code>--emit-sbom</code></li>
+              <li><strong><code>v0.5.0</code> — 8 Wizard Styles &amp; WCAG-Guarded Branding</strong>: <code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code> (with billboards &amp; docked 3D gauge), and <code>Autorun16x9</code> + live WCAG 2.2 AA contrast enforcer</li>
+              <li><strong><code>v0.6.0</code> — Single-Download Web &amp; Offline Universal Installers + <code>.NET 11</code></strong>: CPU-aware <code>.rswpak</code> On-Demand Feature Packs, All-in-One Offline Universal Single-EXE, curated <code>.NET 11</code> presets, and <code>Engine = native</code></li>
+              <li><strong><code>v0.7.0</code> &amp; <code>v0.8.0</code> — From-Scratch Dialog Builders, <code>RsDialog</code> Scripting &amp; VB6 <code>.vbp</code> / <code>.slnx</code> Importers</strong>: Blank-canvas C++ &amp; raw <code>MSI.DLL</code> dialog designers plus Reg-Free COM VB6 <code>.vbp</code> importing for classic utilities like <em>StoreTrainer</em></li>
+              <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Azure Artifact Signing, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
             </ul>
           </div>
-          <a class="btn btn-primary" href="/roadmap">Read Full Public Roadmap (Phases B–G)</a>
+          <a class="btn btn-primary" href="/roadmap">Read Full v1.0 Engineering Roadmap</a>
         </article>
       </div>
     </section>
@@ -239,20 +351,21 @@ function renderHomeBody(): string {
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.1) • x64 &amp; ARM64</span>
+          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.2) • x64 &amp; ARM64</span>
           <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
           <p class="lead">
             An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
-            Design projects visually with modern <strong>AeroWizards</strong>, Destination Computer folder trees, Dual C++ &amp;
-            <code>MSI.DLL</code> Dialog Designers, and a built-in native C++ <code>F1</code> Help Viewer—or let coding agents author
-            comment-preserving <code>.rsip</code> manifests from scratch into real <code>.msi</code>, <code>.msm</code>,
-            <code>.mst</code>, <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
+            Design projects visually inside a <strong>12-View Tree-First IDE</strong>—with dedicated <strong>Features</strong> and
+            <strong><code>RegEdit</code>-style Registry</strong> trees, 5 guided <strong>AeroWizards</strong>, Dual C++ &amp;
+            <code>MSI.DLL</code> Dialog Designers, and a built-in C++ <code>F1</code> Help Viewer—or let coding agents compile
+            comment-preserving <code>.rsip</code> manifests into real <code>.msi</code>, <code>.msm</code>, <code>.mst</code>,
+            <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.1 (x64)</a>
+            <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.2 (x64)</a>
             <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
-            <a class="btn btn-outline" href="/roadmap">Explore Public Roadmap</a>
-            <a class="btn btn-outline" href="/changelog">Version History (v0.4.1)</a>
+            <a class="btn btn-outline" href="/screenshots">Visual Tour &amp; Screenshots</a>
+            <a class="btn btn-outline" href="/roadmap">Public Roadmap</a>
           </div>
         </div>
         <figure class="hero-box-showcase">
@@ -342,8 +455,6 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
       </div>
     </section>
 
-    ${renderLiveScreenshotShowcase()}
-
     ${renderVisionAndRoadmapSection()}
 
     <section aria-labelledby="matrix-heading">
@@ -371,6 +482,11 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
               <td>Even the offline <code>F1</code> Help Viewer runs natively in C++20 on stock Windows 11 (<code>x64</code> &amp; <code>ARM64</code>) with zero <code>.NET</code> or <code>WebView2</code> requirements.</td>
             </tr>
             <tr>
+              <th scope="row">Tree-First Visual IDE</th>
+              <td><strong>12 Views + 20 32-Bit ARGB Vector Tree Icons</strong></td>
+              <td>Dedicated <strong>Features</strong>, <strong><code>RegEdit</code> Registry</strong>, <strong>Dual Folder</strong>, <strong>Runtimes</strong>, and <strong>Shortcuts</strong> trees with <code>DarkMode_Explorer</code> chevrons.</td>
+            </tr>
+            <tr>
               <th scope="row">Windows Installer Rules</th>
               <td><strong>ICE18, ICE38, ICE64 &amp; ICE80 Enforced</strong></td>
               <td>Validates Single-Directory Component rules, <code>HKCU</code> user-profile KeyPaths, <code>CreateFolder</code>, and 64-bit component attributes before <code>msi.dll</code> runs.</td>
@@ -396,14 +512,14 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
       <div class="card-grid">
         <article class="card">
           <div>
-            <h3><code>InstallerStudio.exe</code> — 10-View C++20 Visual IDE</h3>
+            <h3><code>InstallerStudio.exe</code> — 12-View Tree-First IDE</h3>
             <p>
-              Features 5 guided Win32 <strong>AeroWizards</strong>, a hierarchical Destination Computer folder tree,
-              Setup Design (Features &rarr; Components &rarr; KeyPaths), Pre-MSI Runtimes &amp; <code>.MSM</code> modules,
+              Features a 4-category sidebar tree, dedicated <strong>Features</strong> and <strong><code>RegEdit</code> Registry</strong>
+              trees (with <code>.REG</code> import), Dual Folder &amp; Contents trees, 5 guided Win32 <strong>AeroWizards</strong>,
               Dual Dialog Designers, and a 100% comment-preserving <code>.rsip</code> AST!
             </p>
           </div>
-          <a class="btn btn-outline" href="/docs">Explore .rsip v0.4 Schema</a>
+          <a class="btn btn-outline" href="/screenshots">Explore IDE Screenshots</a>
         </article>
 
         <article class="card card-highlight">
@@ -422,12 +538,12 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
           <div>
             <h3><code>msiprism.exe</code> &amp; <code>RaggieSoftHelp.exe</code></h3>
             <p>
-              Inspect relational SQL tables across <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> databases in 64-bit Dark Mode
-              with <strong>MSI Prism</strong>, and browse searchable offline HTML5 documentation in under 5ms via Named Pipe <code>F1</code> IPC
-              inside <strong>RaggieSoft Help Viewer</strong>.
+              Inspect relational SQL tables grouped across 5 schema categories in 64-bit Dark Mode with <strong>MSI Prism</strong>,
+              and browse searchable offline HTML5 documentation in under 5ms via Named Pipe <code>F1</code> IPC inside
+              <strong>RaggieSoft Help Viewer</strong>.
             </p>
           </div>
-          <a class="btn btn-outline" href="/changelog">Inspect v0.4.1 Release Notes</a>
+          <a class="btn btn-outline" href="/docs">Browse Distributed Manual</a>
         </article>
       </div>
     </section>
@@ -435,29 +551,26 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
 }
 
 /**
- * Renders the `/roadmap` Public Engineering Roadmap page (`v0.1.0` -> `v1.0.0 GA`).
- * 100-Level Progressive Enhancement Lesson:
- *   All 7 milestone sections are pre-rendered into semantic static HTML5 so search engines,
- *   screen readers, and visitors with JavaScript disabled can read 100% of the roadmap.
- *   When Alpine.js hydrates in the browser, `phaseFilter` lets readers focus on a single
- *   engineering phase (`shipped`, `b`, `c`, `d`, `e`, `f`, or `g`) with zero page reloads!
+ * Renders the `/roadmap` Public Engineering Roadmap page (`v0.1.0` -> `v1.0.0 GA` + `v1.1+`).
  */
 function renderRoadmapBody(): string {
   return `
     <section class="hero" aria-labelledby="roadmap-page-title">
-      <span class="eyebrow">Open Engineering Plan • v0.4.1 Shipped &rarr; v1.0.0 GA</span>
+      <span class="eyebrow">Open Engineering Plan • v0.4.2 Shipped &rarr; v1.0.0 GA Dogfood Cutover</span>
       <h1 id="roadmap-page-title">Public Engineering Roadmap</h1>
       <p class="lead">
         <strong>RaggieSoft Installer Studio</strong> is built in the open as original, zero-dependency native Win32 C++20
-        software for Windows 11 <code>x64</code> and <code>ARM64</code>. Below is our complete human-readable roadmap—from
-        what ships today in <code>v0.4.1</code> through General Availability (<code>v1.0.0 GA</code>)—guided by a permanent
-        pledge that <strong>Community Edition maintains 100% technical feature parity with Premier Edition</strong>.
+        software for Windows 11 <code>x64</code> and <code>ARM64</code>. Our <strong><code>v1.0.0 GA</code> North Star</strong>
+        is clear and practical: reaching the exact point where <strong>100% of RaggieSoft's own Windows applications, classic
+        VB6 utilities (<em>StoreTrainer</em>), interactive novels, and supporter audio archives</strong> are packaged, signed,
+        updated, and distributed exclusively with Installer Studio—while permanently keeping
+        <strong>Community Edition at 100% technical feature parity with Premier Edition</strong>.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="${GITHUB_REPO_URL}/blob/main/ROADMAP.md">View ROADMAP.md on GitHub</a>
         <a class="btn btn-outline" href="/ROADMAP.md">Open Raw /ROADMAP.md</a>
-        <a class="btn btn-outline" href="/changelog">View Shipped Changelog (v0.4.1)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_X64_URL}">Download v0.4.1 Preview</a>
+        <a class="btn btn-outline" href="/screenshots">Visual Tour (v0.4.2)</a>
+        <a class="btn btn-outline" href="/changelog">Shipped Changelog</a>
       </div>
     </section>
 
@@ -466,49 +579,54 @@ function renderRoadmapBody(): string {
       <h2 id="roadmap-matrix-heading">Milestone Overview Matrix</h2>
       <div class="table-wrap">
         <table>
-          <caption>RaggieSoft Installer Studio Milestones from Technical Preview to v1.0.0 GA</caption>
+          <caption>RaggieSoft Installer Studio Milestones from Technical Preview to v1.0.0 GA and Post-1.0</caption>
           <thead>
             <tr>
-              <th scope="col">Phase / Target</th>
+              <th scope="col">Milestone</th>
               <th scope="col">Primary Focus</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><code>v0.1.0</code> – <code>v0.4.1</code></th>
-              <td>Core C++20 compiler, 10-View Visual IDE, MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, Dark Mode push buttons, &amp; live <code>ImmersiveColorSet</code> hot-swapping</td>
+              <th scope="row"><code>v0.1.0</code> – <code>v0.4.2</code></th>
+              <td>Core C++20 compiler, 12-View Tree-First IDE (<code>Features</code> &amp; <code>RegEdit</code> <code>Registry</code> trees), MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, &amp; live <code>ImmersiveColorSet</code> Dark Mode</td>
               <td><span class="status-pill status-shipped">Shipped</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase B (<code>v0.5.0</code>)</th>
-              <td>Authenticode Signing Studio, 8 Wizard Styles (<code>Wizard95</code>..<code>FluentMica</code>..<code>FullScreenBlue</code>), WCAG-guarded Publisher Branding, From-Scratch C++ &amp; Raw <code>MSI.DLL</code> Dialog Builders + <code>RsDialog</code> scripting, <code>.rswpak</code> On-Demand Feature Packs, <code>.NET 11</code>, &amp; Universal Single-EXE</td>
+              <th scope="row"><code>v0.5.0</code></th>
+              <td>8 Wizard Styles (<code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code> &amp; <code>Autorun16x9</code>), complete Publisher Branding (<code>.rswskin</code> + billboards), &amp; live WCAG 2.2 AA Contrast Enforcer</td>
               <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase C (<code>v0.6.0</code>)</th>
-              <td>Snapshot-Diff Setup Capture ("Repackager") &amp; one-click disposable Windows 11 Pro Sandbox (<code>.wsb</code>) capture</td>
+              <th scope="row"><code>v0.6.0</code></th>
+              <td>Single-Download CPU-aware Web Installer (<code>.rswpak</code> On-Demand Feature Packs), All-in-One Offline Universal Single-EXE (<code>x64 + ARM64</code>), curated <code>.NET 11</code> presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase D (<code>v0.7.0</code>)</th>
-              <td>Open-Format Import Wizard (<code>.msi</code>/<code>.msm</code>, Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code> Reg-Free COM, XML/INI) &amp; Visual Studio <code>.vsix</code> extension</td>
+              <th scope="row"><code>v0.7.0</code></th>
+              <td>From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>370&times;270</code> <code>MSI.DLL</code> SQL canvas) &amp; <code>RsDialog</code> (<code>Rs*()</code>) procedural dialog scripting</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase E (<code>v0.8.0</code>)</th>
-              <td>Windows Services, safe <code>PATH</code> / Firewall / Scheduled Tasks, JSON/XML/INI Config Patchers, &amp; Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
+              <th scope="row"><code>v0.8.0</code></th>
+              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code> Reg-Free COM for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase F (<code>v0.9.0</code>)</th>
-              <td>White-label <code>RsUpdate.exe</code> Auto-Updater, guided <code>.MSP</code> servicing (<code>--plan-update</code>), native <code>.MSIX</code>/<code>.MSIXBUNDLE</code>, <code>I18N</code> + RTL, &amp; SPDX/CycloneDX <code>--emit-sbom</code></td>
+              <th scope="row"><code>v0.9.0</code></th>
+              <td>First-Class Authenticode &amp; Azure Artifact Signing Studio, white-label <code>RsUpdate.exe</code> Auto-Updater, &amp; guided Microsoft-compliant <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
-              <th scope="row">Phase G (<code>v1.0.0 GA</code>)</th>
-              <td>Turnkey GitHub Actions &amp; Azure DevOps tasks + 100% RaggieSoft production cutover across all apps, interactive books, and supporter audio archives</td>
+              <th scope="row"><code>v1.0.0 GA</code></th>
+              <td>Turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft production cutover across all apps, interactive books, and supporter audio archives</td>
               <td><span class="status-pill">Planned</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><code>v1.1+</code> (Post-1.0)</th>
+              <td>Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code>, 20-lang <code>I18N</code> + RTL, &amp; <code>--emit-sbom</code></td>
+              <td><span class="status-pill">Post-1.0</span></td>
             </tr>
           </tbody>
         </table>
@@ -516,120 +634,117 @@ function renderRoadmapBody(): string {
     </section>
 
     <div x-data="{ phaseFilter: 'all' }">
-      <section aria-label="Filter Roadmap Phases" style="margin-bottom: 1.5rem;">
-        <div class="btn-row" role="group" aria-label="Show all phases or focus on one milestone">
-          <button type="button" class="btn" :class="phaseFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'all'">All Phases</button>
-          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.1)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'b' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'b'">Phase B (v0.5)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'c' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'c'">Phase C (v0.6)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'd' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'd'">Phase D (v0.7)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'e' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'e'">Phase E (v0.8)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'f' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'f'">Phase F (v0.9)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'g' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'g'">Phase G (v1.0 GA)</button>
+      <section aria-label="Filter Roadmap Milestones" style="margin-bottom: 1.5rem;">
+        <div class="btn-row" role="group" aria-label="Show all milestones or focus on one release">
+          <button type="button" class="btn" :class="phaseFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'all'">All Milestones</button>
+          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.2)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v05' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v05'">v0.5 (Wizards &amp; Branding)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v06' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v06'">v0.6 (Universal &amp; .NET 11)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v07' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v07'">v0.7 (Dialog Builders)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v08' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v08'">v0.8 (.slnx &amp; VB6 .vbp)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v09' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v09'">v0.9 (Signing &amp; Updater)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v10' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v10'">v1.0 GA &amp; Post-1.0</button>
         </div>
       </section>
 
       <!-- Shipped Foundation -->
       <section x-show="phaseFilter === 'all' || phaseFilter === 'shipped'" aria-labelledby="phase-shipped-heading" class="calc-panel">
-        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.1</span>
+        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.2</span>
         <h2 id="phase-shipped-heading" style="margin-top: 0.5rem;">Foundation Shipped in Technical Preview</h2>
         <ul class="feature-list">
-          <li><strong>Five Native Static <code>/MT</code> C++20 Executables (<code>x64</code> &amp; <code>ARM64</code>)</strong>: <code>InstallerStudio.exe</code> (10-view visual IDE + 5 guided AeroWizards), <code>instbuild.exe</code> (headless CLI compiler, JSON linter, AI spec &amp; VPAT 2.5 generator), <code>SetupWizard.exe</code> (accessible runtime bootstrapper), <code>msiprism.exe</code> (64-bit Dark Mode SQL inspector), and <code>RaggieSoftHelp.exe</code> (offline HTML5 documentation viewer with Named Pipe <code>F1</code> IPC).</li>
-          <li><strong>Complete Win32 Dark Mode &amp; Live OS Palette Hot-Swapping (<code>v0.4.1</code>)</strong>: Custom-subclassed push buttons (<code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, <code>Cancel</code>), checkboxes, <code>SysListView32</code> headers, and ComboBoxes that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> (including automatic day/night schedulers like Auto Dark Mode) without restarting.</li>
-          <li><strong>Pre-MSI Runtimes, 64-Bit <code>.MSM</code> Merging &amp; Authentic <code>SelectionTree</code> (<code>v0.3.0</code>)</strong>: Unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching before <code>msiexec</code>, pure 64-bit <code>.msm</code> SQL + CAB merging, <code>COMPRESS_ALGORITHM_LZMS</code> solid compression, and 32-bit ARGB split-dropdown feature trees.</li>
+          <li><strong>12-View Tree-First Win32 C++20 Visual IDE (<code>v0.4.2</code>)</strong>: Categorized sidebar tree, dedicated <strong>Features</strong> hierarchy with <code>Move Up</code> / <code>Move Down</code> ordering, <strong><code>RegEdit</code>-style Registry</strong> tree with <code>.REG</code> file importing and Feature filtering, Dual Destination Folder &amp; Contents trees, and a 5-category SQL schema tree in <code>msiprism.exe</code>.</li>
+          <li><strong>Complete Win32 Dark Mode &amp; Live OS Palette Hot-Swapping (<code>v0.4.1</code>)</strong>: Custom-subclassed push buttons (<code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, <code>Cancel</code>), checkboxes, 32-bit ARGB vector tree icons, and ComboBoxes that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> in under 16ms.</li>
+          <li><strong>Native C++20 <code>F1</code> Help Viewer, Pre-MSI Runtimes, 64-Bit <code>.MSM</code> &amp; <code>SelectionTree</code> (<code>v0.3.0</code>–<code>v0.4.0</code>)</strong>: Zero-dependency <code>RaggieSoftHelp.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching, pure 64-bit <code>.msm</code> SQL + CAB merging, and Windows <code>LZMS</code> solid compression.</li>
         </ul>
-        <a class="btn btn-outline" href="/changelog">Read Detailed v0.1.0 &rarr; v0.4.1 Release Notes</a>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/screenshots">Explore Live v0.4.2 Screenshots</a>
+          <a class="btn btn-outline" href="/changelog">Read Full v0.1.0 &rarr; v0.4.2 Changelog</a>
+        </div>
       </section>
 
-      <!-- Phase B -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'b'" aria-labelledby="phase-b-heading" class="card" style="margin-bottom: 1.5rem;">
+      <!-- v0.5.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v05'" aria-labelledby="phase-v05-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
-          <span class="status-pill status-next">Phase B • Target v0.5.0 (Next Up)</span>
-          <h2 id="phase-b-heading" style="margin-top: 0.5rem;">Signing Studio, 8 Wizard Styles, WCAG-Guarded Branding, From-Scratch C++ &amp; MSI Dialog Builders, <code>RsDialog</code> Scripting, <code>.rswpak</code> Feature Packs, <code>.NET 11</code> &amp; Universal Single-EXE</h2>
+          <span class="status-pill status-next">Target v0.5.0 • Next Up</span>
+          <h2 id="phase-v05-heading" style="margin-top: 0.5rem;">8 Wizard Layout Variations, White-Label Branding Studio &amp; Live WCAG 2.2 AA Contrast Enforcer</h2>
           <ul class="feature-list">
-            <li><strong>First-Class Authenticode Signing UX</strong>: Interactive Windows Certificate Store picker (<code>CryptUIDlgSelectCertificateFromStore</code>), local <code>.pfx</code> / hardware token configuration, Azure Artifact Signing (<code>dlib</code> + <code>MetadataJson</code>) tester, and one-click Dual-Layer Signature Verifier (<code>WinVerifyTrust</code> on both inner <code>Product.msi</code> and outer <code>Setup.exe</code>).</li>
-            <li><strong>Eight First-Party Wizard Layout Variations (<code>[UI] WizardLayout</code>)</strong>:
+            <li><strong>Eight First-Party Wizard Styles (<code>[UI] WizardLayout</code>)</strong>:
               <ul class="feature-list" style="margin-top: 0.35rem; margin-bottom: 0.35rem;">
-                <li><strong><code>Wizard95</code></strong>: Classic 1995 desktop 3D beveled dialog sheet (<code>#C0C0C0</code> surface, etched dividers, <code>164&times;314</code> left bitmap rail, and beveled buttons).</li>
+                <li><strong><code>Wizard95</code></strong>: Classic 1995 desktop 3D beveled dialog sheet (<code>#C0C0C0</code> surface, etched dividers, <code>164&times;314</code> left bitmap rail, and beveled push buttons).</li>
                 <li><strong><code>Wizard97</code></strong>: Classic enterprise header-banner layout with right-side emblem and bottom-right <code>&lt; Back</code> / <code>Next &gt;</code> / <code>Cancel</code> footer—modernized for Dark &amp; Light Mode.</li>
                 <li><strong><code>AeroWizard</code></strong>: Command-bar layout featuring a vector GDI+ <code>30&times;30</code> circular <code>&larr;</code> Back glyph in the top-left command area.</li>
-                <li><strong><code>FluentMica</code></strong>: Modern Windows 11 native backdrop via <code>DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)</code> with a unified borderless header, left-hand vertical step-progress rail (<code>Welcome &rarr; License &rarr; Options &rarr; Install &rarr; Finish</code>), and rounded <code>8px</code> cards in pure zero-dependency C++20.</li>
-                <li><strong><code>OneClickSplash</code></strong>: Compact centered <code>~480&times;280</code> friction-free card with one primary <strong>Install</strong> button, live progress bar, and a subtle <em>"Customize installation..."</em> disclosure button that expands into the full Custom Setup flow only when clicked.</li>
-                <li><strong><code>PassiveToast</code></strong>: Clean non-interactive <code>/passive</code> &amp; <code>/qb</code> enterprise status surface (centered or docked near the bottom-right system tray) with Dark/Light/High-Contrast styling and UI Automation live-region percentage announcements.</li>
-                <li><strong><code>FullScreenBlue</code></strong>: Nostalgic 1990s cobalt-blue (<code>#000080 &rarr; #000000</code>) full-screen <code>SETUP.EXE</code> backdrop wash with a shadow-boxed serif title in the top-left corner, floating 3D beveled setup dialogs, <strong>optional rotating installation billboards</strong>, and a floating <strong>3D Beveled Progress Gauge</strong> that sits centered or docks at the <strong>bottom-center / bottom-right</strong> beneath billboards—while keeping full modern DPI scaling, keyboard navigation, and screen-reader accessibility under the hood.</li>
+                <li><strong><code>FluentMica</code></strong>: Modern Windows 11 native backdrop via <code>DwmSetWindowAttribute(DWMWA_SYSTEMBACKDROP_TYPE, DWMSBT_MAINWINDOW / DWMSBT_TABBEDWINDOW)</code> with a unified borderless surface, left-hand vertical step-progress rail, and rounded <code>8px</code> cards.</li>
+                <li><strong><code>OneClickSplash</code></strong>: Compact centered <code>~480&times;280</code> friction-free card with one primary <strong>Install</strong> button and a <em>"Customize installation..."</em> disclosure toggle.</li>
+                <li><strong><code>PassiveToast</code></strong>: Clean non-interactive <code>/passive</code> &amp; <code>/qb</code> progress banner (centered or docked near the system tray) with UI Automation live-region percentage announcements.</li>
+                <li><strong><code>FullScreenBlue</code></strong>: Nostalgic 1990s cobalt-blue (<code>#000080 &rarr; #000000</code>) full-screen <code>SETUP.EXE</code> wash with a drop-shadowed serif title, floating 3D beveled dialogs, <strong>optional rotating installation billboards</strong>, and a floating <strong>3D Beveled Progress Gauge</strong> (centered or docked beneath billboards—ideal for retro utilities like <em>StoreTrainer</em>) while keeping modern DPI scaling and screen-reader accessibility.</li>
                 <li><strong><code>Autorun16x9</code></strong>: Widescreen <code>16:9</code> Collector's Edition &amp; digital media launcher menu.</li>
               </ul>
             </li>
-            <li><strong>Non-Negotiable Windows Contrast Theme Auto-Override (<code>SPI_GETHIGHCONTRAST</code>)</strong>: Across every single <code>WizardLayout</code> and custom skin, <code>SetupWizard.exe</code> checks <code>SPI_GETHIGHCONTRAST</code> at startup and live on <code>WM_SETTINGCHANGE</code> / <code>WM_SYSCOLORCHANGE</code>—automatically bypassing custom gradients, bitmaps, and Mica backdrops whenever a Windows Contrast Theme (<em>Aquatic</em>, <em>Desert</em>, <em>Dusk</em>, <em>Night Sky</em>) is active to paint strictly with <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, <code>COLOR_HIGHLIGHT</code>, and <code>2px</code> solid borders.</li>
-            <li><strong>Complete Publisher Branding, Custom Imagery &amp; Enforced WCAG 2.2 AA Contrast Guardrails (<code>[Branding]</code> &amp; <code>.rswskin</code>)</strong>: Customize every Light &amp; Dark Mode brand color, header banner, sidebar rail, product badge, background wash, and install billboard—backed by a live W3C relative luminance contrast enforcer inside <code>InstallerStudio.exe</code> (with a one-click <em>"Auto-Adjust Nearest Accessible Shade"</em> button preserving brand hue) and automated CI checks in <code>instbuild.exe --validate</code>.</li>
-            <li><strong>From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>MSI.DLL</code>) &amp; <code>RsDialog</code> (<code>Rs*()</code>) Scripting</strong>: Build completely custom wizard dialogs from a blank canvas for <strong>both</strong> C++ <code>SetupWizard.exe</code> (<code>[Dialog.*]</code>) AND raw <code>370&times;270</code> DLU relational <code>MSI.DLL</code> SQL tables (<code>[MsiDialog.*]</code> / <code>[MsiControl.*]</code>), paired with <code>.rssc</code> event hooks and our procedural <strong><code>RsDialog</code></strong> standard library (<code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, <code>RsAskText()</code>, <code>RsAskOptions()</code>, <code>RsStartCopy()</code>, <code>RsFinish()</code>, <code>RsFinishReboot()</code>).</li>
-            <li><strong>CPU-Aware Universal Web Installer via On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Eliminate separate <code>x64</code> and <code>ARM64</code> download links on product websites. Ship a single compact <code>Setup.exe</code> that queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation) and downloads <strong>only</strong> the matching native <code>ARM64</code> or <code>x64</code> LZMS-compressed <code>.rswpak</code> edition and selected optional features over <code>WinHTTP</code> with SHA-256 + Authenticode verification.</li>
-            <li><strong>All-in-One Offline Universal Single-EXE (<code>Architecture = universal</code>) &amp; Native Direct Engine (<code>Engine = native</code>)</strong>: Alongside the lightweight <code>.rswpak</code> Web Installer, emit a single self-contained Offline <code>Setup.exe</code> packing <strong>both</strong> <code>x64</code> and <code>ARM64</code> LZMS payloads and prerequisites in one file for air-gapped networks and archival media—plus an optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>.</li>
-            <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>, verifying native <code>arm64</code> and <code>x64</code>-on-ARM64 runtimes in <code>&lt; 1ms</code>.</li>
+            <li><strong>Non-Negotiable Windows Contrast Theme Auto-Override (<code>SPI_GETHIGHCONTRAST</code>)</strong>: Every layout automatically bypasses custom gradients, bitmaps, and Mica backdrops whenever a Windows Contrast Theme (<em>Aquatic</em>, <em>Desert</em>, <em>Dusk</em>, <em>Night Sky</em>) is active to paint strictly with semantic OS colors and <code>2px</code> solid borders.</li>
+            <li><strong>Complete Publisher Branding &amp; Live WCAG 2.2 AA Contrast Enforcer (<code>[Branding]</code> &amp; <code>.rswskin</code>)</strong>: Customize Light &amp; Dark Mode brand colors, banners, sidebars, and billboards—backed by live W3C luminance ratios, a one-click <em>"Auto-Adjust Nearest Accessible Shade"</em> button in the IDE, and automated CI validation in <code>instbuild.exe --validate</code>.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Phase C -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'c'" aria-labelledby="phase-c-heading" class="card" style="margin-bottom: 1.5rem;">
+      <!-- v0.6.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v06'" aria-labelledby="phase-v06-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
-          <span class="status-pill">Phase C • Target v0.6.0</span>
-          <h2 id="phase-c-heading" style="margin-top: 0.5rem;">Setup Capture ("Repackager") &amp; Disposable Windows Sandbox (<code>.wsb</code>) Mode</h2>
+          <span class="status-pill">Target v0.6.0</span>
+          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Single-Download Universal Web &amp; Offline Installers (<code>.rswpak</code>), <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
           <ul class="feature-list">
-            <li><strong>Snapshot-Diff Repackager (<code>Legacy Setup.exe &rarr; .rsip &rarr; .msi + .mst</code>)</strong>: Capture fast pre/post filesystem and <code>HKLM</code>/<code>HKCU</code>/<code>HKCR</code> registry baselines while tracking child sub-installers inside a Win32 Job Object (<code>CreateJobObjectW</code>), filter OS background noise, tokenize paths into <code>[ProgramFiles64Folder]</code>, harvest <code>.lnk</code> shortcuts and Windows Services, and emit editable <code>.rsip</code> projects plus enterprise <code>.mst</code> transforms.</li>
-            <li><strong>One-Click Disposable Windows Sandbox (<code>.wsb</code>) Capture</strong>: Detect Windows 11 Pro, Enterprise, and Education hosts via <code>GetProductInfo</code>, spin up a pristine throwaway Windows Sandbox VM automatically, run the legacy installer + capture agent in isolation, and return the clean <code>.rsip</code> + captured files without touching the developer's PC.</li>
+            <li><strong>CPU-Aware Universal Web Installer via On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Replace separate <code>x64</code> and <code>ARM64</code> download links with a single compact <code>Setup.exe</code> that queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation) and streams <strong>only</strong> the matching native <code>ARM64</code> or <code>x64</code> LZMS-compressed <code>.rswpak</code> pack over <code>WinHTTP</code> with SHA-256 + Authenticode verification.</li>
+            <li><strong>All-in-One Offline Universal Single-EXE (<code>Architecture = universal</code>)</strong>: Emit one self-contained portable <code>Setup.exe</code> bundling <strong>both</strong> <code>x64</code> and <code>ARM64</code> LZMS payloads and prerequisites for air-gapped machines and archival preservation.</li>
+            <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>.</li>
+            <li><strong>Native Direct Engine (<code>Engine = native | msi</code>)</strong>: Optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>—installing multi-hundred-file interactive book and supporter audio packs in milliseconds.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Phase D -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'd'" aria-labelledby="phase-d-heading" class="card" style="margin-bottom: 1.5rem;">
+      <!-- v0.7.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v07'" aria-labelledby="phase-v07-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
-          <span class="status-pill">Phase D • Target v0.7.0</span>
-          <h2 id="phase-d-heading" style="margin-top: 0.5rem;">Open-Format Setup Conversion Wizard (Including VB6 <code>.vbp</code>!) &amp; Visual Studio Extension (<code>.vsix</code>)</h2>
+          <span class="status-pill">Target v0.7.0</span>
+          <h2 id="phase-v07-heading" style="margin-top: 0.5rem;">From-Scratch Dual Dialog Builders (C++ &amp; Raw <code>MSI.DLL</code>) &amp; <code>RsDialog</code> Scripting</h2>
           <ul class="feature-list">
-            <li><strong><code>.msi</code> / <code>.msm</code> &amp; Visual Studio <code>.slnx</code> / <code>.csproj</code> / <code>.vcxproj</code> / <code>CMakeLists.txt</code> Importers</strong>: Decompile existing Windows Installer databases via <code>msiprism</code> SQL + FDI CAB extraction, or inspect Visual Studio solutions in one click to auto-configure <code>.NET 11</code> / <code>.NET 10 LTS</code> / <code>VC++</code> / <code>WebView2</code> prerequisites and <code>x64</code> + <code>ARM64</code> outputs.</li>
-            <li><strong>Visual Basic 6.0 (<code>.vbp</code>) Importer with Windows 11 WRP &amp; Reg-Free COM Modes</strong>: Parse <code>ExeName32</code>, <code>Reference=</code>, and <code>Object=*.ocx</code> entries directly from <code>.vbp</code> projects; respect Windows 11 Resource Protection on built-in <code>SysWOW64</code> runtimes (<code>msvbvm60.dll</code>); and offer either classic local SP6 <code>.MSM</code> consumption or modern zero-elevation <strong>Reg-Free COM</strong> (<code>&lt;comClass&gt;</code> / <code>&lt;typelib&gt;</code> side-by-side manifests).</li>
-            <li><strong>Open XML &amp; INI Script Importers + Visual Studio <code>.vsix</code> Extension</strong>: Convert structured XML/INI installer manifests into <code>.rsip</code> (flagging custom procedural blocks for AI translation into <code>.rssc</code> + <code>RsDialog</code>), and add <code>.rsip</code>/<code>.rsis</code> templates, syntax highlighting, and right-click packaging directly inside Visual Studio.</li>
+            <li><strong>From-Scratch C++ &amp; Raw <code>370&times;270</code> <code>MSI.DLL</code> Dialog Designers</strong>: Blank-canvas WYSIWYG editors for building custom wizard pages in both <code>SetupWizard.exe</code> (<code>[Dialog.*]</code>) and standalone <code>msiexec</code> SQL tables (<code>[MsiDialog.*]</code> / <code>[MsiControl.*]</code>).</li>
+            <li><strong><code>RsDialog</code> Standard Library + <code>.rssc</code> Event Hooks</strong>: Lifecycle hooks (<code>OnBegin</code>, <code>OnBeforeInstall</code>, <code>OnAfterInstall</code>) paired with procedural <code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, <code>RsAskText()</code>, <code>RsAskOptions()</code>, <code>RsStartCopy()</code>, and <code>RsFinish()</code> dialogs.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Phase E -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'e'" aria-labelledby="phase-e-heading" class="card" style="margin-bottom: 1.5rem;">
+      <!-- v0.8.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v08'" aria-labelledby="phase-v08-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
-          <span class="status-pill">Phase E • Target v0.8.0</span>
-          <h2 id="phase-e-heading" style="margin-top: 0.5rem;">Enterprise System Primitives, Config Patchers &amp; Windows Restart Manager</h2>
+          <span class="status-pill">Target v0.8.0</span>
+          <h2 id="phase-v08-heading" style="margin-top: 0.5rem;">Solution &amp; Legacy Project Importers (<code>.slnx</code>, VB6 <code>.vbp</code> Reg-Free COM &amp; <code>.msi</code>) + Restart Manager</h2>
           <ul class="feature-list">
-            <li><strong>Windows Services, Safe <code>PATH</code>, Firewall Rules &amp; Scheduled Tasks</strong>: Declarative <code>[Service.*]</code> (<code>ServiceInstall</code>/<code>ServiceControl</code> + SCM recovery), non-destructive <code>[Environment.*]</code> <code>PATH</code> updates (<code>[~]</code> semantics), <code>[FirewallRule.*]</code> (<code>INetFwPolicy2</code>), and <code>[ScheduledTask.*]</code> with automatic rollback and uninstall cleanup.</li>
-            <li><strong>Declarative Config Patchers (<code>[JsonPatch.*]</code>, <code>[XmlConfig.*]</code>, <code>[IniFile.*]</code>)</strong>: Stamp install-time wizard properties cleanly into <code>appsettings.json</code>, <code>.xml</code>/<code>.config</code>, and <code>.ini</code> files while preserving user customizations across upgrades.</li>
-            <li><strong>Windows Restart Manager (<code>Rstrtmgr.dll</code>) Integration</strong>: Detect running processes locking target files via <code>RmStartSession</code> / <code>RmGetList</code> and guide users through a WCAG-accessible <em>"Close Running Applications &amp; Continue"</em> flow to avoid unnecessary reboots.</li>
+            <li><strong>Visual Studio <code>.slnx</code> / <code>.csproj</code> / <code>.vcxproj</code> Importer</strong>: One-click detection of <code>.NET 11</code> / <code>.NET 10 LTS</code> / <code>VC++</code> / <code>WebView2</code> prerequisites, <code>x64</code> + <code>ARM64</code> publish folders, icons, and PE versions.</li>
+            <li><strong>Visual Basic 6.0 (<code>.vbp</code>) Importer with Windows 11 WRP &amp; Reg-Free COM Modes</strong>: Built for classic apps like <em>StoreTrainer</em>—parses <code>ExeName32</code>, <code>Reference=</code>, and <code>Object=*.ocx</code> lines, honors Windows 11 Resource Protection on inbox <code>SysWOW64</code> runtimes (<code>msvbvm60.dll</code>), and offers either local SP6 <code>.MSM</code> consumption or zero-elevation <strong>Reg-Free COM</strong> SxS manifests.</li>
+            <li><strong><code>.msi</code> Decompiler &amp; Windows Restart Manager (<code>Rstrtmgr.dll</code>)</strong>: Import existing <code>.msi</code> databases into <code>.rsip</code> projects and gracefully close running app processes during upgrades without OS reboots.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Phase F -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'f'" aria-labelledby="phase-f-heading" class="card" style="margin-bottom: 1.5rem;">
+      <!-- v0.9.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v09'" aria-labelledby="phase-v09-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
-          <span class="status-pill">Phase F • Target v0.9.0</span>
-          <h2 id="phase-f-heading" style="margin-top: 0.5rem;">White-Label Auto-Updater, Guided <code>.MSP</code> Patching, Native <code>.MSIX</code> &amp; Global <code>I18N</code> / SBOM</h2>
+          <span class="status-pill">Target v0.9.0</span>
+          <h2 id="phase-v09-heading" style="margin-top: 0.5rem;">Authenticode &amp; Azure Artifact Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Guided <code>.MSP</code> Servicing</h2>
           <ul class="feature-list">
-            <li><strong>Royalty-Free White-Label Auto-Updater (<code>RsUpdate.exe</code> / <code>[AutoUpdate]</code>)</strong>: Unlocked across all editions (including Community!), stamped with your own <code>.ico</code>, <code>ProductName</code>, and <code>CompanyName</code>, verifying SHA-256 + <code>WinVerifyTrust</code> signatures over HTTPS to apply <code>.msp</code> patches, <code>.msi</code> Major Upgrades, or Native Engine updates.</li>
-            <li><strong>Guided Microsoft-Compliant Update &amp; <code>.MSP</code> Servicing (<code>--plan-update</code>)</strong>: Diff against a shipped baseline <code>.msi</code>, enforce official Windows Installer Component rules automatically, emit binary-delta <code>.msp</code> Minor Updates when eligible, or guide one-click Major Upgrade transitions in plain English.</li>
-            <li><strong>In-Process <code>.MSIX</code> / <code>.MSIXBUNDLE</code> Compiler (<code>AppxPackaging.dll</code>) &amp; <code>--emit-winget</code></strong>: Emit single-arch <code>.msix</code>, unified <code>x64 + ARM64</code> <code>.msixbundle</code> packages, optional Windows 11 Sparse Package Identity, and <code>winget-pkgs</code> YAML manifests directly from C++20 with zero external SDK downloads.</li>
-            <li><strong>Multi-Language Localization (<code>I18N</code> + RTL) &amp; Procurement SBOMs (<code>--emit-sbom</code>)</strong>: UTF-8 <code>.rslang</code> tables for 20+ languages (including <code>WS_EX_LAYOUTRTL</code> right-to-left mirroring) plus <strong>SPDX 2.3 / CycloneDX JSON SBOM</strong> generation alongside HTML5 <strong>VPAT 2.5</strong> reports.</li>
+            <li><strong>Interactive Authenticode &amp; Azure Artifact Signing Studio</strong>: Windows Certificate Store picker (<code>CryptUIDlgSelectCertificateFromStore</code>), Azure Artifact Signing (<code>dlib</code> + <code>MetadataJson</code>) tester, and one-click Dual-Layer <code>WinVerifyTrust</code> verification on both inner <code>Product.msi</code> and outer <code>Setup.exe</code>.</li>
+            <li><strong>Royalty-Free White-Label Auto-Updater (<code>RsUpdate.exe</code>) &amp; Guided <code>.MSP</code> Servicing (<code>--plan-update</code>)</strong>: Publisher-branded HTTPS updater unlocked across all editions plus automated Microsoft Component servicing lint rules for binary-delta <code>.msp</code> patches and Major Upgrades.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Phase G -->
-      <section x-show="phaseFilter === 'all' || phaseFilter === 'g'" aria-labelledby="phase-g-heading" class="card">
+      <!-- v1.0.0 GA & Post-1.0 -->
+      <section x-show="phaseFilter === 'all' || phaseFilter === 'v10'" aria-labelledby="phase-v10-heading" class="card">
         <div>
-          <span class="status-pill">Phase G • Target v1.0.0 GA</span>
-          <h2 id="phase-g-heading" style="margin-top: 0.5rem;">Turnkey CI/CD Actions &amp; 100% Production Cutover Gate</h2>
+          <span class="status-pill">Target v1.0.0 GA &amp; v1.1+</span>
+          <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> Production Dogfood Cutover &amp; Post-1.0 Enterprise Expansion</h2>
           <ul class="feature-list">
-            <li><strong>First-Party CI/CD Tasks (<code>GitHub Actions</code> &amp; <code>Azure DevOps</code>)</strong>: Turnkey <code>raggiesoft/setup-installer-studio</code> workflows supporting headless JSON linting, matrix <code>x64</code> + <code>ARM64</code> + <code>universal</code> builds, Azure Artifact Signing, <code>--emit-vpat</code>, <code>--emit-sbom</code>, and <code>--emit-winget</code>.</li>
-            <li><strong>Production Validation Gate</strong>: Complete build, Authenticode signing, clean install, upgrade, repair, silent deploy (<code>/s</code>), and uninstall verification across every RaggieSoft desktop application, interactive book, and supporter audio archive on clean Windows 11 <code>x64</code> and <code>ARM64</code> hardware.</li>
+            <li><strong><code>v1.0.0 GA</code> — Turnkey CI/CD, <code>--emit-winget</code> &amp; 100% RaggieSoft Cutover</strong>: First-party GitHub Actions / Azure DevOps tasks, <code>winget-pkgs</code> YAML export, and complete signed install, upgrade, repair, silent (<code>/s</code>), and uninstall validation across every RaggieSoft desktop app, interactive book, and supporter audio archive on clean Windows 11 <code>x64</code> and <code>ARM64</code> PCs.</li>
+            <li><strong><code>v1.1+</code> Post-1.0 Expansion</strong>: One-click disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture ("Repackager"), Visual Studio <code>.vsix</code> extension, declarative Windows Services / Firewall / JSON-XML-INI Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20+ language <code>I18N</code> + RTL mirroring, and SPDX / CycloneDX <code>--emit-sbom</code> reports.</li>
           </ul>
         </div>
       </section>
@@ -638,7 +753,7 @@ function renderRoadmapBody(): string {
 }
 
 /**
- * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.1`).
+ * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.2`).
  */
 function renderChangelogBody(): string {
   return `
@@ -650,19 +765,33 @@ function renderChangelogBody(): string {
         zero-dependency native Win32 C++20 software.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Latest v0.4.1 (x64)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Latest v0.4.1 (ARM64)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Latest v0.4.2 (x64)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Latest v0.4.2 (ARM64)</a>
+        <a class="btn btn-outline" href="/screenshots">Inspect v0.4.2 Screenshots</a>
         <a class="btn btn-outline" href="${GITHUB_REPO_URL}">View Commits on GitHub</a>
       </div>
     </section>
 
-    <section aria-labelledby="v041-heading" class="calc-panel">
+    <section aria-labelledby="v042-heading" class="calc-panel">
       <span class="release-badge">Latest Release • November 2026</span>
-      <h2 id="v041-heading" style="margin-top: 0.25rem;">v0.4.1 — Dark-Mode Push Buttons &amp; Live OS Theme Hot-Swapping</h2>
+      <h2 id="v042-heading" style="margin-top: 0.25rem;">v0.4.2 — 12-View Tree-First Visual IDE, Features &amp; RegEdit Registry Trees, Categorized MSI Prism &amp; Inspector Fixes</h2>
       <ul class="feature-list">
-        <li><strong>Dark-Mode-Aware Accessible Push Buttons (<code>AttachAccessiblePushButtonSubclass</code>)</strong>: Replaced stock <code>ComCtl32 v6</code> light-mode white push buttons across <code>SetupWizard.exe</code> (<code>&lt; Back</code>, <code>Next &gt;</code>, <code>Cancel</code>), <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 100% public-API <code>SetWindowSubclass</code> + GDI+ vector buttons (Royal Cobalt primary CTA fills, Slate-Navy secondary fills, inline UAC shield icons via <code>BCM_SETSHIELD</code>, and <code>SPI_GETHIGHCONTRAST</code> system-brush fallback) while keeping native UI Automation <code>Button</code> roles and <code>Alt+Key</code> mnemonics intact.</li>
-        <li><strong>Live <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> Palette Hot-Swapping</strong>: All four Win32 GUI binaries now listen for live Windows 11 Light &harr; Dark Mode and Contrast Theme broadcasts, flipping DWM frames, cards, buttons, checkboxes, ListView headers, dropdowns, and RichEdit typography in <code>&lt; 16ms</code> without restarting.</li>
+        <li><strong>32-Bit ARGB Vector Tree Engine (<code>StudioTreeIcon</code> + <code>ApplyDarkTreeViewTheme</code>)</strong>: Replaced flat <code>LISTBOX</code> and <code>SysListView32</code> overuse across <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 20 anti-aliased premultiplied ARGB vector icons and Windows 11 <code>DarkMode_Explorer</code> / <code>Explorer</code> chevrons.</li>
+        <li><strong>Categorized 12-View Sidebar &amp; New Dedicated <code>Features</code> View</strong>: Grouped IDE navigation under <em>Application Information</em>, <em>Setup Architecture</em>, <em>User Interface</em>, and <em>Deployment &amp; Source</em>, and added a dedicated <code>All Features</code> hierarchy view with <code>Move Up</code> / <code>Move Down</code> AST reordering, <code>+ New Feature</code>, <code>+ Sub-Feature</code>, <code>DisallowAbsent</code> core locks, and live <code>Feature Description</code> editing.</li>
+        <li><strong>New <code>RegEdit</code>-Style <code>Registry</code> View + <code>.REG</code> File Importer</strong>: Added nested hive/subkey folder navigation across <code>HKEY_CLASSES_ROOT</code>, <code>HKEY_CURRENT_USER</code>, <code>HKEY_LOCAL_MACHINE</code>, <code>HKEY_USERS</code> (<code>HKU</code>), and <code>HKEY_USER_MACHINE_DEFAULT</code> (<code>HKMU</code>) paired with a typed right-hand values tree, per-Feature filtering, and UTF-8 / UTF-16LE <code>.reg</code> script importing.</li>
+        <li><strong>Dual-Tree <code>Files &amp; Folders</code>, <code>Shortcuts</code> Tree, Live Component Inspector &amp; Categorized <code>msiprism.exe</code></strong>: Upgraded Destination Contents, Application Runtimes &amp; <code>.MSM</code>, File Associations, and Shortcuts (<code>Start Menu</code> &amp; <code>Desktop</code>) to hierarchical trees, wired live <code>TVN_SELCHANGEDW</code> Component inspection in <code>Components &amp; KeyPaths</code>, and organized <code>msiprism.exe</code> SQL tables into 5 logical schema categories.</li>
       </ul>
+    </section>
+
+    <section aria-labelledby="v041-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v041-heading" style="margin-top: 0.25rem;">v0.4.1 — Dark-Mode Push Buttons &amp; Live OS Theme Hot-Swapping</h2>
+        <ul class="feature-list">
+          <li><strong>Dark-Mode-Aware Accessible Push Buttons (<code>AttachAccessiblePushButtonSubclass</code>)</strong>: Replaced stock <code>ComCtl32 v6</code> light-mode white push buttons across <code>SetupWizard.exe</code> (<code>&lt; Back</code>, <code>Next &gt;</code>, <code>Cancel</code>), <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 100% public-API <code>SetWindowSubclass</code> + GDI+ vector buttons while keeping native UI Automation <code>Button</code> roles and <code>Alt+Key</code> mnemonics intact.</li>
+          <li><strong>Live <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> Palette Hot-Swapping</strong>: All four Win32 GUI binaries listen for live Windows 11 Light &harr; Dark Mode and Contrast Theme broadcasts, flipping DWM frames, cards, buttons, checkboxes, headers, dropdowns, and RichEdit typography in <code>&lt; 16ms</code> without restarting.</li>
+        </ul>
+      </div>
     </section>
 
     <section aria-labelledby="v040-heading" class="card" style="margin-bottom: 1.5rem;">
@@ -671,10 +800,9 @@ function renderChangelogBody(): string {
       <h2 id="v040-heading" style="margin-top: 0.25rem;">v0.4.0 — Native C++20 Help System, Dark-Mode UI Subclasses &amp; AI Blueprints</h2>
       <ul class="feature-list">
         <li><strong>New <code>RaggieSoftHelp.exe</code> Native C++20 Help Viewer</strong>: Converted RaggieSoft's modular <code>.rshm.json</code> documentation viewer into a 100% static <code>/MT</code> Win32 C++20 binary (zero <code>.NET</code> and zero <code>WebView2</code> dependencies!) featuring Contents, Index, full-text Search, in-process HTML5-to-RTF typography (<code>Msftedit.dll</code>), and single-instance Named Pipe <code>F1</code> IPC.</li>
-        <li><strong>Bundled <code>raggiesoft.installer-studio</code> Offline Help Module</strong>: Shipped 8 comprehensive offline HTML5 chapters wired directly to <code>F1</code> across all 10 views of <code>InstallerStudio.exe</code>.</li>
+        <li><strong>Bundled <code>raggiesoft.installer-studio</code> Offline Help Module</strong>: Shipped 8 comprehensive offline HTML5 chapters wired directly to <code>F1</code> across the IDE and mirrored 1:1 to <a href="/docs">/docs</a>.</li>
         <li><strong>Global Win32 Dark Mode Checkbox &amp; ListView Header Subclasses</strong>: Added <code>AttachAccessibleCheckboxSubclass</code> and <code>AttachDarkAwareListViewSubclass</code> in <code>RswGlassRenderer.hpp</code> so checkboxes and <code>SysListView32</code> column headers maintain <code>&ge; 15.8:1</code> WCAG AAA contrast across Dark, Light, and High Contrast modes.</li>
-        <li><strong>Expanded From-Scratch AI Agent Blueprints</strong>: Upgraded <code>instbuild.exe --emit-ai-spec</code> (<code>/llms.txt</code>, <code>/llms-full.txt</code>, <code>/SKILL.md</code>) with an AI Pre-Flight Checklist and complete enterprise <code>.rsip</code> blueprint.</li>
-        <li><strong>Automated WIC Window Screenshot Exporter</strong>: Added <code>--export-screenshots</code> across GUI tools for reproducible visual QA.</li>
+        <li><strong>Expanded From-Scratch AI Agent Blueprints &amp; Screenshot Exporter</strong>: Upgraded <code>instbuild.exe --emit-ai-spec</code> (<code>/llms.txt</code>, <code>/llms-full.txt</code>, <code>/SKILL.md</code>) and added <code>--export-screenshots</code> across GUI tools.</li>
       </ul>
       </div>
     </section>
@@ -686,9 +814,8 @@ function renderChangelogBody(): string {
         <ul class="feature-list">
           <li><strong>IDE Editions (<code>Community == Premier</code>)</strong>: Defined <code>Community</code>, <code>Express</code>, <code>Professional</code>, and <code>Premier</code> tiers with <code>Community</code> permanently maintaining 100% feature parity with <code>Premier</code>.</li>
           <li><strong>Windows <code>LZMS</code> Solid Compression</strong>: Integrated <code>COMPRESS_ALGORITHM_LZMS</code> (<code>Cabinet.lib</code>) to shrink embedded <code>Product.msi</code> and offline runtime payloads inside <code>Setup.exe</code>.</li>
-          <li><strong>Unlimited Pre-MSI <code>[Prerequisite.*]</code> Runtime Broker</strong>: Added curated (<code>.NET 8/9/10</code>, <code>WebView2</code>, <code>VC++</code>) and custom runtime execution before <code>msiexec</code> via <code>WinHTTP</code> download, <code>LZMS</code> offline embed, or <code>Redist\\</code>—capturing standardized and custom <code>RebootExitCodes</code> (<code>3010, 1641, 23, ...</code>) under one UAC prompt.</li>
-          <li><strong>Native 64-Bit <code>[MergeModule.*]</code> (<code>.MSM</code>) Merger</strong>: Built a pure 64-bit SQL + <code>Cabinet.lib</code> FDI Merge Module consumer with zero 32-bit COM dependencies.</li>
-          <li><strong>Authentic Windows Installer <code>SelectionTree</code> &amp; Clean Status Formatting</strong>: Added 32-bit ARGB split-dropdown feature icons, live byte-cost cards, <code>DisallowAbsent</code> core locks, and <code>MsiFormatRecordW</code> formatting so status text never prints unexpanded <code>[1]</code> tokens.</li>
+          <li><strong>Unlimited Pre-MSI <code>[Prerequisite.*]</code> Runtime Broker &amp; 64-Bit <code>.MSM</code> Merger</strong>: Added curated and custom runtime execution before <code>msiexec</code> under one UAC prompt plus native 64-bit SQL + CAB Merge Module consumption.</li>
+          <li><strong>Authentic Windows Installer <code>SelectionTree</code> &amp; Clean Status Formatting</strong>: Added 32-bit ARGB split-dropdown feature icons, live byte-cost cards, <code>DisallowAbsent</code> core locks, and <code>MsiFormatRecordW</code> status formatting.</li>
         </ul>
       </div>
     </section>
@@ -698,9 +825,7 @@ function renderChangelogBody(): string {
         <span class="release-badge">Bugfix &amp; Polish • November 2026</span>
         <h2 id="v021-heading" style="margin-top: 0.25rem;">v0.2.1 — Real-World Setup Fixes, Dark Mode Checkboxes &amp; UAC Elevation Broker</h2>
         <ul class="feature-list">
-          <li><strong>Dark Mode Checkbox Subclassing in <code>SetupWizard.exe</code></strong>: Eliminated <code>ComCtl32 v6</code> black-on-black checkbox labels on Dark Mode wizard pages.</li>
-          <li><strong>Consistent Footer Navigation</strong>: Placed <code>&lt; &amp;Back</code> in the bottom-right footer bar alongside <code>Next &gt;</code> and <code>Cancel</code> and streamlined the AeroWizard command header.</li>
-          <li><strong>Windows Installer Engine &amp; UAC Fixes</strong>: Added persistent <code>Signature</code> / <code>AppSearch</code> locator SQL tables (fixing MSI Error 2228), Type 35 <code>STARTMENUFOLDER</code> directory formatting, unshimmed OS build properties, and seamless <code>asInvoker</code> &rarr; <code>--elevated-msi-worker</code> UAC elevation.</li>
+          <li>Added Dark Mode checkbox subclassing in <code>SetupWizard.exe</code>, bottom-right footer navigation, persistent <code>Signature</code> / <code>AppSearch</code> locator SQL tables, and seamless <code>asInvoker</code> &rarr; <code>--elevated-msi-worker</code> UAC elevation.</li>
         </ul>
       </div>
     </section>
@@ -710,7 +835,7 @@ function renderChangelogBody(): string {
         <span class="release-badge">Feature Milestone • November 2026</span>
         <h2 id="v020-heading" style="margin-top: 0.25rem;">v0.2.0 — Destination Computer Tree, Component Rules &amp; Dual Dialog Designers</h2>
         <ul class="feature-list">
-          <li>Added the Destination Computer folder tree, Setup Design view enforcing Microsoft Component Rules (<code>ICE18</code>, <code>ICE38</code>, <code>ICE64</code>, <code>ICE80</code>), File Associations &amp; Shell Verbs, guided Win32 AeroWizards, and the <code>370&times;270</code> <code>MSI.DLL</code> SQL Dialog Designer.</li>
+          <li>Added the Destination Computer folder tree, Microsoft Component Rule validation (<code>ICE18</code>, <code>ICE38</code>, <code>ICE64</code>, <code>ICE80</code>), File Associations &amp; Shell Verbs, guided Win32 AeroWizards, and the <code>370&times;270</code> <code>MSI.DLL</code> SQL Dialog Designer.</li>
         </ul>
       </div>
     </section>
@@ -740,6 +865,7 @@ function renderVpatBody(): string {
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="${LIVE_VPAT_URL}">Open Sample Live VPAT 2.5 Report (HTML5)</a>
+        <a class="btn btn-outline" href="/screenshots">View Dark &amp; Light Mode Captures</a>
         <a class="btn btn-outline" href="${GITHUB_REPO_URL}">Inspect C++20 Accessibility Source</a>
       </div>
     </section>
@@ -759,11 +885,11 @@ function renderVpatBody(): string {
         </article>
         <article class="card">
           <div>
-            <h3>Dark-Mode Checkboxes &amp; <code>SysListView32</code> Headers</h3>
+            <h3>Dark-Mode Buttons, Checkboxes, Trees &amp; Headers</h3>
             <p>
-              Shared Win32 subclasses override stock <code>ComCtl32 v6</code> black-on-dark checkbox labels and white
-              <code>SysHeader32</code> bars so every checkbox, report column header, and focus ring holds <code>&ge; 12.6:1</code> to
-              <code>17.4:1</code> contrast.
+              Shared Win32 subclasses and 32-bit PARGB <code>StudioTreeIcon</code> image lists override stock light-only
+              controls so every push button, checkbox, <code>SysTreeView32</code> node, report column header, and focus ring
+              maintains high WCAG contrast across Dark and Light modes.
             </p>
           </div>
         </article>
@@ -797,7 +923,7 @@ function renderVpatBody(): string {
               <td><strong>Supports (AAA)</strong></td>
             </tr>
             <tr>
-              <th scope="row">Dark Mode Surface &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
+              <th scope="row">Dark Mode Surface, TreeView &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
               <td>16.9:1 relative luminance ratio + Mica frame</td>
               <td>WCAG 2.2 SC 1.4.3</td>
               <td><strong>Supports (AAA)</strong></td>
@@ -862,8 +988,8 @@ function renderDocsBody(): string {
         <article class="card">
           <div>
             <span class="eyebrow">Chapter 2 • Visual IDE &amp; Wizards</span>
-            <h3><a href="/docs/ide-and-aerowizards" style="color: inherit; text-decoration: none;">10-View Visual IDE &amp; 5 Guided AeroWizards</a></h3>
-            <p>Tour all 10 views of <code>InstallerStudio.exe</code>, the 5 native Win32 AeroWizards, File Associations, and lossless AST saving.</p>
+            <h3><a href="/docs/ide-and-aerowizards" style="color: inherit; text-decoration: none;">Tree-First Visual IDE &amp; 5 Guided AeroWizards</a></h3>
+            <p>Tour the categorized views of <code>InstallerStudio.exe</code>, the 5 native Win32 AeroWizards, Features &amp; Registry trees, File Associations, and lossless AST saving.</p>
           </div>
           <a class="btn btn-outline" href="/docs/ide-and-aerowizards">Read Chapter 2</a>
         </article>
@@ -943,7 +1069,7 @@ function renderDocsBody(): string {
       <h2 id="search-schema-heading">Interactive .rsip v0.4 &amp; .rsis Section Filter</h2>
       <div class="field-group" style="max-width: 32rem; margin-bottom: 1rem;">
         <label for="schema-filter">Filter manifest sections &amp; capabilities:</label>
-        <input id="schema-filter" type="search" placeholder="Type Prerequisite, MergeModule, Component, KeyPath, MsiDialog..."
+        <input id="schema-filter" type="search" placeholder="Type Feature, Registry, Prerequisite, MergeModule, Component, MsiDialog..."
                x-model="q" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--surface); color: var(--text);" />
       </div>
 
@@ -972,6 +1098,11 @@ function renderDocsBody(): string {
               <th scope="row"><code>[Feature.&lt;Id&gt;]</code></th>
               <td><code>.rsip</code> (Optional)</td>
               <td><code>Title</code>, <code>Description</code>, <code>Level</code>, <code>Parent</code> hierarchy, <code>DisallowAbsent</code> core lock, and <code>AllowAdvertise</code> for the MSI <code>SelectionTree</code>.</td>
+            </tr>
+            <tr x-show="!q || 'registry hklm hkcu hkcr hku hkmu dword reg'.includes(q.toLowerCase())">
+              <th scope="row"><code>[Registry.&lt;Id&gt;]</code></th>
+              <td><code>.rsip</code> (Optional)</td>
+              <td><code>Root</code> (<code>HKLM|HKCU|HKCR|HKU|HKMU</code>), <code>Key</code>, <code>Name</code>, <code>Type</code> (<code>string|expand_string|dword</code>), <code>Value</code>, <code>Feature</code>, and optional <code>Component</code>.</td>
             </tr>
             <tr x-show="!q || 'prerequisite runtime dotnet webview2 vcredist reboot lzms'.includes(q.toLowerCase())">
               <th scope="row"><code>[Prerequisite.&lt;Id&gt;]</code></th>
@@ -1002,6 +1133,11 @@ function renderDocsBody(): string {
               <th scope="row"><code>[FileAssociation.&lt;Id&gt;]</code></th>
               <td><code>.rsip</code> (Optional)</td>
               <td><code>Extension</code>, <code>ProgId</code>, <code>Description</code>, <code>TargetFile</code>, <code>Verbs</code>, <code>ContentType</code>, and <code>Advertise</code> (<code>false</code> = clean <code>HKMU\\Software\\Classes</code>; <code>true</code> = MSI SQL tables).</td>
+            </tr>
+            <tr x-show="!q || 'shortcut startmenu desktop lnk'.includes(q.toLowerCase())">
+              <th scope="row"><code>[Shortcut.&lt;Id&gt;]</code></th>
+              <td><code>.rsip</code> (Optional)</td>
+              <td><code>Name</code>, <code>TargetFile</code>, <code>Location</code> (<code>StartMenu|Desktop</code>), <code>Arguments</code>, and <code>Feature</code> with automatic <code>ICE38</code> KeyPaths.</td>
             </tr>
             <tr x-show="!q || 'ui aerowizard glass wizardlayout msidialogpreset'.includes(q.toLowerCase())">
               <th scope="row"><code>[UI]</code>, <code>[MsiDialog.*]</code> &amp; <code>[MsiControl.*]</code></th>
@@ -1094,18 +1230,26 @@ function renderSecurityBody(): string {
 export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
-    navLabel: 'Preview & Gallery',
-    seoTitle: 'RaggieSoft Installer Studio — v0.4.1 Technical Preview',
+    navLabel: 'Overview',
+    seoTitle: 'RaggieSoft Installer Studio — v0.4.2 Technical Preview',
     seoDescription:
       'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.',
     renderBody: renderHomeBody
+  },
+  {
+    path: '/screenshots',
+    navLabel: 'Visual Tour',
+    seoTitle: 'Visual Tour & Screenshots | RaggieSoft Installer Studio',
+    seoDescription:
+      'Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.4.2: Features & Registry trees, SetupWizard Dark/Light Mode, and MSI Prism.',
+    renderBody: renderScreenshotsBody
   },
   {
     path: '/roadmap',
     navLabel: 'Roadmap',
     seoTitle: 'Public Engineering Roadmap | RaggieSoft Installer Studio',
     seoDescription:
-      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.1 through v1.0 GA across Windows 11 x64 and ARM64.',
+      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.2 through v1.0 GA across Windows 11 x64 and ARM64.',
     renderBody: renderRoadmapBody
   },
   {
@@ -1113,15 +1257,15 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Docs & AI Spec',
     seoTitle: 'Documentation & .rsip v0.4 Spec | Installer Studio',
     seoDescription:
-      'Searchable .rsip v0.4 project and .rsis suite reference covering Prerequisites, Merge Modules, Components, SelectionTree, and AI /llms.txt specs.',
+      'Searchable .rsip v0.4 project and .rsis suite reference covering Features, Registry, Prerequisites, Merge Modules, Components, and AI /llms.txt specs.',
     renderBody: renderDocsBody
   },
   {
     path: '/changelog',
     navLabel: 'Version History',
-    seoTitle: 'Version History & Changelog (v0.4.1) | Installer Studio',
+    seoTitle: 'Version History & Changelog (v0.4.2) | Installer Studio',
     seoDescription:
-      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.1 across Windows 11 x64 and ARM64.',
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.2 across Windows 11 x64 and ARM64.',
     renderBody: renderChangelogBody
   },
   {
@@ -1173,7 +1317,8 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <h1 id="err-title">Page Not Found</h1>
           <p class="lead">The requested RaggieSoft Installer Studio documentation or preview route could not be found.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/">Return to Project Announcement</a>
+            <a class="btn btn-primary" href="/">Return to Project Overview</a>
+            <a class="btn btn-outline" href="/screenshots">Explore Visual Tour</a>
             <a class="btn btn-outline" href="/docs">Browse .rsip &amp; CLI Documentation</a>
           </div>
         </section>
@@ -1184,7 +1329,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.1)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.2)</span>
         </a>
 
         <button
@@ -1227,10 +1372,11 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-links">
-          <a href="/">Preview &amp; Gallery</a>
+          <a href="/">Overview</a>
+          <a href="/screenshots">Visual Tour &amp; Screenshots</a>
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
-          <a href="/changelog">Version History (v0.4.1)</a>
+          <a href="/changelog">Version History (v0.4.2)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/ROADMAP.md">/ROADMAP.md</a>

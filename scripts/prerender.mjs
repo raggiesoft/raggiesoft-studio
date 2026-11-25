@@ -86,7 +86,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         image: OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
-        softwareVersion: '0.4.1',
+        softwareVersion: '0.4.2',
         license: 'https://opensource.org/licenses/MIT',
         author: {
           '@type': 'Organization',
@@ -258,7 +258,7 @@ async function main() {
       const readerMarkup = `
         <div class="docs-reader-grid">
           <aside class="docs-sidebar" aria-label="Documentation Chapters">
-            <span class="eyebrow">F1 Help Manual (v${escapeHtml(helpManifest.productVersion || '0.4.1')})</span>
+            <span class="eyebrow">F1 Help Manual (v${escapeHtml(helpManifest.productVersion || '0.4.2')})</span>
             <h2 style="font-size: 1.05rem; margin: 0.15rem 0 0.5rem;">Chapters</h2>
             <ul class="docs-toc-list">
               <li><a class="docs-toc-link" href="/docs">Documentation Index</a></li>

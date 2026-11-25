@@ -20,9 +20,9 @@
       "id": "ide-and-aerowizards",
       "fileName": "topics/ide-and-aerowizards.html",
       "category": "Visual IDE & Wizards",
-      "title": "10-View Visual IDE & 5 Guided AeroWizards",
-      "summary": "Tour all 10 views of InstallerStudio.exe, the 5 native Win32 AeroWizards, File Associations, and lossless AST saving.",
-      "keywords": ["ide", "aerowizard", "project assistant", "file associations", "shortcuts", "registry", "f1"]
+      "title": "12-View Tree-First Visual IDE & 5 Guided AeroWizards",
+      "summary": "Tour the categorized 12-view sidebar, dedicated Features & RegEdit Registry trees, 5 native Win32 AeroWizards, and lossless AST saving.",
+      "keywords": ["ide", "tree", "features", "registry", "regedit", "aerowizard", "project assistant", "file associations", "shortcuts", "f1"]
     },
     {
       "id": "components-and-keypaths",
