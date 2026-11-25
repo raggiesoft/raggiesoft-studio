@@ -1339,6 +1339,9 @@ jobs:
           <a href="${We}">GitHub Repository</a>
           <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
           <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
         </div>
         <p>
           Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source Technical Preview licensed under the MIT License.
