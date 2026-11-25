@@ -9,15 +9,15 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.4.2`)**:
- *       1. `/`              — Vision Announcement, Preview Downloads, 28-Year
- *                             Origin Story, 3-Tab Split Preview, & Suite Spotlight
+ *     public **Project Announcement & Open Technical Preview (`v0.4.3`)**:
+ *       1. `/`              — Vision Announcement, Universal Single-Download
+ *                             Installers, 28-Year Origin Story, & Suite Spotlight
  *       2. `/screenshots`   — Dedicated Visual Feature Tour with 10 real native
  *                             Win32 C++20 captures & full-size HTML5 `<dialog>` modals
  *       3. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
  *                             (`v0.5.0` -> `v1.0.0 GA` + `v1.1+` Expansion)
  *       4. `/docs`          — Single-source offline & web manual + AI `/llms.txt`
- *       5. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.2`)
+ *       5. `/changelog`     — Public Version History (`v0.1.0` -> `v0.4.3`)
  *       6. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
  *       7. `/accessibility` — Canonical alias view for `/vpat`
@@ -53,8 +53,8 @@ const ASSET_BASE =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
 const BOX_SHOWCASE_URL =
   'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
-const DOWNLOAD_X64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-x64-setup.exe`;
-const DOWNLOAD_ARM64_URL = `${ASSET_BASE}/raggiesoft-installer-studio-arm64-setup.exe`;
+const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
+const DOWNLOAD_OFFLINE_UNIV_URL = `${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe`;
 const SHOT_BASE = `${ASSET_BASE}/screenshots`;
 const GITHUB_REPO_URL = 'https://github.com/raggiesoft/installer-studio';
 const LIVE_VPAT_URL = '/vpat/raggiesoft-installer-studio-vpat-2.5.html';
@@ -163,7 +163,7 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'helpviewer-contents.png',
     badge: 'RaggieSoftHelp.exe • Named Pipe F1 IPC',
     title: '9. Zero-Dependency Native C++20 Offline Help Viewer',
-    alt: 'RaggieSoftHelp.exe v0.4.2 native C++20 offline Help Viewer showing the 32-bit ARGB Contents tree on the left and formatted MSI SelectionTree documentation on the right.',
+    alt: 'RaggieSoftHelp.exe v0.4.3 native C++20 offline Help Viewer showing the 32-bit ARGB Contents tree on the left and formatted MSI SelectionTree documentation on the right.',
     summaryHtml:
       'Press <code>F1</code> inside any IDE view to open searchable offline HTML5 chapters in under 5ms via Named Pipe IPC—rendered natively through <code>System32\\Msftedit.dll</code> with zero <code>.NET</code> or <code>WebView2</code> dependencies.',
     detailHtml:
@@ -174,7 +174,7 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
     fileName: 'msiprism-sql-inspector.png',
     badge: 'msiprism.exe • Categorized SQL Schema Tree',
     title: '10. Native 64-Bit Dark Mode MSI, MSM, MST & MSP SQL Inspector',
-    alt: 'RaggieSoft MSI Prism v0.4.2 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
+    alt: 'RaggieSoft MSI Prism v0.4.3 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
     summaryHtml:
       'Open any <code>.msi</code>, <code>.msm</code>, or <code>.msp</code> database into a categorized 5-group <code>SysTreeView32</code> schema tree, inspect relational rows in Dark or Light Mode, audit <code>ICE80</code> flags, and generate <code>.mst</code> or <code>.msp</code> deltas.',
     detailHtml:
@@ -231,7 +231,7 @@ function renderScreenshotCardAndModal(item: ScreenshotFeatureItem): string {
 function renderScreenshotsBody(): string {
   return `
     <section class="hero" aria-labelledby="tour-title">
-      <span class="eyebrow">Real Native Win32 C++20 Captures • v0.4.2 on Windows 11</span>
+      <span class="eyebrow">Real Native Win32 C++20 Captures • v0.4.3 on Windows 11</span>
       <h1 id="tour-title">Visual Feature Tour &amp; Full-Size Screenshots</h1>
       <p class="lead">
         Every window on this page is rendered natively at runtime by static <code>/MT</code> Win32 C++20 executables
@@ -242,8 +242,8 @@ function renderScreenshotsBody(): string {
         <strong>Click or press Enter on any screenshot to inspect it at full 1:1 native size.</strong>
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.2 (x64)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.3 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
         <a class="btn btn-outline" href="/roadmap">Explore v1.0 Engineering Roadmap</a>
         <a class="btn btn-outline" href="/docs">Read Distributed F1 Manual</a>
       </div>
@@ -316,17 +316,17 @@ function renderVisionAndRoadmapSection(): string {
       <div class="card-grid" style="margin-top: 1.25rem;">
         <article class="card">
           <div>
-            <h3>Shipping Today in Technical Preview (<code>v0.4.2</code>)</h3>
+            <h3>Shipping Today in Technical Preview (<code>v0.4.3</code>)</h3>
             <ul class="feature-list">
+              <li><strong>Single-Download CPU-Aware Web &amp; Offline Universal Installers</strong>: Users never have to guess whether they own an <code>AMD64</code> (<code>x64</code>) or <code>ARM64</code> PC—ship one compact <strong>Smart Web Stub</strong> (<code>IsWow64Process2</code> + <code>WinHTTP</code> + SHA-256) or one <strong>Combined Offline Universal EXE</strong> bundling both architectures</li>
               <li><strong>12-View Tree-First Win32 C++20 IDE (<code>InstallerStudio.exe</code>)</strong>: Categorized sidebar, dedicated <strong>Features</strong> tree (<code>Move Up</code>/<code>Down</code>), <strong><code>RegEdit</code>-style Registry</strong> tree (<code>.REG</code> import + Feature filter), Dual Folder trees, and 5 guided <strong>AeroWizards</strong>—with <strong><code>Community == 100% Premier</code> parity</strong></li>
               <li><strong>100% Dark-Mode-Complete UI + Live OS Theme Hot-Swapping</strong>: Custom-subclassed push buttons, checkboxes, 32-bit ARGB vector tree icons, and RichEdit panels that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code></li>
-              <li><strong>Zero-Dependency Native C++20 Help System (<code>RaggieSoftHelp.exe</code>)</strong>: Pluggable <code>module.rshm.json</code> offline manual with Contents tree, Index, Search, and Named Pipe <code>F1</code> IPC</li>
-              <li><strong>Authentic MSI <code>SelectionTree</code>, Pre-MSI Runtimes &amp; Categorized <code>msiprism.exe</code></strong>: 32-bit ARGB split-icon feature tree in <code>Setup.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes, 64-bit <code>.MSM</code> merging, and <code>--emit-ai-spec</code> / <code>--emit-vpat</code></li>
+              <li><strong>Native C++20 Help System, MSI <code>SelectionTree</code>, Pre-MSI Runtimes &amp; <code>msiprism.exe</code></strong>: Zero-dependency <code>RaggieSoftHelp.exe</code>, 32-bit ARGB feature tree, unlimited <code>[Prerequisite.*]</code> runtimes, 64-bit <code>.MSM</code> merging, and <code>--emit-ai-spec</code> / <code>--emit-vpat</code></li>
             </ul>
           </div>
           <div class="btn-row">
             <a class="btn btn-primary" href="/screenshots">Take the Visual Screenshot Tour &rarr;</a>
-            <a class="btn btn-outline" href="/changelog">v0.4.2 Release Notes</a>
+            <a class="btn btn-outline" href="/changelog">v0.4.3 Release Notes</a>
           </div>
         </article>
         <article class="card">
@@ -334,7 +334,7 @@ function renderVisionAndRoadmapSection(): string {
             <h3>Focused Path to <code>v1.0.0 GA</code> (Dogfood North Star)</h3>
             <ul class="feature-list">
               <li><strong><code>v0.5.0</code> — 8 Wizard Styles &amp; WCAG-Guarded Branding</strong>: <code>Wizard95</code>, <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code> (with billboards &amp; docked 3D gauge), and <code>Autorun16x9</code> + live WCAG 2.2 AA contrast enforcer</li>
-              <li><strong><code>v0.6.0</code> — Single-Download Web &amp; Offline Universal Installers + <code>.NET 11</code></strong>: CPU-aware <code>.rswpak</code> On-Demand Feature Packs, All-in-One Offline Universal Single-EXE, curated <code>.NET 11</code> presets, and <code>Engine = native</code></li>
+              <li><strong><code>v0.6.0</code> — Granular <code>.rswpak</code> On-Demand Feature Packs + <code>.NET 11</code> + <code>Engine = native</code></strong>: Stream optional multi-gigabyte feature packs on demand, curated <code>.NET 11</code> presets, and zero-<code>msi.dll</code> transactional extraction</li>
               <li><strong><code>v0.7.0</code> &amp; <code>v0.8.0</code> — From-Scratch Dialog Builders, <code>RsDialog</code> Scripting &amp; VB6 <code>.vbp</code> / <code>.slnx</code> Importers</strong>: Blank-canvas C++ &amp; raw <code>MSI.DLL</code> dialog designers plus Reg-Free COM VB6 <code>.vbp</code> importing for classic utilities like <em>StoreTrainer</em></li>
               <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Azure Artifact Signing, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
             </ul>
@@ -351,19 +351,18 @@ function renderHomeBody(): string {
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.2) • x64 &amp; ARM64</span>
+          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.4.3) • Universal x64 &amp; ARM64</span>
           <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
           <p class="lead">
             An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
             Design projects visually inside a <strong>12-View Tree-First IDE</strong>—with dedicated <strong>Features</strong> and
             <strong><code>RegEdit</code>-style Registry</strong> trees, 5 guided <strong>AeroWizards</strong>, Dual C++ &amp;
-            <code>MSI.DLL</code> Dialog Designers, and a built-in C++ <code>F1</code> Help Viewer—or let coding agents compile
-            comment-preserving <code>.rsip</code> manifests into real <code>.msi</code>, <code>.msm</code>, <code>.mst</code>,
-            <code>.msp</code>, and WCAG 2.2 AA <code>Setup.exe</code> installers.
+            <code>MSI.DLL</code> Dialog Designers, and a built-in C++ <code>F1</code> Help Viewer—and ship <strong>one universal
+            <code>Setup.exe</code></strong> that automatically detects your user's processor.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Technical Preview v0.4.2 (x64)</a>
-            <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Native ARM64 Preview</a>
+            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.4.3 (Auto-Detects CPU)</a>
+            <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
             <a class="btn btn-outline" href="/screenshots">Visual Tour &amp; Screenshots</a>
             <a class="btn btn-outline" href="/roadmap">Public Roadmap</a>
           </div>
@@ -556,7 +555,7 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
 function renderRoadmapBody(): string {
   return `
     <section class="hero" aria-labelledby="roadmap-page-title">
-      <span class="eyebrow">Open Engineering Plan • v0.4.2 Shipped &rarr; v1.0.0 GA Dogfood Cutover</span>
+      <span class="eyebrow">Open Engineering Plan • v0.4.3 Shipped &rarr; v1.0.0 GA Dogfood Cutover</span>
       <h1 id="roadmap-page-title">Public Engineering Roadmap</h1>
       <p class="lead">
         <strong>RaggieSoft Installer Studio</strong> is built in the open as original, zero-dependency native Win32 C++20
@@ -569,7 +568,7 @@ function renderRoadmapBody(): string {
       <div class="btn-row">
         <a class="btn btn-primary" href="${GITHUB_REPO_URL}/blob/main/ROADMAP.md">View ROADMAP.md on GitHub</a>
         <a class="btn btn-outline" href="/ROADMAP.md">Open Raw /ROADMAP.md</a>
-        <a class="btn btn-outline" href="/screenshots">Visual Tour (v0.4.2)</a>
+        <a class="btn btn-outline" href="/screenshots">Visual Tour (v0.4.3)</a>
         <a class="btn btn-outline" href="/changelog">Shipped Changelog</a>
       </div>
     </section>
@@ -589,8 +588,8 @@ function renderRoadmapBody(): string {
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><code>v0.1.0</code> – <code>v0.4.2</code></th>
-              <td>Core C++20 compiler, 12-View Tree-First IDE (<code>Features</code> &amp; <code>RegEdit</code> <code>Registry</code> trees), MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, &amp; live <code>ImmersiveColorSet</code> Dark Mode</td>
+              <th scope="row"><code>v0.1.0</code> – <code>v0.4.3</code></th>
+              <td>Core C++20 compiler, CPU-aware Smart Web Stub &amp; Combined Offline Universal EXE (<code>x64 + ARM64</code>), 12-View Tree-First IDE, MSI <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, native <code>F1</code> Help Viewer, &amp; live Dark Mode</td>
               <td><span class="status-pill status-shipped">Shipped</span></td>
             </tr>
             <tr>
@@ -600,7 +599,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Single-Download CPU-aware Web Installer (<code>.rswpak</code> On-Demand Feature Packs), All-in-One Offline Universal Single-EXE (<code>x64 + ARM64</code>), curated <code>.NET 11</code> presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
+              <td>Granular On-Demand Feature Packs (<code>.rswpak</code>), curated <code>.NET 11</code> runtime presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
@@ -637,9 +636,9 @@ function renderRoadmapBody(): string {
       <section aria-label="Filter Roadmap Milestones" style="margin-bottom: 1.5rem;">
         <div class="btn-row" role="group" aria-label="Show all milestones or focus on one release">
           <button type="button" class="btn" :class="phaseFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'all'">All Milestones</button>
-          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.2)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'shipped' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'shipped'">Shipped (v0.1–v0.4.3)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v05' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v05'">v0.5 (Wizards &amp; Branding)</button>
-          <button type="button" class="btn" :class="phaseFilter === 'v06' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v06'">v0.6 (Universal &amp; .NET 11)</button>
+          <button type="button" class="btn" :class="phaseFilter === 'v06' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v06'">v0.6 (.rswpak &amp; .NET 11)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v07' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v07'">v0.7 (Dialog Builders)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v08' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v08'">v0.8 (.slnx &amp; VB6 .vbp)</button>
           <button type="button" class="btn" :class="phaseFilter === 'v09' ? 'btn-primary' : 'btn-outline'" @click="phaseFilter = 'v09'">v0.9 (Signing &amp; Updater)</button>
@@ -649,16 +648,17 @@ function renderRoadmapBody(): string {
 
       <!-- Shipped Foundation -->
       <section x-show="phaseFilter === 'all' || phaseFilter === 'shipped'" aria-labelledby="phase-shipped-heading" class="calc-panel">
-        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.2</span>
+        <span class="status-pill status-shipped">Shipped Today • v0.1.0 – v0.4.3</span>
         <h2 id="phase-shipped-heading" style="margin-top: 0.5rem;">Foundation Shipped in Technical Preview</h2>
         <ul class="feature-list">
+          <li><strong>CPU-Aware Smart Web Stub &amp; Combined Offline Universal EXE (<code>v0.4.3</code>)</strong>: Eliminates separate <code>x64</code> vs. <code>ARM64</code> download confusion via a compact 64-bit universal outer launcher that pierces Windows 11 Prism emulation through <code>IsWow64Process2</code> to download or unpack the genuine native silicon installer with SHA-256 verification.</li>
           <li><strong>12-View Tree-First Win32 C++20 Visual IDE (<code>v0.4.2</code>)</strong>: Categorized sidebar tree, dedicated <strong>Features</strong> hierarchy with <code>Move Up</code> / <code>Move Down</code> ordering, <strong><code>RegEdit</code>-style Registry</strong> tree with <code>.REG</code> file importing and Feature filtering, Dual Destination Folder &amp; Contents trees, and a 5-category SQL schema tree in <code>msiprism.exe</code>.</li>
           <li><strong>Complete Win32 Dark Mode &amp; Live OS Palette Hot-Swapping (<code>v0.4.1</code>)</strong>: Custom-subclassed push buttons (<code>&lt; Back</code>, Royal Cobalt <code>Next &gt;</code>, <code>Cancel</code>), checkboxes, 32-bit ARGB vector tree icons, and ComboBoxes that flip live on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code> in under 16ms.</li>
           <li><strong>Native C++20 <code>F1</code> Help Viewer, Pre-MSI Runtimes, 64-Bit <code>.MSM</code> &amp; <code>SelectionTree</code> (<code>v0.3.0</code>–<code>v0.4.0</code>)</strong>: Zero-dependency <code>RaggieSoftHelp.exe</code>, unlimited <code>[Prerequisite.*]</code> runtimes with custom reboot-code latching, pure 64-bit <code>.msm</code> SQL + CAB merging, and Windows <code>LZMS</code> solid compression.</li>
         </ul>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/screenshots">Explore Live v0.4.2 Screenshots</a>
-          <a class="btn btn-outline" href="/changelog">Read Full v0.1.0 &rarr; v0.4.2 Changelog</a>
+          <a class="btn btn-primary" href="/screenshots">Explore Live v0.4.3 Screenshots</a>
+          <a class="btn btn-outline" href="/changelog">Read Full v0.1.0 &rarr; v0.4.3 Changelog</a>
         </div>
       </section>
 
@@ -690,10 +690,9 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v06'" aria-labelledby="phase-v06-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill">Target v0.6.0</span>
-          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Single-Download Universal Web &amp; Offline Installers (<code>.rswpak</code>), <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
+          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Granular On-Demand Feature Packs (<code>.rswpak</code>), <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
           <ul class="feature-list">
-            <li><strong>CPU-Aware Universal Web Installer via On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Replace separate <code>x64</code> and <code>ARM64</code> download links with a single compact <code>Setup.exe</code> that queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation) and streams <strong>only</strong> the matching native <code>ARM64</code> or <code>x64</code> LZMS-compressed <code>.rswpak</code> pack over <code>WinHTTP</code> with SHA-256 + Authenticode verification.</li>
-            <li><strong>All-in-One Offline Universal Single-EXE (<code>Architecture = universal</code>)</strong>: Emit one self-contained portable <code>Setup.exe</code> bundling <strong>both</strong> <code>x64</code> and <code>ARM64</code> LZMS payloads and prerequisites for air-gapped machines and archival preservation.</li>
+            <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Building on <code>v0.4.3</code>'s CPU-aware Smart Web Stub and Combined Offline Universal EXE, split optional multi-gigabyte features (high-DPI assets, offline docs, or language packs) into external LZMS-compressed <code>.rswpak</code> blocks fetched on demand via <code>WinHTTP</code> with SHA-256 + Authenticode verification when selected in <code>SelectionTree</code>.</li>
             <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>.</li>
             <li><strong>Native Direct Engine (<code>Engine = native | msi</code>)</strong>: Optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>—installing multi-hundred-file interactive book and supporter audio packs in milliseconds.</li>
           </ul>
@@ -753,34 +752,46 @@ function renderRoadmapBody(): string {
 }
 
 /**
- * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.2`).
+ * Renders the `/changelog` Version History page (`v0.1.0` -> `v0.4.3`).
  */
 function renderChangelogBody(): string {
   return `
     <section class="hero" aria-labelledby="chg-title">
-      <span class="eyebrow">Public Engineering Log • x64 &amp; Native ARM64</span>
+      <span class="eyebrow">Public Engineering Log • Universal x64 &amp; Native ARM64</span>
       <h1 id="chg-title">Version History &amp; Release Notes</h1>
       <p class="lead">
         Follow every milestone of <strong>RaggieSoft Installer Studio</strong> as it evolves in public as original,
         zero-dependency native Win32 C++20 software.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_X64_URL}">Download Latest v0.4.2 (x64)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_ARM64_URL}">Download Latest v0.4.2 (ARM64)</a>
-        <a class="btn btn-outline" href="/screenshots">Inspect v0.4.2 Screenshots</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Latest v0.4.3 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-outline" href="/screenshots">Inspect v0.4.3 Screenshots</a>
         <a class="btn btn-outline" href="${GITHUB_REPO_URL}">View Commits on GitHub</a>
       </div>
     </section>
 
-    <section aria-labelledby="v042-heading" class="calc-panel">
+    <section aria-labelledby="v043-heading" class="calc-panel">
       <span class="release-badge">Latest Release • November 2026</span>
-      <h2 id="v042-heading" style="margin-top: 0.25rem;">v0.4.2 — 12-View Tree-First Visual IDE, Features &amp; RegEdit Registry Trees, Categorized MSI Prism &amp; Inspector Fixes</h2>
+      <h2 id="v043-heading" style="margin-top: 0.25rem;">v0.4.3 — CPU-Aware Smart Web Stub &amp; Combined Offline Universal Single-EXE (x64 + ARM64)</h2>
       <ul class="feature-list">
-        <li><strong>32-Bit ARGB Vector Tree Engine (<code>StudioTreeIcon</code> + <code>ApplyDarkTreeViewTheme</code>)</strong>: Replaced flat <code>LISTBOX</code> and <code>SysListView32</code> overuse across <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 20 anti-aliased premultiplied ARGB vector icons and Windows 11 <code>DarkMode_Explorer</code> / <code>Explorer</code> chevrons.</li>
-        <li><strong>Categorized 12-View Sidebar &amp; New Dedicated <code>Features</code> View</strong>: Grouped IDE navigation under <em>Application Information</em>, <em>Setup Architecture</em>, <em>User Interface</em>, and <em>Deployment &amp; Source</em>, and added a dedicated <code>All Features</code> hierarchy view with <code>Move Up</code> / <code>Move Down</code> AST reordering, <code>+ New Feature</code>, <code>+ Sub-Feature</code>, <code>DisallowAbsent</code> core locks, and live <code>Feature Description</code> editing.</li>
-        <li><strong>New <code>RegEdit</code>-Style <code>Registry</code> View + <code>.REG</code> File Importer</strong>: Added nested hive/subkey folder navigation across <code>HKEY_CLASSES_ROOT</code>, <code>HKEY_CURRENT_USER</code>, <code>HKEY_LOCAL_MACHINE</code>, <code>HKEY_USERS</code> (<code>HKU</code>), and <code>HKEY_USER_MACHINE_DEFAULT</code> (<code>HKMU</code>) paired with a typed right-hand values tree, per-Feature filtering, and UTF-8 / UTF-16LE <code>.reg</code> script importing.</li>
-        <li><strong>Dual-Tree <code>Files &amp; Folders</code>, <code>Shortcuts</code> Tree, Live Component Inspector &amp; Categorized <code>msiprism.exe</code></strong>: Upgraded Destination Contents, Application Runtimes &amp; <code>.MSM</code>, File Associations, and Shortcuts (<code>Start Menu</code> &amp; <code>Desktop</code>) to hierarchical trees, wired live <code>TVN_SELCHANGEDW</code> Component inspection in <code>Components &amp; KeyPaths</code>, and organized <code>msiprism.exe</code> SQL tables into 5 logical schema categories.</li>
+        <li><strong>Smart CPU-Aware Web Stub (<code>&lt;Product&gt;-setup.exe</code>)</strong>: Everyday users never have to guess whether their Windows 11 PC has an <code>AMD64</code> (<code>x64</code>) or <code>ARM64</code> processor. Compiled as a zero-dependency static <code>/MT</code> 64-bit <code>x64</code> launcher that starts natively on Intel/AMD PCs and via Prism on Windows 11 ARM64 PCs, it calls <code>IsWow64Process2</code> in under 0.1ms to detect true native silicon, streams <strong>only</strong> the matching native installer over HTTPS (<code>WinHTTP</code>) inside an accessible Dark/Light/High-Contrast progress dialog, verifies its build-stamped <strong>SHA-256</strong> digest (<code>bcrypt.dll</code>), and launches the genuine native installer.</li>
+        <li><strong>All-in-One Offline Universal EXE (<code>&lt;Product&gt;-offline-setup.exe</code>)</strong>: Bundles <strong>both</strong> <code>LZMS</code>-compressed <code>x64</code> and <code>ARM64</code> native installers inside a single self-contained portable executable for air-gapped workstations, USB drives, and archival preservation—automatically extracting and executing the host's true native architecture while forwarding all CLI flags (<code>/s</code>, <code>/qn</code>, <code>--extract-msi</code>, <code>INSTALLDIR=...</code>).</li>
+        <li><strong>Visual IDE, CLI &amp; Standing Screenshot Automation</strong>: Added <code>BuildUniversal</code> and <code>UniversalDownloadBaseUrl</code> controls to <code>InstallerStudio.exe</code>, <code>--universal</code> to <code>instbuild.exe</code>, strict <code>x64;1033</code> / <code>Arm64;1033</code> <code>PID_TEMPLATE</code> verification in <code>insttests.exe</code>, and <code>export-all-screenshots.ps1</code> so 100% of website screenshots are freshly captured on every release.</li>
       </ul>
+    </section>
+
+    <section aria-labelledby="v042-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v042-heading" style="margin-top: 0.25rem;">v0.4.2 — 12-View Tree-First Visual IDE, Features &amp; RegEdit Registry Trees, Categorized MSI Prism &amp; Inspector Fixes</h2>
+        <ul class="feature-list">
+          <li><strong>32-Bit ARGB Vector Tree Engine (<code>StudioTreeIcon</code> + <code>ApplyDarkTreeViewTheme</code>)</strong>: Replaced flat <code>LISTBOX</code> and <code>SysListView32</code> overuse across <code>InstallerStudio.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code> with 20 anti-aliased premultiplied ARGB vector icons and Windows 11 <code>DarkMode_Explorer</code> / <code>Explorer</code> chevrons.</li>
+          <li><strong>Categorized 12-View Sidebar &amp; New Dedicated <code>Features</code> View</strong>: Grouped IDE navigation under <em>Application Information</em>, <em>Setup Architecture</em>, <em>User Interface</em>, and <em>Deployment &amp; Source</em>, and added a dedicated <code>All Features</code> hierarchy view with <code>Move Up</code> / <code>Move Down</code> AST reordering, <code>+ New Feature</code>, <code>+ Sub-Feature</code>, <code>DisallowAbsent</code> core locks, and live <code>Feature Description</code> editing.</li>
+          <li><strong>New <code>RegEdit</code>-Style <code>Registry</code> View + <code>.REG</code> File Importer</strong>: Added nested hive/subkey folder navigation across <code>HKEY_CLASSES_ROOT</code>, <code>HKEY_CURRENT_USER</code>, <code>HKEY_LOCAL_MACHINE</code>, <code>HKEY_USERS</code> (<code>HKU</code>), and <code>HKEY_USER_MACHINE_DEFAULT</code> (<code>HKMU</code>) paired with a typed right-hand values tree, per-Feature filtering, and UTF-8 / UTF-16LE <code>.reg</code> script importing.</li>
+          <li><strong>Dual-Tree <code>Files &amp; Folders</code>, <code>Shortcuts</code> Tree, Live Component Inspector &amp; Categorized <code>msiprism.exe</code></strong>: Upgraded Destination Contents, Application Runtimes &amp; <code>.MSM</code>, File Associations, and Shortcuts (<code>Start Menu</code> &amp; <code>Desktop</code>) to hierarchical trees, wired live <code>TVN_SELCHANGEDW</code> Component inspection in <code>Components &amp; KeyPaths</code>, and organized <code>msiprism.exe</code> SQL tables into 5 logical schema categories.</li>
+        </ul>
+      </div>
     </section>
 
     <section aria-labelledby="v041-heading" class="card" style="margin-bottom: 1.5rem;">
@@ -1231,9 +1242,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
     navLabel: 'Overview',
-    seoTitle: 'RaggieSoft Installer Studio — v0.4.2 Technical Preview',
+    seoTitle: 'RaggieSoft Installer Studio — v0.4.3 Technical Preview',
     seoDescription:
-      'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, SelectionTree wizard, and offline Help Viewer for x64 and ARM64.',
+      'Zero-dependency Win32 C++20 Windows installer IDE, MSI compiler, universal x64/ARM64 Setup.exe, and offline Help Viewer.',
     renderBody: renderHomeBody
   },
   {
@@ -1241,7 +1252,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Visual Tour',
     seoTitle: 'Visual Tour & Screenshots | RaggieSoft Installer Studio',
     seoDescription:
-      'Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.4.2: Features & Registry trees, SetupWizard Dark/Light Mode, and MSI Prism.',
+      'Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.4.3: Features & Registry trees, Dark/Light SetupWizard, and MSI Prism.',
     renderBody: renderScreenshotsBody
   },
   {
@@ -1249,7 +1260,7 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Roadmap',
     seoTitle: 'Public Engineering Roadmap | RaggieSoft Installer Studio',
     seoDescription:
-      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.2 through v1.0 GA across Windows 11 x64 and ARM64.',
+      'Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.4.3 through v1.0 GA across Windows 11 x64 and ARM64.',
     renderBody: renderRoadmapBody
   },
   {
@@ -1263,9 +1274,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/changelog',
     navLabel: 'Version History',
-    seoTitle: 'Version History & Changelog (v0.4.2) | Installer Studio',
+    seoTitle: 'Version History & Changelog (v0.4.3) | Installer Studio',
     seoDescription:
-      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.2 across Windows 11 x64 and ARM64.',
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.4.3 across Windows 11 x64 and ARM64.',
     renderBody: renderChangelogBody
   },
   {
@@ -1329,7 +1340,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="header-inner">
         <a class="brand-link" href="/">
           <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.2)</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.3)</span>
         </a>
 
         <button
@@ -1376,7 +1387,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <a href="/screenshots">Visual Tour &amp; Screenshots</a>
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
-          <a href="/changelog">Version History (v0.4.2)</a>
+          <a href="/changelog">Version History (v0.4.3)</a>
           <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
           <a href="/security">Security &amp; Architecture</a>
           <a href="/ROADMAP.md">/ROADMAP.md</a>

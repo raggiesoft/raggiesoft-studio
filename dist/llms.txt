@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.4.2
+# RaggieSoft Installer Studio (Install Without Limits) — v0.4.3
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 10-view Visual IDE, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
 
@@ -14,7 +14,7 @@
 
 ## Core CLI Commands (`instbuild.exe`, `msiprism.exe`, & `RaggieSoftHelp.exe`)
 - `instbuild.exe --validate --diagnostics=json <project.rsip|suite.rsis> [--arch=x64|arm64]`: Sub-millisecond schema, GUID, 3-part MSI version, Component rule (`RSW031`/`RSW032`), filesystem, and `&` mnemonic linter.
-- `instbuild.exe <project.rsip|suite.rsis> [--arch=x64|arm64] [--category=<cat>] [--project=<id>] [--with-vpat]`: Compiles standalone Enterprise `<OutputName>.msi` + LZMS-compressed `<OutputName>-setup.exe` (or `<OutputName>.msm` when `PackageKind = msm`).
+- `instbuild.exe <project.rsip|suite.rsis> [--arch=x64|arm64] [--universal] [--category=<cat>] [--project=<id>] [--with-vpat]`: Compiles standalone Enterprise `<OutputName>.msi` + LZMS-compressed `<OutputName>-setup.exe`—plus combined Universal Single-File outputs (`<UniversalOutputName>-offline-setup.exe` with x64+ARM64 in one EXE, and `<UniversalOutputName>-setup.exe` CPU-aware WinHTTP Web Stub) when `BuildUniversal = true` or `--universal` is passed.
 - `instbuild.exe --emit-vpat <project.rsip> <out-dir>`: Generates an audited WCAG 2.2 AA & Revised Section 508 HTML5 VPAT 2.5 Conformance Report.
 - `instbuild.exe --emit-msm <project.rsip> <out.msm> [--arch=x64|arm64]`: Compiles a 64-bit Windows Installer Merge Module (`.msm`).
 - `instbuild.exe --generate-mst <base.msi> <target.msi> <out.mst>`: Generates a GPO Transform (`.mst`).

@@ -21,9 +21,9 @@
 
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
-| **`v0.1.0` – `v0.4.2`** | **Core C++20 Toolchain, 12-View Tree-First IDE (`Features` & `RegEdit` `Registry` Trees), `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
+| **`v0.1.0` – `v0.4.3`** | **Core C++20 Toolchain, Single-Download Universal Web & Offline EXEs (`x64 + ARM64`), 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
 | **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Complete Publisher Branding (`.rswskin` + Billboards) & Live WCAG 2.2 AA Contrast Enforcer** | **Next Up** |
-| **`v0.6.0`** | **Single-Download CPU-Aware Web Installer (`.rswpak` On-Demand Feature Packs), All-in-One Offline Universal Single-EXE, `.NET 11` Presets & `Engine = native`** | Planned |
+| **`v0.6.0`** | **Granular On-Demand Feature Packs (`.rswpak`), Curated `.NET 11` Runtime Presets & Zero-`msi.dll` `Engine = native`** | Planned |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
 | **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
@@ -32,8 +32,12 @@
 
 ---
 
-## Shipped Milestones (`v0.1.0` – `v0.4.2`)
+## Shipped Milestones (`v0.1.0` – `v0.4.3`)
 
+- **`v0.4.3` — Single-Download CPU-Aware Smart Web Stub & All-in-One Offline Universal Installer (`x64` + `ARM64` Combined)**:
+  - Eliminated confusing separate `x64` vs. `ARM64` download choices for everyday Windows users by adding `BuildUniversal = true` (`--universal`) to `instbuild.exe`, `InstallerStudio.exe`, and `SetupWizard.exe`:
+    - **Smart CPU-Aware Web Stub (`<Product>-setup.exe`)**: Compact static `/MT` Win32 C++20 `x64` launcher that starts natively on Intel/AMD PCs and via Prism on Windows 11 ARM64 PCs, calls `IsWow64Process2` to detect true host silicon in `< 0.1ms`, streams **only** the matching native `ARM64` or `x64` installer over HTTPS (`WinHTTP`) inside a Dark/Light/High-Contrast progress window, verifies its build-stamped **SHA-256** digest (`bcrypt.dll`), and hands off execution to the 100% native installer.
+    - **Single-File Offline Universal EXE (`<Product>-offline-setup.exe`)**: Self-contained portable `.exe` bundling **both** `LZMS`-compressed `x64` and `ARM64` native installers in Win32 `RT_RCDATA` resources—extracting and launching the true native silicon installer automatically for air-gapped workstations, USB drives, and archival preservation while forwarding all CLI flags (`/s`, `/qn`, `--extract-msi`, `INSTALLDIR=...`).
 - **`v0.4.2` — 12-View Tree-First Visual IDE Overhaul, Dedicated `Features` & `RegEdit` `Registry` Trees, Categorized `MSI Prism` Schema & Inspector Fixes**:
   - Replaced flat `LISTBOX` and `SysListView32` overuse across `InstallerStudio.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe` with **20 anti-aliased 32-bit premultiplied ARGB vector tree icons (`StudioTreeIcon`)** and `ApplyDarkTreeViewTheme` (`DarkMode_Explorer` / `Explorer` chevrons, connector lines, and 24px accessible row height).
   - Upgraded the left IDE sidebar into a categorized `SysTreeView32` (`Application Information`, `Setup Architecture`, `User Interface`, and `Deployment & Source`) spanning **12 dedicated views**:
@@ -73,14 +77,12 @@
    - Customize Light & Dark Mode color palettes, header banners, `164x314` wizard sidebars, product badges, background washes, and rotating install billboards.
    - Every color picker in `InstallerStudio.exe` computes live W3C relative luminance contrast ratios across both Light and Dark palettes (`>= 4.5:1` AA normal text, `>= 3.0:1` large text & UI borders), displays live AA/AAA badges, and offers a one-click *"Auto-Adjust Nearest Accessible Shade"* button preserving brand hue—enforced identically in CI via `instbuild.exe --validate` and `--emit-vpat`.
 
-### `v0.6.0` — Single-Download Universal Web & Offline Installers (`.rswpak`), `.NET 11` Presets & Native Direct Engine
-1. **CPU-Aware Universal Web Installer via On-Demand Feature Packs (`.rswpak`)**:
-   - Eliminate separate `x64` vs. `ARM64` download links on product websites. Ship **one** compact `Setup.exe` web bootstrapper that queries `IsWow64Process2` at launch (piercing Windows 11 Prism emulation) to detect true host silicon (`ARM64` vs. `x64`) and downloads **only** the matching CPU edition's LZMS-compressed `.rswpak` pack (plus selected optional feature packs) over `WinHTTP` with SHA-256 + Authenticode verification.
-2. **All-in-One Offline Universal Single-EXE (`Architecture = universal`, `Distribution = offline`)**:
-   - Alongside the lightweight `.rswpak` Web Installer, emit **one self-contained Offline `Setup.exe`** packing **both** `x64` and `ARM64` LZMS solid payloads and prerequisites inside a single portable file for air-gapped PCs, USB media, and archival preservation.
-3. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
+### `v0.6.0` — Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & Native Direct Engine
+1. **Granular On-Demand Feature Packs (`.rswpak`)**:
+   - Building on `v0.4.3`'s CPU-aware Smart Web Stub and Combined Offline Universal Single-EXE, split optional multi-gigabyte features (high-DPI asset libraries, offline documentation packs, or language modules) into external LZMS-compressed `.rswpak` blocks fetched on demand via `WinHTTP` with SHA-256 + Authenticode verification when selected in `SelectionTree`.
+2. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
    - Curated `DotNet11Desktop`, `DotNet11AspNet`, and `DotNet11Runtime` / `DotNet10Runtime` presets alongside `.NET 10.0 LTS`, `.NET 9.0`, and `.NET 8.0 LTS`, probing native `arm64` and `x64`-on-ARM64 installations in `< 1ms`.
-4. **Native Direct Engine (`Engine = native | msi`)**:
+3. **Native Direct Engine (`Engine = native | msi`)**:
    - Optional zero-`msi.dll` direct extraction backend with an atomic transactional rollback journal, `HKLM`/`HKCU` `Uninstall` registration, and a signed native `Uninstall.exe`—eliminating `Global\_MSIExecute` mutex collisions and installing multi-hundred-file interactive book and supporter audio packs in milliseconds.
 
 ### `v0.7.0` — From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` Scripting
