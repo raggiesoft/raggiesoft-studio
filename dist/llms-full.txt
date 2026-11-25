@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.4.3)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.4.4)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.4.3) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.4.4) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.4.3)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.4.4)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
@@ -140,6 +140,7 @@ Named MSI Feature or Sub-Feature ([Feature.<id>]) displayed in SetupWizard.exe a
 | `Title` | `string` | **Yes** | — | Consumer-facing title of this MSI Feature. |
 | `Description` | `string` | No | — | Plain-English description of this MSI Feature shown in SelectionTree. |
 | `Level` | `integer` | No | `1` | MSI InstallLevel (`1` = core/Compact & Express, `2..100` = Express/Custom optional, `0` = hidden). |
+| `Inclusion` | `enum` | No | `minimal` | Allowed: `minimal|typical|complete|hidden`. Plain-English setup inclusion tier replacing raw numeric `InstallLevel`: `minimal` (`Level = 1`, installed in Minimal/Compact, Typical/Express, & Complete), `typical` (`Level = 50`, installed in Typical/Express & Complete, skipped in Minimal/Compact), `complete` (`Level = 150`, installed in Complete or when opted in inside Custom SelectionTree), or `hidden` (`Level = 0`, hidden/conditional). |
 | `Parent` | `string` | No | — | Optional parent Feature ID (`Feature_Parent`) creating a hierarchical sub-feature in `SelectionTree`. |
 | `DisallowAbsent` | `bool (true|false)` | No | `false` | Sets `msidbFeatureAttributesUIDisallowAbsent` (`16`) locking a required core feature so users cannot disable it in `SelectionTree`. |
 | `AllowAdvertise` | `bool (true|false)` | No | `false` | When `false` (default), sets `msidbFeatureAttributesDisallowAdvertise` (`8`) hiding MSI on-demand advertisement; set `true` to enable 'Feature will be installed when required'. |

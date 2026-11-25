@@ -1,0 +1,330 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Installer Studio: "Install Without Limits").
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content so every visitor, screen reader, and
+         search engine receives complete HTML on the very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>FAQ — SmartScreen, ARM64/x64 &amp; Setup Types | RaggieSoft</title>
+    <meta name="description" content="Answers on Windows SmartScreen &amp; Azure signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/faq" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Installer Studio" />
+    <meta property="og:title" content="FAQ — SmartScreen, ARM64/x64 &amp; Setup Types | RaggieSoft" />
+    <meta property="og:description" content="Answers on Windows SmartScreen &amp; Azure signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/faq" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ — SmartScreen, ARM64/x64 &amp; Setup Types | RaggieSoft" />
+    <meta name="twitter:description" content="Answers on Windows SmartScreen &amp; Azure signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.4.4","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/faq#webpage","url":"https://raggiesoftstudio.com/faq","name":"FAQ — SmartScreen, ARM64/x64 & Setup Types | RaggieSoft","description":"Answers on Windows SmartScreen & Azure signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261123a" />
+    <script type="module" crossorigin src="/assets/index-BiuLWj_a.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BH7fbr4l.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 Installer Studio</a></li>
+          <li><a href="https://a11y.raggiesoft.com">♿ A11y Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Installer Studio</span>
+          <span class="brand-sub">Install Without Limits • Technical Preview (v0.4.4)</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open Installer Studio and RaggieSoft network menu"
+          data-close-label="Close Installer Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open Installer Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="Primary Project Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Overview</a></li><li><a class="nav-link" href="/screenshots">Visual Tour</a></li><li><a class="nav-link" href="/roadmap">Roadmap</a></li><li><a class="nav-link" href="/docs">Docs & AI Spec</a></li><li><a class="nav-link" href="/faq" aria-current="page">FAQ</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
+              <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="faq-title">
+      <span class="eyebrow">Technical &amp; Consumer Questions Answered • v0.4.4</span>
+      <h1 id="faq-title">Frequently Asked Questions</h1>
+      <p class="lead">
+        Clear, honest answers about Windows SmartScreen &amp; Microsoft Azure Artifact Signing, why our universal installer
+        targets 64-bit <code>x64</code> and <code>ARM64</code> (skipping extinct <code>IA-64</code> and 32-bit <code>x86</code>
+        host OS builds while still supporting legacy 32-bit app payloads), plain-English setup tiers, accessibility, and our
+        permanent <code>Community == Premier</code> pledge.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-setup.exe">Download Installer Studio v0.4.4 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-offline-setup.exe">Full Offline Installer (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-outline" href="/docs">Read Distributed Manual</a>
+        <a class="btn btn-outline" href="/roadmap">View v1.0 Roadmap</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-downloads-heading">
+      <span class="eyebrow">Part 1 • Downloads, SmartScreen &amp; Supported Processors</span>
+      <h2 id="faq-downloads-heading" style="margin-top: 0.25rem;">Code Signing, CPU Detection &amp; Architecture Choices</h2>
+      <div class="card-grid">
+        <article id="smartscreen" class="card card-highlight">
+          <div>
+            <h3>1. Why does Windows SmartScreen currently say "Windows protected your PC / Unknown publisher"?</h3>
+            <p>
+              Because <strong>RaggieSoft Installer Studio</strong> is brand-new independent open-source software in Technical
+              Preview, <strong>we are currently waiting on Microsoft to complete identity verification and issue our official
+              Azure Artifact Signing certificate</strong> (<code>raggiesoft-signing</code>).
+            </p>
+            <p>
+              Dual-layer Authenticode and Azure Artifact Signing support (<code>signtool.exe /dlib Azure.CodeSigning.Dlib.dll</code>
+              signing the inner <code>Product.msi</code> database first and the outer <code>Setup.exe</code> second) is
+              <strong>already engineered into <code>instbuild.exe</code> today</strong>. Every official download on this site
+              will be cryptographically signed the moment Microsoft activates our certificate. Until then, click
+              <strong>More info &rarr; Run anyway</strong>—or audit and compile 100% of the C++20 source yourself from
+              <a href="https://github.com/raggiesoft/installer-studio">GitHub</a>.
+            </p>
+          </div>
+        </article>
+
+        <article id="which-download" class="card">
+          <div>
+            <h3>2. I don't know whether my Windows PC is <code>AMD64</code> (<code>x64</code>) or <code>ARM64</code>. Which file do I download?</h3>
+            <p>
+              Either of our two universal buttons works on <strong>both</strong> Intel/AMD <code>x64</code> and Snapdragon /
+              Windows on ARM <code>ARM64</code> computers automatically:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~790 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
+              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.6 MB)</strong>: Packs <em>both</em> <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="why-no-ia64-x86" class="card">
+          <div>
+            <h3>3. Why are <code>IA-64</code> (Itanium) and 32-bit <code>x86</code> host OS builds skipped?</h3>
+            <p>
+              Every supported Windows desktop, laptop, and workstation in late 2026 runs a 64-bit operating system kernel
+              (<code>IMAGE_FILE_MACHINE_AMD64</code> <code>0x8664</code> or <code>IMAGE_FILE_MACHINE_ARM64</code> <code>0xAA64</code>):
+            </p>
+            <ul class="feature-list">
+              <li><strong><code>IA-64</code> (Intel Itanium) is museum hardware</strong>: Intel ended the Itanium hardware lifecycle in 2021, Microsoft ended mainstream Windows Itanium support over a decade ago, and modern MSVC / Windows 11 SDK compilers removed <code>IA64</code> backend targets completely. Better yet, skipping Itanium lets <code>instbuild.exe</code> strictly guard against one of Windows Installer's oldest traps—never emitting <code>PID_TEMPLATE = Intel64;1033</code> (which meant Itanium and causes <code>msiexec</code> on Intel Core and AMD Ryzen PCs to reject the MSI!), using strictly <code>x64;1033</code> and <code>Arm64;1033</code> instead.</li>
+              <li><strong>32-bit <code>x86</code> Windows OS is retired</strong>: Windows 11 has never shipped a 32-bit operating system image, and 32-bit Windows 10 reached formal End of Support in October 2025. Using a pure 64-bit <code>x64</code> outer universal stub avoids relying on optional 32-bit <code>WOW64</code> subsystems on hardened Windows images while booting seamlessly under Windows 11 Prism on ARM64.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="legacy-32bit-apps" class="card">
+          <div>
+            <h3>4. Can a 64-bit Installer Studio still package legacy 32-bit applications (such as classic Visual Basic 6.0 programs)?</h3>
+            <p>
+              <strong>Yes!</strong> Skipping 32-bit <em>host OS</em> builds for our IDE and compiler does not prevent a 64-bit
+              <code>instbuild.exe</code> from packaging legacy 32-bit payload applications that run on Windows 11 <code>x64</code>
+              and <code>ARM64</code> via <code>SysWOW64</code>. Our upcoming <code>v0.8.0</code> milestone includes a dedicated
+              <strong>Visual Basic 6.0 (<code>.vbp</code>) Importer</strong> (built for our own pre-AI utility <em>StoreTrainer</em>)
+              that emits standard 32-bit payload MSI metadata (<code>Intel;1033</code> routing to <code>Program Files (x86)</code>)
+              and zero-elevation <strong>Reg-Free COM</strong> side-by-side manifests—all from the native 64-bit IDE.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-authoring-heading">
+      <span class="eyebrow">Part 2 • Setup Types, Inclusion Tiers &amp; Accessibility</span>
+      <h2 id="faq-authoring-heading" style="margin-top: 0.25rem;">Plain-English Authoring, Dark Mode &amp; Zero Dependencies</h2>
+      <div class="card-grid">
+        <article id="install-level" class="card">
+          <div>
+            <h3>5. What is "Included In" (<code>Minimal</code>, <code>Typical</code>, <code>Complete</code>) vs. Windows Installer <code>InstallLevel</code>?</h3>
+            <p>
+              Raw Windows Installer databases use an obscure integer column called <code>Feature.Level</code> compared against an
+              <code>INSTALLLEVEL</code> property—forcing authors to guess what numbers like <code>1</code>, <code>3</code>,
+              <code>100</code>, or <code>200</code> actually do.
+            </p>
+            <p>
+              Starting in <strong><code>v0.4.4</code></strong>, RaggieSoft Installer Studio replaces raw numbers in the IDE with
+              plain-English <strong>Included In</strong> tiers: <strong>Minimal / Compact &amp; All Setups</strong>
+              (<code>minimal</code>), <strong>Typical / Express &amp; Complete</strong> (<code>typical</code>),
+              <strong>Complete Only / Optional in Custom</strong> (<code>complete</code>), and <strong>Hidden</strong>
+              (<code>hidden</code>). And in <strong><code>v0.5.0</code></strong>, authors will also be able to pick classic
+              Windows 95-style Setup Types (<strong>Typical</strong>, <strong>Compact</strong>, <strong>Complete</strong>,
+              <strong>Custom</strong>) or define their own named <code>[SetupType.*]</code> presets!
+            </p>
+          </div>
+        </article>
+
+        <article id="zero-dependencies" class="card">
+          <div>
+            <h3>6. Does Installer Studio require <code>.NET</code>, <code>WebView2</code>, Java, or Electron on my PC or my users' PCs?</h3>
+            <p>
+              <strong>Zero.</strong> All five binaries (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>,
+              <code>SetupWizard.exe</code>, <code>msiprism.exe</code>, and <code>RaggieSoftHelp.exe</code>) are compiled as static
+              <code>/MT</code> native Win32 C++20 executables calling only stock DLLs built into every copy of Windows 11
+              (<code>msi.dll</code>, <code>cabinet.dll</code>, <code>gdiplus.dll</code>, <code>winhttp.dll</code>, and
+              <code>Msftedit.dll</code>). If <em>your</em> packaged app needs <code>.NET</code>, <code>WebView2</code>, or
+              <code>VC++</code>, declare a <code>[Prerequisite.*]</code> block and <code>SetupWizard.exe</code> will install it
+              automatically before your MSI runs.
+            </p>
+          </div>
+        </article>
+
+        <article id="dark-mode-a11y" class="card">
+          <div>
+            <h3>7. How does Dark Mode, High Contrast, and Screen-Reader Accessibility work inside <code>Setup.exe</code>?</h3>
+            <p>
+              Stock Windows Installer internal dialogs still paint 1990s blinding white GDI headers even when Windows 11 is in
+              Dark Mode. Our <code>SetupWizard.exe</code> external UI subclasses real Win32 push buttons, option cards, checkboxes,
+              and 32-bit ARGB <code>SelectionTree</code> controls so native UI Automation roles remain intact for
+              <strong>Narrator</strong>, <strong>NVDA</strong>, and <strong>JAWS</strong>, flips between Light and Dark Mode live
+              in under 16ms on <code>WM_SETTINGCHANGE(ImmersiveColorSet)</code>, honors Windows Contrast Themes
+              (<code>SPI_GETHIGHCONTRAST</code>), and generates HTML5 <strong>VPAT 2.5</strong> reports via <code>--emit-vpat</code>.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-enterprise-heading">
+      <span class="eyebrow">Part 3 • Licensing, Enterprise IT &amp; AI Coding Agents</span>
+      <h2 id="faq-enterprise-heading" style="margin-top: 0.25rem;">Community == Premier Parity, Silent Deployment &amp; AI Specs</h2>
+      <div class="card-grid">
+        <article id="community-parity" class="card">
+          <div>
+            <h3>8. Does Community Edition really have 100% feature parity with Premier—with zero watermarks?</h3>
+            <p>
+              <strong>Yes, permanently.</strong> Community Edition unlocks every single MSI table, Pre-MSI Runtime Prerequisite,
+              64-bit <code>.MSM</code> Merge Module weaver, Universal Single-EXE packager, AeroWizard, VPAT 2.5 generator, and CLI
+              command with zero locked views and zero visible watermarks. Every compiled <code>Setup.exe</code> and
+              <code>Product.msi</code> carries 100% your own <code>Manufacturer</code> and <code>ProductName</code> in
+              <code>VERSIONINFO</code>.
+            </p>
+          </div>
+        </article>
+
+        <article id="enterprise-msi" class="card">
+          <div>
+            <h3>9. Can IT administrators deploy silently or extract the standalone <code>.msi</code> for Intune / Group Policy?</h3>
+            <p>
+              Yes! Every generated installer is backed by a genuine relational Windows Installer database. Run
+              <code>&lt;App&gt;-setup.exe /s INSTALLDIR="C:\Apps\MyApp"</code> for completely silent prerequisite + MSI
+              installation (with configurable <code>SilentRebootExitCode</code>), or run
+              <code>&lt;App&gt;-setup.exe --extract-msi C:\Temp\Out</code> (works on both per-arch and Universal Offline EXEs!)
+              to extract the raw <code>.msi</code> alongside <code>.mst</code> Transforms and <code>.msp</code> Patches.
+            </p>
+          </div>
+        </article>
+
+        <article id="ai-agents-v1" class="card">
+          <div>
+            <h3>10. How do AI coding agents use Installer Studio—and what defines <code>v1.0.0 GA</code>?</h3>
+            <p>
+              <code>.rsip</code> projects and <code>.rsis</code> suites are diff-friendly plain-text INI manifests whose comments
+              and <code>@include</code> headers survive GUI saves byte-for-byte. Coding agents read our compiler-emitted
+              <a href="/llms-full.txt">/llms-full.txt</a> and <a href="/SKILL.md">SKILL.md</a> specs and lint manifests in under a
+              millisecond via <code>instbuild.exe --validate --diagnostics=json</code>. Version <strong><code>1.0.0 GA</code></strong>
+              will ship once 100% of RaggieSoft's own Windows desktop apps, classic VB6 tools, interactive novels, and audio
+              archives are packaged, signed, and updated exclusively with Installer Studio.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Overview</a>
+          <a href="/screenshots">Visual Tour &amp; Screenshots</a>
+          <a href="/roadmap">Public Roadmap</a>
+          <a href="/docs">Docs &amp; AI Spec</a>
+          <a href="/faq">Frequently Asked Questions</a>
+          <a href="/changelog">Version History (v0.4.4)</a>
+          <a href="/vpat">Accessibility &amp; VPAT 2.5</a>
+          <a href="/security">Security &amp; Architecture</a>
+          <a href="/ROADMAP.md">/ROADMAP.md</a>
+          <a href="/llms.txt">/llms.txt</a>
+          <a href="/llms-full.txt">/llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">GitHub Repository</a>
+          <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source Technical Preview licensed under the MIT License.
+          Feedback &amp; engineering inquiries: <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261123a" defer></script>
+  </body>
+</html>

@@ -21,8 +21,8 @@
 
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
-| **`v0.1.0` – `v0.4.3`** | **Core C++20 Toolchain, Single-Download Universal Web & Offline EXEs (`x64 + ARM64`), 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
-| **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Complete Publisher Branding (`.rswskin` + Billboards) & Live WCAG 2.2 AA Contrast Enforcer** | **Next Up** |
+| **`v0.1.0` – `v0.4.4`** | **Core C++20 Toolchain, Universal Web & Offline EXEs (`x64 + ARM64`), Plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
+| **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom` & `[SetupType.*]`), Publisher Branding & Live WCAG Contrast Enforcer** | **Next Up** |
 | **`v0.6.0`** | **Granular On-Demand Feature Packs (`.rswpak`), Curated `.NET 11` Runtime Presets & Zero-`msi.dll` `Engine = native`** | Planned |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
@@ -32,8 +32,14 @@
 
 ---
 
-## Shipped Milestones (`v0.1.0` – `v0.4.3`)
+## Shipped Milestones (`v0.1.0` – `v0.4.4`)
 
+- **`v0.4.4` — Plain-English Feature Inclusion Tiers (`Minimal`, `Typical`, `Complete`, `Hidden`) Replacing Raw `InstallLevel` Jargon**:
+  - Replaced cryptic numeric Windows Installer `InstallLevel` inputs across `InstallerStudio.exe` (`Features` and `Components & KeyPaths` views) and `.rsip` manifests with a plain-English **`Included In` (`[Feature.<Id>] Inclusion`)** selector so authors never have to memorize MSI `INSTALLLEVEL` thresholds:
+    - **`minimal` (*Minimal / Compact & All Setups*)** -> `Level = 1` (core application files installed in Minimal/Compact `INSTALLLEVEL=20`, Typical/Express `100`, and Complete `1000`).
+    - **`typical` (*Typical / Express & Complete*)** -> `Level = 50` (standard recommended extras installed in Typical/Express and Complete, skipped in Minimal/Compact).
+    - **`complete` (*Complete Only / Optional in Custom*)** -> `Level = 150` (optional bonus packs installed automatically in Complete or opted into inside the Custom `SelectionTree`).
+    - **`hidden` (*Hidden / Conditional Only*)** -> `Level = 0` (excluded from `SelectionTree` unless conditionally enabled), while preserving 100% backward compatibility with explicit numeric `Level` overrides.
 - **`v0.4.3` — Single-Download CPU-Aware Smart Web Stub & All-in-One Offline Universal Installer (`x64` + `ARM64` Combined)**:
   - Eliminated confusing separate `x64` vs. `ARM64` download choices for everyday Windows users by adding `BuildUniversal = true` (`--universal`) to `instbuild.exe`, `InstallerStudio.exe`, and `SetupWizard.exe`:
     - **Smart CPU-Aware Web Stub (`<Product>-setup.exe`)**: Compact static `/MT` Win32 C++20 `x64` launcher that starts natively on Intel/AMD PCs and via Prism on Windows 11 ARM64 PCs, calls `IsWow64Process2` to detect true host silicon in `< 0.1ms`, streams **only** the matching native `ARM64` or `x64` installer over HTTPS (`WinHTTP`) inside a Dark/Light/High-Contrast progress window, verifies its build-stamped **SHA-256** digest (`bcrypt.dll`), and hands off execution to the 100% native installer.
@@ -62,7 +68,7 @@
 
 ## Focused Milestones to `v1.0.0 GA` (Shipping RaggieSoft's Own Software)
 
-### `v0.5.0` — 8 Wizard Layout Variations, White-Label Branding Studio & Enforced WCAG 2.2 AA Contrast Guardrails
+### `v0.5.0` — 8 Wizard Layout Variations, Author-Defined Setup Types (`Typical` / `Compact` / `Complete`), Branding Studio & WCAG Contrast Enforcer
 1. **Eight First-Party Wizard Layout Variations (`[UI] WizardLayout`) Spanning Every Era of Windows UX**:
    - **`Wizard95` (`wizard95`)**: Classic 1995 desktop 3D beveled dialog geometry (`#C0C0C0` surface, sunken etched dividers, `164x314` left vertical bitmap rail, and classic 3D beveled `< Back` / `Next >` / `Cancel` push buttons).
    - **`Wizard97` (`wizard97` / `standard`)**: Classic enterprise header-banner wizard with top banner + right-side emblem, crisp workspace sheet, and bottom-right `< Back` / `Next >` / `Cancel` footer—modernized for Dark Mode and Light Mode.
@@ -73,7 +79,9 @@
    - **`FullScreenBlue` (`fullscreenblue`)**: Nostalgic 1990s cobalt-blue (`#000080 -> #000000`) full-screen `SETUP.EXE` backdrop wash with a drop-shadowed serif product title in the top-left corner, floating 3D beveled setup dialogs, **optional rotating installation billboards**, and a floating **3D Beveled Progress Gauge** (centered or docked at the bottom-center / bottom-right beneath billboards—ideal for retro tools like *StoreTrainer*) while keeping modern DPI scaling, keyboard navigation, and UI Automation accessibility under the hood.
    - **`Autorun16x9` (`autorun16x9`)**: Widescreen `16:9` Collector's Edition & digital media launcher menu.
    - **Non-Negotiable Windows Contrast Theme Auto-Override (`SPI_GETHIGHCONTRAST`)**: Across every `WizardLayout` and custom brand skin, whenever a Windows Contrast Theme (*Aquatic*, *Desert*, *Dusk*, *Night Sky*) is active, `SetupWizard.exe` automatically bypasses custom gradients, bitmaps, and Mica backdrops and paints strictly with semantic OS colors (`COLOR_WINDOW`, `COLOR_WINDOWTEXT`, `COLOR_HIGHLIGHT`, `COLOR_BTNTEXT`) and `2px` solid borders.
-2. **Complete Publisher Branding & Live WCAG 2.2 AA Contrast Enforcer (`[Branding]` & `.rswskin`)**:
+2. **Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom`, & Custom `[SetupType.<Id>]` Presets)**:
+   - Building on `v0.4.4`'s plain-English Feature `Inclusion` tiers (`minimal`, `typical`, `complete`, `hidden`), let authors switch between classic Windows 95-style presets (**Typical**, **Compact**, **Complete**, **Custom**) and modern presets (**Express**, **Compact**, **Custom**), OR define completely custom `[SetupType.<Id>]` options (such as *Developer Workstation*, *Minimal Portable*, *Classroom Lab*, or *Complete Archive*)—each with its own `&` keyboard mnemonic, vector badge, plain-English description, live disk-space estimate, and explicit `Features = ...` or `InclusionTier` mapping.
+3. **Complete Publisher Branding & Live WCAG 2.2 AA Contrast Enforcer (`[Branding]` & `.rswskin`)**:
    - Customize Light & Dark Mode color palettes, header banners, `164x314` wizard sidebars, product badges, background washes, and rotating install billboards.
    - Every color picker in `InstallerStudio.exe` computes live W3C relative luminance contrast ratios across both Light and Dark palettes (`>= 4.5:1` AA normal text, `>= 3.0:1` large text & UI borders), displays live AA/AAA badges, and offers a one-click *"Auto-Adjust Nearest Accessible Shade"* button preserving brand hue—enforced identically in CI via `instbuild.exe --validate` and `--emit-vpat`.
 
