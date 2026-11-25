@@ -21,9 +21,8 @@
 
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
-| **`v0.1.0` – `v0.4.5`** | **Core C++20 Toolchain, Microsoft Azure Artifact Signing (Public Trust Authenticode), Universal Web & Offline EXEs (`x64 + ARM64`), Plain-English Feature Inclusion Tiers, 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM`, Native `F1` Help & Live Dark Mode** | **Shipped (Technical Preview)** |
-| **`v0.5.0`** | **8 Wizard Styles (`Wizard95`..`FluentMica`..`FullScreenBlue`), Author-Defined Setup Types (`Typical`, `Compact`, `Complete`, `Custom` & `[SetupType.*]`), Publisher Branding & Live WCAG Contrast Enforcer** | **Next Up** |
-| **`v0.6.0`** | **Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx`), Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & `Engine = native`** | Planned |
+| **`v0.1.0` – `v0.5.0`** | **10 Selectable Wizard Styles (`FullScreenBlue` & `FullScreenTeal` `#008080` ACME Callback, `Wizard95`..`FluentMica`), Classic & Custom Setup Types (`Typical`/`Compact`/`Complete`/`Custom` & `[SetupType.*]`), WCAG Auto-Contrast, Microsoft Azure Artifact Signing, Universal Web & Offline EXEs (`x64 + ARM64`), 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM` & Native `F1` Help** | **Shipped (Technical Preview)** |
+| **`v0.6.0`** | **Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx`), Granular On-Demand Feature Packs (`.rswpak`), `.NET 11` Presets & `Engine = native`** | **Next Up** |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
 | **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
@@ -32,8 +31,12 @@
 
 ---
 
-## Shipped Milestones (`v0.1.0` – `v0.4.5`)
+## Shipped Milestones (`v0.1.0` – `v0.5.0`)
 
+- **`v0.5.0` — 10 Selectable Wizard Styles (`FullScreenBlue` & `FullScreenTeal` `#008080` ACME Callback, `Wizard95`..`FluentMica`), Classic & Custom Setup Types (`Typical`/`Compact`/`Complete`/`Custom`), `[Billboard.*]` & Live WCAG 2.2 AA Auto-Contrast**:
+  - Added **10 selectable first-party `[UI] WizardLayout` styles** in `SetupWizard.exe` and the live GDI+ Designer in `InstallerStudio.exe`: `standard` (RaggieSoft Glass), `wizard95` (`#C0C0C0` 3D beveled dialog + `164px` left vertical graphic rail + etched 3D buttons), `wizard97` (enterprise top-banner sheet), `aerowizard` (command-bar header), `fluentmica` (Windows 11 `DWMSBT_TABBEDWINDOW` backdrop + 7-stage vertical step rail), `oneclick` (compact express splash with `[Customize...]` expansion), `passivetoast` (`/passive` & `/qb` non-interactive progress toast), `fullscreenblue` (1995 `#000080 -> #000000` Cobalt-Blue wash), **`fullscreenteal` (1995 `#008080` Microsoft ACME Setup Engine Teal callback)**, and `autorun16x9`—all honoring `SPI_GETHIGHCONTRAST` Windows Contrast Themes automatically.
+  - Added `[UI] SetupTypePreset = express_custom | win95_classic` (4-card **Typical**, **Compact**, **Complete**, **Custom** mapping cleanly to `INSTALLLEVEL=100`, `20`, `1000`, and `SelectionTree`) plus repeatable author-defined `[SetupType.<Id>]` cards and `[Billboard.<Id>]` rotating showcase cards paired with a docked 3D sunken progress gauge on full-screen retro backdrops.
+  - Added `RswWcagContrast.hpp` (`SnapAccentToAccessibleBand` + `RSW055` compiler lint diagnostic + one-click `Auto-Fix WCAG` button and live contrast badge in `InstallerStudio.exe`) guaranteeing `>= 4.5:1` contrast vs. `#FFFFFF` button text and `>= 3.0:1` contrast vs. `#15203A` Dark Mode cards.
 - **`v0.4.5` — Microsoft Azure Artifact Signing (Public Trust Authenticode), ARM64 `/dlib` Architecture Matching & Pre-Signed Stub Safety**:
   - Cryptographically signed 100% of **RaggieSoft Installer Studio** inner suite executables (`InstallerStudio.exe`, `instbuild.exe`, `SetupWizard.exe`, `msiprism.exe`, `RaggieSoftHelp.exe`), inner `.msi` databases (`x64` & `ARM64`), and outer installers (`raggiesoft-installer-studio-setup.exe`, `-offline-setup.exe`, `-x64-setup.exe`, and `-arm64-setup.exe`) with a verified **Microsoft Azure Artifact Signing** Public Trust certificate and RFC 3161 SHA-256 timestamp (`http://timestamp.acs.microsoft.com`).
   - Upgraded `LocateWindowsSdkSignTool` in `instbuild.exe` to inspect the PE `IMAGE_FILE_HEADER::Machine` of `Azure.CodeSigning.Dlib.dll` (`0x8664` `x64` vs. `0xAA64` `ARM64` vs. `0x014C` `x86`) and automatically invoke the matching Windows SDK `signtool.exe` architecture on Windows 11 `ARM64` workstations—preventing in-process `LoadLibraryW` `0x800700C1` (`ERROR_BAD_EXE_FORMAT`) mismatches.

@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.4.5)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.5.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.4.5) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.5.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.4.5)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.5.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
@@ -13,14 +13,14 @@ Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.4.5
 8. **64-Bit Silicon & `PID_TEMPLATE` Rules (`x64;1033` vs `Arm64;1033` — Zero `IA-64` / `x86` Host Builds)**: Host toolchain & outer Universal `Setup.exe` stubs are strictly 64-bit (`IMAGE_FILE_MACHINE_AMD64` `0x8664` outer stub using `IsWow64Process2` to pierce Windows 11 Prism and dispatch native `ARM64` `0xAA64` vs `x64` `0x8664`). MSI `SummaryInformation` `PID_TEMPLATE` MUST strictly use `x64;1033` (AMD64/Intel 64-bit) or `Arm64;1033` (64-bit ARM)—NEVER `Intel64;1033` (deceased IA-64 Itanium!).
 9. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.4`)
+## 2. Complete `.rsip` Project Schema (`v0.5`)
 
 ### `[Package]` (*Required*)
-Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and output settings.
+Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and universal output settings.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| `SchemaVersion` | `string` | No | `0.3` | Manifest grammar version (`0.3`). |
+| `SchemaVersion` | `string` | No | `0.5` | Manifest grammar version (`0.5`). |
 | `Name` | `string` | **Yes** | — | Consumer-facing ProductName written to MSI Property table and VERSIONINFO. |
 | `Version` | `msi_version (Major.Minor.Build)` | **Yes** | — | Three-part Windows Installer version (`Major.Minor.Build`, max `255.255.65535`). |
 | `Manufacturer` | `string` | **Yes** | — | Publisher name written to MSI `Manufacturer` property and VERSIONINFO `CompanyName`. |
@@ -37,9 +37,9 @@ Core product identity, MSI Summary Information, target CPU architecture (x64/arm
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
 | `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm`. `msi` builds a standalone Enterprise `.msi` (+ optional `-setup.exe`); `msm` builds a reusable Merge Module (`.msm`). |
-| `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` (both architectures in one portable EXE) plus `<UniversalOutputName>-setup.exe` (CPU-aware smart web stub when `UniversalDownloadBaseUrl` is set). |
-| `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)` (e.g. `raggiesoft-installer-studio`). |
-| `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe` and `<OutputName>-arm64-setup.exe` so `<UniversalOutputName>-setup.exe` auto-detects host silicon via `IsWow64Process2` and downloads the exact native installer with SHA-256 verification. |
+| `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
+| `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)`. |
+| `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe` and `<OutputName>-arm64-setup.exe` for the smart CPU-aware web stub. |
 | `Tagline` | `string` | No | — | Short subtitle displayed beneath the product title in `SetupWizard.exe` and `InstallerStudio.exe`. |
 | `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
 
@@ -51,7 +51,7 @@ Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade p
 | `MinWindowsBuild` | `integer` | No | `22000` | Minimum Windows 10/11 build number (`22000` = Windows 11 21H2+, matching .NET 10 Desktop Runtime). |
 | `OsLaunchMessage` | `string` | No | `This application requires Windows 11 (Build 22000) or later.` | Friendly message shown by LaunchCondition / SetupWizard.exe when the host OS is older than MinWindowsBuild. |
 | `BlockDowngrades` | `bool (true|false)` | No | `true` | Adds a newer-version Upgrade row + LaunchCondition preventing accidental downgrades. |
-| `SilentRebootExitCode` | `integer` | No | `3010` | Process exit code returned in silent mode (`/s` / `/qn`) when a runtime prerequisite or MSI requests a Windows restart (`3010` standard MSI, or `9001` for RaggieSoft Launcher). |
+| `SilentRebootExitCode` | `integer` | No | `3010` | Process exit code returned in silent mode (`/s` / `/qn`) when a runtime prerequisite or MSI requests a Windows restart (`3010` standard MSI). |
 
 ### `[Install]` (*Required*)
 Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
@@ -63,7 +63,7 @@ Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and
 | `MainExecutable` | `relpath` | No | — | Optional primary `.exe` relative to `INSTALLDIR` (used for `ARPPRODUCTICON` default & Finish launch). |
 
 ### `[UI]` (*Optional*)
-Branding, RTF license, icon, C++ Glass/AeroWizard layout, and MSI.DLL Express/Custom dialog workflow preset.
+Branding, RTF license, icon, 10 selectable C++ WizardLayout styles (including Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -74,20 +74,21 @@ Branding, RTF license, icon, C++ Glass/AeroWizard layout, and MSI.DLL Express/Cu
 | `InstallButtonText` | `accel_string (must include '&')` | No | `&Install` | Accessible primary install button caption; MUST include a `&` keyboard mnemonic. |
 | `FinishLaunchCheckbox` | `accel_string (must include '&')` | No | `&Launch application when setup finishes` | Accessible finish-screen launch checkbox caption; MUST include a `&` keyboard mnemonic. |
 | `OfferLaunchOnFinish` | `bool (true|false)` | No | `true` | Shows the optional launch checkbox on the completion screen when `MainExecutable` is set. |
-| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|aerowizard|autorun16x9`. `standard` shows the RaggieSoft Glass Setup Wizard; `aerowizard` uses modern Windows AeroWizard header chrome; `autorun16x9` shows the 640x480 16:9 Autorun stage. |
-| `MsiDialogPreset` | `enum` | No | `express_custom` | Allowed: `express_custom|minimal`. `express_custom` builds the full Express / Compact / Custom + SelectionTree + BrowseDlg + Shortcuts + Office Repair Mode workflow inside MSI.DLL's Dialog table; `minimal` builds a compact 3-screen MSI UI. |
-| `AccentPrimaryHex` | `string` | No | `#2563EB` | Primary header accent hex color (e.g. `#2563EB` Cobalt, `#38BDF8` Sky Cyan, `#14B8A6` Teal). |
+| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|wizard95|wizard97|aerowizard|fluentmica|oneclick|passivetoast|fullscreenblue|fullscreenteal|autorun16x9`. Selects the customer-facing `SetupWizard.exe` style: `standard` (RaggieSoft Glass), `wizard95` (1995 `#C0C0C0` 3D beveled + left sidebar), `wizard97` (classic top-banner), `aerowizard` (command bar + circular `<-` Back), `fluentmica` (Windows 11 Mica + left step rail), `oneclick` (compact 1-click splash), `passivetoast` (`/passive` progress), `fullscreenblue` (1995 `#000080` Cobalt wash + 3D dialog), `fullscreenteal` (1995 `#008080` Microsoft ACME Teal wash + 3D dialog), or `autorun16x9` (640x480 16:9 launcher). |
+| `SetupTypePreset` | `enum` | No | `express_custom` | Allowed: `express_custom|win95_classic`. `express_custom` displays Express / Compact / Custom cards; `win95_classic` displays classic 4-option Typical / Compact / Complete / Custom cards (overridden if custom `[SetupType.<id>]` sections are defined). |
+| `MsiDialogPreset` | `enum` | No | `express_custom` | Allowed: `express_custom|minimal`. `express_custom` builds the full Express / Compact / Custom + SelectionTree + BrowseDlg + Shortcuts + Repair Mode workflow inside MSI.DLL's Dialog table; `minimal` builds a compact 3-screen MSI UI. |
+| `AccentPrimaryHex` | `string` | No | `#2563EB` | Primary header/button accent hex color (checked against WCAG 2.2 AA contrast in `instbuild.exe --validate`). |
 | `AccentSecondaryHex` | `string` | No | `#FBBF24` | Secondary gradient accent hex color (e.g. `#FBBF24` Warm Gold, `#10B981` Emerald, `#EC4899` Rose). |
-| `ArtworkPng` | `path (supports $(ARCH))` | No | — | Optional `.png` 16:9 banner or square product/album/book cover rendered inside `SetupWizard.exe`. |
-| `WelcomeIntro` | `string` | No | — | Optional introductory paragraph displayed beneath the Hero Brand Card on the Welcome page of `SetupWizard.exe`. |
+| `ArtworkPng` | `path (supports $(ARCH))` | No | — | Optional `.png` 16:9 banner, `164x314` wizard sidebar bitmap, or square product cover rendered inside `SetupWizard.exe`. |
+| `WelcomeIntro` | `string` | No | — | Optional introductory paragraph displayed on the Welcome page of `SetupWizard.exe`. |
 | `ReadMeText` | `string` | No | — | Optional edition liner notes or ReadMe summary displayed in the ReadMe view of `autorun16x9` installers. |
 | `ExpressDescription` | `string` | No | `One-click setup into the default installation folder with recommended shortcuts. Skips extra prompts.` | Helper caption for the Express Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
-| `CompactDescription` | `string` | No | `Installs essential core application files (`Level = 1`) with minimal disk footprint.` | Helper caption for the Compact Core Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
+| `CompactDescription` | `string` | No | `Installs essential core application files (`Inclusion = minimal`) with minimal disk footprint.` | Helper caption for the Compact Core Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `CustomDescription` | `string` | No | `Choose features in the MSI SelectionTree, destination folder, Start Menu group, and shortcuts step by step.` | Helper caption for the Custom Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `AuthorOrArtist` | `string` | No | — | Optional author or band credit badge displayed in `autorun16x9` book/album micro-installers. |
 
 ### `[Signing]` (*Optional*)
-Optional dual-layer Authenticode code signing (Product.msi first, then outer Setup.exe) via signtool.exe.
+Optional dual-layer Authenticode / Microsoft Azure Artifact Signing (Product.msi first, then outer Setup.exe) via signtool.exe.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -96,6 +97,27 @@ Optional dual-layer Authenticode code signing (Product.msi first, then outer Set
 | `TimestampUrl` | `string` | No | `http://timestamp.acs.microsoft.com` | RFC 3161 Authenticode timestamp server URL. |
 | `DlibPath` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing `Azure.CodeSigning.Dlib.dll`. |
 | `MetadataJson` | `path (supports $(ARCH))` | No | — | Optional path to Azure Artifact Signing metadata `.json` file. |
+
+### `[SetupType.<id>]` (*Optional*)
+Custom author-defined setup mode card ([SetupType.<id>]: Typical, Compact, Complete, Developer Workstation, etc.) with '&' mnemonic, description, feature tier, and icon.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Title` | `accel_string (must include '&')` | **Yes** | — | Option card heading; MUST include a `&` keyboard mnemonic (e.g. `&Developer Workstation (Recommended)`). |
+| `Description` | `string` | No | — | Plain-English description of what this Setup Type installs. |
+| `Tier` | `enum` | No | `typical` | Allowed: `minimal|typical|complete|custom`. Target feature tier (`minimal` -> `INSTALLLEVEL=20`, `typical` -> `100`, `complete` -> `1000`, or `custom` -> opens `SelectionTree` + folder steps). |
+| `Features` | `string` | No | — | Optional comma-separated explicit Feature IDs (`ADDLOCAL=Main,Templates`) overriding `Tier`. |
+| `Glyph` | `enum` | No | `Bolt` | Allowed: `Sparkle|ShieldCheck|Bolt|Cube|Sliders|Blocks|Folder|PinGrid|Play|Gear`. Vector icon badge displayed on this Setup Type card. |
+| `Recommended` | `bool (true|false)` | No | `false` | Marks this Setup Type as the default pre-selected choice on `WizardPage::SetupType`. |
+
+### `[Billboard.<id>]` (*Optional*)
+Optional rotating feature highlight card ([Billboard.<id>]) displayed during installation on FullScreenBlue, FullScreenTeal, and progress views.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Headline` | `string` | **Yes** | — | Short feature headline displayed on the rotating billboard card while files copy. |
+| `Body` | `string` | No | — | Supporting description displayed beneath `Headline` on the billboard card. |
+| `Glyph` | `enum` | No | `Sparkle` | Allowed: `Sparkle|ShieldCheck|Bolt|Cube|Sliders|Blocks|Folder|PinGrid|Play|Gear`. Vector icon badge rendered on this billboard slide. |
 
 ### `[Prerequisite.<id>]` (*Optional*)
 Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
@@ -133,7 +155,7 @@ Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its
 | `TargetRoot` | `enum` | No | `INSTALLDIR` | Allowed: `INSTALLDIR|CommonFiles64Folder|CommonAppDataFolder|AppDataFolder|LocalAppDataFolder|ProgramMenuFolder|ApplicationProgramsFolder|DesktopFolder|System64Folder|FontsFolder`. Destination root folder to which the Merge Module's `TARGETDIR` / `MergeRedirectFolder` maps. |
 
 ### `[Feature.<id>]` (*Optional*)
-Named MSI Feature or Sub-Feature ([Feature.<id>]) displayed in SetupWizard.exe and MSI SelectionTree.
+Named MSI Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers (minimal/typical/complete/hidden) displayed in SetupWizard.exe and MSI SelectionTree.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
