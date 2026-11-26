@@ -1898,7 +1898,7 @@ function renderRoadmapBody(): string {
           <ul class="feature-list">
             <li><strong>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>)</strong>: Turn any folder or <code>.zip</code> archive into a zero-dependency, Dark-Mode-aware <code>LZMS</code> self-extracting <code>.exe</code> with optional <code>PostExtractRun</code> or <code>PostExtractOpen</code>.</li>
             <li><strong>Multi-Volume Disk Spanning, Uncompressed Loose Source Media &amp; Administrative Installs (<code>msiexec.exe /a</code>)</strong>: Split multi-gigabyte distributions across numbered external <code>CAB1..CABN.cab</code> volumes, publish uncompressed side-by-side source trees supporting <em>Run from Media</em> and <em>Run from Network</em>, and support <code>msiexec.exe /a</code> network extractions.</li>
-            <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>) &amp; Multi-Engine Suites (<code>PackageKind = suite</code>)</strong>: Chain transactional <code>.msi</code> desktop apps alongside multi-gigabyte <code>Engine = native</code> book and music libraries.</li>
+            <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>), Multi-Engine Suites (<code>.rsis</code>) &amp; Dynamic <code>ARPSYSTEMCOMPONENT</code> Adoption</strong>: Chain transactional <code>.msi</code> desktop apps alongside <code>Engine = native</code> libraries under one Visual Studio Installer-style Suite Maintenance Hub (<strong>Add / Repair / Remove</strong>)—keeping standalone installs visible in <em>Installed apps</em> while dynamically adopting pre-existing standalone sibling MSIs into <code>ARPSYSTEMCOMPONENT=1</code> when the Suite is installed so <em>Programs and Features</em> stays clutter-free.</li>
           </ul>
         </div>
       </section>
@@ -1928,9 +1928,10 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v09'" aria-labelledby="phase-v09-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill">Target v0.9.0</span>
-          <h2 id="phase-v09-heading" style="margin-top: 0.5rem;">Authenticode &amp; Azure Artifact Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Guided <code>.MSP</code> Servicing</h2>
+          <h2 id="phase-v09-heading" style="margin-top: 0.5rem;">Authenticode Signing Studio, Bundled <code>RsUpdate.exe</code> + <code>RsPatch.exe</code> Clients &amp; Guided <code>.MSP</code> Servicing</h2>
           <ul class="feature-list">
-            <li><strong>Interactive Signing Studio &amp; White-Label <code>RsUpdate.exe</code></strong>: Certificate store picker, Azure Artifact Signing tester, Dual-Layer <code>WinVerifyTrust</code> check, and guided binary-delta <code>.msp</code> servicing.</li>
+            <li><strong>Interactive Signing Studio</strong>: Certificate store picker, Azure Artifact Signing tester, and Dual-Layer <code>WinVerifyTrust</code> check on both inner <code>.msi</code> and outer <code>Setup.exe</code>.</li>
+            <li><strong>Bundled <code>RsUpdate.exe</code> &amp; <code>RsPatch.exe</code> (<code>msdelta.dll</code>) Clients</strong>: Zero-service white-label updater (on-demand checks + setup opt-in weekly Windows Scheduled Task, unchecked by default) paired with a native <code>msdelta.dll</code> patching engine that assists with compile-time <code>.msp</code> generation and applies transactional binary deltas for <code>Engine = native</code> packages.</li>
           </ul>
         </div>
       </section>
@@ -1938,9 +1939,9 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v10'" aria-labelledby="phase-v10-heading" class="card">
         <div>
           <span class="status-pill">Target v1.0.0 GA &amp; v1.1+</span>
-          <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> Production Dogfood Cutover &amp; Post-1.0 Enterprise Expansion</h2>
+          <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> 8-Product Suite Dogfood Cutover &amp; Post-1.0 Enterprise Expansion</h2>
           <ul class="feature-list">
-            <li><strong><code>v1.0.0 GA</code></strong>: First-party GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, and 100% RaggieSoft production cutover across all Windows apps, interactive novels, and audio archives.</li>
+            <li><strong><code>v1.0.0 GA</code> 8-Tool Suite Dogfood Architecture</strong>: All 8 RaggieSoft Studio tools ship as individual <code>.msi</code> packages under <code>C:\Program Files\RaggieSoft\RaggieSoft Studio\&lt;Product&gt;\</code> (with unified <code>RaggieSoftHelp.exe</code> <code>F1</code> module discovery), fronted by a <strong>Showcase Studio</strong> interactive intro stub that installs either standalone tools or the full <code>.rsis</code> Suite under a single UAC elevation—plus first-party GitHub Actions and <code>--emit-winget</code>.</li>
             <li><strong><code>v1.1+</code> Post-1.0</strong>: Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20+ language <code>I18N</code> + RTL, and SPDX / CycloneDX <code>--emit-sbom</code>.</li>
           </ul>
         </div>

@@ -22,11 +22,11 @@
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
 | **`v0.1.0` – `v0.5.0`** | **10 Selectable Wizard Styles (`FullScreenBlue` & `FullScreenTeal` `#008080` ACME Callback, `Wizard95`..`FluentMica`), Classic & Custom Setup Types (`Typical`/`Compact`/`Complete`/`Custom` & `[SetupType.*]`), WCAG Auto-Contrast, Microsoft Azure Artifact Signing, Universal Web & Offline EXEs (`x64 + ARM64`), 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM` & Native `F1` Help** | **Shipped (Technical Preview)** |
-| **`v0.6.0`** | **Self-Extracting `.EXE` (`PackageKind = sfx`), Multi-Volume Disk Spanning (`CAB1..N.cab`), Loose Source Media (`Run from Media/Network` & `msiexec /a`), `.rswpak` Packs, `.NET 11` & Multi-Engine Suite Setup (`Engine = native | msi`)** | **Next Up** |
+| **`v0.6.0`** | **Self-Extracting `.EXE` (`PackageKind = sfx`), Multi-Volume Disk Spanning (`CAB1..N.cab`), Loose Source Media (`Run from Media/Network` & `msiexec /a`), `.rswpak` Packs, `.NET 11`, Multi-Engine Suite Setup (`Engine = native | msi`) & Dynamic `ARPSYSTEMCOMPONENT` Suite Maintenance Hub** | **Next Up** |
 | **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
-| **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
-| **`v1.0.0 GA`** | **Turnkey CI/CD Actions, `winget` Export & 100% RaggieSoft Production Dogfood Cutover** | Planned |
+| **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, Bundled `RsUpdate.exe` (Opt-In Scheduled Checks) + `RsPatch.exe` (`msdelta.dll` Native & `.MSP` Patching Engine), & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
+| **`v1.0.0 GA`** | **Turnkey CI/CD Actions, `winget` Export & 8-Product RaggieSoft Studio Production Dogfood Cutover (`Showcase Studio` Front-Door + Unified Suite Installer)** | Planned |
 | **`v1.1+` (Post-1.0)** | **Disposable Windows Sandbox (`.wsb`) Setup Capture, Visual Studio `.vsix`, Windows Services/Firewall/Config Patchers, `.MSIXBUNDLE`, 20-Lang `I18N` & `--emit-sbom`** | Post-1.0 Expansion |
 
 ---
@@ -103,9 +103,11 @@
    - Building on `v0.4.3`'s CPU-aware Smart Web Stub and Combined Offline Universal Single-EXE, split optional multi-gigabyte features (high-DPI asset libraries, offline documentation packs, or language modules) into external LZMS-compressed `.rswpak` blocks fetched on demand via `WinHTTP` with SHA-256 + Authenticode verification when selected in `SelectionTree`.
 4. **First-Class `.NET 11` (`net11.0` / `net11.0-windows`) Runtime Presets & Detection**:
    - Curated `DotNet11Desktop`, `DotNet11AspNet`, and `DotNet11Runtime` / `DotNet10Runtime` presets alongside `.NET 10.0 LTS`, `.NET 9.0`, and `.NET 8.0 LTS`, probing native `arm64` and `x64`-on-ARM64 installations in `< 1ms`.
-5. **Native Direct Engine (`Engine = native | msi`) & Unified Multi-Engine Suite Setup (`.rsis` Chainer)**:
+5. **Native Direct Engine (`Engine = native | msi`), Unified Suite Setup (`.rsis` Chainer), & Dynamic `ARPSYSTEMCOMPONENT` Takeover**:
    - Optional zero-`msi.dll` direct extraction backend with an atomic transactional rollback journal, `HKLM`/`HKCU` `Uninstall` registration, and a signed native `Uninstall.exe`—eliminating `Global\_MSIExecute` mutex collisions and installing multi-thousand-file interactive book and supporter audio packs in milliseconds.
-   - **Unified Suite-Style Setup (`PackageKind = suite`)**: Chain multiple independent packages inside one cohesive collector's `Setup.exe` so desktop applications install via transactional `.msi` databases while multi-gigabyte book and music libraries stream cleanly through `Engine = native`.
+   - **Unified Suite-Style Setup (`PackageKind = suite`) & Anti-Clutter `Installed apps` Governance**:
+     - Standalone product installs leave `ARPSYSTEMCOMPONENT` unset so individual products appear normally in Windows *Installed apps* / *Programs and Features*.
+     - Installing a Suite (`2+` tools via `.rsis`) registers **one clean Suite Maintenance entry** (Visual Studio Installer model: **Add / Repair / Remove** individual tools) and sets `ARPSYSTEMCOMPONENT=1` (`RS_SUITE_MANAGED=1`) across child `.msi` packages—including dynamically adopting any already-installed standalone sibling `.msi` via `REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1` so *Installed apps* never gets cluttered with 8 separate entries, while flipping `ARPSYSTEMCOMPONENT` back to `0` if a user detaches/keeps a standalone product during Suite removal.
 
 ### `v0.7.0` — From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` Scripting
 1. **From-Scratch Native C++ Dialog Builder (`[Dialog.<Id>]` + `[Control.<DialogId>.<CtrlId>]`)**:
@@ -123,19 +125,22 @@
 3. **Existing `.msi` / `.msm` Decompiler & Windows Restart Manager (`Rstrtmgr.dll`)**:
    - Decompile existing `.msi`/`.msm` databases into editable `.rsip` projects, and integrate `RmStartSession` / `RmGetList` into `SetupWizard.exe` so upgrades gracefully close running app processes without unnecessary OS reboots.
 
-### `v0.9.0` — Authenticode Signing Studio, White-Label `RsUpdate.exe` Auto-Updater & Guided `.MSP` Servicing
+### `v0.9.0` — Authenticode Signing Studio, Bundled `RsUpdate.exe` + `RsPatch.exe` Clients & Guided `.MSP` Servicing
 1. **First-Class Authenticode & Azure Artifact Signing Studio**:
    - Interactive Windows Certificate Store picker (`CryptUIDlgSelectCertificateFromStore`), `.pfx` / hardware token configuration, Azure Artifact Signing (`dlib` + `MetadataJson`) profile tester, and one-click Dual-Layer `WinVerifyTrust` verifier on both inner `Product.msi` and outer `Setup.exe`.
-2. **Royalty-Free White-Label Auto-Updater (`RsUpdate.exe` / `[AutoUpdate]`)**:
-   - Zero-dependency `/MT` Win32 C++20 auto-updater (`x64` & `ARM64`, unlocked across all editions including Community!) stamped with the publisher's own `.ico`, `ProductName`, and `CompanyName`, verifying SHA-256 + `WinVerifyTrust` signatures over HTTPS to apply `.msp` patches, `.msi` Major Upgrades, or Native Engine updates.
+2. **Bundled White-Label Update Client (`RsUpdate.exe`) & Binary Patching Client (`RsPatch.exe`)**:
+   - **`RsUpdate.exe` (`[AutoUpdate]`)**: Zero-dependency `/MT` Win32 C++20 update client (`x64` & `ARM64`, unlocked across all editions including Community!) bundled with Installer Studio and stamped with the publisher's `.ico`, `ProductName`, and `CompanyName`. Runs zero background Windows Services—supporting on-demand checks (`Help -> Check for Updates` + Suite Maintenance UI) plus an optional polite weekly Windows Scheduled Task presented as an **explicit opt-in checkbox (unchecked by default)** during setup.
+   - **`RsPatch.exe` (`msdelta.dll` Patching Client & `.MSP` Compiler Helper)**: Companion static `/MT` C++20 binary-delta engine built on native Windows `msdelta.dll` (`CreateDeltaB` / `ApplyDeltaB`) that both **(a)** assists `instbuild.exe` at compile time when synthesizing binary-delta `.msp` Windows Installer patches without third-party PatchWiz dependencies, and **(b)** applies SHA-256 + `WinVerifyTrust`-verified in-place binary patches for `Engine = native` installations with transactional rollback.
 3. **Guided Microsoft-Compliant `.MSP` & Major Upgrade Servicing (`--plan-update`)**:
    - Diff against a shipped baseline `.msi`, enforce official Windows Installer Component servicing rules automatically, emit binary-delta `.msp` Minor Updates when eligible, or guide one-click Major Upgrade `ProductCode` transitions in plain English.
 
-### `v1.0.0 GA` — Turnkey CI/CD Automation, `winget` Export & 100% RaggieSoft Dogfood Cutover
+### `v1.0.0 GA` — Turnkey CI/CD Automation, `winget` Export & Complete 8-Tool RaggieSoft Studio Dogfood Cutover
 1. **CI/CD & Package Manager Automation**:
    - First-party GitHub Action (`raggiesoft/setup-installer-studio`), Azure Pipelines task, and `instbuild.exe --emit-winget` (`winget-pkgs` multi-file YAML generator).
-2. **100% RaggieSoft Production Cutover Gate**:
-   - Complete signed build, clean install, upgrade, repair, silent deploy (`/s`), and uninstall validation across every RaggieSoft desktop application (*RaggieSoft Launcher*, *Accessibility Studio*, *Installer Studio*, *Help Viewer*, and *StoreTrainer*), interactive Story Crossroads book, and Engine Room Records supporter archive on clean Windows 11 `x64` and `ARM64` hardware.
+2. **100% RaggieSoft Production Dogfood Architecture (All 8 Studio Tools + Consumer Apps)**:
+   - **Installer Studio Builds Every Product & Suite**: All 8 RaggieSoft Studio tools (*Installer Studio*, *Accessibility Studio*, *Training Studio*, *Help Studio*, *Document Studio*, *Localization Studio*, *Launcher Studio*, and *Showcase Studio*) ship as proper per-product `.msi` packages under `C:\Program Files\RaggieSoft\RaggieSoft Studio\<Product>\` (keeping sibling consumer apps organized under `C:\Program Files\RaggieSoft\<App>\`), with shared `.rshm` modules auto-discovered by `RaggieSoftHelp.exe` for unified `F1` offline search across all installed Studio tools.
+   - **`Showcase Studio` Front-Door Stub -> `.rsis` Single-UAC Suite Chainer**: The RaggieSoft Studio Suite installer uses a `Showcase Studio` interactive front-door `.exe` (`asInvoker`) where users can explore all 8 products, install an individual tool standalone (`ARPSYSTEMCOMPONENT` unset), or launch the `.rsis` Suite setup under a single UAC elevation—dynamically adopting any previously installed standalone Studio `.msi` into `ARPSYSTEMCOMPONENT=1` under one clean **RaggieSoft Studio** *Modify / Repair / Uninstall* entry in Windows *Installed apps*.
+   - Full clean install, upgrade, `.msp` / `RsPatch.exe` delta patch, `RsUpdate.exe` check, silent deploy (`/s`), and uninstall validation across every RaggieSoft Studio tool, *RaggieSoft Launcher*, *StoreTrainer*, interactive *Story Crossroads* book, and *Engine Room Records* supporter archive on clean Windows 11 `x64` and `ARM64` hardware.
 
 ---
 
