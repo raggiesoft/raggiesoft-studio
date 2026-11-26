@@ -13,35 +13,42 @@
  *     `a11y.raggiesoft.com` -> `/accessibility-studio`), the umbrella Windows 11
  *     developer, packaging, accessibility & digital-distribution suite:
  *
- *     A. SUITE-LEVEL & SIBLING PRODUCT ROUTES:
- *       1. `/`                  — Suite Overview: 4-Product Lineup, 4-Stage
- *                                 Publisher Pipeline, Shared Engineering DNA,
- *                                 & Live Downloads / Mockup Previews
- *       2. `/launcher-studio`   — RaggieSoft Launcher Studio: Visual IDE &
- *                                 `.rslp` Manifest Compiler for Branded Desktop
- *                                 App Hubs & Static-CDN Delta Updaters
- *       3. `/showcase-studio`   — RaggieSoft Showcase Studio: Classic 1990s
- *                                 `.BMP` CD-ROM Showcases with WCAG 2.2 AA
- *                                 Safeguards + Modern Windows 11 `FluentMica`
- *                                 Collector Launchpads (`.rssp` Manifests)
+ *     A. SUITE-LEVEL & SIBLING PRODUCT ROUTES (8-PRODUCT SUITE):
+ *       1. `/`                     — Suite Overview: 8-Product Quick Cards,
+ *                                    3D Collector's Box Showcase, Publisher
+ *                                    Pipeline, & Live Downloads / Demos
+ *       2. `/training-studio`      — RaggieSoft Training Studio (`v0.1.0`):
+ *                                    Plain-text `.rstp` SCORM 1.2 & 2004
+ *                                    compiler + interactive Hostile LMS Demo
+ *       3. `/help-studio`          — RaggieSoft Help Studio: Offline `F1`
+ *                                    Help & turnkey `.hhp`/`.chm` migration
+ *       4. `/document-studio`      — RaggieSoft Document Studio: Tagged
+ *                                    `PDF/UA-1` & Section 508 form compiler
+ *       5. `/localization-studio`  — RaggieSoft Localization Studio: Safe
+ *                                    `.RESX`, `XLIFF`, `.rsip` & `WebVTT` IDE
+ *       6. `/launcher-studio`      — RaggieSoft Launcher Studio: Visual IDE &
+ *                                    `.rslp` Manifest Compiler for App Hubs
+ *       7. `/showcase-studio`      — RaggieSoft Showcase Studio: Classic 1990s
+ *                                    `.BMP` CD-ROM Showcases + `FluentMica`
  *       (Plus `/accessibility-studio/*`, compiled by the IBM Carbon Design
  *        System SSG in `subdomains/a11y` and mounted at build time!)
  *
  *     B. DEDICATED INSTALLER STUDIO SUB-PAGES (`/installer-studio/*`):
- *       4. `/installer-studio`               — Flagship v0.5.0 Overview & Downloads
- *       5. `/installer-studio/screenshots`   — 14 Native Win32 C++20 Captures
- *       6. `/installer-studio/roadmap`       — Public v0.1 -> v1.0 GA Roadmap
- *       7. `/installer-studio/docs`          — Distributed Manual & `.rsip` Spec
- *       8. `/installer-studio/faq`           — Signing, Silicon & Setup Types FAQ
- *       9. `/installer-studio/changelog`     — v0.1.0 -> v0.5.0 Release Notes
- *      10. `/installer-studio/vpat`          — WCAG 2.2 AA & VPAT 2.5 Center
- *      11. `/installer-studio/accessibility` — Canonical Alias View for `/vpat`
- *      12. `/installer-studio/security`      — Static `/MT` SBOM & Zero Telemetry
+ *       8. `/installer-studio`               — Flagship v0.5.0 Overview & Downloads
+ *       9. `/installer-studio/screenshots`   — 14 Native Win32 C++20 Captures
+ *      10. `/installer-studio/roadmap`       — Public v0.1 -> v1.0 GA Roadmap
+ *      11. `/installer-studio/docs`          — Distributed Manual & `.rsip` Spec
+ *      12. `/installer-studio/faq`           — Signing, Silicon & Setup Types FAQ
+ *      13. `/installer-studio/changelog`     — v0.1.0 -> v0.5.0 Release Notes
+ *      14. `/installer-studio/vpat`          — WCAG 2.2 AA & VPAT 2.5 Center
+ *      15. `/installer-studio/accessibility` — Canonical Alias View for `/vpat`
+ *      16. `/installer-studio/security`      — Static `/MT` SBOM & Zero Telemetry
  *
  *   How Two-Tier Contextual Navigation Works:
- *     - Tier 1 (Global Studio Suite Bar): Always shows `Suite Overview`,
- *       `Installer Studio`, `Accessibility Studio`, `Launcher Studio`,
- *       `Showcase Studio`, and `raggiesoft.dev`.
+ *     - Tier 1 (Global Studio Suite Bar): Shows `Suite Overview`,
+ *       `Installer Studio`, `Accessibility Studio`, `Training Studio`,
+ *       `Help Studio`, `More Tools` (`Document`, `Localization`, `Launcher`,
+ *       `Showcase`), and `raggiesoft.dev`.
  *     - Tier 2 (Contextual Product Sub-Nav): Automatically renders beneath
  *       Tier 1 on desktop (`>= 768px`) whenever `routePath` starts with
  *       `/installer-studio`, and folds cleanly into the single `#header-navigation-panel`
