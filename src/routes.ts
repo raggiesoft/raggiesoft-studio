@@ -71,8 +71,11 @@ interface ScreenshotFeatureItem {
 // Canonical CDN & documentation asset constants.
 const ASSET_BASE =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
-const BOX_SHOWCASE_URL =
-  'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
+const STUDIO_BOXES_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
+const SUITE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-raggiesoft-studio-suite.jpg`;
+const BOX_SHOWCASE_URL = `${STUDIO_BOXES_BASE}/og-installer-studio.jpg`;
+const LAUNCHER_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-launcher-studio.jpg`;
+const SHOWCASE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-showcase-studio.jpg`;
 const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
 const DOWNLOAD_OFFLINE_UNIV_URL = `${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe`;
 const A11Y_STUDIO_WEB_SETUP_URL =
@@ -88,8 +91,66 @@ const FICTITIOUS_DISCLAIMER =
   'Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.';
 
 // ============================================================================
-// SECTION 1: CURATED SCREENSHOT & STUDIO MOCKUP GALLERIES (`<dialog>` MODALS)
+// SECTION 1: CURATED SCREENSHOT, MOCKUP & 3D RETAIL BOX GALLERIES (`<dialog>`)
 // ============================================================================
+
+const STUDIO_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
+  {
+    dialogId: 'dlg-box-suite-complete',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`,
+    badge: 'Collector’s Slipcase • Complete 4-Product Suite',
+    title: 'RaggieSoft Studio — Complete Windows 11 Developer Edition Box',
+    alt: '3D Collector’s Edition slipcase retail box for RaggieSoft Studio Complete Suite showing all four workstation previews on the front cover and four color-coded product stripes on the spine.',
+    summaryHtml:
+      'Umbrella collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.',
+    detailHtml:
+      'Features a thicker collector’s edition spine with four color-coded product stripes (Royal Cobalt, Emerald Green, Electric Cyan, and Retro ACME Teal) and a 2&times;2 front-cover quad of all four Windows 11 <code>x64</code> &amp; <code>ARM64</code> workstations.'
+  },
+  {
+    dialogId: 'dlg-box-installer',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-installer-studio.png`,
+    badge: 'Shipping v0.5.0 • Royal Cobalt Edition',
+    title: '1. RaggieSoft Installer Studio — Retail Box',
+    alt: '3D retail software box for RaggieSoft Installer Studio v0.5.0 — Install Without Limits, showing the 12-View IDE and Dark Mode SetupWizard on the front cover.',
+    summaryHtml:
+      'Zero-dependency static <code>/MT</code> Win32 C++20 MSI, MSM, MST, MSP &amp; Universal <code>Setup.exe</code> suite.',
+    detailHtml:
+      'Highlights 10 era-spanning wizard styles, plain-text <code>.rsip</code> manifests, WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 compliance reporting.'
+  },
+  {
+    dialogId: 'dlg-box-a11y',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-accessibility-studio.png`,
+    badge: 'Shipping v1.0.0 • Emerald Compliance Edition',
+    title: '2. RaggieSoft Accessibility Studio — Retail Box',
+    alt: '3D retail software box for RaggieSoft Accessibility Studio v1.0.0 — Audit, Diff and Refactor WCAG 2.2, showing Monaco side-by-side diffs and Forced-Colors inspection.',
+    summaryHtml:
+      'Source-level HTML5, WAI-ARIA, CSS &amp; WebVTT auditing IDE with side-by-side Guided Fix diffs and SARIF 2.1.0.',
+    detailHtml:
+      'Engineered for higher-education, public-sector, and enterprise engineering teams remediating WCAG 2.2 Level AA and Revised Section 508 at source level.'
+  },
+  {
+    dialogId: 'dlg-box-launcher',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-launcher-studio.png`,
+    badge: 'Design Preview • Electric Cyan Edition',
+    title: '3. RaggieSoft Launcher Studio — Retail Box',
+    alt: '3D retail software box for RaggieSoft Launcher Studio — Custom Hubs, Zero Gatekeepers, showing the visual catalog designer and publisher desktop hub.',
+    summaryHtml:
+      'Visual IDE &amp; <code>.rslp</code> compiler for white-label desktop app hubs and static-CDN delta updaters.',
+    detailHtml:
+      'Ships updates from any static HTTPS host, S3 bucket, DigitalOcean Space, or Cloudflare R2 bucket with mandatory <code>SHA-256</code> and <code>WinVerifyTrust</code> verification.'
+  },
+  {
+    dialogId: 'dlg-box-showcase',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-showcase-studio.png`,
+    badge: 'Design Preview • Retro Teal & Gold Edition',
+    title: '4. RaggieSoft Showcase Studio — Retail Box',
+    alt: '3D retail software box for RaggieSoft Showcase Studio — 1990s Soul, WCAG 2.2 AA Heart, showing the 1990s .BMP showcase with keyboard focus rings alongside the Canvas IDE.',
+    summaryHtml:
+      'Author 1990s painted <code>.BMP</code> CD-ROM menus (with WCAG 2.2 AA safeguards) and modern <code>FluentMica</code> launchpads.',
+    detailHtml:
+      'Compiles plain-text <code>.rssp</code> manifests into zero-dependency static <code>/MT</code> Win32 C++20 executables for USB/ISO box sets, suites, and accessible kiosks.'
+  }
+];
 
 const STUDIO_MOCKUP_ITEMS: Record<
   'showcase90s' | 'showcaseModern' | 'showcaseIde' | 'launcherIde',
@@ -415,12 +476,20 @@ function renderSuiteHomeBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${BOX_SHOWCASE_URL}"
+            src="${SUITE_OG_BOX_URL}"
             width="1200"
             height="630"
-            alt="RaggieSoft Studio boxed software showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64."
+            alt="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Four Cohesive Windows 11 Developer Tools."
           />
         </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="box-shelf-heading">
+      <span class="eyebrow">Collector’s Retail Box Showcase • Click Any Box for Full 1200&times;960 3D Close-Up</span>
+      <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">The Complete Boxed RaggieSoft Studio Shelf</h2>
+      <div class="shot-grid">
+        ${STUDIO_BOX_GALLERY_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
       </div>
     </section>
 
@@ -621,19 +690,31 @@ function renderSuiteHomeBody(): string {
 function renderLauncherStudioBody(): string {
   return `
     <section class="hero" aria-labelledby="launcher-studio-title">
-      <span class="eyebrow">RaggieSoft Studio • Upcoming Desktop Hub &amp; Static-CDN Updater IDE</span>
-      <h1 id="launcher-studio-title">RaggieSoft Launcher Studio — Build Your Own Branded Desktop Hub.</h1>
-      <p class="lead">
-        Independent software studios, game/utility creators, authors, musicians, and enterprise internal-tools teams often
-        maintain multiple desktop applications and downloadable media archives—yet building a polished, accessible desktop
-        hub and delta patcher from scratch takes months. Inspired directly by our production
-        <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, <strong>RaggieSoft Launcher Studio</strong> turns
-        that zero-account, static-CDN architecture into a visual IDE and plain-text <code>.rslp</code> compiler for everyone.
-      </p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#launcher-mockup-section">Inspect Launcher Studio IDE Mockup &darr;</a>
-        <a class="btn btn-outline" href="https://launcher.raggiesoft.com">See Live RaggieSoft Launcher Inspiration</a>
-        <a class="btn btn-outline" href="/installer-studio">Download Installer Studio v0.5.0 Today</a>
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Studio • Upcoming Desktop Hub &amp; Static-CDN Updater IDE</span>
+          <h1 id="launcher-studio-title">RaggieSoft Launcher Studio — Build Your Own Branded Desktop Hub.</h1>
+          <p class="lead">
+            Independent software studios, game/utility creators, authors, musicians, and enterprise internal-tools teams often
+            maintain multiple desktop applications and downloadable media archives—yet building a polished, accessible desktop
+            hub and delta patcher from scratch takes months. Inspired directly by our production
+            <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, <strong>RaggieSoft Launcher Studio</strong> turns
+            that zero-account, static-CDN architecture into a visual IDE and plain-text <code>.rslp</code> compiler for everyone.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#launcher-mockup-section">Inspect Launcher Studio IDE Mockup &darr;</a>
+            <a class="btn btn-outline" href="https://launcher.raggiesoft.com">See Live RaggieSoft Launcher Inspiration</a>
+            <a class="btn btn-outline" href="/installer-studio">Download Installer Studio v0.5.0 Today</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${LAUNCHER_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Launcher Studio — Custom Desktop App Hubs and Static-CDN Delta Updaters."
+          />
+        </figure>
       </div>
     </section>
 
@@ -742,15 +823,27 @@ Layout            = covers</pre>
 function renderShowcaseStudioBody(): string {
   return `
     <section class="hero" aria-labelledby="showcase-studio-title" x-data="{ eraTab: 'bmp90s' }">
-      <span class="eyebrow">RaggieSoft Studio • Accessible Interactive Launchpads &amp; Collector Menus</span>
-      <h1 id="showcase-studio-title">RaggieSoft Showcase Studio — 1990s CD-ROM Magic, Rebuilt with WCAG 2.2 AA Safeguards.</h1>
-      <p class="lead">
-        Remember opening a boxed PC release in 1996 and greeting an illustrated multimedia launchpad with custom artwork,
-        liner notes, bonus tracks, and one-click install actions? <strong>RaggieSoft Showcase Studio</strong> revives that art
-        form for <strong>commemorative USB box sets, downloadable ISO collector editions, multi-package installer suites,
-        offline press kits, and accessible classroom kiosks</strong>—compiling plain-text <code>.rssp</code> projects into
-        zero-dependency static <code>/MT</code> Win32 C++20 executables for <code>x64</code> and <code>ARM64</code>.
-      </p>
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Studio • Accessible Interactive Launchpads &amp; Collector Menus</span>
+          <h1 id="showcase-studio-title">RaggieSoft Showcase Studio — 1990s CD-ROM Magic, Rebuilt with WCAG 2.2 AA Safeguards.</h1>
+          <p class="lead">
+            Remember opening a boxed PC release in 1996 and greeting an illustrated multimedia launchpad with custom artwork,
+            liner notes, bonus tracks, and one-click install actions? <strong>RaggieSoft Showcase Studio</strong> revives that art
+            form for <strong>commemorative USB box sets, downloadable ISO collector editions, multi-package installer suites,
+            offline press kits, and accessible classroom kiosks</strong>—compiling plain-text <code>.rssp</code> projects into
+            zero-dependency static <code>/MT</code> Win32 C++20 executables for <code>x64</code> and <code>ARM64</code>.
+          </p>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${SHOWCASE_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Windows 11 FluentMica."
+          />
+        </figure>
+      </div>
 
       <div style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.35rem;">
         <span class="eyebrow">Interactive Era &amp; Workstation Switcher (Click Any Tab, Then Click Image for 1:1 Zoom)</span>

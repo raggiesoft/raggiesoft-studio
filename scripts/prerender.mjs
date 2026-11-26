@@ -68,8 +68,12 @@ function copyDirRecursive(srcDir, destDir, skipNames = new Set()) {
 
 // Canonical production origin, OpenGraph imagery, favicon, and IndexNow verification key.
 const SITE_ORIGIN = 'https://raggiesoftstudio.com';
-const DEFAULT_OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
-const MOCKUP_CDN_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/mockups';
+const BOXES_CDN_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
+const SUITE_OG_IMAGE = `${BOXES_CDN_BASE}/og-raggiesoft-studio-suite.jpg`;
+const INSTALLER_OG_IMAGE = `${BOXES_CDN_BASE}/og-installer-studio.jpg`;
+const A11Y_OG_IMAGE = `${BOXES_CDN_BASE}/og-accessibility-studio.jpg`;
+const LAUNCHER_OG_IMAGE = `${BOXES_CDN_BASE}/og-launcher-studio.jpg`;
+const SHOWCASE_OG_IMAGE = `${BOXES_CDN_BASE}/og-showcase-studio.jpg`;
 const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg';
 const INDEXNOW_KEY = '726167676965736f6674696e6465786e';
 
@@ -112,34 +116,43 @@ function extractBodyInnerHtml(rawTopicHtml) {
 }
 
 /**
- * Selects route-appropriate OpenGraph social preview artwork and alt text so
- * sharing `/launcher-studio` or `/showcase-studio` previews their actual UI mockups!
+ * Selects route-appropriate 1200x630 3D boxed-software OpenGraph artwork and alt text
+ * across the RaggieSoft Studio Suite (`/`, `/installer-studio/*`, `/launcher-studio`, `/showcase-studio`).
  */
 function resolveOgMedia(routePath) {
   if (routePath === '/launcher-studio') {
     return {
-      url: `${MOCKUP_CDN_BASE}/mockup-launcher-studio-ide.png`,
-      mime: 'image/png',
-      width: '1280',
-      height: '800',
-      alt: 'RaggieSoft Launcher Studio visual IDE mockup showing a branded publisher desktop app hub and static-CDN catalog designer.'
+      url: LAUNCHER_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Launcher Studio — Custom Desktop App Hubs and Static-CDN Delta Updaters for Windows 11 x64 and ARM64.'
     };
   }
   if (routePath === '/showcase-studio') {
     return {
-      url: `${MOCKUP_CDN_BASE}/mockup-showcase-1990s-bmp-a11y.png`,
-      mime: 'image/png',
-      width: '1280',
-      height: '800',
-      alt: 'RaggieSoft Showcase Studio mockup showing a 1990s painted bitmap CD-ROM showcase menu enhanced with WCAG 2.2 AA keyboard focus rings and UI Automation.'
+      url: SHOWCASE_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Modern Windows 11 FluentMica Launchpads.'
+    };
+  }
+  if (routePath === '/installer-studio' || routePath.startsWith('/installer-studio/')) {
+    return {
+      url: INSTALLER_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64).'
     };
   }
   return {
-    url: DEFAULT_OG_IMAGE,
+    url: SUITE_OG_IMAGE,
     mime: 'image/jpeg',
     width: '1200',
     height: '630',
-    alt: 'RaggieSoft Studio developer suite showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64.'
+    alt: '3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Four Cohesive Windows 11 Developer Tools (Installer, Accessibility, Launcher, and Showcase Studio).'
   };
 }
 
@@ -166,7 +179,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, routePath = '/',
         name: 'RaggieSoft Installer Studio',
         alternateName: 'Install Without Limits',
         url: `${SITE_ORIGIN}/installer-studio`,
-        image: DEFAULT_OG_IMAGE,
+        image: INSTALLER_OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
         softwareVersion: '0.5.0',
@@ -188,6 +201,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, routePath = '/',
         '@id': `${SITE_ORIGIN}/accessibility-studio#software`,
         name: 'RaggieSoft Accessibility Studio',
         url: `${SITE_ORIGIN}/accessibility-studio`,
+        image: A11Y_OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
         softwareVersion: '1.0.0',
