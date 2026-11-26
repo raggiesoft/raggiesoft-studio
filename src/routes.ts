@@ -99,56 +99,56 @@ const STUDIO_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
     dialogId: 'dlg-box-suite-complete',
     imgUrl: `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`,
     badge: 'Collector’s Slipcase • Complete 4-Product Suite',
-    title: 'RaggieSoft Studio — Complete Windows 11 Developer Edition Box',
-    alt: '3D Collector’s Edition slipcase retail box for RaggieSoft Studio Complete Suite showing all four workstation previews on the front cover and four color-coded product stripes on the spine.',
+    title: 'RaggieSoft Studio — Enterprise Suite Front Box',
+    alt: '3D 1990s-style Collector’s Edition retail box for RaggieSoft Studio Suite featuring four jewel-toned crystalline obelisks and a brass armillary sphere over a perspective grid, embossed 4-Tools gold foil seal, and four-color spine wrap.',
     summaryHtml:
-      'Umbrella collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.',
+      'Authentic 1990s big-box collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.',
     detailHtml:
-      'Features a thicker collector’s edition spine with four color-coded product stripes (Royal Cobalt, Emerald Green, Electric Cyan, and Retro ACME Teal) and a 2&times;2 front-cover quad of all four Windows 11 <code>x64</code> &amp; <code>ARM64</code> workstations.'
+      'Styled after classic 1995–1998 developer suite boxes: four jewel-toned crystalline obelisks (Royal Cobalt, Emerald, Electric Cyan, and Retro Teal) converge around a brass armillary sphere and golden keystone cube, paired with Georgia editorial typography, a 4-color spine wrap, and an embossed gold-foil seal.'
   },
   {
     dialogId: 'dlg-box-installer',
     imgUrl: `${STUDIO_BOXES_BASE}/box-installer-studio.png`,
-    badge: 'Shipping v0.5.0 • Royal Cobalt Edition',
-    title: '1. RaggieSoft Installer Studio — Retail Box',
-    alt: '3D retail software box for RaggieSoft Installer Studio v0.5.0 — Install Without Limits, showing the 12-View IDE and Dark Mode SetupWizard on the front cover.',
+    badge: 'Shipping v0.5.0 • Developer Series Box',
+    title: '1. RaggieSoft Installer Studio — Front Box',
+    alt: '3D 1990s-style retail box for RaggieSoft Installer Studio featuring interlocking chrome, brass, and royal-cobalt glass puzzle cubes and precision clockwork gears assembling above a glowing perspective blueprint grid.',
     summaryHtml:
-      'Zero-dependency static <code>/MT</code> Win32 C++20 MSI, MSM, MST, MSP &amp; Universal <code>Setup.exe</code> suite.',
+      'Classic 1990s Developer Series cover symbolizing precision transactional packaging and zero-bloat Win32 C++20 assembly.',
     detailHtml:
-      'Highlights 10 era-spanning wizard styles, plain-text <code>.rsip</code> manifests, WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 compliance reporting.'
+      'Replaces back-of-box screenshots with classic 1990s ray-traced cover symbolism: polished chrome, brushed brass gears, and translucent royal-cobalt glass cubes locking together above a cyan architectural blueprint horizon, finished with an embossed Pure C++ gold-foil medallion.'
   },
   {
     dialogId: 'dlg-box-a11y',
     imgUrl: `${STUDIO_BOXES_BASE}/box-accessibility-studio.png`,
-    badge: 'Shipping v1.0.0 • Emerald Compliance Edition',
-    title: '2. RaggieSoft Accessibility Studio — Retail Box',
-    alt: '3D retail software box for RaggieSoft Accessibility Studio v1.0.0 — Audit, Diff and Refactor WCAG 2.2, showing Monaco side-by-side diffs and Forced-Colors inspection.',
+    badge: 'Shipping v1.0.0 • Compliance Series Box',
+    title: '2. RaggieSoft Accessibility Studio — Front Box',
+    alt: '3D 1990s-style retail box for RaggieSoft Accessibility Studio featuring a crystal optical prism refracting white light into crisp emerald, gold, and sapphire pathways above a golden architectural bridge arch.',
     summaryHtml:
-      'Source-level HTML5, WAI-ARIA, CSS &amp; WebVTT auditing IDE with side-by-side Guided Fix diffs and SARIF 2.1.0.',
+      'Classic 1990s Compliance Series cover symbolizing source-level structural clarity, high-contrast refraction, and universal access.',
     detailHtml:
-      'Engineered for higher-education, public-sector, and enterprise engineering teams remediating WCAG 2.2 Level AA and Revised Section 508 at source level.'
+      'Features a crystal optical prism and golden architectural bridge arch spanning an emerald-slate perspective horizon, paired with Emerald spine banding and an embossed WCAG 2.2 / Section 508 AA gold-foil seal.'
   },
   {
     dialogId: 'dlg-box-launcher',
     imgUrl: `${STUDIO_BOXES_BASE}/box-launcher-studio.png`,
-    badge: 'Design Preview • Electric Cyan Edition',
-    title: '3. RaggieSoft Launcher Studio — Retail Box',
-    alt: '3D retail software box for RaggieSoft Launcher Studio — Custom Hubs, Zero Gatekeepers, showing the visual catalog designer and publisher desktop hub.',
+    badge: 'Design Preview • Distribution Series Box',
+    title: '3. RaggieSoft Launcher Studio — Front Box',
+    alt: '3D 1990s-style retail box for RaggieSoft Launcher Studio featuring a brushed-chrome and electric-cyan glass astrolabe compass tower launching golden spheres along orbital arcs over an indigo wireframe globe.',
     summaryHtml:
-      'Visual IDE &amp; <code>.rslp</code> compiler for white-label desktop app hubs and static-CDN delta updaters.',
+      'Classic 1990s Distribution Series cover symbolizing direct-to-desktop global static-CDN delivery without gatekeepers.',
     detailHtml:
-      'Ships updates from any static HTTPS host, S3 bucket, DigitalOcean Space, or Cloudflare R2 bucket with mandatory <code>SHA-256</code> and <code>WinVerifyTrust</code> verification.'
+      'Features a retro-futuristic chrome and cyan-glass orbital astrolabe spire launching luminous golden payload spheres across a deep indigo wireframe globe horizon, paired with Electric Cyan spine banding and a Static Signed Deltas foil seal.'
   },
   {
     dialogId: 'dlg-box-showcase',
     imgUrl: `${STUDIO_BOXES_BASE}/box-showcase-studio.png`,
-    badge: 'Design Preview • Retro Teal & Gold Edition',
-    title: '4. RaggieSoft Showcase Studio — Retail Box',
-    alt: '3D retail software box for RaggieSoft Showcase Studio — 1990s Soul, WCAG 2.2 AA Heart, showing the 1990s .BMP showcase with keyboard focus rings alongside the Canvas IDE.',
+    badge: 'Design Preview • Multimedia Series Box',
+    title: '4. RaggieSoft Showcase Studio — Front Box',
+    alt: '3D 1990s-style retail box for RaggieSoft Showcase Studio featuring an iridescent optical disc, ruby glass sphere, retro-teal crystal pyramid, and brass soundwave ribbon under theatrical spotlights over a checkerboard stage.',
     summaryHtml:
-      'Author 1990s painted <code>.BMP</code> CD-ROM menus (with WCAG 2.2 AA safeguards) and modern <code>FluentMica</code> launchpads.',
+      'Classic 1990s Multimedia Series cover celebrating interactive collector discs, companion liner notes, and modern accessibility.',
     detailHtml:
-      'Compiles plain-text <code>.rssp</code> manifests into zero-dependency static <code>/MT</code> Win32 C++20 executables for USB/ISO box sets, suites, and accessible kiosks.'
+      'Pays tribute to mid-1990s multimedia authoring boxes with ray-traced geometric primitives—a ruby sphere, teal crystal pyramid, brass soundwave ribbon, and iridescent optical disc—under warm stage spotlights on a reflective checkerboard floor.'
   }
 ];
 
