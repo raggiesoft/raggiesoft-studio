@@ -50,5 +50,51 @@
     splice custom edit boxes, path pickers, radio groups, and checkboxes directly into the <code>Dialog</code> and
     <code>ControlEvent</code> SQL tables.
   </p>
+
+  <!-- Anchor target for v0.5.1 Configurable UAC Elevation Timing -->
+  <h2 id="uac-elevation-timing">Configurable UAC Elevation Timing (Planned in v0.5.1)</h2>
+  <p>
+    For machine-wide installations (<code>Scope = machine</code>), Windows User Account Control (UAC) requires an elevated
+    Administrator token before modifying <code>C:\Program Files</code> or <code>HKEY_LOCAL_MACHINE</code>. Starting in
+    <strong>v0.5.1</strong>, <code>[Package] ElevationTiming</code> lets authors choose <em>when</em> UAC elevation occurs by
+    stamping the outer <code>Setup.exe</code> Win32 <code>RT_MANIFEST</code> (<code>#1</code>) accordingly:
+  </p>
+  <pre>
+[Package]
+Scope           = machine
+; Options: deferred (default asInvoker) | immediate (requireAdministrator) | highestAvailable
+ElevationTiming = deferred
+  </pre>
+
+  <h3>1. Deferred Just-in-Time UAC (<code>ElevationTiming = deferred</code> — Default, <code>asInvoker</code>)</h3>
+  <ul>
+    <li><strong>How it works</strong>: The outer <code>SetupWizard.exe</code> GUI launches unelevated (<code>asInvoker</code>), displays the standard Windows UAC shield on the <strong>Install</strong> button, and elevates a single background <code>--elevated-msi-worker</code> broker only when the user clicks <strong>Install</strong>.</li>
+    <li><strong>Advantages</strong>:
+      <ul>
+        <li><strong>Safe Finish-Screen App Launch</strong>: When the user checks <em>Launch application when Setup finishes</em>, the app starts in the user's normal unelevated token—preserving Windows Explorer drag-and-drop (which UIPI blocks into elevated windows!) and launching inside the real logged-in user's <code>%APPDATA%</code> profile even on corporate Over-the-Shoulder (OTS) admin prompts.</li>
+        <li><strong>Zero-Friction Browsing &amp; CLI Flags</strong>: Users can read the Welcome/License pages, inspect <code>SelectionTree</code> feature sizes, browse mapped network drives (<code>Y:\</code>, <code>Z:\</code>), cancel early, or run <code>--help</code> / <code>--extract-msi</code> without triggering Secure Desktop screen dimming at launch.</li>
+      </ul>
+    </li>
+    <li><strong>Trade-offs</strong>: Users who step away immediately after clicking <strong>Install</strong> must approve the UAC prompt before file copying begins, and full-screen retro washes (<code>fullscreenblue</code> / <code>fullscreenteal</code>) briefly dim for Secure Desktop mid-wizard when <strong>Install</strong> is clicked.</li>
+  </ul>
+
+  <h3>2. Immediate Launch UAC (<code>ElevationTiming = immediate</code> — <code>requireAdministrator</code>)</h3>
+  <ul>
+    <li><strong>How it works</strong>: <code>instbuild.exe</code> stamps <code>requestedExecutionLevel level="requireAdministrator"</code> directly into the outer <code>Setup.exe</code> manifest so Windows prompts for UAC at <code>0.0s</code> (and displays the blue-and-gold shield overlay on the <code>Setup.exe</code> icon in File Explorer). Once open, prerequisites and <code>MsiInstallProductW</code> run directly in-process with zero mid-wizard prompts.</li>
+    <li><strong>Advantages</strong>:
+      <ul>
+        <li><strong>Up-Front "Approve Once &amp; Walk Away" Flow</strong>: Once the wizard window opens, clicking <strong>Install</strong> begins copying files immediately with zero mid-flow interruption.</li>
+        <li><strong>Uninterrupted Full-Screen Retro Immersion</strong>: On <code>fullscreenblue</code> and <code>fullscreenteal</code> setups, UAC finishes before the 1995 backdrop opens—transitioning seamlessly from wizard cards to centered <code>[Billboard.*]</code> slides.</li>
+        <li><strong>Pre-Install Privileged Probes</strong>: Custom wizard steps can inspect restricted <code>HKLM</code> / Windows Service state before the summary screen.</li>
+      </ul>
+    </li>
+    <li><strong>Trade-offs</strong>:
+      <ul>
+        <li><strong>Finish-Launch Elevation Hazard</strong>: Spawning the installed app directly from an elevated <code>Setup.exe</code> runs the app as Administrator (breaking Explorer drag-and-drop via UIPI, or opening under the IT admin's profile on OTS Standard User accounts unless delegated back through Explorer's shell token).</li>
+        <li><strong>Hidden Mapped Network Drives</strong>: Windows isolates mapped drive letters per logon token unless <code>EnableLinkedConnections</code> is set, so user-mapped drives may not appear inside <strong>Browse...</strong> folder dialogs.</li>
+        <li><strong>Blocks Non-Admin Inspection</strong>: Standard users without admin credentials cannot open the wizard to read documentation or fall back to a per-user install.</li>
+      </ul>
+    </li>
+  </ul>
 </body>
 </html>

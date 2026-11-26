@@ -44,9 +44,9 @@
       "id": "selection-tree-and-dialogs",
       "fileName": "topics/selection-tree-and-dialogs.html",
       "category": "Wizard UI & Dialogs",
-      "title": "MSI SelectionTree, C++ Glass Wizard & MSI.DLL Dialogs",
-      "summary": "Customize SetupWizard.exe (Glass, AeroWizard, 16:9 Autorun), the authentic MSI SelectionTree, and 370x270 MSI.DLL SQL dialogs.",
-      "keywords": ["selectiontree", "feature tree", "setupwizard", "dialogs", "msidialog", "autorun", "actiontext"]
+      "title": "MSI SelectionTree, C++ Glass Wizard, UAC Timing & MSI.DLL Dialogs",
+      "summary": "Customize SetupWizard.exe, the authentic MSI SelectionTree, deferred vs. immediate UAC elevation (v0.5.1), and 370x270 MSI.DLL SQL dialogs.",
+      "keywords": ["selectiontree", "feature tree", "setupwizard", "dialogs", "msidialog", "autorun", "actiontext", "uac", "elevation", "requireadministrator", "asinvoker", "elevationtiming", "v0.5.1"]
     },
     {
       "id": "cli-and-ai-agents",
@@ -100,6 +100,15 @@
       "subtitle": "32-bit ARGB split icons, DisallowAbsent, and ADDLOCAL",
       "topicId": "selection-tree-and-dialogs",
       "anchorId": "selection-tree"
+    },
+    {
+      "entryId": "idx-uac-timing",
+      "displayText": "UAC Elevation Timing (deferred vs. requireAdministrator)",
+      "category": "Security & UX",
+      "badge": "v0.5.1",
+      "subtitle": "Trade-offs between just-in-time UAC and launch-time elevation",
+      "topicId": "selection-tree-and-dialogs",
+      "anchorId": "uac-elevation-timing"
     },
     {
       "entryId": "idx-ice38",
