@@ -1816,7 +1816,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.5.1</code></th>
-              <td>Configurable UAC Elevation Timing (<code>[Package] ElevationTiming = deferred | immediate | highestAvailable</code>, outer <code>Setup.exe</code> <code>requireAdministrator</code> vs. <code>asInvoker</code> manifest stamping, &amp; de-elevated Finish launch) + SMB/symlink <code>Error 1324</code> &amp; <code>Wizard95</code> text-bounds polish</td>
+              <td>Outer <code>Setup.exe</code> <code>RequestedExecutionLevel</code> Stamping (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>), UAC-disabled (<code>EnableLUA = 0</code>) <code>CheckTokenMembership</code> Administrator rights enforcement, de-elevated Finish launch, &amp; SMB/symlink <code>Error 1324</code> + <code>Wizard95</code> text-bounds polish</td>
               <td><span class="status-pill status-next">Next Point Release</span></td>
             </tr>
             <tr>
@@ -1892,7 +1892,7 @@ function renderRoadmapBody(): string {
             <li><strong>Classic &amp; Modern Wizard Geometries (<code>[UI] WizardLayout</code>)</strong>: Includes <code>Wizard95</code> (<code>164px</code> sunken left graphic rail across all steps), <code>Wizard97</code>, <code>AeroWizard</code>, <code>FluentMica</code>, <code>OneClickSplash</code>, <code>PassiveToast</code>, <code>FullScreenBlue</code>, <code>FullScreenTeal</code>, and <code>Autorun16x9</code>.</li>
             <li><strong>Classic Windows 95 &amp; Author-Defined Setup Types (<code>[SetupType.&lt;Id&gt;]</code>)</strong>: Built-in <strong>Typical / Compact / Complete / Custom</strong> or modern <strong>Express / Compact / Custom</strong> presets plus repeatable custom publisher Setup Types.</li>
             <li><strong>Windows Contrast Theme Override &amp; Live WCAG 2.2 AA Contrast Enforcer</strong>: Honors <code>SPI_GETHIGHCONTRAST</code> automatically and validates custom brand hex colors via <code>RSW055</code> in <code>instbuild.exe --validate</code>.</li>
-            <li><strong>Planned in <code>v0.5.1</code> — Configurable UAC Elevation Timing (<code>[Package] ElevationTiming = deferred | immediate | highestAvailable</code>)</strong>: Choose between default just-in-time <code>asInvoker</code> elevation on <strong>Install</strong> (preserving unelevated Finish-launch tokens &amp; mapped network drives) or launch-time <code>requireAdministrator</code> manifest stamping on outer <code>Setup.exe</code> (approve once at <code>0.0s</code> with Explorer shell-token Finish delegation). <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Read the full UAC trade-off guide &rarr;</a></li>
+            <li><strong>Planned in <code>v0.5.1</code> — Outer <code>Setup.exe</code> <code>RequestedExecutionLevel</code> (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>) &amp; UAC-Off Admin Gate</strong>: Stamp your chosen Win32 execution level directly onto outer <code>Setup.exe</code>, backed by <code>CheckTokenMembership(DOMAIN_ALIAS_RID_ADMINS)</code> + MSI <code>Privileged</code> checks so Administrator rights are still verified cleanly even on PCs where UAC (<code>EnableLUA = 0</code>) is turned off! <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Read the full manifest &amp; UAC-off guide &rarr;</a></li>
           </ul>
         </div>
       </section>
@@ -2066,7 +2066,7 @@ function renderDocsBody(): string {
         <a class="btn btn-outline" href="/installer-studio/docs/runtimes-and-merge-modules#prerequisites">[Prerequisite.*] Pre-MSI Runtimes</a>
         <a class="btn btn-outline" href="/installer-studio/docs/runtimes-and-merge-modules#mergemodules">[MergeModule.*] (.MSM)</a>
         <a class="btn btn-outline" href="/installer-studio/docs/selection-tree-and-dialogs#selection-tree">MSI SelectionTree</a>
-        <a class="btn btn-outline" href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">UAC Elevation Timing (v0.5.1)</a>
+        <a class="btn btn-outline" href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">RequestedExecutionLevel &amp; UAC (v0.5.1)</a>
         <a class="btn btn-outline" href="/installer-studio/docs/cli-and-ai-agents#ai-specs">llms.txt &amp; SKILL.md</a>
         <a class="btn btn-outline" href="/installer-studio/docs/accessibility-and-vpat#vpat-export">VPAT 2.5 Export</a>
         <a class="btn btn-outline" href="/installer-studio/docs/msiprism-and-patches#msiprism">MSI Prism Inspector</a>
@@ -2097,10 +2097,10 @@ function renderDocsBody(): string {
               <td><code>.rsip</code> / <code>.rsii</code></td>
               <td>Inherits shared dialog workflows, <code>[Requirements]</code>, or <code>[Signing]</code> blocks without losing comments on IDE save.</td>
             </tr>
-            <tr x-show="!q || 'package name version upgradecode msi msm uac elevationtiming requireadministrator asinvoker'.includes(q.toLowerCase())">
+            <tr x-show="!q || 'package name version upgradecode msi msm uac requestedexecutionlevel requireadministrator highestavailable asinvoker enablelua'.includes(q.toLowerCase())">
               <th scope="row"><code>[Package]</code> &amp; <code>[Install]</code></th>
               <td><code>.rsip</code> (Required)</td>
-              <td><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>ElevationTiming</code> (<code>deferred|immediate|highestAvailable</code> — planned in <code>v0.5.1</code>), <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
+              <td><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>RequestedExecutionLevel</code> (<code>asInvoker|highestAvailable|requireAdministrator</code> — planned in <code>v0.5.1</code>), <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
             </tr>
             <tr x-show="!q || 'feature parent subfeature inclusion level minimal typical complete disallowabsent selectiontree'.includes(q.toLowerCase())">
               <th scope="row"><code>[Feature.&lt;Id&gt;]</code></th>
@@ -2314,14 +2314,16 @@ function renderFaqBody(): string {
 
         <article id="uac-elevation-timing" class="card">
           <div>
-            <h3>8. Why does UAC prompt when clicking Install instead of at launch—and can I stamp <code>requireAdministrator</code> on the outer EXE?</h3>
+            <h3>8. Can I stamp outer <code>Setup.exe</code> as <code>asInvoker</code>, <code>highestAvailable</code>, or <code>requireAdministrator</code>—and what if UAC is turned off?</h3>
             <p>
-              By default (<code>ElevationTiming = deferred</code>), outer <code>Setup.exe</code> runs <code>asInvoker</code> so
-              users can browse options and mapped drives without Secure Desktop dimming, and so checking <em>Launch application
-              when Setup finishes</em> starts your app in the user's normal unelevated token (preserving Explorer drag-and-drop
-              across UIPI). Starting in <strong><code>v0.5.1</code></strong>, setting <code>ElevationTiming = immediate</code>
-              stamps <code>requireAdministrator</code> onto outer <code>Setup.exe</code> for an up-front <code>0.0s</code> UAC
-              prompt. <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Full trade-off breakdown &rarr;</a>
+              <strong>Yes (planned in <code>v0.5.1</code>):</strong> <code>[Package] RequestedExecutionLevel</code> gives you a
+              direct choice of <code>asInvoker</code> (default just-in-time elevation on <strong>Install</strong>),
+              <code>highestAvailable</code>, or <code>requireAdministrator</code> (<code>0.0s</code> launch elevation) stamped
+              into the outer <code>Setup.exe</code> manifest. And even if UAC is completely disabled on the PC
+              (<code>EnableLUA = 0</code>), <code>SetupWizard.exe</code> still verifies true <code>BUILTIN\Administrators</code>
+              rights via Win32 <code>CheckTokenMembership</code> (plus MSI <code>Privileged</code> checks) whenever
+              <code>Scope = machine</code>!
+              <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Full manifest &amp; UAC-off guide &rarr;</a>
             </p>
           </div>
         </article>

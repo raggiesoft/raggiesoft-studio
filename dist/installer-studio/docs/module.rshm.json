@@ -44,9 +44,9 @@
       "id": "selection-tree-and-dialogs",
       "fileName": "topics/selection-tree-and-dialogs.html",
       "category": "Wizard UI & Dialogs",
-      "title": "MSI SelectionTree, C++ Glass Wizard, UAC Timing & MSI.DLL Dialogs",
-      "summary": "Customize SetupWizard.exe, the authentic MSI SelectionTree, deferred vs. immediate UAC elevation (v0.5.1), and 370x270 MSI.DLL SQL dialogs.",
-      "keywords": ["selectiontree", "feature tree", "setupwizard", "dialogs", "msidialog", "autorun", "actiontext", "uac", "elevation", "requireadministrator", "asinvoker", "elevationtiming", "v0.5.1"]
+      "title": "MSI SelectionTree, Execution Level (UAC) & MSI.DLL Dialogs",
+      "summary": "Customize SetupWizard.exe, RequestedExecutionLevel (asInvoker / highestAvailable / requireAdministrator), UAC-off Admin checks, and 370x270 MSI.DLL SQL dialogs.",
+      "keywords": ["selectiontree", "feature tree", "setupwizard", "dialogs", "msidialog", "autorun", "actiontext", "uac", "elevation", "requestedexecutionlevel", "requireadministrator", "highestavailable", "asinvoker", "enablelua", "checktokenmembership", "v0.5.1"]
     },
     {
       "id": "cli-and-ai-agents",
@@ -103,10 +103,10 @@
     },
     {
       "entryId": "idx-uac-timing",
-      "displayText": "UAC Elevation Timing (deferred vs. requireAdministrator)",
+      "displayText": "RequestedExecutionLevel (asInvoker / highestAvailable / requireAdministrator)",
       "category": "Security & UX",
       "badge": "v0.5.1",
-      "subtitle": "Trade-offs between just-in-time UAC and launch-time elevation",
+      "subtitle": "Stamp outer Setup.exe manifest + CheckTokenMembership when UAC is off",
       "topicId": "selection-tree-and-dialogs",
       "anchorId": "uac-elevation-timing"
     },

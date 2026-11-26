@@ -58,7 +58,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/faq#webpage","url":"https://raggiesoftstudio.com/installer-studio/faq","name":"FAQ — Azure Signing, ARM64/x64 & Setup Types | RaggieSoft","description":"Answers on Microsoft Azure Artifact Signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-CsD4VKsW.js"></script>
+    <script type="module" crossorigin src="/assets/index-DiGIpV_C.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -296,14 +296,16 @@
 
         <article id="uac-elevation-timing" class="card">
           <div>
-            <h3>8. Why does UAC prompt when clicking Install instead of at launch—and can I stamp <code>requireAdministrator</code> on the outer EXE?</h3>
+            <h3>8. Can I stamp outer <code>Setup.exe</code> as <code>asInvoker</code>, <code>highestAvailable</code>, or <code>requireAdministrator</code>—and what if UAC is turned off?</h3>
             <p>
-              By default (<code>ElevationTiming = deferred</code>), outer <code>Setup.exe</code> runs <code>asInvoker</code> so
-              users can browse options and mapped drives without Secure Desktop dimming, and so checking <em>Launch application
-              when Setup finishes</em> starts your app in the user's normal unelevated token (preserving Explorer drag-and-drop
-              across UIPI). Starting in <strong><code>v0.5.1</code></strong>, setting <code>ElevationTiming = immediate</code>
-              stamps <code>requireAdministrator</code> onto outer <code>Setup.exe</code> for an up-front <code>0.0s</code> UAC
-              prompt. <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Full trade-off breakdown &rarr;</a>
+              <strong>Yes (planned in <code>v0.5.1</code>):</strong> <code>[Package] RequestedExecutionLevel</code> gives you a
+              direct choice of <code>asInvoker</code> (default just-in-time elevation on <strong>Install</strong>),
+              <code>highestAvailable</code>, or <code>requireAdministrator</code> (<code>0.0s</code> launch elevation) stamped
+              into the outer <code>Setup.exe</code> manifest. And even if UAC is completely disabled on the PC
+              (<code>EnableLUA = 0</code>), <code>SetupWizard.exe</code> still verifies true <code>BUILTINAdministrators</code>
+              rights via Win32 <code>CheckTokenMembership</code> (plus MSI <code>Privileged</code> checks) whenever
+              <code>Scope = machine</code>!
+              <a href="/installer-studio/docs/selection-tree-and-dialogs#uac-elevation-timing">Full manifest &amp; UAC-off guide &rarr;</a>
             </p>
           </div>
         </article>
