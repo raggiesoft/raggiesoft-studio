@@ -1,6 +1,6 @@
-# RaggieSoft Training Studio — Complete `.rstp` & Slide Markdown Reference (`v0.1.0`)
+# RaggieSoft Training Studio — Complete `.rstp` & Slide Markdown Reference (`v0.5.0`)
 
-Generated deterministically by `RaggieSoft Training Studio (rstbuild 0.1.0) emit-ai-spec`.
+Generated deterministically by `RaggieSoft Training Studio (rstbuild 0.5.0) emit-ai-spec`.
 
 ## 1. Root `.rstp` Manifest Grammar
 Uses the RaggieSoft Studio comment-preserving `[Section]` syntax (`;` comments and `@include "shared.rsti"` directives survive AST edits byte-for-byte):

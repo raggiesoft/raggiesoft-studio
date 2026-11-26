@@ -10,9 +10,11 @@
 - **Proxy-Proof Telemetry & WAL Recovery**: Atomic sub-slide `LMSCommit()` checkpoints backed by a `localStorage` + `IndexedDB` Write-Ahead Log and `HTTP 206` exponential-backoff recovery.
 - **Compile-Time WCAG 2.2 AA Gate + Auto-VPAT 2.5**: Powered by `AccessibilityStudio.Core`; refuses to build uncaptioned or low-contrast slides and emits a tailored HTML5 VPAT 2.5 report alongside every `.zip`.
 
-## CLI Commands
+## CLI Commands & Visual IDE
+- `TrainingStudio.exe [course.rstp]` (Windows 11 `x64` & `ARM64` Visual Courseware IDE + Live Hostile LMS Tab)
 - `rstbuild validate <course.rstp> [--json]`
 - `rstbuild build <course.rstp> [--scorm=1.2|2004] [--with-vpat]`
+- `rstbuild audit-scorm <legacy.zip> [--json]`
 - `rstbuild transcode <input.wav|mp4> <out-dir> [--hls]`
 - `rstbuild serve-lms <package-dir-or-zip> [--port=5095]`
 - `rstbuild emit-ai-spec <out-dir>`
