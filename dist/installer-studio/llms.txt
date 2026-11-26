@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.5.1
+# RaggieSoft Installer Studio (Install Without Limits) — v0.6.0
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 10-view Visual IDE, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
 
@@ -25,20 +25,23 @@
 - `RaggieSoftHelp.exe [--module raggiesoft.installer-studio] [--topic <id>]`: Opens the offline C++20 Help Viewer.
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
 
-## `.rsip` Manifest Sections (`v0.5`)
-- `[Package]`: Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and universal output settings.
+## `.rsip` Manifest Sections (`v0.6`)
+- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
-- `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
-- `[UI]`: Branding, RTF license, icon, 10 selectable C++ WizardLayout styles (including Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
+- `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
+- `[Media]`: Multi-volume cabinet disk spanning (MaxCabinetSizeMB -> CAB1.cab..CABN.cab), external vs. embedded cabinets, and uncompressed loose source media (Compression = none | cab).
+- `[SFX]`: Lightweight LZMS self-extracting archive (.exe) post-extraction launch (PostExtractRun), document open (PostExtractOpen), temp staging, and folder options (PackageKind = sfx).
+- `[UI]`: Branding, RTF license, icon, 11 selectable C++ WizardLayout styles (including 'simple' ultra-compact single-dialog mode, Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
 - `[Signing]`: Optional dual-layer Authenticode / Microsoft Azure Artifact Signing (Product.msi first, then outer Setup.exe) via signtool.exe.
 - `[SetupType.<id>]`: Custom author-defined setup mode card ([SetupType.<id>]: Typical, Compact, Complete, Developer Workstation, etc.) with '&' mnemonic, description, feature tier, and icon.
 - `[Billboard.<id>]`: Optional rotating feature highlight card ([Billboard.<id>]) displayed during installation on FullScreenBlue, FullScreenTeal, and progress views.
-- `[Prerequisite.<id>]`: Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
+- `[Prerequisite.<id>]`: Runtime prerequisite ([Prerequisite.<id>]: .NET 11, .NET 10 LTS, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
+- `[SuitePackage.<id>]`: Child .msi or native setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
 - `[MergeModule.<id>]`: Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
-- `[Feature.<id>]`: Named MSI Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers (minimal/typical/complete/hidden) displayed in SetupWizard.exe and MSI SelectionTree.
+- `[Feature.<id>]`: Named Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers, optional Run-from-Source (MenuCD/MenuNetwork), and embedded vs. external .rswpak on-demand delivery.
 - `[Component.<id>]`: Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
 - `[Folder.<id>]`: Creates a destination subdirectory ([Folder.<id>]) via MSI CreateFolder + ICE64 RemoveFolder cleanup.
-- `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic or explicit MSI Components.
+- `[Payload.<id>]`: Maps a build-machine file, directory, or .zip archive ([Payload.<id>]) into #payload.cab / RSWPAK1 and deterministic or explicit Components.
 - `[FileAssociation.<id>]`: Registers a file extension, ProgId, document icon, MIME type, and Explorer shell verbs ([FileAssociation.<id>]).
 - `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE38 HKCU KeyPath & ICE64 RemoveFolder.
 - `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto or explicit 64-bit MSI Component.

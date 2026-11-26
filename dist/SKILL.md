@@ -5,7 +5,7 @@ description: Author, lint, audit VPAT 2.5 accessibility, and compile Windows 11 
 
 # RaggieSoft Installer Studio (`.rsip` / `.rsis`) Authoring Skill
 
-Always read [`llms-full.txt`](llms-full.txt) in this folder for the authoritative `v0.5` `.rsip` project and `.rsis` suite grammar, AI Pre-Flight Checklist, and copy-paste blueprints emitted directly by `instbuild.exe`.
+Always read [`llms-full.txt`](llms-full.txt) in this folder for the authoritative `v0.6` `.rsip` project and `.rsis` suite grammar, AI Pre-Flight Checklist, and copy-paste blueprints emitted directly by `instbuild.exe`.
 
 ## Mandatory 4-Step Agent Workflow
 

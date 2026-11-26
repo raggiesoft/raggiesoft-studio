@@ -1,26 +1,27 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.5.1)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.6.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.5.1) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.6.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.5.1)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.6.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
 6. **Microsoft Component Rules (`RSW031` & `RSW032`)**: Every `[Payload.*]` assigned to an explicit `[Component.<Id>]` must share one destination directory (`RSW031`), and components targeting per-user folders (`AppDataFolder`, `LocalAppDataFolder`, `StartMenu`, `Desktop`) must use `KeyPathKind = registry` (`HKCU`, `RSW032`).
-7. **Pre-MSI `[Prerequisite.<Id>]` Execution**: Runtimes (`DotNet10Desktop`, `DotNet10AspNet`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`, or `Custom`) execute BEFORE `msiexec` under a single UAC prompt (`download`, `embedded` LZMS, or `side-by-side` `Redist\`) and latch `RebootExitCodes` (`3010, 1641, 23`).
+7. **Pre-MSI `[Prerequisite.<Id>]` Execution**: Runtimes (`DotNet11Desktop`, `DotNet11AspNet`, `DotNet11Runtime`, `DotNet10Desktop`, `DotNet10AspNet`, `DotNet10Runtime`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`, or `Custom`) execute BEFORE `msiexec` under a single UAC prompt (`download`, `embedded` LZMS, or `side-by-side` `Redist\`) and latch `RebootExitCodes` (`3010, 1641, 23`).
 8. **64-Bit Silicon & `PID_TEMPLATE` Rules (`x64;1033` vs `Arm64;1033` — Zero `IA-64` / `x86` Host Builds)**: Host toolchain & outer Universal `Setup.exe` stubs are strictly 64-bit (`IMAGE_FILE_MACHINE_AMD64` `0x8664` outer stub using `IsWow64Process2` to pierce Windows 11 Prism and dispatch native `ARM64` `0xAA64` vs `x64` `0x8664`). MSI `SummaryInformation` `PID_TEMPLATE` MUST strictly use `x64;1033` (AMD64/Intel 64-bit) or `Arm64;1033` (64-bit ARM)—NEVER `Intel64;1033` (deceased IA-64 Itanium!).
-9. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
+9. **Multi-Engine Packaging (`v0.6` `PackageKind = msi|msm|sfx|suite` & `Engine = msi|native`)**: Build enterprise `.msi` databases (including `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), zero-MSI `Engine = native` direct transactional setups (`WizardLayout = simple`), or Unified Suite setups (`PackageKind = suite` with dynamic `ARPSYSTEMCOMPONENT` adoption).
+10. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.5`)
+## 2. Complete `.rsip` Project Schema (`v0.6`)
 
 ### `[Package]` (*Required*)
-Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and universal output settings.
+Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| `SchemaVersion` | `string` | No | `0.5` | Manifest grammar version (`0.5`). |
+| `SchemaVersion` | `string` | No | `0.6` | Manifest grammar version (`0.6`). |
 | `Name` | `string` | **Yes** | — | Consumer-facing ProductName written to MSI Property table and VERSIONINFO. |
 | `Version` | `msi_version (Major.Minor.Build)` | **Yes** | — | Three-part Windows Installer version (`Major.Minor.Build`, max `255.255.65535`). |
 | `Manufacturer` | `string` | **Yes** | — | Publisher name written to MSI `Manufacturer` property and VERSIONINFO `CompanyName`. |
@@ -36,11 +37,12 @@ Core product identity, MSI Summary Information, target CPU architecture (x64/arm
 | `CabinetCompression` | `enum` | No | `lzx` | Allowed: `lzx|mszip`. Compression algorithm for embedded `#payload.cab` (`lzx` = high-ratio LZX:21, `mszip` = fast DEFLATE). |
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
-| `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm`. `msi` builds a standalone Enterprise `.msi` (+ optional `-setup.exe`); `msm` builds a reusable Merge Module (`.msm`). |
-| `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls when Windows UAC prompts on outer `Setup.exe` (`RT_MANIFEST` `#1`): `asInvoker` (default — wizard starts un-elevated and prompts for UAC only when clicking Install, keeping Finish app launches & Browse dialogs un-elevated), `highestAvailable` (elevates upfront for Admin accounts while allowing Standard Users to open Setup), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch with Explorer shell-token de-elevation on Finish launch). |
+| `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe` (zero Installed Apps clutter), and `suite` builds a single-UAC Unified Suite Chainer (`ARPSYSTEMCOMPONENT` adoption). |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `native` uses RaggieSoft's zero-`msi.dll` transactional LZMS extraction engine with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
+| `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls Windows UAC level stamped onto PE `RT_MANIFEST` `#1` across `msi`, `native`, `sfx`, and `suite` EXEs: `asInvoker` (default — un-elevated launch; prompts UAC only if per-machine install begins), `highestAvailable` (elevates upfront for Admins while letting Standard Users run), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
 | `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)`. |
-| `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe` and `<OutputName>-arm64-setup.exe` for the smart CPU-aware web stub. |
+| `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe`, `<OutputName>-arm64-setup.exe`, and `.rswpak` feature packs. |
 | `Tagline` | `string` | No | — | Short subtitle displayed beneath the product title in `SetupWizard.exe` and `InstallerStudio.exe`. |
 | `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
 
@@ -55,7 +57,7 @@ Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade p
 | `SilentRebootExitCode` | `integer` | No | `3010` | Process exit code returned in silent mode (`/s` / `/qn`) when a runtime prerequisite or MSI requests a Windows restart (`3010` standard MSI). |
 
 ### `[Install]` (*Required*)
-Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
+Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -63,8 +65,33 @@ Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and
 | `StartMenuFolder` | `relpath` | No | — | Program Menu subfolder name created when `[Shortcut.*]` targets `StartMenu` (defaults to `[Package] Manufacturer`). |
 | `MainExecutable` | `relpath` | No | — | Optional primary `.exe` relative to `INSTALLDIR` (used for `ARPPRODUCTICON` default & Finish launch). |
 
+### `[Media]` (*Optional*)
+Multi-volume cabinet disk spanning (MaxCabinetSizeMB -> CAB1.cab..CABN.cab), external vs. embedded cabinets, and uncompressed loose source media (Compression = none | cab).
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Compression` | `enum` | No | `cab` | Allowed: `cab|none`. `cab` compresses payloads into `#payload.cab` or external `CAB1.cab..CABN.cab`; `none` emits uncompressed loose source files (`PID_WORDCOUNT` bit `1` cleared + `msidbFileAttributesNoncompressed` `0x2000`) for Run-from-Media / Network shares. |
+| `EmbedCabinet` | `bool (true|false)` | No | `true` | When `true` and `MaxCabinetSizeMB = 0` (`MaxCabinetSizeKB = 0`), embeds `#payload.cab` inside `Product.msi`; when `false` or spanning is active, emits external `CAB1.cab..CABN.cab` next to `Product.msi`. |
+| `MaxCabinetSizeMB` | `integer` | No | `0` | Maximum size in megabytes (`1..2047`) per external cabinet (`CAB1.cab..CABN.cab`) before spanning to the next `DiskId` in the `Media` SQL table (`0` = undivided single cabinet). |
+| `MaxCabinetSizeKB` | `integer` | No | `0` | Optional fine-grained maximum cabinet size in kilobytes (`>= 32`) before spanning to `CAB2.cab..CABN.cab` (overrides `MaxCabinetSizeMB` when `> 0`). |
+| `VolumeLabel` | `string` | No | `DISK` | Volume label prefix written to `Media.VolumeLabel` (`DISK1`, `DISK2`, ...). |
+| `DiskPrompt` | `string` | No | `Please insert [ProductName] Disk [1]` | Change-media prompt written to `Media.DiskPrompt` and `Property.DiskPrompt` (`Error 1302`). |
+
+### `[SFX]` (*Optional*)
+Lightweight LZMS self-extracting archive (.exe) post-extraction launch (PostExtractRun), document open (PostExtractOpen), temp staging, and folder options (PackageKind = sfx).
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `DefaultExtractSubdir` | `relpath` | No | — | Optional default subfolder name created next to the self-extracting `.exe` when `ExtractToTemp = false`. |
+| `PostExtractRun` | `relpath` | No | — | Optional bundled `.exe` or `.cmd` (relative to the extraction folder) launched automatically after extraction completes. |
+| `PostExtractArgs` | `string` | No | — | Optional command-line arguments passed when launching `PostExtractRun`. |
+| `PostExtractOpen` | `relpath` | No | — | Optional bundled document (`.pdf`, `.html`, `.txt`, `.rtf`, etc. relative to extraction folder) opened via `ShellExecuteExW` when a compatible viewer is installed. |
+| `ExtractToTemp` | `bool (true|false)` | No | `false` | When `true`, defaults extraction to an isolated `%TEMP%\<Slug>-<PID>` temporary directory instead of prompting for a permanent folder. |
+| `AllowChangeFolder` | `bool (true|false)` | No | `true` | When `true` (default), allows the user to edit or browse the destination folder before clicking `&Extract`. |
+| `SilentOverwrite` | `bool (true|false)` | No | `true` | When `true`, overwrites existing files in the destination folder without extra prompts. |
+
 ### `[UI]` (*Optional*)
-Branding, RTF license, icon, 10 selectable C++ WizardLayout styles (including Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
+Branding, RTF license, icon, 11 selectable C++ WizardLayout styles (including 'simple' ultra-compact single-dialog mode, Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -75,7 +102,7 @@ Branding, RTF license, icon, 10 selectable C++ WizardLayout styles (including Wi
 | `InstallButtonText` | `accel_string (must include '&')` | No | `&Install` | Accessible primary install button caption; MUST include a `&` keyboard mnemonic. |
 | `FinishLaunchCheckbox` | `accel_string (must include '&')` | No | `&Launch application when setup finishes` | Accessible finish-screen launch checkbox caption; MUST include a `&` keyboard mnemonic. |
 | `OfferLaunchOnFinish` | `bool (true|false)` | No | `true` | Shows the optional launch checkbox on the completion screen when `MainExecutable` is set. |
-| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|wizard95|wizard97|aerowizard|fluentmica|oneclick|passivetoast|fullscreenblue|fullscreenteal|autorun16x9`. Selects the customer-facing `SetupWizard.exe` style: `standard` (RaggieSoft Glass), `wizard95` (1995 `#C0C0C0` 3D beveled + left sidebar), `wizard97` (classic top-banner), `aerowizard` (command bar + circular `<-` Back), `fluentmica` (Windows 11 Mica + left step rail), `oneclick` (compact 1-click splash), `passivetoast` (`/passive` progress), `fullscreenblue` (1995 `#000080` Cobalt wash + 3D dialog), `fullscreenteal` (1995 `#008080` Microsoft ACME Teal wash + 3D dialog), or `autorun16x9` (640x480 16:9 launcher). |
+| `WizardLayout` | `enum` | No | `standard` | Allowed: `standard|wizard95|wizard97|aerowizard|fluentmica|oneclick|passivetoast|fullscreenblue|fullscreenteal|autorun16x9|simple`. Selects the customer-facing `SetupWizard.exe` style: `simple` (ultra-compact single-dialog `Destination folder` + `[...]` + progress + `&Install`/`&Extract`), `standard` (RaggieSoft Glass), `wizard95` (1995 `#C0C0C0` 3D beveled + left sidebar), `wizard97` (classic top-banner), `aerowizard` (command bar + circular `<-` Back), `fluentmica` (Windows 11 Mica + left step rail), `oneclick` (compact 1-click splash), `passivetoast` (`/passive` progress), `fullscreenblue` (1995 `#000080` Cobalt wash + 3D dialog), `fullscreenteal` (1995 `#008080` Microsoft ACME Teal wash + 3D dialog), or `autorun16x9` (640x480 16:9 launcher). |
 | `SetupTypePreset` | `enum` | No | `express_custom` | Allowed: `express_custom|win95_classic`. `express_custom` displays Express / Compact / Custom cards; `win95_classic` displays classic 4-option Typical / Compact / Complete / Custom cards (overridden if custom `[SetupType.<id>]` sections are defined). |
 | `MsiDialogPreset` | `enum` | No | `express_custom` | Allowed: `express_custom|minimal`. `express_custom` builds the full Express / Compact / Custom + SelectionTree + BrowseDlg + Shortcuts + Repair Mode workflow inside MSI.DLL's Dialog table; `minimal` builds a compact 3-screen MSI UI. |
 | `MsiProgressStyle` | `enum` | No | `standard` | Allowed: `standard|flat`. `standard` (default) sets `msidbControlAttributesProgress95` (`0x10000`) on `ProgressDlg.ProgressBar` so Windows renders a native themed Common Controls progress bar instead of MSI.DLL's legacy flat 2D box; `flat` opts into legacy owner-draw. |
@@ -123,11 +150,11 @@ Optional rotating feature highlight card ([Billboard.<id>]) displayed during ins
 | `Glyph` | `enum` | No | `Sparkle` | Allowed: `Sparkle|ShieldCheck|Bolt|Cube|Sliders|Blocks|Folder|PinGrid|Play|Gear`. Vector icon badge rendered on this billboard slide. |
 
 ### `[Prerequisite.<id>]` (*Optional*)
-Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
+Runtime prerequisite ([Prerequisite.<id>]: .NET 11, .NET 10 LTS, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| `Preset` | `enum` | No | `Custom` | Allowed: `Custom|DotNet10Desktop|DotNet10AspNet|DotNet9Desktop|DotNet8Desktop|EdgeWebView2|VcRedist2022`. One-click curated preset (`DotNet10Desktop`, `DotNet10AspNet`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`) or `Custom`. |
+| `Preset` | `enum` | No | `Custom` | Allowed: `Custom|DotNet11Desktop|DotNet11AspNet|DotNet11Runtime|DotNet10Desktop|DotNet10AspNet|DotNet10Runtime|DotNet9Desktop|DotNet8Desktop|EdgeWebView2|VcRedist2022`. One-click curated preset (`DotNet10Desktop`, `DotNet10AspNet`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`) or `Custom`. |
 | `Name` | `string` | No | — | Consumer-friendly runtime display name (auto-filled when `Preset` != `Custom`). |
 | `Distribution` | `enum` | No | `download` | Allowed: `download|embedded|side-by-side`. `download` streams over WinHTTP HTTPS on demand; `embedded` packs `SourceFile` inside `Setup.exe` for offline installs; `side-by-side` reads `Redist\<FileName>` next to `Setup.exe` (with URL fallback). |
 | `SourceFile` | `path (supports $(ARCH))` | No | — | Local runtime `.exe` or `.msi` on the build machine (required for `Distribution = embedded`, optional for `side-by-side`, supports `$(ARCH)`). |
@@ -148,6 +175,21 @@ Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ 
 | `RequiresElevation` | `bool (true|false)` | No | `true` | When `true` (default), executes inside the single unified elevated UAC session right before `Product.msi`. |
 | `Optional` | `bool (true|false)` | No | `false` | When `true`, logs a warning and continues installing `Product.msi` even if this prerequisite fails. |
 
+### `[SuitePackage.<id>]` (*Optional*)
+Child .msi or native setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Name` | `string` | **Yes** | — | Consumer-facing child tool title displayed in the Unified Suite Setup & Maintenance Hub. |
+| `Description` | `string` | No | — | Plain-English description of this child package in the Suite checklist. |
+| `Source` | `path (supports $(ARCH))` | **Yes** | — | Path to the compiled child `.msi` or native `-setup.exe` binary on the build machine (supports `$(ARCH)`). |
+| `UpgradeCode` | `guid ({XXXXXXXX-...})` | No | — | Permanent `{UpgradeCode}` of this child package used to detect & dynamically adopt already-installed standalone siblings (`RS_SUITE_MANAGED=1`). |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|native|exe`. Child installer engine (`msi` passes `RS_SUITE_MANAGED=1` via `MsiInstallProductW`; `native` / `exe` passes `/s RS_SUITE_MANAGED=1`). |
+| `InstallArgs` | `string` | No | — | Optional extra properties or CLI switches passed to this child package during Suite install. |
+| `Required` | `bool (true|false)` | No | `false` | When `true`, locks this core Suite package as required in the Suite Setup checklist. |
+| `SelectedByDefault` | `bool (true|false)` | No | `true` | Whether this child package is pre-checked by default on fresh Suite installations. |
+| `AdoptStandalone` | `bool (true|false)` | No | `true` | When `true` (default), dynamically adopts any already-installed standalone sibling (`REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1`) under the single Suite Installed Apps entry. |
+
 ### `[MergeModule.<id>]` (*Optional*)
 Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
 
@@ -158,7 +200,7 @@ Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its
 | `TargetRoot` | `enum` | No | `INSTALLDIR` | Allowed: `INSTALLDIR|CommonFiles64Folder|CommonAppDataFolder|AppDataFolder|LocalAppDataFolder|ProgramMenuFolder|ApplicationProgramsFolder|DesktopFolder|System64Folder|FontsFolder`. Destination root folder to which the Merge Module's `TARGETDIR` / `MergeRedirectFolder` maps. |
 
 ### `[Feature.<id>]` (*Optional*)
-Named MSI Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers (minimal/typical/complete/hidden) displayed in SetupWizard.exe and MSI SelectionTree.
+Named Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers, optional Run-from-Source (MenuCD/MenuNetwork), and embedded vs. external .rswpak on-demand delivery.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -169,6 +211,9 @@ Named MSI Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion t
 | `Parent` | `string` | No | — | Optional parent Feature ID (`Feature_Parent`) creating a hierarchical sub-feature in `SelectionTree`. |
 | `DisallowAbsent` | `bool (true|false)` | No | `false` | Sets `msidbFeatureAttributesUIDisallowAbsent` (`16`) locking a required core feature so users cannot disable it in `SelectionTree`. |
 | `AllowAdvertise` | `bool (true|false)` | No | `false` | When `false` (default), sets `msidbFeatureAttributesDisallowAdvertise` (`8`) hiding MSI on-demand advertisement; set `true` to enable 'Feature will be installed when required'. |
+| `AllowRunFromSource` | `bool (true|false)` | No | `false` | When `true`, sets `msidbComponentAttributesOptional` (`2`) on owned components and enables `MenuCD` ('Will be installed to run from CD') & `MenuNetwork` ('Will be installed to run from network') in `SelectionTree`. |
+| `Delivery` | `enum` | No | `embedded` | Allowed: `embedded|ondemand`. `embedded` packs feature files inside the main installer; `ondemand` splits this feature into an external LZMS-compressed `<OutputName>-<FeatureId>.rswpak` block fetched via WinHTTP with SHA-256 + Authenticode verification when selected. |
+| `PackUrl` | `string` | No | — | Optional HTTPS download URL for `<OutputName>-<FeatureId>.rswpak` when `Delivery = ondemand` (defaults to `UniversalDownloadBaseUrl` or side-by-side local `.rswpak`). |
 
 ### `[Component.<id>]` (*Optional*)
 Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
@@ -198,7 +243,7 @@ Creates a destination subdirectory ([Folder.<id>]) via MSI CreateFolder + ICE64 
 | `RemoveOnUninstall` | `bool (true|false)` | No | `true` | Emits a `RemoveFile` (`InstallMode = 2`) row so empty folders are removed cleanly on uninstall (ICE64). |
 
 ### `[Payload.<id>]` (*Required*)
-Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic or explicit MSI Components.
+Maps a build-machine file, directory, or .zip archive ([Payload.<id>]) into #payload.cab / RSWPAK1 and deterministic or explicit Components.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |

@@ -110,7 +110,7 @@
 4. **Compiler, Taskbar & Retro `Wizard95` / `FullScreenBlue` Hardening**:
    - Pure lexical payload subdirectory slicer + `.`/`..` segment sanitizer and post-build `ICE03` / `Error 1324` `Directory` verifier check, centered UAC anchoring on `FullScreenBlue`/`FullScreenTeal`, multiline `DT_WORDBREAK` text bounds across narrow `430px` `Wizard95` sheets, `WS_EX_APPWINDOW` taskbar icon preservation, and live Windows 7+ `ITaskbarList3` taskbar progress bar states.
 
-### `v0.6.0` — Self-Extracting `.EXE` Builder (`PackageKind = sfx`), Disk Spanning & Loose Source Media (`msiexec /a`), `.rswpak` Packs, `.NET 11` & Multi-Engine Suite Setup
+### `v0.6.0` — Self-Extracting `.EXE` Builder (`PackageKind = sfx`), Disk Spanning & Loose Source Media (`msiexec /a`), `.rswpak` Packs, `.NET 11` & Multi-Engine Suite Setup *(Built & Privately Staged)*
 1. **Lightweight Self-Extracting Archive `.EXE` Builder (`PackageKind = sfx` + Folder/ZIP-to-SFX AeroWizard)**:
    - When a publisher or creator doesn't need Windows Installed Apps registration and simply wants a clean, accessible, zero-dependency **Self-Extracting `.EXE`** (compressed with Windows `LZMS`, Dark/Light/High-Contrast UI, zero UAC required), turn any folder or `.zip` archive into a portable `.exe` that extracts to a user-chosen directory (or temporary staging folder) and **optionally launches a bundled `.exe` (`PostExtractRun`) or opens a bundled document (`PostExtractOpen`, such as a `.pdf`, `.html`, `.txt`, or `.rtf` guide via `ShellExecuteExW` when the user has a compatible viewer installed)**.
 2. **Multi-Volume Disk Spanning, Uncompressed Loose Source Media (`Run from CD-ROM` / `Run from Network`), & Administrative Installs (`msiexec.exe /a`)**:
