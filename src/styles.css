@@ -255,12 +255,73 @@ body {
   display: none;
 }
 
-/* Suite Pipeline Cards & Era-Comparison Panels */
+/* Suite Pipeline Cards (4-Across on Desktop, 2x2 on Tablet, 1-Col on Mobile) */
 .pipeline-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.25rem 0 2rem;
+}
+
+@media (max-width: 1080px) {
+  .pipeline-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pipeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Explicit Symmetrical 2x2 Grid for 4-Item Sections (Avoids 3+1 Auto-Fit Orphans!) */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem;
+  margin: 1.25rem 0 2rem;
+}
+
+@media (max-width: 767.98px) {
+  .grid-2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Featured Full-Width Flagship Suite Slipcase Card Above the 2x2 Product Box Shelf */
+.suite-box-featured {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 0.95rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.95fr) minmax(0, 1.25fr);
+  margin: 1.25rem 0 1.4rem;
+}
+
+.suite-box-featured .shot-preview-btn {
+  border-bottom: 0;
+  border-right: 1px solid var(--border);
+  height: 100%;
+}
+
+.suite-box-featured-body {
+  padding: clamp(1.25rem, 2.8vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+@media (max-width: 860px) {
+  .suite-box-featured {
+    grid-template-columns: 1fr;
+  }
+  .suite-box-featured .shot-preview-btn {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 .pipeline-step {
@@ -703,7 +764,9 @@ code {
   flex: 1;
 }
 
-.shot-card figcaption strong {
+/* Direct-child `>` ensures ONLY the card headline is `display: block`, keeping inline
+ * `<strong>` emphasis inside `figcaption > span` descriptions flowing naturally inline! */
+.shot-card figcaption > strong {
   display: block;
   font-size: 1.05rem;
   color: var(--text);

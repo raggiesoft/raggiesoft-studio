@@ -94,18 +94,19 @@ const FICTITIOUS_DISCLAIMER =
 // SECTION 1: CURATED SCREENSHOT, MOCKUP & 3D RETAIL BOX GALLERIES (`<dialog>`)
 // ============================================================================
 
-const STUDIO_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
-  {
-    dialogId: 'dlg-box-suite-complete',
-    imgUrl: `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`,
-    badge: 'Collector’s Slipcase • Complete 4-Product Suite',
-    title: 'RaggieSoft Studio — Enterprise Suite Front Box',
-    alt: '3D 1990s-style Collector’s Edition retail box for RaggieSoft Studio Suite featuring four jewel-toned crystalline obelisks and a brass armillary sphere over a perspective grid, embossed 4-Tools gold foil seal, and four-color spine wrap.',
-    summaryHtml:
-      'Authentic 1990s big-box collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.',
-    detailHtml:
-      'Styled after classic 1995–1998 developer suite boxes: four jewel-toned crystalline obelisks (Royal Cobalt, Emerald, Electric Cyan, and Retro Teal) converge around a brass armillary sphere and golden keystone cube, paired with Georgia editorial typography, a 4-color spine wrap, and an embossed gold-foil seal.'
-  },
+const SUITE_SLIPCASE_BOX_ITEM: ScreenshotFeatureItem = {
+  dialogId: 'dlg-box-suite-complete',
+  imgUrl: `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`,
+  badge: 'Collector’s Slipcase • Complete 4-Product Suite',
+  title: 'RaggieSoft Studio — Enterprise Suite Front Box',
+  alt: '3D 1990s-style Collector’s Edition retail box for RaggieSoft Studio Suite featuring four jewel-toned crystalline obelisks and a brass armillary sphere over a perspective grid, embossed 4-Tools gold foil seal, and four-color spine wrap.',
+  summaryHtml:
+    'Authentic 1990s big-box collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong> under one four-color spine wrap.',
+  detailHtml:
+    'Styled after classic 1995–1998 developer suite boxes: four jewel-toned crystalline obelisks (Royal Cobalt, Emerald, Electric Cyan, and Retro Teal) converge around a brass armillary sphere and golden keystone cube, paired with Georgia editorial typography, a 4-color spine wrap, and an embossed gold-foil seal.'
+};
+
+const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-installer',
     imgUrl: `${STUDIO_BOXES_BASE}/box-installer-studio.png`,
@@ -486,17 +487,64 @@ function renderSuiteHomeBody(): string {
     </section>
 
     <section aria-labelledby="box-shelf-heading">
-      <span class="eyebrow">Collector’s Retail Box Showcase • Click Any Box for Full 1200&times;960 3D Close-Up</span>
+      <span class="eyebrow">Collector’s Retail Box Showcase • 1 Umbrella Slipcase + 4 Individual Product Boxes</span>
       <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">The Complete Boxed RaggieSoft Studio Shelf</h2>
-      <div class="shot-grid">
-        ${STUDIO_BOX_GALLERY_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
+
+      <!-- Featured Full-Width Umbrella Suite Slipcase Card -->
+      <figure class="suite-box-featured">
+        <button
+          type="button"
+          class="shot-preview-btn"
+          data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}"
+          aria-haspopup="dialog"
+          aria-label="Open full-size view: ${SUITE_SLIPCASE_BOX_ITEM.title}"
+        >
+          <img src="${SUITE_SLIPCASE_BOX_ITEM.imgUrl}" alt="${SUITE_SLIPCASE_BOX_ITEM.alt}" loading="lazy" />
+          <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+        </button>
+        <figcaption class="suite-box-featured-body">
+          <span class="eyebrow" style="margin-bottom: 0;">${SUITE_SLIPCASE_BOX_ITEM.badge}</span>
+          <h3 style="font-size: 1.35rem; margin: 0;">${SUITE_SLIPCASE_BOX_ITEM.title}</h3>
+          <p style="margin: 0;">${SUITE_SLIPCASE_BOX_ITEM.summaryHtml}</p>
+          <p style="margin: 0; color: var(--text-muted); font-size: 0.94rem;">${SUITE_SLIPCASE_BOX_ITEM.detailHtml}</p>
+          <div class="btn-row" style="margin-top: 0.4rem;">
+            <button type="button" class="btn btn-primary" data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}">
+              Inspect Full 1200&times;960 Suite Box
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+
+      <dialog id="${SUITE_SLIPCASE_BOX_ITEM.dialogId}" class="shot-lightbox" aria-labelledby="${SUITE_SLIPCASE_BOX_ITEM.dialogId}-title">
+        <div class="shot-lightbox-panel">
+          <div class="shot-lightbox-header">
+            <div>
+              <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">${SUITE_SLIPCASE_BOX_ITEM.badge}</span>
+              <h3 id="${SUITE_SLIPCASE_BOX_ITEM.dialogId}-title" class="shot-lightbox-title">${SUITE_SLIPCASE_BOX_ITEM.title}</h3>
+            </div>
+            <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+              Close (Esc)
+            </button>
+          </div>
+          <div class="shot-lightbox-stage">
+            <img src="${SUITE_SLIPCASE_BOX_ITEM.imgUrl}" alt="${SUITE_SLIPCASE_BOX_ITEM.alt}" loading="lazy" />
+          </div>
+          <div class="shot-lightbox-caption">
+            ${SUITE_SLIPCASE_BOX_ITEM.detailHtml}
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Balanced 2x2 Grid of the 4 Individual Studio Product Boxes -->
+      <div class="grid-2x2">
+        ${PRODUCT_BOX_GALLERY_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
       </div>
     </section>
 
     <section aria-labelledby="suite-lineup-heading">
       <span class="eyebrow">Four Dedicated Developer Workstations • Two Shipping Now + Two in Design Preview</span>
       <h2 id="suite-lineup-heading" style="margin-top: 0.25rem;">Meet the RaggieSoft Studio Product Family</h2>
-      <div class="card-grid">
+      <div class="grid-2x2">
         <article class="card card-highlight">
           <div>
             <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">1 • Shipping Now (v0.5.0 Signed Preview)</span>
@@ -729,7 +777,7 @@ function renderLauncherStudioBody(): string {
     <section aria-labelledby="launcher-pillars-heading">
       <span class="eyebrow">Zero Gatekeepers • Zero Forced Logins • Zero Database Servers</span>
       <h2 id="launcher-pillars-heading" style="margin-top: 0.25rem;">Core Architectural Pillars of Launcher Studio</h2>
-      <div class="card-grid">
+      <div class="grid-2x2">
         <article class="card card-highlight">
           <div>
             <h3>1. Static-CDN Catalog Publishing (<code>catalog.json</code>)</h3>
@@ -1755,7 +1803,7 @@ function renderFaqBody(): string {
     <section aria-labelledby="faq-downloads-heading">
       <span class="eyebrow">Part 1 • Downloads, Authenticode Signing &amp; Supported Processors</span>
       <h2 id="faq-downloads-heading" style="margin-top: 0.25rem;">Code Signing, CPU Detection &amp; Architecture Choices</h2>
-      <div class="card-grid">
+      <div class="grid-2x2">
         <article id="smartscreen" class="card card-highlight">
           <div>
             <h3>1. Why does Windows SmartScreen still warn on <code>v0.5.0</code> even though the downloads are cryptographically signed?</h3>
@@ -2072,7 +2120,7 @@ function renderSecurityBody(): string {
 
     <section aria-labelledby="sec-pillars">
       <h2 id="sec-pillars">Four Pillars of Clean Engineering</h2>
-      <div class="card-grid">
+      <div class="grid-2x2">
         <article class="card">
           <div>
             <h3>1. Static <code>/MT</code> Compilation &amp; Minimal SBOM</h3>
