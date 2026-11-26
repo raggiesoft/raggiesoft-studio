@@ -232,21 +232,31 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
 
 /**
  * Renders the verified Microsoft Azure Artifact Signing (Public Trust Authenticode + RFC 3161
- * Timestamp) assurance callout beneath download buttons across `/`, `/screenshots`, and `/security`.
+ * Timestamp) assurance callout AND temporary SmartScreen new-certificate reputation notice
+ * beneath download buttons across `/`, `/screenshots`, and `/security`.
  */
 function renderAzureSigningAssuranceNotice(): string {
   return `
-    <aside class="calc-panel" aria-label="Microsoft Azure Artifact Signing Authenticode Verification" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
-      <span class="eyebrow" style="margin-bottom: 0.25rem;">Verified Code Signing • Microsoft Azure Artifact Signing (Public Trust + RFC 3161 Timestamp)</span>
-      <p style="margin: 0; font-size: 0.95rem;">
-        <strong>100% Cryptographically Signed (<code>v0.4.5+</code>):</strong>
+    <aside class="calc-panel" aria-label="Signed Binary and Temporary Windows SmartScreen Reputation Notice" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
+      <span class="eyebrow" style="margin-bottom: 0.25rem;">Signed Binary Notice • Why Windows SmartScreen Still Prompts Temporarily</span>
+      <p style="margin: 0 0 0.55rem 0; font-size: 0.95rem;">
+        <strong>100% Cryptographically Signed (<code>v0.5.0</code>):</strong>
         Every official download—including the outer Universal Web &amp; Offline <code>Setup.exe</code> launchers, inner
-        <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all 5 installed C++20 executables
+        <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all 5 C++20 executables
         (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>,
-        and <code>RaggieSoftHelp.exe</code>)—is Dual-Layer Authenticode-signed by verified publisher
-        <strong>Michael Ragsdale</strong> via <strong>Microsoft Azure Artifact Signing</strong> and verified with
-        <code>signtool verify /pa</code>.
-        <a href="/faq#smartscreen">Details in the FAQ &rarr;</a>
+        and <code>RaggieSoftHelp.exe</code>)—is Dual-Layer Authenticode-signed via
+        <strong>Microsoft Azure Artifact Signing</strong> (<code>Verified publisher: Michael Ragsdale</code>, RFC 3161 timestamped,
+        and verified with <code>signtool verify /pa</code>).
+      </p>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--muted);">
+        <strong>Why SmartScreen may still say &ldquo;Windows protected your PC&rdquo; right now:</strong>
+        Our Microsoft Public Trust signing certificate is brand-new (issued <strong>November 25, 2026</strong>). Under
+        Microsoft&rsquo;s current SmartScreen rules, newly issued certificates start at zero download reputation until initial
+        install telemetry and <strong>Microsoft Security Intelligence (WDSI)</strong> review finish (already submitted).
+        To install safely while reputation clears: click <strong>More info</strong>, confirm Windows shows
+        <strong><code>Publisher: Michael Ragsdale</code></strong> (never <em>&ldquo;Unknown publisher&rdquo;</em>), and click
+        <strong>Run anyway</strong>.
+        <a href="/faq#smartscreen">Full details in the FAQ &rarr;</a>
       </p>
     </aside>
   `;
@@ -1320,18 +1330,25 @@ function renderFaqBody(): string {
       <div class="card-grid">
         <article id="smartscreen" class="card card-highlight">
           <div>
-            <h3>1. Are RaggieSoft Installer Studio downloads cryptographically signed for Windows SmartScreen &amp; UAC?</h3>
+            <h3>1. Why does Windows SmartScreen still warn on <code>v0.5.0</code> even though the downloads are cryptographically signed?</h3>
             <p>
-              <strong>Yes! Starting in <code>v0.4.5</code>, 100% of our official downloads and inner binaries are cryptographically
-              Authenticode-signed via Microsoft Azure Artifact Signing</strong> under verified Public Trust identity
-              (<strong>Michael Ragsdale</strong>) with RFC 3161 SHA-256 timestamps (<code>http://timestamp.acs.microsoft.com</code>).
+              <strong>Every <code>v0.5.0</code> installer and inner executable is 100% Authenticode-signed via Microsoft Azure
+              Artifact Signing</strong> under verified Public Trust identity (<strong>Michael Ragsdale</strong>, chaining to
+              <em>Microsoft Identity Verification Root Certificate Authority 2020</em> with RFC 3161 SHA-256 timestamps from
+              <code>http://timestamp.acs.microsoft.com</code> and verified via <code>signtool verify /pa</code>).
             </p>
             <p>
-              Our build pipeline signs every inner suite executable first (<code>InstallerStudio.exe</code>,
-              <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>, and
-              <code>RaggieSoftHelp.exe</code>), then Dual-Layer signs both the inner <code>.msi</code> database and outer
-              Universal <code>Setup.exe</code> launchers—verified against <code>WinVerifyTrust</code> (<code>signtool verify /pa</code>)
-              before upload.
+              <strong>Why SmartScreen still prompts temporarily:</strong> Since mid-2024, Microsoft retired automatic Day-1
+              SmartScreen bypasses for all newly issued certificates (including EV and cloud HSM keys). Because our Azure
+              Artifact Signing identity went live on <strong>November 25, 2026</strong>, Windows Defender SmartScreen displays
+              <em>&ldquo;Windows protected your PC&rdquo;</em> until initial download reputation builds and
+              <strong>Microsoft Security Intelligence (WDSI)</strong> completes its review of our submitted <code>v0.5.0</code>
+              binaries (which are hash-frozen on the CDN during review).
+            </p>
+            <p>
+              <strong>How to verify authenticity before running:</strong> Click <strong>More info</strong> on the SmartScreen
+              dialog and confirm Windows displays <strong><code>Publisher: Michael Ragsdale</code></strong> (proving the signed
+              binary has not been altered by a single byte) before clicking <strong>Run anyway</strong>.
             </p>
           </div>
         </article>
@@ -1344,8 +1361,8 @@ function renderFaqBody(): string {
               Windows on ARM <code>ARM64</code> computers automatically:
             </p>
             <ul class="feature-list">
-              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~790 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native signed installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
-              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.6 MB)</strong>: Packs <em>both</em> signed <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
+              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~862 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native signed installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
+              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.9 MB)</strong>: Packs <em>both</em> signed <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
             </ul>
           </div>
         </article>

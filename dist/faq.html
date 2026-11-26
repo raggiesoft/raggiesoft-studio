@@ -54,7 +54,7 @@
     <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/faq#webpage","url":"https://raggiesoftstudio.com/faq","name":"FAQ — Azure Signing, ARM64/x64 & Setup Types | RaggieSoft","description":"Answers on Microsoft Azure Artifact Signing, why IA-64 and 32-bit x86 host builds are skipped, Setup Types, and Community == Premier parity.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125g" />
-    <script type="module" crossorigin src="/assets/index-BI4vTPg_.js"></script>
+    <script type="module" crossorigin src="/assets/index-CK4eouv6.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BH7fbr4l.css">
   </head>
   <body>
@@ -143,18 +143,25 @@
       <div class="card-grid">
         <article id="smartscreen" class="card card-highlight">
           <div>
-            <h3>1. Are RaggieSoft Installer Studio downloads cryptographically signed for Windows SmartScreen &amp; UAC?</h3>
+            <h3>1. Why does Windows SmartScreen still warn on <code>v0.5.0</code> even though the downloads are cryptographically signed?</h3>
             <p>
-              <strong>Yes! Starting in <code>v0.4.5</code>, 100% of our official downloads and inner binaries are cryptographically
-              Authenticode-signed via Microsoft Azure Artifact Signing</strong> under verified Public Trust identity
-              (<strong>Michael Ragsdale</strong>) with RFC 3161 SHA-256 timestamps (<code>http://timestamp.acs.microsoft.com</code>).
+              <strong>Every <code>v0.5.0</code> installer and inner executable is 100% Authenticode-signed via Microsoft Azure
+              Artifact Signing</strong> under verified Public Trust identity (<strong>Michael Ragsdale</strong>, chaining to
+              <em>Microsoft Identity Verification Root Certificate Authority 2020</em> with RFC 3161 SHA-256 timestamps from
+              <code>http://timestamp.acs.microsoft.com</code> and verified via <code>signtool verify /pa</code>).
             </p>
             <p>
-              Our build pipeline signs every inner suite executable first (<code>InstallerStudio.exe</code>,
-              <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>, and
-              <code>RaggieSoftHelp.exe</code>), then Dual-Layer signs both the inner <code>.msi</code> database and outer
-              Universal <code>Setup.exe</code> launchers—verified against <code>WinVerifyTrust</code> (<code>signtool verify /pa</code>)
-              before upload.
+              <strong>Why SmartScreen still prompts temporarily:</strong> Since mid-2024, Microsoft retired automatic Day-1
+              SmartScreen bypasses for all newly issued certificates (including EV and cloud HSM keys). Because our Azure
+              Artifact Signing identity went live on <strong>November 25, 2026</strong>, Windows Defender SmartScreen displays
+              <em>&ldquo;Windows protected your PC&rdquo;</em> until initial download reputation builds and
+              <strong>Microsoft Security Intelligence (WDSI)</strong> completes its review of our submitted <code>v0.5.0</code>
+              binaries (which are hash-frozen on the CDN during review).
+            </p>
+            <p>
+              <strong>How to verify authenticity before running:</strong> Click <strong>More info</strong> on the SmartScreen
+              dialog and confirm Windows displays <strong><code>Publisher: Michael Ragsdale</code></strong> (proving the signed
+              binary has not been altered by a single byte) before clicking <strong>Run anyway</strong>.
             </p>
           </div>
         </article>
@@ -167,8 +174,8 @@
               Windows on ARM <code>ARM64</code> computers automatically:
             </p>
             <ul class="feature-list">
-              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~790 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native signed installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
-              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.6 MB)</strong>: Packs <em>both</em> signed <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
+              <li><strong>Smart Web Setup (<code>raggiesoft-installer-studio-setup.exe</code>, ~862 KB)</strong>: Queries <code>IsWow64Process2</code> at launch (piercing Windows 11 Prism emulation in under 0.1ms), downloads <em>only</em> your processor's native signed installer over HTTPS, verifies its SHA-256 checksum, and runs it natively.</li>
+              <li><strong>Full Offline Universal Installer (<code>raggiesoft-installer-studio-offline-setup.exe</code>, ~3.9 MB)</strong>: Packs <em>both</em> signed <code>x64</code> and <code>ARM64</code> native installers inside one portable file for offline or air-gapped PCs and USB drives.</li>
             </ul>
           </div>
         </article>

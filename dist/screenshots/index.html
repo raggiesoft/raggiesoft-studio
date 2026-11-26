@@ -54,7 +54,7 @@
     <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Installer Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/screenshots#webpage","url":"https://raggiesoftstudio.com/screenshots","name":"Visual Tour & Screenshots | RaggieSoft Installer Studio","description":"Explore full-size Windows 11 screenshots of RaggieSoft Installer Studio v0.5.0: 10 Wizard Styles, ACME Teal & Cobalt washes, and IDE trees.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125g" />
-    <script type="module" crossorigin src="/assets/index-BI4vTPg_.js"></script>
+    <script type="module" crossorigin src="/assets/index-CK4eouv6.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BH7fbr4l.css">
   </head>
   <body>
@@ -139,17 +139,26 @@
         <a class="btn btn-outline" href="/roadmap">Explore v1.0 Roadmap</a>
       </div>
       
-    <aside class="calc-panel" aria-label="Microsoft Azure Artifact Signing Authenticode Verification" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
-      <span class="eyebrow" style="margin-bottom: 0.25rem;">Verified Code Signing • Microsoft Azure Artifact Signing (Public Trust + RFC 3161 Timestamp)</span>
-      <p style="margin: 0; font-size: 0.95rem;">
-        <strong>100% Cryptographically Signed (<code>v0.4.5+</code>):</strong>
+    <aside class="calc-panel" aria-label="Signed Binary and Temporary Windows SmartScreen Reputation Notice" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
+      <span class="eyebrow" style="margin-bottom: 0.25rem;">Signed Binary Notice • Why Windows SmartScreen Still Prompts Temporarily</span>
+      <p style="margin: 0 0 0.55rem 0; font-size: 0.95rem;">
+        <strong>100% Cryptographically Signed (<code>v0.5.0</code>):</strong>
         Every official download—including the outer Universal Web &amp; Offline <code>Setup.exe</code> launchers, inner
-        <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all 5 installed C++20 executables
+        <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, and all 5 C++20 executables
         (<code>InstallerStudio.exe</code>, <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>msiprism.exe</code>,
-        and <code>RaggieSoftHelp.exe</code>)—is Dual-Layer Authenticode-signed by verified publisher
-        <strong>Michael Ragsdale</strong> via <strong>Microsoft Azure Artifact Signing</strong> and verified with
-        <code>signtool verify /pa</code>.
-        <a href="/faq#smartscreen">Details in the FAQ &rarr;</a>
+        and <code>RaggieSoftHelp.exe</code>)—is Dual-Layer Authenticode-signed via
+        <strong>Microsoft Azure Artifact Signing</strong> (<code>Verified publisher: Michael Ragsdale</code>, RFC 3161 timestamped,
+        and verified with <code>signtool verify /pa</code>).
+      </p>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--muted);">
+        <strong>Why SmartScreen may still say &ldquo;Windows protected your PC&rdquo; right now:</strong>
+        Our Microsoft Public Trust signing certificate is brand-new (issued <strong>November 25, 2026</strong>). Under
+        Microsoft&rsquo;s current SmartScreen rules, newly issued certificates start at zero download reputation until initial
+        install telemetry and <strong>Microsoft Security Intelligence (WDSI)</strong> review finish (already submitted).
+        To install safely while reputation clears: click <strong>More info</strong>, confirm Windows shows
+        <strong><code>Publisher: Michael Ragsdale</code></strong> (never <em>&ldquo;Unknown publisher&rdquo;</em>), and click
+        <strong>Run anyway</strong>.
+        <a href="/faq#smartscreen">Full details in the FAQ &rarr;</a>
       </p>
     </aside>
   
