@@ -1,50 +1,31 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.5.0
+# RaggieSoft Studio — Native Windows 11 Developer, Packaging & Compliance Suite
 
-> First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 10-view Visual IDE, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
+> Canonical Portal: https://raggiesoftstudio.com
+> Open-Source Engineering Hub: https://raggiesoft.dev
+> License: MIT License (Code) / CC BY-SA 4.0 (Documentation)
 
-## Hybrid Project Architecture (`.rsip` + `.rsis` + `.rsii`)
-- **`.rsip` (*RaggieSoft Installer Project*)**: 100% standalone single-file INI-style project manifest (similar to a standalone `.csproj`).
-- **`.rsis` (*RaggieSoft Installer Suite*)**: Optional multi-project workspace (similar to `.slnx`) with `[Suite]`, `[Variable]`, and ordered `[Project.<Id>]` entries.
-- **`.rsii` (*RaggieSoft Installer Include*)**: Optional `@include "shared.rsii"` header inherited losslessly across projects.
+## Suite Product Lineup (4 Cohesive Developer Tools)
 
-## Why Comment-Preserving `.rsip` Excels for AI Coding Agents & Git
-- **Zero Backslash Escaping**: Write Windows paths naturally (`DefaultSubdir = Sample Studio\My App`) with full `;` and `#` inline/block comments.
-- **Minimal Token Footprint**: Clean `[Section]` and `[Prefix.<Id>]` blocks without verbose XML closing tags.
-- **100% Lossless IDE Parity & White-Label Output**: `InstallerStudio.exe` preserves every comment and `@include` byte-for-byte, and Community Edition maintains 100% feature parity with Premier Edition with zero UI watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
+1. **RaggieSoft Installer Studio (`v0.5.0` — Shipping Now)**:
+   - Product Portal: https://raggiesoftstudio.com/installer-studio
+   - Visual Tour (14 Captures): https://raggiesoftstudio.com/installer-studio/screenshots
+   - Engineering Roadmap: https://raggiesoftstudio.com/installer-studio/roadmap
+   - User Manual & Schema: https://raggiesoftstudio.com/installer-studio/docs
+   - Concise AI Spec: https://raggiesoftstudio.com/installer-studio/llms.txt
+   - Complete Grammar Spec: https://raggiesoftstudio.com/installer-studio/llms-full.txt
+   - Agent Skill File: https://raggiesoftstudio.com/installer-studio/SKILL.md
+   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 10 selectable Wizard Styles, WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.
 
-## Core CLI Commands (`instbuild.exe`, `msiprism.exe`, & `RaggieSoftHelp.exe`)
-- `instbuild.exe --validate --diagnostics=json <project.rsip|suite.rsis> [--arch=x64|arm64]`: Sub-millisecond schema, GUID, 3-part MSI version, Component rule (`RSW031`/`RSW032`), filesystem, and `&` mnemonic linter.
-- `instbuild.exe <project.rsip|suite.rsis> [--arch=x64|arm64] [--universal] [--category=<cat>] [--project=<id>] [--with-vpat]`: Compiles standalone Enterprise `<OutputName>.msi` + LZMS-compressed `<OutputName>-setup.exe`—plus combined Universal Single-File outputs (`<UniversalOutputName>-offline-setup.exe` with x64+ARM64 in one EXE, and `<UniversalOutputName>-setup.exe` CPU-aware WinHTTP Web Stub) when `BuildUniversal = true` or `--universal` is passed.
-- `instbuild.exe --emit-vpat <project.rsip> <out-dir>`: Generates an audited WCAG 2.2 AA & Revised Section 508 HTML5 VPAT 2.5 Conformance Report.
-- `instbuild.exe --emit-msm <project.rsip> <out.msm> [--arch=x64|arm64]`: Compiles a 64-bit Windows Installer Merge Module (`.msm`).
-- `instbuild.exe --generate-mst <base.msi> <target.msi> <out.mst>`: Generates a GPO Transform (`.mst`).
-- `instbuild.exe --generate-msp <base.msi> <upgraded.msi> <out.msp>`: Generates a Patch Package (`.msp`).
-- `instbuild.exe --verify-msi <file.msi>`: Runs SQL & ICE80 64-bit consistency checks on a compiled `.msi`.
-- `instbuild.exe --emit-ai-spec <dir>`: Regenerates `llms.txt`, `llms-full.txt`, and `SKILL.md`.
-- `msiprism.exe [--inspect-summary] <file.msi|msm|msp>`: Inspects any Windows Installer database in RaggieSoft MSI Prism.
-- `RaggieSoftHelp.exe [--module raggiesoft.installer-studio] [--topic <id>]`: Opens the offline C++20 Help Viewer.
-- `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
+2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now)**:
+   - Product Portal: https://raggiesoftstudio.com/accessibility-studio
+   - Rule Catalog & CLI Exit Codes: https://raggiesoftstudio.com/accessibility-studio/docs
+   - Enterprise MSI & GPO Matrix: https://raggiesoftstudio.com/accessibility-studio/enterprise
+   - Summary: C# 13 / .NET 10 WinForms + Monaco side-by-side refactoring diff workstation and headless OASIS SARIF 2.1.0 CLI for WCAG 2.2 AA & Revised Section 508 source remediation.
 
-## `.rsip` Manifest Sections (`v0.5`)
-- `[Package]`: Core product identity, MSI Summary Information, target CPU architecture (x64/arm64), and universal output settings.
-- `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
-- `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group.
-- `[UI]`: Branding, RTF license, icon, 10 selectable C++ WizardLayout styles (including Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
-- `[Signing]`: Optional dual-layer Authenticode / Microsoft Azure Artifact Signing (Product.msi first, then outer Setup.exe) via signtool.exe.
-- `[SetupType.<id>]`: Custom author-defined setup mode card ([SetupType.<id>]: Typical, Compact, Complete, Developer Workstation, etc.) with '&' mnemonic, description, feature tier, and icon.
-- `[Billboard.<id>]`: Optional rotating feature highlight card ([Billboard.<id>]) displayed during installation on FullScreenBlue, FullScreenTeal, and progress views.
-- `[Prerequisite.<id>]`: Runtime prerequisite ([Prerequisite.<id>]: .NET Desktop Runtime, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
-- `[MergeModule.<id>]`: Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
-- `[Feature.<id>]`: Named MSI Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers (minimal/typical/complete/hidden) displayed in SetupWizard.exe and MSI SelectionTree.
-- `[Component.<id>]`: Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
-- `[Folder.<id>]`: Creates a destination subdirectory ([Folder.<id>]) via MSI CreateFolder + ICE64 RemoveFolder cleanup.
-- `[Payload.<id>]`: Maps a build-machine file or directory ([Payload.<id>]) into #payload.cab and deterministic or explicit MSI Components.
-- `[FileAssociation.<id>]`: Registers a file extension, ProgId, document icon, MIME type, and Explorer shell verbs ([FileAssociation.<id>]).
-- `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE38 HKCU KeyPath & ICE64 RemoveFolder.
-- `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto or explicit 64-bit MSI Component.
-- `[MsiDialog.<id>]`: Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.
-- `[MsiControl.<id>]`: Adds a native MSI control ([MsiControl.<id>]: Text, Edit, CheckBox, RadioButtonGroup, etc.) to a new or built-in MSI Dialog.
+3. **RaggieSoft Launcher Studio (Upcoming Suite IDE — Design Preview & Mockups)**:
+   - Product Page: https://raggiesoftstudio.com/launcher-studio
+   - Summary: Visual IDE and `.rslp` plain-text manifest compiler for building white-label, zero-account desktop application hubs, offline media shelves, and SHA-256 + Authenticode static-CDN updaters.
 
-## Detailed Reference
-- [llms-full.txt](llms-full.txt): Complete `constexpr` `.rsip` & `.rsis` field tables, AI Pre-Flight Checklist, and copy-paste Golden Blueprints.
-- [SKILL.md](SKILL.md): Autonomous 4-step AI agent authoring workflow.
+4. **RaggieSoft Showcase Studio (Upcoming Suite IDE — Design Preview & Mockups)**:
+   - Product Page: https://raggiesoftstudio.com/showcase-studio
+   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA keyboard/screen-reader/High-Contrast safeguards to modern Windows 11 `FluentMica` collector menus.

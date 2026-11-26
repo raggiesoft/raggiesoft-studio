@@ -181,10 +181,104 @@ body {
 }
 
 .nav-link:hover,
-.nav-link[aria-current='page'] {
+.nav-link[aria-current='page'],
+.nav-link.is-section-active {
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
   border-color: rgba(251, 191, 36, 0.65);
+}
+
+/* Tier 2 Contextual Product Sub-Navigation Bar (Desktop >= 768px Only)
+ * 100-Level UX & Mobile Single-Hamburger Lesson:
+ *   - When a visitor is inside `/installer-studio/*` on Desktop (`>= 768px`), `.product-subnav`
+ *     renders a clean second row directly beneath the global Studio Suite bar so all 8
+ *     Installer Studio sub-pages (Overview, Screenshots, Roadmap, Docs, FAQ, Changelog,
+ *     VPAT, Security) are 1 click away without crowding the 4-product top bar!
+ *   - On Mobile (`< 768px`), `.product-subnav` hides completely (`display: none`) and
+ *     `.mobile-product-subnav` appears inside the single `#header-navigation-panel`
+ *     collapsible drawer instead—guaranteeing a compact `< 60px` closed header and
+ *     strictly ONE hamburger button on phones! */
+.product-subnav {
+  background: rgba(7, 13, 28, 0.72);
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.product-subnav-inner {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0.38rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+}
+
+.product-subnav-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fde68a;
+  white-space: nowrap;
+}
+
+.product-subnav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+}
+
+.product-subnav-link {
+  display: inline-flex;
+  align-items: center;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+}
+
+.product-subnav-link:hover,
+.product-subnav-link[aria-current='page'] {
+  background: rgba(56, 189, 248, 0.18);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.65);
+}
+
+/* Hidden on desktop because desktop shows `.product-subnav` across the full width */
+.mobile-product-subnav {
+  display: none;
+}
+
+/* Suite Pipeline Cards & Era-Comparison Panels */
+.pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.pipeline-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 0.75rem;
+  padding: 1.15rem 1.25rem;
+}
+
+.pipeline-num {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-gold);
+  margin-bottom: 0.3rem;
 }
 
 /* Mobile Single-Row Header & Collapsible DrawerOverrides (< 768px) */
@@ -204,6 +298,29 @@ body {
 
   .brand-sub {
     display: none;
+  }
+
+  .product-subnav {
+    display: none;
+  }
+
+  .mobile-product-subnav {
+    display: block;
+    width: 100%;
+    margin-top: 0.35rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.28);
+  }
+
+  .mobile-product-subnav-title {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fde68a;
+    margin-bottom: 0.4rem;
+    padding: 0 0.25rem;
   }
 
   .nav-list {

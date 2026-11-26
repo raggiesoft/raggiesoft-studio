@@ -36,30 +36,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <title>Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules |…</title>
-    <meta name="description" content="Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\ plus 64-bit .MSM merging." />
+    <title>Headless CLI (instbuild.exe) &amp; AI Agent Authoring |…</title>
+    <meta name="description" content="Compile x64 and ARM64 packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents." />
     <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://raggiesoftstudio.com/docs/runtimes-and-merge-modules" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/installer-studio/docs/cli-and-ai-agents" />
     <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="RaggieSoft Studio" />
-    <meta property="og:title" content="Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules |…" />
-    <meta property="og:description" content="Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\ plus 64-bit .MSM merging." />
-    <meta property="og:url" content="https://raggiesoftstudio.com/docs/runtimes-and-merge-modules" />
+    <meta property="og:title" content="Headless CLI (instbuild.exe) &amp; AI Agent Authoring |…" />
+    <meta property="og:description" content="Compile x64 and ARM64 packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/installer-studio/docs/cli-and-ai-agents" />
     <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
+    <meta property="og:image:alt" content="RaggieSoft Studio developer suite showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules |…" />
-    <meta name="twitter:description" content="Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\ plus 64-bit .MSM merging." />
+    <meta name="twitter:title" content="Headless CLI (instbuild.exe) &amp; AI Agent Authoring |…" />
+    <meta name="twitter:description" content="Compile x64 and ARM64 packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
-    <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/docs/runtimes-and-merge-modules#webpage","url":"https://raggiesoftstudio.com/docs/runtimes-and-merge-modules","name":"Pre-MSI Runtime Prerequisites & .MSM Merge Modules |…","description":"Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\\ plus 64-bit .MSM merging.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
-    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125h" />
-    <script type="module" crossorigin src="/assets/index-B90rCC0p.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BH7fbr4l.css">
+    <meta name="twitter:image:alt" content="RaggieSoft Studio developer suite showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/docs/cli-and-ai-agents#webpage","url":"https://raggiesoftstudio.com/installer-studio/docs/cli-and-ai-agents","name":"Headless CLI (instbuild.exe) & AI Agent Authoring |…","description":"Compile x64 and ARM64 packages in CI/CD, validate with JSON diagnostics, and generate from-scratch projects with coding agents.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-Bxyx1_qg.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CHUATdpQ.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -112,7 +112,7 @@
         <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
           <nav aria-label="Primary Project Navigation">
             <ul class="nav-list">
-              <li><a class="nav-link" href="/">Overview</a></li><li><a class="nav-link" href="/suite">Studio Suite</a></li><li><a class="nav-link" href="/screenshots">Visual Tour</a></li><li><a class="nav-link" href="/roadmap">Roadmap</a></li><li><a class="nav-link" href="/docs" aria-current="page">Docs & AI Spec</a></li><li><a class="nav-link" href="/faq">FAQ</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
+              <li><a class="nav-link" href="/">Overview</a></li><li><a class="nav-link" href="/suite">Studio Suite</a></li><li><a class="nav-link" href="/screenshots">Visual Tour</a></li><li><a class="nav-link" href="/roadmap">Roadmap</a></li><li><a class="nav-link" href="/docs">Docs & AI Spec</a></li><li><a class="nav-link" href="/faq">FAQ</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
               <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
               <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
               <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
@@ -125,87 +125,67 @@
     <main id="main-content" class="container" tabindex="-1">
       
         <div class="docs-reader-grid">
-          <aside class="docs-sidebar" aria-label="Documentation Chapters">
+          <aside class="docs-sidebar" aria-label="Installer Studio Documentation Chapters">
             <span class="eyebrow">F1 Help Manual (v0.5.0)</span>
             <h2 style="font-size: 1.05rem; margin: 0.15rem 0 0.5rem;">Chapters</h2>
             <ul class="docs-toc-list">
-              <li><a class="docs-toc-link" href="/docs">Documentation Index</a></li>
-              <li><a class="docs-toc-link" href="/docs/welcome-overview">1. Overview, Editions &amp; Hybrid .rsip Architecture</a></li>
-              <li><a class="docs-toc-link" href="/docs/ide-and-aerowizards">2. 12-View Tree-First Visual IDE &amp; 5 Guided AeroWizards</a></li>
-              <li><a class="docs-toc-link" href="/docs/components-and-keypaths">3. Destination Folders, Components &amp; KeyPath Rules</a></li>
-              <li><a class="docs-toc-link" href="/docs/runtimes-and-merge-modules" aria-current="page">4. Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></li>
-              <li><a class="docs-toc-link" href="/docs/selection-tree-and-dialogs">5. MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a></li>
-              <li><a class="docs-toc-link" href="/docs/cli-and-ai-agents">6. Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></li>
-              <li><a class="docs-toc-link" href="/docs/accessibility-and-vpat">7. WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></li>
-              <li><a class="docs-toc-link" href="/docs/msiprism-and-patches">8. MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs">Documentation Index</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/welcome-overview">1. Overview, Editions &amp; Hybrid .rsip Architecture</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/ide-and-aerowizards">2. 12-View Tree-First Visual IDE &amp; 5 Guided AeroWizards</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/components-and-keypaths">3. Destination Folders, Components &amp; KeyPath Rules</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/runtimes-and-merge-modules">4. Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/selection-tree-and-dialogs">5. MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/cli-and-ai-agents" aria-current="page">6. Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/accessibility-and-vpat">7. WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/msiprism-and-patches">8. MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></li>
             </ul>
           </aside>
           <article class="docs-article">
-            <span class="eyebrow">Chapter 4 of 8 • Windows Installer Engine</span>
-            <h1>Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</h1>
+            <span class="eyebrow">Chapter 6 of 8 • CLI &amp; AI Automation</span>
+            <h1>Headless CLI (instbuild.exe) &amp; AI Agent Authoring</h1>
   <p>
-    Windows Installer allows only one active <code>msiexec</code> Execute sequence at a time (otherwise returning error
-    <code>1618: Another installation is already in progress</code>). Because third-party framework installers often invoke
-    <code>msiexec.exe</code> internally, <strong>SetupWizard.exe</strong> stages and executes all <code>[Prerequisite.&lt;Id&gt;]</code>
-    runtimes <em>after</em> the user clicks <strong>Install</strong> on the wizard summary screen and <em>before</em>
-    <code>Product.msi</code> starts—all under a single unified UAC elevation prompt!
+    RaggieSoft Installer Studio was designed from Day 1 so human engineers and autonomous AI coding agents can create,
+    validate, and compile production Windows installers from scratch without touching a mouse or fighting opaque XML/binary files.
   </p>
 
   
-  <h2 id="prerequisites">Three Flexible Runtime Delivery Modes</h2>
-  <ul>
-    <li><strong>download (Small Web Bootstrapper)</strong>: Streams the runtime over HTTPS via native OS <code>WinHTTP</code> with live byte progress, optional <code>Sha256</code> verification, and an accessible Retry / Cancel prompt if offline.</li>
-    <li><strong>embedded (Single-File Offline Setup.exe)</strong>: Compresses your local runtime binary with Windows <code>COMPRESS_ALGORITHM_LZMS</code> (<code>Cabinet.lib</code>) straight into Win32 resources (<code>#300+</code>) alongside <code>Product.msi</code>.</li>
-    <li><strong>side-by-side (ISO / USB Media Layout)</strong>: Launches from a sibling <code>Redist\</code> folder next to <code>Setup.exe</code>, automatically falling back to HTTPS if <code>Url</code> is also supplied.</li>
-  </ul>
-
-  
-  <h2>Curated Presets &amp; Reboot Exit Code Latching</h2>
-  <p>
-    Built-in presets (<code>DotNet10Desktop</code>, <code>DotNet10AspNet</code>, <code>DotNet9Desktop</code>,
-    <code>DotNet8Desktop</code>, <code>EdgeWebView2</code>, and <code>VcRedist2022</code>) include architecture-aware
-    detection probes and standardized reboot codes (<code>3010</code>, <code>1641</code>, and <code>23</code>). For
-    <code>Preset = Custom</code> runtimes, specify <code>SuccessExitCodes</code> and <code>RebootExitCodes</code> directly:
-    if any prerequisite requests a restart, <code>SetupWizard.exe</code> latches that flag, finishes installing your main
-    <code>Product.msi</code>, and cleanly reports the restart notice at the end!
-  </p>
+  <h2>Core instbuild.exe Commands</h2>
   <pre>
-; Curated .NET 10 Desktop Runtime downloaded on demand
-[Prerequisite.DotNet10]
-Preset           = DotNet10Desktop
-Distribution     = download
+; 1. Sub-millisecond schema, GUID, 3-part version, Component rule &amp; mnemonic linter
+instbuild.exe --validate --diagnostics=json MyProject.rsip --arch=arm64
 
-; Custom offline vendor runtime compressed with LZMS inside Setup.exe
-[Prerequisite.AudioDriver]
-Preset           = Custom
-Name             = Studio Low-Latency Audio Runtime
-Distribution     = embedded
-SourceFile       = ..\redist\$(ARCH)\AudioRuntimeSetup.exe
-SilentArgs       = /quiet /norestart
-DetectRegKey     = HKLM\Software\SampleStudio\AudioRuntime
-DetectRegValue   = InstalledVersion
-DetectMinVersion = 2.4.0
-SuccessExitCodes = 0, 1638
-RebootExitCodes  = 3010, 1641, 23
+; 2. Compile standalone Enterprise .msi + LZMS-compressed Setup.exe (+ VPAT 2.5 HTML5)
+instbuild.exe MyProject.rsip --arch=arm64 --with-vpat
+instbuild.exe MyProject.rsip --arch=x64   --with-vpat
+
+; 3. Build an entire multi-project .rsis Suite in deterministic BuildOrder
+instbuild.exe MyWorkspace.rsis --with-vpat
+
+; 4. Emit a reusable 64-bit Merge Module (.msm), GPO Transform (.mst), or Patch (.msp)
+instbuild.exe --emit-msm MyLibrary.rsip out\MyLibrary-x64.msm --arch=x64
+instbuild.exe --generate-mst Base.msi CustomOrg.msi OrgPolicy.mst
+instbuild.exe --generate-msp v1.0.0.msi v1.1.0.msi Update-1.1.0.msp
+
+; 5. Regenerate constexpr AI specifications (llms.txt, llms-full.txt, SKILL.md)
+instbuild.exe --emit-ai-spec .\specs
   </pre>
 
   
-  <h2 id="mergemodules">Native 64-Bit .MSM Merge Module Consumption</h2>
+  <h2 id="ai-specs">Zero-Drift AI Specifications (llms.txt &amp; SKILL.md)</h2>
   <p>
-    Add as many <code>[MergeModule.&lt;Id&gt;]</code> sections as your project requires. Unlike legacy 32-bit COM
-    <code>mergemod.dll</code> pipelines, <code>instbuild.exe</code> merges <code>.msm</code> SQL tables (<code>Component</code>,
-    <code>File</code>, <code>Directory</code>, <code>Registry</code>, <code>MsiFileHash</code>) and extracts embedded
-    <code>MergeModule.CABinet</code> payloads natively in 64-bit C++20 via <code>msi.dll</code> and <code>Cabinet.lib</code> FDI!
+    Because <code>instbuild.exe --emit-ai-spec</code> generates <code>llms.txt</code>, <code>llms-full.txt</code>, and
+    <code>SKILL.md</code> directly from the compiler's own C++20 <code>constexpr</code> field descriptors in
+    <code>RswSchema.hpp</code>, the AI documentation can never drift out of sync with the validator!
   </p>
-  <pre>
-[MergeModule.SharedCore]
-Source     = ..\..\out\shared-core-$(ARCH).msm
-Feature    = Main
-TargetRoot = INSTALLDIR
-  </pre>
+  <ol>
+    <li><strong>Step 1 — Read</strong>: Point your AI agent at <code>specs/llms-full.txt</code> (or <code>https://raggiesoftstudio.com/llms-full.txt</code>).</li>
+    <li><strong>Step 2 — Author</strong>: Have the agent write a commented <code>.rsip</code> manifest using <code>$(ARCH)</code> payload paths, a permanent <code>UpgradeCode</code> GUID, 3-part <code>Major.Minor.Build</code> version numbers, and <code>&amp;</code> keyboard mnemonics.</li>
+    <li><strong>Step 3 — Validate</strong>: Run <code>instbuild.exe --validate --diagnostics=json</code> and confirm <code>"ok": true</code> before compiling.</li>
+    <li><strong>Step 4 — Compile &amp; Inspect</strong>: Compile <code>arm64</code> and <code>x64</code> outputs and verify with <code>msiprism.exe --inspect-summary</code>.</li>
+  </ol>
             <nav class="docs-pager" aria-label="Chapter Pagination">
-              <a class="btn btn-outline" href="/docs/components-and-keypaths">&larr; Destination Folders, Components &amp; KeyPath Rules</a>
-              <a class="btn btn-primary" href="/docs/selection-tree-and-dialogs">MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs &rarr;</a>
+              <a class="btn btn-outline" href="/installer-studio/docs/selection-tree-and-dialogs">&larr; MSI SelectionTree, C++ Glass Wizard &amp; MSI.DLL Dialogs</a>
+              <a class="btn btn-primary" href="/installer-studio/docs/accessibility-and-vpat">WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5 &rarr;</a>
             </nav>
           </article>
         </div>
@@ -242,6 +222,6 @@ TargetRoot = INSTALLDIR
       </div>
     </footer>
   </div>
-    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125h" defer></script>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
   </body>
 </html>
