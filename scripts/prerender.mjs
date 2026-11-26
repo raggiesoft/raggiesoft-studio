@@ -104,7 +104,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         '@type': 'WebSite',
         '@id': `${SITE_ORIGIN}/#website`,
         url: `${SITE_ORIGIN}/`,
-        name: 'RaggieSoft Installer Studio'
+        name: 'RaggieSoft Studio'
       },
       {
         '@type': 'WebPage',
@@ -125,7 +125,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
     ...(noindex ? [] : [`<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`]),
     `<link rel="icon" type="image/svg+xml" href="${escapeHtml(FAVICON_SVG)}" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="RaggieSoft Installer Studio" />`,
+    `<meta property="og:site_name" content="RaggieSoft Studio" />`,
     `<meta property="og:title" content="${escapeHtml(seoTitle)}" />`,
     `<meta property="og:description" content="${escapeHtml(seoDescription)}" />`,
     `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
@@ -183,8 +183,8 @@ async function main() {
   // Generate genuine `/404.html` (`noindex,follow`)
   const notFoundRender = renderStudioPage('/404');
   const notFoundHead = buildSeoHead({
-    seoTitle: '404 Not Found | RaggieSoft Installer Studio',
-    seoDescription: 'The requested RaggieSoft Installer Studio page could not be found.',
+    seoTitle: '404 Not Found | RaggieSoft Studio',
+    seoDescription: 'The requested RaggieSoft Studio developer suite page could not be found.',
     canonicalUrl: `${SITE_ORIGIN}/404`,
     noindex: true
   });

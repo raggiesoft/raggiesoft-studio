@@ -8,24 +8,28 @@
  * PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
- *     **RaggieSoft Installer Studio** (`https://raggiesoftstudio.com`) during its
- *     public **Project Announcement & Open Technical Preview (`v0.5.0`)**:
- *       1. `/`              — Vision Announcement, Universal Single-Download
- *                             Installers, 10 Wizard Styles, Microsoft Azure Artifact
- *                             Signing Status, 28-Year Origin Story, & Suite Spotlight
- *       2. `/screenshots`   — Dedicated Visual Feature Tour with 14 real native
+ *     **RaggieSoft Studio** (`https://raggiesoftstudio.com` — 301 target of
+ *     `installwithoutlimits.com`), the umbrella Windows developer & packaging
+ *     workstation suite housing **RaggieSoft Installer Studio (`v0.5.0`)**,
+ *     **RaggieSoft Launcher Studio**, and **RaggieSoft Showcase Studio**:
+ *       1. `/`              — RaggieSoft Studio Umbrella Hub, Flagship Installer
+ *                             Studio v0.5.0 Downloads, 10 Wizard Styles, & Suite Lineup
+ *       2. `/suite`         — Dedicated RaggieSoft Studio Product Family Overview
+ *                             (Installer Studio, Launcher Studio, Showcase Studio,
+ *                             & sister workstation Accessibility Studio)
+ *       3. `/screenshots`   — Dedicated Visual Feature Tour with 14 real native
  *                             Win32 C++20 captures & full-size HTML5 `<dialog>` modals
- *       3. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
- *                             (`v0.6.0` -> `v1.0.0 GA` + `v1.1+` Expansion)
- *       4. `/docs`          — Single-source offline & web manual + AI `/llms.txt`
- *       5. `/faq`           — Frequently Asked Questions (Microsoft Azure Artifact
+ *       4. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
+ *                             (incl. Disk Spanning, Loose Media, `msiexec /a`, & Suites)
+ *       5. `/docs`          — Single-source offline & web manual + AI `/llms.txt`
+ *       6. `/faq`           — Frequently Asked Questions (Microsoft Azure Artifact
  *                             Signing, Why No IA-64 or x86 Host Builds, Setup
  *                             Types vs. InstallLevel, & Community == Premier)
- *       6. `/changelog`     — Public Version History (`v0.1.0` -> `v0.5.0`)
- *       7. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
+ *       7. `/changelog`     — Public Version History (`v0.1.0` -> `v0.5.0`)
+ *       8. `/vpat`          — Accessibility & Compliance Center (WCAG 2.2 AA,
  *                             ADA Title II & Section 508 + Live VPAT 2.5 HTML5)
- *       8. `/accessibility` — Canonical alias view for `/vpat`
- *       9. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
+ *       9. `/accessibility` — Canonical alias view for `/vpat`
+ *      10. `/security`      — Static `/MT` SBOM posture, Dual-Layer Authenticode
  *                             signing, & Permanent Zero-Telemetry / Zero-Crypto pledge
  *
  *   Note: Commercial pricing tiers are intentionally omitted while RaggieSoft
@@ -415,7 +419,7 @@ function renderVisionAndRoadmapSection(): string {
           <div>
             <h3>Focused Path to <code>v1.0.0 GA</code> (Dogfood North Star)</h3>
             <ul class="feature-list">
-              <li><strong><code>v0.6.0</code> (Next Up) — Self-Extracting <code>.EXE</code> Builder, <code>.rswpak</code> Feature Packs, <code>.NET 11</code> &amp; <code>Engine = native</code></strong>: Build simple folder/ZIP-to-SFX <code>.exe</code> extractors (that optionally launch an <code>.exe</code> or open a document in the user's viewer), stream <code>.rswpak</code> packs, and run zero-<code>msi.dll</code> extraction</li>
+              <li><strong><code>v0.6.0</code> (Next Up) — SFX <code>.EXE</code>, Multi-Volume Disk Spanning, Loose Media (<code>msiexec /a</code>), <code>.rswpak</code> &amp; Multi-Engine Suites</strong>: Build folder/ZIP-to-SFX <code>.exe</code> extractors, split multi-disc <code>CAB1..N.cab</code> sets, support loose uncompressed <em>Run from Media / Network</em> &amp; <code>msiexec /a</code> admin images, and chain <code>.msi</code> apps + <code>Engine = native</code> content packs</li>
               <li><strong><code>v0.7.0</code> — From-Scratch Dual Dialog Builders &amp; <code>RsDialog</code> Scripting</strong>: Blank-canvas WYSIWYG C++ (<code>SetupWizard.exe</code>) &amp; raw <code>370&times;270</code> <code>MSI.DLL</code> SQL dialog designers plus procedural <code>Rs*()</code> dialog scripting</li>
               <li><strong><code>v0.8.0</code> — VB6 <code>.vbp</code>, Visual Studio <code>.slnx</code> &amp; <code>.msi</code> Importers + Restart Manager</strong>: Reg-Free COM VB6 <code>.vbp</code> importing for classic utilities like <em>StoreTrainer</em> plus graceful <code>Rstrtmgr.dll</code> app shutdown</li>
               <li><strong><code>v0.9.0</code> &amp; <code>v1.0.0 GA</code> — Signing Studio, White-Label <code>RsUpdate.exe</code> &amp; Full Production Cutover</strong>: Interactive Signing Studio UI, guided <code>.MSP</code> servicing, and packaging 100% of RaggieSoft's own software</li>
@@ -428,26 +432,208 @@ function renderVisionAndRoadmapSection(): string {
   `;
 }
 
+/**
+ * Renders the reusable RaggieSoft Studio 4-Product Suite Grid (shown on `/` and expanded on `/suite`).
+ */
+function renderStudioProductFamilySection(): string {
+  return `
+    <section aria-labelledby="studio-family-heading">
+      <span class="eyebrow">One Cohesive Zero-Bloat Developer Brand • RaggieSoft Studio</span>
+      <h2 id="studio-family-heading" style="margin-top: 0.25rem;">The RaggieSoft Studio Product Family</h2>
+      <p>
+        <strong>RaggieSoft Studio</strong> (<code>raggiesoftstudio.com</code>) brings together native, accessible,
+        plain-text-first Windows developer tools engineered from first principles—starting with <strong>Installer Studio
+        <code>v0.5.0</code></strong> today and expanding into branded desktop application launchers and interactive
+        multimedia showcase menus.
+      </p>
+      <div class="card-grid">
+        <article class="card card-highlight">
+          <div>
+            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">Shipping Now • v0.5.0 Signed Preview</span>
+            <h3>1. RaggieSoft Installer Studio</h3>
+            <p>
+              <strong>Install Without Limits.</strong> Zero-dependency static <code>/MT</code> Win32 C++20 packaging IDE,
+              headless CLI (<code>instbuild.exe</code>), 10-style customer <code>SetupWizard.exe</code> (from 1995 ACME
+              <code>#008080</code> Teal &amp; Cobalt washes to Windows 11 <code>FluentMica</code>), 64-bit SQL inspector
+              (<code>msiprism.exe</code>), and native <code>F1</code> Help Viewer for <code>x64</code> &amp; <code>ARM64</code>.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download v0.5.0</a>
+            <a class="btn btn-outline" href="/screenshots">14 Screenshots</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="status-pill status-next" style="margin-bottom: 0.55rem;">Upcoming Suite IDE • In Design</span>
+            <h3>2. RaggieSoft Launcher Studio</h3>
+            <p>
+              <strong>Build Your Own Branded Desktop Hub.</strong> Inspired directly by our own
+              <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, Launcher Studio is a visual IDE and
+              manifest compiler that lets independent studios, authors, musicians, and IT teams ship a custom-branded,
+              zero-account desktop app hub, offline library browser, and SHA-256 + Authenticode delta updater.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-outline" href="/suite#launcher-studio">Explore Launcher Studio &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="status-pill status-next" style="margin-bottom: 0.55rem;">Upcoming Suite IDE • In Design</span>
+            <h3>3. RaggieSoft Showcase Studio</h3>
+            <p>
+              <strong>Interactive Launchpads &amp; Collector's Menus.</strong> A nostalgic-meets-modern visual canvas IDE
+              compiling zero-dependency Win32 C++20 interactive menus (<code>x64</code> &amp; <code>ARM64</code>) for USB
+              and ISO collector's editions, multi-package suite front-ends, offline press kits, album/book companion discs,
+              and accessible classroom kiosks.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-outline" href="/suite#showcase-studio">Explore Showcase Studio &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">Sister Workstation • Available Now</span>
+            <h3>4. RaggieSoft Accessibility Studio</h3>
+            <p>
+              <strong>WCAG 2.2 AA &amp; Section 508 Engineering IDE.</strong> Our dedicated accessibility auditing
+              workstation and CLI for inspecting contrast luminance, semantic landmarks, keyboard focus order, and
+              procurement-ready compliance artifacts across web and desktop properties.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-outline" href="https://a11y.raggiesoft.com">Visit a11y.raggiesoft.com &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders the dedicated `/suite` RaggieSoft Studio Product Family page.
+ */
+function renderSuiteBody(): string {
+  return `
+    <section class="hero" aria-labelledby="suite-page-title">
+      <span class="eyebrow">RaggieSoft Studio • Windows 11 x64 &amp; ARM64 Developer Tooling</span>
+      <h1 id="suite-page-title">One Studio Umbrella for Packaging, Launchers &amp; Interactive Showcases</h1>
+      <p class="lead">
+        <strong>RaggieSoft Studio</strong> (<code>raggiesoftstudio.com</code>) is our dedicated home for developer,
+        DevOps, and digital-distribution authoring tools. Every tool in the RaggieSoft Studio lineup shares the same
+        non-negotiable engineering DNA: <strong>diff-friendly plain-text project files</strong>, <strong>100% WCAG 2.2 AA
+        keyboard, screen-reader &amp; Dark/High-Contrast accessibility</strong>, <strong>native <code>x64</code> &amp;
+        <code>ARM64</code> execution</strong>, <strong>zero telemetry</strong>, and <strong>100% white-label publisher
+        ownership</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.5.0 (Shipping Today)</a>
+        <a class="btn btn-outline" href="/screenshots">Installer Studio Visual Tour</a>
+        <a class="btn btn-outline" href="/roadmap">Engineering Roadmap</a>
+      </div>
+      ${renderAzureSigningAssuranceNotice()}
+    </section>
+
+    <section id="installer-studio" class="calc-panel" aria-labelledby="prod-inst-heading">
+      <span class="status-pill status-shipped">1 • Available Now in Signed Technical Preview (v0.5.0)</span>
+      <h2 id="prod-inst-heading" style="margin-top: 0.5rem;">RaggieSoft Installer Studio — Install Without Limits</h2>
+      <p>
+        Our flagship zero-dependency static <code>/MT</code> Win32 C++20 Windows installation IDE and headless compiler
+        (<code>installwithoutlimits.com</code>). Compile genuine relational <code>.msi</code> databases, <code>.msm</code>
+        Merge Modules, <code>.mst</code> Transforms, <code>.msp</code> Patches, and CPU-aware Universal
+        <code>Setup.exe</code> bootstrappers without <code>.NET</code>, <code>WebView2</code>, or multi-gigabyte toolchains.
+      </p>
+      <ul class="feature-list">
+        <li><strong>10 Era-Spanning Wizard Styles</strong>: From nostalgic 1995 <strong>Microsoft ACME <code>#008080</code> Teal</strong> (<code>fullscreenteal</code>), <strong><code>#000080</code> Cobalt</strong> (<code>fullscreenblue</code>), &amp; <code>wizard95</code> 3D sheets through <code>aerowizard</code> and Windows 11 <code>fluentmica</code>.</li>
+        <li><strong>Dual-Layer Public Trust Signing &amp; Smart Universal EXEs</strong>: Embeds publisher product names cleanly into Authenticode <code>SpcSpOpusInfo</code> so Windows UAC prompts show your real application name—never random cached <code>.msi</code> hex filenames.</li>
+        <li><strong>Upcoming Multi-Disc, Loose Media &amp; Suite Chaining (<code>v0.6.0</code>)</strong>: Multi-volume <code>CAB1..N.cab</code> disk spanning, loose uncompressed <em>Run from Media / Network</em> layouts, <code>msiexec.exe /a</code> administrative installs, and hybrid suites pairing <code>.msi</code> apps with <code>Engine = native</code> content libraries.</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Smart Web Setup (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Download Combined Offline EXE (x64 + ARM64)</a>
+        <a class="btn btn-outline" href="/docs">Read .rsip v0.5 Documentation</a>
+      </div>
+    </section>
+
+    <section id="launcher-studio" class="card" style="margin-bottom: 1.5rem;" aria-labelledby="prod-launch-heading">
+      <div>
+        <span class="status-pill status-next">2 • Proposed RaggieSoft Studio IDE</span>
+        <h2 id="prod-launch-heading" style="margin-top: 0.5rem;">RaggieSoft Launcher Studio — Custom Desktop App Hubs Without Gatekeepers</h2>
+        <p>
+          Indie software studios, narrative creators, audio labels, and internal enterprise tool teams often publish half a
+          dozen desktop apps and content packs—yet building a polished, accessible desktop hub and patcher from scratch takes
+          months. We built <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a> for our own ecosystem;
+          <strong>RaggieSoft Launcher Studio</strong> turns that architecture into a reusable visual IDE for everyone.
+        </p>
+        <ul class="feature-list">
+          <li><strong>Visual Catalog &amp; Branding Designer (<code>.rslp</code> Manifests)</strong>: Organize app tiles, offline book/music shelves, release notes, hero banners, and Light/Dark/High-Contrast brand palettes with live WCAG 2.2 AA contrast verification.</li>
+          <li><strong>Zero-Account, Static-CDN Catalog Updates</strong>: Publish a single static JSON catalog + signed <code>.msi</code>, <code>.msp</code>, or <code>Engine = native</code> packages on any HTTPS host or S3/R2 bucket—zero database servers, zero forced user logins, and zero telemetry.</li>
+          <li><strong>Cryptographic Integrity Built In</strong>: Every background download verifies build-stamped <code>SHA-256</code> digests and <code>WinVerifyTrust</code> Authenticode publisher signatures before execution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="showcase-studio" class="card" style="margin-bottom: 1.5rem;" aria-labelledby="prod-showcase-heading">
+      <div>
+        <span class="status-pill status-next">3 • Proposed RaggieSoft Studio IDE</span>
+        <h2 id="prod-showcase-heading" style="margin-top: 0.5rem;">RaggieSoft Showcase Studio — Interactive Launchpads &amp; Collector's Edition Menus</h2>
+        <p>
+          In the golden age of boxed PC software and CD-ROMs, inserting a disc greeted you with a custom illustrated menu
+          complete with ambient audio, lore booklets, bonus tracks, and one-click install buttons. While physical optical
+          drives are rarer today, <strong>commemorative USB box sets, downloadable ISO collector's editions, multi-package
+          installer front-ends, offline press kits, and museum/classroom kiosks</strong> still benefit hugely from a
+          self-contained interactive menu!
+        </p>
+        <ul class="feature-list">
+          <li><strong>Drag-and-Drop Page &amp; Hotspot Canvas (<code>.rssp</code> Projects)</strong>: Design multi-page <code>16:9</code>, <code>4:3</code> retro, or borderless desktop launchpads with custom artwork, hover/focus states, audio previews, RichEdit liner notes, and action buttons (launch <code>Setup.exe</code>, open local docs, browse folders, or switch pages).</li>
+          <li><strong>Zero-Dependency Static <code>/MT</code> C++20 Runtime</strong>: Compiles down to a compact native <code>x64</code> &amp; <code>ARM64</code> executable that boots instantly off a USB drive, mounted ISO, network share, or extracted archive with zero browser runtime bloat.</li>
+          <li><strong>Modern Accessibility Under Classic Nostalgia</strong>: Unlike 1990s bitmap-only autorun menus that were invisible to screen readers and keyboards, every Showcase Studio button and hotspot exposes real Win32 <code>Tab</code> focus rings, <code>Alt+Key</code> mnemonics, UI Automation labels, and <code>SPI_GETHIGHCONTRAST</code> support!</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="accessibility-studio" class="card" aria-labelledby="prod-a11y-heading">
+      <div>
+        <span class="status-pill status-shipped">4 • Sister Engineering Workstation (Available Now)</span>
+        <h2 id="prod-a11y-heading" style="margin-top: 0.5rem;">RaggieSoft Accessibility Studio</h2>
+        <p>
+          Completing the developer workstation ecosystem, <strong>RaggieSoft Accessibility Studio</strong> provides automated
+          and interactive WCAG 2.2 AA &amp; Section 508 auditing, luminance contrast verification, and compliance reporting.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://a11y.raggiesoft.com">Open Accessibility Studio Portal &rarr;</a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderHomeBody(): string {
   return `
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">Project Announcement &amp; Technical Preview (v0.5.0) • Signed Universal x64 &amp; ARM64</span>
-          <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
+          <span class="eyebrow">RaggieSoft Studio • Flagship Installer Studio v0.5.0 Signed for x64 &amp; ARM64</span>
+          <h1 id="hero-title">RaggieSoft Studio — Native Windows Packaging, Launchers &amp; Showcases.</h1>
           <p class="lead">
-            An original, zero-dependency native Win32 C++20 Windows packaging suite for <code>x64</code> and <code>ARM64</code>.
-            Design projects visually inside a <strong>12-View Tree-First IDE</strong>—now featuring <strong>10 selectable
-            Wizard Styles</strong> (including nostalgic 1995 <strong>ACME <code>#008080</code> Teal</strong> &amp;
-            <strong><code>#000080</code> Cobalt</strong> backdrops, <code>Wizard95</code>, <code>AeroWizard</code>, and
-            Windows 11 <code>FluentMica</code>), <strong>Typical / Compact / Complete / Custom</strong> Setup Types, and
-            <strong>WCAG 2.2 AA Auto-Contrast</strong>—and ship <strong>one signed universal <code>Setup.exe</code></strong>.
+            Welcome to <strong>RaggieSoft Studio</strong>, our zero-bloat Windows 11 developer tooling suite for
+            <code>x64</code> and <code>ARM64</code>. Download <strong>RaggieSoft Installer Studio <code>v0.5.0</code></strong>
+            today—featuring a <strong>12-View Tree-First C++20 IDE</strong>, <strong>10 selectable Wizard Styles</strong>
+            (from 1995 <strong>ACME <code>#008080</code> Teal</strong> &amp; <strong><code>#000080</code> Cobalt</strong>
+            washes to Windows 11 <code>FluentMica</code>), <strong>Typical / Compact / Complete / Custom</strong> Setup Types,
+            and <strong>WCAG 2.2 AA Auto-Contrast</strong>—and preview our upcoming <strong>Launcher Studio</strong> &amp;
+            <strong>Showcase Studio</strong> IDEs below.
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.5.0 (Auto-Detects CPU)</a>
             <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
-            <a class="btn btn-outline" href="/screenshots">Visual Tour &amp; Screenshots</a>
-            <a class="btn btn-outline" href="/faq">FAQ</a>
+            <a class="btn btn-outline" href="/suite">Explore Studio Suite</a>
+            <a class="btn btn-outline" href="/screenshots">Visual Tour</a>
           </div>
           ${renderAzureSigningAssuranceNotice()}
         </div>
@@ -537,6 +723,8 @@ Source            = ..\publish\win-$(ARCH)\SampleIde.exe</pre>
         </div>
       </div>
     </section>
+
+    ${renderStudioProductFamilySection()}
 
     ${renderVisionAndRoadmapSection()}
 
@@ -678,7 +866,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), granular On-Demand Feature Packs (<code>.rswpak</code>), curated <code>.NET 11</code> presets, &amp; zero-<code>msi.dll</code> <code>Engine = native</code></td>
+              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Multi-Engine Suite Setup (<code>Engine = native | msi</code>)</td>
               <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
@@ -771,12 +959,13 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v06'" aria-labelledby="phase-v06-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill status-next">Target v0.6.0 • Next Up</span>
-          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), Granular <code>.rswpak</code> Packs, <code>.NET 11</code> Presets &amp; Native Direct Engine</h2>
+          <h2 id="phase-v06-heading" style="margin-top: 0.5rem;">SFX <code>.EXE</code> Builder, Multi-Volume Disk Spanning, Loose Source Media (<code>msiexec /a</code>), <code>.rswpak</code> Packs &amp; Multi-Engine Suites</h2>
           <ul class="feature-list">
             <li><strong>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + Folder/ZIP-to-SFX AeroWizard)</strong>: Turn any folder or <code>.zip</code> archive into a zero-dependency, Dark-Mode-aware <code>LZMS</code> self-extracting <code>.exe</code> (zero UAC or Installed Apps registration required) that unpacks to a chosen destination folder and <strong>optionally runs a bundled <code>.exe</code> (<code>PostExtractRun</code>) or opens a bundled document (<code>PostExtractOpen</code>, such as a PDF, HTML, or ReadMe guide via the user's default Windows viewer when installed)</strong>.</li>
+            <li><strong>Multi-Volume Disk Spanning, Uncompressed Loose Source Media &amp; Administrative Installs (<code>msiexec.exe /a</code>)</strong>: Split multi-gigabyte distributions across numbered external <code>CAB1.cab..CABN.cab</code> volumes (<code>Media</code> table <code>DiskId = 1..N</code> + <code>DiskPrompt</code>), publish uncompressed side-by-side source trees supporting <em>Run from Media</em> (<code>MenuCD</code>) and <em>Run from Network</em> (<code>MenuNetwork</code>), and support full <code>msiexec.exe /a</code> administrative network image extraction.</li>
             <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>)</strong>: Building on <code>v0.4.3</code>'s CPU-aware Smart Web Stub and Combined Offline Universal EXE, split optional multi-gigabyte features (high-DPI assets, offline docs, or language packs) into external LZMS-compressed <code>.rswpak</code> blocks fetched on demand via <code>WinHTTP</code> with SHA-256 + Authenticode verification when selected in <code>SelectionTree</code>.</li>
             <li><strong>First-Class <code>.NET 11</code> (<code>net11.0</code> / <code>net11.0-windows</code>) Runtime Presets</strong>: Curated <code>DotNet11Desktop</code>, <code>DotNet11AspNet</code>, and <code>DotNet11Runtime</code> / <code>DotNet10Runtime</code> presets alongside <code>.NET 10.0 LTS</code>.</li>
-            <li><strong>Native Direct Engine (<code>Engine = native | msi</code>)</strong>: Optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>—installing multi-hundred-file interactive book and supporter audio packs in milliseconds.</li>
+            <li><strong>Native Direct Engine (<code>Engine = native | msi</code>) &amp; Multi-Engine Suite Setup (<code>PackageKind = suite</code>)</strong>: Optional zero-<code>msi.dll</code> transactional extraction backend with rollback journaling and signed <code>Uninstall.exe</code>—plus unified Suite Setup bootstrappers chaining transactional <code>.msi</code> desktop apps alongside multi-gigabyte <code>Engine = native</code> book and music libraries.</li>
           </ul>
         </div>
       </section>
@@ -1563,10 +1752,18 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
   {
     path: '/',
     navLabel: 'Overview',
-    seoTitle: 'RaggieSoft Installer Studio — v0.5.0 Technical Preview',
+    seoTitle: 'RaggieSoft Studio — Installer, Launcher & Showcase Suite',
     seoDescription:
-      'Zero-dependency Win32 C++20 Windows installer IDE, 10 Wizard Styles (ACME Teal, Cobalt, Mica), signed universal x64/ARM64 Setup.exe, and Help.',
+      'Zero-dependency Windows developer suite: Installer Studio v0.5.0 (signed x64/ARM64), plus upcoming Launcher Studio and Showcase Studio IDEs.',
     renderBody: renderHomeBody
+  },
+  {
+    path: '/suite',
+    navLabel: 'Studio Suite',
+    seoTitle: 'Product Suite — Installer, Launcher & Showcase | RaggieSoft',
+    seoDescription:
+      'Explore the RaggieSoft Studio developer family: Installer Studio v0.5.0, upcoming Launcher Studio, Showcase Studio, and Accessibility Studio.',
+    renderBody: renderSuiteBody
   },
   {
     path: '/screenshots',
@@ -1664,23 +1861,23 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
         </section>
       `;
 
-  const html = `
+      const html = `
     <header class="site-header" data-theme="dark">
       <div class="header-inner">
         <a class="brand-link" href="/">
-          <span class="brand-title">RaggieSoft Installer Studio</span>
-          <span class="brand-sub">Install Without Limits • Technical Preview (v0.5.0)</span>
+          <span class="brand-title">RaggieSoft Studio</span>
+          <span class="brand-sub">Developer &amp; Packaging Suite • Home of Installer Studio v0.5.0</span>
         </a>
 
         <button
           type="button"
           class="rs-mobile-header-toggle studio-mobile-toggle"
           data-rs-mobile-toggle
-          data-open-label="Open Installer Studio and RaggieSoft network menu"
-          data-close-label="Close Installer Studio and RaggieSoft network menu"
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
           aria-expanded="false"
           aria-controls="header-navigation-panel"
-          aria-label="Open Installer Studio and RaggieSoft network menu"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
         >
           <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -1713,6 +1910,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Overview</a>
+          <a href="/suite">Studio Suite Lineup</a>
           <a href="/screenshots">Visual Tour &amp; Screenshots</a>
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
