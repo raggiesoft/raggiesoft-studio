@@ -83,14 +83,15 @@ interface ScreenshotFeatureItem {
 const ASSET_BASE =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
 const STUDIO_BOXES_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
-const SUITE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-raggiesoft-studio-suite.jpg`;
-const BOX_SHOWCASE_URL = `${STUDIO_BOXES_BASE}/og-installer-studio.jpg`;
-const TRAINING_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-training-studio.jpg`;
-const HELP_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-help-studio.jpg`;
-const DOCUMENT_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-document-studio.jpg`;
-const LOCALIZATION_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-localization-studio.jpg`;
-const LAUNCHER_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-launcher-studio.jpg`;
-const SHOWCASE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-showcase-studio.jpg`;
+const STUDIO_LOGO_SVG_URL = 'https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg';
+const SUITE_BOX_URL = `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`;
+const INSTALLER_BOX_URL = `${STUDIO_BOXES_BASE}/box-installer-studio.png`;
+const TRAINING_BOX_URL = `${STUDIO_BOXES_BASE}/box-training-studio.png`;
+const HELP_BOX_URL = `${STUDIO_BOXES_BASE}/box-help-studio.png`;
+const DOCUMENT_BOX_URL = `${STUDIO_BOXES_BASE}/box-document-studio.png`;
+const LOCALIZATION_BOX_URL = `${STUDIO_BOXES_BASE}/box-localization-studio.png`;
+const LAUNCHER_BOX_URL = `${STUDIO_BOXES_BASE}/box-launcher-studio.png`;
+const SHOWCASE_BOX_URL = `${STUDIO_BOXES_BASE}/box-showcase-studio.png`;
 const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
 const DOWNLOAD_OFFLINE_UNIV_URL = `${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe`;
 const A11Y_STUDIO_WEB_SETUP_URL =
@@ -569,47 +570,24 @@ function renderSuiteHomeBody(): string {
           ${renderAzureSigningAssuranceNotice()}
         </div>
         <figure class="hero-box-showcase">
-          <img
-            src="${SUITE_OG_BOX_URL}"
-            width="1200"
-            height="630"
-            alt="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Developer, Compliance, and Publishing Tools."
-          />
+          <button
+            type="button"
+            class="shot-preview-btn"
+            data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}"
+            aria-haspopup="dialog"
+            aria-label="Open full-size 1200 by 960 box view: ${SUITE_SLIPCASE_BOX_ITEM.title}"
+            style="border-bottom: 0;"
+          >
+            <img
+              src="${SUITE_BOX_URL}"
+              width="1200"
+              height="960"
+              alt="${SUITE_SLIPCASE_BOX_ITEM.alt}"
+            />
+            <span class="shot-zoom-pill">Full 1200&times;960 Box</span>
+          </button>
         </figure>
       </div>
-    </section>
-
-    <section aria-labelledby="box-shelf-heading">
-      <span class="eyebrow">Complete 8-Product Lineup • Flagship Slipcase + Symmetrical 4&times;2 Product Quick Cards</span>
-      <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">Explore All Eight RaggieSoft Studio Products</h2>
-
-      <!-- Featured Full-Width Umbrella Suite Slipcase Card -->
-      <figure class="suite-box-featured">
-        <button
-          type="button"
-          class="shot-preview-btn"
-          data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}"
-          aria-haspopup="dialog"
-          aria-label="Open full-size view: ${SUITE_SLIPCASE_BOX_ITEM.title}"
-        >
-          <img src="${SUITE_SLIPCASE_BOX_ITEM.imgUrl}" alt="${SUITE_SLIPCASE_BOX_ITEM.alt}" loading="lazy" />
-          <span class="shot-zoom-pill">Inspect Full 1200&times;960 Box</span>
-        </button>
-        <figcaption class="suite-box-featured-body">
-          <span class="eyebrow" style="margin-bottom: 0;">${SUITE_SLIPCASE_BOX_ITEM.badge}</span>
-          <h3 style="font-size: 1.35rem; margin: 0;">${SUITE_SLIPCASE_BOX_ITEM.title}</h3>
-          <p style="margin: 0;">${SUITE_SLIPCASE_BOX_ITEM.summaryHtml}</p>
-          <p style="margin: 0; color: var(--text-muted); font-size: 0.94rem;">${SUITE_SLIPCASE_BOX_ITEM.detailHtml}</p>
-          <div class="btn-row" style="margin-top: 0.4rem;">
-            <a class="btn btn-primary" href="/installer-studio">Flagship: Installer Studio v0.5.0 &rarr;</a>
-            <a class="btn btn-outline" href="/training-studio">New: Training Studio PoC &amp; Demo &rarr;</a>
-            <button type="button" class="btn btn-outline" data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}">
-              Zoom 8-Tool Suite Box
-            </button>
-          </div>
-        </figcaption>
-      </figure>
-
       <dialog id="${SUITE_SLIPCASE_BOX_ITEM.dialogId}" class="shot-lightbox" aria-labelledby="${SUITE_SLIPCASE_BOX_ITEM.dialogId}-title">
         <div class="shot-lightbox-panel">
           <div class="shot-lightbox-header">
@@ -629,6 +607,11 @@ function renderSuiteHomeBody(): string {
           </div>
         </div>
       </dialog>
+    </section>
+
+    <section aria-labelledby="box-shelf-heading">
+      <span class="eyebrow">Complete 8-Product Lineup • Symmetrical 4&times;2 Product Quick Cards</span>
+      <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">Explore All Eight RaggieSoft Studio Products</h2>
 
       <!-- Balanced 4x2 (Desktop) / 2x4 (Tablet) / 1x8 (Mobile) Quick Product Cards -->
       <div class="grid-4x2">
@@ -795,10 +778,10 @@ function renderTrainingStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${TRAINING_OG_BOX_URL}"
+            src="${TRAINING_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2 and 2004 Courseware Compiler."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2 and 2004 Courseware Compiler."
           />
         </figure>
       </div>
@@ -978,10 +961,10 @@ function renderHelpStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${HELP_OG_BOX_URL}"
+            src="${HELP_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Help Studio — Modern Offline F1 Help and Turnkey HTML Help .CHM Migration."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Help Studio — Modern Offline F1 Help and Turnkey HTML Help .CHM Migration."
           />
         </figure>
       </div>
@@ -1050,10 +1033,10 @@ function renderDocumentStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${DOCUMENT_OG_BOX_URL}"
+            src="${DOCUMENT_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Document Studio — Tagged PDF/UA-1 Without Tag-Tree Pain."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Document Studio — Tagged PDF/UA-1 Without Tag-Tree Pain."
           />
         </figure>
       </div>
@@ -1108,10 +1091,10 @@ function renderLocalizationStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${LOCALIZATION_OG_BOX_URL}"
+            src="${LOCALIZATION_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Localization Studio — Safe App, Installer, and Caption Translation."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Localization Studio — Safe App, Installer, and Caption Translation."
           />
         </figure>
       </div>
@@ -1167,10 +1150,10 @@ function renderLauncherStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${LAUNCHER_OG_BOX_URL}"
+            src="${LAUNCHER_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Launcher Studio — Custom Desktop App Hubs and Static-CDN Delta Updaters."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Launcher Studio — Custom Desktop App Hubs and Static-CDN Delta Updaters."
           />
         </figure>
       </div>
@@ -1295,10 +1278,10 @@ function renderShowcaseStudioBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${SHOWCASE_OG_BOX_URL}"
+            src="${SHOWCASE_BOX_URL}"
             width="1200"
-            height="630"
-            alt="3D boxed software showcase of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Windows 11 FluentMica."
+            height="960"
+            alt="3D boxed software render of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Windows 11 FluentMica."
           />
         </figure>
       </div>
@@ -1494,10 +1477,10 @@ function renderInstallerOverviewBody(): string {
         </div>
         <figure class="hero-box-showcase">
           <img
-            src="${BOX_SHOWCASE_URL}"
+            src="${INSTALLER_BOX_URL}"
             width="1200"
-            height="630"
-            alt="Collector's Edition boxed software render of RaggieSoft Installer Studio — Install Without Limits (Native C++20 for x64 and ARM64)."
+            height="960"
+            alt="Collector's Edition 3D boxed software render of RaggieSoft Installer Studio — Install Without Limits (Native C++20 for x64 and ARM64)."
           />
         </figure>
       </div>
@@ -2846,8 +2829,11 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     <header class="site-header" data-theme="dark">
       <div class="header-inner">
         <a class="brand-link" href="/">
-          <span class="brand-title">RaggieSoft Studio</span>
-          <span class="brand-sub">${brandSubtitle}</span>
+          <img class="brand-mark" src="${STUDIO_LOGO_SVG_URL}" width="36" height="36" alt="" aria-hidden="true" />
+          <span class="brand-text-col">
+            <span class="brand-title">RaggieSoft Studio</span>
+            <span class="brand-sub">${brandSubtitle}</span>
+          </span>
         </a>
 
         <button

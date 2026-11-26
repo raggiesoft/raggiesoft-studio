@@ -79,7 +79,7 @@ const DOCUMENT_OG_IMAGE = `${BOXES_CDN_BASE}/og-document-studio.jpg`;
 const LOCALIZATION_OG_IMAGE = `${BOXES_CDN_BASE}/og-localization-studio.jpg`;
 const LAUNCHER_OG_IMAGE = `${BOXES_CDN_BASE}/og-launcher-studio.jpg`;
 const SHOWCASE_OG_IMAGE = `${BOXES_CDN_BASE}/og-showcase-studio.jpg`;
-const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg';
+const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg';
 const INDEXNOW_KEY = '726167676965736f6674696e6465786e';
 
 /**

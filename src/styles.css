@@ -128,6 +128,21 @@ body {
 .brand-link {
   color: #f8fafc;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+  border-radius: 0.45rem;
+  display: block;
+}
+
+.brand-text-col {
   display: flex;
   flex-direction: column;
   min-width: 0;
