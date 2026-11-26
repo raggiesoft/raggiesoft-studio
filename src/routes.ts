@@ -66,6 +66,10 @@ interface ScreenshotFeatureItem {
   readonly alt: string;
   readonly summaryHtml: string;
   readonly detailHtml: string;
+  readonly actionHref?: string;
+  readonly actionLabel?: string;
+  readonly secondaryHref?: string;
+  readonly secondaryLabel?: string;
 }
 
 // Canonical CDN & documentation asset constants.
@@ -74,6 +78,10 @@ const ASSET_BASE =
 const STUDIO_BOXES_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
 const SUITE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-raggiesoft-studio-suite.jpg`;
 const BOX_SHOWCASE_URL = `${STUDIO_BOXES_BASE}/og-installer-studio.jpg`;
+const TRAINING_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-training-studio.jpg`;
+const HELP_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-help-studio.jpg`;
+const DOCUMENT_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-document-studio.jpg`;
+const LOCALIZATION_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-localization-studio.jpg`;
 const LAUNCHER_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-launcher-studio.jpg`;
 const SHOWCASE_OG_BOX_URL = `${STUDIO_BOXES_BASE}/og-showcase-studio.jpg`;
 const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
@@ -97,59 +105,123 @@ const FICTITIOUS_DISCLAIMER =
 const SUITE_SLIPCASE_BOX_ITEM: ScreenshotFeatureItem = {
   dialogId: 'dlg-box-suite-complete',
   imgUrl: `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`,
-  badge: 'Collector’s Slipcase • Complete 4-Product Suite',
-  title: 'RaggieSoft Studio — Enterprise Suite Front Box',
-  alt: '3D 1990s-style Collector’s Edition retail box for RaggieSoft Studio Suite featuring four jewel-toned crystalline obelisks and a brass armillary sphere over a perspective grid, embossed 4-Tools gold foil seal, and four-color spine wrap.',
+  badge: 'Collector’s Slipcase • Complete 8-Product Enterprise & Publisher Suite',
+  title: 'RaggieSoft Studio — Complete Eight-Tool Workstation Suite',
+  alt: '3D 1990s-style Collector’s Edition retail box for RaggieSoft Studio Suite featuring eight jewel-toned crystalline obelisks converging around a brass armillary sphere over a perspective grid, embossed 8-Tools Enterprise Edition gold foil seal, and eight-color spine wrap.',
   summaryHtml:
-    'Authentic 1990s big-box collector’s slipcase uniting <strong>Installer Studio</strong>, <strong>Accessibility Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong> under one four-color spine wrap.',
+    'Eight focused developer, compliance, documentation, and publishing tools built on plain-text Git-diffable manifests, code-level WCAG 2.2 Level AA &amp; Section 508 accessibility, native <code>x64</code> &amp; <code>ARM64</code> performance, and automated HTML5 VPAT 2.5 conformance reports.',
   detailHtml:
-    'Styled after classic 1995–1998 developer suite boxes: four jewel-toned crystalline obelisks (Royal Cobalt, Emerald, Electric Cyan, and Retro Teal) converge around a brass armillary sphere and golden keystone cube, paired with Georgia editorial typography, a 4-color spine wrap, and an embossed gold-foil seal.'
+    'Anchored by our flagship <strong>Installer Studio v0.5.0</strong> and <strong>Accessibility Studio v1.0.0</strong>, expanded with <strong>Training Studio v0.1.0</strong> (bandwidth-proof SCORM 1.2 &amp; 2004 courseware), <strong>Help Studio</strong> (<code>.CHM</code> / <code>.hhp</code> migration &amp; native <code>F1</code> clients), <strong>Document Studio</strong> (<code>PDF/UA-1</code>), <strong>Localization Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.'
 };
 
 const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-installer',
     imgUrl: `${STUDIO_BOXES_BASE}/box-installer-studio.png`,
-    badge: 'Shipping v0.5.0 • Developer Series Box',
-    title: '1. RaggieSoft Installer Studio — Front Box',
-    alt: '3D 1990s-style retail box for RaggieSoft Installer Studio featuring interlocking chrome, brass, and royal-cobalt glass puzzle cubes and precision clockwork gears assembling above a glowing perspective blueprint grid.',
+    badge: '1 • Flagship v0.5.0 Shipping • .rsip / .rsis',
+    title: 'RaggieSoft Installer Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Installer Studio featuring interlocking chrome, brass, and royal-cobalt glass puzzle cubes and gears above a perspective blueprint grid.',
     summaryHtml:
-      'Classic 1990s Developer Series cover symbolizing precision transactional packaging and zero-bloat Win32 C++20 assembly.',
+      '<strong>Install Without Limits.</strong> Zero-dependency static <code>/MT</code> Win32 C++20 visual IDE &amp; CLI compiling signed <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code>, <code>.msm</code>, <code>.msp</code>, and 10-style <code>SetupWizard.exe</code> installers with Auto-VPAT 2.5.',
     detailHtml:
-      'Replaces back-of-box screenshots with classic 1990s ray-traced cover symbolism: polished chrome, brushed brass gears, and translucent royal-cobalt glass cubes locking together above a cyan architectural blueprint horizon, finished with an embossed Pure C++ gold-foil medallion.'
+      '28 years in the making (since the 1998 Visual Basic 6.0 Package &amp; Deployment Wizard): plain-text comment-preserving <code>.rsip</code> manifests, CPU-aware Universal <code>Setup.exe</code> stubs, pre-MSI runtime chaining, and Dual-Layer Azure Artifact Signing.',
+    actionHref: '/installer-studio',
+    actionLabel: 'Installer Studio Hub →',
+    secondaryHref: DOWNLOAD_WEB_SETUP_URL,
+    secondaryLabel: 'Download v0.5.0'
   },
   {
     dialogId: 'dlg-box-a11y',
     imgUrl: `${STUDIO_BOXES_BASE}/box-accessibility-studio.png`,
-    badge: 'Shipping v1.0.0 • Compliance Series Box',
-    title: '2. RaggieSoft Accessibility Studio — Front Box',
-    alt: '3D 1990s-style retail box for RaggieSoft Accessibility Studio featuring a crystal optical prism refracting white light into crisp emerald, gold, and sapphire pathways above a golden architectural bridge arch.',
+    badge: '2 • v1.0.0 Shipping (.NET 11) • .a11yproj',
+    title: 'RaggieSoft Accessibility Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Accessibility Studio featuring a crystal optical prism refracting light into emerald, gold, and sapphire pathways above a golden bridge arch.',
     summaryHtml:
-      'Classic 1990s Compliance Series cover symbolizing source-level structural clarity, high-contrast refraction, and universal access.',
+      '<strong>Audit, Diff &amp; Refactor WCAG 2.2.</strong> Source-level HTML5, WAI-ARIA, CSS contrast, and WebVTT caption IDE with Monaco side-by-side Guided Fix diffs, live Chromium emulation, and headless CI/CD SARIF 2.1.0 gates.',
     detailHtml:
-      'Features a crystal optical prism and golden architectural bridge arch spanning an emerald-slate perspective horizon, paired with Emerald spine banding and an embossed WCAG 2.2 / Section 508 AA gold-foil seal.'
+      'Pinpoints exact 1-based line and column violations across web portals, templates, and caption tracks, previews safe source fixes before touching disk, and exports executive HTML5 &amp; Revised Section 508 matrices.',
+    actionHref: '/accessibility-studio',
+    actionLabel: 'Accessibility Studio →',
+    secondaryHref: A11Y_STUDIO_WEB_SETUP_URL,
+    secondaryLabel: 'Download v1.0.0'
+  },
+  {
+    dialogId: 'dlg-box-training',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-training-studio.png`,
+    badge: '3 • v0.1.0 PoC & Live Demo (.NET 11) • .rstp',
+    title: 'RaggieSoft Training Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Training Studio featuring a brushed-brass and royal-amethyst crystal lighthouse-chronometer beacon radiating golden checkpoint rings and soundwave arcs.',
+    summaryHtml:
+      '<strong>Bandwidth-Proof SCORM 1.2 &amp; 2004.</strong> Compiles plain-text <code>.rstp</code> + Markdown slides, compact Opus/AAC audio, and verified <code>.vtt</code> captions into <code>&lt;50 KB</code> proxy-resilient players with offline checkpoint queues and Auto-VPAT 2.5.',
+    detailHtml:
+      'Built to replace 400 MB progressive MP4 compliance courses that stall on Oracle Taleo and Workday WAN links—featuring atomic 10-second cue commits, locked forward scrubbers, and a compile-time WCAG 2.2 AA gate.',
+    actionHref: '/training-studio',
+    actionLabel: 'Try Live LMS Demo →'
+  },
+  {
+    dialogId: 'dlg-box-help',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-help-studio.png`,
+    badge: '4 • Architecture Preview • .rshp / .hhp',
+    title: 'RaggieSoft Help Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Help Studio featuring an illuminated crystal codex on a bronze pedestal beneath floating golden index folders and a brass compass rose.',
+    summaryHtml:
+      '<strong>Modern Offline F1 Help &amp; .CHM Migration.</strong> Imports legacy Microsoft HTML Help Workshop (<code>.hhp</code>, <code>.hhc</code>, <code>.hhk</code>, <code>.chm</code>) projects into modular <code>.rshm</code> packs OR a standalone zero-dependency C++20 <code>Help.exe</code> client.',
+    detailHtml:
+      'Replaces retired Internet Explorer <code>mshtml.dll</code> <code>.chm</code> files blocked on network shares with instant Named Pipe <code>F1</code> context-ID routing, Dark/Light/High-Contrast themes, static web docs, and Auto-VPAT 2.5.',
+    actionHref: '/help-studio',
+    actionLabel: 'Explore Help Studio →'
+  },
+  {
+    dialogId: 'dlg-box-document',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-document-studio.png`,
+    badge: '5 • Architecture Preview • .rsdp',
+    title: 'RaggieSoft Document Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Document Studio featuring ruby-garnet crystal tablets and golden hierarchical tag-tree pyramids over a crimson-obsidian grid.',
+    summaryHtml:
+      '<strong>Tagged PDF/UA-1 Without Tag-Tree Pain.</strong> Compiles plain-text <code>.rsdp</code> manifests and Markdown into machine-verified ISO 14289-1 <code>PDF/UA-1</code> manuals, policies, certificates, and Section 508 / ADA Title II forms.',
+    detailHtml:
+      'Eliminates hours of manual Acrobat tag-tree repair every time a municipal policy, employee handbook, or board packet changes—enforcing reading order, table header scopes, and alt text at compile time.',
+    actionHref: '/document-studio',
+    actionLabel: 'Explore Document Studio →'
+  },
+  {
+    dialogId: 'dlg-box-localization',
+    imgUrl: `${STUDIO_BOXES_BASE}/box-localization-studio.png`,
+    badge: '6 • Architecture Preview • .rsloc',
+    title: 'RaggieSoft Localization Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Localization Studio featuring a sapphire-indigo crystal polyhedron encircled by three brass orbital rings and mirrored crystal prisms.',
+    summaryHtml:
+      '<strong>Safe App, Installer &amp; Caption Translation.</strong> Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code>, and multilingual <code>WebVTT</code> IDE with locked format tokens, <code>&amp;</code> mnemonic clash checks, and <code>BCP 47</code> gates.',
+    detailHtml:
+      'Prevents broken <code>{0}</code> / <code>$(ARCH)</code> placeholders, duplicate keyboard accelerators, and unreadable <code>&gt;25 CPS</code> translated closed captions across desktop software, installers, and training modules.',
+    actionHref: '/localization-studio',
+    actionLabel: 'Explore Localization →'
   },
   {
     dialogId: 'dlg-box-launcher',
     imgUrl: `${STUDIO_BOXES_BASE}/box-launcher-studio.png`,
-    badge: 'Design Preview • Distribution Series Box',
-    title: '3. RaggieSoft Launcher Studio — Front Box',
-    alt: '3D 1990s-style retail box for RaggieSoft Launcher Studio featuring a brushed-chrome and electric-cyan glass astrolabe compass tower launching golden spheres along orbital arcs over an indigo wireframe globe.',
+    badge: '7 • Design Preview • .rslp',
+    title: 'RaggieSoft Launcher Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Launcher Studio featuring a chrome and electric-cyan glass astrolabe launching golden spheres across an indigo wireframe globe.',
     summaryHtml:
-      'Classic 1990s Distribution Series cover symbolizing direct-to-desktop global static-CDN delivery without gatekeepers.',
+      '<strong>White-Label Desktop App Hubs.</strong> Visual IDE &amp; <code>.rslp</code> compiler for building publisher-branded Windows 11 app shelves and <code>SHA-256</code> + Authenticode-verified delta updaters hosted on any static CDN.',
     detailHtml:
-      'Features a retro-futuristic chrome and cyan-glass orbital astrolabe spire launching luminous golden payload spheres across a deep indigo wireframe globe horizon, paired with Electric Cyan spine banding and a Static Signed Deltas foil seal.'
+      'Inspired by our production RaggieSoft Launcher: zero database servers, zero forced user accounts, zero store gatekeepers, and native <code>x64</code> &amp; <code>ARM64</code> update verification.',
+    actionHref: '/launcher-studio',
+    actionLabel: 'Explore Launcher Studio →'
   },
   {
     dialogId: 'dlg-box-showcase',
     imgUrl: `${STUDIO_BOXES_BASE}/box-showcase-studio.png`,
-    badge: 'Design Preview • Multimedia Series Box',
-    title: '4. RaggieSoft Showcase Studio — Front Box',
-    alt: '3D 1990s-style retail box for RaggieSoft Showcase Studio featuring an iridescent optical disc, ruby glass sphere, retro-teal crystal pyramid, and brass soundwave ribbon under theatrical spotlights over a checkerboard stage.',
+    badge: '8 • Design Preview • .rssp',
+    title: 'RaggieSoft Showcase Studio',
+    alt: '3D 1990s-style retail box for RaggieSoft Showcase Studio featuring an iridescent optical disc, ruby sphere, teal crystal pyramid, and brass soundwave ribbon.',
     summaryHtml:
-      'Classic 1990s Multimedia Series cover celebrating interactive collector discs, companion liner notes, and modern accessibility.',
+      '<strong>Accessible Collector Menus.</strong> Compiles <code>.rssp</code> manifests into zero-dependency Win32 C++20 launchpads—supporting both 1990s painted <code>.BMP</code> CD-ROM art with UIA focus rings and modern Windows 11 <code>FluentMica</code>.',
     detailHtml:
-      'Pays tribute to mid-1990s multimedia authoring boxes with ray-traced geometric primitives—a ruby sphere, teal crystal pyramid, brass soundwave ribbon, and iridescent optical disc—under warm stage spotlights on a reflective checkerboard floor.'
+      'Purpose-built for USB collector box sets, multi-installer suite menus, companion media discs, and accessible museum/classroom kiosks with automatic <code>SPI_GETHIGHCONTRAST</code> override.',
+    actionHref: '/showcase-studio',
+    actionLabel: 'Explore Showcase Studio →'
   }
 ];
 
@@ -404,6 +476,18 @@ function renderAzureSigningAssuranceNotice(): string {
  * Renders an accessible thumbnail `<button>` + native HTML5 `<dialog>` full-resolution modal.
  */
 function renderScreenshotCardAndModal(item: ScreenshotFeatureItem): string {
+  const actionButtons = item.actionHref
+    ? `
+        <div class="btn-row" style="margin-top: auto; padding-top: 0.55rem;">
+          <a class="btn btn-primary" href="${item.actionHref}" style="font-size: 0.84rem; padding: 0.42rem 0.8rem;">${item.actionLabel ?? 'Explore Product →'}</a>
+          ${
+            item.secondaryHref
+              ? `<a class="btn btn-outline" href="${item.secondaryHref}" style="font-size: 0.84rem; padding: 0.42rem 0.8rem;">${item.secondaryLabel ?? 'Download'}</a>`
+              : ''
+          }
+        </div>`
+    : '';
+
   return `
     <figure class="shot-card">
       <button
@@ -414,12 +498,12 @@ function renderScreenshotCardAndModal(item: ScreenshotFeatureItem): string {
         aria-label="Open full-size view: ${item.title}"
       >
         <img src="${item.imgUrl}" alt="${item.alt}" loading="lazy" />
-        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+        <span class="shot-zoom-pill">Full-Size View</span>
       </button>
       <figcaption>
         <span class="eyebrow" style="margin-bottom: 0;">${item.badge}</span>
         <strong>${item.title}</strong>
-        <span>${item.summaryHtml}</span>
+        <span>${item.summaryHtml}</span>${actionButtons}
       </figcaption>
     </figure>
 
@@ -458,20 +542,22 @@ function renderSuiteHomeBody(): string {
     <section class="hero" aria-labelledby="suite-hero-title">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Studio • Windows 11 x64 &amp; ARM64 Developer Suite</span>
-          <h1 id="suite-hero-title">One Cohesive Studio Suite for Accessibility, Packaging, Launchers &amp; Showcases.</h1>
+          <span class="eyebrow">RaggieSoft Studio • Eight-Tool Developer, Compliance &amp; Publishing Suite</span>
+          <h1 id="suite-hero-title">Zero-Bloat Engineering Tools Built on Plain-Text Manifests &amp; WCAG 2.2 AA.</h1>
           <p class="lead">
-            <strong>RaggieSoft Studio</strong> (<code>raggiesoftstudio.com</code>) brings together four focused Windows 11
-            developer tools built on plain-text Git-diffable manifests, WCAG 2.2 Level AA &amp; Section 508 accessibility,
-            Dual-Layer Microsoft Azure Artifact Signing, and 100% white-label publisher ownership—with
-            <strong>Installer Studio <code>v0.5.0</code></strong> and <strong>Accessibility Studio <code>v1.0.0</code></strong>
-            shipping today alongside upcoming <strong>Launcher Studio</strong> and <strong>Showcase Studio</strong> IDEs.
+            Anchored by our pride-and-joy <strong>Installer Studio <code>v0.5.0</code></strong> (28 years in the making since
+            the 1998 Visual Basic 6.0 Package &amp; Deployment Wizard) and <strong>Accessibility Studio <code>v1.0.0</code></strong>,
+            <strong>RaggieSoft Studio</strong> unites <strong>eight</strong> focused tools that replace bloated, legacy enterprise
+            authoring suites—now joined by <strong>Training Studio <code>v0.1.0</code></strong> (bandwidth-proof SCORM 1.2 &amp;
+            2004 courseware), <strong>Help Studio</strong> (turnkey <code>.CHM</code> / HTML Help migration &amp; native <code>F1</code>
+            clients), <strong>Document Studio</strong>, <strong>Localization Studio</strong>, <strong>Launcher Studio</strong>,
+            and <strong>Showcase Studio</strong>.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/installer-studio">Explore Installer Studio (v0.5.0) &rarr;</a>
-            <a class="btn btn-outline" href="/accessibility-studio">Explore Accessibility Studio (v1.0.0) &rarr;</a>
-            <a class="btn btn-outline" href="/launcher-studio">Preview Launcher Studio</a>
-            <a class="btn btn-outline" href="/showcase-studio">Preview Showcase Studio</a>
+            <a class="btn btn-primary" href="/installer-studio">Installer Studio (v0.5.0 Flagship) &rarr;</a>
+            <a class="btn btn-outline" href="/accessibility-studio">Accessibility Studio (v1.0.0) &rarr;</a>
+            <a class="btn btn-outline" href="/training-studio">Try Training Studio SCORM Demo &rarr;</a>
+            <a class="btn btn-outline" href="/help-studio">Preview Help Studio (.CHM / F1) &rarr;</a>
           </div>
           ${renderAzureSigningAssuranceNotice()}
         </div>
@@ -480,15 +566,15 @@ function renderSuiteHomeBody(): string {
             src="${SUITE_OG_BOX_URL}"
             width="1200"
             height="630"
-            alt="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Four Cohesive Windows 11 Developer Tools."
+            alt="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Developer, Compliance, and Publishing Tools."
           />
         </figure>
       </div>
     </section>
 
     <section aria-labelledby="box-shelf-heading">
-      <span class="eyebrow">Collector’s Retail Box Showcase • 1 Umbrella Slipcase + 4 Individual Product Boxes</span>
-      <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">The Complete Boxed RaggieSoft Studio Shelf</h2>
+      <span class="eyebrow">Complete 8-Product Lineup • Flagship Slipcase + Symmetrical 4&times;2 Product Quick Cards</span>
+      <h2 id="box-shelf-heading" style="margin-top: 0.25rem;">Explore All Eight RaggieSoft Studio Products</h2>
 
       <!-- Featured Full-Width Umbrella Suite Slipcase Card -->
       <figure class="suite-box-featured">
@@ -500,7 +586,7 @@ function renderSuiteHomeBody(): string {
           aria-label="Open full-size view: ${SUITE_SLIPCASE_BOX_ITEM.title}"
         >
           <img src="${SUITE_SLIPCASE_BOX_ITEM.imgUrl}" alt="${SUITE_SLIPCASE_BOX_ITEM.alt}" loading="lazy" />
-          <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+          <span class="shot-zoom-pill">Inspect Full 1200&times;960 Box</span>
         </button>
         <figcaption class="suite-box-featured-body">
           <span class="eyebrow" style="margin-bottom: 0;">${SUITE_SLIPCASE_BOX_ITEM.badge}</span>
@@ -508,8 +594,10 @@ function renderSuiteHomeBody(): string {
           <p style="margin: 0;">${SUITE_SLIPCASE_BOX_ITEM.summaryHtml}</p>
           <p style="margin: 0; color: var(--text-muted); font-size: 0.94rem;">${SUITE_SLIPCASE_BOX_ITEM.detailHtml}</p>
           <div class="btn-row" style="margin-top: 0.4rem;">
-            <button type="button" class="btn btn-primary" data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}">
-              Inspect Full 1200&times;960 Suite Box
+            <a class="btn btn-primary" href="/installer-studio">Flagship: Installer Studio v0.5.0 &rarr;</a>
+            <a class="btn btn-outline" href="/training-studio">New: Training Studio PoC &amp; Demo &rarr;</a>
+            <button type="button" class="btn btn-outline" data-open-dialog="${SUITE_SLIPCASE_BOX_ITEM.dialogId}">
+              Zoom 8-Tool Suite Box
             </button>
           </div>
         </figcaption>
@@ -535,137 +623,78 @@ function renderSuiteHomeBody(): string {
         </div>
       </dialog>
 
-      <!-- Balanced 2x2 Grid of the 4 Individual Studio Product Boxes -->
-      <div class="grid-2x2">
+      <!-- Balanced 4x2 (Desktop) / 2x4 (Tablet) / 1x8 (Mobile) Quick Product Cards -->
+      <div class="grid-4x2">
         ${PRODUCT_BOX_GALLERY_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
       </div>
     </section>
 
-    <section aria-labelledby="suite-lineup-heading">
-      <span class="eyebrow">Four Dedicated Developer Workstations • Two Shipping Now + Two in Design Preview</span>
-      <h2 id="suite-lineup-heading" style="margin-top: 0.25rem;">Meet the RaggieSoft Studio Product Family</h2>
-      <div class="grid-2x2">
-        <article class="card card-highlight">
-          <div>
-            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">1 • Shipping Now (v0.5.0 Signed Preview)</span>
-            <h3>RaggieSoft Installer Studio</h3>
-            <p>
-              <strong>Install Without Limits.</strong> Zero-dependency static <code>/MT</code> Win32 C++20 packaging IDE,
-              headless CLI (<code>instbuild.exe</code>), 10-style customer <code>SetupWizard.exe</code> (from 1995 ACME
-              <code>#008080</code> Teal &amp; Cobalt washes to Windows 11 <code>FluentMica</code>), 64-bit SQL inspector
-              (<code>msiprism.exe</code>), and native <code>F1</code> Help Viewer for <code>x64</code> &amp; <code>ARM64</code>.
-            </p>
-            <ul class="feature-list">
-              <li>Plain-text comment-preserving <code>.rsip</code>, <code>.rsis</code> &amp; <code>.rsii</code> manifests</li>
-              <li>Universal CPU-aware Web Stub &amp; Combined Offline EXE (<code>x64 + ARM64</code>)</li>
-              <li>Automated HTML5 VPAT 2.5 (<code>--emit-vpat</code>) &amp; AI specs (<code>/installer-studio/llms-full.txt</code>)</li>
-            </ul>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="/installer-studio">Installer Studio Hub &rarr;</a>
-            <a class="btn btn-outline" href="${DOWNLOAD_WEB_SETUP_URL}">Download v0.5.0</a>
-            <a class="btn btn-outline" href="/installer-studio/screenshots">14 Screenshots</a>
-          </div>
-        </article>
-
-        <article class="card card-highlight">
-          <div>
-            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">2 • Shipping Now (v1.0.0 Signed IDE &amp; CLI)</span>
-            <h3>RaggieSoft Accessibility Studio</h3>
-            <p>
-              <strong>Audit, Diff &amp; Refactor WCAG 2.2 at Source Level.</strong> Workstation IDE (C# 13 / <code>.NET 10</code>
-              WinForms + Monaco side-by-side refactoring diffs + live Chromium forced-colors &amp; 400% reflow emulation)
-              paired with a headless CI/CD <strong>OASIS SARIF 2.1.0</strong> scanner.
-            </p>
-            <ul class="feature-list">
-              <li>Deterministic HTML5, WAI-ARIA, CSS contrast, and WebVTT caption verification</li>
-              <li>Side-by-side Guided Fix diffs (<code>Ctrl+D</code>) before touching source files</li>
-              <li>Packaged &amp; Dual-Layer Azure-signed using Installer Studio <code>v0.5.0</code></li>
-            </ul>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="/accessibility-studio">Accessibility Studio Hub &rarr;</a>
-            <a class="btn btn-outline" href="${A11Y_STUDIO_WEB_SETUP_URL}">Download v1.0.0</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div>
-            <span class="status-pill status-next" style="margin-bottom: 0.55rem;">3 • Design Preview &amp; Mockups</span>
-            <h3>RaggieSoft Launcher Studio</h3>
-            <p>
-              <strong>White-Label Desktop App Hubs &amp; Static-CDN Updaters.</strong> Inspired directly by our own
-              <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, Launcher Studio lets independent software
-              teams, authors, and audio labels compile a custom-branded desktop app hub and delta updater from plain-text
-              <code>.rslp</code> catalogs.
-            </p>
-            <ul class="feature-list">
-              <li>Zero-server static JSON catalog hosting on any HTTPS host, S3, or Cloudflare R2</li>
-              <li>Zero mandatory user accounts, zero store gatekeepers, and zero telemetry</li>
-              <li>Mandatory <code>SHA-256</code> + <code>WinVerifyTrust</code> signature checks on every update</li>
-            </ul>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="/launcher-studio">Explore Launcher Studio &amp; Mockup &rarr;</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div>
-            <span class="status-pill status-next" style="margin-bottom: 0.55rem;">4 • Design Preview &amp; Mockups</span>
-            <h3>RaggieSoft Showcase Studio</h3>
-            <p>
-              <strong>Interactive Collector Menus — 1990s Soul, WCAG 2.2 AA Heart.</strong> Author zero-dependency Win32
-              C++20 interactive launchpads (<code>.rssp</code> manifests) for USB/ISO collector box sets, multi-installer
-              suites, album/book companion media, and accessible kiosks.
-            </p>
-            <ul class="feature-list">
-              <li>Classic 1990s painted <code>.BMP</code> CD-ROM mode upgraded with real Win32 UI Automation buttons &amp; 4-way focus rings</li>
-              <li>Modern Windows 11 <code>FluentMica</code> <code>16:9</code> widescreen launchpad mode</li>
-              <li>Instant <code>SPI_GETHIGHCONTRAST</code> override &amp; muted-by-default captioned audio</li>
-            </ul>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="/showcase-studio">Explore Showcase Studio &amp; Mockups &rarr;</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section aria-labelledby="pipeline-heading">
-      <span class="eyebrow">How All Four Tools Fit Together</span>
-      <h2 id="pipeline-heading" style="margin-top: 0.25rem;">End-to-End Independent Software &amp; Media Publishing Pipeline</h2>
+      <span class="eyebrow">How All Eight Tools Fit Together • Two Symmetrical 4-Stage Workflows</span>
+      <h2 id="pipeline-heading" style="margin-top: 0.25rem;">End-to-End Enterprise Compliance &amp; Software Publishing Lifecycle</h2>
       <div class="pipeline-grid">
         <div class="pipeline-step">
-          <span class="pipeline-num">Stage 1 • Accessibility Studio</span>
-          <h3>Audit Source &amp; Docs</h3>
-          <p style="margin-bottom: 0;">
-            Verify web portals, offline HTML5 help topics, CSS contrast tokens, and <code>.vtt</code> captions against WCAG 2.2 AA
-            and Section 508—exporting SARIF 2.1.0 &amp; executive proof.
-          </p>
-        </div>
-        <div class="pipeline-step">
-          <span class="pipeline-num">Stage 2 • Installer Studio</span>
+          <span class="pipeline-num">1 • Installer Studio</span>
           <h3>Package &amp; Dual-Sign</h3>
           <p style="margin-bottom: 0;">
-            Compile native <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, <code>Engine = native</code>
-            packs, VPAT 2.5 reports, and CPU-aware Universal <code>Setup.exe</code> installers.
+            Our <code>v0.5.0</code> C++20 flagship compiles native <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code>
+            databases, 10-style <code>SetupWizard.exe</code> installers, and VPAT 2.5 reports.
           </p>
         </div>
         <div class="pipeline-step">
-          <span class="pipeline-num">Stage 3 • Showcase Studio</span>
-          <h3>Present Boxed Editions</h3>
+          <span class="pipeline-num">2 • Accessibility Studio</span>
+          <h3>Audit &amp; Refactor</h3>
           <p style="margin-bottom: 0;">
-            Wrap multi-package USB/ISO collector editions, liner notes, and companion media in a 1990s <code>.BMP</code> or
-            modern <code>FluentMica</code> accessible front-end menu.
+            Verify HTML5, WAI-ARIA, CSS contrast, and <code>.vtt</code> captions in our <code>.NET 11</code> IDE &amp; CI/CD
+            OASIS SARIF 2.1.0 scanner.
           </p>
         </div>
         <div class="pipeline-step">
-          <span class="pipeline-num">Stage 4 • Launcher Studio</span>
-          <h3>Deliver Ongoing Updates</h3>
+          <span class="pipeline-num">3 • Training Studio</span>
+          <h3>Resilient SCORM</h3>
           <p style="margin-bottom: 0;">
-            Ship a publisher-branded desktop library hub that discovers new releases and applies <code>SHA-256</code> +
-            Authenticode-verified updates from any static CDN.
+            Compile <code>.rstp</code> + Markdown into <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 compliance courses
+            with offline queues &amp; Auto-VPAT.
+          </p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-num">4 • Help Studio</span>
+          <h3>Native <code>F1</code> &amp; <code>.CHM</code> Import</h3>
+          <p style="margin-bottom: 0;">
+            Migrate legacy HTML Help Workshop (<code>.hhp</code>/<code>.chm</code>) projects into modular <code>.rshm</code>
+            packs or standalone C++20 <code>F1</code> clients.
+          </p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-num">5 • Document Studio</span>
+          <h3>Tagged <code>PDF/UA-1</code></h3>
+          <p style="margin-bottom: 0;">
+            Compile plain-text <code>.rsdp</code> handbooks, policies, and ADA Title II / Section 508 forms without manual
+            Acrobat tag-tree repair.
+          </p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-num">6 • Localization Studio</span>
+          <h3>Safe Translation</h3>
+          <p style="margin-bottom: 0;">
+            Translate <code>.RESX</code>, <code>XLIFF</code>, <code>.rsip</code>, and <code>.vtt</code> captions while locking
+            <code>{0}</code> tokens, <code>&amp;</code> mnemonics, and <code>&le;25 CPS</code> speed.
+          </p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-num">7 • Launcher Studio</span>
+          <h3>Branded App Hubs</h3>
+          <p style="margin-bottom: 0;">
+            Deliver ongoing <code>SHA-256</code> + Authenticode-verified updates from any static HTTPS host or CDN without
+            store gatekeepers.
+          </p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-num">8 • Showcase Studio</span>
+          <h3>Collector Editions</h3>
+          <p style="margin-bottom: 0;">
+            Present USB/ISO collector editions in 1990s painted <code>.BMP</code> menus with UIA safeguards or modern Windows 11
+            <code>FluentMica</code>.
           </p>
         </div>
       </div>
@@ -683,10 +712,10 @@ function renderSuiteHomeBody(): string {
 
     <section class="calc-panel" aria-labelledby="shared-dna-heading">
       <span class="eyebrow">Shared RaggieSoft Studio Engineering Standards</span>
-      <h2 id="shared-dna-heading" style="margin-top: 0.25rem;">Six Non-Negotiable Commitments Across Every Studio Tool</h2>
+      <h2 id="shared-dna-heading" style="margin-top: 0.25rem;">Six Non-Negotiable Commitments Across All Eight Studio Tools</h2>
       <div class="table-wrap" style="margin-bottom: 0;">
         <table>
-          <caption>Shared Architectural Standards Across the 4-Product RaggieSoft Studio Suite</caption>
+          <caption>Shared Architectural Standards Across the 8-Product RaggieSoft Studio Suite</caption>
           <thead>
             <tr>
               <th scope="col">Engineering Pillar</th>
@@ -697,23 +726,23 @@ function renderSuiteHomeBody(): string {
           <tbody>
             <tr>
               <th scope="row">Plain-Text Diffable Projects</th>
-              <td>Comment-preserving <code>.rsip</code> / <code>.rsis</code> (Installer), <code>.a11yproj</code> (Accessibility), <code>.rslp</code> (Launcher), and <code>.rssp</code> (Showcase)</td>
+              <td>Comment-preserving <code>.rsip</code> (Installer), <code>.a11yproj</code> (Accessibility), <code>.rstp</code> (Training), <code>.rshp</code> (Help), <code>.rsdp</code> (Document), <code>.rsloc</code> (Localization), <code>.rslp</code> (Launcher), and <code>.rssp</code> (Showcase)</td>
               <td>Clean Git pull-request diffs, zero opaque binary lock-in, and deterministic AI coding-agent authoring.</td>
             </tr>
             <tr>
-              <th scope="row">WCAG 2.2 AA &amp; Contrast Themes</th>
-              <td>Native UI Automation roles, <code>&ge; 4.5:1</code> Dark/Light contrast gates, and <code>SPI_GETHIGHCONTRAST</code> semantic overrides</td>
-              <td>Every developer IDE and every customer-facing wizard, showcase, and launcher works cleanly with keyboards and screen readers.</td>
+              <th scope="row">WCAG 2.2 AA &amp; Auto-VPAT 2.5</th>
+              <td>Compile-time accessibility gates, <code>&ge; 4.5:1</code> Dark/Light contrast, <code>forced-colors</code> / <code>SPI_GETHIGHCONTRAST</code> overrides, and HTML5 VPAT 2.5 generation</td>
+              <td>Every developer IDE and every exported installer, SCORM course, help manual, PDF, and launcher passes accessibility procurement out of the box.</td>
             </tr>
             <tr>
               <th scope="row">Native <code>x64</code> &amp; <code>ARM64</code> Silicon</th>
-              <td>First-class Windows 11 <code>x64</code> and native <code>ARM64</code> binaries paired with <code>IsWow64Process2</code> universal launchers</td>
+              <td>First-class Windows 11 <code>x64</code> and native <code>ARM64</code> binaries (.NET 11 &amp; static <code>/MT</code> C++20) paired with <code>IsWow64Process2</code> universal launchers</td>
               <td>Instant cold startup on both Intel/AMD workstations and Snapdragon Windows on ARM laptops without emulation penalties.</td>
             </tr>
             <tr>
-              <th scope="row">Shared C++20 Offline Help</th>
-              <td>Modular <code>.rshm.json</code> HTML5 manuals rendered offline in <code>&lt; 5ms</code> by zero-dependency <code>RaggieSoftHelp.exe</code></td>
-              <td>Press <code>F1</code> anywhere—even on air-gapped networks—and read the exact same chapters published on the web.</td>
+              <th scope="row">Unified Offline <code>F1</code> Help</th>
+              <td>Modular <code>.rshm.json</code> HTML5 manuals &amp; legacy <code>.hhp</code>/<code>.chm</code> migration rendered in <code>&lt; 5ms</code> by zero-dependency <code>RaggieSoftHelp.exe</code></td>
+              <td>Press <code>F1</code> anywhere—even on air-gapped networks or UNC shares where legacy <code>.CHM</code> files fail.</td>
             </tr>
             <tr>
               <th scope="row">Public Trust Signing</th>
@@ -723,10 +752,384 @@ function renderSuiteHomeBody(): string {
             <tr>
               <th scope="row">Zero Telemetry &amp; 100% White-Label</th>
               <td><code>Community == Premier</code> feature parity, MIT open-source code, zero license phone-home, and publisher-owned <code>VERSIONINFO</code></td>
-              <td>Your customers see your studio name, your artwork, and your product identity—never third-party adware or nag screens.</td>
+              <td>Your customers see your organization name, your artwork, and your product identity—never third-party adware or nag screens.</td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/training-studio` — RaggieSoft Training Studio (`v0.1.0` .NET 11 Compiler + Interactive Hostile LMS Demo).
+ */
+function renderTrainingStudioBody(): string {
+  return `
+    <section class="hero" aria-labelledby="training-studio-title">
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Training Studio • v0.1.0 .NET 11 Compiler &amp; SCORM 1.2 / 2004 Runtime</span>
+          <h1 id="training-studio-title">Bandwidth-Proof WCAG 2.2 AA Compliance Courseware — Zero 400 MB MP4 Stalls.</h1>
+          <p class="lead">
+            Born from rescuing a 14-slide municipal ADA Title II training module that baked static slides into 400+ MB
+            progressive <code>.mp4</code> files and stalled across congested enterprise WAN proxies,
+            <strong>RaggieSoft Training Studio</strong> (<code>rstbuild</code>) compiles Git-diffable <code>.rstp</code>
+            manifests, Markdown slides, compact <code>48 kbps</code> Opus / AAC voiceovers, and verified <code>.vtt</code>
+            captions into self-contained <strong>SCORM 1.2</strong> and <strong>SCORM 2004 (4th Ed.)</strong> packages
+            (<code>&lt;50 KB</code> player) with an <strong>automatic HTML5 VPAT 2.5 report</strong> in the box.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#hostile-lms-demo">Try Interactive Proxy-Drop Simulator &darr;</a>
+            <a class="btn btn-outline" href="/training-studio/live-player/index.html">Launch Full Compiled 3-Slide Player &rarr;</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-vpat-2.5.html">View Auto-Generated VPAT 2.5</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-scorm12.zip">Download SCORM 1.2 Sample (181 KB)</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${TRAINING_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2 and 2004 Courseware Compiler."
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section id="hostile-lms-demo" class="lms-sandbox" aria-labelledby="lms-demo-heading"
+      x-data="{
+        curSec: 12,
+        maxWatched: 12,
+        duration: 45,
+        proxyDown: false,
+        http206Stall: false,
+        walPending: false,
+        syncText: 'Progress Saved (slide-1@12.0s)',
+        logs: [
+          '[12:00:01] [SCORM 1.2] OK   LMSInitialize(\"\")',
+          '[12:00:01] [SCORM 1.2] OK   LMSSetValue(cmi.core.lesson_status = incomplete)',
+          '[12:00:10] [SCORM 1.2] OK   LMSSetValue(cmi.core.lesson_location = slide-1@10.0s)',
+          '[12:00:10] [SCORM 1.2] OK   LMSCommit(\"\") -> 214 / 4,096 chars'
+        ],
+        advanceTenSec() {
+          if (this.http206Stall) return;
+          this.curSec = Math.min(this.duration, this.curSec + 10);
+          this.maxWatched = Math.max(this.maxWatched, this.curSec);
+          const bm = 'slide-1@' + this.curSec.toFixed(1) + 's';
+          if (this.proxyDown) {
+            this.walPending = true;
+            this.syncText = 'Offline / Proxy Drop — Held in Local WAL (' + bm + ')';
+            this.logs.unshift('[WAL QUEUE] SAVED locally -> ' + bm + ' (LMSCommit blocked by HTTP 502)');
+          } else {
+            this.walPending = false;
+            this.syncText = 'Progress Saved (' + bm + ')';
+            this.logs.unshift('[SCORM 1.2] OK   LMSCommit(' + bm + ') -> 218 / 4,096 chars');
+          }
+        },
+        toggleProxy() {
+          this.proxyDown = !this.proxyDown;
+          if (this.proxyDown) {
+            this.syncText = 'Proxy Dropped — Write-Ahead Queue Armed';
+            this.logs.unshift('[FAULT INJ] Enterprise WAN Proxy set to HTTP 502 Bad Gateway');
+          } else {
+            const bm = 'slide-1@' + this.curSec.toFixed(1) + 's';
+            this.walPending = false;
+            this.syncText = 'Reconnected — Queued Checkpoint Replayed (' + bm + ')';
+            this.logs.unshift('[RECOVERY ] OK   Replayed WAL -> LMSCommit(' + bm + ') succeeded!');
+          }
+        },
+        toggleStall() {
+          this.http206Stall = !this.http206Stall;
+          this.logs.unshift(this.http206Stall
+            ? '[FAULT INJ] HTTP 206 Byte-Range Stalled -> Exponential Backoff Armed (1s, 2s, 4s)'
+            : '[RECOVERY ] Chunk stream resumed cleanly at ' + this.curSec.toFixed(1) + 's (Zero F12 needed!)');
+        }
+      }"
+    >
+      <span class="eyebrow">Interactive Architecture Proof • Test Fault Recovery Right in Your Browser</span>
+      <h2 id="lms-demo-heading" style="margin-top: 0.25rem;">"Hostile Enterprise LMS" Fault-Injection Simulator</h2>
+      <p style="margin-top: 0;">
+        Toggle a corporate proxy drop below, advance the lesson timer, and watch the Write-Ahead Log (WAL) protect every
+        watched second—then restore connectivity to watch the atomic <code>LMSCommit()</code> replay automatically.
+      </p>
+
+      <div class="btn-row" role="group" aria-label="Fault Injection Controls">
+        <button type="button" class="btn btn-primary" @click="advanceTenSec()" :disabled="http206Stall">
+          +10s Watch Time (Trigger Cue Checkpoint)
+        </button>
+        <button type="button" class="btn btn-outline" @click="toggleProxy()" :aria-pressed="proxyDown.toString()">
+          <span x-text="proxyDown ? 'Restore LMS Network (Replay Queue)' : 'Simulate Proxy Drop (HTTP 502)'">Simulate Proxy Drop (HTTP 502)</span>
+        </button>
+        <button type="button" class="btn btn-outline" @click="toggleStall()" :aria-pressed="http206Stall.toString()">
+          <span x-text="http206Stall ? 'Clear HTTP 206 Stream Stall' : 'Simulate HTTP 206 Range Stall'">Simulate HTTP 206 Range Stall</span>
+        </button>
+      </div>
+
+      <div class="lms-sandbox-grid">
+        <div class="lms-sim-card">
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+            <strong>Slide 1: ADA Title II Digital Access</strong>
+            <span class="status-pill" :class="proxyDown || http206Stall ? 'status-next' : 'status-shipped'" x-text="syncText">
+              Progress Saved (slide-1@12.0s)
+            </span>
+          </div>
+          <label for="demo-scrubber" style="font-size:0.86rem; font-weight:600; display:block; margin-bottom:0.35rem;">
+            Compliance Scrubber (Rewind anytime; forward drag locked past Watched Horizon)
+          </label>
+          <input
+            id="demo-scrubber"
+            type="range"
+            min="0"
+            max="45"
+            step="1"
+            style="width:100%; accent-color:#7c3aed;"
+            :value="curSec"
+            @input="if (Number($event.target.value) > maxWatched) { $event.target.value = maxWatched; curSec = maxWatched; } else { curSec = Number($event.target.value); }"
+          />
+          <div style="display:flex; justify-content:space-between; font-size:0.84rem; color:var(--text-muted); margin-top:0.3rem;">
+            <span>Current Position: <strong x-text="curSec + 's / 45s'">12s / 45s</strong></span>
+            <span>Unlocked Horizon: <strong x-text="maxWatched + 's'">12s</strong></span>
+          </div>
+        </div>
+
+        <div class="lms-sim-card">
+          <strong>Live <code>window.API</code> &amp; Write-Ahead Queue Telemetry</strong>
+          <pre class="lms-log-pre" aria-live="polite" x-text="logs.join('\\n')">[12:00:01] [SCORM 1.2] OK   LMSInitialize("")</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="captivate-vs-rsts">
+      <span class="eyebrow">Why Municipalities, Hospitals, Universities &amp; Enterprises Switch</span>
+      <h2 id="captivate-vs-rsts" style="margin-top: 0.25rem;">Legacy Video-Heavy eLearning vs. RaggieSoft Training Studio</h2>
+      <div class="table-wrap" style="margin-bottom: 0;">
+        <table>
+          <caption>Architectural Comparison Between Legacy SCORM Exports and RaggieSoft Training Studio</caption>
+          <thead>
+            <tr>
+              <th scope="col">Enterprise Failure Mode</th>
+              <th scope="col">Legacy Video-Baked SCORM Packages</th>
+              <th scope="col">RaggieSoft Training Studio (<code>.rstp</code>)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Slide Payload Size</th>
+              <td><code>400+ MB</code> progressive <code>.mp4</code> per static slide</td>
+              <td>Semantic HTML5/CSS3 + <code>48 kbps</code> Opus audio (<code>~181 KB</code> entire 3-slide sample!)</td>
+            </tr>
+            <tr>
+              <th scope="row">Congested Proxy / WAN Behavior</th>
+              <td>Silent <code>HTTP 206</code> byte-range freezes requiring Chrome <code>F12</code></td>
+              <td>Visible buffer telemetry + automatic exponential-backoff chunk recovery &amp; HLS skit slicing</td>
+            </tr>
+            <tr>
+              <th scope="row">SCORM Bookmark Reliability</th>
+              <td>Lost watch time if session drops before slide exit</td>
+              <td>Atomic 10-second cue <code>LMSCommit()</code> + <code>localStorage</code>/<code>IndexedDB</code> Write-Ahead Queue</td>
+            </tr>
+            <tr>
+              <th scope="row">LMS Compatibility</th>
+              <td>Single brittle wrapper exceeding <code>4,096</code>-char limits</td>
+              <td>Dual <strong>SCORM 1.2</strong> (Oracle Taleo) &amp; <strong>SCORM 2004 4th Ed.</strong> (Workday / DoD)</td>
+            </tr>
+            <tr>
+              <th scope="row">ADA Title II &amp; Section 508 Proof</th>
+              <td>Allows exporting uncaptioned, unlabeled slides</td>
+              <td>Compile-time WCAG 2.2 AA gate (<code>Exit Code 2</code>) + tailored HTML5 <strong>VPAT 2.5</strong> bundled</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/help-studio` — RaggieSoft Help Studio (Offline F1 Help + Turnkey HTML Help Workshop `.hhp`/`.chm` Migration).
+ */
+function renderHelpStudioBody(): string {
+  return `
+    <section class="hero" aria-labelledby="help-studio-title">
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Help Studio • Native Offline F1 Help &amp; Legacy .CHM Migration</span>
+          <h1 id="help-studio-title">Retire Legacy .CHM Files Without Losing Your HTML Help Workshop Projects.</h1>
+          <p class="lead">
+            Millions of desktop and industrial Windows applications still depend on 1990s Compiled HTML Help (<code>.chm</code>)—yet
+            <code>hh.exe</code> renders inside retired Internet Explorer <code>mshtml.dll</code>, blocks over network shares under
+            Mark-of-the-Web, lacks Dark Mode and High-Contrast themes, and fails modern Section 508 audits.
+            <strong>RaggieSoft Help Studio</strong> imports existing <strong>HTML Help Workshop (<code>.hhp</code>, <code>.hhc</code>,
+            <code>.hhk</code>, and <code>.chm</code>)</strong> projects cleanly and compiles both pluggable <code>.rshm</code>
+            modules and standalone zero-dependency Win32 C++20 <code>F1</code> help clients.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/installer-studio/docs">See Live Single-Source Web Manual &rarr;</a>
+            <a class="btn btn-outline" href="/installer-studio">Download Installer Studio (Includes RaggieSoftHelp.exe)</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${HELP_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Help Studio — Modern Offline F1 Help and Turnkey HTML Help .CHM Migration."
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="help-pillars-heading">
+      <span class="eyebrow">Built on Our Proven Static /MT C++20 RaggieSoftHelp.exe Engine</span>
+      <h2 id="help-pillars-heading" style="margin-top: 0.25rem;">Four Core Capabilities of RaggieSoft Help Studio</h2>
+      <div class="grid-2x2">
+        <article class="card card-highlight">
+          <h3>1. Turnkey HTML Help Workshop (<code>.hhp</code> / <code>.chm</code>) Importer</h3>
+          <p>
+            Point Help Studio at any existing <code>.hhp</code> project, <code>.hhc</code> Table of Contents, <code>.hhk</code>
+            Keyword Index, C/C++/VB6 <code>[MAP]</code> &amp; <code>[ALIAS]</code> context header IDs, or decompiled
+            <code>.chm</code> archive to generate a clean, Git-diffable <code>.rshp</code> manifest in seconds.
+          </p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Modular <code>.rshm</code> Plug-In OR Standalone Branded Client</h3>
+          <p>
+            Ship lightweight <code>module.rshm.json</code> documentation packs into a shared suite help viewer, OR stamp a
+            100% white-label standalone Win32 C++20 <code>&lt;YourProduct&gt;Help.exe</code> (<code>x64</code> &amp;
+            <code>ARM64</code>) with zero <code>.NET</code> or <code>WebView2</code> runtime dependencies.
+          </p>
+        </article>
+        <article class="card">
+          <h3>3. Instant Named Pipe <code>F1</code> Context Routing</h3>
+          <p>
+            Drop-in C/C++, C#/.NET 11, Delphi, and VB6 helper headers replace <code>HtmlHelpW(..., HH_HELP_CONTEXT, id)</code>
+            with sub-5ms Named Pipe navigation—opening the exact dialog topic without spawning duplicate windows.
+          </p>
+        </article>
+        <article class="card">
+          <h3>4. Single-Source Offline Help + Static SEO Web Portal + VPAT 2.5</h3>
+          <p>
+            Every <code>.rshp</code> build compiles offline desktop help, static WCAG 2.2 AA web documentation pages, and a
+            procurement-ready HTML5 VPAT 2.5 conformance report from one set of Markdown/HTML5 chapters.
+          </p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/document-studio` — RaggieSoft Document Studio (Deterministic Tagged PDF/UA-1 & Section 508 Form Compiler).
+ */
+function renderDocumentStudioBody(): string {
+  return `
+    <section class="hero" aria-labelledby="doc-studio-title">
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Document Studio • Deterministic ISO 14289-1 PDF/UA-1 Compiler</span>
+          <h1 id="doc-studio-title">Compile Verified Tagged PDF/UA-1 Handbooks &amp; Forms from Plain Text.</h1>
+          <p class="lead">
+            Municipalities, universities, hospitals, and federal contractors lose thousands of engineering hours manually
+            repairing broken tag trees whenever a Word or desktop-publishing document is re-exported to PDF.
+            <strong>RaggieSoft Document Studio</strong> compiles Git-diffable <code>.rsdp</code> manifests and Markdown
+            directly into machine-verified <strong>Tagged <code>PDF/UA-1</code></strong> documents and accessible HTML5
+            forms—failing the build if table scopes, reading order, bookmarks, or alt text are missing.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/accessibility-studio">Pair with Accessibility Studio v1.0 &rarr;</a>
+            <a class="btn btn-outline" href="/">Back to 8-Tool Suite Overview</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${DOCUMENT_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Document Studio — Tagged PDF/UA-1 Without Tag-Tree Pain."
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="doc-pillars-heading">
+      <span class="eyebrow">Zero Manual Tag-Tree Repair on Every Revision</span>
+      <h2 id="doc-pillars-heading" style="margin-top: 0.25rem;">Core Architectural Pillars of Document Studio</h2>
+      <div class="grid-2x2">
+        <article class="card card-highlight">
+          <h3>1. Authentic Structure Tree Generation (<code>&lt;Document&gt;</code>, <code>&lt;H1&gt;..&lt;H6&gt;</code>, <code>&lt;Table&gt;</code>)</h3>
+          <p>Emits genuine PDF/UA-1 structure trees, <code>/Lang</code> catalogs, embedded subset fonts, and <code>/Scope</code> table headers automatically on every build.</p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Dual Output: Print-Ready Tagged PDF + Responsive WCAG 2.2 AA HTML5</h3>
+          <p>Publish official board packets, SOPs, and training completion certificates simultaneously as accessible web pages and archival tagged PDFs.</p>
+        </article>
+        <article class="card">
+          <h3>3. Compile-Time Matterhorn &amp; Section 508 Gate</h3>
+          <p>Blocks untagged figures, skipped heading hierarchies, unlabeled form fields, and low-contrast callouts in CI/CD before distribution.</p>
+        </article>
+        <article class="card">
+          <h3>4. Deterministic Reproducible Builds</h3>
+          <p>Plain-text <code>.rsdp</code> + Markdown diffs cleanly in Git pull requests so legal, HR, and engineering teams can review exact policy wording changes.</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/localization-studio` — RaggieSoft Localization Studio (Multilingual .RESX, XLIFF, .rsip, .rstp & WebVTT IDE).
+ */
+function renderLocalizationStudioBody(): string {
+  return `
+    <section class="hero" aria-labelledby="loc-studio-title">
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Localization Studio • Multilingual Compliance &amp; Caption Timing IDE</span>
+          <h1 id="loc-studio-title">Translate Installers, Apps, Help &amp; Captions Without Breaking Accessibility.</h1>
+          <p class="lead">
+            Software and training localization routinely introduces silent regressions: broken <code>{0}</code> or
+            <code>$(ARCH)</code> tokens, duplicate <code>&amp;</code> keyboard mnemonics on Windows dialogs, missing
+            <code>BCP 47</code> language attributes, and translated <code>.vtt</code> closed captions that exceed readable
+            characters-per-second (<code>&gt;25 CPS</code>) limits. <strong>RaggieSoft Localization Studio</strong>
+            (<code>.rsloc</code>) validates every target language at compile time.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/training-studio">See Multilingual WebVTT Gate in Training Studio &rarr;</a>
+            <a class="btn btn-outline" href="/">Back to 8-Tool Suite Overview</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="${LOCALIZATION_OG_BOX_URL}"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Localization Studio — Safe App, Installer, and Caption Translation."
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="loc-pillars-heading">
+      <span class="eyebrow">Unified Across .rsip, .rstp, .rshp, .RESX &amp; XLIFF 2.1</span>
+      <h2 id="loc-pillars-heading" style="margin-top: 0.25rem;">Core Architectural Pillars of Localization Studio</h2>
+      <div class="grid-2x2">
+        <article class="card card-highlight">
+          <h3>1. Placeholder &amp; Variable Token Lock</h3>
+          <p>Protects <code>$(ARCH)</code>, <code>[INSTALLDIR]</code>, <code>{0}</code>, and Markdown cue tags so translated builds never crash at runtime.</p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Automatic Dialog <code>&amp;</code> Keyboard Accelerator Solver</h3>
+          <p>Detects colliding <code>Alt+Key</code> mnemonics per dialog or wizard page across every target language and suggests conflict-free accelerators.</p>
+        </article>
+        <article class="card">
+          <h3>3. Multilingual WebVTT Reading-Speed (<code>&le;25 CPS</code>) Verifier</h3>
+          <p>Audits translated SCORM and video caption tracks where expanded romance or Germanic phrasing pushes cue timing past comfortable Deaf/ESL reading speeds.</p>
+        </article>
+        <article class="card">
+          <h3>4. <code>BCP 47</code> Language Tag &amp; RTL Layout Inspector</h3>
+          <p>Validates IETF <code>BCP 47</code> subtags and previews right-to-left (<code>dir="rtl"</code>) mirroring across web, SCORM, and desktop UI layouts.</p>
+        </article>
       </div>
     </section>
   `;
@@ -2259,6 +2662,42 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     renderBody: renderSecurityBody
   },
   {
+    path: '/training-studio',
+    navGroup: 'suite',
+    navLabel: 'Training Studio',
+    seoTitle: 'RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler',
+    seoDescription:
+      'Compile plain-text .rstp + Markdown slides into bandwidth-proof <50 KB SCORM 1.2 & 2004 packages with offline checkpointing and Auto-VPAT 2.5.',
+    renderBody: renderTrainingStudioBody
+  },
+  {
+    path: '/help-studio',
+    navGroup: 'suite',
+    navLabel: 'Help Studio',
+    seoTitle: 'RaggieSoft Help Studio — Offline F1 Help & .CHM Import',
+    seoDescription:
+      'Migrate legacy Microsoft HTML Help (.hhp, .hhc, .hhk, .chm) into modular .rshm packs or standalone zero-dependency Win32 C++20 F1 help clients.',
+    renderBody: renderHelpStudioBody
+  },
+  {
+    path: '/document-studio',
+    navGroup: 'suite',
+    navLabel: 'Document Studio',
+    seoTitle: 'RaggieSoft Document Studio — Tagged PDF/UA-1 Compiler',
+    seoDescription:
+      'Compile plain-text .rsdp manifests and Markdown into machine-verified ISO 14289-1 Tagged PDF/UA-1 handbooks, policies, and Section 508 forms.',
+    renderBody: renderDocumentStudioBody
+  },
+  {
+    path: '/localization-studio',
+    navGroup: 'suite',
+    navLabel: 'Localization Studio',
+    seoTitle: 'RaggieSoft Localization Studio — .RESX, XLIFF & WebVTT',
+    seoDescription:
+      'Side-by-side .RESX, XLIFF 2.1, .rsip, .rstp, and WebVTT localization IDE with locked format tokens, & mnemonic checks, and <=25 CPS caption gates.',
+    renderBody: renderLocalizationStudioBody
+  },
+  {
     path: '/launcher-studio',
     navGroup: 'suite',
     navLabel: 'Launcher Studio',
@@ -2294,19 +2733,22 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       ? '/installer-studio/vpat'
       : routePath;
 
-  // Tier 1 Global Studio Suite Navigation Items (4 Products + Suite Overview + Developer Hub)
+  // Tier 1 Global Studio Suite Navigation Items (8 Products + Suite Overview)
   const tier1Items = [
-    { href: '/', label: 'Suite Overview', isCurrent: routePath === '/', isSection: false },
+    { href: '/', label: 'Suite', isCurrent: routePath === '/', isSection: false },
     {
       href: '/installer-studio',
-      label: 'Installer Studio',
+      label: 'Installer',
       isCurrent: routePath === '/installer-studio',
       isSection: inInstallerStudio && routePath !== '/installer-studio'
     },
-    { href: '/accessibility-studio', label: 'Accessibility Studio', isCurrent: false, isSection: false },
-    { href: '/launcher-studio', label: 'Launcher Studio', isCurrent: routePath === '/launcher-studio', isSection: false },
-    { href: '/showcase-studio', label: 'Showcase Studio', isCurrent: routePath === '/showcase-studio', isSection: false },
-    { href: 'https://raggiesoft.dev', label: 'raggiesoft.dev', isCurrent: false, isSection: false }
+    { href: '/accessibility-studio', label: 'Accessibility', isCurrent: false, isSection: false },
+    { href: '/training-studio', label: 'Training', isCurrent: routePath === '/training-studio', isSection: false },
+    { href: '/help-studio', label: 'Help', isCurrent: routePath === '/help-studio', isSection: false },
+    { href: '/document-studio', label: 'Document', isCurrent: routePath === '/document-studio', isSection: false },
+    { href: '/localization-studio', label: 'Localization', isCurrent: routePath === '/localization-studio', isSection: false },
+    { href: '/launcher-studio', label: 'Launcher', isCurrent: routePath === '/launcher-studio', isSection: false },
+    { href: '/showcase-studio', label: 'Showcase', isCurrent: routePath === '/showcase-studio', isSection: false }
   ];
 
   const tier1Html = tier1Items
@@ -2379,11 +2821,19 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
 
   const brandSubtitle = inInstallerStudio
     ? 'Installer Studio v0.5.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64'
-    : routePath === '/launcher-studio'
-      ? 'Launcher Studio • Branded Desktop App Hubs &amp; Static-CDN Updaters'
-      : routePath === '/showcase-studio'
-        ? 'Showcase Studio • Accessible 1990s .BMP &amp; Windows 11 FluentMica Menus'
-        : 'Windows 11 Packaging, Accessibility, Launchers &amp; Interactive Showcases';
+    : routePath === '/training-studio'
+      ? 'Training Studio v0.1.0 • Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 &amp; 2004'
+      : routePath === '/help-studio'
+        ? 'Help Studio • Native Offline F1 Help &amp; Legacy .CHM / .HHP Migration'
+        : routePath === '/document-studio'
+          ? 'Document Studio • Deterministic ISO 14289-1 Tagged PDF/UA-1 Compiler'
+          : routePath === '/localization-studio'
+            ? 'Localization Studio • Multilingual .RESX, XLIFF &amp; WebVTT Compliance IDE'
+            : routePath === '/launcher-studio'
+              ? 'Launcher Studio • Branded Desktop App Hubs &amp; Static-CDN Updaters'
+              : routePath === '/showcase-studio'
+                ? 'Showcase Studio • Accessible 1990s .BMP &amp; Windows 11 FluentMica Menus'
+                : 'Eight-Tool Packaging, Accessibility, Training, Help &amp; Publishing Suite';
 
   const html = `
     <header class="site-header" data-theme="dark">
@@ -2431,9 +2881,13 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-links">
-          <a href="/">Suite Overview</a>
+          <a href="/">Suite Overview (8 Tools)</a>
           <a href="/installer-studio">Installer Studio (v0.5.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/training-studio">Training Studio (v0.1.0)</a>
+          <a href="/help-studio">Help Studio (.CHM / F1)</a>
+          <a href="/document-studio">Document Studio (PDF/UA-1)</a>
+          <a href="/localization-studio">Localization Studio</a>
           <a href="/launcher-studio">Launcher Studio</a>
           <a href="/showcase-studio">Showcase Studio</a>
           <a href="/installer-studio/screenshots">Installer Screenshots</a>
@@ -2445,6 +2899,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <a href="/installer-studio/security">Security</a>
           <a href="/llms.txt">Suite /llms.txt</a>
           <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="/training-studio/llms-full.txt">Training /llms-full.txt</a>
           <a href="${GITHUB_INSTALLER_URL}">Installer GitHub</a>
           <a href="${GITHUB_A11Y_URL}">Accessibility GitHub</a>
           <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>

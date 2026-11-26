@@ -1,0 +1,18 @@
+# RaggieSoft Training Studio — Plain-Text WCAG 2.2 AA SCORM 1.2 & 2004 Compiler (`rstbuild`)
+
+> Product Portal: https://raggiesoftstudio.com/training-studio
+> Suite Hub: https://raggiesoftstudio.com
+> License: MIT License (Compiler & Runtime Code)
+
+## Core Capabilities
+- **Plain-Text `.rstp` + Markdown + WebVTT Authoring**: Comment-preserving `[Course]`, `[Compliance]`, `[Branding]`, and `[Slide.<Id>]` sections paired with Markdown slides (`:::cue`, `:::question`, `:::attestation`).
+- **Zero-Dependency `< 50 KB` SCORM 1.2 & SCORM 2004 4th Ed. Runtime**: Vanilla ES2022 JS + `@layer` CSS3 (`prefers-color-scheme`, `prefers-reduced-motion`, `forced-colors: active`).
+- **Proxy-Proof Telemetry & WAL Recovery**: Atomic sub-slide `LMSCommit()` checkpoints backed by a `localStorage` + `IndexedDB` Write-Ahead Log and `HTTP 206` exponential-backoff recovery.
+- **Compile-Time WCAG 2.2 AA Gate + Auto-VPAT 2.5**: Powered by `AccessibilityStudio.Core`; refuses to build uncaptioned or low-contrast slides and emits a tailored HTML5 VPAT 2.5 report alongside every `.zip`.
+
+## CLI Commands
+- `rstbuild validate <course.rstp> [--json]`
+- `rstbuild build <course.rstp> [--scorm=1.2|2004] [--with-vpat]`
+- `rstbuild transcode <input.wav|mp4> <out-dir> [--hls]`
+- `rstbuild serve-lms <package-dir-or-zip> [--port=5095]`
+- `rstbuild emit-ai-spec <out-dir>`

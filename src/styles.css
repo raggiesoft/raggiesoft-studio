@@ -289,6 +289,70 @@ body {
   }
 }
 
+/* Symmetrical 4x2 Grid for the 8-Product Suite Shelf (4x2 Desktop -> 2x4 Tablet -> 1x8 Mobile — ZERO Orphans!) */
+.grid-4x2 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 1.25rem 0 2rem;
+}
+
+@media (max-width: 1180px) {
+  .grid-4x2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .grid-4x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Interactive Hostile Enterprise LMS Simulator Sandbox on `/training-studio` */
+.lms-sandbox {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 0.95rem;
+  padding: clamp(1.15rem, 2.5vw, 1.75rem);
+  margin: 1.25rem 0 2.25rem;
+}
+
+.lms-sandbox-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.95fr);
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 960px) {
+  .lms-sandbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lms-sim-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.1rem;
+}
+
+.lms-log-pre {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #050814;
+  color: #e2e8f0;
+  border: 1px solid var(--border);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-height: 15rem;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
 /* Featured Full-Width Flagship Suite Slipcase Card Above the 2x2 Product Box Shelf */
 .suite-box-featured {
   background: var(--surface);

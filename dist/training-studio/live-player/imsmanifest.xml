@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest identifier="MANIFEST-gov_oceanview_ada-title-ii-2026" version="1.0.0" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="ORG-gov_oceanview_ada-title-ii-2026">
+    <organization identifier="ORG-gov_oceanview_ada-title-ii-2026">
+      <title>ADA Title II &amp; Accessible Digital Services</title>
+      <item identifier="ITEM-gov_oceanview_ada-title-ii-2026" identifierref="RES-gov_oceanview_ada-title-ii-2026" isvisible="true">
+        <title>ADA Title II &amp; Accessible Digital Services</title>
+        <adlcp:masteryscore>80</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-gov_oceanview_ada-title-ii-2026" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html" />
+      <file href="course-data.js" />
+      <file href="runtime/player.css" />
+      <file href="runtime/player.js" />
+      <file href="media/01-narration.opus" />
+      <file href="media/01-narration.m4a" />
+      <file href="captions/01-narration.en-US.vtt" />
+      <file href="compliance/vpat-2.5.html" />
+    </resource>
+  </resources>
+</manifest>

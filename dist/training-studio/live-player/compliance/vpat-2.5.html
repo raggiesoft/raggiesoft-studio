@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility Conformance Report (VPAT 2.5) — ADA Title II &amp; Accessible Digital Services</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f8fafc; --surface: #ffffff; --text: #0f172a; --muted: #334155;
+      --border: #94a3b8; --accent: #5b21b6; --ok-bg: #ecfdf5; --ok-fg: #065f46;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #090d16; --surface: #111827; --text: #f8fafc; --muted: #cbd5e1;
+        --border: #475569; --accent: #a78bfa; --ok-bg: #064e3b; --ok-fg: #ecfdf5;
+      }
+    }
+    @media (forced-colors: active) {
+      :root { --bg: Canvas; --surface: Canvas; --text: CanvasText; --border: CanvasText; }
+    }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 2rem 1rem; }
+    main { max-width: 64rem; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: clamp(1.25rem, 3vw, 2.5rem); }
+    h1, h2, h3 { line-height: 1.25; }
+    .badge { display: inline-block; padding: 0.25rem 0.7rem; border-radius: 999px; background: var(--ok-bg); color: var(--ok-fg); font-weight: 700; font-size: 0.85rem; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.85rem; margin: 1.25rem 0; }
+    .meta-card { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.85rem 1rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 2rem; font-size: 0.94rem; }
+    caption { text-align: left; font-weight: 700; margin-bottom: 0.5rem; }
+    th, td { border: 1px solid var(--border); padding: 0.65rem 0.8rem; text-align: left; vertical-align: top; }
+    th { background: rgba(100, 116, 139, 0.14); }
+    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main id="main-content">
+    <span class="badge">VPAT 2.5 International Edition • WCAG 2.2 AA • Revised Section 508 • ADA Title II</span>
+    <h1>Accessibility Conformance Report — ADA Title II &amp; Accessible Digital Services</h1>
+    <p>
+      Generated deterministically at compile time by <strong>RaggieSoft Training Studio (`rstbuild 0.1.0`)</strong>
+      and verified by the <strong>RaggieSoft Accessibility Studio</strong> static HTML5, CSS Contrast, and WebVTT engine.
+    </p>
+
+    <section aria-labelledby="prod-info">
+      <h2 id="prod-info">1. Courseware Package &amp; Evaluation Summary</h2>
+      <div class="meta-grid">
+        <div class="meta-card">
+          <strong>Course Title &amp; Version:</strong><br />
+          ADA Title II &amp; Accessible Digital Services (<code>v1.0.0</code>)
+        </div>
+        <div class="meta-card">
+          <strong>Publishing Organization:</strong><br />
+          City of Ocean View — Department of Human Resources
+        </div>
+        <div class="meta-card">
+          <strong>LMS Runtime &amp; Footprint:</strong><br />
+          SCORM 1.2 • Zero-Dependency Vanilla ES2022 (&lt; 50 KB)
+        </div>
+        <div class="meta-card">
+          <strong>Evaluated Brand Contrast:</strong><br />
+          <code>#5B21B6</code> vs. <code>#FFFFFF</code> = <strong>8.98:1</strong> (Passes AA &ge; 4.50:1)
+        </div>
+        <div class="meta-card">
+          <strong>Slide Inventory (3 Total):</strong><br />
+          1 Narrated HTML5 • 0 Segmented Video • 1 Quiz • 1 Attestation
+        </div>
+        <div class="meta-card">
+          <strong>Audit Date &amp; Language:</strong><br />
+          2026-11-26 • Primary BCP 47 <code>en-US</code> (3 Verified WebVTT Cues)
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="wcag-matrix">
+      <h2 id="wcag-matrix">2. WCAG 2.2 Level A &amp; AA + Revised Section 508 Conformance Matrix</h2>
+      <table>
+        <caption>Compile-Time &amp; Runtime Conformance Criteria Evaluated for ADA Title II &amp; Accessible Digital Services</caption>
+        <thead>
+          <tr>
+            <th scope="col">Criterion (WCAG 2.2 / 508)</th>
+            <th scope="col">Level</th>
+            <th scope="col">Conformance Level</th>
+            <th scope="col">Remarks and Explanations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1.1.1 Non-text Content</th>
+            <td>A</td>
+            <td>Supports</td>
+            <td>Compile-time gate (<code>RST014</code>) enforces descriptive <code>alt</code> attributes or explicit <code>role="presentation"</code> decorative flags on every slide graphic.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.2.2 Captions (Prerecorded)</th>
+            <td>A</td>
+            <td>Supports</td>
+            <td>Compile-time gate (<code>RST010</code> / <code>RST011</code>) verified 3 synchronized WebVTT caption cues (&le; 25 chars/sec) plus an interactive synchronized transcript drawer.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.2.5 Audio Description / Media Alternative</th>
+            <td>AA</td>
+            <td>Not Applicable (HTML5-First Audio Course)</td>
+            <td>Course eliminates monolithic video bloat using 1 native semantic HTML5 slide(s) synchronized to lightweight voiceover audio and 3 verified WebVTT cues.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.3.1 Info and Relationships</th>
+            <td>A</td>
+            <td>Supports</td>
+            <td>Learner runtime renders genuine semantic HTML5 landmarks (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>) and <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code> knowledge checks.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.4.2 Audio Control</th>
+            <td>A</td>
+            <td>Supports</td>
+            <td>Autoplay is disabled by default; learners have full keyboard-accessible Play/Pause, 5-second Rewind, and interactive transcript cue selection.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.4.3 Contrast (Minimum)</th>
+            <td>AA</td>
+            <td>Supports</td>
+            <td>Verified <strong>8.98:1</strong> button contrast plus automatic Light Mode, Dark Mode (<code>prefers-color-scheme</code>), and Windows Contrast Theme (<code>forced-colors: active</code>) tokens.</td>
+          </tr>
+          <tr>
+            <th scope="row">1.4.10 Reflow (400% Zoom)</th>
+            <td>AA</td>
+            <td>Supports</td>
+            <td>CSS Grid workspace collapses cleanly into a single vertical column below <code>1080px</code> / <code>320px</code> CSS viewport width with zero clipped controls.</td>
+          </tr>
+          <tr>
+            <th scope="row">2.1.1 Keyboard &amp; 2.1.2 No Keyboard Trap</th>
+            <td>A</td>
+            <td>Supports</td>
+            <td>100% of slide navigation, native <code>&lt;input type="range"&gt;</code> compliance scrubbing, transcript cues, quizzes, and attestations operate via standard keyboard navigation.</td>
+          </tr>
+          <tr>
+            <th scope="row">2.4.7 Focus Visible &amp; 2.4.11 Focus Appearance</th>
+            <td>AA</td>
+            <td>Supports</td>
+            <td>Dual-ring <code>:focus-visible</code> indicators maintain high contrast across Light, Dark, and Windows High-Contrast surfaces.</td>
+          </tr>
+          <tr>
+            <th scope="row">2.5.8 Target Size (Minimum)</th>
+            <td>AA</td>
+            <td>Supports</td>
+            <td>Interactive buttons, slide navigation steps, and quiz radio/checkbox rows meet or exceed <code>44&times;44px</code> (`2.75rem`) hit targets.</td>
+          </tr>
+          <tr>
+            <th scope="row">3.1.1 Language of Page &amp; 3.1.2 Language of Parts</th>
+            <td>A / AA</td>
+            <td>Supports</td>
+            <td>Document root declares <code>lang="en-US"</code> and every slide card emits its verified BCP 47 <code>lang</code> attribute.</td>
+          </tr>
+          <tr>
+            <th scope="row">4.1.3 Status Messages</th>
+            <td>AA</td>
+            <td>Supports</td>
+            <td>Live LMS checkpoint state (<em>Progress Saved</em> vs. <em>Offline — Retrying Commit</em>), slide transitions, and quiz grading announce politely via <code>role="status"</code> / <code>aria-live="polite"</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p>
+        Compiled by <strong>RaggieSoft Training Studio</strong> (<a href="https://raggiesoftstudio.com/training-studio">raggiesoftstudio.com/training-studio</a>).
+        Note: VPAT is a registered service mark of the Information Technology Industry Council (ITI); this report follows the ITI VPAT 2.5 criteria structure for WCAG 2.2 &amp; Revised Section 508 self-assessment.
+      </p>
+      <p>
+        Fictitious Persons &amp; Entities Disclaimer: Any sample municipal, university, corporate, or transit agency names referenced in RaggieSoft demonstration courses (including City of Ocean View, CPI, VDU, OmniCorp, BRT, and CVTA) are fictitious works of world-building. In real life, RaggieSoft and RaggieSoft Media are unincorporated creative imprints of Michael P. Ragsdale.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

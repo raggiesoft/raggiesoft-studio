@@ -1,0 +1,352 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
+    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
+    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler</title>
+    <meta name="description" content="Compile plain-text .rstp + Markdown slides into bandwidth-proof &lt;50 KB SCORM 1.2 &amp; 2004 packages with offline checkpointing and Auto-VPAT 2.5." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/training-studio" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler" />
+    <meta property="og:description" content="Compile plain-text .rstp + Markdown slides into bandwidth-proof &lt;50 KB SCORM 1.2 &amp; 2004 packages with offline checkpointing and Auto-VPAT 2.5." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/training-studio" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-training-studio.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="3D boxed software showcase of RaggieSoft Training Studio — Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 and 2004 Courseware Compiler." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler" />
+    <meta name="twitter:description" content="Compile plain-text .rstp + Markdown slides into bandwidth-proof &lt;50 KB SCORM 1.2 &amp; 2004 packages with offline checkpointing and Auto-VPAT 2.5." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-training-studio.jpg" />
+    <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Training Studio — Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 and 2004 Courseware Compiler." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/training-studio#webpage","url":"https://raggiesoftstudio.com/training-studio","name":"RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler","description":"Compile plain-text .rstp + Markdown slides into bandwidth-proof <50 KB SCORM 1.2 & 2004 packages with offline checkpointing and Auto-VPAT 2.5.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-rqIUctWc.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CGLNTc59.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Studio</span>
+          <span class="brand-sub">Training Studio v0.1.0 • Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 &amp; 2004</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite</a></li>
+              <li><a class="nav-link" href="/installer-studio">Installer</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility</a></li>
+              <li><a class="nav-link" href="/training-studio" aria-current="page">Training</a></li>
+              <li><a class="nav-link" href="/help-studio">Help</a></li>
+              <li><a class="nav-link" href="/document-studio">Document</a></li>
+              <li><a class="nav-link" href="/localization-studio">Localization</a></li>
+              <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
+              <li><a class="nav-link" href="/showcase-studio">Showcase</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="training-studio-title">
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">RaggieSoft Training Studio • v0.1.0 .NET 11 Compiler &amp; SCORM 1.2 / 2004 Runtime</span>
+          <h1 id="training-studio-title">Bandwidth-Proof WCAG 2.2 AA Compliance Courseware — Zero 400 MB MP4 Stalls.</h1>
+          <p class="lead">
+            Born from rescuing a 14-slide municipal ADA Title II training module that baked static slides into 400+ MB
+            progressive <code>.mp4</code> files and stalled across congested enterprise WAN proxies,
+            <strong>RaggieSoft Training Studio</strong> (<code>rstbuild</code>) compiles Git-diffable <code>.rstp</code>
+            manifests, Markdown slides, compact <code>48 kbps</code> Opus / AAC voiceovers, and verified <code>.vtt</code>
+            captions into self-contained <strong>SCORM 1.2</strong> and <strong>SCORM 2004 (4th Ed.)</strong> packages
+            (<code>&lt;50 KB</code> player) with an <strong>automatic HTML5 VPAT 2.5 report</strong> in the box.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#hostile-lms-demo">Try Interactive Proxy-Drop Simulator &darr;</a>
+            <a class="btn btn-outline" href="/training-studio/live-player/index.html">Launch Full Compiled 3-Slide Player &rarr;</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-vpat-2.5.html">View Auto-Generated VPAT 2.5</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-scorm12.zip">Download SCORM 1.2 Sample (181 KB)</a>
+          </div>
+        </div>
+        <figure class="hero-box-showcase">
+          <img
+            src="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-training-studio.jpg"
+            width="1200"
+            height="630"
+            alt="3D boxed software showcase of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2 and 2004 Courseware Compiler."
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section id="hostile-lms-demo" class="lms-sandbox" aria-labelledby="lms-demo-heading"
+      x-data="{
+        curSec: 12,
+        maxWatched: 12,
+        duration: 45,
+        proxyDown: false,
+        http206Stall: false,
+        walPending: false,
+        syncText: 'Progress Saved (slide-1@12.0s)',
+        logs: [
+          '[12:00:01] [SCORM 1.2] OK   LMSInitialize("")',
+          '[12:00:01] [SCORM 1.2] OK   LMSSetValue(cmi.core.lesson_status = incomplete)',
+          '[12:00:10] [SCORM 1.2] OK   LMSSetValue(cmi.core.lesson_location = slide-1@10.0s)',
+          '[12:00:10] [SCORM 1.2] OK   LMSCommit("") -> 214 / 4,096 chars'
+        ],
+        advanceTenSec() {
+          if (this.http206Stall) return;
+          this.curSec = Math.min(this.duration, this.curSec + 10);
+          this.maxWatched = Math.max(this.maxWatched, this.curSec);
+          const bm = 'slide-1@' + this.curSec.toFixed(1) + 's';
+          if (this.proxyDown) {
+            this.walPending = true;
+            this.syncText = 'Offline / Proxy Drop — Held in Local WAL (' + bm + ')';
+            this.logs.unshift('[WAL QUEUE] SAVED locally -> ' + bm + ' (LMSCommit blocked by HTTP 502)');
+          } else {
+            this.walPending = false;
+            this.syncText = 'Progress Saved (' + bm + ')';
+            this.logs.unshift('[SCORM 1.2] OK   LMSCommit(' + bm + ') -> 218 / 4,096 chars');
+          }
+        },
+        toggleProxy() {
+          this.proxyDown = !this.proxyDown;
+          if (this.proxyDown) {
+            this.syncText = 'Proxy Dropped — Write-Ahead Queue Armed';
+            this.logs.unshift('[FAULT INJ] Enterprise WAN Proxy set to HTTP 502 Bad Gateway');
+          } else {
+            const bm = 'slide-1@' + this.curSec.toFixed(1) + 's';
+            this.walPending = false;
+            this.syncText = 'Reconnected — Queued Checkpoint Replayed (' + bm + ')';
+            this.logs.unshift('[RECOVERY ] OK   Replayed WAL -> LMSCommit(' + bm + ') succeeded!');
+          }
+        },
+        toggleStall() {
+          this.http206Stall = !this.http206Stall;
+          this.logs.unshift(this.http206Stall
+            ? '[FAULT INJ] HTTP 206 Byte-Range Stalled -> Exponential Backoff Armed (1s, 2s, 4s)'
+            : '[RECOVERY ] Chunk stream resumed cleanly at ' + this.curSec.toFixed(1) + 's (Zero F12 needed!)');
+        }
+      }"
+    >
+      <span class="eyebrow">Interactive Architecture Proof • Test Fault Recovery Right in Your Browser</span>
+      <h2 id="lms-demo-heading" style="margin-top: 0.25rem;">"Hostile Enterprise LMS" Fault-Injection Simulator</h2>
+      <p style="margin-top: 0;">
+        Toggle a corporate proxy drop below, advance the lesson timer, and watch the Write-Ahead Log (WAL) protect every
+        watched second—then restore connectivity to watch the atomic <code>LMSCommit()</code> replay automatically.
+      </p>
+
+      <div class="btn-row" role="group" aria-label="Fault Injection Controls">
+        <button type="button" class="btn btn-primary" @click="advanceTenSec()" :disabled="http206Stall">
+          +10s Watch Time (Trigger Cue Checkpoint)
+        </button>
+        <button type="button" class="btn btn-outline" @click="toggleProxy()" :aria-pressed="proxyDown.toString()">
+          <span x-text="proxyDown ? 'Restore LMS Network (Replay Queue)' : 'Simulate Proxy Drop (HTTP 502)'">Simulate Proxy Drop (HTTP 502)</span>
+        </button>
+        <button type="button" class="btn btn-outline" @click="toggleStall()" :aria-pressed="http206Stall.toString()">
+          <span x-text="http206Stall ? 'Clear HTTP 206 Stream Stall' : 'Simulate HTTP 206 Range Stall'">Simulate HTTP 206 Range Stall</span>
+        </button>
+      </div>
+
+      <div class="lms-sandbox-grid">
+        <div class="lms-sim-card">
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+            <strong>Slide 1: ADA Title II Digital Access</strong>
+            <span class="status-pill" :class="proxyDown || http206Stall ? 'status-next' : 'status-shipped'" x-text="syncText">
+              Progress Saved (slide-1@12.0s)
+            </span>
+          </div>
+          <label for="demo-scrubber" style="font-size:0.86rem; font-weight:600; display:block; margin-bottom:0.35rem;">
+            Compliance Scrubber (Rewind anytime; forward drag locked past Watched Horizon)
+          </label>
+          <input
+            id="demo-scrubber"
+            type="range"
+            min="0"
+            max="45"
+            step="1"
+            style="width:100%; accent-color:#7c3aed;"
+            :value="curSec"
+            @input="if (Number($event.target.value) > maxWatched) { $event.target.value = maxWatched; curSec = maxWatched; } else { curSec = Number($event.target.value); }"
+          />
+          <div style="display:flex; justify-content:space-between; font-size:0.84rem; color:var(--text-muted); margin-top:0.3rem;">
+            <span>Current Position: <strong x-text="curSec + 's / 45s'">12s / 45s</strong></span>
+            <span>Unlocked Horizon: <strong x-text="maxWatched + 's'">12s</strong></span>
+          </div>
+        </div>
+
+        <div class="lms-sim-card">
+          <strong>Live <code>window.API</code> &amp; Write-Ahead Queue Telemetry</strong>
+          <pre class="lms-log-pre" aria-live="polite" x-text="logs.join('\n')">[12:00:01] [SCORM 1.2] OK   LMSInitialize("")</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="captivate-vs-rsts">
+      <span class="eyebrow">Why Municipalities, Hospitals, Universities &amp; Enterprises Switch</span>
+      <h2 id="captivate-vs-rsts" style="margin-top: 0.25rem;">Legacy Video-Heavy eLearning vs. RaggieSoft Training Studio</h2>
+      <div class="table-wrap" style="margin-bottom: 0;">
+        <table>
+          <caption>Architectural Comparison Between Legacy SCORM Exports and RaggieSoft Training Studio</caption>
+          <thead>
+            <tr>
+              <th scope="col">Enterprise Failure Mode</th>
+              <th scope="col">Legacy Video-Baked SCORM Packages</th>
+              <th scope="col">RaggieSoft Training Studio (<code>.rstp</code>)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Slide Payload Size</th>
+              <td><code>400+ MB</code> progressive <code>.mp4</code> per static slide</td>
+              <td>Semantic HTML5/CSS3 + <code>48 kbps</code> Opus audio (<code>~181 KB</code> entire 3-slide sample!)</td>
+            </tr>
+            <tr>
+              <th scope="row">Congested Proxy / WAN Behavior</th>
+              <td>Silent <code>HTTP 206</code> byte-range freezes requiring Chrome <code>F12</code></td>
+              <td>Visible buffer telemetry + automatic exponential-backoff chunk recovery &amp; HLS skit slicing</td>
+            </tr>
+            <tr>
+              <th scope="row">SCORM Bookmark Reliability</th>
+              <td>Lost watch time if session drops before slide exit</td>
+              <td>Atomic 10-second cue <code>LMSCommit()</code> + <code>localStorage</code>/<code>IndexedDB</code> Write-Ahead Queue</td>
+            </tr>
+            <tr>
+              <th scope="row">LMS Compatibility</th>
+              <td>Single brittle wrapper exceeding <code>4,096</code>-char limits</td>
+              <td>Dual <strong>SCORM 1.2</strong> (Oracle Taleo) &amp; <strong>SCORM 2004 4th Ed.</strong> (Workday / DoD)</td>
+            </tr>
+            <tr>
+              <th scope="row">ADA Title II &amp; Section 508 Proof</th>
+              <td>Allows exporting uncaptioned, unlabeled slides</td>
+              <td>Compile-time WCAG 2.2 AA gate (<code>Exit Code 2</code>) + tailored HTML5 <strong>VPAT 2.5</strong> bundled</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/training-studio">Training Studio (v0.1.0)</a>
+          <a href="/help-studio">Help Studio (.CHM / F1)</a>
+          <a href="/document-studio">Document Studio (PDF/UA-1)</a>
+          <a href="/localization-studio">Localization Studio</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="/training-studio/llms-full.txt">Training /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>

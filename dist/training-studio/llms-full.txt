@@ -1,0 +1,46 @@
+# RaggieSoft Training Studio — Complete `.rstp` & Slide Markdown Reference (`v0.1.0`)
+
+Generated deterministically by `RaggieSoft Training Studio (rstbuild 0.1.0) emit-ai-spec`.
+
+## 1. Root `.rstp` Manifest Grammar
+Uses the RaggieSoft Studio comment-preserving `[Section]` syntax (`;` comments and `@include "shared.rsti"` directives survive AST edits byte-for-byte):
+
+```ini
+; Mandatory root course identity
+[Course]
+Id = gov.oceanview.ada-title-ii-2026
+Title = ADA Title II & Digital Accessibility Fundamentals
+Organization = City of Ocean View — Department of Human Resources
+Version = 1.0.0
+DefaultLanguage = en-US
+ScormStandard = 1.2
+MasteryScore = 80
+OutputDir = out
+OutputName = ada-title-ii-fundamentals
+
+[Compliance]
+LockForwardScrubbing = true
+SubSlideCommitIntervalSeconds = 10
+RequireCaptionsOnAllMedia = true
+TargetConformance = WCAG-2.2-AA
+
+[Branding]
+AccentPrimaryHex = #5B21B6
+
+[Slide.01-foundations]
+Type = narrated-html
+Title = Why Bandwidth-Light Accessible Courseware Matters
+Lang = en-US
+Source = slides/01-foundations.md
+AudioOpus = media/01-foundations.opus
+AudioM4a = media/01-foundations.m4a
+DurationSeconds = 15.0
+CaptionsVtt = captions/01-foundations.en-US.vtt
+CompletionRule = media-ended
+```
+
+## 2. Slide Markdown Directives
+- **Timed DOM Callouts**: `:::cue MM:SS.mmm | Callout Heading` ... `:::`
+- **Knowledge Checks**: `:::question <id> | <Prompt>` with `- [ ] id | Choice`, `- [x] id | Correct Choice`, `pass:`, `retry:`, closed by `:::`.
+- **Formal Attestation**: `:::attestation` with `statement:`, `checkbox:`, `button:`, closed by `:::`.
+- **Explicit Alt Metadata**: `![Descriptive alt](img.svg)` or `![](divider.svg){decorative=true}` (omitting both fails `RST014`).

@@ -43,6 +43,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const distDir = path.join(projectRoot, 'dist');
 const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
+const trainingStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/training-studio');
 const a11yDistDir = path.resolve(projectRoot, '../../raggiesoft.com/subdomains/a11y/dist');
 
 /**
@@ -72,6 +73,10 @@ const BOXES_CDN_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
 const SUITE_OG_IMAGE = `${BOXES_CDN_BASE}/og-raggiesoft-studio-suite.jpg`;
 const INSTALLER_OG_IMAGE = `${BOXES_CDN_BASE}/og-installer-studio.jpg`;
 const A11Y_OG_IMAGE = `${BOXES_CDN_BASE}/og-accessibility-studio.jpg`;
+const TRAINING_OG_IMAGE = `${BOXES_CDN_BASE}/og-training-studio.jpg`;
+const HELP_OG_IMAGE = `${BOXES_CDN_BASE}/og-help-studio.jpg`;
+const DOCUMENT_OG_IMAGE = `${BOXES_CDN_BASE}/og-document-studio.jpg`;
+const LOCALIZATION_OG_IMAGE = `${BOXES_CDN_BASE}/og-localization-studio.jpg`;
 const LAUNCHER_OG_IMAGE = `${BOXES_CDN_BASE}/og-launcher-studio.jpg`;
 const SHOWCASE_OG_IMAGE = `${BOXES_CDN_BASE}/og-showcase-studio.jpg`;
 const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg';
@@ -120,6 +125,42 @@ function extractBodyInnerHtml(rawTopicHtml) {
  * across the RaggieSoft Studio Suite (`/`, `/installer-studio/*`, `/launcher-studio`, `/showcase-studio`).
  */
 function resolveOgMedia(routePath) {
+  if (routePath === '/training-studio') {
+    return {
+      url: TRAINING_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Training Studio — Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 and 2004 Courseware Compiler.'
+    };
+  }
+  if (routePath === '/help-studio') {
+    return {
+      url: HELP_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Help Studio — Modern Offline F1 Help and Turnkey HTML Help .CHM Migration.'
+    };
+  }
+  if (routePath === '/document-studio') {
+    return {
+      url: DOCUMENT_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Document Studio — Deterministic ISO 14289-1 Tagged PDF/UA-1 and Section 508 Compiler.'
+    };
+  }
+  if (routePath === '/localization-studio') {
+    return {
+      url: LOCALIZATION_OG_IMAGE,
+      mime: 'image/jpeg',
+      width: '1200',
+      height: '630',
+      alt: '3D boxed software showcase of RaggieSoft Localization Studio — Multilingual .RESX, XLIFF, and WebVTT Compliance IDE.'
+    };
+  }
   if (routePath === '/launcher-studio') {
     return {
       url: LAUNCHER_OG_IMAGE,
@@ -152,7 +193,7 @@ function resolveOgMedia(routePath) {
     mime: 'image/jpeg',
     width: '1200',
     height: '630',
-    alt: '3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Four Cohesive Windows 11 Developer Tools (Installer, Accessibility, Launcher, and Showcase Studio).'
+    alt: '3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools.'
   };
 }
 
@@ -287,9 +328,9 @@ function buildSuiteOverviewLlmsTxt() {
     '> Open-Source Engineering Hub: https://raggiesoft.dev',
     '> License: MIT License (Code) / CC BY-SA 4.0 (Documentation)',
     '',
-    '## Suite Product Lineup (4 Cohesive Developer Tools)',
+    '## Suite Product Lineup (8 Cohesive Developer, Compliance & Publishing Tools)',
     '',
-    '1. **RaggieSoft Installer Studio (`v0.5.0` — Shipping Now)**:',
+    '1. **RaggieSoft Installer Studio (`v0.5.0` — Flagship Shipping Now)**:',
     '   - Product Portal: https://raggiesoftstudio.com/installer-studio',
     '   - Visual Tour (14 Captures): https://raggiesoftstudio.com/installer-studio/screenshots',
     '   - Engineering Roadmap: https://raggiesoftstudio.com/installer-studio/roadmap',
@@ -299,19 +340,39 @@ function buildSuiteOverviewLlmsTxt() {
     '   - Agent Skill File: https://raggiesoftstudio.com/installer-studio/SKILL.md',
     '   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 10 selectable Wizard Styles, WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.',
     '',
-    '2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now)**:',
+    '2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now on .NET 11)**:',
     '   - Product Portal: https://raggiesoftstudio.com/accessibility-studio',
     '   - Rule Catalog & CLI Exit Codes: https://raggiesoftstudio.com/accessibility-studio/docs',
     '   - Enterprise MSI & GPO Matrix: https://raggiesoftstudio.com/accessibility-studio/enterprise',
-    '   - Summary: C# 13 / .NET 10 WinForms + Monaco side-by-side refactoring diff workstation and headless OASIS SARIF 2.1.0 CLI for WCAG 2.2 AA & Revised Section 508 source remediation.',
+    '   - Summary: C# 13 / .NET 11 WinForms + Monaco side-by-side refactoring diff workstation and headless OASIS SARIF 2.1.0 CLI for WCAG 2.2 AA & Revised Section 508 source remediation.',
     '',
-    '3. **RaggieSoft Launcher Studio (Upcoming Suite IDE — Design Preview & Mockups)**:',
+    '3. **RaggieSoft Training Studio (`v0.1.0` — .NET 11 Compiler & Live SCORM 1.2/2004 PoC)**:',
+    '   - Product Portal & Interactive Demo: https://raggiesoftstudio.com/training-studio',
+    '   - Concise AI Spec: https://raggiesoftstudio.com/training-studio/llms.txt',
+    '   - Complete `.rstp` Grammar Spec: https://raggiesoftstudio.com/training-studio/llms-full.txt',
+    '   - Agent Skill File: https://raggiesoftstudio.com/training-studio/SKILL.md',
+    '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/training-studio/ada-title-ii-fundamentals-vpat-2.5.html',
+    '   - Summary: Compiles plain-text `.rstp` manifests, Markdown slides, compact Opus/AAC audio, and verified `.vtt` captions into bandwidth-proof `<50 KB` SCORM 1.2 & 2004 packages with offline Write-Ahead Queue checkpointing and Auto-VPAT 2.5.',
+    '',
+    '4. **RaggieSoft Help Studio (Architecture Preview — Native Offline F1 Help & .CHM Import)**:',
+    '   - Product Page: https://raggiesoftstudio.com/help-studio',
+    '   - Summary: Migrates legacy Microsoft HTML Help Workshop (`.hhp`, `.hhc`, `.hhk`, `.chm`) projects into modular `.rshm` packs for `RaggieSoftHelp.exe` OR standalone zero-dependency Win32 C++20 `F1` help clients + static web manuals.',
+    '',
+    '5. **RaggieSoft Document Studio (Architecture Preview — Tagged PDF/UA-1 Compiler)**:',
+    '   - Product Page: https://raggiesoftstudio.com/document-studio',
+    '   - Summary: Compiles plain-text `.rsdp` manifests and Markdown into machine-verified ISO 14289-1 Tagged `PDF/UA-1` handbooks, policies, certificates, and Section 508 / ADA Title II forms.',
+    '',
+    '6. **RaggieSoft Localization Studio (Architecture Preview — Multilingual Compliance IDE)**:',
+    '   - Product Page: https://raggiesoftstudio.com/localization-studio',
+    '   - Summary: Side-by-side `.RESX`, `XLIFF 2.1`, `.rsip`, `.rstp`, and multilingual `WebVTT` IDE locking placeholders, resolving `&` mnemonic clashes, and enforcing `<=25 CPS` caption reading speeds.',
+    '',
+    '7. **RaggieSoft Launcher Studio (Design Preview & Mockups)**:',
     '   - Product Page: https://raggiesoftstudio.com/launcher-studio',
     '   - Summary: Visual IDE and `.rslp` plain-text manifest compiler for building white-label, zero-account desktop application hubs, offline media shelves, and SHA-256 + Authenticode static-CDN updaters.',
     '',
-    '4. **RaggieSoft Showcase Studio (Upcoming Suite IDE — Design Preview & Mockups)**:',
+    '8. **RaggieSoft Showcase Studio (Design Preview & Mockups)**:',
     '   - Product Page: https://raggiesoftstudio.com/showcase-studio',
-    '   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA keyboard/screen-reader/High-Contrast safeguards to modern Windows 11 `FluentMica` collector menus.',
+    '   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA safeguards to modern Windows 11 `FluentMica` collector menus.',
     ''
   ].join('\n');
 }
@@ -385,6 +446,33 @@ async function main() {
   if (fs.existsSync(srcRoadmap)) {
     fs.copyFileSync(srcRoadmap, path.join(installerDistDir, 'ROADMAP.md'));
     fs.copyFileSync(srcRoadmap, path.join(distDir, 'ROADMAP.md'));
+  }
+
+  // 5B. Publish Training Studio AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), live compiled
+  //     3-slide SCORM player (`/training-studio/live-player/`), `.zip` downloads, and Auto-VPAT 2.5!
+  const trainingDistDir = path.join(distDir, 'training-studio');
+  fs.mkdirSync(trainingDistDir, { recursive: true });
+  const trainingSpecsDir = path.join(trainingStudioRoot, 'specs');
+  for (const specFile of ['llms.txt', 'llms-full.txt', 'SKILL.md']) {
+    const srcSpec = path.join(trainingSpecsDir, specFile);
+    if (fs.existsSync(srcSpec)) {
+      fs.copyFileSync(srcSpec, path.join(trainingDistDir, specFile));
+    }
+  }
+  const trainingSampleOut = path.join(trainingStudioRoot, 'samples', 'municipal-ada-title-ii', 'out');
+  for (const artifactFile of [
+    'ada-title-ii-fundamentals-vpat-2.5.html',
+    'ada-title-ii-fundamentals-scorm12.zip',
+    'ada-title-ii-fundamentals-scorm2004.zip'
+  ]) {
+    const srcArt = path.join(trainingSampleOut, artifactFile);
+    if (fs.existsSync(srcArt)) {
+      fs.copyFileSync(srcArt, path.join(trainingDistDir, artifactFile));
+    }
+  }
+  const unpackedPlayerSrc = path.join(trainingSampleOut, 'ada-title-ii-fundamentals-scorm12');
+  if (fs.existsSync(unpackedPlayerSrc)) {
+    copyDirRecursive(unpackedPlayerSrc, path.join(trainingDistDir, 'live-player'));
   }
 
   // 6. Publish Single-Source `/installer-studio/docs/<topicId>` chapters directly from
@@ -522,6 +610,10 @@ async function main() {
       const isPrimaryProductHub =
         p === '/installer-studio' ||
         p === '/accessibility-studio' ||
+        p === '/training-studio' ||
+        p === '/help-studio' ||
+        p === '/document-studio' ||
+        p === '/localization-studio' ||
         p === '/launcher-studio' ||
         p === '/showcase-studio';
       const priority = p === '/' ? '1.0' : isPrimaryProductHub ? '0.9' : p.includes('/docs/') ? '0.75' : '0.8';
