@@ -89,6 +89,11 @@ Lightweight LZMS self-extracting archive (.exe) post-extraction launch (PostExtr
 | `ExtractToTemp` | `bool (true|false)` | No | `false` | When `true`, defaults extraction to an isolated `%TEMP%\<Slug>-<PID>` temporary directory instead of prompting for a permanent folder. |
 | `AllowChangeFolder` | `bool (true|false)` | No | `true` | When `true` (default), allows the user to edit or browse the destination folder before clicking `&Extract`. |
 | `SilentOverwrite` | `bool (true|false)` | No | `true` | When `true`, overwrites existing files in the destination folder without extra prompts. |
+| `CleanupTempAfterRun` | `bool (true|false)` | No | `false` | Software Installation Self-Extractor mode: when `true` (requires `ExtractToTemp = true` and `PostExtractRun`), waits for the launched setup program and any `WaitForProcess` / child processes to finish, then automatically deletes the temporary `%TEMP%` staging directory. |
+| `WaitMode` | `enum` | No | `auto` | Allowed: `auto|none|direct|job_tree|process_name`. Controls how `[SFX]` waits for `PostExtractRun` before `%TEMP%` cleanup: `auto` (`job_tree` when `CleanupTempAfterRun = true`, else `none`), `none` (fire-and-forget), `direct` (wait only on initial process), `job_tree` (Win32 Job Object + any active process inside `%TEMP%` + `WaitForProcess`), or `process_name` (wait until all processes matching `WaitForProcess` exit). |
+| `WaitForProcess` | `string` | No | — | Optional companion/cleanup executable name, wildcard, or semicolon/comma-separated list to wait for before deleting `%TEMP%` staging files (e.g., `_ISDEL.EXE; _INS*._MP; setup-worker.exe`). |
+| `WaitSpawnGraceMs` | `integer` | No | `1500` | Milliseconds (`0..60000`) after `PostExtractRun` exits during which the self-extractor keeps watching for delayed handoff processes (`WaitForProcess` or `%TEMP%` executables like `_ISDEL.EXE`) before removing temporary files. |
+| `AutoStartExtract` | `bool (true|false)` | No | `false` | When `true`, starts unpacking to `%TEMP%` and launching `PostExtractRun` immediately on startup without requiring an extra click on `&Extract`. |
 
 ### `[UI]` (*Optional*)
 Branding, RTF license, icon, 11 selectable C++ WizardLayout styles (including 'simple' ultra-compact single-dialog mode, Wizard95, FluentMica, FullScreenBlue & ACME FullScreenTeal), SetupTypePreset, and MSI.DLL dialog workflow.
