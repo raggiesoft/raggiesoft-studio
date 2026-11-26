@@ -102,5 +102,11 @@ RequestedExecutionLevel = asInvoker
     <li><strong>Administrator with UAC Off (<code>EnableLUA = 0</code>)</strong>: <code>CheckTokenMembership</code> confirms active <code>BUILTIN\Administrators</code> membership and runs installation directly in-process without unnecessary <code>runas</code> loops.</li>
     <li><strong>Standard User with UAC Off (<code>EnableLUA = 0</code>)</strong>: Because UAC is disabled and cannot prompt for elevation, <code>SetupWizard.exe</code> immediately blocks machine-wide installation with a clear, accessible <em>"Administrator privileges are required to install this software for all users"</em> dialog (and <code>Product.msi</code> enforces <code>Privileged</code> if invoked directly via <code>msiexec.exe</code>).</li>
   </ul>
+
+  <h3>5. Per-Product Single-Instance Focus &amp; Polite Cross-Product <code>Global\_MSIExecute</code> Auto-Queue</h3>
+  <ul>
+    <li><strong>Same Product (<code>UpgradeCode</code> Match)</strong>: Double-clicking an already-running product's <code>Setup.exe</code> (or Universal Web/Offline wrapper) never spawns a duplicate window. Instead, Instance #2 transfers foreground focus permission (<code>AllowSetForegroundWindow</code>) and sends a UIPI-whitelisted activation message so Instance #1 un-minimizes and comes straight to the front (returning <code>1618</code> only for headless <code>/s</code> / <code>/qn</code> scripts).</li>
+    <li><strong>Different Product (<code>UpgradeCode</code> Differs)</strong>: Two different installers (for example, <em>StoreTrainer</em> and <em>Accessibility Studio</em>) can open their interactive wizard pages side-by-side. If the user clicks <strong>Install</strong> while another MSI transaction holds Windows Installer's system-wide <code>Global\_MSIExecute</code> mutex, <code>SetupWizard.exe</code> switches its Windows Taskbar progress bar to amber (<code>TBPF_PAUSED</code>), announces which setup is currently finishing (via <code>ScopedActiveMsiBeacon</code>), keeps <strong>Cancel</strong> responsive, and automatically resumes installation the instant <code>Global\_MSIExecute</code> clears—eliminating MSI <code>Error 1618</code>.</li>
+  </ul>
 </body>
 </html>

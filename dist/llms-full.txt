@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.5.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.5.1)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.5.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.5.1) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.5.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Premier`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.5.1)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
@@ -37,6 +37,7 @@ Core product identity, MSI Summary Information, target CPU architecture (x64/arm
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
 | `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm`. `msi` builds a standalone Enterprise `.msi` (+ optional `-setup.exe`); `msm` builds a reusable Merge Module (`.msm`). |
+| `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls when Windows UAC prompts on outer `Setup.exe` (`RT_MANIFEST` `#1`): `asInvoker` (default — wizard starts un-elevated and prompts for UAC only when clicking Install, keeping Finish app launches & Browse dialogs un-elevated), `highestAvailable` (elevates upfront for Admin accounts while allowing Standard Users to open Setup), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch with Explorer shell-token de-elevation on Finish launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
 | `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)`. |
 | `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe` and `<OutputName>-arm64-setup.exe` for the smart CPU-aware web stub. |
