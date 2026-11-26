@@ -1,0 +1,276 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
+    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
+    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Version History &amp; Changelog (v0.5.0) | Installer Studio</title>
+    <meta name="description" content="Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.5.0 across Windows 11 x64 and ARM64." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/installer-studio/changelog" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="Version History &amp; Changelog (v0.5.0) | Installer Studio" />
+    <meta property="og:description" content="Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.5.0 across Windows 11 x64 and ARM64." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/installer-studio/changelog" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RaggieSoft Studio developer suite showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Version History &amp; Changelog (v0.5.0) | Installer Studio" />
+    <meta name="twitter:description" content="Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.5.0 across Windows 11 x64 and ARM64." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
+    <meta name="twitter:image:alt" content="RaggieSoft Studio developer suite showcase featuring RaggieSoft Installer Studio for Windows 11 x64 and ARM64." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/changelog#webpage","url":"https://raggiesoftstudio.com/installer-studio/changelog","name":"Version History & Changelog (v0.5.0) | Installer Studio","description":"Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.5.0 across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-DmyN3F-j.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CHUATdpQ.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Studio</span>
+          <span class="brand-sub">Installer Studio v0.5.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite Overview</a></li>
+              <li><a class="nav-link is-section-active" href="/installer-studio">Installer Studio</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
+              <li><a class="nav-link" href="/launcher-studio">Launcher Studio</a></li>
+              <li><a class="nav-link" href="/showcase-studio">Showcase Studio</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+          <div class="mobile-product-subnav">
+            <span class="mobile-product-subnav-title">Installer Studio v0.5.0 Pages</span>
+            <nav aria-label="Installer Studio Mobile Sub-Pages">
+              <ul class="nav-list">
+                <li><a class="nav-link" href="/installer-studio">Overview</a></li>
+                <li><a class="nav-link" href="/installer-studio/screenshots">Screenshots</a></li>
+                <li><a class="nav-link" href="/installer-studio/roadmap">Roadmap</a></li>
+                <li><a class="nav-link" href="/installer-studio/docs">Docs & AI Spec</a></li>
+                <li><a class="nav-link" href="/installer-studio/faq">FAQ</a></li>
+                <li><a class="nav-link" href="/installer-studio/changelog" aria-current="page">Changelog</a></li>
+                <li><a class="nav-link" href="/installer-studio/vpat">Accessibility & VPAT</a></li>
+                <li><a class="nav-link" href="/installer-studio/security">Security</a></li>
+                <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">Installer Studio GitHub</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="product-subnav">
+        <div class="product-subnav-inner">
+          <span class="product-subnav-label">Installer Studio v0.5.0:</span>
+          <nav aria-label="Installer Studio Product Pages">
+            <ul class="product-subnav-list">
+              <li><a class="product-subnav-link" href="/installer-studio">Overview</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/screenshots">Screenshots</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/roadmap">Roadmap</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/docs">Docs & AI Spec</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/faq">FAQ</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/changelog" aria-current="page">Changelog</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/vpat">Accessibility & VPAT</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/security">Security</a></li>
+              <li><a class="product-subnav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="chg-title">
+      <span class="eyebrow">Public Engineering Log • Signed Universal x64 &amp; Native ARM64</span>
+      <h1 id="chg-title">Version History &amp; Release Notes</h1>
+      <p class="lead">
+        Follow every milestone of <strong>RaggieSoft Installer Studio</strong> as it evolves in public as original,
+        zero-dependency native Win32 C++20 software.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-setup.exe">Download Latest v0.5.0 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-offline-setup.exe">Full Offline Installer (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-outline" href="/installer-studio/screenshots">Inspect v0.5.0 Screenshots</a>
+        <a class="btn btn-outline" href="/installer-studio/faq">Read FAQ</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="v050-heading" class="calc-panel">
+      <span class="release-badge">Latest Release • November 2026</span>
+      <h2 id="v050-heading" style="margin-top: 0.25rem;">v0.5.0 — 10 Selectable Wizard Styles, Classic &amp; Custom Setup Types, Billboards &amp; WCAG Auto-Contrast</h2>
+      <ul class="feature-list">
+        <li><strong>10 Selectable First-Party Wizard Styles (<code>[UI] WizardLayout</code>)</strong>: Shipped <code>standard</code>, <code>wizard95</code> (<code>#C0C0C0</code> 3D beveled sheet + <code>164px</code> sunken left graphic rail across every page), <code>wizard97</code>, <code>aerowizard</code>, <code>fluentmica</code>, <code>oneclick</code>, <code>passivetoast</code>, <code>fullscreenblue</code>, <code>fullscreenteal</code> (1995 <code>#008080</code> ACME callback), and <code>autorun16x9</code>—all yielding automatically to <code>SPI_GETHIGHCONTRAST</code>.</li>
+        <li><strong>Classic Windows 95 &amp; Author-Defined Setup Types + <code>[Billboard.*]</code></strong>: Added 4-card <code>win95_classic</code> Setup Types (<strong>Typical</strong>, <strong>Compact</strong>, <strong>Complete</strong>, <strong>Custom</strong>), repeatable <code>[SetupType.&lt;Id&gt;]</code> cards, floating 3D <code>[Billboard.&lt;Id&gt;]</code> showcase cards, and expanded <code>MSI.DLL</code> <code>ActionData</code> file/byte progress formatting.</li>
+        <li><strong>Live WCAG 2.2 AA Brand Contrast Enforcer (<code>RswWcagContrast.hpp</code> &amp; <code>RSW055</code>)</strong>: Added W3C relative luminance validation in <code>instbuild.exe --validate</code> plus a one-click <strong>Auto-Fix WCAG</strong> button in <code>InstallerStudio.exe</code>.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="v045-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v045-heading" style="margin-top: 0.25rem;">v0.4.5 — Microsoft Azure Artifact Signing, ARM64 /dlib Dispatch &amp; Pre-Signed Template Safety</h2>
+        <ul class="feature-list">
+          <li><strong>100% Cryptographically Signed Release via Microsoft Azure Artifact Signing</strong>: Dual-Layer Public Trust Authenticode signing with RFC 3161 SHA-256 timestamps across all inner C++20 executables, <code>x64</code>/<code>ARM64</code> <code>.msi</code> databases, and Universal outer <code>Setup.exe</code> launchers.</li>
+          <li><strong>Architecture-Aware <code>/dlib</code> SignTool Dispatch &amp; Local Temp Resource Stamping</strong>: Automatic PE <code>Machine</code> matching for <code>Azure.CodeSigning.Dlib.dll</code> on Windows 11 ARM64 plus clean <code>ImageRemoveCertificate</code> stripping.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v044-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v044-heading" style="margin-top: 0.25rem;">v0.4.4 — Plain-English Feature Inclusion Tiers &amp; Public FAQ</h2>
+        <ul class="feature-list">
+          <li>Replaced raw numeric <code>InstallLevel</code> inputs with human-friendly <strong>Included In</strong> tiers (<code>minimal</code>, <code>typical</code>, <code>complete</code>, <code>hidden</code>) and launched the public <a href="/installer-studio/faq">FAQ</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v043-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v043-heading" style="margin-top: 0.25rem;">v0.4.3 — CPU-Aware Smart Web Stub &amp; Combined Offline Universal Single-EXE (x64 + ARM64)</h2>
+        <ul class="feature-list">
+          <li>Added <code>IsWow64Process2</code> Prism-piercing Smart Web Stubs and Combined Offline Universal EXEs with build-stamped <code>SHA-256</code> verification.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v040-v042-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestones • November 2026</span>
+        <h2 id="v040-v042-heading" style="margin-top: 0.25rem;">v0.4.0 – v0.4.2 — 12-View Tree-First IDE, Dark-Mode Push Buttons &amp; Native C++20 Help</h2>
+        <ul class="feature-list">
+          <li>Shipped 32-bit ARGB vector <code>SysTreeView32</code> hierarchies, dedicated Features &amp; <code>RegEdit</code> Registry trees, sub-16ms live Dark &harr; Light palette hot-swapping, and zero-dependency <code>RaggieSoftHelp.exe</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v010-v030-heading" class="card">
+      <div>
+        <span class="release-badge">Initial Milestones • November 2026</span>
+        <h2 id="v010-v030-heading" style="margin-top: 0.25rem;">v0.1.0 – v0.3.0 — Static /MT C++20 Foundation, Component Rules, LZMS, Pre-MSI Runtimes &amp; .MSM</h2>
+        <ul class="feature-list">
+          <li>Established the static <code>/MT</code> C++20 compiler, deterministic UUIDv5 GUIDs, <code>ICE18/38/64/80</code> validation, Windows <code>LZMS</code> compression, Pre-MSI <code>[Prerequisite.*]</code> broker, 64-bit <code>.MSM</code> merger, and <code>SelectionTree</code>.</li>
+        </ul>
+      </div>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview</a>
+          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>

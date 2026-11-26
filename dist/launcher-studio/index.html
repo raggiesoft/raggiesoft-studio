@@ -1,0 +1,319 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
+    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
+    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>RaggieSoft Launcher Studio — Custom Desktop App Hubs</title>
+    <meta name="description" content="Visual IDE and .rslp manifest compiler for building white-label Windows 11 x64 &amp; ARM64 desktop app hubs, offline shelves, and static-CDN updaters." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/launcher-studio" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="RaggieSoft Launcher Studio — Custom Desktop App Hubs" />
+    <meta property="og:description" content="Visual IDE and .rslp manifest compiler for building white-label Windows 11 x64 &amp; ARM64 desktop app hubs, offline shelves, and static-CDN updaters." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/launcher-studio" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-launcher-studio-ide.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:alt" content="RaggieSoft Launcher Studio visual IDE mockup showing a branded publisher desktop app hub and static-CDN catalog designer." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RaggieSoft Launcher Studio — Custom Desktop App Hubs" />
+    <meta name="twitter:description" content="Visual IDE and .rslp manifest compiler for building white-label Windows 11 x64 &amp; ARM64 desktop app hubs, offline shelves, and static-CDN updaters." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-launcher-studio-ide.png" />
+    <meta name="twitter:image:alt" content="RaggieSoft Launcher Studio visual IDE mockup showing a branded publisher desktop app hub and static-CDN catalog designer." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/launcher-studio#webpage","url":"https://raggiesoftstudio.com/launcher-studio","name":"RaggieSoft Launcher Studio — Custom Desktop App Hubs","description":"Visual IDE and .rslp manifest compiler for building white-label Windows 11 x64 & ARM64 desktop app hubs, offline shelves, and static-CDN updaters.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-DmyN3F-j.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CHUATdpQ.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Studio</span>
+          <span class="brand-sub">Launcher Studio • Branded Desktop App Hubs &amp; Static-CDN Updaters</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite Overview</a></li>
+              <li><a class="nav-link" href="/installer-studio">Installer Studio</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
+              <li><a class="nav-link" href="/launcher-studio" aria-current="page">Launcher Studio</a></li>
+              <li><a class="nav-link" href="/showcase-studio">Showcase Studio</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="launcher-studio-title">
+      <span class="eyebrow">RaggieSoft Studio • Upcoming Desktop Hub &amp; Static-CDN Updater IDE</span>
+      <h1 id="launcher-studio-title">RaggieSoft Launcher Studio — Build Your Own Branded Desktop Hub.</h1>
+      <p class="lead">
+        Independent software studios, game/utility creators, authors, musicians, and enterprise internal-tools teams often
+        maintain multiple desktop applications and downloadable media archives—yet building a polished, accessible desktop
+        hub and delta patcher from scratch takes months. Inspired directly by our production
+        <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, <strong>RaggieSoft Launcher Studio</strong> turns
+        that zero-account, static-CDN architecture into a visual IDE and plain-text <code>.rslp</code> compiler for everyone.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#launcher-mockup-section">Inspect Launcher Studio IDE Mockup &darr;</a>
+        <a class="btn btn-outline" href="https://launcher.raggiesoft.com">See Live RaggieSoft Launcher Inspiration</a>
+        <a class="btn btn-outline" href="/installer-studio">Download Installer Studio v0.5.0 Today</a>
+      </div>
+    </section>
+
+    <section id="launcher-mockup-section" aria-labelledby="launcher-shot-heading">
+      <span class="eyebrow">High-DPI Workstation Concept • Click Image for Full 1280&times;800 Lightbox</span>
+      <h2 id="launcher-shot-heading" style="margin-top: 0.25rem;">Visual Catalog Tree, Live Branded Hub Preview &amp; Signing Inspector</h2>
+      <div class="shot-grid" style="grid-template-columns: minmax(0, 1fr); max-width: 58rem;">
+        
+    <figure class="shot-card">
+      <button
+        type="button"
+        class="shot-preview-btn"
+        data-open-dialog="dlg-mockup-launcher-ide"
+        aria-haspopup="dialog"
+        aria-label="Open full-size view: LauncherStudio.exe — Branded Desktop App Hub & Catalog Compiler"
+      >
+        <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-launcher-studio-ide.png" alt="RaggieSoft Launcher Studio IDE mockup showing the Catalog Channels and App Shelves tree on the left, live branded Publisher Hub preview in the center with Install and Update tiles, and SHA-256 + Authenticode static-CDN settings on the right." loading="lazy" />
+        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+      </button>
+      <figcaption>
+        <span class="eyebrow" style="margin-bottom: 0;">LauncherStudio.exe • White-Label Desktop Hub & Static-CDN Updater IDE</span>
+        <strong>LauncherStudio.exe — Branded Desktop App Hub & Catalog Compiler</strong>
+        <span>Design your own zero-account, custom-branded Windows 11 desktop application hub, offline eBook/audio library shelf, and static-CDN delta updater using diff-friendly <code>.rslp</code> manifests—with live Light/Dark/High-Contrast WCAG 2.2 AA verification.</span>
+      </figcaption>
+    </figure>
+
+    <dialog id="dlg-mockup-launcher-ide" class="shot-lightbox" aria-labelledby="dlg-mockup-launcher-ide-title">
+      <div class="shot-lightbox-panel">
+        <div class="shot-lightbox-header">
+          <div>
+            <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">LauncherStudio.exe • White-Label Desktop Hub & Static-CDN Updater IDE</span>
+            <h3 id="dlg-mockup-launcher-ide-title" class="shot-lightbox-title">LauncherStudio.exe — Branded Desktop App Hub & Catalog Compiler</h3>
+          </div>
+          <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+            Close (Esc)
+          </button>
+        </div>
+        <div class="shot-lightbox-stage">
+          <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-launcher-studio-ide.png" alt="RaggieSoft Launcher Studio IDE mockup showing the Catalog Channels and App Shelves tree on the left, live branded Publisher Hub preview in the center with Install and Update tiles, and SHA-256 + Authenticode static-CDN settings on the right." loading="lazy" />
+        </div>
+        <div class="shot-lightbox-caption">
+          Publish a static signed <code>catalog.json</code> alongside your <code>.msi</code>, <code>.msp</code>, or <code>Engine = native</code> packages on any HTTPS server, S3 bucket, or Cloudflare R2 bucket—zero database servers to maintain, zero forced customer logins, and mandatory <code>SHA-256</code> + <code>WinVerifyTrust</code> signature verification before any update executes.
+        </div>
+      </div>
+    </dialog>
+  
+      </div>
+    </section>
+
+    <section aria-labelledby="launcher-pillars-heading">
+      <span class="eyebrow">Zero Gatekeepers • Zero Forced Logins • Zero Database Servers</span>
+      <h2 id="launcher-pillars-heading" style="margin-top: 0.25rem;">Core Architectural Pillars of Launcher Studio</h2>
+      <div class="card-grid">
+        <article class="card card-highlight">
+          <div>
+            <h3>1. Static-CDN Catalog Publishing (<code>catalog.json</code>)</h3>
+            <p>
+              Host your entire update channel on any static HTTPS web server, DigitalOcean Spaces bucket, Amazon S3 bucket, or
+              Cloudflare R2 bucket. <code>lncbuild.exe</code> compiles your <code>.rslp</code> project into a deterministic,
+              signed <code>catalog.json</code> manifest—requiring zero backend SQL databases, zero Docker containers, and zero
+              recurring server maintenance.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <h3>2. Multi-Content Shelves: Apps, Books &amp; Audio</h3>
+            <p>
+              First-class support for both transactional Windows Installer applications (<code>.msi</code> / <code>.msp</code>
+              built with <a href="/installer-studio">Installer Studio</a>) and multi-gigabyte <code>Engine = native</code>
+              offline content packs (illustrated eBooks, lossless/streaming audio albums, sample packs, and documentation sets).
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <h3>3. Mandatory SHA-256 &amp; <code>WinVerifyTrust</code> Security</h3>
+            <p>
+              Every catalog item stamps exact byte sizes and <code>SHA-256</code> digests at build time. Before launching any
+              downloaded installer or applying a patch, the client verifies both the cryptographic hash via Windows
+              <code>bcrypt.dll</code> and the publisher’s Authenticode signature via <code>WinVerifyTrust</code>.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <h3>4. WCAG 2.2 AA Contrast &amp; Full Keyboard / Gamepad Nav</h3>
+            <p>
+              Customize Light Mode, Dark Mode, and brand accent tokens with the same live W3C luminance enforcer shipped in
+              Installer Studio <code>v0.5.0</code>—guaranteeing <code>&ge; 4.5:1</code> button contrast, clean <code>Tab</code>
+              and arrow-key shelf navigation, screen-reader download progress announcements, and instant
+              <code>SPI_GETHIGHCONTRAST</code> compliance.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="rslp-sample-heading">
+      <span class="eyebrow">Git-Diffable &amp; AI-Agent Friendly</span>
+      <h2 id="rslp-sample-heading" style="margin-top: 0.25rem;">Draft Plain-Text <code>.rslp</code> Launcher Project Grammar</h2>
+      <p>
+        Just like <code>.rsip</code> in Installer Studio, every visual edit inside <code>LauncherStudio.exe</code> round-trips
+        losslessly to a human-readable INI manifest whose comments survive GUI saves byte-for-byte:
+      </p>
+      <pre aria-label="Draft .rslp RaggieSoft Launcher Project Manifest">; Sample .rslp manifest — compiles branded Launcher.exe + static-CDN catalog.json
+[Launcher]
+Name              = Starlight Creative Hub
+Publisher         = Starlight Audio &amp; Interactive
+Version           = 1.0.0
+UpgradeCode       = {4D81C2F0-91A4-4E7B-8C12-7F39A50E21B8}
+CatalogUrl        = https://cdn.example-owned-domain/launcher/catalog.json
+RequireSignature  = true
+
+[Branding]
+WindowStyle       = fluentmica
+AccentLight       = #1D4ED8
+AccentDark        = #38BDF8
+EnforceWcagAA     = true
+
+[Shelf.Apps]
+Title             = Desktop Applications
+Layout            = cards
+
+[Item.SynthWorkstation]
+Shelf             = Apps
+PackageEngine     = msi
+ProjectRef        = ..installersSynthWorkstation.rsip
+ReleaseNotesFile  = .
+otessynth-1.4.0.md
+
+[Shelf.CompanionMedia]
+Title             = Offline Liner Notes &amp; Soundtracks
+Layout            = covers</pre>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview</a>
+          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>

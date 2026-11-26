@@ -1,0 +1,447 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
+    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
+    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>RaggieSoft Showcase Studio — Accessible Collector Menus</title>
+    <meta name="description" content="Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/showcase-studio" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/installer-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="RaggieSoft Showcase Studio — Accessible Collector Menus" />
+    <meta property="og:description" content="Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/showcase-studio" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-1990s-bmp-a11y.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:alt" content="RaggieSoft Showcase Studio mockup showing a 1990s painted bitmap CD-ROM showcase menu enhanced with WCAG 2.2 AA keyboard focus rings and UI Automation." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RaggieSoft Showcase Studio — Accessible Collector Menus" />
+    <meta name="twitter:description" content="Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-1990s-bmp-a11y.png" />
+    <meta name="twitter:image:alt" content="RaggieSoft Showcase Studio mockup showing a 1990s painted bitmap CD-ROM showcase menu enhanced with WCAG 2.2 AA keyboard focus rings and UI Automation." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/showcase-studio#webpage","url":"https://raggiesoftstudio.com/showcase-studio","name":"RaggieSoft Showcase Studio — Accessible Collector Menus","description":"Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-DmyN3F-j.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CHUATdpQ.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <span class="brand-title">RaggieSoft Studio</span>
+          <span class="brand-sub">Showcase Studio • Accessible 1990s .BMP &amp; Windows 11 FluentMica Menus</span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite Overview</a></li>
+              <li><a class="nav-link" href="/installer-studio">Installer Studio</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
+              <li><a class="nav-link" href="/launcher-studio">Launcher Studio</a></li>
+              <li><a class="nav-link" href="/showcase-studio" aria-current="page">Showcase Studio</a></li>
+              <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="showcase-studio-title" x-data="{ eraTab: 'bmp90s' }">
+      <span class="eyebrow">RaggieSoft Studio • Accessible Interactive Launchpads &amp; Collector Menus</span>
+      <h1 id="showcase-studio-title">RaggieSoft Showcase Studio — 1990s CD-ROM Magic, Rebuilt with WCAG 2.2 AA Safeguards.</h1>
+      <p class="lead">
+        Remember opening a boxed PC release in 1996 and greeting an illustrated multimedia launchpad with custom artwork,
+        liner notes, bonus tracks, and one-click install actions? <strong>RaggieSoft Showcase Studio</strong> revives that art
+        form for <strong>commemorative USB box sets, downloadable ISO collector editions, multi-package installer suites,
+        offline press kits, and accessible classroom kiosks</strong>—compiling plain-text <code>.rssp</code> projects into
+        zero-dependency static <code>/MT</code> Win32 C++20 executables for <code>x64</code> and <code>ARM64</code>.
+      </p>
+
+      <div style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.35rem;">
+        <span class="eyebrow">Interactive Era &amp; Workstation Switcher (Click Any Tab, Then Click Image for 1:1 Zoom)</span>
+        <div class="btn-row" role="tablist" aria-label="Showcase Studio Visual Modes" style="margin-top: 0.45rem;">
+          <button
+            type="button"
+            class="btn"
+            :class="eraTab === 'bmp90s' ? 'btn-primary' : 'btn-outline'"
+            role="tab"
+            :aria-selected="String(eraTab === 'bmp90s')"
+            @click="eraTab = 'bmp90s'"
+          >
+            1. 1990s Painted .BMP + WCAG Safeguards
+          </button>
+          <button
+            type="button"
+            class="btn"
+            :class="eraTab === 'fluent' ? 'btn-primary' : 'btn-outline'"
+            role="tab"
+            :aria-selected="String(eraTab === 'fluent')"
+            @click="eraTab = 'fluent'"
+          >
+            2. Modern Windows 11 FluentMica (16:9)
+          </button>
+          <button
+            type="button"
+            class="btn"
+            :class="eraTab === 'ide' ? 'btn-primary' : 'btn-outline'"
+            role="tab"
+            :aria-selected="String(eraTab === 'ide')"
+            @click="eraTab = 'ide'"
+          >
+            3. ShowcaseStudio.exe Canvas IDE
+          </button>
+        </div>
+
+        <div x-show="eraTab === 'bmp90s'" style="margin-top: 1.15rem;">
+          <p style="margin-top: 0;">
+            <strong>Classic 1990s Painted <code>.BMP</code> Aesthetic — Fixed for Every User:</strong> Keep authentic
+            <code>#008080</code> / <code>#000080</code> desktop washes, beveled <code>#C0C0C0</code> frames, and custom pixel
+            art while automatically adding dual-ring keyboard focus indicators, <code>Alt+Key</code> accelerators, real Win32
+            UI Automation screen-reader peers, and live Windows Contrast Theme fallback.
+          </p>
+        </div>
+        <div x-show="eraTab === 'fluent'" style="margin-top: 1.15rem; display: none;">
+          <p style="margin-top: 0;">
+            <strong>Modern Windows 11 <code>FluentMica</code> Widescreen Mode:</strong> Render a crisp Per-Monitor V2 DPI
+            <code>16:9</code> collector launchpad with category rails, accessible Dark/Light action cards, captioned audio
+            previews, and direct handoff to signed <code>Setup.exe</code> / <code>.msi</code> installers.
+          </p>
+        </div>
+        <div x-show="eraTab === 'ide'" style="margin-top: 1.15rem; display: none;">
+          <p style="margin-top: 0;">
+            <strong>Visual Page, Hotspot &amp; 4-Way Focus-Matrix Authoring:</strong> Map pages, hotspots, directional
+            <code>Up/Down/Left/Right</code> arrow routing, UI Automation labels, and High-Contrast previews inside a native
+            Win32 C++20 workstation IDE.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="showcase-gallery-heading">
+      <span class="eyebrow">All Three High-DPI Concept Captures • Click Any Card to Open Full-Size 1280&times;800 Modal</span>
+      <h2 id="showcase-gallery-heading" style="margin-top: 0.25rem;">Inspect 1990s .BMP Mode, Modern FluentMica Mode &amp; the Canvas IDE</h2>
+      <div class="shot-grid">
+        
+    <figure class="shot-card">
+      <button
+        type="button"
+        class="shot-preview-btn"
+        data-open-dialog="dlg-mockup-showcase-90s"
+        aria-haspopup="dialog"
+        aria-label="Open full-size view: 1990s Painted .BMP CD-ROM Showcase — Upgraded with Modern Accessibility"
+      >
+        <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-1990s-bmp-a11y.png" alt="RaggieSoft Showcase Studio 1990s painted bitmap CD-ROM collector menu displaying classic 3D beveled artwork over a teal wash alongside a high-contrast dual-ring keyboard focus indicator, Alt+Key mnemonics, UI Automation screen-reader readout, and Windows High-Contrast override status bar." loading="lazy" />
+        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+      </button>
+      <figcaption>
+        <span class="eyebrow" style="margin-bottom: 0;">Showcase Studio Runtime • 1990s .BMP Mode + WCAG 2.2 AA Safeguards</span>
+        <strong>1990s Painted .BMP CD-ROM Showcase — Upgraded with Modern Accessibility</strong>
+        <span>Preserves the beloved <code>640&times;480</code> / <code>800&times;600</code> painted <code>.BMP</code> CD-ROM look on a classic <code>#008080</code> desktop wash while backing every painted hotspot with an invisible Win32 <code>BUTTON</code> UI Automation proxy, dual-ring <code>Tab</code> / 4-way arrow focus, muted-by-default captioned audio, and instant <code>SPI_GETHIGHCONTRAST</code> override.</span>
+      </figcaption>
+    </figure>
+
+    <dialog id="dlg-mockup-showcase-90s" class="shot-lightbox" aria-labelledby="dlg-mockup-showcase-90s-title">
+      <div class="shot-lightbox-panel">
+        <div class="shot-lightbox-header">
+          <div>
+            <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">Showcase Studio Runtime • 1990s .BMP Mode + WCAG 2.2 AA Safeguards</span>
+            <h3 id="dlg-mockup-showcase-90s-title" class="shot-lightbox-title">1990s Painted .BMP CD-ROM Showcase — Upgraded with Modern Accessibility</h3>
+          </div>
+          <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+            Close (Esc)
+          </button>
+        </div>
+        <div class="shot-lightbox-stage">
+          <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-1990s-bmp-a11y.png" alt="RaggieSoft Showcase Studio 1990s painted bitmap CD-ROM collector menu displaying classic 3D beveled artwork over a teal wash alongside a high-contrast dual-ring keyboard focus indicator, Alt+Key mnemonics, UI Automation screen-reader readout, and Windows High-Contrast override status bar." loading="lazy" />
+        </div>
+        <div class="shot-lightbox-caption">
+          In the 1990s, painted bitmap menus were completely inaccessible to blind, low-vision, and keyboard-only users because buttons were just flat pixels on a single background image. Showcase Studio solves this cleanly in Win32 C++20: authors place rectangular or polygon hotspots over any retro <code>.BMP</code>/<code>.PNG</code> canvas, and the runtime creates real windowless/child UI Automation <code>Button</code> peers with <code>Alt+Key</code> mnemonics, dual black/gold high-contrast focus frames, and automatic OS Contrast Theme fallback.
+        </div>
+      </div>
+    </dialog>
+  
+        
+    <figure class="shot-card">
+      <button
+        type="button"
+        class="shot-preview-btn"
+        data-open-dialog="dlg-mockup-showcase-modern"
+        aria-haspopup="dialog"
+        aria-label="Open full-size view: Modern Windows 11 FluentMica 16:9 Collector’s Edition Launchpad"
+      >
+        <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-modern-fluent.png" alt="RaggieSoft Showcase Studio modern widescreen 16:9 Windows 11 FluentMica collector launchpad showing left category navigation, cosmic hero banner, accessible action cards for installing desktop apps, opening offline books, and playing captioned bonus tracks." loading="lazy" />
+        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+      </button>
+      <figcaption>
+        <span class="eyebrow" style="margin-bottom: 0;">Showcase Studio Runtime • Windows 11 FluentMica 16:9 Mode</span>
+        <strong>Modern Windows 11 FluentMica 16:9 Collector’s Edition Launchpad</strong>
+        <span>Compiles the exact same <code>.rssp</code> project structure into a crisp Per-Monitor V2 DPI Windows 11 <code>DWMSBT_MAINWINDOW</code> Mica launchpad with rounded <code>8px</code> action cards, live Light &harr; Dark palette switching, and one-click handoff to signed <code>Setup.exe</code> packages.</span>
+      </figcaption>
+    </figure>
+
+    <dialog id="dlg-mockup-showcase-modern" class="shot-lightbox" aria-labelledby="dlg-mockup-showcase-modern-title">
+      <div class="shot-lightbox-panel">
+        <div class="shot-lightbox-header">
+          <div>
+            <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">Showcase Studio Runtime • Windows 11 FluentMica 16:9 Mode</span>
+            <h3 id="dlg-mockup-showcase-modern-title" class="shot-lightbox-title">Modern Windows 11 FluentMica 16:9 Collector’s Edition Launchpad</h3>
+          </div>
+          <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+            Close (Esc)
+          </button>
+        </div>
+        <div class="shot-lightbox-stage">
+          <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-modern-fluent.png" alt="RaggieSoft Showcase Studio modern widescreen 16:9 Windows 11 FluentMica collector launchpad showing left category navigation, cosmic hero banner, accessible action cards for installing desktop apps, opening offline books, and playing captioned bonus tracks." loading="lazy" />
+        </div>
+        <div class="shot-lightbox-caption">
+          Designed for USB box sets, downloadable ISO collector editions, multi-package suite front-ends, offline press kits, and museum or classroom kiosks—booting in under 40ms from static <code>/MT</code> C++20 on <code>x64</code> and <code>ARM64</code> with zero browser engine bloat.
+        </div>
+      </div>
+    </dialog>
+  
+        
+    <figure class="shot-card">
+      <button
+        type="button"
+        class="shot-preview-btn"
+        data-open-dialog="dlg-mockup-showcase-ide"
+        aria-haspopup="dialog"
+        aria-label="Open full-size view: ShowcaseStudio.exe — Visual Canvas, 4-Way Focus Graph & WCAG Inspector"
+      >
+        <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-studio-ide.png" alt="RaggieSoft Showcase Studio Win32 C++20 IDE mockup showing the Pages and Assets tree on the left, central interactive hotspot canvas with directional Up/Down/Left/Right focus arrows, and right-hand Inspector with UI Automation labels and High-Contrast preview." loading="lazy" />
+        <span class="shot-zoom-pill">Click for Full-Size 1:1 View</span>
+      </button>
+      <figcaption>
+        <span class="eyebrow" style="margin-bottom: 0;">ShowcaseStudio.exe • Visual Page, Hotspot & Focus-Matrix IDE</span>
+        <strong>ShowcaseStudio.exe — Visual Canvas, 4-Way Focus Graph & WCAG Inspector</strong>
+        <span>Author multi-page interactive menus visually with a hierarchical <code>Pages &amp; Assets</code> tree, visual 4-way arrow/D-pad focus-routing overlays, live WCAG 2.2 AA accessibility lint gates, and a 100% comment-preserving plain-text <code>.rssp</code> manifest.</span>
+      </figcaption>
+    </figure>
+
+    <dialog id="dlg-mockup-showcase-ide" class="shot-lightbox" aria-labelledby="dlg-mockup-showcase-ide-title">
+      <div class="shot-lightbox-panel">
+        <div class="shot-lightbox-header">
+          <div>
+            <span class="eyebrow" style="color: #fde68a; margin-bottom: 0.15rem;">ShowcaseStudio.exe • Visual Page, Hotspot & Focus-Matrix IDE</span>
+            <h3 id="dlg-mockup-showcase-ide-title" class="shot-lightbox-title">ShowcaseStudio.exe — Visual Canvas, 4-Way Focus Graph & WCAG Inspector</h3>
+          </div>
+          <button type="button" class="shot-lightbox-close" data-close-dialog aria-label="Close full-size screenshot dialog">
+            Close (Esc)
+          </button>
+        </div>
+        <div class="shot-lightbox-stage">
+          <img src="https://assets.raggiesoft.com/raggiesoft-studio/mockups/mockup-showcase-studio-ide.png" alt="RaggieSoft Showcase Studio Win32 C++20 IDE mockup showing the Pages and Assets tree on the left, central interactive hotspot canvas with directional Up/Down/Left/Right focus arrows, and right-hand Inspector with UI Automation labels and High-Contrast preview." loading="lazy" />
+        </div>
+        <div class="shot-lightbox-caption">
+          Borrowing the best ideas from classic card-based multimedia builders and set-top disc authoring tools, the central canvas draws explicit directional focus links (<code>FocusUp</code>, <code>FocusDown</code>, <code>FocusLeft</code>, <code>FocusRight</code>) and refuses to compile unlabeled hotspots unless every interactive region exposes a human-readable UI Automation name.
+        </div>
+      </div>
+    </dialog>
+  
+      </div>
+    </section>
+
+    <section aria-labelledby="a11y-rescue-heading">
+      <span class="eyebrow">Accessibility Engineering Deep Dive</span>
+      <h2 id="a11y-rescue-heading" style="margin-top: 0.25rem;">How Showcase Studio Solves Six Classic 1990s Multimedia Accessibility Failures</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>1990s Bitmap Menu Limitations vs. RaggieSoft Showcase Studio Win32 C++20 Safeguards</caption>
+          <thead>
+            <tr>
+              <th scope="col">1990s CD-ROM Menu Failure</th>
+              <th scope="col">Showcase Studio Runtime Safeguard</th>
+              <th scope="col">Standard Met</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Flat painted pixels invisible to screen readers</th>
+              <td>Every canvas hotspot spawns a synchronized Win32 child <code>BUTTON</code> / <code>IAccessible</code> UI Automation proxy exposing <code>Name</code>, <code>Description</code>, <code>Role</code>, and <code>Shortcut</code> to Narrator, NVDA, and JAWS</td>
+              <td>WCAG 2.2 SC 4.1.2 &amp; Section 508 502.3</td>
+            </tr>
+            <tr>
+              <th scope="row">Mouse-only hover regions with zero keyboard access</th>
+              <td>Deterministic <code>Tab</code> order plus explicit 4-way <code>FocusUp / Down / Left / Right</code> arrow &amp; Xbox/D-pad focus matrix rendered with a high-contrast dual black/gold outer/inner focus frame</td>
+              <td>WCAG 2.2 SC 2.1.1 &amp; SC 2.4.11</td>
+            </tr>
+            <tr>
+              <th scope="row">Hardcoded bitmaps illegible in High Contrast</th>
+              <td>Listens for <code>SPI_GETHIGHCONTRAST</code> and <code>WM_SYSCOLORCHANGE</code>, automatically replacing decorative bitmaps with crisp <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, and <code>2px</code> <code>COLOR_HIGHLIGHT</code> semantic cards</td>
+              <td>WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
+            </tr>
+            <tr>
+              <th scope="row">Tiny fixed <code>640&times;480</code> postage stamp on 4K displays</th>
+              <td>Per-Monitor V2 DPI scaling with selectable integer nearest-neighbor pixel-art upscaling (preserving razor-sharp retro pixels!) or vector layout reflow</td>
+              <td>WCAG 2.2 SC 1.4.4 &amp; SC 1.4.10</td>
+            </tr>
+            <tr>
+              <th scope="row">Unstoppable loud startup music loops</th>
+              <td>Audio is muted or opt-in by default (<code>AutoPlayAudio = false</code>), provides a persistent <code>Alt+M</code> Mute toggle, and supports synchronized <code>.vtt</code> caption overlays for spoken commentary</td>
+              <td>WCAG 2.2 SC 1.4.2 &amp; SC 1.2.2</td>
+            </tr>
+            <tr>
+              <th scope="row">Flashing transitions &amp; forced animations</th>
+              <td>Queries OS animation preferences (<code>SPI_GETCLIENTAREAANIMATION</code>) to disable wipes/particles automatically when reduced motion is enabled</td>
+              <td>WCAG 2.2 SC 2.3.3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="rssp-sample-heading">
+      <span class="eyebrow">Plain-Text Authoring • Compiles to Zero-Dependency x64 &amp; ARM64</span>
+      <h2 id="rssp-sample-heading" style="margin-top: 0.25rem;">Draft Plain-Text <code>.rssp</code> Showcase Project Grammar</h2>
+      <pre aria-label="Draft .rssp RaggieSoft Showcase Project Manifest">; Sample .rssp manifest — supports both 1990s .BMP retro art &amp; modern FluentMica!
+[Showcase]
+Title             = RaggieSoft Collector's Box Set
+Version           = 1.0.0
+PresentationStyle = retro_bmp95          ; retro_bmp95 | fluentmica_16x9 | kiosk_fullscreen
+CanvasSize        = 800x600
+IntegerPixelScale = true
+BackdropWash      = #008080
+AutoPlayAudio     = false                ; Enforced false by default for WCAG 1.4.2
+
+[Page.MainMenu]
+BackgroundBitmap  = .artoxset-main-800x600.bmp
+HighContrastTitle = Collector's Box Set — Main Menu
+
+[Hotspot.InstallApps]
+Page              = MainMenu
+Bounds            = 48, 132, 312, 64
+Label             = &amp;Install Desktop Applications
+Description       = Launches the signed x64 and ARM64 application suite installer.
+Action            = run_installer
+Target            = .packagesaggiesoft-apps-setup.exe
+FocusDown         = BrowseBooks
+FocusRight        = PlaySoundtrack
+
+[Hotspot.BrowseBooks]
+Page              = MainMenu
+Bounds            = 48, 212, 312, 64
+Label             = Open Offline &amp;Book Library
+Description       = Opens the illustrated Ocean View Archives offline reader.
+Action            = goto_page
+TargetPage        = BooksShelf
+FocusUp           = InstallApps</pre>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview</a>
+          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>
