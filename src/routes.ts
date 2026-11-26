@@ -9,14 +9,16 @@
  *   What is this file?
  *     This TypeScript module defines all pre-rendered routes for
  *     **RaggieSoft Studio** (`https://raggiesoftstudio.com` — 301 target of
- *     `installwithoutlimits.com`), the umbrella Windows developer & packaging
- *     workstation suite housing **RaggieSoft Installer Studio (`v0.5.0`)**,
+ *     `installwithoutlimits.com` and `a11y.raggiesoft.com`), the umbrella Windows
+ *     developer, packaging & accessibility compliance suite housing
+ *     **RaggieSoft Installer Studio (`v0.5.0`)**,
+ *     **RaggieSoft Accessibility Studio (`v1.0.0`, mounted at `/accessibility-studio`)**,
  *     **RaggieSoft Launcher Studio**, and **RaggieSoft Showcase Studio**:
  *       1. `/`              — RaggieSoft Studio Umbrella Hub, Flagship Installer
  *                             Studio v0.5.0 Downloads, 10 Wizard Styles, & Suite Lineup
  *       2. `/suite`         — Dedicated RaggieSoft Studio Product Family Overview
- *                             (Installer Studio, Launcher Studio, Showcase Studio,
- *                             & sister workstation Accessibility Studio)
+ *                             (Installer Studio, Accessibility Studio, Launcher Studio,
+ *                             & Showcase Studio)
  *       3. `/screenshots`   — Dedicated Visual Feature Tour with 14 real native
  *                             Win32 C++20 captures & full-size HTML5 `<dialog>` modals
  *       4. `/roadmap`       — Focused `v1.0.0 GA` Dogfood Engineering Roadmap
@@ -63,6 +65,8 @@ const BOX_SHOWCASE_URL =
   'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
 const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
 const DOWNLOAD_OFFLINE_UNIV_URL = `${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe`;
+const A11Y_STUDIO_WEB_SETUP_URL =
+  'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe';
 const SHOT_BASE = `${ASSET_BASE}/screenshots`;
 const GITHUB_REPO_URL = 'https://github.com/raggiesoft/installer-studio';
 const LIVE_VPAT_URL = '/vpat/raggiesoft-installer-studio-vpat-2.5.html';
@@ -466,8 +470,24 @@ function renderStudioProductFamilySection(): string {
 
         <article class="card">
           <div>
+            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">Shipping Now • v1.0.0 Signed IDE &amp; CLI</span>
+            <h3>2. RaggieSoft Accessibility Studio</h3>
+            <p>
+              <strong>WCAG 2.2 AA &amp; Section 508 Engineering IDE.</strong> C# 13 / <code>.NET 10</code> WinForms + Monaco
+              side-by-side refactor diff workstation, live Chromium forced-colors/reflow inspector, and cross-platform OASIS
+              <strong>SARIF 2.1.0</strong> CI/CD CLI—packaged with Installer Studio <code>v0.5.0</code>.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/accessibility-studio">Open Accessibility Studio &rarr;</a>
+            <a class="btn btn-outline" href="${A11Y_STUDIO_WEB_SETUP_URL}">Download v1.0.0</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
             <span class="status-pill status-next" style="margin-bottom: 0.55rem;">Upcoming Suite IDE • In Design</span>
-            <h3>2. RaggieSoft Launcher Studio</h3>
+            <h3>3. RaggieSoft Launcher Studio</h3>
             <p>
               <strong>Build Your Own Branded Desktop Hub.</strong> Inspired directly by our own
               <a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a>, Launcher Studio is a visual IDE and
@@ -483,7 +503,7 @@ function renderStudioProductFamilySection(): string {
         <article class="card">
           <div>
             <span class="status-pill status-next" style="margin-bottom: 0.55rem;">Upcoming Suite IDE • In Design</span>
-            <h3>3. RaggieSoft Showcase Studio</h3>
+            <h3>4. RaggieSoft Showcase Studio</h3>
             <p>
               <strong>Interactive Launchpads &amp; Collector's Menus.</strong> A nostalgic-meets-modern visual canvas IDE
               compiling zero-dependency Win32 C++20 interactive menus (<code>x64</code> &amp; <code>ARM64</code>) for USB
@@ -493,21 +513,6 @@ function renderStudioProductFamilySection(): string {
           </div>
           <div class="btn-row">
             <a class="btn btn-outline" href="/suite#showcase-studio">Explore Showcase Studio &rarr;</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div>
-            <span class="status-pill status-shipped" style="margin-bottom: 0.55rem;">Sister Workstation • Available Now</span>
-            <h3>4. RaggieSoft Accessibility Studio</h3>
-            <p>
-              <strong>WCAG 2.2 AA &amp; Section 508 Engineering IDE.</strong> Our dedicated accessibility auditing
-              workstation and CLI for inspecting contrast luminance, semantic landmarks, keyboard focus order, and
-              procurement-ready compliance artifacts across web and desktop properties.
-            </p>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-outline" href="https://a11y.raggiesoft.com">Visit a11y.raggiesoft.com &rarr;</a>
           </div>
         </article>
       </div>
@@ -599,14 +604,18 @@ function renderSuiteBody(): string {
 
     <section id="accessibility-studio" class="card" aria-labelledby="prod-a11y-heading">
       <div>
-        <span class="status-pill status-shipped">4 • Sister Engineering Workstation (Available Now)</span>
-        <h2 id="prod-a11y-heading" style="margin-top: 0.5rem;">RaggieSoft Accessibility Studio</h2>
+        <span class="status-pill status-shipped">4 • Shipping Now in RaggieSoft Studio (v1.0.0 Signed IDE &amp; CLI)</span>
+        <h2 id="prod-a11y-heading" style="margin-top: 0.5rem;">RaggieSoft Accessibility Studio — Source-Level WCAG 2.2 AA &amp; Section 508 Engineering</h2>
         <p>
-          Completing the developer workstation ecosystem, <strong>RaggieSoft Accessibility Studio</strong> provides automated
-          and interactive WCAG 2.2 AA &amp; Section 508 auditing, luminance contrast verification, and compliance reporting.
+          Now unified directly under <strong>RaggieSoft Studio</strong> at <code>/accessibility-studio</code> (permanent
+          <code>301</code> target of <code>a11y.raggiesoft.com</code>), <strong>RaggieSoft Accessibility Studio</strong> pairs a
+          C# 13 / <code>.NET 10</code> Windows Forms + VS Code Monaco side-by-side refactor diff workstation and live Chromium
+          <code>forced-colors</code> / <code>400%</code> reflow inspector with a cross-platform headless
+          <strong>OASIS SARIF 2.1.0</strong> CI/CD scanner—packaged and Dual-Layer signed with Installer Studio <code>v0.5.0</code>.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://a11y.raggiesoft.com">Open Accessibility Studio Portal &rarr;</a>
+          <a class="btn btn-primary" href="/accessibility-studio">Open Accessibility Studio Portal &rarr;</a>
+          <a class="btn btn-outline" href="${A11Y_STUDIO_WEB_SETUP_URL}">Download Accessibility Studio v1.0.0 (Signed EXE)</a>
         </div>
       </div>
     </section>
@@ -1894,6 +1903,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <nav aria-label="Primary Project Navigation">
             <ul class="nav-list">
               ${navItems}
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
               <li><a class="nav-link" href="${GITHUB_REPO_URL}">GitHub</a></li>
               <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
             </ul>
@@ -1911,6 +1921,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
         <div class="footer-links">
           <a href="/">Overview</a>
           <a href="/suite">Studio Suite Lineup</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/screenshots">Visual Tour &amp; Screenshots</a>
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
@@ -1922,7 +1933,6 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <a href="/llms.txt">/llms.txt</a>
           <a href="/llms-full.txt">/llms-full.txt</a>
           <a href="${GITHUB_REPO_URL}">GitHub Repository</a>
-          <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
           <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
           <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
           <a href="https://raggiesoft.com/about/terms">Terms of Service</a>

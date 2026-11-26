@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Declare support for both Light and Dark OS color schemes before first paint -->
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      try {
+        var savedScheme = localStorage.getItem('color-scheme');
+        if (savedScheme === 'light' || savedScheme === 'dark') {
+          document.querySelector('meta[name="color-scheme"]').content = savedScheme;
+          document.documentElement.setAttribute('data-carbon-theme', savedScheme === 'dark' ? 'g100' : 'white');
+        }
+      } catch (e) {}
+    </script>
+    <title>Docs &amp; Rule Catalog | RaggieSoft Accessibility Studio</title>
+    <meta name="description" content="Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/accessibility-studio/docs" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Accessibility Studio" />
+    <meta property="og:title" content="Docs &amp; Rule Catalog | RaggieSoft Accessibility Studio" />
+    <meta property="og:description" content="Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/accessibility-studio/docs" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
+    <meta property="og:image:alt" content="RaggieSoft Accessibility Studio — Enterprise WCAG 2.2 AA and Section 508 Web IDE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Docs &amp; Rule Catalog | RaggieSoft Accessibility Studio" />
+    <meta name="twitter:description" content="Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","@id":"https://michaelpragsdale.com/#michael-ragsdale","name":"Michael P. Ragsdale","url":"https://michaelpragsdale.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility-studio/docs#webpage","url":"https://raggiesoftstudio.com/accessibility-studio/docs","name":"Docs & Rule Catalog | RaggieSoft Accessibility Studio","description":"Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/accessibility-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125h" />
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <script type="module" crossorigin src="/accessibility-studio/assets/index-Bck-T3yn.js"></script>
+    <link rel="stylesheet" crossorigin href="/accessibility-studio/assets/index-BFLEhWaR.css">
+  </head>
+  <body>
+    <a href="#main-content" class="cs-skip-link">Skip to main content</a>
+
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+          <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://jessica.raggiesoft.com">🛡️ Jessica</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="studio-app">
+    <header class="cs-shell-header">
+      <div class="cs-shell-inner">
+        <a href="/accessibility-studio" data-local-nav="true" class="cs-brand">
+          <img src="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg" alt="" width="24" height="24" />
+          <span>
+            <span class="cs-brand-prefix">RaggieSoft Studio •</span>
+            <span class="cs-brand-product">Accessibility Studio</span>
+          </span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle cs-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open navigation and theme menu"
+          data-close-label="Close navigation and theme menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open navigation and theme menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="cs-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
+            <ul class="cs-nav-list">
+              <li>
+                <a href="/suite" class="cs-nav-link">&larr; Studio Suite</a>
+              </li>
+              
+                <li>
+                  <a
+                    href="/accessibility-studio"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Overview</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/features"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >IDE &amp; Refactoring</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/enterprise"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Enterprise MSI &amp; CLI</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/reports"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Reports &amp; Audit Logs</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/docs"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    aria-current="page"
+                  >Documentation &amp; Rules</a>
+                </li>
+            </ul>
+          </nav>
+
+          <div class="cs-header-actions">
+            <button
+              type="button"
+              id="cs-theme-toggle"
+              class="cs-theme-btn"
+              aria-label="Toggle Light or Dark color theme"
+            >
+              <span id="cs-theme-label">🌓 Theme</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      
+    <header class="cs-page-header">
+      <div class="cs-container">
+        <span class="cs-eyebrow">Technical Reference</span>
+        <h1><strong>Rule Catalog</strong>, Keyboard Shortcuts &amp; Exit Codes</h1>
+        <p class="cs-lead">
+          Filter all built-in HTML5, WAI-ARIA, CSS contrast/focus, and WebVTT caption verification rules, or inspect
+          workstation keyboard accelerators and headless CLI exit codes.
+        </p>
+      </div>
+    </header>
+
+    <section class="cs-section" aria-labelledby="catalog-heading">
+      <div class="cs-container">
+        <div class="cs-section-head">
+          <h2 id="catalog-heading">Interactive Built-In Rule Catalog</h2>
+          <p>Search by Rule ID, WCAG 2.2 Success Criterion, Section 508 citation, or Guided Fix behavior.</p>
+        </div>
+
+        <div class="cs-filter-bar" role="search" aria-label="Filter built-in accessibility rules">
+          <label for="cs-rule-search" class="cs-mono" style="font-size:0.85rem;">Filter:</label>
+          <input
+            id="cs-rule-search"
+            type="search"
+            class="cs-search-input"
+            placeholder="Search rule ID, WCAG 1.4.3, table, vtt…"
+          />
+          <button type="button" class="cs-filter-chip" data-rule-cat="all" aria-pressed="true">All (18)</button>
+          <button type="button" class="cs-filter-chip" data-rule-cat="html" aria-pressed="false">HTML5 &amp; ARIA</button>
+          <button type="button" class="cs-filter-chip" data-rule-cat="css" aria-pressed="false">CSS &amp; Contrast</button>
+          <button type="button" class="cs-filter-chip" data-rule-cat="vtt" aria-pressed="false">WebVTT Captions</button>
+        </div>
+
+        <div id="cs-rules-results">
+          
+    <div class="cs-table-region" tabindex="0" role="region" aria-labelledby="rules-table-caption">
+      <table class="cs-table">
+        <caption id="rules-table-caption">
+          Showing 18 source-level WCAG 2.2 &amp; Revised Section 508 Web rules
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Rule ID</th>
+            <th scope="col">Severity</th>
+            <th scope="col">WCAG 2.2 / Section 508</th>
+            <th scope="col">Assisted Guided Fix</th>
+            <th scope="col">Engineering Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr id="rule-WCAG-HTML-LANG">
+              <th scope="row"><code class="cs-mono">WCAG-HTML-LANG</code></th>
+              <td><strong>Serious</strong></td>
+              <td>3.1.1 Language of Page (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Injects `lang=&quot;en&quot;` on `&lt;html&gt;`</td>
+              <td>Detects missing, empty, or malformed BCP 47 `lang` attributes on the root `&lt;html&gt;` element so screen readers load the right pronunciation rules.</td>
+            </tr>
+
+            <tr id="rule-WCAG-HTML-TITLE">
+              <th scope="row"><code class="cs-mono">WCAG-HTML-TITLE</code></th>
+              <td><strong>Serious</strong></td>
+              <td>2.4.2 Page Titled (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Inserts `&lt;title&gt;` in `&lt;head&gt;`</td>
+              <td>Flags HTML documents missing a non-empty `&lt;title&gt;` element announced first when users switch browser tabs or windows.</td>
+            </tr>
+
+            <tr id="rule-WCAG-LANDMARK-MAIN">
+              <th scope="row"><code class="cs-mono">WCAG-LANDMARK-MAIN</code></th>
+              <td><strong>Moderate</strong></td>
+              <td>1.3.1 / 2.4.1 Bypass Blocks (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Manual structural landmark wrap</td>
+              <td>Verifies full HTML5 documents expose a primary `&lt;main&gt;` landmark so assistive technology users can jump straight past repeated chrome.</td>
+            </tr>
+
+            <tr id="rule-WCAG-LANDMARK-DUP-NAV">
+              <th scope="row"><code class="cs-mono">WCAG-LANDMARK-DUP-NAV</code></th>
+              <td><strong>Moderate</strong></td>
+              <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Adds `aria-label` to `&lt;nav&gt;`</td>
+              <td>Detects multiple `&lt;nav&gt;` regions on the same page that lack distinct `aria-label` or `aria-labelledby` names.</td>
+            </tr>
+
+            <tr id="rule-WCAG-HEADING-SKIP">
+              <th scope="row"><code class="cs-mono">WCAG-HEADING-SKIP</code></th>
+              <td><strong>Moderate</strong></td>
+              <td>1.3.1 / 2.4.6 Headings &amp; Labels (AA)<br /><small>Revised 508 E205.4</small></td>
+              <td>Normalizes skipped `&lt;hN&gt;` tag</td>
+              <td>Flags skipped heading ranks (such as jumping from `&lt;h1&gt;` directly to `&lt;h4&gt;`) and empty heading elements.</td>
+            </tr>
+
+            <tr id="rule-WCAG-TABLE-FAKE-HEADER">
+              <th scope="row"><code class="cs-mono">WCAG-TABLE-FAKE-HEADER</code></th>
+              <td><strong>Serious</strong></td>
+              <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Converts bold `&lt;td&gt;` row to `&lt;th scope=&quot;col&quot;&gt;`</td>
+              <td>Catches data tables whose first row uses visual bolding (`&lt;td&gt;&lt;strong&gt;` or `font-weight: bold`) instead of programmatic `&lt;th&gt;` headers.</td>
+            </tr>
+
+            <tr id="rule-WCAG-TABLE-TH-SCOPE">
+              <th scope="row"><code class="cs-mono">WCAG-TABLE-TH-SCOPE</code></th>
+              <td><strong>Moderate</strong></td>
+              <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Adds `scope=&quot;col&quot;` to `&lt;th&gt;`</td>
+              <td>Ensures `&lt;th&gt;` header cells declare explicit `scope=&quot;col&quot;` or `scope=&quot;row&quot;` attributes for unambiguous cell announcements.</td>
+            </tr>
+
+            <tr id="rule-WCAG-IMG-MISSING-ALT">
+              <th scope="row"><code class="cs-mono">WCAG-IMG-MISSING-ALT</code></th>
+              <td><strong>Critical</strong></td>
+              <td>1.1.1 Non-text Content (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Adds `alt=&quot;&quot;` or descriptive `alt`</td>
+              <td>Flags `&lt;img&gt;` tags missing `alt` attributes or containing raw camera/file-extension filenames (`IMG_4021.jpg`).</td>
+            </tr>
+
+            <tr id="rule-WCAG-SVG-UNLABELED">
+              <th scope="row"><code class="cs-mono">WCAG-SVG-UNLABELED</code></th>
+              <td><strong>Serious</strong></td>
+              <td>1.1.1 / 4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Adds `aria-hidden=&quot;true&quot; focusable=&quot;false&quot;`</td>
+              <td>Detects inline `&lt;svg&gt;` graphics that neither hide decorative vectors nor provide `role=&quot;img&quot;` with an accessible title.</td>
+            </tr>
+
+            <tr id="rule-WCAG-FORM-MISSING-LABEL">
+              <th scope="row"><code class="cs-mono">WCAG-FORM-MISSING-LABEL</code></th>
+              <td><strong>Critical</strong></td>
+              <td>1.3.1 / 4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Injects programmatic `aria-label`</td>
+              <td>Verifies `&lt;input&gt;`, `&lt;select&gt;`, and `&lt;textarea&gt;` controls have an associated `&lt;label for=&quot;...&quot;&gt;`, wrapping `&lt;label&gt;`, or ARIA label.</td>
+            </tr>
+
+            <tr id="rule-WCAG-INPUT-AUTOCOMPLETE">
+              <th scope="row"><code class="cs-mono">WCAG-INPUT-AUTOCOMPLETE</code></th>
+              <td><strong>Moderate</strong></td>
+              <td>1.3.5 Identify Input Purpose (AA)<br /><small>Revised 508 E205.4</small></td>
+              <td>Adds `autocomplete=&quot;email&quot;` / `&quot;tel&quot;`</td>
+              <td>Checks personal email and telephone inputs for WCAG 2.1/2.2 AA `autocomplete` tokens aiding users with cognitive or motor disabilities.</td>
+            </tr>
+
+            <tr id="rule-WCAG-LINK-GENERIC-TEXT">
+              <th scope="row"><code class="cs-mono">WCAG-LINK-GENERIC-TEXT</code></th>
+              <td><strong>Serious</strong></td>
+              <td>2.4.4 Link Purpose in Context (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Manual descriptive link copy</td>
+              <td>Flags empty anchors (`&lt;a&gt;&lt;/a&gt;`) and ambiguous `&quot;click here&quot;` / `&quot;read more&quot;` links lacking descriptive accessible names.</td>
+            </tr>
+
+            <tr id="rule-WCAG-ARIA-HIDDEN-FOCUSABLE">
+              <th scope="row"><code class="cs-mono">WCAG-ARIA-HIDDEN-FOCUSABLE</code></th>
+              <td><strong>Critical</strong></td>
+              <td>4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Removes `aria-hidden=&quot;true&quot;`</td>
+              <td>Catches focusable `&lt;button&gt;`, `&lt;a&gt;`, or `&lt;input&gt;` controls marked `aria-hidden=&quot;true&quot;`, preventing &quot;ghost focus&quot; traps for screen readers.</td>
+            </tr>
+
+            <tr id="rule-WCAG-TABINDEX-POSITIVE">
+              <th scope="row"><code class="cs-mono">WCAG-TABINDEX-POSITIVE</code></th>
+              <td><strong>Serious</strong></td>
+              <td>2.4.3 Focus Order (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Normalizes to `tabindex=&quot;0&quot;`</td>
+              <td>Flags positive `tabindex=&quot;1+&quot;` attributes that hijack natural DOM keyboard reading order.</td>
+            </tr>
+
+            <tr id="rule-WCAG-MEDIA-CAPTIONS">
+              <th scope="row"><code class="cs-mono">WCAG-MEDIA-CAPTIONS</code></th>
+              <td><strong>Critical</strong></td>
+              <td>1.2.2 Captions Prerecorded (A)<br /><small>Revised 508 E205.4 / ADA Title II</small></td>
+              <td>Inserts `&lt;track kind=&quot;captions&quot;&gt;`</td>
+              <td>Ensures HTML5 `&lt;video&gt;` players include synchronized WebVTT `&lt;track kind=&quot;captions&quot;&gt;` tracks and disables `autoplay` audio.</td>
+            </tr>
+
+            <tr id="rule-WCAG-CSS-CONTRAST">
+              <th scope="row"><code class="cs-mono">WCAG-CSS-CONTRAST</code></th>
+              <td><strong>Serious</strong></td>
+              <td>1.4.3 Contrast Minimum (AA)<br /><small>Revised 508 E205.4</small></td>
+              <td>Replaces hex with nearest `&gt;= 4.5:1` AA color</td>
+              <td>Evaluates CSS foreground/background pairs (including `:root` custom property tokens) against WCAG 2.2 4.5:1 AA relative luminance.</td>
+            </tr>
+
+            <tr id="rule-WCAG-CSS-FOCUS-SUPPRESSED">
+              <th scope="row"><code class="cs-mono">WCAG-CSS-FOCUS-SUPPRESSED</code></th>
+              <td><strong>Serious</strong></td>
+              <td>2.4.7 Focus Visible (AA)<br /><small>Revised 508 E205.4</small></td>
+              <td>Restores `3px solid currentColor` focus ring</td>
+              <td>Detects CSS rules setting `outline: none` or `outline: 0` without a visible high-contrast focus replacement.</td>
+            </tr>
+
+            <tr id="rule-WCAG-VTT-TIMING">
+              <th scope="row"><code class="cs-mono">WCAG-VTT-TIMING</code></th>
+              <td><strong>Serious</strong></td>
+              <td>1.2.2 Captions Prerecorded (A)<br /><small>Revised 508 E205.4</small></td>
+              <td>Prepends `WEBVTT` header &amp; flags cue overlaps</td>
+              <td>Validates WebVTT caption tracks for the mandatory `WEBVTT` header, monotonic `start --&gt; end` cue timestamps, overlapping cues, and empty blocks.</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="faq-heading">
+      <div class="cs-container">
+        <div class="cs-section-head">
+          <h2 id="faq-heading">Engineering &amp; Licensing FAQ</h2>
+          <p>Key architectural boundaries for enterprise compliance teams.</p>
+        </div>
+        <cds-accordion>
+          <cds-accordion-item title="Does automated source scanning replace manual screen-reader testing?">
+            <p>
+              No—and RaggieSoft Accessibility Studio states this explicitly in every exported HTML5 report. Automated
+              source and DOM checks catch deterministic structural, contrast, labeling, focus-suppression, and WebVTT
+              timing defects rapidly so engineers can focus manual keyboard (<code>Tab</code>, <code>Shift+Tab</code>,
+              <code>Escape</code>) and assistive-technology verification (<code>JAWS</code>, <code>NVDA</code>,
+              <code>VoiceOver</code>) on real user workflows.
+            </p>
+          </cds-accordion-item>
+          <cds-accordion-item title="What are the CLI exit codes for CI/CD build pipelines?">
+            <p>
+              <code>0</code> = Audit passed threshold; <code>1</code> = Usage or I/O error; <code>2</code> = One or
+              more accessibility findings met or exceeded your <code>--fail-on</code> severity gate
+              (<code>Critical</code>, <code>Serious</code>, <code>Moderate</code>, or <code>Advisory</code>).
+            </p>
+          </cds-accordion-item>
+          <cds-accordion-item title="How is RaggieSoft Accessibility Studio licensed?">
+            <p>
+              All C#/.NET 10 IDE, analyzer, reporting, and CLI source code in
+              <code>raggiesoft/accessibility-studio</code> is open-source under the permissive <strong>MIT
+              License</strong>, suitable for commercial, educational, and public-sector workstation deployment.
+            </p>
+          </cds-accordion-item>
+        </cds-accordion>
+      </div>
+    </section>
+    </main>
+
+    <footer class="cs-footer">
+      <div class="cs-container">
+        <div class="cs-footer-grid">
+          <div>
+            <h2>RaggieSoft Accessibility Studio</h2>
+            <p>
+              Enterprise Windows workstation IDE &amp; CI/CD CLI for source-level WCAG 2.2 Level AA and Revised Section
+              508 web compliance engineering. Created by <a href="https://michaelpragsdale.com">Michael P. Ragsdale</a>.
+            </p>
+            <p>
+              Open-source software code licensed under the <strong>MIT License</strong>; editorial documentation licensed
+              under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+          <div>
+            <h3>Product Documentation</h3>
+            <ul>
+              <li><a href="/accessibility-studio" data-local-nav="true">Product Overview</a></li>
+              <li><a href="/accessibility-studio/features" data-local-nav="true">IDE &amp; Guided Diffs</a></li>
+              <li><a href="/accessibility-studio/enterprise" data-local-nav="true">Enterprise MSI, GPO &amp; CLI</a></li>
+              <li><a href="/accessibility-studio/reports" data-local-nav="true">Sample WCAG &amp; SARIF Reports</a></li>
+              <li><a href="/accessibility-studio/docs" data-local-nav="true">Rule Catalog &amp; Exit Codes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>RaggieSoft Studio &amp; Governance</h3>
+            <ul>
+              <li><a href="/suite">RaggieSoft Studio Product Family</a></li>
+              <li><a href="/">RaggieSoft Installer Studio (v0.5.0)</a></li>
+              <li><a href="https://github.com/raggiesoft/accessibility-studio">GitHub Source Repository</a></li>
+              <li><a href="https://raggiesoft.com">RaggieSoft Front Door</a></li>
+              <li><a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a></li>
+              <li><a href="https://waystation.raggiesoft.com">Global Ecosystem Directory</a></li>
+              <li><a href="https://raggiesoft.com/about/privacy">Privacy Policy</a></li>
+              <li><a href="https://raggiesoft.com/about/terms">Terms of Service</a></li>
+              <li><a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="cs-disclaimer">
+          <strong>Fictitious Persons &amp; Entities Notice:</strong> RaggieSoft, RaggieSoft Media, Engine Room Records,
+          Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative &amp; software imprints of
+          Michael P. Ragsdale. Any narrative characters, bands, fictional universities (CPI, VDU), fictional
+          corporations (OmniCorp, Apex Records, Prairie Coachworks, Sainte-Claire), fictional transit agencies (BRT,
+          CVTA), or in-universe entities bearing &ldquo;LLC&rdquo;, &ldquo;Trust&rdquo;, or &ldquo;Holdings&rdquo; across
+          the broader RaggieSoft ecosystem and sample test fixtures are works of fiction. Any resemblance to actual
+          persons, living or dead, or real-world organizations is purely coincidental.
+        </p>
+      </div>
+    </footer></div>
+
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125h" defer></script>
+  </body>
+</html>

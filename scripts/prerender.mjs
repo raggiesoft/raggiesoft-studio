@@ -32,6 +32,28 @@ const projectRoot = path.resolve(__dirname, '..');
 const distDir = path.join(projectRoot, 'dist');
 const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
+const a11yDistDir = path.resolve(projectRoot, '../../raggiesoft.com/subdomains/a11y/dist');
+
+/**
+ * Recursively copies a pre-built sub-application directory (such as the IBM Carbon
+ * Design System Accessibility Studio bundle from `subdomains/a11y/dist`) into
+ * `dist/accessibility-studio/`, skipping root-only crawler manifests (`robots.txt`,
+ * `sitemap.xml`, and the IndexNow key file) that belong exclusively at `dist/`!
+ */
+function copyDirRecursive(srcDir, destDir, skipNames = new Set()) {
+  if (!fs.existsSync(srcDir)) return;
+  fs.mkdirSync(destDir, { recursive: true });
+  for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    if (skipNames.has(entry.name)) continue;
+    const srcPath = path.join(srcDir, entry.name);
+    const destPath = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      copyDirRecursive(srcPath, destPath, skipNames);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
 
 const SITE_ORIGIN = 'https://raggiesoftstudio.com';
 const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg';
@@ -309,15 +331,39 @@ async function main() {
     }
   }
 
+  // Mount the pre-compiled IBM Carbon Design System Accessibility Studio sub-portal
+  // (`subdomains/a11y/dist`, built with `base: '/accessibility-studio/'`) directly under
+  // `dist/accessibility-studio/` AND `dist/accessibility-studio.html` (`301` target of `a11y.raggiesoft.com`)!
+  const a11yRoutePaths = [];
+  if (fs.existsSync(path.join(a11yDistDir, 'index.html'))) {
+    const a11yMountDir = path.join(distDir, 'accessibility-studio');
+    copyDirRecursive(
+      a11yDistDir,
+      a11yMountDir,
+      new Set(['robots.txt', 'sitemap.xml', `${INDEXNOW_KEY}.txt`])
+    );
+    fs.copyFileSync(
+      path.join(a11yDistDir, 'index.html'),
+      path.join(distDir, 'accessibility-studio.html')
+    );
+    a11yRoutePaths.push(
+      '/accessibility-studio',
+      '/accessibility-studio/features',
+      '/accessibility-studio/enterprise',
+      '/accessibility-studio/reports',
+      '/accessibility-studio/docs'
+    );
+  }
+
   // Generate `sitemap.xml`, `robots.txt`, and IndexNow verification file
   const today = new Date().toISOString().slice(0, 10);
-  const allSitemapPaths = [...STUDIO_ROUTES.map((r) => r.path), ...docRoutePaths];
+  const allSitemapPaths = [...STUDIO_ROUTES.map((r) => r.path), ...a11yRoutePaths, ...docRoutePaths];
   const sitemapXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...allSitemapPaths.map((p) => {
       const loc = p === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${p}`;
-      const priority = p === '/' ? '1.0' : p.startsWith('/docs/') ? '0.75' : '0.8';
+      const priority = p === '/' ? '1.0' : p === '/accessibility-studio' ? '0.9' : p.startsWith('/docs/') ? '0.75' : '0.8';
       return `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${priority}</priority></url>`;
     }),
     '</urlset>',
@@ -328,7 +374,7 @@ async function main() {
   fs.writeFileSync(path.join(distDir, `${INDEXNOW_KEY}.txt`), `${INDEXNOW_KEY}\n`, 'utf8');
 
   fs.rmSync(ssrDir, { recursive: true, force: true });
-  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} core routes + ${docRoutePaths.length} /docs/* chapters + /llms.txt + VPAT 2.5 + sitemap.xml for ${SITE_ORIGIN}`);
+  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} core routes + ${a11yRoutePaths.length} /accessibility-studio/* routes + ${docRoutePaths.length} /docs/* chapters + /llms.txt + VPAT 2.5 + sitemap.xml for ${SITE_ORIGIN}`);
 }
 
 main().catch((err) => {

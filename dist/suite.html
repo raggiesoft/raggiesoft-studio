@@ -8,16 +8,19 @@
   ============================================================================
   PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
     This HTML5 document is the master shell for `raggiesoftstudio.com`
-    (RaggieSoft Studio: Developer & Packaging Suite — Home of Installer Studio,
-    Launcher Studio, and Showcase Studio).
+    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
+    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
+    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
       1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
          ecosystem layer so desktop visitors get the top RaggieSoft Network
          omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
          navigation & property switcher drawer (`#header-navigation-panel`).
       2. During `npm run build`, `scripts/prerender.mjs` replaces the two
          placeholder markers below with pre-rendered route SEO/OpenGraph tags
-         and semantic HTML5 page content so every visitor, screen reader, and
-         search engine receives complete HTML on the very first network packet!
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
   ============================================================================
 -->
 <html lang="en">
@@ -54,8 +57,8 @@
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg" />
     <meta name="twitter:image:alt" content="RaggieSoft Installer Studio boxed software showcase — Install Without Limits (Native Win32 C++20 for x64 and ARM64)" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/","image":"https://assets.raggiesoft.com/raggiesoft-installer-studio/images/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/suite#webpage","url":"https://raggiesoftstudio.com/suite","name":"Product Suite — Installer, Launcher & Showcase | RaggieSoft","description":"Explore the RaggieSoft Studio developer family: Installer Studio v0.5.0, upcoming Launcher Studio, Showcase Studio, and Accessibility Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/#software"}}]}</script>
-    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125g" />
-    <script type="module" crossorigin src="/assets/index-C0hKx1NP.js"></script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125h" />
+    <script type="module" crossorigin src="/assets/index-B90rCC0p.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BH7fbr4l.css">
   </head>
   <body>
@@ -70,7 +73,6 @@
           <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
           <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
           <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
-          <li><a href="https://a11y.raggiesoft.com">♿ A11y Studio</a></li>
           <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
           <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
           <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
@@ -111,6 +113,7 @@
           <nav aria-label="Primary Project Navigation">
             <ul class="nav-list">
               <li><a class="nav-link" href="/">Overview</a></li><li><a class="nav-link" href="/suite" aria-current="page">Studio Suite</a></li><li><a class="nav-link" href="/screenshots">Visual Tour</a></li><li><a class="nav-link" href="/roadmap">Roadmap</a></li><li><a class="nav-link" href="/docs">Docs & AI Spec</a></li><li><a class="nav-link" href="/faq">FAQ</a></li><li><a class="nav-link" href="/changelog">Version History</a></li><li><a class="nav-link" href="/vpat">Accessibility & VPAT</a></li><li><a class="nav-link" href="/security">Security</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility Studio</a></li>
               <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
               <li><a class="nav-link" href="https://raggiesoft.dev">raggiesoft.dev</a></li>
             </ul>
@@ -223,14 +226,18 @@
 
     <section id="accessibility-studio" class="card" aria-labelledby="prod-a11y-heading">
       <div>
-        <span class="status-pill status-shipped">4 • Sister Engineering Workstation (Available Now)</span>
-        <h2 id="prod-a11y-heading" style="margin-top: 0.5rem;">RaggieSoft Accessibility Studio</h2>
+        <span class="status-pill status-shipped">4 • Shipping Now in RaggieSoft Studio (v1.0.0 Signed IDE &amp; CLI)</span>
+        <h2 id="prod-a11y-heading" style="margin-top: 0.5rem;">RaggieSoft Accessibility Studio — Source-Level WCAG 2.2 AA &amp; Section 508 Engineering</h2>
         <p>
-          Completing the developer workstation ecosystem, <strong>RaggieSoft Accessibility Studio</strong> provides automated
-          and interactive WCAG 2.2 AA &amp; Section 508 auditing, luminance contrast verification, and compliance reporting.
+          Now unified directly under <strong>RaggieSoft Studio</strong> at <code>/accessibility-studio</code> (permanent
+          <code>301</code> target of <code>a11y.raggiesoft.com</code>), <strong>RaggieSoft Accessibility Studio</strong> pairs a
+          C# 13 / <code>.NET 10</code> Windows Forms + VS Code Monaco side-by-side refactor diff workstation and live Chromium
+          <code>forced-colors</code> / <code>400%</code> reflow inspector with a cross-platform headless
+          <strong>OASIS SARIF 2.1.0</strong> CI/CD scanner—packaged and Dual-Layer signed with Installer Studio <code>v0.5.0</code>.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://a11y.raggiesoft.com">Open Accessibility Studio Portal &rarr;</a>
+          <a class="btn btn-primary" href="/accessibility-studio">Open Accessibility Studio Portal &rarr;</a>
+          <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe">Download Accessibility Studio v1.0.0 (Signed EXE)</a>
         </div>
       </div>
     </section>
@@ -242,6 +249,7 @@
         <div class="footer-links">
           <a href="/">Overview</a>
           <a href="/suite">Studio Suite Lineup</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/screenshots">Visual Tour &amp; Screenshots</a>
           <a href="/roadmap">Public Roadmap</a>
           <a href="/docs">Docs &amp; AI Spec</a>
@@ -253,7 +261,6 @@
           <a href="/llms.txt">/llms.txt</a>
           <a href="/llms-full.txt">/llms-full.txt</a>
           <a href="https://github.com/raggiesoft/installer-studio">GitHub Repository</a>
-          <a href="https://a11y.raggiesoft.com">RaggieSoft Accessibility Studio</a>
           <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
           <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
           <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
@@ -267,6 +274,6 @@
       </div>
     </footer>
   </div>
-    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125g" defer></script>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125h" defer></script>
   </body>
 </html>

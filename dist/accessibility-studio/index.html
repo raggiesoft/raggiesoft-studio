@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Declare support for both Light and Dark OS color schemes before first paint -->
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      try {
+        var savedScheme = localStorage.getItem('color-scheme');
+        if (savedScheme === 'light' || savedScheme === 'dark') {
+          document.querySelector('meta[name="color-scheme"]').content = savedScheme;
+          document.documentElement.setAttribute('data-carbon-theme', savedScheme === 'dark' ? 'g100' : 'white');
+        }
+      } catch (e) {}
+    </script>
+    <title>RaggieSoft Accessibility Studio | WCAG &amp; 508 Web IDE</title>
+    <meta name="description" content="Enterprise Windows IDE &amp; CLI for source-level WCAG 2.2 AA and Revised Section 508 web auditing, side-by-side diffs, and SARIF 2.1.0 reporting." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/accessibility-studio" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Accessibility Studio" />
+    <meta property="og:title" content="RaggieSoft Accessibility Studio | WCAG &amp; 508 Web IDE" />
+    <meta property="og:description" content="Enterprise Windows IDE &amp; CLI for source-level WCAG 2.2 AA and Revised Section 508 web auditing, side-by-side diffs, and SARIF 2.1.0 reporting." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/accessibility-studio" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
+    <meta property="og:image:alt" content="RaggieSoft Accessibility Studio — Enterprise WCAG 2.2 AA and Section 508 Web IDE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RaggieSoft Accessibility Studio | WCAG &amp; 508 Web IDE" />
+    <meta name="twitter:description" content="Enterprise Windows IDE &amp; CLI for source-level WCAG 2.2 AA and Revised Section 508 web auditing, side-by-side diffs, and SARIF 2.1.0 reporting." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","@id":"https://michaelpragsdale.com/#michael-ragsdale","name":"Michael P. Ragsdale","url":"https://michaelpragsdale.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/accessibility-studio#webpage","url":"https://raggiesoftstudio.com/accessibility-studio","name":"RaggieSoft Accessibility Studio | WCAG & 508 Web IDE","description":"Enterprise Windows IDE & CLI for source-level WCAG 2.2 AA and Revised Section 508 web auditing, side-by-side diffs, and SARIF 2.1.0 reporting.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/accessibility-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125h" />
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <script type="module" crossorigin src="/accessibility-studio/assets/index-Bck-T3yn.js"></script>
+    <link rel="stylesheet" crossorigin href="/accessibility-studio/assets/index-BFLEhWaR.css">
+  </head>
+  <body>
+    <a href="#main-content" class="cs-skip-link">Skip to main content</a>
+
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+          <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://jessica.raggiesoft.com">🛡️ Jessica</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="studio-app">
+    <header class="cs-shell-header">
+      <div class="cs-shell-inner">
+        <a href="/accessibility-studio" data-local-nav="true" class="cs-brand">
+          <img src="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg" alt="" width="24" height="24" />
+          <span>
+            <span class="cs-brand-prefix">RaggieSoft Studio •</span>
+            <span class="cs-brand-product">Accessibility Studio</span>
+          </span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle cs-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open navigation and theme menu"
+          data-close-label="Close navigation and theme menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open navigation and theme menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="cs-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
+            <ul class="cs-nav-list">
+              <li>
+                <a href="/suite" class="cs-nav-link">&larr; Studio Suite</a>
+              </li>
+              
+                <li>
+                  <a
+                    href="/accessibility-studio"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    aria-current="page"
+                  >Overview</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/features"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >IDE &amp; Refactoring</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/enterprise"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Enterprise MSI &amp; CLI</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/reports"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Reports &amp; Audit Logs</a>
+                </li>
+
+                <li>
+                  <a
+                    href="/accessibility-studio/docs"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Documentation &amp; Rules</a>
+                </li>
+            </ul>
+          </nav>
+
+          <div class="cs-header-actions">
+            <button
+              type="button"
+              id="cs-theme-toggle"
+              class="cs-theme-btn"
+              aria-label="Toggle Light or Dark color theme"
+            >
+              <span id="cs-theme-label">🌓 Theme</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      
+    <section class="cs-hero" aria-labelledby="hero-title">
+      <div class="cs-container cs-hero-grid">
+        <div>
+          <span class="cs-eyebrow">Enterprise Workstation IDE &amp; Headless CI/CD CLI</span>
+          <h1 id="hero-title">
+            <strong>RaggieSoft Accessibility Studio</strong><br />
+            Audit, Diff &amp; Refactor WCAG 2.2 at Source Level.
+          </h1>
+          <p class="cs-lead">
+            A purpose-built Windows workstation IDE for engineering, higher-education, and public-sector web teams.
+            Inspect <strong>HTML5</strong>, <strong>WAI-ARIA</strong>, <strong>CSS contrast tokens</strong>, and
+            <strong>WebVTT captions</strong> with syntax highlighting, side-by-side refactoring diffs, live Chromium
+            DOM emulation, and OASIS SARIF 2.1.0 reporting.
+          </p>
+          <div class="cs-btn-row">
+            <a href="https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe" class="cs-btn cs-btn-primary">
+              <span>Download Signed v1.0.0 Setup.exe (Auto-Detects CPU)</span><span aria-hidden="true">→</span>
+            </a>
+            <a href="/accessibility-studio/enterprise" data-local-nav="true" class="cs-btn cs-btn-secondary">
+              <span>Enterprise MSI &amp; GPO Specs</span><span aria-hidden="true">→</span>
+            </a>
+            <a href="https://github.com/raggiesoft/accessibility-studio" class="cs-btn cs-btn-ghost">
+              <span>Open-Source Repository (MIT)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cs-ide-frame" role="img" aria-label="RaggieSoft Accessibility Studio workstation window showing Monaco side-by-side refactoring diff and WCAG 2.2 Error List">
+          <div class="cs-ide-titlebar">
+            <span>RaggieSoft Accessibility Studio — SampleCourseModule.html</span>
+            <span class="cs-mono" aria-hidden="true">_ □ ×</span>
+          </div>
+          <div class="cs-ide-toolbar">
+            <span class="cs-ide-pill cs-ide-pill--blue">▶ Run Audit (F5)</span>
+            <span class="cs-ide-pill">🔍 Preview Diff (Ctrl+D)</span>
+            <span class="cs-ide-pill">Forced-Colors HC</span>
+            <span class="cs-ide-pill">400% Reflow</span>
+            <span class="cs-ide-pill">Tab Order [1..N]</span>
+          </div>
+          <div class="cs-ide-diff cs-mono">
+            <div class="cs-ide-pane">
+              <div class="cs-ide-pane-label">Original Markup (Before)</div>
+              <code>&lt;tr&gt;</code><br />
+              <code class="cs-line-del">- &lt;td style="font-weight:bold"&gt;Week&lt;/td&gt;</code>
+              <code class="cs-line-del">- &lt;td style="font-weight:bold"&gt;Topic&lt;/td&gt;</code>
+              <code>&lt;/tr&gt;</code>
+            </div>
+            <div class="cs-ide-pane">
+              <div class="cs-ide-pane-label">Guided Fix Preview (After)</div>
+              <code>&lt;tr&gt;</code><br />
+              <code class="cs-line-add">+ &lt;th scope="col"&gt;Week&lt;/th&gt;</code>
+              <code class="cs-line-add">+ &lt;th scope="col"&gt;Topic&lt;/th&gt;</code>
+              <code>&lt;/tr&gt;</code>
+            </div>
+          </div>
+          <div class="cs-ide-errors cs-mono">
+            <div class="cs-ide-error-row">
+              <span><strong>[Serious]</strong> WCAG-TABLE-FAKE-HEADER (1.3.1 / 508 E205.4)</span>
+              <span>Ln 22:5 • ⚡ Guided Fix</span>
+            </div>
+            <div class="cs-ide-error-row">
+              <span><strong>[Serious]</strong> WCAG-CSS-CONTRAST (3.08:1 &lt; 4.5:1 AA)</span>
+              <span>Ln 6:34 • ⚡ #58606E</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-label="Key Product Metrics">
+      <div class="cs-container">
+        <div class="cs-kpi-grid">
+          
+            <div class="cs-kpi-cell">
+              <span class="cs-kpi-number">17+</span>
+              <span class="cs-kpi-label">Deterministic Source &amp; DOM Rules</span>
+              <span class="cs-kpi-note">Exact 1-based Line &amp; Column coordinates across HTML5, WAI-ARIA, CSS, and WebVTT.</span>
+            </div>
+
+            <div class="cs-kpi-cell">
+              <span class="cs-kpi-number">4</span>
+              <span class="cs-kpi-label">Enterprise Export Formats</span>
+              <span class="cs-kpi-note">Accessible HTML5, OASIS SARIF 2.1.0, Formula-Safe CSV, and SHA-256 JSON/JSONL.</span>
+            </div>
+
+            <div class="cs-kpi-cell">
+              <span class="cs-kpi-number">100%</span>
+              <span class="cs-kpi-label">Air-Gapped Workstation Ready</span>
+              <span class="cs-kpi-note">Zero mandatory cloud accounts, local Monaco syntax/diff engine, and GPO telemetry lock.</span>
+            </div>
+
+            <div class="cs-kpi-cell">
+              <span class="cs-kpi-number">x64 + ARM64</span>
+              <span class="cs-kpi-label">Windows 11 Silent Setup &amp; CLI</span>
+              <span class="cs-kpi-note">Universal single-EXE /s silent deployment, Explorer folder verbs, and headless CI/CD exit-code gates.</span>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="capabilities-heading">
+      <div class="cs-container">
+        <div class="cs-section-head">
+          <h2 id="capabilities-heading">Engineered for Source-Code Remediation—Not Post-Hoc Overlays</h2>
+          <p>
+            Browser overlay widgets never repair underlying DOM semantics. RaggieSoft Accessibility Studio gives
+            front-end engineers and compliance leads deterministic line-and-column diagnostics where markup lives.
+          </p>
+        </div>
+        <div class="cs-grid-3">
+          
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">Monaco Editor + Diffs</span>
+                <h3>True Developer IDE with Side-by-Side Guided Fixes</h3>
+                <p>Audit findings never blindly overwrite production markup. Select any violation to preview a green/red side-by-side diff before committing to your buffer.</p>
+                <ul class="cs-list">
+                  <li>Inline red/amber squiggles mapped to exact line and column positions</li><li>One-keystroke jump (`Enter` / `F8`) from Error List row to offending tag</li><li>Assisted fixes for fake `&lt;td&gt;` headers, missing `scope`, `lang`, focus rings, and AA contrast</li>
+                </ul>
+              </div>
+            </cds-tile>
+
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">Live Chromium Inspector</span>
+                <h3>Visual DOM Bounding Boxes &amp; Assistive Emulation</h3>
+                <p>Pair static source analysis with a synchronized Chromium surface that highlights selected DOM nodes and tests real visual resilience.</p>
+                <ul class="cs-list">
+                  <li>Forced-Colors Windows High-Contrast palette simulation</li><li>400% WCAG 1.4.10 Reflow viewport zoom verification</li><li>Sequential `[1..N]` keyboard focus Tab-Order overlays</li>
+                </ul>
+              </div>
+            </cds-tile>
+
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">SSO &amp; Polite Batch Queue</span>
+                <h3>Rate-Limited Authenticated Portal &amp; Sitemap Scanning</h3>
+                <p>Sign into SSO-protected staging environments or learning portals once, then audit `.csv` schedules or `sitemap.xml` feeds without tripping WAF rate limits.</p>
+                <ul class="cs-list">
+                  <li>Configurable `500ms`–`30,000ms` polite inter-request throttle delay</li><li>Captures live post-login DOM through your authenticated workstation session</li><li>Aggregates multi-page findings into a unified executive &amp; developer report</li>
+                </ul>
+              </div>
+            </cds-tile>
+
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">Audit Trail &amp; SARIF 2.1.0</span>
+                <h3>Tamper-Evident SHA-256 Remediation Logs &amp; CI Gates</h3>
+                <p>Every workspace scan and guided source-code fix records before-and-after cryptographic SHA-256 digests for QA review and compliance sign-off.</p>
+                <ul class="cs-list">
+                  <li>Native OASIS SARIF 2.1.0 output for GitHub Code Scanning &amp; Azure DevOps</li><li>Self-contained semantic HTML5 reports with `@media print` executive summaries</li><li>Spreadsheet-safe CSV export hardened against leading `=`, `+`, `-`, `@` injection</li>
+                </ul>
+              </div>
+            </cds-tile>
+
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">Contrast &amp; Token Lab</span>
+                <h3>WCAG 2.2 Relative Luminance &amp; CSS Token Solver</h3>
+                <p>Inspect foreground/background CSS pairs and CSS custom properties (`--brand-*`) with deterministic relative-luminance math and auto-tuned AA hex suggestions.</p>
+                <ul class="cs-list">
+                  <li>Verifies 4.5:1 Normal AA, 7.0:1 AAA, and 3.0:1 Large Text / UI 1.4.11 ratios</li><li>Computes the nearest brightness-adjusted hex color that clears 4.5:1 AA</li><li>Audits both standalone `.css` files and inline `&lt;style&gt;` blocks in HTML</li>
+                </ul>
+              </div>
+            </cds-tile>
+
+            <cds-tile class="cs-tile">
+              <div>
+                <span class="cs-tag-badge">Enterprise IT &amp; GPO Ready</span>
+                <h3>Silent MSI Packaging, ProgIds &amp; Group Policy Locks</h3>
+                <p>Engineered for managed corporate, public-sector, and higher-education Windows fleets deployed through Microsoft Intune, SCCM, or Active Directory GPO.</p>
+                <ul class="cs-list">
+                  <li>Registers `.a11yproj` workspaces and Explorer &quot;Audit Folder&quot; context verbs</li><li>Reads `HKLM\Software\Policies\RaggieSoft\AccessibilityStudio` policy defaults</li><li>Includes `a11y-studio-cli.exe` on system `PATH` for automated build agents</li>
+                </ul>
+              </div>
+            </cds-tile>
+        </div>
+      </div>
+    </section>
+    </main>
+
+    <footer class="cs-footer">
+      <div class="cs-container">
+        <div class="cs-footer-grid">
+          <div>
+            <h2>RaggieSoft Accessibility Studio</h2>
+            <p>
+              Enterprise Windows workstation IDE &amp; CI/CD CLI for source-level WCAG 2.2 Level AA and Revised Section
+              508 web compliance engineering. Created by <a href="https://michaelpragsdale.com">Michael P. Ragsdale</a>.
+            </p>
+            <p>
+              Open-source software code licensed under the <strong>MIT License</strong>; editorial documentation licensed
+              under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+          <div>
+            <h3>Product Documentation</h3>
+            <ul>
+              <li><a href="/accessibility-studio" data-local-nav="true">Product Overview</a></li>
+              <li><a href="/accessibility-studio/features" data-local-nav="true">IDE &amp; Guided Diffs</a></li>
+              <li><a href="/accessibility-studio/enterprise" data-local-nav="true">Enterprise MSI, GPO &amp; CLI</a></li>
+              <li><a href="/accessibility-studio/reports" data-local-nav="true">Sample WCAG &amp; SARIF Reports</a></li>
+              <li><a href="/accessibility-studio/docs" data-local-nav="true">Rule Catalog &amp; Exit Codes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>RaggieSoft Studio &amp; Governance</h3>
+            <ul>
+              <li><a href="/suite">RaggieSoft Studio Product Family</a></li>
+              <li><a href="/">RaggieSoft Installer Studio (v0.5.0)</a></li>
+              <li><a href="https://github.com/raggiesoft/accessibility-studio">GitHub Source Repository</a></li>
+              <li><a href="https://raggiesoft.com">RaggieSoft Front Door</a></li>
+              <li><a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a></li>
+              <li><a href="https://waystation.raggiesoft.com">Global Ecosystem Directory</a></li>
+              <li><a href="https://raggiesoft.com/about/privacy">Privacy Policy</a></li>
+              <li><a href="https://raggiesoft.com/about/terms">Terms of Service</a></li>
+              <li><a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="cs-disclaimer">
+          <strong>Fictitious Persons &amp; Entities Notice:</strong> RaggieSoft, RaggieSoft Media, Engine Room Records,
+          Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative &amp; software imprints of
+          Michael P. Ragsdale. Any narrative characters, bands, fictional universities (CPI, VDU), fictional
+          corporations (OmniCorp, Apex Records, Prairie Coachworks, Sainte-Claire), fictional transit agencies (BRT,
+          CVTA), or in-universe entities bearing &ldquo;LLC&rdquo;, &ldquo;Trust&rdquo;, or &ldquo;Holdings&rdquo; across
+          the broader RaggieSoft ecosystem and sample test fixtures are works of fiction. Any resemblance to actual
+          persons, living or dead, or real-world organizations is purely coincidental.
+        </p>
+      </div>
+    </footer></div>
+
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125h" defer></script>
+  </body>
+</html>
