@@ -80,8 +80,8 @@ interface ScreenshotFeatureItem {
 }
 
 // Canonical CDN & documentation asset constants.
-const ASSET_BASE =
-  'https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio';
+const APPS_CDN_BASE = 'https://assets.raggiesoft.com/desktop-apps/windows/apps';
+const ASSET_BASE = `${APPS_CDN_BASE}/installer-studio`;
 const STUDIO_BOXES_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes';
 const STUDIO_LOGO_SVG_URL = 'https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg';
 const SUITE_BOX_URL = `${STUDIO_BOXES_BASE}/box-raggiesoft-studio-suite.png`;
@@ -92,8 +92,10 @@ const DOCUMENT_BOX_URL = `${STUDIO_BOXES_BASE}/box-document-studio.png`;
 const LOCALIZATION_BOX_URL = `${STUDIO_BOXES_BASE}/box-localization-studio.png`;
 const LAUNCHER_BOX_URL = `${STUDIO_BOXES_BASE}/box-launcher-studio.png`;
 const SHOWCASE_BOX_URL = `${STUDIO_BOXES_BASE}/box-showcase-studio.png`;
-const DOWNLOAD_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
-const DOWNLOAD_OFFLINE_UNIV_URL = `${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe`;
+const DOWNLOAD_V070_BASE = `${ASSET_BASE}/releases/v0.7.0`;
+const DOWNLOAD_WEB_SETUP_URL = `${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-setup.exe`;
+const DOWNLOAD_OFFLINE_UNIV_URL = `${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-offline-setup.exe`;
+const BASELINE_V050_WEB_SETUP_URL = `${ASSET_BASE}/raggiesoft-installer-studio-setup.exe`;
 const A11Y_STUDIO_WEB_SETUP_URL =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe';
 const SHOT_BASE = `${ASSET_BASE}/screenshots`;
@@ -120,24 +122,24 @@ const SUITE_SLIPCASE_BOX_ITEM: ScreenshotFeatureItem = {
   summaryHtml:
     'Eight focused developer, compliance, documentation, and publishing tools built on plain-text Git-diffable manifests, code-level WCAG 2.2 Level AA &amp; Section 508 accessibility, native <code>x64</code> &amp; <code>ARM64</code> performance, and automated HTML5 VPAT 2.5 conformance reports.',
   detailHtml:
-    'Anchored by our flagship <strong>Installer Studio v0.5.0</strong> and <strong>Accessibility Studio v1.0.0</strong>, expanded with <strong>Training Studio v0.1.0</strong> (bandwidth-proof SCORM 1.2 &amp; 2004 courseware), <strong>Help Studio</strong> (<code>.CHM</code> / <code>.hhp</code> migration &amp; native <code>F1</code> clients), <strong>Document Studio</strong> (<code>PDF/UA-1</code>), <strong>Localization Studio</strong>, <strong>Launcher Studio</strong>, and <strong>Showcase Studio</strong>.'
+    'Anchored by our flagship <strong>Installer Studio v0.7.0</strong> and <strong>Accessibility Studio v1.0.0</strong>, expanded with <strong>Training Studio v0.5.0</strong> (bandwidth-proof SCORM 1.2 &amp; 2004 courseware), <strong>Help Studio v0.6.0</strong> (<code>.CHM</code> / <code>.hlp</code> migration &amp; native <code>F1</code> clients), <strong>Showcase Studio v0.5.0</strong>, <strong>Document Studio</strong> (<code>PDF/UA-1</code>), <strong>Localization Studio</strong>, and <strong>Launcher Studio</strong>.'
 };
 
 const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-installer',
     imgUrl: `${STUDIO_BOXES_BASE}/box-installer-studio.png`,
-    badge: '1 • Flagship v0.5.0 Shipping • .rsip / .rsis',
+    badge: '1 • Flagship v0.7.0 Shipping • .rsip / .rsis / .rssc',
     title: 'RaggieSoft Installer Studio',
     alt: '3D 1990s-style retail box for RaggieSoft Installer Studio featuring interlocking chrome, brass, and royal-cobalt glass puzzle cubes and gears above a perspective blueprint grid.',
     summaryHtml:
-      '<strong>Install Without Limits.</strong> Zero-dependency static <code>/MT</code> Win32 C++20 visual IDE &amp; CLI compiling signed <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code>, <code>.msm</code>, <code>.msp</code>, and 10-style <code>SetupWizard.exe</code> installers with Auto-VPAT 2.5.',
+      '<strong>Install Without Limits.</strong> Zero-dependency static <code>/MT</code> Win32 C++20 visual IDE &amp; CLI compiling <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code>, <code>.msm</code>, <code>.msp</code>, <code>sfx</code>, <code>RaggieScript</code>, and 11-style <code>SetupWizard.exe</code> installers with Auto-VPAT 2.5.',
     detailHtml:
-      '28 years in the making (since the 1998 Visual Basic 6.0 Package &amp; Deployment Wizard): plain-text comment-preserving <code>.rsip</code> manifests, CPU-aware Universal <code>Setup.exe</code> stubs, pre-MSI runtime chaining, and Dual-Layer Azure Artifact Signing.',
+      '28 years in the making (since the 1998 Visual Basic 6.0 Package &amp; Deployment Wizard): plain-text comment-preserving <code>.rsip</code> manifests, Dual WYSIWYG Dialog Designers on our shared Studio canvas, turnkey <code>RsDialog</code> functions, read/write <code>MSI Prism</code>, and Universal <code>Setup.exe</code> stubs.',
     actionHref: '/installer-studio',
     actionLabel: 'Installer Studio Hub →',
-    secondaryHref: DOWNLOAD_WEB_SETUP_URL,
-    secondaryLabel: 'Download v0.5.0'
+    secondaryHref: '/download',
+    secondaryLabel: 'Download v0.7.0'
   },
   {
     dialogId: 'dlg-box-a11y',
@@ -631,11 +633,11 @@ function renderSuiteHomeBody(): string {
             and <strong>Showcase Studio</strong>.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/installer-studio">Installer Studio (v0.5.0 Flagship) &rarr;</a>
+            <a class="btn btn-primary" href="/download">Download Center (v0.7.0 &amp; All Tools) &rarr;</a>
+            <a class="btn btn-outline" href="/download/previous-versions">Previous Versions Archive</a>
+            <a class="btn btn-outline" href="/installer-studio">Installer Studio (v0.7.0 Flagship) &rarr;</a>
             <a class="btn btn-outline" href="/editions">Suite Editions &amp; Free Community &rarr;</a>
             <a class="btn btn-outline" href="/raggiescript">RaggieScript (.rssc) Hub &rarr;</a>
-            <a class="btn btn-outline" href="/accessibility-studio">Accessibility Studio (v1.0.0) &rarr;</a>
-            <a class="btn btn-outline" href="/training-studio">Try Training Studio SCORM Demo &rarr;</a>
           </div>
           ${renderAzureSigningAssuranceNotice()}
         </div>
@@ -903,8 +905,8 @@ function renderSuiteEditionsBody(): string {
         <strong>RaggieSoft Studio Community Edition Suite</strong>.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.5.0 Preview</a>
-        <a class="btn btn-outline" href="${A11Y_STUDIO_WEB_SETUP_URL}">Download Accessibility Studio v1.0.0</a>
+        <a class="btn btn-primary" href="/download">Download Installer Studio v0.7.0 &amp; Tools</a>
+        <a class="btn btn-outline" href="/download/previous-versions">Previous Versions (v0.5.0&ndash;v0.7.0)</a>
         <a class="btn btn-outline" href="/installer-studio/editions">Detailed 25-Row Installer Matrix &rarr;</a>
         <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) &rarr;</a>
       </div>
@@ -2313,23 +2315,23 @@ function renderInstallerOverviewBody(): string {
     <section class="hero" aria-labelledby="hero-title" x-data="{ previewTab: 'aero' }">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Studio Flagship • v0.5.0 Signed for Windows 11 x64 &amp; ARM64</span>
+          <span class="eyebrow">RaggieSoft Studio Flagship • v0.7.0 Shipping for Windows 11 x64 &amp; ARM64</span>
           <h1 id="hero-title">RaggieSoft Installer Studio — Install Without Limits.</h1>
           <p class="lead">
             Compile genuine relational Windows Installer (<code>.msi</code>) databases, 64-bit Merge Modules
-            (<code>.msm</code>), Transforms (<code>.mst</code>), Patches (<code>.msp</code>), and CPU-aware Universal
+            (<code>.msm</code>), Transforms (<code>.mst</code>), Patches (<code>.msp</code>), <code>LZMS</code> Self-Extractors
+            (<code>rswsfx.exe</code>), <code>RaggieScript</code> (<code>.rssc</code>) native setups, and CPU-aware Universal
             <code>Setup.exe</code> bootstrappers in zero-dependency static <code>/MT</code> Win32 C++20—featuring a
-            <strong>12-View Tree-First IDE</strong>, <strong>10 selectable Wizard Styles</strong> (from 1995
-            <strong>ACME <code>#008080</code> Teal</strong> &amp; <strong><code>#000080</code> Cobalt</strong> washes to
-            Windows 11 <code>FluentMica</code>), <strong>Typical / Compact / Complete / Custom</strong> Setup Types, and
+            <strong>12-View Tree-First IDE</strong>, <strong>Dual WYSIWYG Dialog Designers</strong>, turnkey
+            <strong><code>RsDialog</code></strong> wizard functions, standalone read/write <strong>MSI Prism</strong>, and
             <strong>WCAG 2.2 AA Auto-Contrast</strong>.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.5.0 (Auto-Detects CPU)</a>
-            <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
+            <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.7.0 (Auto-Detects CPU)</a>
+            <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline v0.7.0 (x64 + ARM64 in One EXE)</a>
+            <a class="btn btn-outline" href="/installer-studio/download">All v0.7.0 Binaries &amp; MSI</a>
+            <a class="btn btn-outline" href="/installer-studio/download/previous-versions">Previous Versions (v0.5.0&ndash;v0.6.0)</a>
             <a class="btn btn-outline" href="/installer-studio/editions">Editions &amp; Matrix</a>
-            <a class="btn btn-outline" href="/installer-studio/screenshots">14 Live Screenshots</a>
-            <a class="btn btn-outline" href="/installer-studio/docs">Docs &amp; .rsip Spec</a>
           </div>
           ${renderAzureSigningAssuranceNotice()}
         </div>
@@ -2594,14 +2596,13 @@ function renderEditionsBody(): string {
         Authenticode signing are never paywalled in any commercial tier</strong>.
       </p>
       <p style="margin-top: 0.5rem; color: var(--text-muted);">
-        <em>Commercial licensing opens alongside <code>v1.0.0 GA</code>; during active Technical Preview, our signed universal
-        <code>v0.5.0</code> installer is free to download and evaluate with full Architect parity unlocked.</em>
+        <em>Commercial licensing opens alongside <code>v1.0.0 GA</code>; during active Technical Preview, <code>v0.7.0</code> (plus all historical releases from <code>v0.5.0</code> onward) is free to download and evaluate with full Architect parity unlocked.</em>
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Technical Preview v0.5.0 (Auto-Detects CPU)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Technical Preview v0.7.0 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline v0.7.0 (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-outline" href="/installer-studio/download/previous-versions">Previous Versions Archive</a>
         <a class="btn btn-outline" href="#edition-comparison-matrix">Jump to Full Matrix &darr;</a>
-        <a class="btn btn-outline" href="#raggiescript-preview">Preview RaggieScript (.rssc) &darr;</a>
       </div>
       ${renderAzureSigningAssuranceNotice()}
     </section>
@@ -3623,21 +3624,54 @@ function renderChangelogBody(): string {
         zero-dependency native Win32 C++20 software.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Latest v0.5.0 (Auto-Detects CPU)</a>
-        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Installer (x64 + ARM64 in One EXE)</a>
-        <a class="btn btn-outline" href="/installer-studio/screenshots">Inspect v0.5.0 Screenshots</a>
-        <a class="btn btn-outline" href="/installer-studio/faq">Read FAQ</a>
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Latest v0.7.0 (Auto-Detects CPU)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline v0.7.0 (x64 + ARM64 in One EXE)</a>
+        <a class="btn btn-outline" href="/installer-studio/download">All v0.7.0 Binaries &amp; MSI</a>
+        <a class="btn btn-outline" href="/installer-studio/download/previous-versions">Previous Versions (v0.5.0&ndash;v0.6.0)</a>
       </div>
     </section>
 
-    <section aria-labelledby="v050-heading" class="calc-panel">
-      <span class="release-badge">Latest Release • November 2026</span>
-      <h2 id="v050-heading" style="margin-top: 0.25rem;">v0.5.0 — 10 Selectable Wizard Styles, Classic &amp; Custom Setup Types, Billboards &amp; WCAG Auto-Contrast</h2>
+    <section aria-labelledby="v070-heading" class="calc-panel">
+      <span class="release-badge">Latest Release • November 27, 2026</span>
+      <h2 id="v070-heading" style="margin-top: 0.25rem;">v0.7.0 — Shared Cross-Studio Visual Canvas SDK, Dual Dialog Designers, Turnkey RsDialog &amp; [Environment]/[IniFile]</h2>
+      <ul class="feature-list">
+        <li><strong>Shared Cross-Studio 2D Visual Canvas SDK (<code>RaggieSoftVisualCanvas.hpp</code>)</strong>: Zero-dependency Win32 C++20 authoring engine shared across Installer Studio, Showcase Studio, Launcher Studio, and Document Studio—featuring bi-directional logical-to-screen viewports, 8-grip selection handles, sibling/center smart alignment guides, WCAG 2.2 AA <code>Arrow</code> / <code>Shift+Arrow</code> keyboard nudging, <code>#Tab</code> + <code>Alt+Key</code> badges, and one-click <code>-&gt; .rssc</code> export.</li>
+        <li><strong>Dual Interactive WYSIWYG Dialog Designers + Turnkey <code>RsDialog</code> Suite</strong>: Interactive drag/resize authoring for both <code>SetupWizard.exe</code> (<code>[Dialog.*]</code> / <code>[Control.*]</code>) and <code>370&times;270</code> DLU <code>MSI.DLL</code> SQL forms (<code>[MsiDialog.*]</code> / <code>[MsiControl.*]</code>), paired with 12 turnkey <code>RsWelcome</code>..<code>RsFinishReboot</code> functions, automatic <code>DialogResult.Back</code> step rewinding, <code>RSWBC2</code> SHA-256 bytecode, and <code>raggiescript.exe fmt [--check]</code> (<code>Ctrl+Shift+F</code>).</li>
+        <li><strong>Declarative Non-Clobbering <code>[Environment.*]</code> <code>PATH</code> &amp; <code>[IniFile.*]</code></strong>: Safe segment-only <code>PATH</code> append/prepend and uninstall cleanup across both <code>Engine = msi</code> and <code>Engine = native</code>, plus <code>RSW066</code>&ndash;<code>RSW069</code> validator gates (78/78 self-tests passing).</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="v060-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v060-heading" style="margin-top: 0.25rem;">v0.6.0 — 4-Edition Engine, RaggieScript (.rssc), Read/Write MSI Prism, rswsfx.exe &amp; Monotonic Dual-Bar Suites</h2>
+        <ul class="feature-list">
+          <li><strong>Official Four-Edition Governance (<code>Community == 100% Architect</code>) &amp; Standalone Tools</strong>: Shipped live <code>Community</code>, <code>Essentials</code>, <code>Developer</code>, and <code>Architect</code> tier rules, standalone 64-bit read/write <strong>RaggieSoft MSI Prism</strong> (<code>msiprism.exe</code>), and standalone <strong>RaggieSoft Self-Extractor</strong> (<code>rswsfx.exe</code> with <code>_ISDEL.EXE</code>-aware <code>%TEMP%</code> cleanup).</li>
+          <li><strong><code>RaggieScript</code> (<code>.rssc</code>), Deferred UAC, Disk Spanning, Loose Media &amp; Suites</strong>: Added <code>Uac.Deferred</code> un-elevated wizard -> elevated commit handoff, multi-volume <code>CAB1..N.cab</code> spanning, <code>msiexec /a</code> loose media, <code>.rswpak</code> on-demand feature packs, True Dark AeroWizards, and byte-weighted monotonic Dual-Bar <code>.rsis</code> Suites.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v051-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Milestone • November 2026</span>
+        <h2 id="v051-heading" style="margin-top: 0.25rem;">v0.5.1 — Selectable PE UAC Execution Levels, $(VERSION) Tokens &amp; Active MSI Queue Discovery</h2>
+        <ul class="feature-list">
+          <li>Added <code>[Package] RequestedExecutionLevel</code> (<code>asInvoker</code>, <code>highestAvailable</code>, <code>requireAdministrator</code>), <code>CheckTokenMembership</code> UAC-disabled verification, <code>UpgradeCode</code> single-instance mutexes, <code>_MSIExecute</code> queue waiting, and automatic <code>$(VERSION)</code> manifest expansion.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="v050-heading" class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <span class="release-badge">Signed Public Baseline • November 25, 2026</span>
+        <h2 id="v050-heading" style="margin-top: 0.25rem;">v0.5.0 — 10 Selectable Wizard Styles, Classic &amp; Custom Setup Types, Billboards &amp; WCAG Auto-Contrast</h2>
       <ul class="feature-list">
         <li><strong>10 Selectable First-Party Wizard Styles (<code>[UI] WizardLayout</code>)</strong>: Shipped <code>standard</code>, <code>wizard95</code> (<code>#C0C0C0</code> 3D beveled sheet + <code>164px</code> sunken left graphic rail across every page), <code>wizard97</code>, <code>aerowizard</code>, <code>fluentmica</code>, <code>oneclick</code>, <code>passivetoast</code>, <code>fullscreenblue</code>, <code>fullscreenteal</code> (1995 <code>#008080</code> ACME callback), and <code>autorun16x9</code>—all yielding automatically to <code>SPI_GETHIGHCONTRAST</code>.</li>
         <li><strong>Classic Windows 95 &amp; Author-Defined Setup Types + <code>[Billboard.*]</code></strong>: Added 4-card <code>win95_classic</code> Setup Types (<strong>Typical</strong>, <strong>Compact</strong>, <strong>Complete</strong>, <strong>Custom</strong>), repeatable <code>[SetupType.&lt;Id&gt;]</code> cards, floating 3D <code>[Billboard.&lt;Id&gt;]</code> showcase cards, and expanded <code>MSI.DLL</code> <code>ActionData</code> file/byte progress formatting.</li>
         <li><strong>Live WCAG 2.2 AA Brand Contrast Enforcer (<code>RswWcagContrast.hpp</code> &amp; <code>RSW055</code>)</strong>: Added W3C relative luminance validation in <code>instbuild.exe --validate</code> plus a one-click <strong>Auto-Fix WCAG</strong> button in <code>InstallerStudio.exe</code>.</li>
       </ul>
+      </div>
     </section>
 
     <section aria-labelledby="v045-heading" class="card" style="margin-bottom: 1.5rem;">
@@ -3859,6 +3893,484 @@ function renderSecurityBody(): string {
   `;
 }
 
+/**
+ * Renders `/download` and `/installer-studio/download` — Official RaggieSoft Studio & Installer Studio
+ * Download Center featuring `v0.7.0`, standalone `MSI Prism` & `Self-Extractor`, sibling Studio tools,
+ * SHA-256 manifests, VPAT 2.5 conformance reports, and direct navigation to `/download/previous-versions`.
+ */
+function renderDownloadCenterBody(): string {
+  const msiPrismBase = `${APPS_CDN_BASE}/msi-prism/releases/v0.6.0`;
+  const sfxBase = `${APPS_CDN_BASE}/self-extractor/releases/v0.6.0`;
+  const a11yBase = `${APPS_CDN_BASE}/accessibility-studio`;
+  const helpBase = `${APPS_CDN_BASE}/help-studio/releases/v0.6.0`;
+  const trainBase = `${APPS_CDN_BASE}/training-studio/releases/v0.5.0`;
+  const showcaseBase = `${APPS_CDN_BASE}/showcase-studio/releases/v0.5.0`;
+  const rsscBase = `${APPS_CDN_BASE}/raggiescript/releases`;
+
+  return `
+    <section class="hero" aria-labelledby="dl-hero-title">
+      <span class="eyebrow">Official Download Center • Windows 11 Native x64 &amp; ARM64 • SHA-256 Verified</span>
+      <h1 id="dl-hero-title">Download RaggieSoft Studio &amp; Installer Studio v0.7.0</h1>
+      <p class="lead">
+        Grab the latest <strong>RaggieSoft Installer Studio <code>v0.7.0</code></strong> universal and architecture-specific
+        installers, standalone <strong>MSI Prism</strong> &amp; <strong>Self-Extractor</strong> utilities, and every sibling
+        <strong>RaggieSoft Studio</strong> workstation—or browse our complete historical archive under
+        <a href="/download/previous-versions"><strong><code>/download/previous-versions</code></strong></a>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Installer Studio v0.7.0 Smart Web Setup (~1.9 MB)</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Universal v0.7.0 (x64 + ARM64, ~8.9 MB)</a>
+        <a class="btn btn-outline" href="/download/previous-versions">Previous Versions &amp; Full Archive &rarr;</a>
+        <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/SHA256SUMS.txt">v0.7.0 SHA256SUMS.txt</a>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="dl-is-v070-heading">
+      <span class="release-badge">Flagship Current Release • v0.7.0 • Community == 100% Architect Parity</span>
+      <h2 id="dl-is-v070-heading" style="margin-top: 0.25rem;">1. RaggieSoft Installer Studio <code>v0.7.0</code> — All Package Formats</h2>
+      <p>
+        Includes <code>InstallerStudio.exe</code> (12-View IDE + Shared Cross-Studio 2D Visual Canvas + Dual WYSIWYG Dialog Designers),
+        <code>instbuild.exe</code>, <code>SetupWizard.exe</code>, <code>raggiescript.exe</code> (<code>RSWBC2</code> + <code>fmt</code> +
+        turnkey <code>RsDialog</code>), <code>msiprism.exe</code>, <code>rswsfx.exe</code>, and <code>RaggieSoftHelp.exe</code>.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>RaggieSoft Installer Studio v0.7.0 Downloadable Binaries and Compliance Artifacts</caption>
+          <thead>
+            <tr>
+              <th scope="col">Package Format</th>
+              <th scope="col">Target Architecture / Deployment Use Case</th>
+              <th scope="col">Direct Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Smart CPU-Aware Web Setup (<code>.exe</code>)</th>
+              <td>Auto-detects true <code>x64</code> vs. <code>ARM64</code> silicon via <code>IsWow64Process2</code> and fetches only your CPU's native installer (~1.9 MB).</td>
+              <td><a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">raggiesoft-installer-studio-v0.7.0-setup.exe</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Combined Universal Offline Setup (<code>.exe</code>)</th>
+              <td>Single air-gapped portable executable bundling both native <code>x64</code> and <code>ARM64</code> installers (~8.9 MB).</td>
+              <td><a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">raggiesoft-installer-studio-v0.7.0-offline-setup.exe</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Native <code>x64</code> Bootstrapper &amp; Enterprise <code>.MSI</code></th>
+              <td>Intel Core / Xeon &amp; AMD Ryzen workstations, Active Directory GPO, Microsoft Intune, and SCCM.</td>
+              <td>
+                <div class="btn-row">
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-x64-setup.exe">x64 Setup.exe (~4.7 MB)</a>
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-x64.msi">x64 .MSI (~3.4 MB)</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Native <code>ARM64</code> Bootstrapper &amp; Enterprise <code>.MSI</code></th>
+              <td>Snapdragon X Elite / Plus &amp; Windows 11 on ARM workstations (zero Prism emulation overhead).</td>
+              <td>
+                <div class="btn-row">
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-arm64-setup.exe">ARM64 Setup.exe (~4.8 MB)</a>
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-v0.7.0-arm64.msi">ARM64 .MSI (~3.5 MB)</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Checksums &amp; Section 508 VPAT 2.5</th>
+              <td>Deterministic SHA-256 verification manifest and compiler-emitted HTML5 WCAG 2.2 AA / Revised Section 508 report.</td>
+              <td>
+                <div class="btn-row">
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/SHA256SUMS.txt">SHA256SUMS.txt</a>
+                  <a class="btn btn-outline" href="${DOWNLOAD_V070_BASE}/raggiesoft-installer-studio-installer-vpat-2.5.html">HTML5 VPAT 2.5</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin: 0.75rem 0 0; font-size: 0.92rem; color: var(--text-muted);">
+        Need the Microsoft Azure Artifact Signed <code>v0.5.0</code> baseline or intermediate <code>v0.5.1</code> / <code>v0.6.0</code> builds?
+        Visit <a href="/download/previous-versions"><strong>Previous Versions &amp; Release Archive</strong></a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="dl-companions-heading">
+      <span class="eyebrow">Standalone Utilities &amp; Active RaggieSoft Studio Releases</span>
+      <h2 id="dl-companions-heading" style="margin-top: 0.25rem;">2. Companion Desktop Utilities &amp; Sibling Studio Tools</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div>
+            <span class="release-badge">Standalone Utility • v0.6.0</span>
+            <h3>RaggieSoft MSI Prism (<code>msiprism.exe</code>)</h3>
+            <p>
+              Standalone 64-bit Dark/Light read/write relational SQL table editor, binary stream inspector, JSON exporter, and
+              <code>--exec-sql</code> CLI for <code>.msi</code>, <code>.msm</code>, <code>.mst</code>, and <code>.msp</code> databases.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-offline-setup.exe">Universal Offline EXE</a>
+            <a class="btn btn-outline" href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-outline" href="${msiPrismBase}/SHA256SUMS.txt">SHA-256</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="release-badge">Standalone Utility • v0.6.0</span>
+            <h3>RaggieSoft Self-Extractor (<code>rswsfx.exe</code>)</h3>
+            <p>
+              Standalone Win32 C++20 desktop &amp; <code>--pack</code> CLI builder for <code>LZMS</code> folder/<code>.zip</code>
+              self-extracting <code>.exe</code> archives and <code>_ISDEL.EXE</code>-aware <code>%TEMP%</code> software wrappers.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-offline-setup.exe">Universal Offline EXE</a>
+            <a class="btn btn-outline" href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-outline" href="${sfxBase}/SHA256SUMS.txt">SHA-256</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="release-badge">Azure Artifact Signed • v1.0.0 (.NET 11)</span>
+            <h3>RaggieSoft Accessibility Studio</h3>
+            <p>
+              Source-level WCAG 2.2 AA &amp; Revised Section 508 HTML5, WAI-ARIA, CSS contrast, and WebVTT IDE with side-by-side
+              Monaco Guided Fix diffs and OASIS SARIF 2.1.0 CI/CD CLI.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${A11Y_STUDIO_WEB_SETUP_URL}">Smart Web Setup</a>
+            <a class="btn btn-outline" href="${a11yBase}/raggiesoft-accessibility-studio-offline-setup.exe">Universal Offline EXE</a>
+            <a class="btn btn-outline" href="${a11yBase}/raggiesoft-accessibility-studio-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${a11yBase}/raggiesoft-accessibility-studio-arm64.msi">ARM64 .MSI</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="release-badge">Static /MT C++20 • v0.6.0</span>
+            <h3>RaggieSoft Help Studio</h3>
+            <p>
+              Zero-dependency <code>HelpStudio.exe</code> IDE, <code>rshbuild.exe</code> compiler, and <code>RaggieSoftHelp.exe</code>
+              importing <code>.chm</code> / WinHelp <code>.hlp</code> archives into offline <code>F1</code> packs and static web manuals.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${helpBase}/raggiesoft-help-studio-v0.6.0-offline-setup.exe">Universal Offline v0.6.0</a>
+            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.6.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.6.0-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-outline" href="${helpBase}/SHA256SUMS.txt">SHA-256</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="release-badge">.NET 11 SCORM Compiler • v0.5.0</span>
+            <h3>RaggieSoft Training Studio</h3>
+            <p>
+              Visual IDE (<code>TrainingStudio.exe</code>) and <code>rstbuild</code> CLI compiling plain-text <code>.rstp</code> +
+              Markdown + verified <code>.vtt</code> captions into <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 packages.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${trainBase}/raggiesoft-training-studio-v0.5.0-offline-setup.exe">Universal Offline v0.5.0</a>
+            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.5.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.5.0-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-outline" href="${trainBase}/SHA256SUMS.txt">SHA-256</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="release-badge">Static /MT C++20 • v0.5.0</span>
+            <h3>RaggieSoft Showcase Studio &amp; RaggieScript SDK</h3>
+            <p>
+              Author accessible 1990s <code>.BMP</code> &amp; Windows 11 <code>FluentMica</code> collector menus, or grab standalone
+              <code>raggiescript.exe</code> CLI binaries, offline <code>RaggieScriptHelp.exe</code>, and the <code>.NET</code> NuGet package.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-offline-setup.exe">Showcase Studio v0.5.0</a>
+            <a class="btn btn-outline" href="${rsscBase}/v1.2.0/RaggieSoft.RaggieScript.Core.1.2.0.nupkg">RaggieScript.Core 1.2.0 (.nupkg)</a>
+            <a class="btn btn-outline" href="${rsscBase}/v1.2.0/RaggieScriptHelp.exe">RaggieScriptHelp.exe</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/download/previous-versions` and `/installer-studio/download/previous-versions` —
+ * Complete immutable release archive indexing every binary produced across `v0.5.0` through `v0.7.0`
+ * and all RaggieSoft Studio companion products.
+ */
+function renderPreviousVersionsBody(): string {
+  const isRel = (ver: string) => `${ASSET_BASE}/releases/${ver}`;
+  const msiPrismBase = `${APPS_CDN_BASE}/msi-prism/releases/v0.6.0`;
+  const sfxBase = `${APPS_CDN_BASE}/self-extractor/releases/v0.6.0`;
+  const a11yBase = `${APPS_CDN_BASE}/accessibility-studio`;
+  const helpRel = (ver: string) => `${APPS_CDN_BASE}/help-studio/releases/${ver}`;
+  const trainBase = `${APPS_CDN_BASE}/training-studio/releases/v0.5.0`;
+  const showcaseBase = `${APPS_CDN_BASE}/showcase-studio/releases/v0.5.0`;
+  const rsscRel = (ver: string) => `${APPS_CDN_BASE}/raggiescript/releases/${ver}`;
+
+  return `
+    <section class="hero" aria-labelledby="prev-ver-title">
+      <span class="eyebrow">Immutable CDN Release Archive • Every Produced Binary Preserved</span>
+      <h1 id="prev-ver-title">Previous Versions &amp; Complete Binary Archive</h1>
+      <p class="lead">
+        Every versioned build we produce is published to an immutable CDN directory so historical Smart Web Stubs, CI/CD pipelines,
+        reproducible benchmarks, and enterprise regression tests never hit a broken link—including our preserved
+        <strong><code>v0.5.0</code> Microsoft Azure Artifact Signed baseline</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/download">&larr; Back to Latest Download Center (v0.7.0)</a>
+        <a class="btn btn-outline" href="/installer-studio/changelog">Read Full Release Notes (v0.1.0&ndash;v0.7.0)</a>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="archive-table-heading" x-data="{ prodFilter: 'all' }">
+      <span class="eyebrow">Direct Binary Matrix • Filter by Product Family</span>
+      <h2 id="archive-table-heading" style="margin-top: 0.25rem;">All Produced RaggieSoft Studio &amp; Installer Studio Releases</h2>
+      <div class="btn-row" role="group" aria-label="Filter release archive by product" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="prodFilter === 'all' ? 'btn-primary' : 'btn-outline'" @click="prodFilter = 'all'">All Releases (12)</button>
+        <button type="button" class="btn" :class="prodFilter === 'installer' ? 'btn-primary' : 'btn-outline'" @click="prodFilter = 'installer'">Installer Studio (v0.5.0&ndash;v0.7.0)</button>
+        <button type="button" class="btn" :class="prodFilter === 'utilities' ? 'btn-primary' : 'btn-outline'" @click="prodFilter = 'utilities'">MSI Prism, Self-Extractor &amp; RaggieScript</button>
+        <button type="button" class="btn" :class="prodFilter === 'studios' ? 'btn-primary' : 'btn-outline'" @click="prodFilter = 'studios'">Help, Training, Showcase &amp; A11y Studio</button>
+      </div>
+
+      <div class="table-wrap" style="margin-bottom: 0;">
+        <table>
+          <caption>Complete Historical Binary Download Matrix Across All RaggieSoft Studio Products and Versions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Product &amp; Version</th>
+              <th scope="col">Universal Installers (Web Stub / Offline Combined)</th>
+              <th scope="col">Native x64 (.exe &amp; .msi)</th>
+              <th scope="col">Native ARM64 (.exe &amp; .msi)</th>
+              <th scope="col">VPAT 2.5 &amp; Checksums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr x-show="prodFilter === 'all' || prodFilter === 'installer'">
+              <th scope="row"><strong>Installer Studio <code>v0.7.0</code></strong><br /><small>Current • Shared Canvas, Dual Designers &amp; RsDialog</small></th>
+              <td>
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-setup.exe">Smart Web Setup</a> •
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-v0.7.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.7.0')}/raggiesoft-installer-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${isRel('v0.7.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'installer'">
+              <th scope="row"><strong>Installer Studio <code>v0.6.0</code></strong><br /><small>4-Edition Engine, RaggieScript, MSI Prism &amp; Suites</small></th>
+              <td>
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-v0.6.0-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-v0.6.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-v0.6.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-v0.6.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-v0.6.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.6.0')}/raggiesoft-installer-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${isRel('v0.6.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'installer'">
+              <th scope="row"><strong>Installer Studio <code>v0.5.1</code></strong><br /><small>Selectable UAC Levels, $(VERSION) &amp; Queue Beacon</small></th>
+              <td>
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-v0.5.1-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-v0.5.1-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-v0.5.1-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-v0.5.1-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-v0.5.1-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${isRel('v0.5.1')}/raggiesoft-installer-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${isRel('v0.5.1')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'installer'">
+              <th scope="row"><strong>Installer Studio <code>v0.5.0</code></strong><br /><small>Azure Artifact Signed Public Baseline (Preserved)</small></th>
+              <td>
+                <a href="${BASELINE_V050_WEB_SETUP_URL}">Smart Web Setup (Signed)</a> •
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-offline-setup.exe">Offline Universal EXE (Signed)</a>
+              </td>
+              <td>
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${ASSET_BASE}/raggiesoft-installer-studio-installer-vpat-2.5.html">VPAT 2.5</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'utilities'">
+              <th scope="row"><strong>RaggieSoft MSI Prism <code>v0.6.0</code></strong><br /><small>Standalone 64-Bit Read/Write MSI/MSM/MST/MSP Editor</small></th>
+              <td><a href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${msiPrismBase}/raggiesoft-msi-prism-v0.6.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${msiPrismBase}/raggiesoft-msi-prism-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${msiPrismBase}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'utilities'">
+              <th scope="row"><strong>RaggieSoft Self-Extractor <code>v0.6.0</code></strong><br /><small>Standalone LZMS Folder/.ZIP &amp; %TEMP% Wrapper Builder</small></th>
+              <td><a href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${sfxBase}/raggiesoft-self-extractor-v0.6.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${sfxBase}/raggiesoft-self-extractor-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${sfxBase}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'utilities'">
+              <th scope="row"><strong>RaggieScript CLI &amp; .NET SDK <code>v1.0.0&ndash;v1.2.0</code></strong><br /><small>Standalone CLI, Offline Help &amp; NuGet Host SDK</small></th>
+              <td>
+                <a href="${rsscRel('v1.2.0')}/RaggieSoft.RaggieScript.Core.1.2.0.nupkg">Core 1.2.0 .nupkg</a> •
+                <a href="${rsscRel('v1.1.0')}/RaggieSoft.RaggieScript.Core.1.1.0.nupkg">Core 1.1.0 .nupkg</a>
+              </td>
+              <td><a href="${rsscRel('v1.0.0')}/raggiescript-v1.0.0-x64.exe">raggiescript v1.0.0 x64.exe</a></td>
+              <td><a href="${rsscRel('v1.0.0')}/raggiescript-v1.0.0-arm64.exe">raggiescript v1.0.0 arm64.exe</a></td>
+              <td>
+                <a href="${rsscRel('v1.2.0')}/RaggieScriptHelp.exe">RaggieScriptHelp.exe (v1.2)</a> •
+                <a href="${rsscRel('v1.0.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Accessibility Studio <code>v1.0.0</code></strong><br /><small>Azure Artifact Signed • .NET 11 WCAG 2.2 IDE &amp; CLI</small></th>
+              <td>
+                <a href="${A11Y_STUDIO_WEB_SETUP_URL}">Smart Web Setup (Signed)</a> •
+                <a href="${a11yBase}/raggiesoft-accessibility-studio-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${a11yBase}/raggiesoft-accessibility-studio-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${a11yBase}/raggiesoft-accessibility-studio-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${a11yBase}/raggiesoft-accessibility-studio-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${a11yBase}/raggiesoft-accessibility-studio-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td><a href="${a11yBase}/raggiesoft-accessibility-studio-installer-vpat-2.5.html">VPAT 2.5</a></td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Help Studio <code>v0.6.0</code></strong><br /><small>Current • .CHM/.HLP Import + Static Website Compiler</small></th>
+              <td><a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-v0.6.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-v0.6.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-v0.6.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-v0.6.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-v0.6.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.6.0')}/raggiesoft-help-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${helpRel('v0.6.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Help Studio <code>v0.5.0</code></strong><br /><small>Previous Release • .CHM/.HLP Rescue &amp; F1 Viewer</small></th>
+              <td><a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-v0.5.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-v0.5.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-v0.5.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-v0.5.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-v0.5.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.5.0')}/raggiesoft-help-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${helpRel('v0.5.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Training Studio <code>v0.5.0</code></strong><br /><small>Visual IDE + rstbuild Proxy-Proof SCORM 1.2/2004</small></th>
+              <td><a href="${trainBase}/raggiesoft-training-studio-v0.5.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${trainBase}/raggiesoft-training-studio-v0.5.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${trainBase}/raggiesoft-training-studio-v0.5.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${trainBase}/raggiesoft-training-studio-v0.5.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${trainBase}/raggiesoft-training-studio-v0.5.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${trainBase}/raggiesoft-training-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${trainBase}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Showcase Studio <code>v0.5.0</code></strong><br /><small>1990s .BMP + FluentMica + Bespoke _support\\ Installers</small></th>
+              <td><a href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-offline-setup.exe">Offline Universal EXE</a></td>
+              <td>
+                <a href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${showcaseBase}/raggiesoft-showcase-studio-v0.5.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${showcaseBase}/raggiesoft-showcase-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${showcaseBase}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
 // ============================================================================
 // SECTION 5: CANONICAL ROUTE TABLE & TWO-TIER SHELL RENDERER
 // ============================================================================
@@ -3870,8 +4382,25 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     navLabel: 'Suite Overview',
     seoTitle: 'RaggieSoft Studio — 8-Tool Packaging, A11y & Publishing',
     seoDescription:
-      'Eight native Windows 11 x64 & ARM64 developer tools: Installer Studio v0.5.0, Accessibility Studio v1.0.0, Training, Help, Docs, Localization & Showcase.',
+      'Eight native Windows 11 x64 & ARM64 developer tools: Installer Studio v0.7.0, Accessibility Studio v1.0.0, Training, Help, Docs, Localization & Showcase.',
     renderBody: renderSuiteHomeBody
+  },
+  {
+    path: '/download',
+    navGroup: 'suite',
+    navLabel: 'Downloads',
+    seoTitle: 'Download Center — RaggieSoft Studio (x64 & ARM64)',
+    seoDescription:
+      'Download RaggieSoft Installer Studio v0.7.0, MSI Prism, Self-Extractor, Accessibility Studio, Help Studio, Training Studio, and Showcase Studio.',
+    renderBody: renderDownloadCenterBody
+  },
+  {
+    path: '/download/previous-versions',
+    navGroup: 'suite',
+    seoTitle: 'Previous Versions & Release Archive | RaggieSoft Studio',
+    seoDescription:
+      'Complete archive of all RaggieSoft Studio & Installer Studio releases (v0.7.0, v0.6.0, v0.5.1, v0.5.0) across x64, ARM64, Universal EXE, and MSI.',
+    renderBody: renderPreviousVersionsBody
   },
   {
     path: '/editions',
@@ -3895,10 +4424,28 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     path: '/installer-studio',
     navGroup: 'installer-studio',
     navLabel: 'Overview',
-    seoTitle: 'RaggieSoft Installer Studio v0.5 — Native C++20 Packager',
+    seoTitle: 'RaggieSoft Installer Studio v0.7 — Native C++20 Packager',
     seoDescription:
-      'Zero-dependency Win32 C++20 MSI & Setup.exe IDE and compiler for Windows 11 x64 and ARM64 with 10 Wizard Styles and WCAG 2.2 AA Auto-Contrast.',
+      'Zero-dependency Win32 C++20 MSI & Setup.exe IDE and compiler for Windows 11 x64 and ARM64 with Dual Dialog Designers, RaggieScript, and Auto-VPAT 2.5.',
     renderBody: renderInstallerOverviewBody
+  },
+  {
+    path: '/installer-studio/download',
+    navGroup: 'installer-studio',
+    navLabel: 'Download',
+    seoTitle: 'Download Installer Studio v0.7.0 | x64, ARM64 & MSI',
+    seoDescription:
+      'Download RaggieSoft Installer Studio v0.7.0 (Smart Web Setup, Offline Universal EXE, native x64/ARM64 MSI, MSI Prism, and Self-Extractor).',
+    renderBody: renderDownloadCenterBody
+  },
+  {
+    path: '/installer-studio/download/previous-versions',
+    navGroup: 'installer-studio',
+    navLabel: 'Previous Versions',
+    seoTitle: 'Previous Versions (v0.5.0–v0.7.0) | Installer Studio',
+    seoDescription:
+      'Download every release of RaggieSoft Installer Studio (v0.7.0, v0.6.0, v0.5.1, and signed v0.5.0 baseline) with SHA-256 checksums and VPAT 2.5.',
+    renderBody: renderPreviousVersionsBody
   },
   {
     path: '/installer-studio/editions',
@@ -3949,9 +4496,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     path: '/installer-studio/changelog',
     navGroup: 'installer-studio',
     navLabel: 'Changelog',
-    seoTitle: 'Version History & Changelog (v0.5.0) | Installer Studio',
+    seoTitle: 'Version History & Changelog (v0.7.0) | Installer Studio',
     seoDescription:
-      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.5.0 across Windows 11 x64 and ARM64.',
+      'Release notes and engineering changelog for RaggieSoft Installer Studio from v0.1.0 through v0.7.0 across Windows 11 x64 and ARM64.',
     renderBody: renderChangelogBody
   },
   {
@@ -4052,9 +4599,15 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       ? '/installer-studio/vpat'
       : routePath;
 
-  // Tier 1 Global Studio Suite Navigation Items (8 Products + Suite Overview)
+  // Tier 1 Global Studio Suite Navigation Items (8 Products + Downloads + Suite Overview)
   const tier1Items = [
     { href: '/', label: 'Suite', isCurrent: routePath === '/', isSection: false },
+    {
+      href: '/download',
+      label: 'Download',
+      isCurrent: routePath === '/download',
+      isSection: routePath === '/download/previous-versions'
+    },
     {
       href: '/installer-studio',
       label: 'Installer',
@@ -4089,7 +4642,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     ? `
       <div class="product-subnav">
         <div class="product-subnav-inner">
-          <span class="product-subnav-label">Installer Studio v0.5.0:</span>
+          <span class="product-subnav-label">Installer Studio v0.7.0:</span>
           <nav aria-label="Installer Studio Product Pages">
             <ul class="product-subnav-list">
               ${installerSubRoutes
@@ -4108,7 +4661,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
   const mobileSubnavHtml = inInstallerStudio
     ? `
           <div class="mobile-product-subnav">
-            <span class="mobile-product-subnav-title">Installer Studio v0.5.0 Pages</span>
+            <span class="mobile-product-subnav-title">Installer Studio v0.7.0 Pages</span>
             <nav aria-label="Installer Studio Mobile Sub-Pages">
               <ul class="nav-list">
                 ${installerSubRoutes
@@ -4134,14 +4687,14 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <p class="lead">The requested RaggieSoft Studio suite or product documentation page could not be found.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="/">Open RaggieSoft Studio Suite Overview</a>
-            <a class="btn btn-outline" href="/installer-studio">Installer Studio (v0.5.0)</a>
-            <a class="btn btn-outline" href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+            <a class="btn btn-outline" href="/download">Download Center (v0.7.0)</a>
+            <a class="btn btn-outline" href="/download/previous-versions">Previous Versions Archive</a>
           </div>
         </section>
       `;
 
   const brandSubtitle = inInstallerStudio
-    ? 'Installer Studio v0.5.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64'
+    ? 'Installer Studio v0.7.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64'
     : routePath === '/training-studio'
       ? 'Training Studio v0.1.0 • Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 &amp; 2004'
       : routePath === '/help-studio'
@@ -4210,9 +4763,11 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/download">Download Center (v0.7.0)</a>
+          <a href="/download/previous-versions">Previous Versions Archive</a>
           <a href="/editions">Suite Editions &amp; Bundles</a>
           <a href="/raggiescript">RaggieScript (.rssc)</a>
-          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/installer-studio">Installer Studio (v0.7.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/training-studio">Training Studio (v0.1.0)</a>
           <a href="/help-studio">Help Studio (.CHM / F1)</a>

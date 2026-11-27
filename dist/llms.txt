@@ -6,8 +6,10 @@
 
 ## Suite Product Lineup (8 Cohesive Developer, Compliance & Publishing Tools)
 
-1. **RaggieSoft Installer Studio (`v0.5.0` — Flagship Shipping Now)**:
+1. **RaggieSoft Installer Studio (`v0.7.0` — Flagship Shipping Now)**:
    - Product Portal: https://raggiesoftstudio.com/installer-studio
+   - Download Center (Latest `v0.7.0` & Companion Tools): https://raggiesoftstudio.com/download
+   - Previous Versions & Complete Binary Archive (`v0.5.0`–`v0.7.0`): https://raggiesoftstudio.com/download/previous-versions
    - Editions & Product Matrix (Community == Architect, Essentials, Developer, Architect): https://raggiesoftstudio.com/installer-studio/editions
    - Raw Editions & RaggieScript Spec: https://raggiesoftstudio.com/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md
    - Visual Tour (14 Captures): https://raggiesoftstudio.com/installer-studio/screenshots
