@@ -1042,16 +1042,17 @@ function renderSuiteEditionsBody(): string {
 function renderRaggieScriptHubBody(): string {
   return `
     <section class="hero" aria-labelledby="rssc-hero-title">
-      <span class="eyebrow">RaggieScript v1.0 (.rssc) • Gradual Static Types, Linear Stack VM, Declarative Wizard UI &amp; Multi-Target SDK</span>
+      <span class="eyebrow">RaggieScript v1.1 (.rssc) • Gradual Static Types, Linear Stack VM, Declarative Wizard UI &amp; Two-Way .NET Host SDK</span>
       <h1 id="rssc-hero-title">One Clean Curly-Brace Language Across All Eight Studio Tools.</h1>
       <p class="lead">
-        <strong><code>RaggieScript</code> v1.0 (<code>.rssc</code>)</strong> combines familiar C# / TypeScript curly-brace syntax
+        <strong><code>RaggieScript</code> v1.1 (<code>.rssc</code>)</strong> combines familiar C# / TypeScript curly-brace syntax
         (<code>struct</code>, <code>enum</code>, <code>match</code>, first-class <code>=&gt;</code> closures, and gradual static type
         inference <code>RSW701</code>&ndash;<code>RSW715</code>) with a compact static <code>/MT</code> C++20 <strong>Linear Stack
         Bytecode VM (<code>RSWBC2</code>)</strong>, a <strong>Per-Monitor V2 DPI Declarative In-Window Win32 Wizard UI Engine</strong>,
-        a built-in formatter (<code>fmt</code>) &amp; JSON-RPC 2.0 Language Server (<code>lsp</code>), a managed <code>.NET</code> SDK
-        (<code>RaggieScript.Core</code>), and a zero-<code>eval()</code> SCORM <code>ES2022</code> transpiler across
-        <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
+        a built-in formatter (<code>fmt</code>) &amp; JSON-RPC 2.0 Language Server (<code>lsp</code>), a <strong>full two-way managed
+        <code>.NET</code> Host SDK (<code>RaggieScript.Core</code>: <code>[RsscHostObject]</code>, <code>ExposeObject</code>,
+        <code>InvokeAsync&lt;T&gt;</code>, &amp; <code>BindDelegate&lt;Func&lt;...&gt;&gt;</code>)</strong>, and a zero-<code>eval()</code>
+        SCORM <code>ES2022</code> transpiler across <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">Open Full Language &amp; API Portal (raggiescript.raggiesoft.dev) &rarr;</a>
