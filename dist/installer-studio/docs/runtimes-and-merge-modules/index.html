@@ -60,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/docs/runtimes-and-merge-modules#webpage","url":"https://raggiesoftstudio.com/installer-studio/docs/runtimes-and-merge-modules","name":"Pre-MSI Runtime Prerequisites & .MSM Merge Modules |…","description":"Distribute .NET, WebView2, VC++, or custom runtimes via WinHTTP download, LZMS embed, or Redist\\ plus 64-bit .MSM merging.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-qAEqvgwd.js"></script>
+    <script type="module" crossorigin src="/assets/index-DZjpuIWG.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -251,6 +251,27 @@ Source     = ..\..\out\shared-core-$(ARCH).msm
 Feature    = Main
 TargetRoot = INSTALLDIR
   </pre>
+
+  
+  <h2 id="vb6-regfree-com">Classic Visual Basic 6.0 (<code>.vbp</code>) Packaging: Why Registration-Free COM Beats Legacy <code>.MSM</code> Merge Modules</h2>
+  <p>
+    When packaging classic 32-bit Visual Basic 6.0 applications (such as <em>StoreTrainer</em>) for Windows 11,
+    <strong>RaggieSoft Installer Studio defaults to Zero-Elevation Registration-Free COM</strong> (emitting a side-by-side
+    <code>&lt;App&gt;.exe.manifest</code> declaring <code>&lt;file&gt;</code>, <code>&lt;comClass&gt;</code>, and
+    <code>&lt;typelib&gt;</code> entries for private <code>.ocx</code> / ActiveX <code>.dll</code> controls inside
+    <code>[INSTALLDIR]</code> while leaving Windows Resource Protected <code>SysWOW64</code> runtimes like
+    <code>msvbvm60.dll</code>, <code>stdole2.tlb</code>, and <code>wshom.ocx</code> untouched).
+  </p>
+  <p>
+    <strong>Why Global 32-Bit COM <code>.MSM</code> Merge Modules Are Discouraged (Opt-In Legacy Fallback Only):</strong>
+    Although Installer Studio allows attaching legacy <code>.MSM</code> Merge Modules if an enterprise environment strictly
+    requires global COM registration, doing so carries significant Windows 11 servicing hazards and triggers an explicit IDE warning:
+  </p>
+  <ul>
+    <li><strong><code>SysWOW64</code> Version Stomping &amp; Reference-Count Drift (&ldquo;DLL Hell&rdquo;)</strong>: Global <code>HKCR\CLSID</code> and <code>SysWOW64</code> registration shares mutable COM state across unrelated 32-bit applications—where an older uninstaller or broken third-party <code>SharedDllRefCount</code> can break sibling apps.</li>
+    <li><strong>Windows Resource Protection (WRP) Collisions</strong>: Attempting to overwrite OS-serviced VB6 runtime files in <code>C:\Windows\SysWOW64</code> fails or triggers repair loops on modern Windows 11 builds.</li>
+    <li><strong>Mandatory Administrator Elevation</strong>: Writing to <code>HKLM\Software\Classes</code> and <code>SysWOW64</code> forces machine-wide UAC elevation, whereas Registration-Free COM keeps ActiveX controls isolated inside your app folder and supports clean per-user or portable installs!</li>
+  </ul>
             <nav class="docs-pager" aria-label="Chapter Pagination">
               <a class="btn btn-outline" href="/installer-studio/docs/components-and-keypaths">&larr; Destination Folders, Components &amp; KeyPath Rules</a>
               <a class="btn btn-primary" href="/installer-studio/docs/selection-tree-and-dialogs">MSI SelectionTree, Execution Level (UAC) &amp; MSI.DLL Dialogs &rarr;</a>

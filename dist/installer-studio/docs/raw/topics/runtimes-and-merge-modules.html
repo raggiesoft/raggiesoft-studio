@@ -68,5 +68,26 @@ Source     = ..\..\out\shared-core-$(ARCH).msm
 Feature    = Main
 TargetRoot = INSTALLDIR
   </pre>
+
+  <!-- Anchor target for VB6 Reg-Free COM vs Legacy COM .MSM Warning -->
+  <h2 id="vb6-regfree-com">Classic Visual Basic 6.0 (<code>.vbp</code>) Packaging: Why Registration-Free COM Beats Legacy <code>.MSM</code> Merge Modules</h2>
+  <p>
+    When packaging classic 32-bit Visual Basic 6.0 applications (such as <em>StoreTrainer</em>) for Windows 11,
+    <strong>RaggieSoft Installer Studio defaults to Zero-Elevation Registration-Free COM</strong> (emitting a side-by-side
+    <code>&lt;App&gt;.exe.manifest</code> declaring <code>&lt;file&gt;</code>, <code>&lt;comClass&gt;</code>, and
+    <code>&lt;typelib&gt;</code> entries for private <code>.ocx</code> / ActiveX <code>.dll</code> controls inside
+    <code>[INSTALLDIR]</code> while leaving Windows Resource Protected <code>SysWOW64</code> runtimes like
+    <code>msvbvm60.dll</code>, <code>stdole2.tlb</code>, and <code>wshom.ocx</code> untouched).
+  </p>
+  <p>
+    <strong>Why Global 32-Bit COM <code>.MSM</code> Merge Modules Are Discouraged (Opt-In Legacy Fallback Only):</strong>
+    Although Installer Studio allows attaching legacy <code>.MSM</code> Merge Modules if an enterprise environment strictly
+    requires global COM registration, doing so carries significant Windows 11 servicing hazards and triggers an explicit IDE warning:
+  </p>
+  <ul>
+    <li><strong><code>SysWOW64</code> Version Stomping &amp; Reference-Count Drift (&ldquo;DLL Hell&rdquo;)</strong>: Global <code>HKCR\CLSID</code> and <code>SysWOW64</code> registration shares mutable COM state across unrelated 32-bit applications—where an older uninstaller or broken third-party <code>SharedDllRefCount</code> can break sibling apps.</li>
+    <li><strong>Windows Resource Protection (WRP) Collisions</strong>: Attempting to overwrite OS-serviced VB6 runtime files in <code>C:\Windows\SysWOW64</code> fails or triggers repair loops on modern Windows 11 builds.</li>
+    <li><strong>Mandatory Administrator Elevation</strong>: Writing to <code>HKLM\Software\Classes</code> and <code>SysWOW64</code> forces machine-wide UAC elevation, whereas Registration-Free COM keeps ActiveX controls isolated inside your app folder and supports clean per-user or portable installs!</li>
+  </ul>
 </body>
 </html>

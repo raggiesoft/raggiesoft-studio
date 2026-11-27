@@ -42,14 +42,19 @@
     instead of raw <code>[1]</code> placeholders.
   </p>
 
-  <!-- Custom MSI.DLL SQL Dialog splicing -->
-  <h2>Custom 370x270 MSI.DLL Dialogs</h2>
+  <!-- Custom C++ SetupWizard & MSI.DLL SQL Dialog Designers + Turnkey RsDialog & Environment/INI (v0.7.0) -->
+  <h2 id="dual-dialog-designers">Dual WYSIWYG Dialog Designers, Turnkey <code>RsDialog</code> Functions &amp; Non-Clobbering <code>PATH</code> (v0.7.0)</h2>
   <p>
-    Need an extra configuration form inside <code>Product.msi</code> itself? Declare <code>[MsiDialog.&lt;Id&gt;]</code> and
-    <code>[MsiControl.&lt;Id&gt;]</code> sections (or design them visually in View 8 of <code>InstallerStudio.exe</code>) to
-    splice custom edit boxes, path pickers, radio groups, and checkboxes directly into the <code>Dialog</code> and
-    <code>ControlEvent</code> SQL tables.
+    Starting in <strong>v0.7.0</strong> (<strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> Editions),
+    <code>InstallerStudio.exe</code> ships two interactive WYSIWYG visual dialog stages powered by our shared
+    <code>RaggieSoftVisualCanvas.hpp</code> authoring engine:
   </p>
+  <ul>
+    <li><strong>View 8 — C++ <code>SetupWizard.exe</code> Page Designer (<code>[Dialog.&lt;Id&gt;]</code> &amp; <code>[Control.&lt;Id&gt;]</code>)</strong>: Splice custom configuration pages directly into <code>SetupWizard.exe</code> (<code>AfterPage = SetupType | Welcome | License | CustomFeatures | CustomFolder | CustomShortcuts</code>) with click-to-select, drag-to-move, 8-grip corner/edge resize, smart alignment guides, <code>Arrow</code> / <code>Shift+Arrow</code> keyboard-only nudging, live <code>#Tab</code> + <code>Alt+Key</code> mnemonic badges, and automatic <code>SecureCustomProperties</code> forwarding to <code>Product.msi</code>.</li>
+    <li><strong>View 9 — <code>370&times;270</code> DLU <code>MSI.DLL</code> SQL Dialog Designer (<code>[MsiDialog.&lt;Id&gt;]</code> &amp; <code>[MsiControl.&lt;Id&gt;]</code>)</strong>: Visually place <code>Text</code>, <code>Edit</code>, <code>PasswordEdit</code>, <code>PathEdit</code>, <code>CheckBox</code>, <code>RadioButtonGroup</code>, <code>ComboBox</code>, <code>ListBox</code>, <code>GroupBox</code>, and <code>Line</code> controls onto genuine relational Windows Installer SQL tables—or click <strong>Export -&gt; .rssc</strong> on either designer to copy ready-to-run <code>RaggieScript</code> wizard code!</li>
+    <li><strong>Turnkey <code>RsDialog</code> Function Suite in <code>RaggieScript</code> (<code>.rssc</code>)</strong>: Wire complete multi-step wizards in single-line calls—<code>RsWelcome</code>, <code>RsLicense</code>, <code>RsReadme</code>, <code>RsUserInfo</code>, <code>RsSelectDestDir</code>, <code>RsSetupType</code>, <code>RsFeatureTree</code>, <code>RsAskOptions</code>, <code>RsAskText</code>, <code>RsReadyToInstall</code>, <code>RsFinish</code>, and <code>RsFinishReboot</code>—with automatic <code>DialogResult.Back</code> (<code>12</code>) step-history rewinding!</li>
+    <li><strong>Declarative Non-Clobbering <code>[Environment.&lt;Id&gt;]</code> &amp; <code>[IniFile.&lt;Id&gt;]</code> Sections</strong>: Safely append or prepend directories to <code>PATH</code> (<code>Action = append_path</code> -&gt; MSI <code>[~];[INSTALLDIR]</code> + native segment-only uninstall removal) without ever truncating or clobbering existing user <code>PATH</code> variables, and stamp <code>.ini</code> settings cleanly across both <code>Engine = msi</code> and <code>Engine = native</code>.</li>
+  </ul>
 
   <!-- Anchor target for v0.5.1 Configurable RequestedExecutionLevel & UAC-Off Admin Checks -->
   <h2 id="uac-elevation-timing">Outer Setup.exe Execution Level (<code>asInvoker</code>, <code>highestAvailable</code>, <code>requireAdministrator</code>) &amp; UAC-Off Admin Checks (v0.5.1)</h2>

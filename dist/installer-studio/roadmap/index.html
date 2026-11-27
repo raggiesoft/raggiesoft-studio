@@ -60,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/roadmap#webpage","url":"https://raggiesoftstudio.com/installer-studio/roadmap","name":"Public Engineering Roadmap | RaggieSoft Installer Studio","description":"Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.5.0 through v1.0 GA across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-qAEqvgwd.js"></script>
+    <script type="module" crossorigin src="/assets/index-DZjpuIWG.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -218,27 +218,27 @@
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone Tool), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Multi-Engine Suite Setup (<code>Engine = native | msi</code>)</td>
-              <td><span class="status-pill status-next">Next Up</span></td>
+              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone <code>rswsfx.exe</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Monotonic Dual-Bar Multi-Engine Suites (<code>Engine = native | msi</code>)</td>
+              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.7.0</code></th>
-              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> Zero-MSI Native Scripting Language &amp; <code>RSWBC1</code> Bytecode VM + From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>370&times;270</code> <code>MSI.DLL</code> SQL canvas)</td>
-              <td><span class="status-pill">Planned</span></td>
+              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> <code>RSWBC2</code> VM + <code>fmt</code> + Turnkey <strong><code>RsDialog</code> Wizard Suite</strong> (<code>RsWelcome</code>..<code>RsFinish</code>), Shared <code>RaggieSoftVisualCanvas</code> <strong>Dual WYSIWYG Dialog Designers</strong> (C++ <code>SetupWizard.exe</code> + <code>370&times;270</code> <code>MSI.DLL</code> SQL), &amp; Declarative Non-Clobbering <code>[Environment.*]</code> <code>PATH</code> + <code>[IniFile.*]</code></td>
+              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.8.0</code></th>
-              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code> Reg-Free COM for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
-              <td><span class="status-pill">Planned</span></td>
+              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code> with strictly <strong>Opt-In</strong> build hook, Classic VB6 <code>.vbp</code> <strong>Reg-Free COM default</strong> + <code>.MSM</code> warning banner for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
+              <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.9.0</code></th>
-              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater, &amp; guided Microsoft-compliant <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
+              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater (<strong>100% DRY shared <code>apps-manifest.json</code></strong> with RaggieSoft Launcher), <code>RsPatch.exe</code> (<code>msdelta.dll</code>), &amp; guided <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v1.0.0 GA</code></th>
-              <td>Offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> zero-telemetry verification + <code>RSW_LICENSE_KEY</code> CI secrets), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
+              <td>Frictionless offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> drag-drop / paste / <code>RSW_LICENSE_KEY</code> CI secrets, zero hardware lock-in), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>

@@ -222,13 +222,13 @@ const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-showcase',
     imgUrl: `${STUDIO_BOXES_BASE}/box-showcase-studio.png`,
-    badge: '8 • Design Preview • .rssp',
+    badge: '8 • v0.5.0 Static C++20 Built • .rssp + .rssc',
     title: 'RaggieSoft Showcase Studio',
     alt: '3D 1990s-style retail box for RaggieSoft Showcase Studio featuring an iridescent optical disc, ruby sphere, teal crystal pyramid, and brass soundwave ribbon.',
     summaryHtml:
-      '<strong>Accessible Collector Menus.</strong> Compiles <code>.rssp</code> manifests into zero-dependency Win32 C++20 launchpads—supporting both 1990s painted <code>.BMP</code> CD-ROM art with UIA focus rings and modern Windows 11 <code>FluentMica</code>.',
+      '<strong>Accessible Collector Menus &amp; Bespoke Installers.</strong> Compiles <code>.rssp</code> manifests into zero-dependency static <code>/MT</code> Win32 C++20 launchpads—supporting 1990s painted <code>.BMP</code> CD-ROM art, Windows 11 <code>FluentMica</code>, and shared DRY Studio Dialog Designers.',
     detailHtml:
-      'Purpose-built for USB collector box sets, multi-installer suite menus, companion media discs, and accessible museum/classroom kiosks with automatic <code>SPI_GETHIGHCONTRAST</code> override.',
+      '100% static <code>/MT</code> Win32 C++20 across <code>x64</code> &amp; <code>ARM64</code>: shares <code>RaggieSoftVisualCanvas.hpp</code> DRY with Installer Studio, backs rectangular &amp; polygon hotspots with Win32 <code>BUTTON</code> UIA peers, decodes Media Foundation + <code>.vtt</code> audio, and packs rollback-safe <code>_support\\</code> canvas setups.',
     actionHref: '/showcase-studio',
     actionLabel: 'Explore Showcase Studio →'
   }
@@ -461,6 +461,32 @@ const V060_LAB_PREVIEW_ITEMS: readonly ScreenshotFeatureItem[] = [
       'Replaces stock light-only shell wizard chrome in Dark Mode with Per-Monitor V2 DPI custom-painted AeroWizard command surfaces, full <code>Alt+Key</code> mnemonics, and lossless comment-preserving <code>.rsip</code> generation.',
     actionHref: '/raggiescript',
     actionLabel: 'Explore RaggieScript →'
+  },
+  {
+    dialogId: 'dlg-prev-v070-cpp-designer',
+    imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v070-cpp-dialog-designer.png`,
+    badge: 'In-Lab Preview • v0.7.0 WYSIWYG C++ Dialog Stage',
+    title: 'Interactive C++ SetupWizard Page Designer & Shared Studio Canvas',
+    alt: 'Real Windows 11 Dark Mode C++20 capture of InstallerStudio.exe v0.7.0 C++ Wizard Designer editing custom EndpointSetup dialog with 8-grip gold selection handles on EndpointEdit, #Tab + Alt+Key mnemonic badges, and Export -> .rssc button.',
+    summaryHtml:
+      '<strong><code>[Dialog.*]</code> + <code>[Control.*]</code> WYSIWYG Stage:</strong> Click, drag, resize with 8 corner/edge grips, nudge with <code>Arrow</code> / <code>Shift+Arrow</code> keys, verify <code>#Tab</code> &amp; <code>Alt+Key</code> mnemonics live, or export straight to <code>RaggieScript</code> (<code>.rssc</code>)!',
+    detailHtml:
+      'Built on our shared zero-dependency <code>RaggieSoftVisualCanvas.hpp</code> authoring SDK across the RaggieSoft Studio suite—forwarding bound properties directly into <code>Product.msi</code> <code>SecureCustomProperties</code>.',
+    actionHref: '/installer-studio/roadmap',
+    actionLabel: 'v0.7.0 Roadmap →'
+  },
+  {
+    dialogId: 'dlg-prev-v070-msi-designer',
+    imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v070-msi-dialog-designer.png`,
+    badge: 'In-Lab Preview • v0.7.0 370×270 DLU MSI.DLL Form Stage',
+    title: 'Interactive 370×270 DLU MSI.DLL SQL Dialog Designer',
+    alt: 'Real Windows 11 Dark Mode C++20 capture of InstallerStudio.exe v0.7.0 MSI.DLL Dialog Designer editing ServerConfigDlg (370x270 DLU) with 10-DLU alignment grid, 8-grip selection handles on MsiUrlEdit, #Tab + Alt+P badges, and Export -> .rssc button.',
+    summaryHtml:
+      '<strong><code>[MsiDialog.*]</code> + <code>[MsiControl.*]</code> SQL Stage:</strong> Visually author <code>370&times;270</code> DLU Windows Installer dialogs with a <code>10-DLU</code> snap grid, smart alignment guides, <code>TabOrder</code> sorting, and one-click <code>.rssc</code> export.',
+    detailHtml:
+      'Compiles directly into relational <code>Dialog</code>, <code>Control</code>, <code>ControlEvent</code>, <code>RadioButton</code>, <code>ComboBox</code>, and <code>ListBox</code> SQL tables inside <code>Product.msi</code>.',
+    actionHref: 'https://raggiescript.raggiesoft.dev',
+    actionLabel: 'RaggieScript Portal →'
   }
 ];
 
@@ -2090,9 +2116,10 @@ function renderShowcaseStudioBody(): string {
         </div>
         <div x-show="eraTab === 'ide'" style="margin-top: 1.15rem; display: none;">
           <p style="margin-top: 0;">
-            <strong>Visual Page, Hotspot &amp; 4-Way Focus-Matrix Authoring:</strong> Map pages, hotspots, directional
-            <code>Up/Down/Left/Right</code> arrow routing, UI Automation labels, and High-Contrast previews inside a native
-            Win32 C++20 workstation IDE.
+            <strong>Visual Page, Hotspot, 4-Way Focus &amp; Shared DRY Dialog Designer:</strong> Map pages, rectangular &amp; polygon
+            hotspots, directional <code>Up/Down/Left/Right</code> arrow routing, and custom <code>440&times;240</code> installer
+            dialogs (powered by the exact same <code>RaggieSoftVisualCanvas.hpp</code> DRY C++20 designer engine as Installer Studio)
+            inside a zero-dependency static <code>/MT</code> Win32 C++20 IDE.
           </p>
         </div>
       </div>
@@ -2263,11 +2290,11 @@ FocusUp           = InstallApps</pre>
 
     ${renderProductFourEditionStrip({
       productName: 'RaggieSoft Showcase Studio',
-      statusNote: 'Coming Soon • Retro .BMP + Modern FluentMica + Bespoke Installers',
+      statusNote: 'v0.5.0 Static /MT C++20 Built (x64 & ARM64) • Shared DRY Studio Canvas + _support\\ Installers',
       essentialsSummary:
-        'Visual <code>.rssp</code> 1990s <code>.BMP</code> &amp; Windows 11 <code>FluentMica</code> menus, declarative launch actions, &amp; 4-way focus routing.',
+        'Visual <code>.rssp</code> 1990s <code>.BMP</code> &amp; Windows 11 <code>FluentMica</code> menus, Rect &amp; Polygon hotspots, <code>.vtt</code> audio, &amp; 4-way focus routing.',
       developerSummary:
-        'Adds <code>RaggieScript</code> (<code>showcase.*</code> reactive menus &amp; live <code>msi.isInstalled</code> state switching), templates, &amp; CI/CD.',
+        'Adds <code>RaggieScript</code> (<code>showcase.*</code> reactive menus &amp; live <code>MsiUpgradeCode</code> state switching), templates, &amp; CI/CD.',
       architectSummary:
         'Adds Bespoke Full-Canvas Self-Extracting Installers (<code>_support\\</code>, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC), Suite front-door, Kiosk Mode, &amp; Auto-VPAT 2.5.'
     })}
@@ -3002,11 +3029,11 @@ function renderScreenshotsBody(): string {
     </section>
 
     <section id="v060-lab-previews" aria-labelledby="tour-lab-heading">
-      <span class="eyebrow">Part 4 • In the Lab: Coming Next in v0.6.0 (Real Win32 C++20 Builds)</span>
-      <h2 id="tour-lab-heading" style="margin-top: 0.25rem;">Monotonic Dual-Bar Suite Setup, Compact Self-Extractor &amp; True Dark AeroWizards</h2>
+      <span class="eyebrow">Part 4 • In the Lab: Built &amp; Staged in v0.6.0 &amp; v0.7.0 (Real Win32 C++20 Builds)</span>
+      <h2 id="tour-lab-heading" style="margin-top: 0.25rem;">Dual WYSIWYG Dialog Designers, Monotonic Dual-Bar Suites &amp; Compact SFX</h2>
       <p>
-        Captured directly from our active <code>v0.6.0</code> C++20 self-test suite while <code>v0.5.0</code> completes initial
-        Microsoft SmartScreen reputation review:
+        Captured directly from our active <code>v0.6.0</code> and <code>v0.7.0</code> C++20 builds while <code>v0.5.0</code> completes
+        initial Microsoft SmartScreen reputation review:
       </p>
       <div class="shot-grid">
         ${V060_LAB_PREVIEW_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
@@ -3066,27 +3093,27 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone Tool), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Multi-Engine Suite Setup (<code>Engine = native | msi</code>)</td>
-              <td><span class="status-pill status-next">Next Up</span></td>
+              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone <code>rswsfx.exe</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Monotonic Dual-Bar Multi-Engine Suites (<code>Engine = native | msi</code>)</td>
+              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.7.0</code></th>
-              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> Zero-MSI Native Scripting Language &amp; <code>RSWBC1</code> Bytecode VM + From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>370&times;270</code> <code>MSI.DLL</code> SQL canvas)</td>
-              <td><span class="status-pill">Planned</span></td>
+              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> <code>RSWBC2</code> VM + <code>fmt</code> + Turnkey <strong><code>RsDialog</code> Wizard Suite</strong> (<code>RsWelcome</code>..<code>RsFinish</code>), Shared <code>RaggieSoftVisualCanvas</code> <strong>Dual WYSIWYG Dialog Designers</strong> (C++ <code>SetupWizard.exe</code> + <code>370&times;270</code> <code>MSI.DLL</code> SQL), &amp; Declarative Non-Clobbering <code>[Environment.*]</code> <code>PATH</code> + <code>[IniFile.*]</code></td>
+              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.8.0</code></th>
-              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code>, VB6 <code>.vbp</code> Reg-Free COM for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
-              <td><span class="status-pill">Planned</span></td>
+              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code> with strictly <strong>Opt-In</strong> build hook, Classic VB6 <code>.vbp</code> <strong>Reg-Free COM default</strong> + <code>.MSM</code> warning banner for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
+              <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.9.0</code></th>
-              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater, &amp; guided Microsoft-compliant <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
+              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater (<strong>100% DRY shared <code>apps-manifest.json</code></strong> with RaggieSoft Launcher), <code>RsPatch.exe</code> (<code>msdelta.dll</code>), &amp; guided <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v1.0.0 GA</code></th>
-              <td>Offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> zero-telemetry verification + <code>RSW_LICENSE_KEY</code> CI secrets), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
+              <td>Frictionless offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> drag-drop / paste / <code>RSW_LICENSE_KEY</code> CI secrets, zero hardware lock-in), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>

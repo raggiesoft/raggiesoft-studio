@@ -16,7 +16,7 @@
    - Concise AI Spec: https://raggiesoftstudio.com/installer-studio/llms.txt
    - Complete Grammar Spec: https://raggiesoftstudio.com/installer-studio/llms-full.txt
    - Agent Skill File: https://raggiesoftstudio.com/installer-studio/SKILL.md
-   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP, SFX & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 4 editions (Community == 100% Architect parity), RaggieScript (.rssc — Deferred UAC, direct MSI SQL DDL/DML, 64-bit FFI, Restart Manager, VS Code .vsix & multi-editor syntax packs), standalone read/write RaggieSoft MSI Prism (`msiprism.exe`), WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.
+   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP, SFX & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 4 editions (Community == 100% Architect parity), shared cross-Studio 2D visual dialog designers (`RaggieSoftVisualCanvas.hpp`), turnkey `RsDialog` wizard functions, declarative `[Environment.*]` & `[IniFile.*]`, RaggieScript (.rssc — Deferred UAC, direct MSI SQL DDL/DML, 64-bit FFI, Restart Manager, `RSWBC2`, `fmt`, VS Code .vsix & multi-editor syntax packs), standalone read/write RaggieSoft MSI Prism (`msiprism.exe`), WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.
 
 2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now on .NET 11)**:
    - Product Portal: https://raggiesoftstudio.com/accessibility-studio
