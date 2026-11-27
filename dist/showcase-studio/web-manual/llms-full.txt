@@ -1,0 +1,22 @@
+# RaggieSoft Showcase Studio v1.0.0 — Complete Technical Reference (llms-full.txt)
+
+> Offline F1 context help and documentation.
+
+================================================================================
+TOPIC: Welcome to RaggieSoft Showcase Studio (v0.5.0) [overview] (Getting Started)
+================================================================================
+
+
+
+================================================================================
+TOPIC: Authoring .rssp Manifests, Polygon Hotspots & 4-Way Focus [rssp-grammar] (Authoring Reference)
+================================================================================
+
+
+
+================================================================================
+TOPIC: Bespoke _support\ Canvas Installers, Kiosk Mode & Editions [bespoke-installers] (Advanced & Editions)
+================================================================================
+
+
+

@@ -1,0 +1,13 @@
+# RaggieSoft Showcase Studio (v1.0.0) — Documentation & API Index
+
+> Offline F1 context help and documentation.
+> Compiled by RaggieSoft Help Studio v0.6.0 (MIT Code / CC BY-SA 4.0 Docs)
+
+## Full Machine-Readable Corpus
+- [Complete Concatenated Reference (llms-full.txt)](llms-full.txt)
+- [Master A-Z API & Symbol Index](api-index.html)
+
+## Chapters & Reference Topics
+- [Welcome to RaggieSoft Showcase Studio (v0.5.0)](index.html): Getting Started
+- [Authoring .rssp Manifests, Polygon Hotspots & 4-Way Focus](rssp-grammar.html): Authoring Reference
+- [Bespoke _support\ Canvas Installers, Kiosk Mode & Editions](bespoke-installers.html): Advanced & Editions

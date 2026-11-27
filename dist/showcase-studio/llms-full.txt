@@ -1,0 +1,59 @@
+# RaggieSoft Showcase Studio v0.5.0 — Quick AI Reference (llms.txt)
+
+- **Stack**: 100% Zero-Dependency Static `/MT` Win32 C++20 (`x64` & `ARM64`)
+- **Binaries**: `ShowcaseStudio.exe` (Visual Canvas & 4-Way Focus IDE), `rssbuild.exe` (CLI Compiler & WCAG Validator), `ShowcaseStub.exe` (`< 1 MB` Runtime), `RaggieSoftHelp.exe` (`F1` Viewer)
+- **Manifest**: `.rssp` (Comment-preserving INI AST) + optional `.rssc` (`RaggieScript` v1.0 `RSWBC2`)
+- **Presentation Styles**: `retro_bmp95` | `fluentmica_16x9` | `kiosk_fullscreen`
+- **Media Layouts**: `single_exe` (solid `LZMS` `RSSPAK01` `#320` + `_support\` `#321`) | `disc_folder` (`+ autorun.inf`)
+- **Editions**: `Community == 100% Architect Parity` (Free) • `Essentials` • `Developer` (`+ RaggieScript`) • `Architect` (`+ _support\ Bespoke Installers, Suite Front-Door, Kiosk & Auto-VPAT 2.5`)
+
+## Canonical `.rssp` Section & Key Reference
+
+```ini
+[Showcase]
+Title                   = RaggieSoft Collector's Box Set
+Subtitle                = Accessible 1990s .BMP & Windows 11 FluentMica Launchpad
+Version                 = 1.0.0
+Publisher               = RaggieSoft
+PresentationStyle       = retro_bmp95          ; retro_bmp95 | fluentmica_16x9 | kiosk_fullscreen
+MediaLayout             = single_exe           ; single_exe | disc_folder
+CanvasSize              = 800x600
+IntegerPixelScale       = true
+BackdropWash            = #008080
+AccentPrimaryHex        = #2563EB
+AutoPlayAudio           = false                ; Enforced false by default (WCAG 1.4.2)
+RequestedExecutionLevel = asInvoker            ; asInvoker | highestAvailable | requireAdministrator | deferred
+RaggieScriptFile        = showcase.rssc        ; Optional (Developer / Architect / Community)
+SupportDir              = _support             ; Optional Bespoke Installer payload (Architect / Community)
+OutputName              = CollectorShowcase
+
+[Page.MainMenu]
+Title                   = Collector Showcase Menu
+HighContrastTitle       = Collector Showcase — Main Menu
+BackgroundBitmap        = art/main-800x600.bmp
+
+[Hotspot.InstallSuite]
+Page                    = MainMenu
+Shape                   = rect                 ; rect | polygon
+Bounds                  = 264, 110, 496, 62    ; Or Points = x1,y1; x2,y2; x3,y3 for polygon
+Label                   = &1. Install Desktop Suite
+Subtitle                = Launches signed x64 and ARM64 Setup.exe
+Description             = Launches the signed application suite installer.
+Action                  = run_installer        ; goto_page | run_installer | open_booklet | open_slides | play_audio | open_folder | open_document | run_script | install_support | exit
+Target                  = packages/suite-setup.exe
+FocusDown               = OpenBooklet
+```
+
+## Diagnostic Codes (`RSS001`–`RSS095`)
+- `RSS001`–`RSS005`: Manifest syntax, `@include`, or missing `[Page]`/`[Hotspot]`
+- `RSS010`: Hotspot missing screen-reader `Label` (WCAG 4.1.2)
+- `RSS012` / `RSS013`: Missing or duplicate `&` `Alt+Key` mnemonic on page
+- `RSS015`–`RSS017`: Broken 4-way focus ID, `goto_page`, or `open_booklet` target
+- `RSS018`: Hotspot `< 24x24` px or polygon `< 3` vertices (WCAG 2.5.8)
+- `RSS022`: Slide missing `AltText` (WCAG 1.1.1)
+- `RSS030`: `AutoPlayAudio = true` violation (WCAG 1.4.2)
+- `RSS032`–`RSS034`: Missing/invalid `.vtt` captions or `> 22 CPS` cue speed
+- `RSS055`: Brand accent contrast warning
+- `RSS091`–`RSS095`: Edition capability gate (`Community == 100% Architect Parity`)
+
+Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.

@@ -46,6 +46,7 @@ const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
 const trainingStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/training-studio');
 const helpStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/help-studio');
+const showcaseStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/showcase-studio');
 const workspaceLlmsDir = path.resolve(projectRoot, '../../../llms');
 const a11yDistDir = path.resolve(projectRoot, '../../raggiesoft.com/subdomains/a11y/dist');
 
@@ -381,9 +382,12 @@ function buildSuiteOverviewLlmsTxt() {
     '   - Product Page: https://raggiesoftstudio.com/launcher-studio',
     '   - Summary: Visual IDE and `.rslp` plain-text manifest compiler for building white-label, zero-account desktop application hubs, offline media shelves, and SHA-256 + Authenticode static-CDN updaters.',
     '',
-    '8. **RaggieSoft Showcase Studio (Design Preview & Mockups)**:',
+    '8. **RaggieSoft Showcase Studio (`v0.5.0` — Static /MT Win32 C++20 Canvas IDE, Shared DRY Studio Designer & _support\\ Installers)**:',
     '   - Product Page: https://raggiesoftstudio.com/showcase-studio',
-    '   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA safeguards to modern Windows 11 `FluentMica` collector menus and bespoke `_support\\` self-extracting canvas installers.',
+    '   - Concise AI Spec: https://raggiesoftstudio.com/showcase-studio/llms.txt',
+    '   - Complete `.rssp` Grammar Spec: https://raggiesoftstudio.com/showcase-studio/llms-full.txt',
+    '   - Agent Skill File: https://raggiesoftstudio.com/showcase-studio/SKILL.md',
+    '   - Summary: Zero-dependency static `/MT` Win32 C++20 (`x64` & `ARM64`) visual canvas IDE (`ShowcaseStudio.exe`, sharing `RaggieSoftVisualCanvas.hpp` DRY with Installer Studio), CLI (`rssbuild.exe`), and `< 1 MB` runtime (`ShowcaseStub.exe`) compiling 1990s `.BMP` CD-ROM menus upgraded with WCAG 2.2 AA safeguards, modern Windows 11 `FluentMica` launchpads, Kiosk displays, and rollback-journaled `_support\\` self-extracting canvas installers.',
     '',
     '## Suite-Wide Editions, RaggieScript (.rssc) & RaggieSoft Labs',
     '- **Suite-Wide Editions & Licensing Matrix**: https://raggiesoftstudio.com/editions (All 8 Studio tools + All-Access Studio Suites across `Community == 100% Architect Parity`, `Essentials`, `Developer`, and `Architect`).',
@@ -525,6 +529,23 @@ async function main() {
   const helpWebManualSrc = path.join(helpDogfoodOut, 'web');
   if (fs.existsSync(helpWebManualSrc)) {
     copyDirRecursive(helpWebManualSrc, path.join(helpDistDir, 'web-manual'));
+  }
+
+  // 5D. Publish Showcase Studio v0.5.0 AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`),
+  //     dogfooded static HTML5 web manual (`/showcase-studio/web-manual/`), and VPAT 2.5!
+  const showcaseDistDir = path.join(distDir, 'showcase-studio');
+  fs.mkdirSync(showcaseDistDir, { recursive: true });
+  const showcaseSpecsDir = path.join(showcaseStudioRoot, 'specs');
+  for (const specFile of ['llms.txt', 'llms-full.txt', 'SKILL.md']) {
+    const srcSpec = path.join(showcaseSpecsDir, specFile);
+    if (fs.existsSync(srcSpec)) {
+      fs.copyFileSync(srcSpec, path.join(showcaseDistDir, specFile));
+    }
+  }
+  const showcaseHelpOut = path.join(showcaseStudioRoot, 'help', 'out');
+  const showcaseWebSrc = path.join(showcaseHelpOut, 'web');
+  if (fs.existsSync(showcaseWebSrc)) {
+    copyDirRecursive(showcaseWebSrc, path.join(showcaseDistDir, 'web-manual'));
   }
 
   // 6. Publish Single-Source `/installer-studio/docs/<topicId>` chapters directly from

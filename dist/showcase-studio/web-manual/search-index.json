@@ -1,0 +1,12 @@
+{
+  "topics": [
+    {"id":"overview","title":"Welcome to RaggieSoft Showcase Studio (v0.5.0)","category":"Getting Started","summary":"","href":"index.html","text":""},
+    {"id":"rssp-grammar","title":"Authoring .rssp Manifests, Polygon Hotspots & 4-Way Focus","category":"Authoring Reference","summary":"","href":"rssp-grammar.html","text":""},
+    {"id":"bespoke-installers","title":"Bespoke _support\\ Canvas Installers, Kiosk Mode & Editions","category":"Advanced & Editions","summary":"","href":"bespoke-installers.html","text":""}
+  ],
+  "symbols": [
+    {"term":"IDH_SHOWCASE_OVERVIEW (0x2010)","category":"F1 Context ID","badge":"F1","subtitle":"Numeric Context ID 8208","href":"index.html"},
+    {"term":"IDH_SHOWCASE_GRAMMAR (0x2020)","category":"F1 Context ID","badge":"F1","subtitle":"Numeric Context ID 8224","href":"rssp-grammar.html"},
+    {"term":"IDH_SHOWCASE_BESPOKE (0x2030)","category":"F1 Context ID","badge":"F1","subtitle":"Numeric Context ID 8240","href":"bespoke-installers.html"}
+  ]
+}

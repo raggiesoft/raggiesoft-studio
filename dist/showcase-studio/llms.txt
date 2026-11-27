@@ -1,0 +1,8 @@
+# RaggieSoft Showcase Studio v0.5.0 — Quick AI Reference (llms.txt)
+
+- **Stack**: 100% Zero-Dependency Static `/MT` Win32 C++20 (`x64` & `ARM64`)
+- **Binaries**: `ShowcaseStudio.exe` (Visual Canvas & 4-Way Focus IDE), `rssbuild.exe` (CLI Compiler & WCAG Validator), `ShowcaseStub.exe` (`< 1 MB` Runtime), `RaggieSoftHelp.exe` (`F1` Viewer)
+- **Manifest**: `.rssp` (Comment-preserving INI AST) + optional `.rssc` (`RaggieScript` v1.0 `RSWBC2`)
+- **Presentation Styles**: `retro_bmp95` | `fluentmica_16x9` | `kiosk_fullscreen`
+- **Media Layouts**: `single_exe` (solid `LZMS` `RSSPAK01` `#320` + `_support\` `#321`) | `disc_folder` (`+ autorun.inf`)
+- **Editions**: `Community == 100% Architect Parity` (Free) • `Essentials` • `Developer` (`+ RaggieScript`) • `Architect` (`+ _support\ Bespoke Installers, Suite Front-Door, Kiosk & Auto-VPAT 2.5`)
