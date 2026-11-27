@@ -121,6 +121,7 @@ Branding, RTF license, icon, 11 selectable C++ WizardLayout styles (including 's
 | `CompactDescription` | `string` | No | `Installs essential core application files (`Inclusion = minimal`) with minimal disk footprint.` | Helper caption for the Compact Core Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `CustomDescription` | `string` | No | `Choose features in the MSI SelectionTree, destination folder, Start Menu group, and shortcuts step by step.` | Helper caption for the Custom Setup mode card in `SetupWizard.exe` and MSI `SetupTypeDlg`. |
 | `AuthorOrArtist` | `string` | No | — | Optional author or band credit badge displayed in `autorun16x9` book/album micro-installers. |
+| `ShowComponentProgressBar` | `bool (true|false)` | No | `true` | When `true` (default) in Unified Suite Setup (`PackageKind = suite`), displays a secondary `Current Component` (`0%–100%`) progress bar beneath the monotonic byte-weighted `Overall Suite Progress` (`0%–100%`) bar; Windows Taskbar `ITaskbarList3` always tracks Overall Suite Progress. |
 
 ### `[Signing]` (*Optional*)
 Optional dual-layer Authenticode / Microsoft Azure Artifact Signing (Product.msi first, then outer Setup.exe) via signtool.exe.
@@ -194,6 +195,9 @@ Child .msi or native setup package ([SuitePackage.<id>]) chained under a single 
 | `Required` | `bool (true|false)` | No | `false` | When `true`, locks this core Suite package as required in the Suite Setup checklist. |
 | `SelectedByDefault` | `bool (true|false)` | No | `true` | Whether this child package is pre-checked by default on fresh Suite installations. |
 | `AdoptStandalone` | `bool (true|false)` | No | `true` | When `true` (default), dynamically adopts any already-installed standalone sibling (`REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1`) under the single Suite Installed Apps entry. |
+| `Category` | `string` | No | `Suite` | Optional category badge displayed for this application in the Unified Suite Setup checklist. |
+| `Version` | `string` | No | — | Optional display version (`X.Y.Z`) shown alongside this child package in the Suite checklist. |
+| `EstimatedSizeKB` | `integer` | No | `0` | Optional uncompressed size override in kilobytes used to weight Overall Suite Progress (`0` uses actual payload size). |
 
 ### `[MergeModule.<id>]` (*Optional*)
 Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
