@@ -46,6 +46,7 @@ const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
 const trainingStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/training-studio');
 const helpStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/help-studio');
+const workspaceLlmsDir = path.resolve(projectRoot, '../../../llms');
 const a11yDistDir = path.resolve(projectRoot, '../../raggiesoft.com/subdomains/a11y/dist');
 
 /**
@@ -467,6 +468,14 @@ async function main() {
   const srcEditionsSpec = path.join(installerStudioRoot, 'EDITIONS_AND_RAGGIESCRIPT.md');
   if (fs.existsSync(srcEditionsSpec)) {
     fs.copyFileSync(srcEditionsSpec, path.join(installerDistDir, 'EDITIONS_AND_RAGGIESCRIPT.md'));
+  }
+
+  // Publish standalone RaggieScript v1.0 cold-start specification (`/raggiescript/llms-raggiescript.txt`).
+  const srcRsscSpec = path.join(workspaceLlmsDir, 'llms-raggiescript.txt');
+  if (fs.existsSync(srcRsscSpec)) {
+    const rsscDistDir = path.join(distDir, 'raggiescript');
+    fs.mkdirSync(rsscDistDir, { recursive: true });
+    fs.copyFileSync(srcRsscSpec, path.join(rsscDistDir, 'llms-raggiescript.txt'));
   }
 
   // 5B. Publish Training Studio AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), live compiled

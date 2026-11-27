@@ -32,6 +32,15 @@
 5. **Version Servicing in `Essentials` (`Major Upgrades Only` — Zero `.MSP` Complexity)**:
    - **Essentials Edition** does **not** generate `.MSP` binary-delta patch files or `.MST` transforms. Shipping an update from `1.0.0` to `1.0.1` in **Essentials** automatically performs a clean Windows Installer **Major Upgrade** (minting a fresh `ProductCode` under your permanent `UpgradeCode` so `MSI.DLL`'s `Upgrade` table and `RemoveExistingProducts` action replace `1.0.0` atomically in a single transaction). Binary-delta `.MSP` patch generation (`RsPatch.exe` + `--plan-update`) and `.MST` GPO transforms belong to **Architect Edition** (and **Community**).
 
+### Technical Preview QA Edition Switcher (`v0.6.0` Today) vs. `v1.0.0 GA` Production Paygating (`.rswlic`)
+
+- **Today in Technical Preview (`v0.6.0`) — Live QA Edition Switcher**:
+  - Opening **`Editions & Help`** on the top menu bar of `InstallerStudio.exe` lets you switch freely right now between **Community Edition**, **Essentials Edition**, **Developer Edition**, and **Architect Edition** (`%LOCALAPPDATA%\RaggieSoft\Installer Studio\edition.json` + `--edition=<tier>` forwarded to `instbuild.exe`) so every menu lock, toolbar button, Edition pill, and `RSW091`–`RSW096` compiler diagnostic can be tested instantaneously.
+- **Target `v1.0.0 GA` Mass Release — Zero-Telemetry Offline `.rswlic` Cryptographic Paygating**:
+  - **Asymmetric Offline `.rswlic` Certificates (`bcrypt.dll`)**: Commercial editions (**Essentials**, **Developer**, **Architect**, and All-Access **RaggieSoft Studio** Suite bundles) unlock via an offline plain-text JSON/PEM `.rswlic` certificate cryptographically signed with RaggieSoft's asymmetric ECDSA / Ed25519 private key and verified in `< 0.2ms` via stock Windows `System32\bcrypt.dll` against an embedded public key—requiring **zero internet connection, zero activation servers, zero accounts, and zero background license services**.
+  - **Workstation, Air-Gapped IT, & Headless CI/CD Discovery**: Checks `%LOCALAPPDATA%\RaggieSoft\Licenses\`, machine-wide `%PROGRAMDATA%\RaggieSoft\Licenses\`, and `RSW_LICENSE_KEY` environment secrets for GitHub Actions / Azure DevOps runners (enforcing commercial CI/CD build-agent rights via signed `ciBuildAgent: true` claims starting in **Developer Edition**, plus perpetual fallback so expired maintenance windows never brick builds).
+  - **Community Attestation & Lower-Tier QA Simulation**: Free **Community Edition** (`100% Architect Parity`, zero end-user watermarks) unlocks offline via an explicit non-commercial / solo / EDU / open-source eligibility attestation dialog, while `Editions & Help` replaces unrestricted upward switching in retail builds with **`Activate License (.rswlic)...`** plus a **`Simulate Lower Tier (Essentials / Developer)`** QA preview toggle so `Community` and `Architect` authors can still test lower-tier manifest compatibility.
+
 ---
 
 ## 2. Master Product Editions Comparison Matrix

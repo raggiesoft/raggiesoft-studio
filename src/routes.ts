@@ -1042,19 +1042,21 @@ function renderSuiteEditionsBody(): string {
 function renderRaggieScriptHubBody(): string {
   return `
     <section class="hero" aria-labelledby="rssc-hero-title">
-      <span class="eyebrow">RaggieScript (.rssc) • Unified Studio &amp; Zero-Dependency Windows Micro-App Language</span>
+      <span class="eyebrow">RaggieScript v1.0 (.rssc) • Gradual Static Types, Linear Stack VM, Declarative Wizard UI &amp; Multi-Target SDK</span>
       <h1 id="rssc-hero-title">One Clean Curly-Brace Language Across All Eight Studio Tools.</h1>
       <p class="lead">
-        <strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> combines familiar C# / TypeScript curly-brace syntax with a
-        compact <code>&lt;200 KB</code> static <code>/MT</code> C++20 bytecode VM (<code>RSWBC1</code> + standalone
-        <code>raggiescript.exe</code> CLI) and capability-gated host profiles. It is <strong>not</strong> trying to replace C# or
-        heavy application frameworks—instead, it owns <strong>zero-prerequisite (<code>0 MB</code> runtime) Windows micro-apps,
-        transactional zero-MSI installers, bespoke <code>_support\\</code> collector launchpads, and embedded Studio automation</strong>
-        across <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
+        <strong><code>RaggieScript</code> v1.0 (<code>.rssc</code>)</strong> combines familiar C# / TypeScript curly-brace syntax
+        (<code>struct</code>, <code>enum</code>, <code>match</code>, first-class <code>=&gt;</code> closures, and gradual static type
+        inference <code>RSW701</code>&ndash;<code>RSW715</code>) with a compact static <code>/MT</code> C++20 <strong>Linear Stack
+        Bytecode VM (<code>RSWBC2</code>)</strong>, a <strong>Per-Monitor V2 DPI Declarative In-Window Win32 Wizard UI Engine</strong>,
+        a built-in formatter (<code>fmt</code>) &amp; JSON-RPC 2.0 Language Server (<code>lsp</code>), a managed <code>.NET</code> SDK
+        (<code>RaggieScript.Core</code>), and a zero-<code>eval()</code> SCORM <code>ES2022</code> transpiler across
+        <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="#rssc-playground">Try 5-Profile Code Playground &darr;</a>
-        <a class="btn btn-outline" href="/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md">Read Full Language Spec (.md)</a>
+        <a class="btn btn-primary" href="#rssc-playground">Try 6-Profile Code Playground &darr;</a>
+        <a class="btn btn-outline" href="/raggiescript/llms-raggiescript.txt">Cold-Start Language Spec (llms-raggiescript.txt)</a>
+        <a class="btn btn-outline" href="/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md">Editions &amp; Architecture (.md)</a>
         <a class="btn btn-outline" href="https://raggiesoft.dev/labs/finsharp">Explore Sibling Fin# Compiler Lab (raggiesoft.dev) &rarr;</a>
       </div>
     </section>
@@ -1263,10 +1265,10 @@ rule "ORG-A11Y-014: Brand Dialog Buttons Must Preserve Keyboard Accelerators" {
             </tr>
           </thead>
           <tbody>
-            <tr x-show="!nsFilter || 'raggiescript cli check compile disasm run pack-exe support'.includes(nsFilter.toLowerCase())">
+            <tr x-show="!nsFilter || 'raggiescript cli check compile disasm run fmt lsp transpile-es2022 pack-exe support'.includes(nsFilter.toLowerCase())">
               <th scope="row"><code>raggiescript.exe</code></th>
-              <td><code>check [--diagnostics=json]</code>, <code>compile</code> (<code>.rswbc</code>), <code>disasm</code>, <code>run</code>, <code>pack-exe</code></td>
-              <td>Lints <code>RSW701</code>/<code>RSW702</code> in &lt;1ms and packs single-file <code>_support\\</code> Windows micro-apps!</td>
+              <td><code>check [--diagnostics=json]</code>, <code>compile</code> (<code>RSWBC2</code>), <code>disasm</code>, <code>fmt</code>, <code>lsp</code>, <code>transpile-es2022</code>, <code>run</code>, <code>pack-exe</code></td>
+              <td>Gradual static binder (<code>RSW701</code>&ndash;<code>RSW715</code>), comment-preserving formatter, JSON-RPC 2.0 LSP, &amp; zero-<code>eval()</code> SCORM ES2022!</td>
             </tr>
             <tr x-show="!nsFilter || 'sys arch arm64 x64 prism osbuild osversion ram disk darkmode guid'.includes(nsFilter.toLowerCase())">
               <th scope="row"><code>sys.*</code> &amp; <code>SemVer</code></th>
@@ -3079,7 +3081,7 @@ function renderRoadmapBody(): string {
             </tr>
             <tr>
               <th scope="row"><code>v1.0.0 GA</code></th>
-              <td>Turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft production cutover across all apps, interactive books, and supporter audio archives</td>
+              <td>Offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> zero-telemetry verification + <code>RSW_LICENSE_KEY</code> CI secrets), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
@@ -3183,8 +3185,9 @@ function renderRoadmapBody(): string {
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v10'" aria-labelledby="phase-v10-heading" class="card">
         <div>
           <span class="status-pill">Target v1.0.0 GA &amp; v1.1+</span>
-          <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> 8-Product Suite Dogfood Cutover &amp; Post-1.0 Enterprise Expansion</h2>
+          <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> Offline <code>.rswlic</code> Edition Paygating, 8-Product Suite Dogfood Cutover &amp; Post-1.0 Expansion</h2>
           <ul class="feature-list">
+            <li><strong><code>v1.0.0 GA</code> Production Edition Paygating &amp; Offline Cryptographic <code>.rswlic</code> Licensing (<code>bcrypt.dll</code>)</strong>: Transitions Technical Preview's open <code>Editions &amp; Help</code> QA switcher into retail zero-telemetry ECDSA/Ed25519 signed <code>.rswlic</code> license certificates for <strong>Essentials</strong>, <strong>Developer</strong>, <strong>Architect</strong>, and All-Access <strong>RaggieSoft Studio</strong> Suite keys—verified 100% offline in <code>&lt;0.2ms</code> across <code>%LOCALAPPDATA%</code>, <code>%PROGRAMDATA%</code>, and headless <code>RSW_LICENSE_KEY</code> CI/CD secrets (with perpetual fallback, explicit <strong>Community Edition</strong> non-commercial/solo/EDU/OSS eligibility attestation, zero end-user watermarks, and a <em>Simulate Lower Tier</em> QA preview toggle).</li>
             <li><strong><code>v1.0.0 GA</code> 8-Tool Suite Dogfood Architecture</strong>: All 8 RaggieSoft Studio tools ship as individual <code>.msi</code> packages under <code>C:\Program Files\RaggieSoft\RaggieSoft Studio\&lt;Product&gt;\</code> (with unified <code>RaggieSoftHelp.exe</code> <code>F1</code> module discovery), fronted by a <strong>Showcase Studio</strong> interactive intro stub that installs either standalone tools or the full <code>.rsis</code> Suite under a single UAC elevation—plus first-party GitHub Actions and <code>--emit-winget</code>.</li>
             <li><strong><code>v1.1+</code> Post-1.0</strong>: Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20+ language <code>I18N</code> + RTL, and SPDX / CycloneDX <code>--emit-sbom</code>.</li>
           </ul>
