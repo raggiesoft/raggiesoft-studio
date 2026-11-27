@@ -60,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/raggiescript#webpage","url":"https://raggiesoftstudio.com/raggiescript","name":"RaggieScript (.rssc) — Studio & Micro-App Language","description":"Explore RaggieScript (.rssc): our C-family bytecode scripting language spanning all 8 RaggieSoft Studio tools, bespoke installers, and Windows micro-apps.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-DyK0KqA2.js"></script>
+    <script type="module" crossorigin src="/assets/index-B7WMMqOX.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -234,28 +234,31 @@ install {
 
       <div x-show="profile === 'microapp'" style="display: none;">
         <p style="margin-top: 0;">
-          <strong>Profile: <code>use std; use ui.dialog;</code> (Standalone <code>raggiescript.exe --compile-exe</code>):</strong>
-          Build single-file <code>&lt;250 KB</code> native Windows diagnostic utilities, config patchers, and support tools that run
-          on clean Windows 11 <code>x64</code> &amp; <code>ARM64</code> PCs with zero external runtimes.
+          <strong>Profile: <code>app "..."</code> (Standalone <code>raggiescript.exe pack-exe</code>):</strong>
+          Build single-file zero-dependency native Windows diagnostic utilities, config patchers, and <code>_support\</code>
+          helpers that run on clean Windows 11 <code>x64</code> &amp; <code>ARM64</code> PCs with zero external runtimes.
         </p>
-        <pre aria-label="RaggieScript Standalone General-Purpose Windows Utility">use std;
-use ui.dialog;
-
+        <pre aria-label="RaggieScript Standalone General-Purpose Windows Utility">// Compile into a single portable .exe: raggiescript.exe pack-exe diag.rssc AudioDiag.exe --support-dir=./_support
 app "Audio Endpoint Diagnostic Utility" {
-  uac:   Uac.AsInvoker;
-  theme: Theme.FollowSystemWithHighContrast;
+  version:    1.0.0;
+  publisher:  "RaggieSoft";
+  uac:        Uac.AsInvoker;
+  supportDir: "./_support";
 }
 
-fn main(): int {
-  let cfgPath: path = sys.localAppData / "SampleStudio" / "audio-settings.json";
-  if (!fs.exists(cfgPath)) {
-    ui.info("No local audio profile found; writing clean default configuration.");
-    fs.writeJson(cfgPath, { sampleRateHz: 48000, exclusiveMode: false });
-  }
-  let digest: string = crypto.sha256File(cfgPath);
-  ui.taskDialog(title: "Profile Verified", body: "SHA-256: " + digest);
-  return 0;
-}</pre>
+param cfgPath: path = sys.localAppData / "SampleStudio" / "audio-settings.json";
+
+if (!fs.exists(cfgPath)) {
+  fs.writeJson(cfgPath, { sampleRateHz: 48000, arch: sys.arch(), telemetry: false });
+}
+const digest = crypto.sha256File(cfgPath);
+ui.taskDialog(
+  title: "Audio Endpoint Diagnostic Utility",
+  heading: "Audio Configuration Verified (${sys.arch()})",
+  body: "Active profile path:\n${cfgPath}",
+  detailsTitle: "Cryptographic &amp; OS details",
+  detailsBody: "SHA-256: ${digest}\nKernel Version: ${sys.osVersion()} (Build ${sys.osBuild()})"
+);</pre>
       </div>
 
       <div x-show="profile === 'training'" style="display: none;">
@@ -294,6 +297,71 @@ rule "ORG-A11Y-014: Brand Dialog Buttons Must Preserve Keyboard Accelerators" {
     }
   }
 }</pre>
+      </div>
+    </section>
+
+    <section aria-labelledby="rssc-stdlib-heading" x-data="{ nsFilter: '' }">
+      <span class="eyebrow">Shipped Static /MT C++20 Standard Library • 15 Built-In Win32 &amp; Studio Namespaces</span>
+      <h2 id="rssc-stdlib-heading" style="margin-top: 0.25rem;">Complete <code>RaggieScript</code> Standard Library &amp; <code>raggiescript.exe</code> CLI Reference</h2>
+      <p>
+        Compiled directly into <code>raggiescript.exe</code>, <code>instbuild.exe</code>, and <code>SetupWizard.exe</code> across
+        Windows 11 <code>x64</code> and <code>ARM64</code>—with compile-time <code>RSW701</code> phase isolation (blocking
+        transitive mutations inside <code>wizard</code>), <code>RSW702</code> capability sandboxing, stateless 64-bit /
+        <code>WOW6432Node</code> registry views, <code>KEY=VALUE</code> soft overrides + <code>KEY:VALUE</code> immutable policy
+        locks, and atomic <code>.rsw-rollback.jnl</code> undo journaling!
+      </p>
+      <div class="field-group" style="max-width: 28rem; margin-bottom: 1rem;">
+        <label for="rssc-ns-search">Filter namespaces or capabilities (e.g., <code>reg</code>, <code>desktop</code>, <code>taskDialog</code>, <code>pack-exe</code>):</label>
+        <input id="rssc-ns-search" type="search" x-model="nsFilter" placeholder="Filter 15 namespaces &amp; CLI subcommands..." style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: 0.5rem 0.75rem;" />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>RaggieScript 15-Namespace Win32 Standard Library &amp; CLI Subcommands</caption>
+          <thead>
+            <tr>
+              <th scope="col">Namespace / CLI</th>
+              <th scope="col">Key Methods &amp; Primitives</th>
+              <th scope="col">Architectural Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr x-show="!nsFilter || 'raggiescript cli check compile disasm run pack-exe support'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>raggiescript.exe</code></th>
+              <td><code>check [--diagnostics=json]</code>, <code>compile</code> (<code>.rswbc</code>), <code>disasm</code>, <code>run</code>, <code>pack-exe</code></td>
+              <td>Lints <code>RSW701</code>/<code>RSW702</code> in &lt;1ms and packs single-file <code>_support\</code> Windows micro-apps!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'sys arch arm64 x64 prism osbuild osversion ram disk darkmode guid'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>sys.*</code> &amp; <code>SemVer</code></th>
+              <td><code>arch()</code>, <code>isArm64()</code>, <code>isEmulatedUnderPrism()</code>, <code>osVersion()</code>, <code>v"10.0.22000"</code>, <code>isAdmin()</code>, <code>uacEnabled()</code>, <code>supportDir</code></td>
+              <td>Pierces ARM64 Prism via <code>IsWow64Process2</code> + direct <code>&lt;, &lt;=, &gt;=, &gt;</code> version operators!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'fs extract copy copytree readjson writejson islocked fileversion ntfs'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>fs.*</code></th>
+              <td><code>extract</code>, <code>copy</code>, <code>copyTree</code>, <code>isLocked</code>, <code>fileVersion</code>, <code>readJson</code>/<code>writeJson</code>, <code>setNtfsCompression</code></td>
+              <td>Every mutating file operation backs up existing files to <code>.rswbak</code> for instant LIFO rollback!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'reg registry wow32 native64 both hklm hkcu listsubkeys'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>reg.*</code></th>
+              <td><code>exists</code>, <code>readString</code>, <code>readDword</code>, <code>listSubkeys</code>, <code>writeString</code>, <code>writeDword</code>, <code>deleteKeyTree</code></td>
+              <td>Stateless <code>view: RegView.Native64 | Wow32 | Both</code> eliminates global 32/64-bit mode toggle bugs!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'proc run elevated desktop token de-elevate explorer dll'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>proc.*</code></th>
+              <td><code>run(..., token: Token.Current | Elevated | Desktop)</code>, <code>isRunning</code>, <code>terminate</code>, <code>callDllInt</code></td>
+              <td><code>Token.Desktop</code> duplicates Explorer&rsquo;s medium-IL token so Finish-launched apps never run as Admin!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'ui taskdialog commandlinks shield pickfolder progress'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>ui.*</code> &amp; <code>wizard.*</code></th>
+              <td><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code></td>
+              <td>Zero legacy <code>MessageBox</code> popups; auto-resolves without blocking during <code>/s</code> silent installs!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'msi prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive net'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>prereq.*</code>, <code>msi.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
+              <td><code>prereq.isDotNetDesktopInstalled</code>, <code>prereq.isWebView2Installed</code>, <code>env.appendPath</code>, <code>arp.setSystemComponent</code>, <code>svc.install</code>, <code>net.download</code>, <code>crypto.verifyAuthenticode</code></td>
+              <td>Complete batteries-included system provisioning, safe semicolon <code>PATH</code> append, and Dynamic Suite ARP governance!</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 

@@ -83,32 +83,46 @@ Alongside the integrated `PackageKind = sfx` workflow inside `InstallerStudio.ex
 
 ---
 
-## 4. `RaggieScript` (`.rssc` — Style A) Zero-MSI Native Scripting Engine (`v0.7.0`)
+## 4. `RaggieScript` (`.rssc` — Style A) Zero-MSI Native Scripting & Micro-App Engine
 
-### 4.1 Design Origin & Why We Built a Custom C++20 "Mini-Roslyn" Bytecode Compiler
+### 4.1 Design Origin & C++20 "Mini-Roslyn" Bytecode Architecture (`RswRaggieScript.hpp` + `RswRaggieScriptVm.hpp`)
 
-In the RaggieSoft narrative universe (`/books/aubrie`), Zoë designs **Fin# (*Finance Sharp*)** by forking a managed compiler pipeline so financial transactions enforce double-entry invariants at compile time rather than failing mid-settlement at runtime.
+In the RaggieSoft narrative universe (`/books/aubrie`), Zoë designs **Fin# (*Finance Sharp*)** by building a compiler pipeline where financial transactions enforce double-entry invariants at compile time rather than failing mid-settlement at runtime.
 
-For **RaggieSoft Installer Studio**, shipping an actual `.NET` compiler runtime (`60–90 MB`) inside customer installers would violate our core **Zero-Dependency Static `/MT` Win32 C++20** charter—yet classic string-concatenated macro languages lack type safety, IDE diagnostics, and automatic rollback. **`RaggieScript` (`.rssc`)** takes the exact architectural lesson of *Fin#* and implements a **purpose-built, ~2,500-LOC C++20 "Mini-Roslyn" compiler and `< 50 KB` stack bytecode VM**:
+For **RaggieSoft Installer Studio**, shipping a 60–90 MB managed compiler inside customer installers would violate our **Zero-Dependency Static `/MT` Win32 C++20** charter—yet untyped macro scripts suffer from stateful 32/64-bit mode bugs, missing `<` version operators, and broken rollback. **`RaggieScript` (`.rssc`)** implements a **zero-dependency static `/MT` C++20 compiler, `RSWBC1` bytecode codec, and 15-namespace Win32 VM** (`src/common/RswRaggieScript.hpp`, `src/common/RswRaggieScriptVm.hpp`, and `src/script/RswScriptMain.cpp` -> `raggiescript.exe`):
 
-1. **Stage 1 — Lossless UTF-8 Lexer & Trivia-Preserving AST (`RswScriptAst.hpp`)**:
-   - Every token records exact `1-based` `(line, column, length)` source spans and leading/trailing comment trivia, powering `instbuild.exe --validate --diagnostics=json` for AI coding agents and live squiggles inside `InstallerStudio.exe`.
-2. **Stage 2 — Static Type & Phase-Isolation Binder (`RswScriptBinder.hpp`)**:
-   - Statically checks types (`string`, `bool`, `int`, `version`, `path`, `enum`) and enforces **compile-time phase isolation** between `wizard { ... }`, `install { ... }`, and `uninstall { ... }`:
-     - **`wizard { ... }` is strictly read-only / side-effect-free**: Can inspect OS state (`sys.*`, `reg.read`, `fs.exists`, `net.probe`) and present accessible wizard steps (`step <Id> { ... } when (...)`), while the VM automatically records a step-navigation stack so clicking **`← Back`** rewinds cleanly without spaghetti `goto` labels. Attempting to call mutating operations (`fs.extract`, `reg.write`, `shortcut.create`, `exec.run`) inside `wizard` raises compile-time error **`RSW701`**.
-     - **`install { ... }` is an atomic double-entry ledger**: Every mutating operation (`fs.extract`, `fs.writeText`, `reg.write`, `shortcut.create`, `fileAssoc.register`, `env.appendPath`, `exec.run`) automatically logs its exact inverse undo entry to `.rsw-rollback.jnl` (moving overwritten files to `.rswbak` until commit) for instant mid-install cancellation rollback **and** appends clean uninstallation records to `Uninstall.rswm` for signed native `Uninstall.exe`!
-3. **Stage 3 — `RSWBC1` Compact Bytecode Resource & Zero-MSI Execution (`RswScriptVm.hpp`)**:
-   - Compiles down to a deterministic binary `RSWBC1` bytecode stream embedded as Win32 `RT_RCDATA` (`kResIdScriptBytecode = 225`) inside `<Product>-setup.exe`.
-   - `SetupWizard.exe` links `msi.dll` with `/DELAYLOAD:msi.dll`. When executing a standalone `.rssc` or `Engine = native` installer, **`msi.dll` is never even loaded into process memory** and **`Global\_MSIExecute` is never acquired**—installing thousands of files in milliseconds with zero Windows Installer dependency!
+1. **Stage 1 — Preprocessor (`include` / `import` / `#if` / `#elif` / `#else`) & Rich Lexer (`RswRaggieScript.hpp`)**:
+   - Supports idempotent `include "raggiesoft-requirements.rssc";`, `#if` / `#elif` / `#else` / `#endif` conditional compilation, raw string literals (`r"SOFTWARE\RaggieSoft\Book Reader"` with zero double-backslash noise!), `${...}` string interpolation, and first-class 4-part semantic version literals (`v"10.0.22000"` and `1.2.0`) supporting `<, <=, ==, !=, >=, >` directly!
+2. **Stage 2 — Compile-Time Phase Isolation (`RSW701`) & Capability Sandbox (`RSW702`)**:
+   - **`RSW701` (Wizard Phase Isolation)**: Statically rejects any mutating host call (`fs.write*`, `fs.extract`, `reg.write*`, `ini.write`, `shortcut.create`, `env.*`, `svc.*`, etc.) inside `wizard { ... }`—**including transitive calls through user-defined `fn` helper functions**—before a single byte executes!
+   - **`RSW702` (Capability Sandbox)**: Blocks filesystem, registry, network, service, and process APIs when compiling sandboxed profiles such as `use training;` for SCORM courseware.
+3. **Stage 3 — `RSWBC1` SHA-256 Bytecode, Atomic `.rsw-rollback.jnl` Ledger & `raggiescript.exe`**:
+   - Serializes AST/IR into a compact `RSWBC1` binary container protected by a 32-byte `bcrypt.dll` `SHA-256` digest (`kResIdScriptBytecode = 225`), paired with solid `LZMS` `RSWPAK1` payloads & `_support\` staging (`#220`).
+   - Every mutating call in `install { ... }` records inverse undo entries in `.rsw-rollback.jnl` + `.rswbak` file backups for LIFO rollback on error/cancel, and writes `<InstallDir>\Uninstall.exe` + `<InstallDir>\Uninstall.rswm` on commit!
 
-### 4.2 Dual Authoring Modes: Standalone `.rssc` OR Hybrid `.rsip` + `.rssc`
+### 4.2 Three Execution & Packaging Workflows (`instbuild.exe` & `raggiescript.exe`)
 
-Developers in **Community**, **Developer**, and **Architect** editions can use `RaggieScript` in two ways:
+- **Workflow 1 — Direct `.rssc` Installer Compilation (`instbuild.exe setup.rssc --arch=x64` or `--universal`)**: Compiles `.rssc` into `RSWBC1` (`#225`), packs `payload` + `supportDir` files into `RSWPAK1` (`#220`), and stamps `SetupWizard.exe` with publisher `VERSIONINFO`, `.ico`, and UAC `RequestedExecutionLevel`.
+- **Workflow 2 — Standalone Zero-Dependency Windows Micro-Apps (`raggiescript.exe pack-exe app.rssc Tool.exe`)**: Packs any `app` or `showcase` `.rssc` script (plus optional `--support-dir=./_support`) into a self-contained single-file Windows `.exe` (`x64` or `ARM64`), alongside `raggiescript.exe check [--diagnostics=json]`, `compile`, `disasm`, and `run`.
+- **Workflow 3 — Dual CLI Parameter Governance (`KEY=VALUE` vs. `KEY:VALUE`)**: Supports mutable CLI overrides (`Setup.exe /s installDir="D:\Tools"`) **and** IT-locked immutable policy overrides (`Setup.exe /s installDir:"C:\Program Files\Approved"`), plus structured UTF-8 logging via `/l=<path>`.
 
-- **Mode 1 — 100% Standalone `.rssc` Project (`instbuild.exe setup.rssc --arch=x64`)**: Author a complete zero-MSI native installer in a single modern curly-brace `.rssc` source file with no `.rsip` manifest required.
-- **Mode 2 — Hybrid `.rsip` Manifest + `ScriptFile = setup.rssc`**: Keep declarative `.rsip` trees for files, features, or `.msi` tables while attaching a `.rssc` script for custom wizard steps, endpoint/license validation, and lifecycle hooks (`onBeforeInstall`, `onAfterInstall`).
+### 4.3 Complete 15-Namespace Win32 Standard Library Summary
 
-### 4.3 Canonical Style A `RaggieScript` (`.rssc`) Syntax Blueprint
+| Namespace | Core Built-In Capabilities |
+| :--- | :--- |
+| **`std` (Globals)** | `str()`, `int()`, `float()`, `bool()`, `path()`, `ver()`, `len()`, `typeof()`, `print()`, `assert()`, `sleep()`, `coalesce()`, `range()`, plus `Scope`, `Uac`, `Token`, `RegView`, `Icon`, and canonical exit constants (`EXIT_ELEVATION_REQUIRED = 740`, `EXIT_REBOOT_NEEDED = 9001`, `EXIT_UNSUPPORTED_OS = 9007`, `EXIT_DOWNLOAD_FAILED = 9010`). |
+| **`sys.*`** | `arch()`, `isArm64()`, `isX64()`, `isEmulatedUnderPrism()` (`IsWow64Process2`), `osBuild()`, `osVersion()` (`ntdll!RtlGetVersion`), `isWindows11()`, `isServer()`, `isAdmin()`, `uacEnabled()`, `isSilent()`, `cliArg()`, `hasSwitch()`, `ramMB()`, `cpuCores()`, `freeDiskMB()`, `dpi()`, `isDarkMode()`, `isHighContrast()`, `editionId()`, `machineGuid()`, `newGuid()`, `uuid5()`, `scheduleResumeAfterReboot()`, and known folder properties (`programFiles`, `programFilesX86`, `localAppData`, `programData`, `system32Dir`, `sysWow64Dir`, `supportDir`, etc.). |
+| **`fs.*`** | `exists`, `isDir`, `isFile`, `isLocked` (exclusive handle lock probe), `size`, `fileVersion` (`VS_FIXEDFILEINFO` -> `SemVer`), `findFiles`, `readText`, `writeText`, `appendText`, `readJson`, `writeJson`, `mkdir`, `copy`, `copyTree`, `move`, `remove`, `removeTreeIfExists`, `setAttributes`, `setNtfsCompression` (`FSCTL_SET_COMPRESSION`), and `extract` (`RSWPAK1` `#220`). |
+| **`reg.*`** | **Stateless `view` (`RegView.Native64` \| `RegView.Wow32` \| `RegView.Both`)** across `exists`, `readString`, `readDword`, `listSubkeys`, `listValues`, `writeString`, `writeExpandString`, `writeDword`, `deleteValue`, and `deleteKeyTree` (100% rollback-journaled). |
+| **`ini.*` / `xml.*` / `json.*`** | `ini.{read,write,deleteKey,sections}`; `xml.{readText,readAttr,replaceAttr,setElementText}`; `json.{parse,stringify}`. |
+| **`str.*` / `regex.*`** | `str.{len,lower,upper,trim,contains,startsWith,endsWith,indexOf,replace,split,join,slice}`; `regex.{isMatch,match,replace}`. |
+| **`archive.*` / `crypto.*`** | `archive.{extractZip,createPak,extractPak}`; `crypto.{sha256File,sha256Text,crc32Text,verifyAuthenticode}` (`WinVerifyTrust`). |
+| **`net.*` / `log.*`** | `net.download(url, dest, sha256?)` & `net.getText(url)` via TLS 1.2/1.3 `WinHTTP`; `log.{info,warn,error}` (`/l=<path>`). |
+| **`proc.*`** | `isRunning`, `listRunning`, `terminate`, `open`, `callDllInt` (native 64-bit FFI), and **3-token `proc.run(..., token: Token.Current \| Token.Elevated \| Token.Desktop)`** (`Token.Desktop` duplicates `explorer.exe`'s medium-IL shell token via `CreateProcessWithTokenW` so Finish-launched apps never run elevated!). |
+| **`msi.*` / `prereq.*`** | `msi.{isUpgradeInstalled,isProductInstalled,isNativeInstalled,install,uninstall,applyPatch,runLegacyUninstaller}`; `prereq.{isDotNetDesktopInstalled,isAspNetInstalled,isWebView2Installed,isVcRedist2022Installed,installPreset}`. |
+| **`shortcut.*` / `shell.*` / `env.*` / `arp.*`** | `shortcut.{create,remove}`; `shell.{registerFileType,registerProtocol,refresh}`; `env.{get,set,remove,appendPath}` (idempotent non-clobbering `;` append + `WM_SETTINGCHANGE`); `arp.{register,setSystemComponent,unregister}`. |
+| **`svc.*` / `task.*` / `firewall.*` / `acl.*`** | `svc.{exists,status,install,configureFailureReset,start,stop,remove}`; `task.{exists,createWeekly,remove}`; `firewall.{allowProgram,removeRule}`; `acl.grantModify`. |
+| **`ui.*` / `wizard.*` / `showcase.*`** | Zero-`MessageBox` native `comctl32.dll` **`ui.taskDialog`** (Command Links, UAC shield icons, collapsible `detailsBody`, `verifyText` checkbox, `ref` out-bindings, & silent auto-bypass), `ui.{info,warn,error,confirm,pickFolder,pickFile,progress}`, `wizard.{next,back,cancel}`, and `showcase.{navigate,setHotspotEnabled,setHotspotBadge,playAudio,stopAudio}`. |
 
 ```csharp
 // ============================================================================
