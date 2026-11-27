@@ -1,6 +1,6 @@
-# raggiesoftstudio.com — RaggieSoft Installer Studio Storefront
+# raggiesoftstudio.com — RaggieSoft Studio 8-Tool Suite Portal
 
-Official B2B software storefront, VPAT 2.5 Accessibility Conformance Center, and `/llms.txt` AI documentation portal for **RaggieSoft Installer Studio — *Install Without Limits*** (`https://raggiesoftstudio.com`, `301` target of `https://installwithoutlimits.com`).
+Official B2B software storefront, VPAT 2.5 Accessibility Conformance Center, `RaggieScript` (`.rssc`) language hub, and `/llms.txt` AI documentation portal for **RaggieSoft Studio** (`https://raggiesoftstudio.com`; `https://installwithoutlimits.com` permanently `301` redirects to `https://raggiesoftstudio.com/installer-studio`, and `https://a11y.raggiesoft.com` `301` redirects to `https://raggiesoftstudio.com/accessibility-studio`).
 
 - **Stack:** Alpine.js 3 + TypeScript + Vite Static SSG
 - **Toolchain Source:** [github.com/raggiesoft/installer-studio](https://github.com/raggiesoft/installer-studio)

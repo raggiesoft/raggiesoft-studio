@@ -2,15 +2,17 @@
 <!--
   ============================================================================
   FILE: index.html
-  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  PROPERTY: https://raggiesoftstudio.com (installwithoutlimits.com 301s -> /installer-studio)
   STACK: Alpine.js 3 + TypeScript + Vite Static SSG
   LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
   ============================================================================
   PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
     This HTML5 document is the master shell for `raggiesoftstudio.com`
-    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
-    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
-    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+    (RaggieSoft Studio: Eight-Tool Developer, Packaging & Compliance Suite —
+    Home of Installer Studio, Accessibility Studio, Training Studio, Help Studio,
+    Document Studio, Localization Studio, Launcher Studio, and Showcase Studio;
+    `installwithoutlimits.com` 301s to `/installer-studio` and
+    `a11y.raggiesoft.com` 301s to `/accessibility-studio`).
       1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
          ecosystem layer so desktop visitors get the top RaggieSoft Network
          omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
@@ -58,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Localization Studio — Multilingual .RESX, XLIFF, and WebVTT Compliance IDE." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/localization-studio#webpage","url":"https://raggiesoftstudio.com/localization-studio","name":"RaggieSoft Localization Studio — .RESX, XLIFF & WebVTT","description":"Side-by-side .RESX, XLIFF 2.1, .rsip, .rstp, and WebVTT localization IDE with locked format tokens, & mnemonic checks, and <=25 CPS caption gates.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-MfrxA2yI.js"></script>
+    <script type="module" crossorigin src="/assets/index-DouIn_8Y.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -124,6 +126,8 @@
               <li><a class="nav-link" href="/localization-studio" aria-current="page">Localization</a></li>
               <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
               <li><a class="nav-link" href="/showcase-studio">Showcase</a></li>
+              <li><a class="nav-link" href="/editions">Editions</a></li>
+              <li><a class="nav-link" href="/raggiescript">RaggieScript</a></li>
             </ul>
           </nav>
         </div>
@@ -182,6 +186,72 @@
         </article>
       </div>
     </section>
+
+    <section class="lms-sandbox" aria-labelledby="loc-sim-heading" x-data="{ checkCase: 'vtt_cps' }">
+      <span class="eyebrow">Interactive Compile-Time Gate Preview • rsloc --validate</span>
+      <h2 id="loc-sim-heading" style="margin-top: 0.25rem;">Test Live Placeholder, Win32 <code>&amp;</code> Accelerator &amp; WebVTT Speed Checks</h2>
+      <div class="btn-row" role="group" aria-label="Select Localization Validation Scenario" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="checkCase === 'vtt_cps' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'vtt_cps'">1. Translated WebVTT Overrun (31.4 CPS)</button>
+        <button type="button" class="btn" :class="checkCase === 'mnemonic' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'mnemonic'">2. Duplicate Alt+Key Dialog Clash</button>
+        <button type="button" class="btn" :class="checkCase === 'token_ok' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'token_ok'">3. Verified Clean Build (0 Errors)</button>
+      </div>
+      <div class="lms-sim-card" aria-live="polite">
+        <div x-show="checkCase === 'vtt_cps'">
+          <span class="release-badge">Blocked at Compile Time • Diagnostic RSLOC018</span>
+          <h3><code>es-MX/slide02.vtt</code> Cue #04 Exceeds 22.0 CPS Reading Threshold (Measured: <code>31.4 CPS</code>)</h3>
+          <pre class="lms-log-pre">[RSLOC018] ERROR es-MX/slide02.vtt:14:1 — Cue 00:12.000 --&gt; 00:14.800 (2.80s) contains 88 chars (31.4 CPS &gt; 22.0 CPS max).
+Suggested Guided Fix: Split into two synchronized cues at clause boundary (15.7 CPS each) or extend cue end to 00:16.100.</pre>
+        </div>
+        <div x-show="checkCase === 'mnemonic'" style="display: none;">
+          <span class="release-badge">Blocked at Compile Time • Diagnostic RSLOC009</span>
+          <h3><code>de-DE/SetupStrings.rslang</code> Duplicate <code>Alt+A</code> Accelerator on <code>ReadyDlg</code></h3>
+          <pre class="lms-log-pre">[RSLOC009] ERROR de-DE/SetupStrings.rslang:42 — Both "&amp;Abbrechen" (Cancel) and "&amp;Aktualisieren" (Update) claim Alt+A on ReadyDlg!
+Suggested Solver Fix: Reassign Cancel to "A&amp;bbrechen" (Alt+B — conflict-free across all 6 controls on ReadyDlg).</pre>
+        </div>
+        <div x-show="checkCase === 'token_ok'" style="display: none;">
+          <span class="release-badge">Build Verified • Exit Code 0</span>
+          <h3>All 12 Locales Passed Token Lock (<code>$(ARCH)</code>, <code>[INSTALLDIR]</code>, <code>{0}</code>), Mnemonics &amp; <code>&le;22 CPS</code> Gates</h3>
+          <pre class="lms-log-pre">[OK] rsloc --validate workspace.rsloc: 1,420 strings, 36 WebVTT tracks, 0 broken tokens, 0 mnemonic collisions.</pre>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="calc-panel" aria-label="RaggieSoft Localization Studio Four-Edition Lineup and Roadmap Status">
+      <span class="eyebrow">Suite-Wide 4-Edition Symmetry • Coming Soon • Safe Multilingual App, Installer & Caption IDE</span>
+      <h2 style="margin-top: 0.25rem;">RaggieSoft Localization Studio — Four Named Editions (<code>Community == Architect</code>)</h2>
+      <p style="margin-top: 0;">
+        Available standalone or bundled inside the 8-tool <strong>All-Access RaggieSoft Studio Suite</strong>—including the free
+        <strong>RaggieSoft Studio Community Edition Suite</strong> for hobbyists, students, educators, and open-source authors.
+      </p>
+      <div class="pipeline-grid" style="margin-bottom: 1rem;">
+        <article class="pipeline-step">
+          <span class="pipeline-num">Free • Hobbyist, EDU &amp; OSS</span>
+          <h3>Community Edition</h3>
+          <p style="margin-bottom: 0;"><strong>100% technical parity with Architect Edition</strong>, zero watermarks, and full publisher ownership.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 1 • 1 Seat</span>
+          <h3>Essentials Edition</h3>
+          <p style="margin-bottom: 0;">Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code>, &amp; <code>.vtt</code> editor with locked variable tokens.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 2 • + CI/CD</span>
+          <h3>Developer Edition</h3>
+          <p style="margin-bottom: 0;">Adds automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <code>RaggieScript</code> rules, &amp; CI/CD.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 3 • Enterprise</span>
+          <h3>Architect Edition</h3>
+          <p style="margin-bottom: 0;">Adds Cross-Suite Shared Translation Memory &amp; Terminology Glossary across apps/help/SCORM plus Multilingual VPAT 2.5.</p>
+        </article>
+      </div>
+      <div class="btn-row" style="margin-top: 0.5rem;">
+        <a class="btn btn-primary" href="/editions">Compare All 8 Products &amp; Suite Bundles &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) Profile &rarr;</a>
+      </div>
+    </section>
+  
   
     </main>
 
@@ -189,6 +259,8 @@
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
           <a href="/installer-studio">Installer Studio (v0.5.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/training-studio">Training Studio (v0.1.0)</a>

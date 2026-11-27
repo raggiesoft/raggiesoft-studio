@@ -2,15 +2,17 @@
 <!--
   ============================================================================
   FILE: index.html
-  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  PROPERTY: https://raggiesoftstudio.com (installwithoutlimits.com 301s -> /installer-studio)
   STACK: Alpine.js 3 + TypeScript + Vite Static SSG
   LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
   ============================================================================
   PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
     This HTML5 document is the master shell for `raggiesoftstudio.com`
-    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
-    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
-    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+    (RaggieSoft Studio: Eight-Tool Developer, Packaging & Compliance Suite —
+    Home of Installer Studio, Accessibility Studio, Training Studio, Help Studio,
+    Document Studio, Localization Studio, Launcher Studio, and Showcase Studio;
+    `installwithoutlimits.com` 301s to `/installer-studio` and
+    `a11y.raggiesoft.com` 301s to `/accessibility-studio`).
       1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
          ecosystem layer so desktop visitors get the top RaggieSoft Network
          omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
@@ -58,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Modern Windows 11 FluentMica Launchpads." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/showcase-studio#webpage","url":"https://raggiesoftstudio.com/showcase-studio","name":"RaggieSoft Showcase Studio — Accessible Collector Menus","description":"Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-MfrxA2yI.js"></script>
+    <script type="module" crossorigin src="/assets/index-DouIn_8Y.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -87,7 +89,7 @@
           <img class="brand-mark" src="https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg" width="36" height="36" alt="" aria-hidden="true" />
           <span class="brand-text-col">
             <span class="brand-title">RaggieSoft Studio</span>
-            <span class="brand-sub">Showcase Studio • Accessible 1990s .BMP &amp; Windows 11 FluentMica Menus</span>
+            <span class="brand-sub">Showcase Studio • Accessible 1990s .BMP, FluentMica &amp; _support\ Installers</span>
           </span>
         </a>
 
@@ -124,6 +126,8 @@
               <li><a class="nav-link" href="/localization-studio">Localization</a></li>
               <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
               <li><a class="nav-link" href="/showcase-studio" aria-current="page">Showcase</a></li>
+              <li><a class="nav-link" href="/editions">Editions</a></li>
+              <li><a class="nav-link" href="/raggiescript">RaggieScript</a></li>
             </ul>
           </nav>
         </div>
@@ -424,6 +428,110 @@ Action            = goto_page
 TargetPage        = BooksShelf
 FocusUp           = InstallApps</pre>
     </section>
+
+    <section class="calc-panel" aria-labelledby="showcase-bespoke-installer-heading">
+      <span class="eyebrow">Community &amp; Architect Editions • Bespoke Full-Canvas Self-Extracting Installers</span>
+      <h2 id="showcase-bespoke-installer-heading" style="margin-top: 0.25rem;">Build Heavily Themed Custom Installers with <code>_support\</code> Staging, Registry, Shortcuts &amp; UAC</h2>
+      <p>
+        Ever wished you could build a richly illustrated, non-rectangular or full-canvas installation experience that standard
+        wizard templates simply cannot express—without losing clean rollback or Windows <em>Installed apps</em> registration?
+        In <strong>Community</strong> and <strong>Architect</strong> editions, <strong>Showcase Studio</strong> unlocks the
+        <code>installer.*</code> <a href="/raggiescript"><code>RaggieScript</code></a> namespace directly inside your
+        <code>.rssp</code> project:
+      </p>
+      <div class="grid-2x2" style="margin-bottom: 0;">
+        <article class="card card-highlight">
+          <h3>1. Self-Extracting <code>_support\</code> Payload Directory</h3>
+          <p style="margin-bottom: 0;">
+            Designate any files or folders to travel inside an embedded <code>_support\</code> staging archive inside your single
+            <code>.exe</code>, then unpack or <code>fs.copy()</code> / <code>fs.extract()</code> them onto the PC with live canvas
+            progress bars and automatic temp cleanup.
+          </p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Selectable UAC Manifests (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>)</h3>
+          <p style="margin-bottom: 0;">
+            Stamp your exact Win32 execution level onto the compiled Showcase <code>.exe</code>—or browse lore/music un-elevated as
+            <code>asInvoker</code> and trigger single-UAC split-worker elevation only when the user clicks <strong>Install</strong>!
+          </p>
+        </article>
+        <article class="card">
+          <h3>3. Full Registry, Start Menu / Desktop Shortcuts &amp; File Copy APIs</h3>
+          <p style="margin-bottom: 0;">
+            Call <code>reg.writeString</code> / <code>reg.writeDword</code>, <code>shortcut.create</code>, and <code>fs.copyTree</code>
+            directly from hotspot events—with every mutating call automatically journaled to <code>.rsw-rollback.jnl</code> for
+            clean cancellation rollback and native <code>Uninstall.exe</code> generation!
+          </p>
+        </article>
+        <article class="card">
+          <h3>4. Official Front-Door of the 8-Tool RaggieSoft Studio Suite</h3>
+          <p style="margin-bottom: 0;">
+            Powers the interactive Suite Showcase front-end of RaggieSoft Studio itself—detecting already-installed tools via
+            <code>msi.isInstalled</code> and handing off seamlessly to our monotonic Dual-Bar Suite engine.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="lms-sandbox" aria-labelledby="showcase-live-sim-heading" x-data="{ skin: 'bmp95', uacMode: 'asInvoker', uiaAnnouncement: 'Button 1 of 3: Install Collector Suite (Alt+I). Launches transactional _support extraction.', scriptTrace: '[READY] ShowcaseStub.exe booted in 19ms (AutoPlayAudio=false, UIA Peers=3).' }">
+      <span class="eyebrow">Interactive Runtime Canvas Simulator • UI Automation + RaggieScript Trace</span>
+      <h2 id="showcase-live-sim-heading" style="margin-top: 0.25rem;">Test a Live Showcase Canvas Across 1990s <code>.BMP</code>, <code>FluentMica</code> &amp; High Contrast</h2>
+      <div class="btn-row" role="group" aria-label="Switch Live Showcase Canvas Skin" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="skin === 'bmp95' ? 'btn-primary' : 'btn-outline'" @click="skin = 'bmp95'; scriptTrace = '[THEME] Switched to 1990s #008080 .BMP + #C0C0C0 3D bevels (IntegerPixelScale=true).'">1990s #008080 .BMP Skin</button>
+        <button type="button" class="btn" :class="skin === 'mica11' ? 'btn-primary' : 'btn-outline'" @click="skin = 'mica11'; scriptTrace = '[THEME] Switched to Windows 11 DWMSBT_MAINWINDOW FluentMica 16:9 layout.'">Windows 11 FluentMica</button>
+        <button type="button" class="btn" :class="skin === 'hc' ? 'btn-primary' : 'btn-outline'" @click="skin = 'hc'; scriptTrace = '[A11Y] SPI_GETHIGHCONTRAST active: decorative bitmaps replaced with OS semantic colors.'">OS High-Contrast Theme</button>
+      </div>
+
+      <div class="lms-sim-card" :style="skin === 'bmp95' ? 'background:#008080; color:#0f172a; border:3px outset #e2e8f0;' : (skin === 'hc' ? 'background:#000000; color:#ffffff; border:2px solid #ffff00;' : '')">
+        <div :style="skin === 'bmp95' ? 'background:#c0c0c0; padding:1rem; border:2px outset #ffffff;' : ''">
+          <p style="margin-top: 0; font-weight: 700;">Collector's Box Set — Interactive Canvas Hotspots (Click or Tab + Enter):</p>
+          <div class="btn-row" style="margin-top: 0.5rem;">
+            <button type="button" class="btn btn-primary" @click="uiaAnnouncement = 'Installing from _support\\CoreApp to Program Files (Overall Progress: 100%, Rollback Journal Verified).'; scriptTrace = '[RSSC] installer.runTransaction -> fs.copyTree(sys.supportDir / &quot;CoreApp&quot;, destDir) + reg.writeString + shortcut.create [OK]'">1. &amp;Install App from _support</button>
+            <button type="button" class="btn btn-outline" :style="skin === 'bmp95' ? 'background:#e2e8f0; color:#0f172a; border:2px outset #ffffff;' : (skin === 'hc' ? 'color:#ffff00; border-color:#ffff00;' : '')" @click="uiaAnnouncement = 'Copied bonus PDF/UA-1 liner notes to Documents folder.'; scriptTrace = '[RSSC] fs.copy(sys.supportDir / &quot;LinerNotes-PDFUA.pdf&quot;, sys.documentsDir) [OK]'">2. Copy Bonus &amp;Liner Notes</button>
+            <button type="button" class="btn btn-outline" :style="skin === 'bmp95' ? 'background:#e2e8f0; color:#0f172a; border:2px outset #ffffff;' : (skin === 'hc' ? 'color:#ffff00; border-color:#ffff00;' : '')" @click="uiaAnnouncement = 'Playing commentary track with synchronized WebVTT captions enabled.'; scriptTrace = '[RSSC] audio.play(&quot;commentary.opus&quot;, captions: &quot;commentary.vtt&quot;, autoPlay: false) [OK]'">3. Play Captioned &amp;Audio Preview</button>
+          </div>
+        </div>
+        <pre class="lms-log-pre" aria-live="polite" style="margin-top: 0.85rem;">[Narrator / NVDA UIA]: <span x-text="uiaAnnouncement"></span>
+<span x-text="scriptTrace"></span></pre>
+      </div>
+    </section>
+
+    
+    <section class="calc-panel" aria-label="RaggieSoft Showcase Studio Four-Edition Lineup and Roadmap Status">
+      <span class="eyebrow">Suite-Wide 4-Edition Symmetry • Coming Soon • Retro .BMP + Modern FluentMica + Bespoke Installers</span>
+      <h2 style="margin-top: 0.25rem;">RaggieSoft Showcase Studio — Four Named Editions (<code>Community == Architect</code>)</h2>
+      <p style="margin-top: 0;">
+        Available standalone or bundled inside the 8-tool <strong>All-Access RaggieSoft Studio Suite</strong>—including the free
+        <strong>RaggieSoft Studio Community Edition Suite</strong> for hobbyists, students, educators, and open-source authors.
+      </p>
+      <div class="pipeline-grid" style="margin-bottom: 1rem;">
+        <article class="pipeline-step">
+          <span class="pipeline-num">Free • Hobbyist, EDU &amp; OSS</span>
+          <h3>Community Edition</h3>
+          <p style="margin-bottom: 0;"><strong>100% technical parity with Architect Edition</strong>, zero watermarks, and full publisher ownership.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 1 • 1 Seat</span>
+          <h3>Essentials Edition</h3>
+          <p style="margin-bottom: 0;">Visual <code>.rssp</code> 1990s <code>.BMP</code> &amp; Windows 11 <code>FluentMica</code> menus, declarative launch actions, &amp; 4-way focus routing.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 2 • + CI/CD</span>
+          <h3>Developer Edition</h3>
+          <p style="margin-bottom: 0;">Adds <code>RaggieScript</code> (<code>showcase.*</code> reactive menus &amp; live <code>msi.isInstalled</code> state switching), templates, &amp; CI/CD.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 3 • Enterprise</span>
+          <h3>Architect Edition</h3>
+          <p style="margin-bottom: 0;">Adds Bespoke Full-Canvas Self-Extracting Installers (<code>_support\</code>, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC), Suite front-door, Kiosk Mode, &amp; Auto-VPAT 2.5.</p>
+        </article>
+      </div>
+      <div class="btn-row" style="margin-top: 0.5rem;">
+        <a class="btn btn-primary" href="/editions">Compare All 8 Products &amp; Suite Bundles &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) Profile &rarr;</a>
+      </div>
+    </section>
+  
   
     </main>
 
@@ -431,6 +539,8 @@ FocusUp           = InstallApps</pre>
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
           <a href="/installer-studio">Installer Studio (v0.5.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/training-studio">Training Studio (v0.1.0)</a>

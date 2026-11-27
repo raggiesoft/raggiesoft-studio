@@ -50,4 +50,9 @@
 
 8. **RaggieSoft Showcase Studio (Design Preview & Mockups)**:
    - Product Page: https://raggiesoftstudio.com/showcase-studio
-   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA safeguards to modern Windows 11 `FluentMica` collector menus.
+   - Summary: Visual canvas IDE (`.rssp` plain-text manifests) compiling zero-dependency Win32 C++20 interactive launchpads (`x64` & `ARM64`)—from nostalgic 1990s `.BMP` CD-ROM showcases upgraded with WCAG 2.2 AA safeguards to modern Windows 11 `FluentMica` collector menus and bespoke `_support\` self-extracting canvas installers.
+
+## Suite-Wide Editions, RaggieScript (.rssc) & RaggieSoft Labs
+- **Suite-Wide Editions & Licensing Matrix**: https://raggiesoftstudio.com/editions (All 8 Studio tools + All-Access Studio Suites across `Community == 100% Architect Parity`, `Essentials`, `Developer`, and `Architect`).
+- **RaggieScript (`.rssc`) Language Hub & Playground**: https://raggiesoftstudio.com/raggiescript (Unified C-family bytecode scripting engine across `std.*` Windows micro-apps and all 8 Studio tools).
+- **RaggieSoft Labs & Fin# (`FinSharp`) Compiler R&D**: https://raggiesoft.dev/labs and https://raggiesoft.dev/labs/finsharp (Linear-type double-entry financial compiler enforcing conservation of capital at compile time).

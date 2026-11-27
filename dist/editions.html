@@ -1,0 +1,374 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (installwithoutlimits.com 301s -> /installer-studio)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Eight-Tool Developer, Packaging & Compliance Suite —
+    Home of Installer Studio, Accessibility Studio, Training Studio, Help Studio,
+    Document Studio, Localization Studio, Launcher Studio, and Showcase Studio;
+    `installwithoutlimits.com` 301s to `/installer-studio` and
+    `a11y.raggiesoft.com` 301s to `/accessibility-studio`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Suite Editions &amp; Licensing Matrix | RaggieSoft Studio</title>
+    <meta name="description" content="Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/editions" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="Suite Editions &amp; Licensing Matrix | RaggieSoft Studio" />
+    <meta property="og:description" content="Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites." />
+    <meta property="og:url" content="https://raggiesoftstudio.com/editions" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-raggiesoft-studio-suite.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Suite Editions &amp; Licensing Matrix | RaggieSoft Studio" />
+    <meta name="twitter:description" content="Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-raggiesoft-studio-suite.jpg" />
+    <meta name="twitter:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/editions#webpage","url":"https://raggiesoftstudio.com/editions","name":"Suite Editions & Licensing Matrix | RaggieSoft Studio","description":"Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-DouIn_8Y.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <img class="brand-mark" src="https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg" width="36" height="36" alt="" aria-hidden="true" />
+          <span class="brand-text-col">
+            <span class="brand-title">RaggieSoft Studio</span>
+            <span class="brand-sub">Suite-Wide Editions • Community == 100% Architect Parity Across All 8 Tools</span>
+          </span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite</a></li>
+              <li><a class="nav-link" href="/installer-studio">Installer</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility</a></li>
+              <li><a class="nav-link" href="/training-studio">Training</a></li>
+              <li><a class="nav-link" href="/help-studio">Help</a></li>
+              <li><a class="nav-link" href="/document-studio">Document</a></li>
+              <li><a class="nav-link" href="/localization-studio">Localization</a></li>
+              <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
+              <li><a class="nav-link" href="/showcase-studio">Showcase</a></li>
+              <li><a class="nav-link" href="/editions" aria-current="page">Editions</a></li>
+              <li><a class="nav-link" href="/raggiescript">RaggieScript</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+    <section class="hero" aria-labelledby="suite-editions-title">
+      <span class="eyebrow">All 8 Studio Products + All-Access Suites • Community == 100% Architect Parity</span>
+      <h1 id="suite-editions-title">RaggieSoft Studio Editions &amp; All-Access Suite Matrix</h1>
+      <p class="lead">
+        Every product in the <strong>8-tool RaggieSoft Studio lineup</strong>—<em>Installer</em>, <em>Showcase</em>,
+        <em>Launcher</em>, <em>Help</em>, <em>Training</em>, <em>Document</em>, <em>Localization</em>, and
+        <em>Accessibility Studio</em>—adopts the exact same four named editions (<strong>Community</strong>,
+        <strong>Essentials</strong>, <strong>Developer</strong>, and <strong>Architect</strong>), available individually or as a
+        unified <strong>All-Access RaggieSoft Studio Suite</strong> license—explicitly including our free
+        <strong>RaggieSoft Studio Community Edition Suite</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/installer-studio/raggiesoft-installer-studio-setup.exe">Download Installer Studio v0.5.0 Preview</a>
+        <a class="btn btn-outline" href="https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe">Download Accessibility Studio v1.0.0</a>
+        <a class="btn btn-outline" href="/installer-studio/editions">Detailed 25-Row Installer Matrix &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) &rarr;</a>
+      </div>
+      
+    <aside class="calc-panel" aria-label="Signed Binary and Temporary Windows SmartScreen Reputation Notice" style="margin-top: 1.15rem; padding: 1rem 1.2rem;">
+      <span class="eyebrow" style="margin-bottom: 0.25rem;">Signed Binary Notice • Why Windows SmartScreen Still Prompts Temporarily</span>
+      <p style="margin: 0 0 0.55rem 0; font-size: 0.95rem;">
+        <strong>100% Cryptographically Signed:</strong>
+        Every official RaggieSoft Studio download—including Universal Web &amp; Offline <code>Setup.exe</code> launchers,
+        inner <code>x64</code> &amp; <code>ARM64</code> <code>.msi</code> databases, <strong>Installer Studio
+        <code>v0.5.0</code></strong>, and <strong>Accessibility Studio <code>v1.0.0</code></strong>—is Dual-Layer
+        Authenticode-signed via <strong>Microsoft Azure Artifact Signing</strong> (<code>Verified publisher: Michael Ragsdale</code>,
+        RFC 3161 timestamped, and verified with <code>signtool verify /pa</code>).
+      </p>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted);">
+        <strong>Why SmartScreen may still say &ldquo;Windows protected your PC&rdquo; right now:</strong>
+        Our Microsoft Public Trust signing certificate is brand-new (issued <strong>November 25, 2026</strong>). Under
+        Microsoft&rsquo;s current SmartScreen rules, newly issued certificates start at zero download reputation until initial
+        install volume and <strong>Microsoft Security Intelligence (WDSI)</strong> review complete (already submitted).
+        To install safely while reputation clears: click <strong>More info</strong>, confirm Windows shows
+        <strong><code>Publisher: Michael Ragsdale</code></strong> (never <em>&ldquo;Unknown publisher&rdquo;</em>), and click
+        <strong>Run anyway</strong>.
+        <a href="/installer-studio/faq#smartscreen">Full details in the FAQ &rarr;</a>
+      </p>
+    </aside>
+  
+    </section>
+
+    <section class="lms-sandbox" aria-labelledby="edition-recommender-heading" x-data="{ orgType: 'indie', toolScope: 'suite' }">
+      <span class="eyebrow">Interactive Licensing Advisor • Zero-Account Evaluation</span>
+      <h2 id="edition-recommender-heading" style="margin-top: 0.25rem;">Which Edition or All-Access Suite Fits Your Workflow?</h2>
+      <div class="calc-controls" style="margin-top: 0.85rem;">
+        <div class="field-group">
+          <label for="rec-org">1. Who is building and shipping?</label>
+          <select id="rec-org" x-model="orgType" style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+            <option value="indie">Hobbyist, Student, Educator, Non-Profit, OSS, or Micro-Indie</option>
+            <option value="solo_isv">Commercial Solo ISV / Desktop App Publisher (Guided No-Code)</option>
+            <option value="team_ci">Commercial Engineering Team (RaggieScript + Headless CI/CD)</option>
+            <option value="enterprise">Enterprise, Government / Section 508, or Multi-Product Suite Publisher</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="rec-scope">2. How many Studio tools do you need?</label>
+          <select id="rec-scope" x-model="toolScope" style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+            <option value="suite">2+ Tools (Packaging + Help + A11y + Showcase / Full 8-Tool Suite)</option>
+            <option value="single">Just 1 Standalone Tool (e.g., Installer Studio or Training Studio)</option>
+            <option value="sfx_only">Only Basic Folder / .ZIP Self-Extractors (%TEMP% Wrapper)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="lms-sim-card" aria-live="polite">
+        <div x-show="toolScope === 'sfx_only'">
+          <span class="release-badge">Recommended: Standalone Self-Extractor Utility (rswsfx.exe)</span>
+          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Coming in <code>v0.6.0</code>)</h3>
+          <p style="margin-bottom: 0;">
+            If you only need to wrap a folder or <code>.zip</code> into a signed <code>LZMS</code> single-file <code>.exe</code>
+            (including silent extraction to <code>%TEMP%</code>, launching an inner setup, waiting on child cleanup helpers like
+            <code>_ISDEL.EXE</code>, and scrubbing <code>%TEMP%</code> afterward), our standalone <strong>Self-Extractor</strong>
+            utility handles the job without needing a full MSI authoring IDE—and is also bundled inside every edition of Installer Studio!
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'indie'" style="display: none;">
+          <span class="release-badge">Recommended: Free Community Edition (100% Architect Parity)</span>
+          <h3 x-text="toolScope === 'suite' ? 'RaggieSoft Studio Community Edition Suite (All 8 Tools — Free)' : 'Standalone Community Edition (100% Architect Parity — Free)'">RaggieSoft Studio Community Edition Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong>100% of Architect Edition</strong> across all 8 Studio tools—including <code>RaggieScript</code>
+            (<code>.rssc</code>), Showcase Studio bespoke <code>_support\</code> canvas installers, <code>.rsis</code> Dual-Bar
+            Suites, <code>.MSP</code> binary-delta patches, and automated HTML5 VPAT 2.5 exports—with <strong>zero watermarks</strong>!
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'solo_isv'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 1 — Essentials</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Essentials Suite' : 'Standalone Product — Essentials Edition'">All-Access RaggieSoft Studio Essentials Suite</h3>
+          <p style="margin-bottom: 0;">
+            Built for 1-workstation guided commercial shipping: native <code>x64</code> &amp; <code>ARM64</code> <code>.MSI</code> +
+            <code>Setup.exe</code>, <code>sfx</code> self-extractors, <code>.MSM</code> Merge Module consumption, Major Upgrades,
+            WCAG 2.2 AA runtime UI, and full Authenticode / Azure Artifact Signing.
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'team_ci'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 2 — Developer</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Developer Suite' : 'Standalone Product — Developer Edition'">All-Access RaggieSoft Studio Developer Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> across your tools, <code>.MSM</code> Merge Module
+            creation, custom C++ &amp; <code>MSI.DLL</code> dialog designers, legacy <code>.CHM</code> / VB6 <code>.vbp</code> /
+            <code>.slnx</code> importers, <code>msiprism.exe</code>, SARIF 2.1.0 gates, and headless GitHub Actions / Azure DevOps build agents.
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'enterprise'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 3 — Architect</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Architect Suite (Complete 8-Tool Flagship)' : 'Standalone Product — Architect Edition'">All-Access RaggieSoft Studio Architect Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong>Unified Multi-Product <code>.rsis</code> Suites</strong> (monotonic Dual-Bar progress + dynamic
+            <code>ARPSYSTEMCOMPONENT</code> adoption), <strong>Showcase Studio bespoke <code>_support\</code> canvas installers</strong>,
+            <code>.MSP</code> binary-delta patches, federated cross-product Help &amp; Translation Memory, and one-command
+            <strong>HTML5 VPAT 2.5</strong> conformance reports across every tool.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="eight-tool-matrix-heading" x-data="{ suiteCat: 'all' }">
+      <span class="eyebrow">Complete 8-Product × 4-Edition Master Table</span>
+      <h2 id="eight-tool-matrix-heading" style="margin-top: 0.25rem;">How Community, Essentials, Developer &amp; Architect Map Across All 8 Tools</h2>
+      <div class="btn-row" role="group" aria-label="Filter 8-tool edition matrix by discipline" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="suiteCat === 'all' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'all'">All 8 Studio Products</button>
+        <button type="button" class="btn" :class="suiteCat === 'pkg' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'pkg'">Packaging, Hubs &amp; Showcase (3)</button>
+        <button type="button" class="btn" :class="suiteCat === 'docs' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'docs'">Help, Docs, Localization, Training &amp; A11y (5)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Suite-Wide Edition Capabilities Across All 8 RaggieSoft Studio Tools (Community Permanently Equals Architect)</caption>
+          <thead>
+            <tr>
+              <th scope="col">RaggieSoft Studio Product</th>
+              <th scope="col">Essentials<br /><small>(Tier 1: Guided 1-Seat)</small></th>
+              <th scope="col">Developer<br /><small>(Tier 2: RaggieScript &amp; CI/CD)</small></th>
+              <th scope="col">Architect &amp; Community<br /><small>(Tier 3 / Free Community Parity)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/installer-studio">1. Installer Studio</a><br /><small><code>.rsip</code> / <code>.rsis</code> • C++20</small></th>
+              <td><code>.MSI</code> + <code>Setup.exe</code>, <code>sfx</code> + <code>rswsfx.exe</code>, consume <code>.MSM</code>, Major Upgrades, 11 Wizard Styles, Azure Signing</td>
+              <td>+ Compile <code>.MSM</code>, <strong><code>RaggieScript</code></strong> (<code>installer.*</code>), Custom C++ &amp; SQL Dialogs, <code>.slnx</code>/VB6 <code>.vbp</code> importers, <code>msiprism</code>, CI/CD</td>
+              <td>+ <strong>Unified <code>.rsis</code> Dual-Bar Suites</strong>, <code>.MSP</code> binary-delta patches &amp; <code>.MST</code>, Disk Spanning / <code>msiexec /a</code>, <code>.rswpak</code>, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/showcase-studio">2. Showcase Studio</a><br /><small><code>.rssp</code> • C++20</small></th>
+              <td>Visual 1990s <code>.BMP</code> &amp; <code>FluentMica</code> menus, declarative launch actions, 4-way focus matrix, High-Contrast fallback</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>showcase.*</code> reactive menus, <code>msi.isInstalled</code> Install &harr; Launch states), custom templates, CI/CD</td>
+              <td>+ <strong>Bespoke Full-Canvas Self-Extracting Installers</strong> (<code>_support\</code> staging, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC manifest, rollback), Suite front-door, Kiosk Mode, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/launcher-studio">3. Launcher Studio</a><br /><small><code>.rslp</code> • .NET 11</small></th>
+              <td>Guided single-channel branded desktop app/media hub + static <code>catalog.json</code> + SHA-256 / Authenticode check</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>launcher.*</code> pre-launch/GPU checks), <code>stable</code>/<code>beta</code> rings, delta updates, CI/CD</td>
+              <td>+ Air-gapped Intranet / UNC mirror mode, enterprise GPO templates, multi-brand hubs, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> • C++20 / .NET 11</small></th>
+              <td>Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + static web manual</td>
+              <td>+ <strong>Legacy <code>.CHM</code> / <code>.hhp</code> Decompiler &amp; Importer</strong>, <strong><code>RaggieScript</code></strong> (<code>help.*</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
+              <td>+ <strong>Cross-Suite Federated Help Search</strong> (merging N product manuals), conditional OEM tags, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/training-studio">5. Training Studio</a><br /><small><code>.rstp</code> • .NET 11</small></th>
+              <td>Visual <code>.rstp</code> + Markdown + <code>.vtt</code> &rarr; <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 <code>.zip</code></td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>training.*</code> ES2022 branching scenarios &amp; custom rubrics), Hostile LMS Simulator, CI/CD</td>
+              <td>+ <strong><code>audit-scorm</code> Third-Party SCORM <code>.zip</code> Auditor</strong>, multi-course curricula, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/document-studio">6. Document Studio</a><br /><small><code>.rsdp</code> • .NET 11</small></th>
+              <td>Visual <code>.rsdp</code> + Markdown &rarr; machine-verified ISO 14289-1 Tagged <code>PDF/UA-1</code> + accessible HTML5</td>
+              <td>+ <strong>Accessible Fillable AcroForm Builder</strong>, <strong><code>RaggieScript</code></strong> (<code>document.*</code> JSON/CSV batch merge), CI/CD</td>
+              <td>+ Full Matterhorn Protocol Certificate, <code>PDF/A-2a + PDF/UA-1</code> dual archival stamp, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/localization-studio">7. Localization Studio</a><br /><small><code>.rsloc</code> • .NET 11</small></th>
+              <td>Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code> &amp; <code>.vtt</code> editor + locked placeholder tokens</td>
+              <td>+ Automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <strong><code>RaggieScript</code></strong> (<code>localization.*</code>), CI/CD</td>
+              <td>+ <strong>Cross-Suite Shared Translation Memory &amp; Glossary</strong> across apps/help/SCORM + Multilingual VPAT 2.5</td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/accessibility-studio">8. Accessibility Studio</a><br /><small><code>.a11yproj</code> • .NET 11</small></th>
+              <td>Desktop IDE (<code>AccessibilityStudio.exe</code>) single-project WCAG 2.2 AA source audit &amp; Monaco Guided Fix diffs</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>a11y.*</code> custom org rules), headless <code>a11y-studio-cli</code> CI/CD gates &amp; SARIF 2.1.0</td>
+              <td>+ <strong>Executive HTML5 VPAT 2.5 Generator</strong>, multi-repo portfolio rollups, &amp; Enterprise GPO MSI</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
+          <a href="/installer-studio">Installer Studio (v0.5.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
+          <a href="/training-studio">Training Studio (v0.1.0)</a>
+          <a href="/help-studio">Help Studio (.CHM / F1)</a>
+          <a href="/document-studio">Document Studio (PDF/UA-1)</a>
+          <a href="/localization-studio">Localization Studio</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/editions">Installer Editions</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="/training-studio/llms-full.txt">Training /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>

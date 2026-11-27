@@ -2,7 +2,7 @@
   "name": "raggiesoft-studio-web",
   "version": "1.0.0",
   "private": true,
-  "description": "RaggieSoft Installer Studio official B2B & open-source portal (raggiesoftstudio.com, 301 target of installwithoutlimits.com) — Alpine.js + TypeScript + Vite Static SSG",
+  "description": "RaggieSoft Studio official 8-tool developer, packaging & compliance portal (raggiesoftstudio.com; installwithoutlimits.com 301s -> /installer-studio) — Alpine.js + TypeScript + Vite Static SSG",
   "type": "module",
   "license": "MIT",
   "scripts": {

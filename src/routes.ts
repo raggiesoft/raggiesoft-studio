@@ -98,6 +98,7 @@ const A11Y_STUDIO_WEB_SETUP_URL =
   'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe';
 const SHOT_BASE = `${ASSET_BASE}/screenshots`;
 const STUDIO_MOCKUP_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/mockups';
+const STUDIO_PREVIEWS_BASE = 'https://assets.raggiesoft.com/raggiesoft-studio/previews';
 const GITHUB_INSTALLER_URL = 'https://github.com/raggiesoft/installer-studio';
 const GITHUB_A11Y_URL = 'https://github.com/raggiesoft/accessibility-studio';
 const LIVE_VPAT_URL = '/installer-studio/vpat/raggiesoft-installer-studio-vpat-2.5.html';
@@ -421,6 +422,48 @@ const WIZARD_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
   }
 ];
 
+const V060_LAB_PREVIEW_ITEMS: readonly ScreenshotFeatureItem[] = [
+  {
+    dialogId: 'dlg-prev-suite-dual',
+    imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v060-suite-dual-progress.png`,
+    badge: 'In-Lab Preview • v0.6.0 Unified Suite (.rsis)',
+    title: 'Monotonic Dual-Bar Suite Setup & Taskbar Progress (Zero Resets)',
+    alt: 'Real Windows 11 C++20 capture of RaggieSoft Studio Unified Suite Setup v0.6.0 showing a 4-product checklist with [Required] lock, monotonic 58% Overall Suite Progress bar (Package 2 of 4), live 64% Current Component progress bar, and single-UAC Install Selected button.',
+    summaryHtml:
+      '<strong>Zero Sawtooth Resets:</strong> Renders a byte-weighted, strictly monotonic <strong>Overall Suite Progress</strong> bar (<code>0%&ndash;100%</code>, bound 1:1 to Windows Taskbar <code>ITaskbarList3</code>) above a live <strong>Current Component</strong> bar streaming real-time <code>MSI.DLL</code> and <code>Engine = native</code> progress.',
+    detailHtml:
+      'Engineered to power the 8-tool RaggieSoft Studio Suite (including free <em>RaggieSoft Studio Community</em>): dynamically adopts standalone sibling installs under one clean Windows <em>Installed apps</em> maintenance entry (<code>ARPSYSTEMCOMPONENT=1</code>) and executes all selected packages under a single UAC prompt.',
+    actionHref: '/editions',
+    actionLabel: 'Explore Suite Editions →'
+  },
+  {
+    dialogId: 'dlg-prev-sfx-compact',
+    imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v060-sfx-compact.png`,
+    badge: 'In-Lab Preview • v0.6.0 Self-Extractor & Standalone Tool',
+    title: 'Compact LZMS Self-Extractor & %TEMP% Software Wrapper',
+    alt: 'Real Windows 11 Dark Mode C++20 capture of Portable Zip Utility v0.6.0 Self-Extracting Archive showing destination folder C:\\PortableApps\\ZipUtility, live 42% LZMS unpacking progress bar, Open document after extraction checkbox, and Extract button.',
+    summaryHtml:
+      '<strong><code>PackageKind = sfx</code> + Standalone <code>rswsfx.exe</code>:</strong> Compresses any folder or <code>.zip</code> into a zero-dependency <code>LZMS</code> single-file <code>.exe</code>—or extracts silently to <code>%TEMP%</code> to run your inner setup, wait on child cleanup helpers (<code>_ISDEL.EXE</code>), and scrub <code>%TEMP%</code> afterward.',
+    detailHtml:
+      'Ships inside every edition of Installer Studio (including <strong>Essentials</strong> and <strong>Community</strong>) and as a dedicated standalone desktop utility for instant single-file archives with automatic Dark Mode, Light Mode, and Windows Contrast Theme compliance.',
+    actionHref: '/installer-studio/roadmap',
+    actionLabel: 'v0.6.0 Roadmap →'
+  },
+  {
+    dialogId: 'dlg-prev-aero-dark',
+    imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v060-aerowizard-true-dark.png`,
+    badge: 'In-Lab Preview • v0.6.0 7 Guided IDE AeroWizards',
+    title: 'True Dark Mode Native Win32 AeroWizards (SFX, Native & Suites)',
+    alt: 'Real Windows 11 Dark Mode C++20 capture of InstallerStudio.exe Step 1 of 3 Self-Extracting .EXE and Simple Native Setup Wizard showing dark titlebar, back navigation button, cyan instruction heading, dark combobox and text inputs, and Next/Cancel buttons.',
+    summaryHtml:
+      '<strong>7 Guided Wizards in <code>InstallerStudio.exe</code>:</strong> Expands the IDE wizard shelf with guided <strong>Self-Extractor / Simple Native Setup</strong> and <strong>Unified Multi-Product Suite</strong> AeroWizards rendered natively in crisp Windows 11 Dark &amp; Light Mode.',
+    detailHtml:
+      'Replaces stock light-only shell wizard chrome in Dark Mode with Per-Monitor V2 DPI custom-painted AeroWizard command surfaces, full <code>Alt+Key</code> mnemonics, and lossless comment-preserving <code>.rsip</code> generation.',
+    actionHref: '/raggiescript',
+    actionLabel: 'Explore RaggieScript →'
+  }
+];
+
 const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-help-viewer',
@@ -563,9 +606,10 @@ function renderSuiteHomeBody(): string {
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="/installer-studio">Installer Studio (v0.5.0 Flagship) &rarr;</a>
+            <a class="btn btn-outline" href="/editions">Suite Editions &amp; Free Community &rarr;</a>
+            <a class="btn btn-outline" href="/raggiescript">RaggieScript (.rssc) Hub &rarr;</a>
             <a class="btn btn-outline" href="/accessibility-studio">Accessibility Studio (v1.0.0) &rarr;</a>
             <a class="btn btn-outline" href="/training-studio">Try Training Studio SCORM Demo &rarr;</a>
-            <a class="btn btn-outline" href="/help-studio">Preview Help Studio (.CHM / F1) &rarr;</a>
           </div>
           ${renderAzureSigningAssuranceNotice()}
         </div>
@@ -690,6 +734,21 @@ function renderSuiteHomeBody(): string {
       </div>
     </section>
 
+    <section aria-labelledby="lab-v060-heading">
+      <span class="eyebrow">Coming Next in the Studio Lab • Real Native Win32 C++20 Captures (Click for 1:1 View)</span>
+      <h2 id="lab-v060-heading" style="margin-top: 0.25rem;">In the Lab: Monotonic Dual-Bar Suites, %TEMP% Self-Extractors &amp; True Dark AeroWizards</h2>
+      <p>
+        While our signed <strong>Installer Studio <code>v0.5.0</code></strong> release completes initial Windows SmartScreen
+        reputation review, active <code>v0.6.0</code> &amp; <code>v0.7.0</code> engineering continues daily—bringing unified
+        multi-product <code>.rsis</code> Suites with <strong>zero-reset monotonic Overall + Component dual progress bars</strong>,
+        compact <code>LZMS</code> self-extractors (<code>_ISDEL.EXE</code>-aware <code>%TEMP%</code> wrappers + standalone
+        <code>rswsfx.exe</code>), and Suite-wide <a href="/raggiescript"><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong></a>!
+      </p>
+      <div class="shot-grid">
+        ${V060_LAB_PREVIEW_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
+      </div>
+    </section>
+
     <section aria-labelledby="upcoming-mockups-heading">
       <span class="eyebrow">Early Design Previews • Click Any Mockup for Full-Size 1280&times;800 Inspection</span>
       <h2 id="upcoming-mockups-heading" style="margin-top: 0.25rem;">Preview Upcoming Showcase Studio &amp; Launcher Studio Concepts</h2>
@@ -746,6 +805,415 @@ function renderSuiteHomeBody(): string {
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Reusable 4-Edition product summary strip (`Community == 100% Architect Parity`, `Essentials`,
+ * `Developer`, `Architect`) rendered across sibling Studio product pages so visitors see consistent
+ * Suite-wide licensing symmetry on every tool page.
+ */
+function renderProductFourEditionStrip(opts: {
+  productName: string;
+  essentialsSummary: string;
+  developerSummary: string;
+  architectSummary: string;
+  statusNote: string;
+}): string {
+  return `
+    <section class="calc-panel" aria-label="${opts.productName} Four-Edition Lineup and Roadmap Status">
+      <span class="eyebrow">Suite-Wide 4-Edition Symmetry • ${opts.statusNote}</span>
+      <h2 style="margin-top: 0.25rem;">${opts.productName} — Four Named Editions (<code>Community == Architect</code>)</h2>
+      <p style="margin-top: 0;">
+        Available standalone or bundled inside the 8-tool <strong>All-Access RaggieSoft Studio Suite</strong>—including the free
+        <strong>RaggieSoft Studio Community Edition Suite</strong> for hobbyists, students, educators, and open-source authors.
+      </p>
+      <div class="pipeline-grid" style="margin-bottom: 1rem;">
+        <article class="pipeline-step">
+          <span class="pipeline-num">Free • Hobbyist, EDU &amp; OSS</span>
+          <h3>Community Edition</h3>
+          <p style="margin-bottom: 0;"><strong>100% technical parity with Architect Edition</strong>, zero watermarks, and full publisher ownership.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 1 • 1 Seat</span>
+          <h3>Essentials Edition</h3>
+          <p style="margin-bottom: 0;">${opts.essentialsSummary}</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 2 • + CI/CD</span>
+          <h3>Developer Edition</h3>
+          <p style="margin-bottom: 0;">${opts.developerSummary}</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 3 • Enterprise</span>
+          <h3>Architect Edition</h3>
+          <p style="margin-bottom: 0;">${opts.architectSummary}</p>
+        </article>
+      </div>
+      <div class="btn-row" style="margin-top: 0.5rem;">
+        <a class="btn btn-primary" href="/editions">Compare All 8 Products &amp; Suite Bundles &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) Profile &rarr;</a>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/editions` — Suite-Wide 8-Product & All-Access Bundle Matrix + Interactive Edition Recommender.
+ */
+function renderSuiteEditionsBody(): string {
+  return `
+    <section class="hero" aria-labelledby="suite-editions-title">
+      <span class="eyebrow">All 8 Studio Products + All-Access Suites • Community == 100% Architect Parity</span>
+      <h1 id="suite-editions-title">RaggieSoft Studio Editions &amp; All-Access Suite Matrix</h1>
+      <p class="lead">
+        Every product in the <strong>8-tool RaggieSoft Studio lineup</strong>—<em>Installer</em>, <em>Showcase</em>,
+        <em>Launcher</em>, <em>Help</em>, <em>Training</em>, <em>Document</em>, <em>Localization</em>, and
+        <em>Accessibility Studio</em>—adopts the exact same four named editions (<strong>Community</strong>,
+        <strong>Essentials</strong>, <strong>Developer</strong>, and <strong>Architect</strong>), available individually or as a
+        unified <strong>All-Access RaggieSoft Studio Suite</strong> license—explicitly including our free
+        <strong>RaggieSoft Studio Community Edition Suite</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Download Installer Studio v0.5.0 Preview</a>
+        <a class="btn btn-outline" href="${A11Y_STUDIO_WEB_SETUP_URL}">Download Accessibility Studio v1.0.0</a>
+        <a class="btn btn-outline" href="/installer-studio/editions">Detailed 25-Row Installer Matrix &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) &rarr;</a>
+      </div>
+      ${renderAzureSigningAssuranceNotice()}
+    </section>
+
+    <section class="lms-sandbox" aria-labelledby="edition-recommender-heading" x-data="{ orgType: 'indie', toolScope: 'suite' }">
+      <span class="eyebrow">Interactive Licensing Advisor • Zero-Account Evaluation</span>
+      <h2 id="edition-recommender-heading" style="margin-top: 0.25rem;">Which Edition or All-Access Suite Fits Your Workflow?</h2>
+      <div class="calc-controls" style="margin-top: 0.85rem;">
+        <div class="field-group">
+          <label for="rec-org">1. Who is building and shipping?</label>
+          <select id="rec-org" x-model="orgType" style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+            <option value="indie">Hobbyist, Student, Educator, Non-Profit, OSS, or Micro-Indie</option>
+            <option value="solo_isv">Commercial Solo ISV / Desktop App Publisher (Guided No-Code)</option>
+            <option value="team_ci">Commercial Engineering Team (RaggieScript + Headless CI/CD)</option>
+            <option value="enterprise">Enterprise, Government / Section 508, or Multi-Product Suite Publisher</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="rec-scope">2. How many Studio tools do you need?</label>
+          <select id="rec-scope" x-model="toolScope" style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+            <option value="suite">2+ Tools (Packaging + Help + A11y + Showcase / Full 8-Tool Suite)</option>
+            <option value="single">Just 1 Standalone Tool (e.g., Installer Studio or Training Studio)</option>
+            <option value="sfx_only">Only Basic Folder / .ZIP Self-Extractors (%TEMP% Wrapper)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="lms-sim-card" aria-live="polite">
+        <div x-show="toolScope === 'sfx_only'">
+          <span class="release-badge">Recommended: Standalone Self-Extractor Utility (rswsfx.exe)</span>
+          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Coming in <code>v0.6.0</code>)</h3>
+          <p style="margin-bottom: 0;">
+            If you only need to wrap a folder or <code>.zip</code> into a signed <code>LZMS</code> single-file <code>.exe</code>
+            (including silent extraction to <code>%TEMP%</code>, launching an inner setup, waiting on child cleanup helpers like
+            <code>_ISDEL.EXE</code>, and scrubbing <code>%TEMP%</code> afterward), our standalone <strong>Self-Extractor</strong>
+            utility handles the job without needing a full MSI authoring IDE—and is also bundled inside every edition of Installer Studio!
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'indie'" style="display: none;">
+          <span class="release-badge">Recommended: Free Community Edition (100% Architect Parity)</span>
+          <h3 x-text="toolScope === 'suite' ? 'RaggieSoft Studio Community Edition Suite (All 8 Tools — Free)' : 'Standalone Community Edition (100% Architect Parity — Free)'">RaggieSoft Studio Community Edition Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong>100% of Architect Edition</strong> across all 8 Studio tools—including <code>RaggieScript</code>
+            (<code>.rssc</code>), Showcase Studio bespoke <code>_support\\</code> canvas installers, <code>.rsis</code> Dual-Bar
+            Suites, <code>.MSP</code> binary-delta patches, and automated HTML5 VPAT 2.5 exports—with <strong>zero watermarks</strong>!
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'solo_isv'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 1 — Essentials</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Essentials Suite' : 'Standalone Product — Essentials Edition'">All-Access RaggieSoft Studio Essentials Suite</h3>
+          <p style="margin-bottom: 0;">
+            Built for 1-workstation guided commercial shipping: native <code>x64</code> &amp; <code>ARM64</code> <code>.MSI</code> +
+            <code>Setup.exe</code>, <code>sfx</code> self-extractors, <code>.MSM</code> Merge Module consumption, Major Upgrades,
+            WCAG 2.2 AA runtime UI, and full Authenticode / Azure Artifact Signing.
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'team_ci'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 2 — Developer</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Developer Suite' : 'Standalone Product — Developer Edition'">All-Access RaggieSoft Studio Developer Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> across your tools, <code>.MSM</code> Merge Module
+            creation, custom C++ &amp; <code>MSI.DLL</code> dialog designers, legacy <code>.CHM</code> / VB6 <code>.vbp</code> /
+            <code>.slnx</code> importers, <code>msiprism.exe</code>, SARIF 2.1.0 gates, and headless GitHub Actions / Azure DevOps build agents.
+          </p>
+        </div>
+        <div x-show="toolScope !== 'sfx_only' && orgType === 'enterprise'" style="display: none;">
+          <span class="release-badge">Recommended: Commercial Tier 3 — Architect</span>
+          <h3 x-text="toolScope === 'suite' ? 'All-Access RaggieSoft Studio Architect Suite (Complete 8-Tool Flagship)' : 'Standalone Product — Architect Edition'">All-Access RaggieSoft Studio Architect Suite</h3>
+          <p style="margin-bottom: 0;">
+            Unlocks <strong>Unified Multi-Product <code>.rsis</code> Suites</strong> (monotonic Dual-Bar progress + dynamic
+            <code>ARPSYSTEMCOMPONENT</code> adoption), <strong>Showcase Studio bespoke <code>_support\\</code> canvas installers</strong>,
+            <code>.MSP</code> binary-delta patches, federated cross-product Help &amp; Translation Memory, and one-command
+            <strong>HTML5 VPAT 2.5</strong> conformance reports across every tool.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="eight-tool-matrix-heading" x-data="{ suiteCat: 'all' }">
+      <span class="eyebrow">Complete 8-Product × 4-Edition Master Table</span>
+      <h2 id="eight-tool-matrix-heading" style="margin-top: 0.25rem;">How Community, Essentials, Developer &amp; Architect Map Across All 8 Tools</h2>
+      <div class="btn-row" role="group" aria-label="Filter 8-tool edition matrix by discipline" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="suiteCat === 'all' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'all'">All 8 Studio Products</button>
+        <button type="button" class="btn" :class="suiteCat === 'pkg' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'pkg'">Packaging, Hubs &amp; Showcase (3)</button>
+        <button type="button" class="btn" :class="suiteCat === 'docs' ? 'btn-primary' : 'btn-outline'" @click="suiteCat = 'docs'">Help, Docs, Localization, Training &amp; A11y (5)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Suite-Wide Edition Capabilities Across All 8 RaggieSoft Studio Tools (Community Permanently Equals Architect)</caption>
+          <thead>
+            <tr>
+              <th scope="col">RaggieSoft Studio Product</th>
+              <th scope="col">Essentials<br /><small>(Tier 1: Guided 1-Seat)</small></th>
+              <th scope="col">Developer<br /><small>(Tier 2: RaggieScript &amp; CI/CD)</small></th>
+              <th scope="col">Architect &amp; Community<br /><small>(Tier 3 / Free Community Parity)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/installer-studio">1. Installer Studio</a><br /><small><code>.rsip</code> / <code>.rsis</code> • C++20</small></th>
+              <td><code>.MSI</code> + <code>Setup.exe</code>, <code>sfx</code> + <code>rswsfx.exe</code>, consume <code>.MSM</code>, Major Upgrades, 11 Wizard Styles, Azure Signing</td>
+              <td>+ Compile <code>.MSM</code>, <strong><code>RaggieScript</code></strong> (<code>installer.*</code>), Custom C++ &amp; SQL Dialogs, <code>.slnx</code>/VB6 <code>.vbp</code> importers, <code>msiprism</code>, CI/CD</td>
+              <td>+ <strong>Unified <code>.rsis</code> Dual-Bar Suites</strong>, <code>.MSP</code> binary-delta patches &amp; <code>.MST</code>, Disk Spanning / <code>msiexec /a</code>, <code>.rswpak</code>, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/showcase-studio">2. Showcase Studio</a><br /><small><code>.rssp</code> • C++20</small></th>
+              <td>Visual 1990s <code>.BMP</code> &amp; <code>FluentMica</code> menus, declarative launch actions, 4-way focus matrix, High-Contrast fallback</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>showcase.*</code> reactive menus, <code>msi.isInstalled</code> Install &harr; Launch states), custom templates, CI/CD</td>
+              <td>+ <strong>Bespoke Full-Canvas Self-Extracting Installers</strong> (<code>_support\\</code> staging, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC manifest, rollback), Suite front-door, Kiosk Mode, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
+              <th scope="row"><a href="/launcher-studio">3. Launcher Studio</a><br /><small><code>.rslp</code> • .NET 11</small></th>
+              <td>Guided single-channel branded desktop app/media hub + static <code>catalog.json</code> + SHA-256 / Authenticode check</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>launcher.*</code> pre-launch/GPU checks), <code>stable</code>/<code>beta</code> rings, delta updates, CI/CD</td>
+              <td>+ Air-gapped Intranet / UNC mirror mode, enterprise GPO templates, multi-brand hubs, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> • C++20 / .NET 11</small></th>
+              <td>Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + static web manual</td>
+              <td>+ <strong>Legacy <code>.CHM</code> / <code>.hhp</code> Decompiler &amp; Importer</strong>, <strong><code>RaggieScript</code></strong> (<code>help.*</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
+              <td>+ <strong>Cross-Suite Federated Help Search</strong> (merging N product manuals), conditional OEM tags, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/training-studio">5. Training Studio</a><br /><small><code>.rstp</code> • .NET 11</small></th>
+              <td>Visual <code>.rstp</code> + Markdown + <code>.vtt</code> &rarr; <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 <code>.zip</code></td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>training.*</code> ES2022 branching scenarios &amp; custom rubrics), Hostile LMS Simulator, CI/CD</td>
+              <td>+ <strong><code>audit-scorm</code> Third-Party SCORM <code>.zip</code> Auditor</strong>, multi-course curricula, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/document-studio">6. Document Studio</a><br /><small><code>.rsdp</code> • .NET 11</small></th>
+              <td>Visual <code>.rsdp</code> + Markdown &rarr; machine-verified ISO 14289-1 Tagged <code>PDF/UA-1</code> + accessible HTML5</td>
+              <td>+ <strong>Accessible Fillable AcroForm Builder</strong>, <strong><code>RaggieScript</code></strong> (<code>document.*</code> JSON/CSV batch merge), CI/CD</td>
+              <td>+ Full Matterhorn Protocol Certificate, <code>PDF/A-2a + PDF/UA-1</code> dual archival stamp, <strong>Auto-VPAT 2.5</strong></td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/localization-studio">7. Localization Studio</a><br /><small><code>.rsloc</code> • .NET 11</small></th>
+              <td>Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code> &amp; <code>.vtt</code> editor + locked placeholder tokens</td>
+              <td>+ Automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <strong><code>RaggieScript</code></strong> (<code>localization.*</code>), CI/CD</td>
+              <td>+ <strong>Cross-Suite Shared Translation Memory &amp; Glossary</strong> across apps/help/SCORM + Multilingual VPAT 2.5</td>
+            </tr>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
+              <th scope="row"><a href="/accessibility-studio">8. Accessibility Studio</a><br /><small><code>.a11yproj</code> • .NET 11</small></th>
+              <td>Desktop IDE (<code>AccessibilityStudio.exe</code>) single-project WCAG 2.2 AA source audit &amp; Monaco Guided Fix diffs</td>
+              <td>+ <strong><code>RaggieScript</code></strong> (<code>a11y.*</code> custom org rules), headless <code>a11y-studio-cli</code> CI/CD gates &amp; SARIF 2.1.0</td>
+              <td>+ <strong>Executive HTML5 VPAT 2.5 Generator</strong>, multi-repo portfolio rollups, &amp; Enterprise GPO MSI</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renders `/raggiescript` — Dedicated RaggieScript (`.rssc`) Language Tour & 5-Profile Interactive Playground.
+ */
+function renderRaggieScriptHubBody(): string {
+  return `
+    <section class="hero" aria-labelledby="rssc-hero-title">
+      <span class="eyebrow">RaggieScript (.rssc) • Unified Studio &amp; Zero-Dependency Windows Micro-App Language</span>
+      <h1 id="rssc-hero-title">One Clean Curly-Brace Language Across All Eight Studio Tools.</h1>
+      <p class="lead">
+        <strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> combines familiar C# / TypeScript curly-brace syntax with a
+        compact <code>&lt;200 KB</code> static <code>/MT</code> C++20 bytecode VM (<code>RSWBC1</code> + standalone
+        <code>raggiescript.exe</code> CLI) and capability-gated host profiles. It is <strong>not</strong> trying to replace C# or
+        heavy application frameworks—instead, it owns <strong>zero-prerequisite (<code>0 MB</code> runtime) Windows micro-apps,
+        transactional zero-MSI installers, bespoke <code>_support\\</code> collector launchpads, and embedded Studio automation</strong>
+        across <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#rssc-playground">Try 5-Profile Code Playground &darr;</a>
+        <a class="btn btn-outline" href="/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md">Read Full Language Spec (.md)</a>
+        <a class="btn btn-outline" href="https://raggiesoft.dev/labs/finsharp">Explore Sibling Fin# Compiler Lab (raggiesoft.dev) &rarr;</a>
+      </div>
+    </section>
+
+    <section id="rssc-playground" class="lms-sandbox" aria-labelledby="rssc-play-heading" x-data="{ profile: 'showcase' }">
+      <span class="eyebrow">Interactive 5-Profile Language Explorer • Compile-Time Capability Sandbox</span>
+      <h2 id="rssc-play-heading" style="margin-top: 0.25rem;">Inspect How <code>RaggieScript</code> Adapts Across Studio Hosts &amp; Standalone EXEs</h2>
+      <div class="btn-row" role="tablist" aria-label="Select RaggieScript Host Profile" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="profile === 'showcase' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'showcase')" @click="profile = 'showcase'">1. Showcase _support\\ Canvas Installer</button>
+        <button type="button" class="btn" :class="profile === 'installer' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'installer')" @click="profile = 'installer'">2. Installer Zero-MSI Setup</button>
+        <button type="button" class="btn" :class="profile === 'microapp' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'microapp')" @click="profile = 'microapp'">3. Standalone Windows Micro-App</button>
+        <button type="button" class="btn" :class="profile === 'training' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'training')" @click="profile = 'training'">4. Training SCORM Branching</button>
+        <button type="button" class="btn" :class="profile === 'a11y' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'a11y')" @click="profile = 'a11y'">5. Custom A11y &amp; Localization Gate</button>
+      </div>
+
+      <div x-show="profile === 'showcase'">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>use showcase; use installer;</code> (Showcase Studio — Community &amp; Architect):</strong>
+          Bundle payload files inside an embedded self-extracting <code>_support\\</code> staging directory, stamp your exact UAC
+          manifest (<code>Uac.AsInvoker</code>, <code>Uac.HighestAvailable</code>, or <code>Uac.RequireAdministrator</code>), and
+          drive full file copy/extraction, Registry keys, and Start Menu shortcuts from a custom-painted <code>.BMP</code> or
+          <code>FluentMica</code> canvas—with automatic rollback journaling!
+        </p>
+        <pre aria-label="RaggieScript Showcase Studio Bespoke Canvas Installer with _support Directory">use std;
+use showcase;
+use installer; // Unlocked in Showcase Studio Community &amp; Architect Editions
+
+showcase "Starlight Collector's Box Set" {
+  style:      CanvasStyle.RetroBmp95;       // Or CanvasStyle.FluentMica16x9
+  uac:        Uac.RequireAdministrator;     // asInvoker | highestAvailable | requireAdministrator
+  supportDir: "./_support";                 // Bundled into self-extracting EXE &amp; unpacked on demand
+  autoPlay:   false;                        // Enforced false by WCAG 2.2 SC 1.4.2
+}
+
+let destDir: path = sys.programFiles / "Starlight" / "CollectorEdition";
+
+on hotspot("BtnInstall").click {
+  installer.runTransaction(productId: "{7C91E240-41B0-4F92-9A2E-88B12044E901}") {
+    // Every fs.*, reg.*, and shortcut.* call auto-journals to .rsw-rollback.jnl!
+    fs.copyTree(from: sys.supportDir / "CoreGame", to: destDir, progress: "MainProgressBar");
+    fs.copy(from: sys.supportDir / "Soundtrack-Lossless.pak", to: destDir / "Audio" / "Soundtrack.pak");
+
+    reg.writeString(Hive.HKLM, "Software\\Starlight\\CollectorEdition", "InstallPath", str(destDir));
+    shortcut.create(ShortcutLocation.StartMenu, "Starlight Collector's Edition", destDir / "Starlight.exe");
+    shortcut.create(ShortcutLocation.Desktop,   "Starlight Collector's Edition", destDir / "Starlight.exe");
+  }
+  showcase.setHotspotLabel("BtnInstall", "&amp;Launch Collector's Edition");
+}</pre>
+      </div>
+
+      <div x-show="profile === 'installer'" style="display: none;">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>use installer;</code> (Installer Studio — Community, Developer &amp; Architect):</strong>
+          Compile 100% standalone zero-MSI <code>.rssc</code> installers (<code>/DELAYLOAD:msi.dll</code>, zero
+          <code>Global\_MSIExecute</code> mutex contention) with compile-time <code>wizard</code> vs. <code>install</code> phase isolation.
+        </p>
+        <pre aria-label="RaggieScript Zero-MSI Native Installer">use std;
+use installer;
+
+package "Sample Studio Workbench" {
+  id:      "{9B4E20A1-7C93-4D62-9B44-524147474950}";
+  version: 1.2.0;
+  uac:     Uac.AsInvoker;          // Prompts for UAC only when clicking Install!
+  style:   WizardStyle.FluentMica;
+}
+
+param installDir: path = sys.programFiles / "Sample Studio" / "Workbench";
+payload AppBins { from "..\\publish\\win-\${arch}\\*" -&gt; installDir; }
+
+wizard {
+  step Welcome     { ui.welcome("Welcome to Sample Studio Workbench"); }
+  step Destination { ui.folderPicker(label: "&amp;Destination folder:", bind: ref installDir); }
+  step Ready       { ui.readySummary(installButton: "&amp;Install"); }
+}
+
+install {
+  fs.extract(AppBins);
+  reg.writeString(Hive.HKLM, "Software\\SampleStudio\\Workbench", "Version", "1.2.0");
+  shortcut.create(ShortcutLocation.StartMenu, "Sample Studio Workbench", installDir / "Workbench.exe");
+}</pre>
+      </div>
+
+      <div x-show="profile === 'microapp'" style="display: none;">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>use std; use ui.dialog;</code> (Standalone <code>raggiescript.exe --compile-exe</code>):</strong>
+          Build single-file <code>&lt;250 KB</code> native Windows diagnostic utilities, config patchers, and support tools that run
+          on clean Windows 11 <code>x64</code> &amp; <code>ARM64</code> PCs with zero external runtimes.
+        </p>
+        <pre aria-label="RaggieScript Standalone General-Purpose Windows Utility">use std;
+use ui.dialog;
+
+app "Audio Endpoint Diagnostic Utility" {
+  uac:   Uac.AsInvoker;
+  theme: Theme.FollowSystemWithHighContrast;
+}
+
+fn main(): int {
+  let cfgPath: path = sys.localAppData / "SampleStudio" / "audio-settings.json";
+  if (!fs.exists(cfgPath)) {
+    ui.info("No local audio profile found; writing clean default configuration.");
+    fs.writeJson(cfgPath, { sampleRateHz: 48000, exclusiveMode: false });
+  }
+  let digest: string = crypto.sha256File(cfgPath);
+  ui.taskDialog(title: "Profile Verified", body: "SHA-256: " + digest);
+  return 0;
+}</pre>
+      </div>
+
+      <div x-show="profile === 'training'" style="display: none;">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>use training;</code> (Training Studio — Sandboxed ES2022 Target, Zero Filesystem/Network Access):</strong>
+          Author deterministic branching scenarios and weighted quiz rubrics that transpile into clean, <code>eval()</code>-free
+          ES2022 inside <code>&lt;50 KB</code> SCORM 1.2 &amp; SCORM 2004 packages.
+        </p>
+        <pre aria-label="RaggieScript Training Studio SCORM Branching Rubric">use training; // Filesystem, Registry &amp; Process namespaces forbidden at compile time!
+
+scenario "CaptionComplianceCheck" {
+  on answer(questionId: "Q3_ReadingSpeed", choice: selected) {
+    if (selected == "Over30Cps") {
+      course.routeRemediation(slideId: "Slide04_CaptionPacing");
+      course.announcePolite("Reviewing WCAG caption reading-speed guidance before retry.");
+    } else {
+      course.awardPoints(points: 25, objectiveId: "OBJ_WCAG_CAPTIONS");
+    }
+  }
+}</pre>
+      </div>
+
+      <div x-show="profile === 'a11y'" style="display: none;">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>use a11y; use localization;</code> (Accessibility &amp; Localization Studio CI/CD Rules):</strong>
+          Enforce organization-specific design tokens, ARIA landmarks, and localized caption constraints emitting OASIS SARIF 2.1.0.
+        </p>
+        <pre aria-label="RaggieScript Custom Accessibility and Localization Lint Rule">use a11y;
+use localization;
+
+rule "ORG-A11Y-014: Brand Dialog Buttons Must Preserve Keyboard Accelerators" {
+  severity: Severity.Error;
+  on localizedString(src, target, locale) {
+    if (localization.hasMnemonic(src) &amp;&amp; !localization.hasMnemonic(target)) {
+      report.error(code: "ORG-A11Y-014", message: "Missing '&amp;' keyboard accelerator in locale " + locale);
+    }
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="calc-panel" aria-labelledby="finsharp-bridge-heading">
+      <span class="eyebrow">Compiler Engineering Cross-Pollination • RaggieSoft Labs</span>
+      <h2 id="finsharp-bridge-heading" style="margin-top: 0.25rem;">From <code>RaggieScript</code> Phase Isolation to Zo&euml;'s <code>Fin#</code> Linear-Type Compiler</h2>
+      <p>
+        <code>RaggieScript</code>'s compile-time separation between side-effect-free <code>wizard { ... }</code> steps and
+        double-entry journaled <code>install { ... }</code> blocks shares architectural DNA with our experimental
+        <strong>RaggieSoft Labs</strong> research project on <a href="https://raggiesoft.dev/labs/finsharp"><strong><code>Fin#</code>
+        (<em>Financial Sharp</em> — <code>raggiesoft.dev/labs/finsharp</code>)</strong></a>—a domain-specific <code>.NET</code> /
+        Roslyn-inspired financial compiler enforcing conservation of capital at compile time!
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://raggiesoft.dev/labs/finsharp">Visit Fin# Compiler Lab on raggiesoft.dev &rarr;</a>
+        <a class="btn btn-outline" href="/editions">View Suite-Wide Editions Matrix</a>
       </div>
     </section>
   `;
@@ -933,6 +1401,17 @@ function renderTrainingStudioBody(): string {
         </table>
       </div>
     </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Training Studio',
+      statusNote: 'v0.5.0 Visual IDE & CLI Built • Live SCORM Demo Above',
+      essentialsSummary:
+        'Visual <code>.rstp</code> + Markdown + verified <code>.vtt</code> compiler emitting <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 packages.',
+      developerSummary:
+        'Adds <code>RaggieScript</code> (<code>training.*</code> branching scenarios &amp; custom rubrics), embedded Hostile LMS Simulator, &amp; CI/CD.',
+      architectSummary:
+        'Adds <code>rstbuild audit-scorm</code> legacy third-party SCORM <code>.zip</code> compliance auditor, multi-course curricula, &amp; Auto-VPAT 2.5.'
+    })}
   `;
 }
 
@@ -1006,6 +1485,45 @@ function renderHelpStudioBody(): string {
         </article>
       </div>
     </section>
+
+    <section class="lms-sandbox" aria-labelledby="help-sim-heading" x-data="{ ctxId: 'IDH_WIZARD_STYLES', hcMode: false }">
+      <span class="eyebrow">Interactive Preview • Sub-5ms Named Pipe F1 Context Routing</span>
+      <h2 id="help-sim-heading" style="margin-top: 0.25rem;">Try Legacy <code>HtmlHelpW</code> &rarr; Native Dark-Mode <code>RaggieSoftHelp.exe</code> Routing</h2>
+      <div class="btn-row" role="group" aria-label="Simulate pressing F1 on a dialog control" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="ctxId === 'IDH_WIZARD_STYLES' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_WIZARD_STYLES'">Press F1 in Wizard Designer (0x1040)</button>
+        <button type="button" class="btn" :class="ctxId === 'IDH_COMPONENT_KEYPATH' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_COMPONENT_KEYPATH'">Press F1 in Components Tree (0x1082)</button>
+        <button type="button" class="btn" :class="ctxId === 'IDH_CHM_UNC_SHARE' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_CHM_UNC_SHARE'">Test Network UNC Share (\\\\fileserver\\help)</button>
+        <button type="button" class="btn btn-outline" @click="hcMode = !hcMode" x-text="hcMode ? 'Disable High-Contrast Preview' : 'Toggle High-Contrast (SPI_GETHIGHCONTRAST)'">Toggle High-Contrast</button>
+      </div>
+      <div class="lms-sim-card" :style="hcMode ? 'background:#000000; color:#ffff00; border:2px solid #00ffff;' : ''" aria-live="polite">
+        <p style="margin: 0 0 0.45rem; font-family: monospace; font-size: 0.86rem;">
+          <strong>Named Pipe IPC:</strong> <code>\\\\.\\pipe\\RaggieSoftHelp_v1</code> &bull; Context Symbol: <code x-text="ctxId">IDH_WIZARD_STYLES</code> &bull; Latency: <strong>1.8 ms</strong> (Zero IE <code>mshtml.dll</code>!)
+        </p>
+        <div x-show="ctxId === 'IDH_WIZARD_STYLES'">
+          <h3 style="margin-top: 0.25rem;">Topic Resolved: <code>selection-tree-and-dialogs.html#wizard-styles</code></h3>
+          <p style="margin-bottom: 0;">Imported cleanly from legacy <code>[MAP] #define IDH_WIZARD_STYLES 4160</code> &amp; <code>[ALIAS]</code> sections inside <code>project.hhp</code>—rendered natively via <code>System32\\Msftedit.dll</code> with full Dark Mode &amp; High-Contrast compliance.</p>
+        </div>
+        <div x-show="ctxId === 'IDH_COMPONENT_KEYPATH'" style="display: none;">
+          <h3 style="margin-top: 0.25rem;">Topic Resolved: <code>components-and-keypaths.html#ice38</code></h3>
+          <p style="margin-bottom: 0;">Single-instance focus handoff jumps an already-open <code>RaggieSoftHelp.exe</code> window directly to anchor <code>#ice38</code> without spawning duplicate viewer processes.</p>
+        </div>
+        <div x-show="ctxId === 'IDH_CHM_UNC_SHARE'" style="display: none;">
+          <h3 style="margin-top: 0.25rem;">UNC &amp; Mark-of-the-Web Safe: Renders 100% Intact Over Corporate File Shares</h3>
+          <p style="margin-bottom: 0;">Unlike legacy <code>.chm</code> files (which render blank <em>&ldquo;Navigation to the webpage was canceled&rdquo;</em> panes over UNC paths), <code>.rshm</code> modules render pure offline text/tables with zero active-script attack surface.</p>
+        </div>
+      </div>
+    </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Help Studio',
+      statusNote: 'Coming Soon • Powered by Our Shipping C++20 RaggieSoftHelp.exe Runtime',
+      essentialsSummary:
+        'Visual <code>.rshp</code> Markdown/HTML5 editor compiling modular <code>.rshm</code> packs, white-label <code>Help.exe</code> clients, &amp; static web docs.',
+      developerSummary:
+        'Adds turnkey legacy <code>.CHM</code> / <code>.hhp</code> / <code>.hhc</code> / <code>.hhk</code> importer, <code>RaggieScript</code> filters, &amp; C++/C#/VB6 <code>F1</code> SDK.',
+      architectSummary:
+        'Adds Cross-Suite Federated Help Search across multi-product installations, OEM conditional build tags, &amp; Auto-VPAT 2.5.'
+    })}
   `;
 }
 
@@ -1064,6 +1582,17 @@ function renderDocumentStudioBody(): string {
         </article>
       </div>
     </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Document Studio',
+      statusNote: 'Coming Soon • Zero-Acrobat ISO 14289-1 PDF/UA-1 Compiler',
+      essentialsSummary:
+        'Visual <code>.rsdp</code> + Markdown compiler emitting machine-verified Tagged <code>PDF/UA-1</code> handbooks &amp; accessible HTML5 companions.',
+      developerSummary:
+        'Adds Accessible Fillable AcroForm Builder (<code>/TU</code> tooltips &amp; <code>/Tabs /S</code>), <code>RaggieScript</code> CSV/JSON batch data-merge, &amp; CI/CD.',
+      architectSummary:
+        'Adds full Matterhorn Protocol verification certificate, dual <code>PDF/A-2a + PDF/UA-1</code> archival stamping, &amp; Auto-VPAT 2.5.'
+    })}
   `;
 }
 
@@ -1122,6 +1651,46 @@ function renderLocalizationStudioBody(): string {
         </article>
       </div>
     </section>
+
+    <section class="lms-sandbox" aria-labelledby="loc-sim-heading" x-data="{ checkCase: 'vtt_cps' }">
+      <span class="eyebrow">Interactive Compile-Time Gate Preview • rsloc --validate</span>
+      <h2 id="loc-sim-heading" style="margin-top: 0.25rem;">Test Live Placeholder, Win32 <code>&amp;</code> Accelerator &amp; WebVTT Speed Checks</h2>
+      <div class="btn-row" role="group" aria-label="Select Localization Validation Scenario" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="checkCase === 'vtt_cps' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'vtt_cps'">1. Translated WebVTT Overrun (31.4 CPS)</button>
+        <button type="button" class="btn" :class="checkCase === 'mnemonic' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'mnemonic'">2. Duplicate Alt+Key Dialog Clash</button>
+        <button type="button" class="btn" :class="checkCase === 'token_ok' ? 'btn-primary' : 'btn-outline'" @click="checkCase = 'token_ok'">3. Verified Clean Build (0 Errors)</button>
+      </div>
+      <div class="lms-sim-card" aria-live="polite">
+        <div x-show="checkCase === 'vtt_cps'">
+          <span class="release-badge">Blocked at Compile Time • Diagnostic RSLOC018</span>
+          <h3><code>es-MX/slide02.vtt</code> Cue #04 Exceeds 22.0 CPS Reading Threshold (Measured: <code>31.4 CPS</code>)</h3>
+          <pre class="lms-log-pre">[RSLOC018] ERROR es-MX/slide02.vtt:14:1 — Cue 00:12.000 --&gt; 00:14.800 (2.80s) contains 88 chars (31.4 CPS &gt; 22.0 CPS max).
+Suggested Guided Fix: Split into two synchronized cues at clause boundary (15.7 CPS each) or extend cue end to 00:16.100.</pre>
+        </div>
+        <div x-show="checkCase === 'mnemonic'" style="display: none;">
+          <span class="release-badge">Blocked at Compile Time • Diagnostic RSLOC009</span>
+          <h3><code>de-DE/SetupStrings.rslang</code> Duplicate <code>Alt+A</code> Accelerator on <code>ReadyDlg</code></h3>
+          <pre class="lms-log-pre">[RSLOC009] ERROR de-DE/SetupStrings.rslang:42 — Both "&amp;Abbrechen" (Cancel) and "&amp;Aktualisieren" (Update) claim Alt+A on ReadyDlg!
+Suggested Solver Fix: Reassign Cancel to "A&amp;bbrechen" (Alt+B — conflict-free across all 6 controls on ReadyDlg).</pre>
+        </div>
+        <div x-show="checkCase === 'token_ok'" style="display: none;">
+          <span class="release-badge">Build Verified • Exit Code 0</span>
+          <h3>All 12 Locales Passed Token Lock (<code>$(ARCH)</code>, <code>[INSTALLDIR]</code>, <code>{0}</code>), Mnemonics &amp; <code>&le;22 CPS</code> Gates</h3>
+          <pre class="lms-log-pre">[OK] rsloc --validate workspace.rsloc: 1,420 strings, 36 WebVTT tracks, 0 broken tokens, 0 mnemonic collisions.</pre>
+        </div>
+      </div>
+    </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Localization Studio',
+      statusNote: 'Coming Soon • Safe Multilingual App, Installer & Caption IDE',
+      essentialsSummary:
+        'Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code>, &amp; <code>.vtt</code> editor with locked variable tokens.',
+      developerSummary:
+        'Adds automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <code>RaggieScript</code> rules, &amp; CI/CD.',
+      architectSummary:
+        'Adds Cross-Suite Shared Translation Memory &amp; Terminology Glossary across apps/help/SCORM plus Multilingual VPAT 2.5.'
+    })}
   `;
 }
 
@@ -1255,6 +1824,17 @@ ReleaseNotesFile  = .\notes\synth-1.4.0.md
 Title             = Offline Liner Notes &amp; Soundtracks
 Layout            = covers</pre>
     </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Launcher Studio',
+      statusNote: 'Coming Soon • Zero-Account Desktop Hub & Static-CDN Updater IDE',
+      essentialsSummary:
+        'Guided <code>.rslp</code> single-channel desktop app &amp; media shelf compiler emitting signed static <code>catalog.json</code> feeds.',
+      developerSummary:
+        'Adds <code>RaggieScript</code> (<code>launcher.*</code> pre-launch/GPU checks), <code>stable</code>/<code>beta</code> release rings, binary deltas, &amp; CI/CD.',
+      architectSummary:
+        'Adds air-gapped Intranet / UNC mirror mode, enterprise GPO policy templates, multi-brand white-label hubs, &amp; Auto-VPAT 2.5.'
+    })}
   `;
 }
 
@@ -1441,6 +2021,84 @@ Action            = goto_page
 TargetPage        = BooksShelf
 FocusUp           = InstallApps</pre>
     </section>
+
+    <section class="calc-panel" aria-labelledby="showcase-bespoke-installer-heading">
+      <span class="eyebrow">Community &amp; Architect Editions • Bespoke Full-Canvas Self-Extracting Installers</span>
+      <h2 id="showcase-bespoke-installer-heading" style="margin-top: 0.25rem;">Build Heavily Themed Custom Installers with <code>_support\\</code> Staging, Registry, Shortcuts &amp; UAC</h2>
+      <p>
+        Ever wished you could build a richly illustrated, non-rectangular or full-canvas installation experience that standard
+        wizard templates simply cannot express—without losing clean rollback or Windows <em>Installed apps</em> registration?
+        In <strong>Community</strong> and <strong>Architect</strong> editions, <strong>Showcase Studio</strong> unlocks the
+        <code>installer.*</code> <a href="/raggiescript"><code>RaggieScript</code></a> namespace directly inside your
+        <code>.rssp</code> project:
+      </p>
+      <div class="grid-2x2" style="margin-bottom: 0;">
+        <article class="card card-highlight">
+          <h3>1. Self-Extracting <code>_support\\</code> Payload Directory</h3>
+          <p style="margin-bottom: 0;">
+            Designate any files or folders to travel inside an embedded <code>_support\\</code> staging archive inside your single
+            <code>.exe</code>, then unpack or <code>fs.copy()</code> / <code>fs.extract()</code> them onto the PC with live canvas
+            progress bars and automatic temp cleanup.
+          </p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Selectable UAC Manifests (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>)</h3>
+          <p style="margin-bottom: 0;">
+            Stamp your exact Win32 execution level onto the compiled Showcase <code>.exe</code>—or browse lore/music un-elevated as
+            <code>asInvoker</code> and trigger single-UAC split-worker elevation only when the user clicks <strong>Install</strong>!
+          </p>
+        </article>
+        <article class="card">
+          <h3>3. Full Registry, Start Menu / Desktop Shortcuts &amp; File Copy APIs</h3>
+          <p style="margin-bottom: 0;">
+            Call <code>reg.writeString</code> / <code>reg.writeDword</code>, <code>shortcut.create</code>, and <code>fs.copyTree</code>
+            directly from hotspot events—with every mutating call automatically journaled to <code>.rsw-rollback.jnl</code> for
+            clean cancellation rollback and native <code>Uninstall.exe</code> generation!
+          </p>
+        </article>
+        <article class="card">
+          <h3>4. Official Front-Door of the 8-Tool RaggieSoft Studio Suite</h3>
+          <p style="margin-bottom: 0;">
+            Powers the interactive Suite Showcase front-end of RaggieSoft Studio itself—detecting already-installed tools via
+            <code>msi.isInstalled</code> and handing off seamlessly to our monotonic Dual-Bar Suite engine.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="lms-sandbox" aria-labelledby="showcase-live-sim-heading" x-data="{ skin: 'bmp95', uacMode: 'asInvoker', uiaAnnouncement: 'Button 1 of 3: Install Collector Suite (Alt+I). Launches transactional _support extraction.', scriptTrace: '[READY] ShowcaseStub.exe booted in 19ms (AutoPlayAudio=false, UIA Peers=3).' }">
+      <span class="eyebrow">Interactive Runtime Canvas Simulator • UI Automation + RaggieScript Trace</span>
+      <h2 id="showcase-live-sim-heading" style="margin-top: 0.25rem;">Test a Live Showcase Canvas Across 1990s <code>.BMP</code>, <code>FluentMica</code> &amp; High Contrast</h2>
+      <div class="btn-row" role="group" aria-label="Switch Live Showcase Canvas Skin" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="skin === 'bmp95' ? 'btn-primary' : 'btn-outline'" @click="skin = 'bmp95'; scriptTrace = '[THEME] Switched to 1990s #008080 .BMP + #C0C0C0 3D bevels (IntegerPixelScale=true).'">1990s #008080 .BMP Skin</button>
+        <button type="button" class="btn" :class="skin === 'mica11' ? 'btn-primary' : 'btn-outline'" @click="skin = 'mica11'; scriptTrace = '[THEME] Switched to Windows 11 DWMSBT_MAINWINDOW FluentMica 16:9 layout.'">Windows 11 FluentMica</button>
+        <button type="button" class="btn" :class="skin === 'hc' ? 'btn-primary' : 'btn-outline'" @click="skin = 'hc'; scriptTrace = '[A11Y] SPI_GETHIGHCONTRAST active: decorative bitmaps replaced with OS semantic colors.'">OS High-Contrast Theme</button>
+      </div>
+
+      <div class="lms-sim-card" :style="skin === 'bmp95' ? 'background:#008080; color:#0f172a; border:3px outset #e2e8f0;' : (skin === 'hc' ? 'background:#000000; color:#ffffff; border:2px solid #ffff00;' : '')">
+        <div :style="skin === 'bmp95' ? 'background:#c0c0c0; padding:1rem; border:2px outset #ffffff;' : ''">
+          <p style="margin-top: 0; font-weight: 700;">Collector's Box Set — Interactive Canvas Hotspots (Click or Tab + Enter):</p>
+          <div class="btn-row" style="margin-top: 0.5rem;">
+            <button type="button" class="btn btn-primary" @click="uiaAnnouncement = 'Installing from _support\\\\CoreApp to Program Files (Overall Progress: 100%, Rollback Journal Verified).'; scriptTrace = '[RSSC] installer.runTransaction -> fs.copyTree(sys.supportDir / &quot;CoreApp&quot;, destDir) + reg.writeString + shortcut.create [OK]'">1. &amp;Install App from _support\</button>
+            <button type="button" class="btn btn-outline" :style="skin === 'bmp95' ? 'background:#e2e8f0; color:#0f172a; border:2px outset #ffffff;' : (skin === 'hc' ? 'color:#ffff00; border-color:#ffff00;' : '')" @click="uiaAnnouncement = 'Copied bonus PDF/UA-1 liner notes to Documents folder.'; scriptTrace = '[RSSC] fs.copy(sys.supportDir / &quot;LinerNotes-PDFUA.pdf&quot;, sys.documentsDir) [OK]'">2. Copy Bonus &amp;Liner Notes</button>
+            <button type="button" class="btn btn-outline" :style="skin === 'bmp95' ? 'background:#e2e8f0; color:#0f172a; border:2px outset #ffffff;' : (skin === 'hc' ? 'color:#ffff00; border-color:#ffff00;' : '')" @click="uiaAnnouncement = 'Playing commentary track with synchronized WebVTT captions enabled.'; scriptTrace = '[RSSC] audio.play(&quot;commentary.opus&quot;, captions: &quot;commentary.vtt&quot;, autoPlay: false) [OK]'">3. Play Captioned &amp;Audio Preview</button>
+          </div>
+        </div>
+        <pre class="lms-log-pre" aria-live="polite" style="margin-top: 0.85rem;">[Narrator / NVDA UIA]: <span x-text="uiaAnnouncement"></span>
+<span x-text="scriptTrace"></span></pre>
+      </div>
+    </section>
+
+    ${renderProductFourEditionStrip({
+      productName: 'RaggieSoft Showcase Studio',
+      statusNote: 'Coming Soon • Retro .BMP + Modern FluentMica + Bespoke Installers',
+      essentialsSummary:
+        'Visual <code>.rssp</code> 1990s <code>.BMP</code> &amp; Windows 11 <code>FluentMica</code> menus, declarative launch actions, &amp; 4-way focus routing.',
+      developerSummary:
+        'Adds <code>RaggieScript</code> (<code>showcase.*</code> reactive menus &amp; live <code>msi.isInstalled</code> state switching), templates, &amp; CI/CD.',
+      architectSummary:
+        'Adds Bespoke Full-Canvas Self-Extracting Installers (<code>_support\\</code>, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC), Suite front-door, Kiosk Mode, &amp; Auto-VPAT 2.5.'
+    })}
   `;
 }
 
@@ -2168,6 +2826,18 @@ function renderScreenshotsBody(): string {
       <h2 id="tour-tools-heading" style="margin-top: 0.25rem;">Instant F1 Offline Documentation &amp; 64-Bit SQL Database Inspection</h2>
       <div class="shot-grid">
         ${TOOLS_SCREENSHOT_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
+      </div>
+    </section>
+
+    <section id="v060-lab-previews" aria-labelledby="tour-lab-heading">
+      <span class="eyebrow">Part 4 • In the Lab: Coming Next in v0.6.0 (Real Win32 C++20 Builds)</span>
+      <h2 id="tour-lab-heading" style="margin-top: 0.25rem;">Monotonic Dual-Bar Suite Setup, Compact Self-Extractor &amp; True Dark AeroWizards</h2>
+      <p>
+        Captured directly from our active <code>v0.6.0</code> C++20 self-test suite while <code>v0.5.0</code> completes initial
+        Microsoft SmartScreen reputation review:
+      </p>
+      <div class="shot-grid">
+        ${V060_LAB_PREVIEW_ITEMS.map(renderScreenshotCardAndModal).join('\n')}
       </div>
     </section>
   `;
@@ -2998,10 +3668,28 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     path: '/',
     navGroup: 'suite',
     navLabel: 'Suite Overview',
-    seoTitle: 'RaggieSoft Studio — Packaging, A11y, Launcher & Showcase',
+    seoTitle: 'RaggieSoft Studio — 8-Tool Packaging, A11y & Publishing',
     seoDescription:
-      'Native Windows 11 x64 & ARM64 developer suite: Installer Studio v0.5.0, Accessibility Studio v1.0.0, Launcher Studio, and Showcase Studio.',
+      'Eight native Windows 11 x64 & ARM64 developer tools: Installer Studio v0.5.0, Accessibility Studio v1.0.0, Training, Help, Docs, Localization & Showcase.',
     renderBody: renderSuiteHomeBody
+  },
+  {
+    path: '/editions',
+    navGroup: 'suite',
+    navLabel: 'Editions',
+    seoTitle: 'Suite Editions & Licensing Matrix | RaggieSoft Studio',
+    seoDescription:
+      'Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites.',
+    renderBody: renderSuiteEditionsBody
+  },
+  {
+    path: '/raggiescript',
+    navGroup: 'suite',
+    navLabel: 'RaggieScript',
+    seoTitle: 'RaggieScript (.rssc) — Studio & Micro-App Language',
+    seoDescription:
+      'Explore RaggieScript (.rssc): our C-family bytecode scripting language spanning all 8 RaggieSoft Studio tools, bespoke installers, and Windows micro-apps.',
+    renderBody: renderRaggieScriptHubBody
   },
   {
     path: '/installer-studio',
@@ -3179,7 +3867,9 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     { href: '/document-studio', label: 'Document', isCurrent: routePath === '/document-studio', isSection: false },
     { href: '/localization-studio', label: 'Localization', isCurrent: routePath === '/localization-studio', isSection: false },
     { href: '/launcher-studio', label: 'Launcher', isCurrent: routePath === '/launcher-studio', isSection: false },
-    { href: '/showcase-studio', label: 'Showcase', isCurrent: routePath === '/showcase-studio', isSection: false }
+    { href: '/showcase-studio', label: 'Showcase', isCurrent: routePath === '/showcase-studio', isSection: false },
+    { href: '/editions', label: 'Editions', isCurrent: routePath === '/editions', isSection: false },
+    { href: '/raggiescript', label: 'RaggieScript', isCurrent: routePath === '/raggiescript', isSection: false }
   ];
 
   const tier1Html = tier1Items
@@ -3263,8 +3953,12 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
             : routePath === '/launcher-studio'
               ? 'Launcher Studio • Branded Desktop App Hubs &amp; Static-CDN Updaters'
               : routePath === '/showcase-studio'
-                ? 'Showcase Studio • Accessible 1990s .BMP &amp; Windows 11 FluentMica Menus'
-                : 'Eight-Tool Packaging, Accessibility, Training, Help &amp; Publishing Suite';
+                ? 'Showcase Studio • Accessible 1990s .BMP, FluentMica &amp; _support\\ Installers'
+                : routePath === '/editions'
+                  ? 'Suite-Wide Editions • Community == 100% Architect Parity Across All 8 Tools'
+                  : routePath === '/raggiescript'
+                    ? 'RaggieScript (.rssc) • Unified Studio &amp; Windows Micro-App Scripting Engine'
+                    : 'Eight-Tool Packaging, Accessibility, Training, Help &amp; Publishing Suite';
 
   const html = `
     <header class="site-header" data-theme="dark">
@@ -3316,6 +4010,8 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
           <a href="/installer-studio">Installer Studio (v0.5.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/training-studio">Training Studio (v0.1.0)</a>

@@ -2,15 +2,17 @@
 <!--
   ============================================================================
   FILE: index.html
-  PROPERTY: https://raggiesoftstudio.com (301 target of installwithoutlimits.com)
+  PROPERTY: https://raggiesoftstudio.com (installwithoutlimits.com 301s -> /installer-studio)
   STACK: Alpine.js 3 + TypeScript + Vite Static SSG
   LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
   ============================================================================
   PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
     This HTML5 document is the master shell for `raggiesoftstudio.com`
-    (RaggieSoft Studio: Developer, Packaging & Compliance Suite — Home of
-    Installer Studio, Accessibility Studio, Launcher Studio, and Showcase Studio;
-    301 target of `installwithoutlimits.com` and `a11y.raggiesoft.com`).
+    (RaggieSoft Studio: Eight-Tool Developer, Packaging & Compliance Suite —
+    Home of Installer Studio, Accessibility Studio, Training Studio, Help Studio,
+    Document Studio, Localization Studio, Launcher Studio, and Showcase Studio;
+    `installwithoutlimits.com` 301s to `/installer-studio` and
+    `a11y.raggiesoft.com` 301s to `/accessibility-studio`).
       1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
          ecosystem layer so desktop visitors get the top RaggieSoft Network
          omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
@@ -58,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Help Studio — Modern Offline F1 Help and Turnkey HTML Help .CHM Migration." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/help-studio#webpage","url":"https://raggiesoftstudio.com/help-studio","name":"RaggieSoft Help Studio — Offline F1 Help & .CHM Import","description":"Migrate legacy Microsoft HTML Help (.hhp, .hhc, .hhk, .chm) into modular .rshm packs or standalone zero-dependency Win32 C++20 F1 help clients.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-MfrxA2yI.js"></script>
+    <script type="module" crossorigin src="/assets/index-DouIn_8Y.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -124,6 +126,8 @@
               <li><a class="nav-link" href="/localization-studio">Localization</a></li>
               <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
               <li><a class="nav-link" href="/showcase-studio">Showcase</a></li>
+              <li><a class="nav-link" href="/editions">Editions</a></li>
+              <li><a class="nav-link" href="/raggiescript">RaggieScript</a></li>
             </ul>
           </nav>
         </div>
@@ -197,6 +201,71 @@
         </article>
       </div>
     </section>
+
+    <section class="lms-sandbox" aria-labelledby="help-sim-heading" x-data="{ ctxId: 'IDH_WIZARD_STYLES', hcMode: false }">
+      <span class="eyebrow">Interactive Preview • Sub-5ms Named Pipe F1 Context Routing</span>
+      <h2 id="help-sim-heading" style="margin-top: 0.25rem;">Try Legacy <code>HtmlHelpW</code> &rarr; Native Dark-Mode <code>RaggieSoftHelp.exe</code> Routing</h2>
+      <div class="btn-row" role="group" aria-label="Simulate pressing F1 on a dialog control" style="margin-bottom: 1rem;">
+        <button type="button" class="btn" :class="ctxId === 'IDH_WIZARD_STYLES' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_WIZARD_STYLES'">Press F1 in Wizard Designer (0x1040)</button>
+        <button type="button" class="btn" :class="ctxId === 'IDH_COMPONENT_KEYPATH' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_COMPONENT_KEYPATH'">Press F1 in Components Tree (0x1082)</button>
+        <button type="button" class="btn" :class="ctxId === 'IDH_CHM_UNC_SHARE' ? 'btn-primary' : 'btn-outline'" @click="ctxId = 'IDH_CHM_UNC_SHARE'">Test Network UNC Share (\\fileserver\help)</button>
+        <button type="button" class="btn btn-outline" @click="hcMode = !hcMode" x-text="hcMode ? 'Disable High-Contrast Preview' : 'Toggle High-Contrast (SPI_GETHIGHCONTRAST)'">Toggle High-Contrast</button>
+      </div>
+      <div class="lms-sim-card" :style="hcMode ? 'background:#000000; color:#ffff00; border:2px solid #00ffff;' : ''" aria-live="polite">
+        <p style="margin: 0 0 0.45rem; font-family: monospace; font-size: 0.86rem;">
+          <strong>Named Pipe IPC:</strong> <code>\\.\pipe\RaggieSoftHelp_v1</code> &bull; Context Symbol: <code x-text="ctxId">IDH_WIZARD_STYLES</code> &bull; Latency: <strong>1.8 ms</strong> (Zero IE <code>mshtml.dll</code>!)
+        </p>
+        <div x-show="ctxId === 'IDH_WIZARD_STYLES'">
+          <h3 style="margin-top: 0.25rem;">Topic Resolved: <code>selection-tree-and-dialogs.html#wizard-styles</code></h3>
+          <p style="margin-bottom: 0;">Imported cleanly from legacy <code>[MAP] #define IDH_WIZARD_STYLES 4160</code> &amp; <code>[ALIAS]</code> sections inside <code>project.hhp</code>—rendered natively via <code>System32\Msftedit.dll</code> with full Dark Mode &amp; High-Contrast compliance.</p>
+        </div>
+        <div x-show="ctxId === 'IDH_COMPONENT_KEYPATH'" style="display: none;">
+          <h3 style="margin-top: 0.25rem;">Topic Resolved: <code>components-and-keypaths.html#ice38</code></h3>
+          <p style="margin-bottom: 0;">Single-instance focus handoff jumps an already-open <code>RaggieSoftHelp.exe</code> window directly to anchor <code>#ice38</code> without spawning duplicate viewer processes.</p>
+        </div>
+        <div x-show="ctxId === 'IDH_CHM_UNC_SHARE'" style="display: none;">
+          <h3 style="margin-top: 0.25rem;">UNC &amp; Mark-of-the-Web Safe: Renders 100% Intact Over Corporate File Shares</h3>
+          <p style="margin-bottom: 0;">Unlike legacy <code>.chm</code> files (which render blank <em>&ldquo;Navigation to the webpage was canceled&rdquo;</em> panes over UNC paths), <code>.rshm</code> modules render pure offline text/tables with zero active-script attack surface.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="calc-panel" aria-label="RaggieSoft Help Studio Four-Edition Lineup and Roadmap Status">
+      <span class="eyebrow">Suite-Wide 4-Edition Symmetry • Coming Soon • Powered by Our Shipping C++20 RaggieSoftHelp.exe Runtime</span>
+      <h2 style="margin-top: 0.25rem;">RaggieSoft Help Studio — Four Named Editions (<code>Community == Architect</code>)</h2>
+      <p style="margin-top: 0;">
+        Available standalone or bundled inside the 8-tool <strong>All-Access RaggieSoft Studio Suite</strong>—including the free
+        <strong>RaggieSoft Studio Community Edition Suite</strong> for hobbyists, students, educators, and open-source authors.
+      </p>
+      <div class="pipeline-grid" style="margin-bottom: 1rem;">
+        <article class="pipeline-step">
+          <span class="pipeline-num">Free • Hobbyist, EDU &amp; OSS</span>
+          <h3>Community Edition</h3>
+          <p style="margin-bottom: 0;"><strong>100% technical parity with Architect Edition</strong>, zero watermarks, and full publisher ownership.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 1 • 1 Seat</span>
+          <h3>Essentials Edition</h3>
+          <p style="margin-bottom: 0;">Visual <code>.rshp</code> Markdown/HTML5 editor compiling modular <code>.rshm</code> packs, white-label <code>Help.exe</code> clients, &amp; static web docs.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 2 • + CI/CD</span>
+          <h3>Developer Edition</h3>
+          <p style="margin-bottom: 0;">Adds turnkey legacy <code>.CHM</code> / <code>.hhp</code> / <code>.hhc</code> / <code>.hhk</code> importer, <code>RaggieScript</code> filters, &amp; C++/C#/VB6 <code>F1</code> SDK.</p>
+        </article>
+        <article class="pipeline-step">
+          <span class="pipeline-num">Commercial Tier 3 • Enterprise</span>
+          <h3>Architect Edition</h3>
+          <p style="margin-bottom: 0;">Adds Cross-Suite Federated Help Search across multi-product installations, OEM conditional build tags, &amp; Auto-VPAT 2.5.</p>
+        </article>
+      </div>
+      <div class="btn-row" style="margin-top: 0.5rem;">
+        <a class="btn btn-primary" href="/editions">Compare All 8 Products &amp; Suite Bundles &rarr;</a>
+        <a class="btn btn-outline" href="/raggiescript">Explore RaggieScript (.rssc) Profile &rarr;</a>
+      </div>
+    </section>
+  
   
     </main>
 
@@ -204,6 +273,8 @@
       <div class="footer-inner">
         <div class="footer-links">
           <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
           <a href="/installer-studio">Installer Studio (v0.5.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.0)</a>
           <a href="/training-studio">Training Studio (v0.1.0)</a>
