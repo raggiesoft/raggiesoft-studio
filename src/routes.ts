@@ -1327,10 +1327,10 @@ rule "ORG-A11Y-014: Brand Dialog Buttons Must Preserve Keyboard Accelerators" {
               <td><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code>, <code>Uac.Deferred</code></td>
               <td>Runs <code>wizard { ... }</code> un-elevated (<code>asInvoker</code>) and spawns <code>--elevated-rssc-worker</code> only on Install!</td>
             </tr>
-            <tr x-show="!nsFilter || 'prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive net compile'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>compile.*</code>, <code>prereq.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
-              <td><code>compile.json</code>/<code>compile.text</code>, <code>prereq.installPreset</code>, <code>env.appendPath</code>, <code>arp.setSystemComponent</code>, <code>svc.install</code>, <code>net.download</code>, <code>crypto.verifyAuthenticode</code></td>
-              <td>Build-time JSON/text bytecode harvesting, safe semicolon <code>PATH</code> append, and Dynamic Suite ARP governance!</td>
+            <tr x-show="!nsFilter || 'prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive 7z lzma zip cab tar zst iso wim rswpak net compile'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>archive.*</code>, <code>compile.*</code>, <code>prereq.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
+              <td><code>archive.{create,extract,create7z,extract7z,createLzma,extractLzma,createZip,createPak,createCab,createTar,createZst,createIso,createWim,list,verify}</code>, <code>compile.json</code>, <code>env.appendPath</code>, <code>crypto.verifyAuthenticode</code></td>
+              <td>Zero-DLL Windows 11 multi-format archiving (<code>.7z</code>, <code>.zip</code>, <code>.rswpak</code>, <code>.cab</code>, <code>.tar.zst</code>, <code>.iso</code>, <code>.wim</code>) with Zip-Slip &amp; LIFO rollback protection!</td>
             </tr>
           </tbody>
         </table>
