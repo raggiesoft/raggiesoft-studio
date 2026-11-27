@@ -1,7 +1,7 @@
 # RaggieSoft Installer Studio — Public Engineering Roadmap
 
 **Product:** RaggieSoft Installer Studio (*Install Without Limits* — Flagship Pillar of **RaggieSoft Studio**)  
-**Official Suite Portal:** [https://raggiesoftstudio.com](https://raggiesoftstudio.com) • **Suite Lineup:** [https://raggiesoftstudio.com/suite](https://raggiesoftstudio.com/suite) • **Visual Tour:** [https://raggiesoftstudio.com/screenshots](https://raggiesoftstudio.com/screenshots) • **Web Roadmap:** [https://raggiesoftstudio.com/roadmap](https://raggiesoftstudio.com/roadmap)  
+**Official Suite Portal:** [https://raggiesoftstudio.com](https://raggiesoftstudio.com) • **Editions Matrix:** [EDITIONS_AND_RAGGIESCRIPT.md](EDITIONS_AND_RAGGIESCRIPT.md) • [https://raggiesoftstudio.com/installer-studio/editions](https://raggiesoftstudio.com/installer-studio/editions) • **Visual Tour:** [https://raggiesoftstudio.com/installer-studio/screenshots](https://raggiesoftstudio.com/installer-studio/screenshots) • **Web Roadmap:** [https://raggiesoftstudio.com/installer-studio/roadmap](https://raggiesoftstudio.com/installer-studio/roadmap)  
 **License:** MIT License (Open-Source Technical Preview)
 
 ---
@@ -12,7 +12,7 @@
 2. **Zero Third-Party Runtime Dependencies**: Every binary in the suite (`InstallerStudio.exe`, `instbuild.exe`, `SetupWizard.exe`, `msiprism.exe`, and `RaggieSoftHelp.exe`) is compiled as static `/MT` native Win32 C++20 for both **`x64`** and **`ARM64`**—relying solely on stock Windows 11 `System32` libraries (`msi.dll`, `cabinet.dll`, `gdiplus.dll`, and `Msftedit.dll`).
 3. **100% WCAG 2.2 Level AA & Live OS Theme Support**: Full keyboard navigation, native Windows UI Automation semantics (`Narrator`, `NVDA`, `JAWS`), Windows Contrast Themes (`SPI_GETHIGHCONTRAST`), custom-subclassed Dark Mode controls, 32-bit ARGB vector `SysTreeView32` hierarchies, live `WM_SETTINGCHANGE(ImmersiveColorSet)` Light/Dark hot-swapping, enforced WCAG contrast checks on custom publisher branding, and compiler-generated HTML5 **VPAT 2.5** conformance reports (`--emit-vpat`).
 4. **First-Class AI Coding Agent Support**: Plain-text, comment-preserving `.rsip` projects, `.rsis` suites, and `.rsii` includes paired with compiler-emitted `/llms.txt`, `/llms-full.txt`, and `SKILL.md` specifications (`--emit-ai-spec`) so AI agents can author and validate installers from scratch.
-5. **Community == 100% Premier Parity**: Community Edition permanently maintains **100% technical feature parity with Premier Edition**, with zero watermarks and 100% publisher-owned `VERSIONINFO` metadata.
+5. **Official Four Editions (`Community` • `Essentials` • `Developer` • `Architect`) & `Community == 100% Architect Parity`**: **Community Edition** (free for hobbyists, solo creators, educators, students, non-profits, and open-source maintainers) permanently maintains **100% technical feature parity with Architect Edition**, with zero watermarks and 100% publisher-owned `VERSIONINFO` metadata, alongside clearly scoped commercial licenses (**Essentials**, **Developer**, and **Architect**; full matrix in [`EDITIONS_AND_RAGGIESCRIPT.md`](EDITIONS_AND_RAGGIESCRIPT.md)).
 6. **Original Engineering Identity**: Built cleanly from first principles on documented Microsoft Windows APIs—standing strictly on its own merits with zero telemetry and zero cryptocurrency/blockchain bloat.
 
 ---
@@ -22,8 +22,8 @@
 | Milestone | Focus Area | Status |
 | :--- | :--- | :--- |
 | **`v0.1.0` – `v0.5.1`** | **10 Selectable Wizard Styles (`FullScreenBlue` & `FullScreenTeal` `#008080` ACME Callback, `Wizard95`..`FluentMica`), Classic & Custom Setup Types (`Typical`/`Compact`/`Complete`/`Custom` & `[SetupType.*]`), Outer `Setup.exe` `RequestedExecutionLevel` (`asInvoker` \| `highestAvailable` \| `requireAdministrator`), UAC-Off `CheckTokenMembership` Admin Gate, Per-Product Single-Instance Focus & Polite Cross-Product `Global\_MSIExecute` Auto-Queue, Windows 7+ `ITaskbarList3` Progress Bar, WCAG Auto-Contrast, Microsoft Azure Artifact Signing, Universal Web & Offline EXEs (`x64 + ARM64`), 12-View Tree-First IDE, `SelectionTree`, Pre-MSI Runtimes, `.MSM` & Native `F1` Help** | **Shipped (Technical Preview)** |
-| **`v0.6.0`** | **Self-Extracting `.EXE` (`PackageKind = sfx`), Multi-Volume Disk Spanning (`CAB1..N.cab`), Loose Source Media (`Run from Media/Network` & `msiexec /a`), `.rswpak` Packs, `.NET 11`, Multi-Engine Suite Setup (`Engine = native | msi`) & Dynamic `ARPSYSTEMCOMPONENT` Suite Maintenance Hub** | **Next Feature Milestone** |
-| **`v0.7.0`** | **From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`) & `RsDialog` (`Rs*()`) Scripting** | Planned |
+| **`v0.6.0`** | **Self-Extracting `.EXE` (`PackageKind = sfx` + `%TEMP%` Software Installation Wrapper & Standalone Utility), Multi-Volume Disk Spanning (`CAB1..N.cab`), Loose Source Media (`Run from Media/Network` & `msiexec /a`), `.rswpak` Packs, `.NET 11`, Multi-Engine Suite Setup (`Engine = native \| msi`) & Dynamic `ARPSYSTEMCOMPONENT` Suite Maintenance Hub** | **Built & Privately Staged** |
+| **`v0.7.0`** | **`RaggieScript` (`.rssc` — Style A) Zero-MSI Native Scripting Language & `RSWBC1` Bytecode VM + From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `370x270` `MSI.DLL`)** | **Next Feature Milestone** |
 | **`v0.8.0`** | **Project Importers (Visual Studio `.slnx`/`.csproj`, VB6 `.vbp` Reg-Free COM & `.msi` Decompiler) + Windows Restart Manager (`Rstrtmgr.dll`)** | Planned |
 | **`v0.9.0`** | **Authenticode & Azure Artifact Signing Studio, Bundled `RsUpdate.exe` (Opt-In Scheduled Checks) + `RsPatch.exe` (`msdelta.dll` Native & `.MSP` Patching Engine), & Guided `.MSP` Servicing (`--plan-update`)** | Planned |
 | **`v1.0.0 GA`** | **Turnkey CI/CD Actions, `winget` Export & 8-Product RaggieSoft Studio Production Dogfood Cutover (`Showcase Studio` Front-Door + Unified Suite Installer)** | Planned |
@@ -69,8 +69,8 @@
 - **`v0.4.0` — Native C++20 Help Viewer, Dark-Mode Control Polish, Screenshot Exporter & Standalone Identity**:
   - Added **`RaggieSoftHelp.exe`**, a static `/MT` native Win32 C++20 offline documentation viewer (`x64` & `ARM64`, zero `.NET` and zero `WebView2` dependencies) supporting pluggable `module.rshm.json` manifests, Contents / Index / Search navigation, in-process HTML5-to-RTF typography (`Msftedit.dll`), and instant single-instance `F1` Named Pipe IPC.
   - Authored the 8-chapter `raggiesoft.installer-studio` offline HTML5 help module (mirrored 1:1 to `/docs/*` on the web) and added shared Dark Mode checkbox and `SysListView32` column-header subclasses plus `--export-screenshots`.
-- **`v0.3.0` — Editions (`Community == Premier`), LZMS Solid Compression, Pre-MSI Runtimes, `.MSM` & `SelectionTree`**:
-  - Introduced `Community`, `Express`, `Professional`, and `Premier` edition badges (`Community == 100% Premier` capability), Windows `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) solid compression, the unlimited Pre-MSI `[Prerequisite.<Id>]` runtime broker with custom `RebootExitCodes`, native 64-bit `[MergeModule.<Id>]` (`.msm`) SQL + CAB merging, and the authentic 32-bit ARGB Windows Installer `SelectionTree`.
+- **`v0.3.0` — Product Editions (`Community == Architect`), LZMS Solid Compression, Pre-MSI Runtimes, `.MSM` & `SelectionTree`**:
+  - Introduced the four-tier edition architecture (finalized as `Community`, `Essentials`, `Developer`, and `Architect` with permanent `Community == 100% Architect` capability), Windows `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) solid compression, the unlimited Pre-MSI `[Prerequisite.<Id>]` runtime broker with custom `RebootExitCodes`, native 64-bit `[MergeModule.<Id>]` (`.msm`) SQL + CAB merging, and the authentic 32-bit ARGB Windows Installer `SelectionTree`.
 - **`v0.2.0` & `v0.2.1` — AeroWizard IDE, Microsoft Component Rules & UAC Broker**:
   - Added the Destination Computer folder tree, `ICE18`/`ICE38`/`ICE64`/`ICE80` Component validation, File Associations, Dual C++ & `370x270` `MSI.DLL` Dialog Designers, 5 native Win32 AeroWizards, `Signature`/`AppSearch` SQL tables, and the `--elevated-msi-worker` UAC broker.
 - **`v0.1.0` — Initial Native C++20 Vertical Slice**:
@@ -128,13 +128,15 @@
      - Standalone product installs leave `ARPSYSTEMCOMPONENT` unset so individual products appear normally in Windows *Installed apps* / *Programs and Features*.
      - Installing a Suite (`2+` tools via `.rsis`) registers **one clean Suite Maintenance entry** (Visual Studio Installer model: **Add / Repair / Remove** individual tools) and sets `ARPSYSTEMCOMPONENT=1` (`RS_SUITE_MANAGED=1`) across child `.msi` packages—including dynamically adopting any already-installed standalone sibling `.msi` via `REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1` so *Installed apps* never gets cluttered with 8 separate entries, while flipping `ARPSYSTEMCOMPONENT` back to `0` if a user detaches/keeps a standalone product during Suite removal.
 
-### `v0.7.0` — From-Scratch Dual Dialog Builders (C++ `SetupWizard.exe` + Raw `MSI.DLL`) & `RsDialog` Scripting
-1. **From-Scratch Native C++ Dialog Builder (`[Dialog.<Id>]` + `[Control.<DialogId>.<CtrlId>]`)**:
+### `v0.7.0` — `RaggieScript` (`.rssc` — Style A) Zero-MSI Native Scripting Engine & From-Scratch Dual Dialog Builders
+1. **`RaggieScript` (`.rssc` — Style A) Zero-MSI Native Scripting Language & `RSWBC1` Bytecode VM**:
+   - Modern C# / TypeScript-like curly-brace scripting language (`package`, `param`, `payload`, `wizard { step ... when (...) }`, `install { ... }`, `uninstall { ... }`) supporting **both** 100% standalone `.rssc` projects (`instbuild.exe setup.rssc`) and hybrid `.rsip` + `ScriptFile = setup.rssc` workflows.
+   - Zero-dependency C++20 "Mini-Roslyn" compiler pipeline (lossless UTF-8 lexer & trivia-preserving AST with `1-based` line/column spans -> static type & phase-isolation binder -> compact `RSWBC1` bytecode `#225` executed by a `< 50 KB` static `/MT` stack VM in `SetupWizard.exe` with `/DELAYLOAD:msi.dll` so pure native setups never load `msi.dll` or acquire `Global\_MSIExecute`).
+   - Enforces compile-time phase isolation (`wizard` is side-effect-free with an automatic `<- Back` step-history stack; `install` is an atomic double-entry ledger automatically writing undo entries to `.rsw-rollback.jnl` and uninstallation metadata to `Uninstall.rswm`).
+2. **From-Scratch Native C++ Dialog Builder (`[Dialog.<Id>]` + `[Control.<DialogId>.<CtrlId>]`)**:
    - Blank-canvas WYSIWYG designer in `InstallerStudio.exe` for building custom wizard pages in `SetupWizard.exe` (headings, rich text, text/masked inputs, folder & file pickers, checkboxes, radio card groups, combo boxes, trees, Tab-order editor, live property binding, and conditional visibility).
-2. **From-Scratch Raw `MSI.DLL` Dialog Builder (`[MsiDialog.<Id>]` + `[MsiControl.<DialogId>.<CtrlId>]`)**:
+3. **From-Scratch Raw `MSI.DLL` Dialog Builder (`[MsiDialog.<Id>]` + `[MsiControl.<DialogId>.<CtrlId>]`)**:
    - Full `370x270` DLU visual canvas compiling directly into relational `Dialog`, `Control`, `ControlEvent`, `ControlCondition`, `RadioButton`, `ComboBox`, `ListBox`, and `Binary` SQL tables inside `Product.msi`.
-3. **`RsDialog` Standard Library + `.rssc` Event Scripting**:
-   - Event hooks (`OnBegin`, `OnPrerequisitesComplete`, `OnFeatureSelected`, `OnBeforeInstall`, `OnAfterInstall`), `wizard { step }` state-machine control, `RsShowDialog("<CustomId>")`, and our procedural **`RsDialog`** library (`RsWelcome()`, `RsLicense()`, `RsSetupType()`, `RsFeatureTree()`, `RsAskDestPath()`, `RsAskText()`, `RsAskOptions()`, `RsStartCopy()`, `RsFinish()`, `RsFinishReboot()`).
 
 ### `v0.8.0` — Solution & Legacy Project Importers (`.slnx`, VB6 `.vbp` Reg-Free COM & `.msi`) + Windows Restart Manager
 1. **Visual Studio `.slnx` / `.sln` / `.csproj` / `.vcxproj` / `CMakeLists.txt` Importer**:

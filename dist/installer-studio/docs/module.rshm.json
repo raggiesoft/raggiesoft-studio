@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "moduleId": "raggiesoft.installer-studio",
   "productName": "RaggieSoft Installer Studio",
-  "productVersion": "0.5.0",
+  "productVersion": "0.6.0",
   "publisher": "RaggieSoft",
   "description": "Offline documentation for RaggieSoft Installer Studio (InstallerStudio.exe, instbuild.exe, SetupWizard.exe, msiprism.exe, and RaggieSoftHelp.exe).",
   "defaultTopicId": "welcome-overview",
-  "onlineDocsUrl": "https://raggiesoftstudio.com/docs",
+  "onlineDocsUrl": "https://raggiesoftstudio.com/installer-studio/docs",
   "topics": [
     {
       "id": "welcome-overview",
       "fileName": "topics/welcome-overview.html",
       "category": "Getting Started",
       "title": "Overview, Editions & Hybrid .rsip Architecture",
-      "summary": "Meet the 5 static /MT C++20 executables, the Community == Premier parity pledge, and .rsip / .rsis / .rsii manifests.",
-      "keywords": ["overview", "editions", "community", "premier", "rsip", "rsis", "rsii", "architecture"]
+      "summary": "Meet the 5 static /MT C++20 executables, the 4 official editions (Community == Architect parity, Essentials, Developer, Architect), and .rsip / .rsis / .rsii / .rssc files.",
+      "keywords": ["overview", "editions", "community", "essentials", "developer", "architect", "raggiescript", "rssc", "rsip", "rsis", "rsii", "architecture"]
     },
     {
       "id": "ide-and-aerowizards",
@@ -148,10 +148,10 @@
     },
     {
       "entryId": "idx-editions",
-      "displayText": "Community Edition == Premier Parity",
+      "displayText": "Product Editions (Community == Architect, Essentials, Developer, Architect)",
       "category": "Editions",
-      "badge": "Policy",
-      "subtitle": "100% unlocked features and zero watermarks",
+      "badge": "Matrix",
+      "subtitle": "100% Community == Architect parity, zero watermarks, and commercial tier comparison",
       "topicId": "welcome-overview",
       "anchorId": "editions"
     }

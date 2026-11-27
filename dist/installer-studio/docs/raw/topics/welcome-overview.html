@@ -2,7 +2,8 @@
 <!--
   FILE: help/raggiesoft.installer-studio/topics/welcome-overview.html
   OVERVIEW: Offline Help Topic 1 covering the 5 native C++20 executables,
-  the Community == Premier feature-parity pledge, and .rsip / .rsis / .rsii files.
+  the official 4-Edition lineup (Community == Architect parity, Essentials,
+  Developer, and Architect), and .rsip / .rsis / .rsii / .rssc project files.
 -->
 <html lang="en">
 <body>
@@ -19,32 +20,34 @@
   <!-- Breakdown of the 5 executables included in bin\arm64 and bin\x64 -->
   <h2>Five Native Binaries in One Suite</h2>
   <ul>
-    <li><strong>InstallerStudio.exe</strong>: 10-view native Win32 Visual IDE and 5 guided AeroWizards with a 100% comment-preserving AST.</li>
+    <li><strong>InstallerStudio.exe</strong>: 12-view Tree-First native Win32 Visual IDE and 6 guided Dark/Light AeroWizards with a 100% comment-preserving AST.</li>
     <li><strong>instbuild.exe</strong>: Headless CLI compiler, sub-millisecond JSON validator, AI spec emitter, and HTML5 VPAT 2.5 generator.</li>
-    <li><strong>SetupWizard.exe</strong>: White-label WCAG 2.2 Level AA external-UI bootstrapper with Windows LZMS solid compression, Pre-MSI Runtime Prerequisites, and an authentic Windows Installer SelectionTree.</li>
+    <li><strong>SetupWizard.exe</strong>: White-label WCAG 2.2 Level AA external-UI bootstrapper with 11 selectable Wizard Styles, Windows LZMS solid compression, Pre-MSI Runtime Prerequisites, and an authentic Windows Installer SelectionTree.</li>
     <li><strong>msiprism.exe</strong>: Native 64-bit Dark Mode SQL database inspector and differ for <code>.msi</code>, <code>.msm</code>, and <code>.msp</code> packages.</li>
     <li><strong>RaggieSoftHelp.exe</strong>: Zero-dependency native C++20 offline Help Viewer with Named Pipe <code>F1</code> context navigation, Contents tree, keyword Index, and instant full-text Search.</li>
   </ul>
 
-  <!-- Anchor target for the Index entry 'Community Edition == Premier Parity' -->
-  <h2 id="editions">Product Editions: Community Equals Premier</h2>
+  <!-- Anchor target for the Index entry covering all four official Product Editions -->
+  <h2 id="editions">Official Product Editions (Community, Essentials, Developer &amp; Architect)</h2>
   <p>
-    RaggieSoft Installer Studio defines four IDE edition badges: <strong>Community</strong>, <strong>Express</strong>,
-    <strong>Professional</strong>, and <strong>Premier</strong>. By permanent architectural design, <strong>Community Edition
-    maintains 100% technical feature parity with Premier Edition</strong>:
+    RaggieSoft Installer Studio is organized into four editions—with <strong>WCAG 2.2 Level AA runtime accessibility</strong>,
+    <strong>OS Dark/Light/Contrast Themes</strong>, <strong>100% publisher-owned VERSIONINFO (zero watermarks)</strong>, and
+    <strong>Dual-Layer Authenticode / Azure Artifact Signing</strong> included in <em>every</em> edition:
   </p>
   <ul>
-    <li>Zero locked IDE views, zero disabled CLI flags, and zero artificial feature gates.</li>
-    <li>100% white-label output: compiled <code>Setup.exe</code> and <code>.msi</code> files carry your own <code>[Package] Manufacturer</code>, product title, icon, and <code>VERSIONINFO</code> with zero visible third-party watermarks.</li>
-    <li>Zero mandatory online accounts, zero background telemetry, and zero cryptocurrency bundles.</li>
+    <li><strong>Community Edition (Free — Hobbyists, Solo Creators, EDU &amp; Open Source)</strong>: Permanently maintains <strong>100% technical feature parity with Architect Edition (Community == Architect)</strong>—every compiler engine, <code>RaggieScript</code>, visual dialog designer, <code>.MSM</code> builder, <code>.MSP</code> patcher, <code>.rsis</code> Suite chainer, and VPAT 2.5 report generator is unlocked with zero watermarks.</li>
+    <li><strong>Essentials Edition (Commercial Tier 1)</strong>: Guided no-code packaging for commercial teams (<code>1</code> workstation seat): relational <code>.MSI</code> + Universal <code>Setup.exe</code> (<code>x64</code> &amp; <code>ARM64</code>), Basic Folder/<code>.ZIP</code> Self-Extractor (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation wrapper with <code>_ISDEL.EXE</code> completion watcher), all 6 AeroWizards &amp; 11 Wizard Styles, Pre-MSI Runtimes, <strong>consumption of existing <code>.MSM</code> Merge Modules</strong> (does not compile new <code>.MSM</code> files), and <strong>Major Upgrades Only</strong> (<code>1.0.0</code> to <code>1.0.1</code> mints a fresh <code>ProductCode</code> under your shared <code>UpgradeCode</code> without creating <code>.MSP</code> patches).</li>
+    <li><strong>Developer Edition (Commercial Tier 2)</strong>: Everything in Essentials plus <strong>compiling new <code>.MSM</code> Merge Modules</strong>, <strong>RaggieScript (<code>.rssc</code>)</strong> zero-MSI native scripting &amp; full <code>Engine = native</code>, From-Scratch C++ &amp; <code>370x270</code> <code>MSI.DLL</code> Dialog Designers, Visual Studio <code>.slnx</code> &amp; VB6 <code>.vbp</code> Reg-Free COM importers, <code>msiprism.exe</code>, <code>RsUpdate.exe</code>, <code>--emit-winget</code>, and commercial CI/CD build agent rights.</li>
+    <li><strong>Architect Edition (Commercial Tier 3)</strong>: Everything in Developer plus <strong>Multi-Product Unified <code>.rsis</code> Suites</strong> (<code>Showcase Studio</code> front-door + dynamic <code>ARPSYSTEMCOMPONENT</code> adoption), <strong><code>.MSP</code> Binary-Delta Patches (<code>RsPatch.exe</code>) &amp; <code>.MST</code> Transforms</strong>, Multi-Volume Disk Spanning &amp; <code>msiexec /a</code> Admin Installs, <code>.rswpak</code> On-Demand CDN Packs, and <strong>Automated HTML5 VPAT 2.5 Conformance Reports (<code>--emit-vpat</code>)</strong>.</li>
   </ul>
 
-  <!-- Explanation of standalone .rsip projects, .rsis suites, and .rsii includes -->
-  <h2>Hybrid Project Files (.rsip + .rsis + .rsii)</h2>
+  <!-- Explanation of standalone .rsip projects, .rsis suites, .rsii includes, and .rssc scripts -->
+  <h2>Hybrid Project Files (.rsip + .rsis + .rsii + .rssc)</h2>
   <ol>
-    <li><strong>.rsip (RaggieSoft Installer Project)</strong>: Standalone plain-text INI-style manifest describing one installer or Merge Module. Comments (<code>;</code> and <code>#</code>) survive GUI edits byte-for-byte.</li>
-    <li><strong>.rsis (RaggieSoft Installer Suite)</strong>: Optional multi-project workspace grouping multiple <code>.rsip</code> manifests with shared <code>[Variable]</code> tokens and deterministic <code>BuildOrder</code> sorting.</li>
+    <li><strong>.rsip (RaggieSoft Installer Project)</strong>: Standalone plain-text INI-style manifest describing one installer, self-extractor, or Merge Module. Comments (<code>;</code> and <code>#</code>) survive GUI edits byte-for-byte.</li>
+    <li><strong>.rsis (RaggieSoft Installer Suite)</strong>: Optional multi-project workspace grouping multiple <code>.rsip</code> manifests with shared <code>[Variable]</code> tokens, deterministic <code>BuildOrder</code> sorting, and single-UAC Suite chaining.</li>
     <li><strong>.rsii (RaggieSoft Installer Include)</strong>: Optional <code>@include "shared.rsii"</code> header inherited cleanly across projects.</li>
+    <li><strong>.rssc (RaggieScript — v0.7.0)</strong>: Curly-brace zero-MSI native scripting language compiling to compact <code>RSWBC1</code> bytecode—usable either as a 100% standalone <code>setup.rssc</code> project or attached to a <code>.rsip</code> manifest via <code>ScriptFile</code>.</li>
   </ol>
 
   <hr />
