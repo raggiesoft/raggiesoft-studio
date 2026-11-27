@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raggiesoftstudio.com/help-studio/web-manual/sitemap.xml

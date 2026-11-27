@@ -1,0 +1,96 @@
+# RaggieSoft Help Studio v0.6.0 — Complete Technical Reference (llms-full.txt)
+
+> Native C++20 F1 Help Authoring IDE, Legacy .CHM & WinHelp .HLP/.CNT Decompiler, and Learn-Grade Standalone Web Portal Compiler.
+
+================================================================================
+TOPIC: Overview, 4 Editions & Zero-Dependency C++20 Architecture [welcome-and-editions] (Getting Started)
+================================================================================
+
+# Overview, 4 Editions & Zero-Dependency C++20 Architecture {#welcome-and-editions}
+
+**RaggieSoft Help Studio (`v0.5.0`)** is a 100% native static `/MT` Win32 C++20 help authoring workbench, legacy `.CHM` and WinHelp `.HLP`/`.CNT` decompiler, and sub-5ms `F1` context-routing runtime for Windows 11 `x64` and `ARM64`.
+
+## Four Binaries in the Box {#binaries}
+
+- **`HelpStudio.exe`**: 8-view tree-first visual IDE with split Markdown/HTML5 editing and pixel-accurate in-process `Msftedit.dll` `F1` preview.
+- **`rshbuild.exe`**: Headless CI/CD compiler, WCAG 2.2 AA validator, legacy `.CHM`/`.HLP` importer, and AI specification emitter.
+- **`RaggieSoftHelp.exe`**: Universal `< 650 KB` offline `F1` viewer supporting `.rshm.json` modules, `LZMS` single-EXE packs, and direct `.CHM` & `.HLP`/`.CNT` rescue viewing.
+- **`rshtests.exe`**: Automated C++20 verification suite.
+
+## Four Named Editions (`Community == 100% Architect Parity`) {#editions}
+
+| Edition | Scope & Capabilities |
+| :--- | :--- |
+| **Community Edition** | Free for hobbyists, solo creators, students, educators, non-profits, and open source — **100% technical parity with Architect Edition** and zero watermarks. |
+| **Essentials Edition** | Commercial Tier 1 workstation: visual `.rshp` Markdown/HTML5 authoring, `.rshm.json` module pack, standalone `<Product>Help.exe`, and static HTML5 web portal. |
+| **Developer Edition** | Commercial Tier 2: adds turnkey `.CHM`/`.HHP` & `.HLP`/`.CNT`/`.HPJ` importers, C++/C#/VB6/TS `F1` SDK emitters, `RaggieScript` (`help.*`), and CI/CD rights. |
+| **Architect Edition** | Commercial Tier 3: adds cross-suite federated search, conditional `OemTags` builds, and automated HTML5 **VPAT 2.5** conformance reports. |
+
+
+================================================================================
+TOPIC: Importing Legacy .CHM, .HHP, WinHelp .HLP & .CNT Files [importing-chm-and-hlp] (Legacy Migration)
+================================================================================
+
+# Importing Legacy .CHM, .HHP, WinHelp .HLP & .CNT Files {#importing-chm-and-hlp}
+
+Millions of desktop, CAD, laboratory, and industrial Windows applications still rely on 1990s help formats that break on Windows 11. **RaggieSoft Help Studio** rescues both generations natively in pure C++20 without calling `hh.exe`, `itss.dll`, or retired `WinHlp32.exe`.
+
+## Raw `.CHM` (`ITSF` / `LZX`) & `.HHP` Decompiler {#chm-decompiler}
+
+- Extracts `ITSF` v3 containers and decompresses `LZX` sliding-window streams directly—eliminating corporate `\\fileserver\share` UNC and Mark-of-the-Web blank screens.
+- Parses `.hhc` Table of Contents and `.hhk` Index `<OBJECT type="text/sitemap">` hierarchies even when legacy SGML omits closing `</LI>` tags.
+- Recovers binary `#IVB` and `[MAP]` numeric `F1` Context IDs (`0x1040`) automatically.
+
+## Classic WinHelp `.HLP` + `.CNT` & Word `.RTF` Rescue {#winhelp-rescue}
+
+- Decodes `3F 5F 03 00` internal B+ tree directories, `|SYSTEM` metadata, `LZ77`-compressed `|TOPIC` paragraphs, `|CONTEXT` hash tables, and `|KWBTREE` index keywords.
+- Automatically pairs sibling `.hlp` and `.cnt` files in the same folder, or imports `.hpj` + Microsoft Word footnote-coded `.rtf` (`#`, `$`, `K`) sources.
+- Scrubs Microsoft Word `MsoNormal`, `<o:p>`, `<font color="black">`, and FrontPage inline styles so rescued topics render with crisp contrast in Windows 11 Dark Mode and High Contrast.
+
+
+================================================================================
+TOPIC: Sub-5ms Named Pipe F1 Routing & Drop-In C++ / C# / VB6 SDKs [f1-context-routing-sdk] (Developer Integration)
+================================================================================
+
+# Sub-5ms Named Pipe F1 Routing & Drop-In C++ / C# / VB6 SDKs {#f1-context-routing-sdk}
+
+Every `.rshp` build emits ready-to-include SDK headers in `out/sdk/` so pressing **F1** on any dialog control wakes up `RaggieSoftHelp.exe` in under **5 milliseconds**.
+
+## How Named Pipe `F1` IPC Works {#named-pipe-ipc}
+
+1. Your application intercepts `F1` (`WM_HELP` in C++/Win32/MFC, `HelpRequested` in .NET WinForms, or `KeyDown` in Classic VB6).
+2. The generated SDK shim writes a compact JSON message (`{"ModuleId":"...","ContextId":4160}`) to `\\.\pipe\RaggieSoft.HelpViewer.IPC.<User>`.
+3. If `RaggieSoftHelp.exe` is already open, it jumps to the exact topic and `#anchor` in `<5ms`; otherwise it launches `RaggieSoftHelp.exe` at that context ID automatically.
+
+## One-Line Migration from `HtmlHelpW` {#cpp-shim}
+
+```cpp
+#include "sdk/RaggieSoftHelpSdk.hpp"
+
+// Inside Win32 WndProc:
+case WM_HELP:
+    return rsh::sdk::HandleWmHelp(lParam);
+```
+
+
+================================================================================
+TOPIC: WCAG 2.2 AA Validation, Static Web Portals & Auto-VPAT 2.5 [wcag-web-and-vpat] (Compliance & Publishing)
+================================================================================
+
+# WCAG 2.2 AA Validation, Static Web Portals & Auto-VPAT 2.5 {#wcag-web-and-vpat}
+
+Accessibility for end users is never paywalled across any edition of **RaggieSoft Help Studio**.
+
+## Compile-Time Accessibility & Integrity Gates {#compile-gates}
+
+- **`RSH015`**: Detects skipped heading levels (`<h1>` directly to `<h3>`).
+- **`RSH020`**: Blocks unlabeled `<img>` elements missing `alt` attributes.
+- **`RSH025`**: Warns on unscrubbed Word `MsoNormal` or `color:black` styles that break Dark Mode.
+- **`RSH030` & `RSH040`**: Catches broken topic links and duplicate numeric `F1` Context IDs.
+- **`RSH055`**: Verifies `AccentPrimaryHex` achieves `>= 4.5:1` contrast against `#FFFFFF` button captions and `>= 3.0:1` against `#15203A` Dark Mode cards.
+
+## Automated HTML5 VPAT 2.5 Conformance Report {#vpat-export}
+
+Pass `--with-vpat` to `rshbuild.exe` (or enable **VPAT 2.5** in `HelpStudio.exe`) to emit a standalone HTML5 **Accessibility Conformance Report (Revised Section 508 & WCAG 2.2 Level AA)** covering both your desktop `F1` viewer and static web documentation portal.
+
+

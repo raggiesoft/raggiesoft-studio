@@ -1054,10 +1054,10 @@ function renderRaggieScriptHubBody(): string {
         <strong>Community</strong>, <strong>Developer</strong>, and <strong>Architect</strong> editions.
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="#rssc-playground">Try 6-Profile Code Playground &darr;</a>
-        <a class="btn btn-outline" href="/raggiescript/llms-raggiescript.txt">Cold-Start Language Spec (llms-raggiescript.txt)</a>
-        <a class="btn btn-outline" href="/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md">Editions &amp; Architecture (.md)</a>
-        <a class="btn btn-outline" href="https://raggiesoft.dev/labs/finsharp">Explore Sibling Fin# Compiler Lab (raggiesoft.dev) &rarr;</a>
+        <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">Open Full Language &amp; API Portal (raggiescript.raggiesoft.dev) &rarr;</a>
+        <a class="btn btn-outline" href="#rssc-playground">Try 6-Profile Code Playground &darr;</a>
+        <a class="btn btn-outline" href="/raggiescript/llms-raggiescript.txt">Cold-Start Spec (llms-raggiescript.txt)</a>
+        <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">Explore Sibling Fin# Portal (finsharp.raggiesoft.dev) &rarr;</a>
       </div>
     </section>
 
@@ -1569,23 +1569,25 @@ function renderHelpStudioBody(): string {
     <section class="hero" aria-labelledby="help-studio-title">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Help Studio v0.5.0 • Static /MT Win32 C++20 • .CHM &amp; WinHelp .HLP Rescue</span>
-          <h1 id="help-studio-title">Context Help That Actually Wakes Up on F1 — Plus Turnkey .CHM &amp; .HLP Rescue.</h1>
+          <span class="eyebrow">RaggieSoft Help Studio v0.6.0 • Static /MT Win32 C++20 • .CHM/.HLP Rescue &amp; Standalone Learn Web Compiler</span>
+          <h1 id="help-studio-title">Context Help That Wakes Up on F1 — Plus Turnkey .CHM/.HLP Rescue &amp; Full Learn Websites.</h1>
           <p class="lead">
             Millions of desktop, CAD, laboratory, and industrial Windows applications still depend on 1990s Compiled HTML Help
             (<code>.chm</code> — blocked over network shares under Mark-of-the-Web) or classic WinHelp (<code>.hlp</code> +
             <code>.cnt</code> — completely removed from Windows 10 and 11).
-            <strong>RaggieSoft Help Studio (<code>v0.5.0</code>)</strong> is a 100% zero-dependency static <code>/MT</code>
+            <strong>RaggieSoft Help Studio (<code>v0.6.0</code>)</strong> is a 100% zero-dependency static <code>/MT</code>
             Win32 C++20 suite (<code>HelpStudio.exe</code>, <code>rshbuild.exe</code>, &amp; <code>RaggieSoftHelp.exe</code>)
             that opens and decompiles raw <strong><code>.chm</code>, <code>.hhp</code>, <code>.hlp</code>, <code>.cnt</code>,
             and Word footnote <code>.rtf</code></strong> archives, scrubs legacy Word <code>MsoNormal</code> inline black styles,
-            and compiles modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> viewers, static web portals, and VPAT 2.5!
+            and compiles modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> viewers, <strong>complete standalone
+            <code>learn.microsoft.com</code>-style documentation websites</strong>, and VPAT 2.5!
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/help-studio/web-manual/index.html">Open Compiled Help Studio Web Manual &rarr;</a>
-            <a class="btn btn-outline" href="/help-studio/raggiesoft-help-studio-help-vpat-2.5.html">View Auto-Generated VPAT 2.5</a>
+            <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">See Live Dogfood Site: raggiescript.raggiesoft.dev &rarr;</a>
+            <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">See Live Dogfood Site: finsharp.raggiesoft.dev &rarr;</a>
+            <a class="btn btn-outline" href="/help-studio/web-manual/index.html">Help Studio Manual</a>
+            <a class="btn btn-outline" href="/help-studio/raggiesoft-help-studio-help-vpat-2.5.html">Auto-VPAT 2.5</a>
             <a class="btn btn-outline" href="/help-studio/llms-full.txt">.rshp Grammar (llms-full.txt)</a>
-            <a class="btn btn-outline" href="/installer-studio">Download Installer Studio (Includes RaggieSoftHelp.exe)</a>
           </div>
         </div>
         <figure class="hero-box-showcase">
@@ -1627,10 +1629,12 @@ function renderHelpStudioBody(): string {
           </p>
         </article>
         <article class="card">
-          <h3>4. Single-Source Offline Help + Static SEO Web Portal + VPAT 2.5</h3>
+          <h3>4. Single-Source Offline Help + Full Standalone Learn Websites + VPAT 2.5</h3>
           <p>
-            Every <code>.rshp</code> build compiles offline desktop help, static WCAG 2.2 AA web documentation pages (with instant search
-            &amp; <code>llms.txt</code>), and a procurement-ready HTML5 VPAT 2.5 conformance report from one set of chapters.
+            Every <code>.rshp</code> build compiles offline desktop help, a complete 3-column standalone web portal (powering
+            <a href="https://raggiescript.raggiesoft.dev"><code>raggiescript.raggiesoft.dev</code></a> and
+            <a href="https://finsharp.raggiesoft.dev"><code>finsharp.raggiesoft.dev</code></a> with <code>Ctrl+K</code> instant
+            symbol search, A&ndash;Z API index, <code>sitemap.xml</code>, &amp; <code>llms-full.txt</code>), and HTML5 VPAT 2.5.
           </p>
         </article>
       </div>

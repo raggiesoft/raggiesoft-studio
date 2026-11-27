@@ -359,14 +359,15 @@ function buildSuiteOverviewLlmsTxt() {
     '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/training-studio/ada-title-ii-fundamentals-vpat-2.5.html',
     '   - Summary: Compiles plain-text `.rstp` manifests, Markdown slides, compact Opus/AAC audio, and verified `.vtt` captions into bandwidth-proof `<50 KB` SCORM 1.2 & 2004 packages with offline Write-Ahead Queue checkpointing and Auto-VPAT 2.5.',
     '',
-    '4. **RaggieSoft Help Studio (`v0.5.0` — Static /MT Win32 C++20 F1 Help IDE & .CHM/.HLP Rescue)**:',
+    '4. **RaggieSoft Help Studio (`v0.6.0` — Static /MT Win32 C++20 F1 Help IDE, .CHM/.HLP Rescue & Standalone Website Compiler)**:',
     '   - Product Portal: https://raggiesoftstudio.com/help-studio',
+    '   - Live Dogfooded Standalone Websites: https://raggiescript.raggiesoft.dev and https://finsharp.raggiesoft.dev',
     '   - Compiled Web Manual: https://raggiesoftstudio.com/help-studio/web-manual/index.html',
     '   - Concise AI Spec: https://raggiesoftstudio.com/help-studio/llms.txt',
     '   - Complete `.rshp` Grammar Spec: https://raggiesoftstudio.com/help-studio/llms-full.txt',
     '   - Agent Skill File: https://raggiesoftstudio.com/help-studio/SKILL.md',
     '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/help-studio/raggiesoft-help-studio-help-vpat-2.5.html',
-    '   - Summary: Zero-dependency static `/MT` Win32 C++20 (`x64` & `ARM64`) F1 authoring IDE (`HelpStudio.exe`), CLI (`rshbuild.exe`), and universal viewer (`RaggieSoftHelp.exe`) importing raw `.chm` (`ITSF/LZX`) and classic WinHelp `.hlp`/`.cnt` archives, scrubbing Word `MsoNormal` HTML, and emitting `.rshm` packs, `LZMS` single-EXE viewers, C++/C#/VB6/TS `F1` SDKs, static web portals, and VPAT 2.5.',
+    '   - Summary: Zero-dependency static `/MT` Win32 C++20 (`x64` & `ARM64`) F1 authoring IDE (`HelpStudio.exe`), CLI (`rshbuild.exe`), and universal viewer (`RaggieSoftHelp.exe`) importing raw `.chm` (`ITSF/LZX`) and classic WinHelp `.hlp`/`.cnt` archives, scrubbing Word `MsoNormal` HTML, and emitting `.rshm` packs, `LZMS` single-EXE viewers, C++/C#/VB6/TS `F1` SDKs, full 3-column `learn.microsoft.com`-grade static websites, and VPAT 2.5.',
     '',
     '5. **RaggieSoft Document Studio (Architecture Preview — Tagged PDF/UA-1 Compiler)**:',
     '   - Product Page: https://raggiesoftstudio.com/document-studio',
@@ -386,8 +387,8 @@ function buildSuiteOverviewLlmsTxt() {
     '',
     '## Suite-Wide Editions, RaggieScript (.rssc) & RaggieSoft Labs',
     '- **Suite-Wide Editions & Licensing Matrix**: https://raggiesoftstudio.com/editions (All 8 Studio tools + All-Access Studio Suites across `Community == 100% Architect Parity`, `Essentials`, `Developer`, and `Architect`).',
-    '- **RaggieScript (`.rssc`) Language Hub & Playground**: https://raggiesoftstudio.com/raggiescript (Unified C-family bytecode scripting engine across `std.*` Windows micro-apps and all 8 Studio tools).',
-    '- **RaggieSoft Labs & Fin# (`FinSharp`) Compiler R&D**: https://raggiesoft.dev/labs and https://raggiesoft.dev/labs/finsharp (Linear-type double-entry financial compiler enforcing conservation of capital at compile time).',
+    '- **RaggieScript (`.rssc`) Complete Language Portal & Studio Playground**: https://raggiescript.raggiesoft.dev (16-chapter Learn reference) and https://raggiesoftstudio.com/raggiescript (6-profile interactive playground).',
+    '- **Fin# (`FinSharp`) Language Portal & Compiler R&D**: https://finsharp.raggiesoft.dev (Standalone language reference & `/books/aubrie` narrative origin) and https://raggiesoft.dev/labs/finsharp (Interactive `finsc` simulator).',
     ''
   ].join('\n');
 }

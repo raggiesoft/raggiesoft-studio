@@ -1,9 +1,14 @@
-# RaggieSoft Help Studio (v0.5.0) — Documentation Index
+# RaggieSoft Help Studio (v0.6.0) — Documentation & API Index
 
-> Native C++20 F1 Help Authoring IDE, Legacy .CHM & WinHelp .HLP/.CNT Decompiler, and Static Web Portal Compiler.
+> Native C++20 F1 Help Authoring IDE, Legacy .CHM & WinHelp .HLP/.CNT Decompiler, and Learn-Grade Standalone Web Portal Compiler.
+> Compiled by RaggieSoft Help Studio v0.6.0 (MIT Code / CC BY-SA 4.0 Docs)
 
-## Topics
-- [Overview, 4 Editions & Zero-Dependency C++20 Architecture](welcome-and-editions.html): Meet HelpStudio.exe, rshbuild.exe, RaggieSoftHelp.exe, and the 4 editions (Community == Architect parity).
-- [Importing Legacy .CHM, .HHP, WinHelp .HLP & .CNT Files](importing-chm-and-hlp.html): Decompile raw ITSF/LZX .chm and 3F 5F 03 00 .hlp + .cnt archives and scrub Word MsoNormal HTML.
-- [Sub-5ms Named Pipe F1 Routing & Drop-In C++ / C# / VB6 SDKs](f1-context-routing-sdk.html): Wire WM_HELP, HtmlHelpCompatW, .NET WinForms/WPF, and Classic Visual Basic 6 forms to instant F1 help.
-- [WCAG 2.2 AA Validation, Static Web Portals & Auto-VPAT 2.5](wcag-web-and-vpat.html): Enforce contrast, alt text, and heading hierarchy at compile time and export HTML5 VPAT 2.5 reports.
+## Full Machine-Readable Corpus
+- [Complete Concatenated Reference (llms-full.txt)](https://raggiesoftstudio.com/help-studio/web-manual/llms-full.txt)
+- [Master A-Z API & Symbol Index](https://raggiesoftstudio.com/help-studio/web-manual/api-index)
+
+## Chapters & Reference Topics
+- [Overview, 4 Editions & Zero-Dependency C++20 Architecture](https://raggiesoftstudio.com/help-studio/web-manual): Meet HelpStudio.exe, rshbuild.exe, RaggieSoftHelp.exe, and the 4 editions (Community == Architect parity).
+- [Importing Legacy .CHM, .HHP, WinHelp .HLP & .CNT Files](https://raggiesoftstudio.com/help-studio/web-manual/importing-chm-and-hlp): Decompile raw ITSF/LZX .chm and 3F 5F 03 00 .hlp + .cnt archives and scrub Word MsoNormal HTML.
+- [Sub-5ms Named Pipe F1 Routing & Drop-In C++ / C# / VB6 SDKs](https://raggiesoftstudio.com/help-studio/web-manual/f1-context-routing-sdk): Wire WM_HELP, HtmlHelpCompatW, .NET WinForms/WPF, and Classic Visual Basic 6 forms to instant F1 help.
+- [WCAG 2.2 AA Validation, Static Web Portals & Auto-VPAT 2.5](https://raggiesoftstudio.com/help-studio/web-manual/wcag-web-and-vpat): Enforce contrast, alt text, and heading hierarchy at compile time and export HTML5 VPAT 2.5 reports.
