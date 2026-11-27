@@ -479,13 +479,13 @@ const TOOLS_SCREENSHOT_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-msiprism',
     imgUrl: `${SHOT_BASE}/msiprism-sql-inspector.png`,
-    badge: 'msiprism.exe • Categorized SQL Schema Tree',
-    title: '14. Native 64-Bit Dark Mode MSI, MSM, MST & MSP SQL Inspector',
-    alt: 'RaggieSoft MSI Prism v0.5.0 displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons and relational Feature rows on the right.',
+    badge: 'msiprism.exe • Bundled & Standalone Read/Write SQL Editor',
+    title: '14. RaggieSoft MSI Prism — 64-Bit Read/Write MSI, MSM, MST & MSP SQL Table Editor',
+    alt: 'RaggieSoft MSI Prism displaying a categorized 5-folder SQL schema tree on the left with 32-bit ARGB table icons, interactive MSI SQL query bar, and relational Feature rows on the right.',
     summaryHtml:
-      'Open any <code>.msi</code>, <code>.msm</code>, or <code>.msp</code> database into a categorized 5-group <code>SysTreeView32</code> schema tree, inspect relational rows in Dark or Light Mode, audit <code>ICE80</code> flags, and generate <code>.mst</code> or <code>.msp</code> deltas.',
+      'Open or create any <code>.msi</code>, <code>.msm</code>, or <code>.msp</code> database into a categorized 5-group <code>SysTreeView32</code> schema tree, <strong>add, edit, or delete relational rows and binary streams directly</strong>, run live <code>CREATE / SELECT / INSERT / UPDATE / DELETE</code> MSI SQL queries, export JSON, or generate <code>.mst</code> / <code>.msp</code> deltas—available both inside Installer Studio and as a <strong>standalone desktop tool</strong>.',
     detailHtml:
-      'Groups all 44+ Windows Installer SQL tables into <em>Metadata &amp; Streams</em>, <em>Core Packaging Tables</em>, <em>Registry, Shortcuts &amp; Classes</em>, <em>Dialogs &amp; UI Controls</em>, and <em>Sequences, Locators &amp; Actions</em>.'
+      'Groups all 44+ Windows Installer SQL tables into <em>Metadata &amp; Streams</em>, <em>Core Packaging Tables</em>, <em>Registry, Shortcuts &amp; Classes</em>, <em>Dialogs &amp; UI Controls</em>, and <em>Sequences, Locators &amp; Actions</em>, with headless <code>--exec-sql</code> and <code>--export-table-json</code> CLI automation.'
   }
 ];
 
@@ -1063,17 +1063,18 @@ function renderRaggieScriptHubBody(): string {
       <h2 id="rssc-play-heading" style="margin-top: 0.25rem;">Inspect How <code>RaggieScript</code> Adapts Across Studio Hosts &amp; Standalone EXEs</h2>
       <div class="btn-row" role="tablist" aria-label="Select RaggieScript Host Profile" style="margin-bottom: 1rem;">
         <button type="button" class="btn" :class="profile === 'showcase' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'showcase')" @click="profile = 'showcase'">1. Showcase _support\\ Canvas Installer</button>
-        <button type="button" class="btn" :class="profile === 'installer' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'installer')" @click="profile = 'installer'">2. Installer Zero-MSI Setup</button>
-        <button type="button" class="btn" :class="profile === 'microapp' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'microapp')" @click="profile = 'microapp'">3. Standalone Windows Micro-App</button>
-        <button type="button" class="btn" :class="profile === 'training' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'training')" @click="profile = 'training'">4. Training SCORM Branching</button>
-        <button type="button" class="btn" :class="profile === 'a11y' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'a11y')" @click="profile = 'a11y'">5. Custom A11y &amp; Localization Gate</button>
+        <button type="button" class="btn" :class="profile === 'installer' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'installer')" @click="profile = 'installer'">2. Deferred-UAC Native Setup</button>
+        <button type="button" class="btn" :class="profile === 'msisql' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'msisql')" @click="profile = 'msisql'">3. Direct MSI SQL &amp; .MST Surgeon</button>
+        <button type="button" class="btn" :class="profile === 'microapp' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'microapp')" @click="profile = 'microapp'">4. Standalone Micro-App + FFI</button>
+        <button type="button" class="btn" :class="profile === 'training' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'training')" @click="profile = 'training'">5. Training SCORM Branching</button>
+        <button type="button" class="btn" :class="profile === 'a11y' ? 'btn-primary' : 'btn-outline'" role="tab" :aria-selected="String(profile === 'a11y')" @click="profile = 'a11y'">6. Custom A11y &amp; Localization Gate</button>
       </div>
 
       <div x-show="profile === 'showcase'">
         <p style="margin-top: 0;">
           <strong>Profile: <code>use showcase; use installer;</code> (Showcase Studio — Community &amp; Architect):</strong>
           Bundle payload files inside an embedded self-extracting <code>_support\\</code> staging directory, stamp your exact UAC
-          manifest (<code>Uac.AsInvoker</code>, <code>Uac.HighestAvailable</code>, or <code>Uac.RequireAdministrator</code>), and
+          manifest (<code>Uac.Deferred</code>, <code>Uac.AsInvoker</code>, <code>Uac.HighestAvailable</code>, or <code>Uac.RequireAdministrator</code>), and
           drive full file copy/extraction, Registry keys, and Start Menu shortcuts from a custom-painted <code>.BMP</code> or
           <code>FluentMica</code> canvas—with automatic rollback journaling!
         </p>
@@ -1083,7 +1084,7 @@ use installer; // Unlocked in Showcase Studio Community &amp; Architect Editions
 
 showcase "Starlight Collector's Box Set" {
   style:      CanvasStyle.RetroBmp95;       // Or CanvasStyle.FluentMica16x9
-  uac:        Uac.RequireAdministrator;     // asInvoker | highestAvailable | requireAdministrator
+  uac:        Uac.Deferred;                 // Runs canvas un-elevated; prompts UAC only on Install!
   supportDir: "./_support";                 // Bundled into self-extracting EXE &amp; unpacked on demand
   autoPlay:   false;                        // Enforced false by WCAG 2.2 SC 1.4.2
 }
@@ -1106,41 +1107,72 @@ on hotspot("BtnInstall").click {
 
       <div x-show="profile === 'installer'" style="display: none;">
         <p style="margin-top: 0;">
-          <strong>Profile: <code>use installer;</code> (Installer Studio — Community, Developer &amp; Architect):</strong>
-          Compile 100% standalone zero-MSI <code>.rssc</code> installers (<code>/DELAYLOAD:msi.dll</code>, zero
-          <code>Global\_MSIExecute</code> mutex contention) with compile-time <code>wizard</code> vs. <code>install</code> phase isolation.
+          <strong>Profile: <code>use installer;</code> (Commit-Time Deferred UAC + Restart Manager + Build-Time <code>compile.json</code>):</strong>
+          Because <code>RSW701</code> statically guarantees <code>wizard { ... }</code> cannot mutate the PC, setting
+          <code>uac: Uac.Deferred</code> keeps the PE manifest at <code>asInvoker</code>—running the entire wizard un-elevated and
+          spawning <code>--elevated-rssc-worker</code> right when the user clicks <strong>Install</strong> (just like
+          <code>MsiSetExternalUIRecord</code> installers!).
         </p>
-        <pre aria-label="RaggieScript Zero-MSI Native Installer">use std;
+        <pre aria-label="RaggieScript Zero-MSI Native Installer with Deferred UAC and Restart Manager">use std;
 use installer;
 
 package "Sample Studio Workbench" {
   id:      "{9B4E20A1-7C93-4D62-9B44-524147474950}";
-  version: 1.2.0;
-  uac:     Uac.AsInvoker;          // Prompts for UAC only when clicking Install!
+  version: v"1.2.0";
+  scope:   Scope.Machine;
+  uac:     Uac.Deferred;           // Zero upfront UAC! Elevates Commit worker on &amp;Install
   style:   WizardStyle.FluentMica;
 }
 
+const buildMeta = compile.json("build-manifest.json"); // Harvested straight into RSWBC1 bytecode!
 param installDir: path = sys.programFiles / "Sample Studio" / "Workbench";
+feature "core" { title: "Core Workbench"; inCompact: true; required: true; }
 payload AppBins { from "..\\publish\\win-\${arch}\\*" -&gt; installDir; }
 
 wizard {
-  step Welcome     { ui.welcome("Welcome to Sample Studio Workbench"); }
+  step Welcome     { ui.welcome("Welcome to Sample Studio Workbench (\${buildMeta.channel})"); }
   step Destination { ui.folderPicker(label: "&amp;Destination folder:", bind: ref installDir); }
   step Ready       { ui.readySummary(installButton: "&amp;Install"); }
 }
 
 install {
+  let locks = proc.getLockingProcesses([installDir / "Workbench.exe"]);
+  if (len(locks) &gt; 0) { proc.restartManagerShutdown([installDir / "Workbench.exe"]); }
   fs.extract(AppBins);
-  reg.writeString(Hive.HKLM, "Software\\SampleStudio\\Workbench", "Version", "1.2.0");
+  reg.writeString(Hive.HKLM, r"Software\SampleStudio\Workbench", "Version", "1.2.0");
   shortcut.create(ShortcutLocation.StartMenu, "Sample Studio Workbench", installDir / "Workbench.exe");
 }</pre>
       </div>
 
+      <div x-show="profile === 'msisql'" style="display: none;">
+        <p style="margin-top: 0;">
+          <strong>Profile: <code>msi.*</code> Direct Relational SQL &amp; External-UI Engine:</strong>
+          Want full scriptable control over Windows Installer <code>.msi</code>, <code>.msm</code>, and <code>.mst</code> files?
+          Query or mutate any MSI SQL table directly (<code>CREATE TABLE</code>, <code>SELECT</code>, <code>INSERT</code>,
+          <code>UPDATE</code>, <code>DELETE</code>), edit <code>SummaryInformation</code> &amp; <code>Binary</code> streams, emit
+          <code>.mst</code> GPO transforms, or drive <code>msi.install</code> / <code>msi.repair</code> through live
+          <code>MsiSetExternalUIRecord</code> progress!
+        </p>
+        <pre aria-label="RaggieScript Direct MSI Relational SQL Table Surgeon">use installer;
+
+// Create or open any .msi database and execute parameterized MSI SQL DDL &amp; DML directly!
+msi.createDatabase("Baseline.msi");
+msi.execSql("Baseline.msi", "CREATE TABLE &#96;Property&#96; (&#96;Property&#96; CHAR(72) NOT NULL, &#96;Value&#96; CHAR(0) LOCALIZABLE PRIMARY KEY &#96;Property&#96;)");
+msi.setProperty("Baseline.msi", "Manufacturer", "RaggieSoft");
+msi.setSummary("Baseline.msi", 7 /* PID_TEMPLATE */, "x64;1033");
+
+fs.copy("Baseline.msi", "EnterpriseCustomized.msi");
+msi.setProperty("EnterpriseCustomized.msi", "DISABLE_TELEMETRY", "1");
+msi.generateTransform("Baseline.msi", "EnterpriseCustomized.msi", "EnterprisePolicy.mst");
+
+let props = msi.query("EnterpriseCustomized.msi", "SELECT &#96;Property&#96;, &#96;Value&#96; FROM &#96;Property&#96;");</pre>
+      </div>
+
       <div x-show="profile === 'microapp'" style="display: none;">
         <p style="margin-top: 0;">
-          <strong>Profile: <code>app "..."</code> (Standalone <code>raggiescript.exe pack-exe</code>):</strong>
+          <strong>Profile: <code>app "..."</code> (Standalone <code>raggiescript.exe pack-exe</code> + 64-Bit <code>ffi.call</code>):</strong>
           Build single-file zero-dependency native Windows diagnostic utilities, config patchers, and <code>_support\\</code>
-          helpers that run on clean Windows 11 <code>x64</code> &amp; <code>ARM64</code> PCs with zero external runtimes.
+          helpers with direct 64-bit native DLL FFI (<code>ffi.call</code>) across <code>x64</code> and <code>ARM64</code>.
         </p>
         <pre aria-label="RaggieScript Standalone General-Purpose Windows Utility">// Compile into a single portable .exe: raggiescript.exe pack-exe diag.rssc AudioDiag.exe --support-dir=./_support
 app "Audio Endpoint Diagnostic Utility" {
@@ -1151,6 +1183,7 @@ app "Audio Endpoint Diagnostic Utility" {
 }
 
 param cfgPath: path = sys.localAppData / "SampleStudio" / "audio-settings.json";
+let currentPid = ffi.call("kernel32.dll", "GetCurrentProcessId", "uint", []);
 
 if (!fs.exists(cfgPath)) {
   fs.writeJson(cfgPath, { sampleRateHz: 48000, arch: sys.arch(), telemetry: false });
@@ -1158,7 +1191,7 @@ if (!fs.exists(cfgPath)) {
 const digest = crypto.sha256File(cfgPath);
 ui.taskDialog(
   title: "Audio Endpoint Diagnostic Utility",
-  heading: "Audio Configuration Verified (\${sys.arch()})",
+  heading: "Audio Configuration Verified (\${sys.arch()} • PID \${currentPid})",
   body: "Active profile path:\\n\${cfgPath}",
   detailsTitle: "Cryptographic &amp; OS details",
   detailsBody: "SHA-256: \${digest}\\nKernel Version: \${sys.osVersion()} (Build \${sys.osBuild()})"
@@ -1249,23 +1282,65 @@ rule "ORG-A11Y-014: Brand Dialog Buttons Must Preserve Keyboard Accelerators" {
               <td><code>exists</code>, <code>readString</code>, <code>readDword</code>, <code>listSubkeys</code>, <code>writeString</code>, <code>writeDword</code>, <code>deleteKeyTree</code></td>
               <td>Stateless <code>view: RegView.Native64 | Wow32 | Both</code> eliminates global 32/64-bit mode toggle bugs!</td>
             </tr>
-            <tr x-show="!nsFilter || 'proc run elevated desktop token de-elevate explorer dll'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>proc.*</code></th>
-              <td><code>run(..., token: Token.Current | Elevated | Desktop)</code>, <code>isRunning</code>, <code>terminate</code>, <code>callDllInt</code></td>
-              <td><code>Token.Desktop</code> duplicates Explorer&rsquo;s medium-IL token so Finish-launched apps never run as Admin!</td>
+            <tr x-show="!nsFilter || 'proc run elevated desktop token de-elevate explorer dll ffi restart manager rstrtmgr lock'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>proc.*</code> &amp; <code>ffi.*</code></th>
+              <td><code>run(..., token: Token.Current | Elevated | Desktop)</code>, <code>getLockingProcesses</code>, <code>restartManagerShutdown</code>, <code>ffi.call</code></td>
+              <td><code>Token.Desktop</code> Explorer de-elevation, Windows Restart Manager (<code>Rstrtmgr.dll</code>), &amp; 64-bit native DLL FFI!</td>
             </tr>
-            <tr x-show="!nsFilter || 'ui taskdialog commandlinks shield pickfolder progress'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>ui.*</code> &amp; <code>wizard.*</code></th>
-              <td><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code></td>
-              <td>Zero legacy <code>MessageBox</code> popups; auto-resolves without blocking during <code>/s</code> silent installs!</td>
+            <tr x-show="!nsFilter || 'msi sql query execsql createtable property summary stream transform mst externalui'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>msi.*</code> (SQL &amp; Runtime)</th>
+              <td><code>createDatabase</code>, <code>query</code>, <code>execSql</code>, <code>getProperty</code>/<code>setProperty</code>, <code>setSummary</code>, <code>importStream</code>, <code>generateTransform</code>, <code>install</code>, <code>repair</code></td>
+              <td>Direct relational MSI SQL table DDL/DML + <code>.mst</code> transforms + live <code>MsiSetExternalUIRecord</code> progress!</td>
             </tr>
-            <tr x-show="!nsFilter || 'msi prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive net'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>prereq.*</code>, <code>msi.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
-              <td><code>prereq.isDotNetDesktopInstalled</code>, <code>prereq.isWebView2Installed</code>, <code>env.appendPath</code>, <code>arp.setSystemComponent</code>, <code>svc.install</code>, <code>net.download</code>, <code>crypto.verifyAuthenticode</code></td>
-              <td>Complete batteries-included system provisioning, safe semicolon <code>PATH</code> append, and Dynamic Suite ARP governance!</td>
+            <tr x-show="!nsFilter || 'ui taskdialog commandlinks shield pickfolder progress deferred uac'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>ui.*</code>, <code>wizard.*</code> &amp; <code>Uac.Deferred</code></th>
+              <td><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code>, <code>Uac.Deferred</code></td>
+              <td>Runs <code>wizard { ... }</code> un-elevated (<code>asInvoker</code>) and spawns <code>--elevated-rssc-worker</code> only on Install!</td>
+            </tr>
+            <tr x-show="!nsFilter || 'prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive net compile'.includes(nsFilter.toLowerCase())">
+              <th scope="row"><code>compile.*</code>, <code>prereq.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
+              <td><code>compile.json</code>/<code>compile.text</code>, <code>prereq.installPreset</code>, <code>env.appendPath</code>, <code>arp.setSystemComponent</code>, <code>svc.install</code>, <code>net.download</code>, <code>crypto.verifyAuthenticode</code></td>
+              <td>Build-time JSON/text bytecode harvesting, safe semicolon <code>PATH</code> append, and Dynamic Suite ARP governance!</td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="rssc-editors-heading">
+      <span class="eyebrow">First-Class Authoring Experience • Integrated Win32 IDE + Every Popular Code Editor</span>
+      <h2 id="rssc-editors-heading" style="margin-top: 0.25rem;">Syntax Highlighting &amp; Live Diagnostics Everywhere You Write <code>.rssc</code></h2>
+      <div class="grid-2x2">
+        <article class="card card-highlight">
+          <h3>1. Integrated RichEdit 5.0 Editor in <code>InstallerStudio.exe</code></h3>
+          <p style="margin-bottom: 0;">
+            Author <code>.rssc</code>, <code>.rsip</code>, <code>.rsis</code>, and <code>.rsii</code> files directly inside
+            <code>InstallerStudio.exe</code> with native <code>Msftedit.dll</code> Dark, Light, and High-Contrast syntax
+            highlighting, a synchronized line-number gutter, <code>F7</code> <code>RSW701</code>/<code>RSW702</code> validation,
+            and one-key <code>F5</code> compilation.
+          </p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Official VS Code Extension (<code>vscode-raggiescript</code> <code>.vsix</code>)</h3>
+          <p style="margin-bottom: 0;">
+            Full TextMate grammar for <code>.rssc</code> and <code>.rsip</code>/<code>.rsis</code>, rich snippets, and live
+            on-save <code>raggiescript.exe check --diagnostics=json</code> squiggles pinpointing exact 1-based lines and columns.
+          </p>
+        </article>
+        <article class="card">
+          <h3>3. Notepad++ (Light &amp; Dark UDL) &amp; Sublime Text</h3>
+          <p style="margin-bottom: 0;">
+            Ready-to-import Notepad++ User Defined Language XML definitions (tuned for both Light and Dark themes) alongside a
+            modern YAML <code>RaggieScript.sublime-syntax</code> grammar for Sublime Text 4.
+          </p>
+        </article>
+        <article class="card">
+          <h3>4. Vim / Neovim, KDE Kate &amp; GitHub Linguist</h3>
+          <p style="margin-bottom: 0;">
+            Ships <code>ftdetect</code> + <code>syntax/raggiescript.vim</code> for Vim and Neovim, KSyntaxHighlighting XML for
+            KDE Kate/KWrite, and repository <code>.gitattributes</code> mappings for clean pull-request diffs on GitHub.
+          </p>
+        </article>
       </div>
     </section>
 
