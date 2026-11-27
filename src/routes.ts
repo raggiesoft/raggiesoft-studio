@@ -441,7 +441,7 @@ const V060_LAB_PREVIEW_ITEMS: readonly ScreenshotFeatureItem[] = [
     imgUrl: `${STUDIO_PREVIEWS_BASE}/preview-v060-sfx-compact.png`,
     badge: 'In-Lab Preview • v0.6.0 Self-Extractor & Standalone Tool',
     title: 'Compact LZMS Self-Extractor & %TEMP% Software Wrapper',
-    alt: 'Real Windows 11 Dark Mode C++20 capture of Portable Zip Utility v0.6.0 Self-Extracting Archive showing destination folder C:\\PortableApps\\ZipUtility, live 42% LZMS unpacking progress bar, Open document after extraction checkbox, and Extract button.',
+    alt: 'Real Windows 11 Dark Mode C++20 capture of Portable Zip Utility v0.6.0 Self-Extracting Archive showing destination folder C:\\RaggieSoft\\Samples\\ZipUtility, live 42% LZMS unpacking progress bar, Open document after extraction checkbox, and Extract button.',
     summaryHtml:
       '<strong><code>PackageKind = sfx</code> + Standalone <code>rswsfx.exe</code>:</strong> Compresses any folder or <code>.zip</code> into a zero-dependency <code>LZMS</code> single-file <code>.exe</code>—or extracts silently to <code>%TEMP%</code> to run your inner setup, wait on child cleanup helpers (<code>_ISDEL.EXE</code>), and scrub <code>%TEMP%</code> afterward.',
     detailHtml:
