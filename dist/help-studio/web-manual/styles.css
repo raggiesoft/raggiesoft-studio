@@ -197,6 +197,7 @@ main.learn-article {
 }
 .meta-pill code { font-size: 0.85em; }
 
+main.learn-article { overflow-wrap: break-word; }
 main.learn-article h1 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); line-height: 1.2; margin: 0 0 12px; }
 main.learn-article h2 {
   font-size: 1.42rem; margin: 2.1rem 0 0.75rem;
@@ -207,6 +208,26 @@ main.learn-article code {
   font-family: 'Cascadia Mono', 'Consolas', ui-monospace, monospace;
   font-size: 0.9em; background: var(--surface-alt);
   padding: 2px 6px; border-radius: 4px;
+}
+
+/* Responsive Article Images, Diagrams, & Figures (Prevents Center-Column Grid Overflow) */
+main.learn-article img,
+main.learn-article video,
+main.learn-article svg {
+  max-width: 100%;
+  height: auto;
+}
+main.learn-article img,
+main.learn-article video {
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.14);
+}
+main.learn-article figure { margin: 22px 0; }
+main.learn-article figcaption {
+  margin-top: 8px; font-size: 0.86rem; color: var(--muted); text-align: center;
 }
 
 /* Code Blocks + Toolbar + Syntax Highlighting */
