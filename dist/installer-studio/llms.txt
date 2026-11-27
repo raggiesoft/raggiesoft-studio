@@ -1,16 +1,21 @@
 # RaggieSoft Installer Studio (Install Without Limits) — v0.6.0
 
-> First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 10-view Visual IDE, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Open-source dev hub: https://raggiesoft.dev
+> First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 12-view Visual IDE + 6 Guided AeroWizards, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` 11-style WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Editions Matrix: https://raggiesoftstudio.com/installer-studio/editions | Open-source dev hub: https://raggiesoft.dev
 
-## Hybrid Project Architecture (`.rsip` + `.rsis` + `.rsii`)
+## Hybrid Project Architecture (`.rsip` + `.rsis` + `.rsii` + `.rssc`)
 - **`.rsip` (*RaggieSoft Installer Project*)**: 100% standalone single-file INI-style project manifest (similar to a standalone `.csproj`).
 - **`.rsis` (*RaggieSoft Installer Suite*)**: Optional multi-project workspace (similar to `.slnx`) with `[Suite]`, `[Variable]`, and ordered `[Project.<Id>]` entries.
 - **`.rsii` (*RaggieSoft Installer Include*)**: Optional `@include "shared.rsii"` header inherited losslessly across projects.
+- **`.rssc` (*RaggieScript* — `v0.7.0`)**: Modern C#/TypeScript-style curly-brace native scripting language compiling to `RSWBC1` bytecode for zero-MSI setups (standalone `.rssc` or hybrid `.rsip` + `ScriptFile = setup.rssc`).
+
+## Official Four Editions (`Community` • `Essentials` • `Developer` • `Architect`)
+- **Community Edition (`Community == 100% Architect Parity`)**: Free for hobbyists, solo creators, open-source maintainers, students, educators, and non-profits—100% unlocked with zero watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
+- **Essentials / Developer / Architect Editions**: Commercial tiers (`Essentials`: guided `.MSI` + `Setup.exe`, `.ZIP`/Folder `sfx`, WCAG 2.2 AA UI, Signing, `.MSM` consumption, & Major Upgrades; `Developer`: adds `.MSM` creation, `RaggieScript`, Custom Dialog Designers, VS/VB6 Importers, & CI/CD agents; `Architect`: adds `.rsis` Suites, `.MSP`/`.MST` deltas, Disk Spanning/`msiexec /a`, & VPAT 2.5).
 
 ## Why Comment-Preserving `.rsip` Excels for AI Coding Agents & Git
 - **Zero Backslash Escaping**: Write Windows paths naturally (`DefaultSubdir = Sample Studio\My App`) with full `;` and `#` inline/block comments.
 - **Minimal Token Footprint**: Clean `[Section]` and `[Prefix.<Id>]` blocks without verbose XML closing tags.
-- **100% Lossless IDE Parity & White-Label Output**: `InstallerStudio.exe` preserves every comment and `@include` byte-for-byte, and Community Edition maintains 100% feature parity with Premier Edition with zero UI watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
+- **100% Lossless IDE Parity & White-Label Output**: `InstallerStudio.exe` preserves every comment and `@include` byte-for-byte, and Community Edition maintains 100% feature parity with Architect Edition with zero UI watermarks.
 
 ## Core CLI Commands (`instbuild.exe`, `msiprism.exe`, & `RaggieSoftHelp.exe`)
 - `instbuild.exe --validate --diagnostics=json <project.rsip|suite.rsis> [--arch=x64|arm64]`: Sub-millisecond schema, GUID, 3-part MSI version, Component rule (`RSW031`/`RSW032`), filesystem, and `&` mnemonic linter.
