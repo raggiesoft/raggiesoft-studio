@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCAG 2.2 AA Validation, Static Web Portals &amp; Auto-VPAT 2.5 |</title>
+  <meta name="description" content="Enforce contrast, alt text, and heading hierarchy at compile time and export HTML5 VPAT 2.5 reports." />
+  <meta property="og:title" content="WCAG 2.2 AA Validation, Static Web Portals &amp; Auto-VPAT 2.5 |" />
+  <meta property="og:description" content="Enforce contrast, alt text, and heading hierarchy at compile time and export HTML5 VPAT 2.5 reports." />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-doc">Skip to main documentation</a>
+  <header class="doc-banner">
+    <div><strong>RaggieSoft Help Studio</strong> &bull; v0.5.0 Documentation</div>
+    <div><label for="rsh-web-search" style="margin-right:6px;">Search:</label><input id="rsh-web-search" type="search" placeholder="Filter topics..." style="padding:6px 10px;border-radius:6px;border:1px solid #475569;" /></div>
+  </header>
+  <div class="doc-shell">
+    <nav class="doc-sidebar" aria-label="Documentation Table of Contents">
+      <div id="rsh-web-results" aria-live="polite"></div>
+      <div class="toc-cat">Getting Started</div>
+      <a href="welcome-and-editions.html">Overview, 4 Editions &amp; Zero-Dependency C++20 Architecture</a>
+      <div class="toc-cat">Legacy Migration</div>
+      <a href="importing-chm-and-hlp.html">Importing Legacy .CHM, .HHP, WinHelp .HLP &amp; .CNT Files</a>
+      <div class="toc-cat">Developer Integration</div>
+      <a href="f1-context-routing-sdk.html">Sub-5ms Named Pipe F1 Routing &amp; Drop-In C++ / C# / VB6 SDKs</a>
+      <div class="toc-cat">Compliance &amp; Publishing</div>
+      <a href="wcag-web-and-vpat.html" aria-current="page">WCAG 2.2 AA Validation, Static Web Portals &amp; Auto-VPAT 2.5</a>
+    </nav>
+    <main id="main-doc" class="doc-article">
+<h1 id="wcag-web-and-vpat">WCAG 2.2 AA Validation, Static Web Portals &amp; Auto-VPAT 2.5</h1>
+<p>Accessibility for end users is never paywalled across any edition of <strong>RaggieSoft Help Studio</strong>.</p>
+<h2 id="compile-gates">Compile-Time Accessibility &amp; Integrity Gates</h2>
+<ul>
+<li><strong><code>RSH015</code></strong>: Detects skipped heading levels (<code>&lt;h1&gt;</code> directly to <code>&lt;h3&gt;</code>).</li>
+<li><strong><code>RSH020</code></strong>: Blocks unlabeled <code>&lt;img&gt;</code> elements missing <code>alt</code> attributes.</li>
+<li><strong><code>RSH025</code></strong>: Warns on unscrubbed Word <code>MsoNormal</code> or <code>color:black</code> styles that break Dark Mode.</li>
+<li><strong><code>RSH030</code> &amp; <code>RSH040</code></strong>: Catches broken topic links and duplicate numeric <code>F1</code> Context IDs.</li>
+<li><strong><code>RSH055</code></strong>: Verifies <code>AccentPrimaryHex</code> achieves <code>&gt;= 4.5:1</code> contrast against <code>#FFFFFF</code> button captions and <code>&gt;= 3.0:1</code> against <code>#15203A</code> Dark Mode cards.</li>
+</ul>
+<h2 id="vpat-export">Automated HTML5 VPAT 2.5 Conformance Report</h2>
+<p>Pass <code>--with-vpat</code> to <code>rshbuild.exe</code> (or enable <strong>VPAT 2.5</strong> in <code>HelpStudio.exe</code>) to emit a standalone HTML5 <strong>Accessibility Conformance Report (Revised Section 508 &amp; WCAG 2.2 Level AA)</strong> covering both your desktop <code>F1</code> viewer and static web documentation portal.</p>
+
+    </main>
+  </div>
+  <footer class="doc-footer">
+    <p>Compiled by <strong>RaggieSoft Help Studio v0.5.0</strong> &bull; WCAG 2.2 Level AA &amp; Revised Section 508 Verified.</p>
+    <p>Fictitious Persons &amp; Entities Disclaimer: All narrative characters (including Zoe and Fin#), bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced across RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+  </footer>
+  <script src="search.js"></script>
+</body>
+</html>

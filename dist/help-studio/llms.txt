@@ -1,0 +1,6 @@
+# RaggieSoft Help Studio v0.5.0 — AI Quick Reference
+
+- [Full .rshp Specification & CLI Guide](./llms-full.txt)
+- [Agent Skill Instructions](./SKILL.md)
+- Binaries (100% Static `/MT` Win32 C++20, `x64` & `ARM64`): `HelpStudio.exe`, `rshbuild.exe`, `RaggieSoftHelp.exe`, `rshtests.exe`.
+- Legacy Decompilers: Raw `.chm` (`ITSF` v3 + `LZX`), `.hhp`/`.hhc`/`.hhk`, raw `.hlp` (`3F 5F 03 00` B+ tree + `LZ77`) + `.cnt`, and `.hpj` + Word footnote `.rtf`.

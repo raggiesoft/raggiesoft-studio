@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Importing Legacy .CHM, .HHP, WinHelp .HLP &amp; .CNT Files | Rag</title>
+  <meta name="description" content="Decompile raw ITSF/LZX .chm and 3F 5F 03 00 .hlp + .cnt archives and scrub Word MsoNormal HTML." />
+  <meta property="og:title" content="Importing Legacy .CHM, .HHP, WinHelp .HLP &amp; .CNT Files | Rag" />
+  <meta property="og:description" content="Decompile raw ITSF/LZX .chm and 3F 5F 03 00 .hlp + .cnt archives and scrub Word MsoNormal HTML." />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-doc">Skip to main documentation</a>
+  <header class="doc-banner">
+    <div><strong>RaggieSoft Help Studio</strong> &bull; v0.5.0 Documentation</div>
+    <div><label for="rsh-web-search" style="margin-right:6px;">Search:</label><input id="rsh-web-search" type="search" placeholder="Filter topics..." style="padding:6px 10px;border-radius:6px;border:1px solid #475569;" /></div>
+  </header>
+  <div class="doc-shell">
+    <nav class="doc-sidebar" aria-label="Documentation Table of Contents">
+      <div id="rsh-web-results" aria-live="polite"></div>
+      <div class="toc-cat">Getting Started</div>
+      <a href="welcome-and-editions.html">Overview, 4 Editions &amp; Zero-Dependency C++20 Architecture</a>
+      <div class="toc-cat">Legacy Migration</div>
+      <a href="importing-chm-and-hlp.html" aria-current="page">Importing Legacy .CHM, .HHP, WinHelp .HLP &amp; .CNT Files</a>
+      <div class="toc-cat">Developer Integration</div>
+      <a href="f1-context-routing-sdk.html">Sub-5ms Named Pipe F1 Routing &amp; Drop-In C++ / C# / VB6 SDKs</a>
+      <div class="toc-cat">Compliance &amp; Publishing</div>
+      <a href="wcag-web-and-vpat.html">WCAG 2.2 AA Validation, Static Web Portals &amp; Auto-VPAT 2.5</a>
+    </nav>
+    <main id="main-doc" class="doc-article">
+<h1 id="importing-chm-and-hlp">Importing Legacy .CHM, .HHP, WinHelp .HLP &amp; .CNT Files</h1>
+<p>Millions of desktop, CAD, laboratory, and industrial Windows applications still rely on 1990s help formats that break on Windows 11. <strong>RaggieSoft Help Studio</strong> rescues both generations natively in pure C++20 without calling <code>hh.exe</code>, <code>itss.dll</code>, or retired <code>WinHlp32.exe</code>.</p>
+<h2 id="chm-decompiler">Raw <code>.CHM</code> (<code>ITSF</code> / <code>LZX</code>) &amp; <code>.HHP</code> Decompiler</h2>
+<ul>
+<li>Extracts <code>ITSF</code> v3 containers and decompresses <code>LZX</code> sliding-window streams directly—eliminating corporate <code>\\fileserver\share</code> UNC and Mark-of-the-Web blank screens.</li>
+<li>Parses <code>.hhc</code> Table of Contents and <code>.hhk</code> Index <code>&lt;OBJECT type=&quot;text/sitemap&quot;&gt;</code> hierarchies even when legacy SGML omits closing <code>&lt;/LI&gt;</code> tags.</li>
+<li>Recovers binary <code>#IVB</code> and <code>[MAP]</code> numeric <code>F1</code> Context IDs (<code>0x1040</code>) automatically.</li>
+</ul>
+<h2 id="winhelp-rescue">Classic WinHelp <code>.HLP</code> + <code>.CNT</code> &amp; Word <code>.RTF</code> Rescue</h2>
+<ul>
+<li>Decodes <code>3F 5F 03 00</code> internal B+ tree directories, <code>|SYSTEM</code> metadata, <code>LZ77</code>-compressed <code>|TOPIC</code> paragraphs, <code>|CONTEXT</code> hash tables, and <code>|KWBTREE</code> index keywords.</li>
+<li>Automatically pairs sibling <code>.hlp</code> and <code>.cnt</code> files in the same folder, or imports <code>.hpj</code> + Microsoft Word footnote-coded <code>.rtf</code> (<code>#</code>, <code>$</code>, <code>K</code>) sources.</li>
+<li>Scrubs Microsoft Word <code>MsoNormal</code>, <code>&lt;o:p&gt;</code>, <code>&lt;font color=&quot;black&quot;&gt;</code>, and FrontPage inline styles so rescued topics render with crisp contrast in Windows 11 Dark Mode and High Contrast.</li>
+</ul>
+
+    </main>
+  </div>
+  <footer class="doc-footer">
+    <p>Compiled by <strong>RaggieSoft Help Studio v0.5.0</strong> &bull; WCAG 2.2 Level AA &amp; Revised Section 508 Verified.</p>
+    <p>Fictitious Persons &amp; Entities Disclaimer: All narrative characters (including Zoe and Fin#), bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced across RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+  </footer>
+  <script src="search.js"></script>
+</body>
+</html>

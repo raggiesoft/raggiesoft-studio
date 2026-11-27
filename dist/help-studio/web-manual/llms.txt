@@ -1,0 +1,9 @@
+# RaggieSoft Help Studio (v0.5.0) — Documentation Index
+
+> Native C++20 F1 Help Authoring IDE, Legacy .CHM & WinHelp .HLP/.CNT Decompiler, and Static Web Portal Compiler.
+
+## Topics
+- [Overview, 4 Editions & Zero-Dependency C++20 Architecture](welcome-and-editions.html): Meet HelpStudio.exe, rshbuild.exe, RaggieSoftHelp.exe, and the 4 editions (Community == Architect parity).
+- [Importing Legacy .CHM, .HHP, WinHelp .HLP & .CNT Files](importing-chm-and-hlp.html): Decompile raw ITSF/LZX .chm and 3F 5F 03 00 .hlp + .cnt archives and scrub Word MsoNormal HTML.
+- [Sub-5ms Named Pipe F1 Routing & Drop-In C++ / C# / VB6 SDKs](f1-context-routing-sdk.html): Wire WM_HELP, HtmlHelpCompatW, .NET WinForms/WPF, and Classic Visual Basic 6 forms to instant F1 help.
+- [WCAG 2.2 AA Validation, Static Web Portals & Auto-VPAT 2.5](wcag-web-and-vpat.html): Enforce contrast, alt text, and heading hierarchy at compile time and export HTML5 VPAT 2.5 reports.

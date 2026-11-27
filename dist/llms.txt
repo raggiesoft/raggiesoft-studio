@@ -32,9 +32,14 @@
    - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/training-studio/ada-title-ii-fundamentals-vpat-2.5.html
    - Summary: Compiles plain-text `.rstp` manifests, Markdown slides, compact Opus/AAC audio, and verified `.vtt` captions into bandwidth-proof `<50 KB` SCORM 1.2 & 2004 packages with offline Write-Ahead Queue checkpointing and Auto-VPAT 2.5.
 
-4. **RaggieSoft Help Studio (Architecture Preview — Native Offline F1 Help & .CHM Import)**:
-   - Product Page: https://raggiesoftstudio.com/help-studio
-   - Summary: Migrates legacy Microsoft HTML Help Workshop (`.hhp`, `.hhc`, `.hhk`, `.chm`) projects into modular `.rshm` packs for `RaggieSoftHelp.exe` OR standalone zero-dependency Win32 C++20 `F1` help clients + static web manuals.
+4. **RaggieSoft Help Studio (`v0.5.0` — Static /MT Win32 C++20 F1 Help IDE & .CHM/.HLP Rescue)**:
+   - Product Portal: https://raggiesoftstudio.com/help-studio
+   - Compiled Web Manual: https://raggiesoftstudio.com/help-studio/web-manual/index.html
+   - Concise AI Spec: https://raggiesoftstudio.com/help-studio/llms.txt
+   - Complete `.rshp` Grammar Spec: https://raggiesoftstudio.com/help-studio/llms-full.txt
+   - Agent Skill File: https://raggiesoftstudio.com/help-studio/SKILL.md
+   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/help-studio/raggiesoft-help-studio-help-vpat-2.5.html
+   - Summary: Zero-dependency static `/MT` Win32 C++20 (`x64` & `ARM64`) F1 authoring IDE (`HelpStudio.exe`), CLI (`rshbuild.exe`), and universal viewer (`RaggieSoftHelp.exe`) importing raw `.chm` (`ITSF/LZX`) and classic WinHelp `.hlp`/`.cnt` archives, scrubbing Word `MsoNormal` HTML, and emitting `.rshm` packs, `LZMS` single-EXE viewers, C++/C#/VB6/TS `F1` SDKs, static web portals, and VPAT 2.5.
 
 5. **RaggieSoft Document Studio (Architecture Preview — Tagged PDF/UA-1 Compiler)**:
    - Product Page: https://raggiesoftstudio.com/document-studio

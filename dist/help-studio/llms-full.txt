@@ -1,0 +1,65 @@
+# RaggieSoft Help Studio v0.5.0 — Complete `.rshp` & CLI Reference (`llms-full.txt`)
+
+## 1. CLI Commands (`rshbuild.exe`)
+
+- `rshbuild.exe <project.rshp> [--out-dir=<dir>] [--with-vpat]`
+- `rshbuild.exe --validate [--diagnostics=json] <project.rshp>`
+- `rshbuild.exe --import <input.chm|.hhp|.hlp|.cnt|.hpj> --out-dir=<dir> [--format=markdown|html]`
+- `rshbuild.exe --emit-ai-spec <dir>`
+
+## 2. Canonical `.rshp` Manifest Grammar
+
+```ini
+; Plain-text comment-preserving RaggieSoft Help Studio project (.rshp)
+[Project]
+ModuleId                 = publisher.app-name
+Name                     = Sample Application
+Version                  = 1.0.0
+Publisher                = Sample Studio
+Description              = Offline F1 context help and web documentation.
+DefaultTopic             = welcome
+Language                 = en-US
+OnlineDocsUrl            = https://raggiesoftstudio.com/help-studio
+
+[UI]
+AccentPrimaryHex         = #0F766E
+AccentSecondaryHex       = #D97706
+
+[Build]
+OutputDir                = out
+StandaloneExeName        = SampleAppHelp.exe
+BuildModulePack          = true
+BuildStandaloneExe       = true
+BuildWebPortal           = true
+BuildSdkHeaders          = true
+BuildVpatReport          = true
+
+[Topic.welcome]
+Title                    = Welcome & Quick Start
+Category                 = Getting Started
+Source                   = topics/welcome.md
+Summary                  = Overview and keyboard shortcuts.
+Keywords                 = welcome, f1, shortcuts
+
+[Index.idx-f1]
+Term                     = F1 Context Help
+Category                 = Shortcuts
+Badge                    = Key
+Topic                    = welcome
+Anchor                   = f1-routing
+
+[ContextMap]
+IDH_MAIN_WINDOW = 0x1001 | welcome
+IDH_SETTINGS    = 0x1002 | welcome#f1-routing
+```
+
+## 3. Diagnostic Codes (`RSH001` – `RSH055`)
+- `RSH001`: Malformed `.rshp` manifest syntax.
+- `RSH002` / `RSH003` / `RSH008`: Missing `ModuleId`, zero topics, or invalid `DefaultTopic`.
+- `RSH010`: Missing topic `.md` / `.html` source file on disk.
+- `RSH015`: Skipped HTML heading hierarchy (`<h1>` -> `<h3>`, WCAG 2.2 SC 1.3.1).
+- `RSH020`: `<img>` missing `alt` attribute (WCAG 2.2 SC 1.1.1).
+- `RSH025`: Unscrubbed Microsoft Word `MsoNormal` or hardcoded `color:black` inline style.
+- `RSH030`: Broken internal topic link (`<a href="...">`).
+- `RSH040` / `RSH041` / `RSH045`: Duplicate numeric `ContextId`, duplicate `IDH_*` symbol, or unknown target topic.
+- `RSH055`: `AccentPrimaryHex` contrast below 4.5:1 vs `#FFFFFF` or 3.0:1 vs `#15203A` Dark Mode card.

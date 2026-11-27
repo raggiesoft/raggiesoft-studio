@@ -45,6 +45,7 @@ const distDir = path.join(projectRoot, 'dist');
 const ssrDir = path.join(projectRoot, '.ssr-temp');
 const installerStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/installer-studio');
 const trainingStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/training-studio');
+const helpStudioRoot = path.resolve(projectRoot, '../../../desktop-apps/help-studio');
 const a11yDistDir = path.resolve(projectRoot, '../../raggiesoft.com/subdomains/a11y/dist');
 
 /**
@@ -357,9 +358,14 @@ function buildSuiteOverviewLlmsTxt() {
     '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/training-studio/ada-title-ii-fundamentals-vpat-2.5.html',
     '   - Summary: Compiles plain-text `.rstp` manifests, Markdown slides, compact Opus/AAC audio, and verified `.vtt` captions into bandwidth-proof `<50 KB` SCORM 1.2 & 2004 packages with offline Write-Ahead Queue checkpointing and Auto-VPAT 2.5.',
     '',
-    '4. **RaggieSoft Help Studio (Architecture Preview — Native Offline F1 Help & .CHM Import)**:',
-    '   - Product Page: https://raggiesoftstudio.com/help-studio',
-    '   - Summary: Migrates legacy Microsoft HTML Help Workshop (`.hhp`, `.hhc`, `.hhk`, `.chm`) projects into modular `.rshm` packs for `RaggieSoftHelp.exe` OR standalone zero-dependency Win32 C++20 `F1` help clients + static web manuals.',
+    '4. **RaggieSoft Help Studio (`v0.5.0` — Static /MT Win32 C++20 F1 Help IDE & .CHM/.HLP Rescue)**:',
+    '   - Product Portal: https://raggiesoftstudio.com/help-studio',
+    '   - Compiled Web Manual: https://raggiesoftstudio.com/help-studio/web-manual/index.html',
+    '   - Concise AI Spec: https://raggiesoftstudio.com/help-studio/llms.txt',
+    '   - Complete `.rshp` Grammar Spec: https://raggiesoftstudio.com/help-studio/llms-full.txt',
+    '   - Agent Skill File: https://raggiesoftstudio.com/help-studio/SKILL.md',
+    '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/help-studio/raggiesoft-help-studio-help-vpat-2.5.html',
+    '   - Summary: Zero-dependency static `/MT` Win32 C++20 (`x64` & `ARM64`) F1 authoring IDE (`HelpStudio.exe`), CLI (`rshbuild.exe`), and universal viewer (`RaggieSoftHelp.exe`) importing raw `.chm` (`ITSF/LZX`) and classic WinHelp `.hlp`/`.cnt` archives, scrubbing Word `MsoNormal` HTML, and emitting `.rshm` packs, `LZMS` single-EXE viewers, C++/C#/VB6/TS `F1` SDKs, static web portals, and VPAT 2.5.',
     '',
     '5. **RaggieSoft Document Studio (Architecture Preview — Tagged PDF/UA-1 Compiler)**:',
     '   - Product Page: https://raggiesoftstudio.com/document-studio',
@@ -488,6 +494,27 @@ async function main() {
   const unpackedPlayerSrc = path.join(trainingSampleOut, 'ada-title-ii-fundamentals-scorm12');
   if (fs.existsSync(unpackedPlayerSrc)) {
     copyDirRecursive(unpackedPlayerSrc, path.join(trainingDistDir, 'live-player'));
+  }
+
+  // 5C. Publish Help Studio v0.5.0 AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), dogfooded
+  //     static HTML5 web manual (`/help-studio/web-manual/`), and Auto-VPAT 2.5 report!
+  const helpDistDir = path.join(distDir, 'help-studio');
+  fs.mkdirSync(helpDistDir, { recursive: true });
+  const helpSpecsDir = path.join(helpStudioRoot, 'specs');
+  for (const specFile of ['llms.txt', 'llms-full.txt', 'SKILL.md']) {
+    const srcSpec = path.join(helpSpecsDir, specFile);
+    if (fs.existsSync(srcSpec)) {
+      fs.copyFileSync(srcSpec, path.join(helpDistDir, specFile));
+    }
+  }
+  const helpDogfoodOut = path.join(helpStudioRoot, 'help', 'out');
+  const helpVpatSrc = path.join(helpDogfoodOut, 'raggiesoft-help-studio-help-vpat-2.5.html');
+  if (fs.existsSync(helpVpatSrc)) {
+    fs.copyFileSync(helpVpatSrc, path.join(helpDistDir, 'raggiesoft-help-studio-help-vpat-2.5.html'));
+  }
+  const helpWebManualSrc = path.join(helpDogfoodOut, 'web');
+  if (fs.existsSync(helpWebManualSrc)) {
+    copyDirRecursive(helpWebManualSrc, path.join(helpDistDir, 'web-manual'));
   }
 
   // 6. Publish Single-Source `/installer-studio/docs/<topicId>` chapters directly from
