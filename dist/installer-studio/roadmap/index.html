@@ -58,7 +58,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/roadmap#webpage","url":"https://raggiesoftstudio.com/installer-studio/roadmap","name":"Public Engineering Roadmap | RaggieSoft Installer Studio","description":"Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.5.0 through v1.0 GA across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-WSr9obVd.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cn0jkY9t.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -131,6 +131,7 @@
             <nav aria-label="Installer Studio Mobile Sub-Pages">
               <ul class="nav-list">
                 <li><a class="nav-link" href="/installer-studio">Overview</a></li>
+                <li><a class="nav-link" href="/installer-studio/editions">Editions</a></li>
                 <li><a class="nav-link" href="/installer-studio/screenshots">Screenshots</a></li>
                 <li><a class="nav-link" href="/installer-studio/roadmap" aria-current="page">Roadmap</a></li>
                 <li><a class="nav-link" href="/installer-studio/docs">Docs & AI Spec</a></li>
@@ -150,6 +151,7 @@
           <nav aria-label="Installer Studio Product Pages">
             <ul class="product-subnav-list">
               <li><a class="product-subnav-link" href="/installer-studio">Overview</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/editions">Editions</a></li>
               <li><a class="product-subnav-link" href="/installer-studio/screenshots">Screenshots</a></li>
               <li><a class="product-subnav-link" href="/installer-studio/roadmap" aria-current="page">Roadmap</a></li>
               <li><a class="product-subnav-link" href="/installer-studio/docs">Docs & AI Spec</a></li>
@@ -175,11 +177,12 @@
         is clear and practical: reaching the exact point where <strong>100% of RaggieSoft's own Windows applications, classic
         VB6 utilities (<em>StoreTrainer</em>), interactive novels, and supporter audio archives</strong> are packaged, signed,
         updated, and distributed exclusively with Installer Studio—while permanently keeping
-        <strong>Community Edition at 100% technical feature parity with Premier Edition</strong>.
+        <strong><a href="/installer-studio/editions">Community Edition at 100% technical feature parity with Architect Edition</a></strong>.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="https://github.com/raggiesoft/installer-studio/blob/main/ROADMAP.md">View ROADMAP.md on GitHub</a>
         <a class="btn btn-outline" href="/installer-studio/ROADMAP.md">Open Raw ROADMAP.md</a>
+        <a class="btn btn-outline" href="/installer-studio/editions">Editions &amp; Matrix</a>
         <a class="btn btn-outline" href="/installer-studio/screenshots">Visual Tour (v0.5.0)</a>
         <a class="btn btn-outline" href="/installer-studio/faq">Read FAQ</a>
       </div>
@@ -211,12 +214,12 @@
             </tr>
             <tr>
               <th scope="row"><code>v0.6.0</code></th>
-              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Multi-Engine Suite Setup (<code>Engine = native | msi</code>)</td>
+              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone Tool), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Multi-Engine Suite Setup (<code>Engine = native | msi</code>)</td>
               <td><span class="status-pill status-next">Next Up</span></td>
             </tr>
             <tr>
               <th scope="row"><code>v0.7.0</code></th>
-              <td>From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>370&times;270</code> <code>MSI.DLL</code> SQL canvas) &amp; <code>RsDialog</code> (<code>Rs*()</code>) procedural dialog scripting</td>
+              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> Zero-MSI Native Scripting Language &amp; <code>RSWBC1</code> Bytecode VM + From-Scratch Dual Dialog Builders (C++ <code>SetupWizard.exe</code> + Raw <code>370&times;270</code> <code>MSI.DLL</code> SQL canvas)</td>
               <td><span class="status-pill">Planned</span></td>
             </tr>
             <tr>
@@ -302,10 +305,10 @@
       <section x-show="phaseFilter === 'all' || phaseFilter === 'v07'" aria-labelledby="phase-v07-heading" class="card" style="margin-bottom: 1.5rem;">
         <div>
           <span class="status-pill">Target v0.7.0</span>
-          <h2 id="phase-v07-heading" style="margin-top: 0.5rem;">From-Scratch Dual Dialog Builders (C++ &amp; Raw <code>MSI.DLL</code>) &amp; <code>RsDialog</code> Scripting</h2>
+          <h2 id="phase-v07-heading" style="margin-top: 0.5rem;"><code>RaggieScript</code> (<code>.rssc</code>) Zero-MSI Native Scripting &amp; From-Scratch Dual Dialog Builders</h2>
           <ul class="feature-list">
+            <li><strong><code>RaggieScript</code> (<code>.rssc</code>) &amp; C++20 <code>RSWBC1</code> Bytecode VM</strong>: Modern curly-brace native scripting supporting both standalone <code>setup.rssc</code> projects and hybrid <code>.rsip</code> + <code>ScriptFile = setup.rssc</code> workflows—enforcing compile-time <code>wizard</code> vs. <code>install</code> phase isolation, automatic rollback journaling, and <code>/DELAYLOAD:msi.dll</code> zero-MSI execution. <a href="/installer-studio/editions#raggiescript-preview">Preview RaggieScript syntax &rarr;</a></li>
             <li><strong>From-Scratch C++ &amp; Raw <code>370&times;270</code> <code>MSI.DLL</code> Dialog Designers</strong>: Blank-canvas WYSIWYG editors for building custom wizard pages in both <code>SetupWizard.exe</code> (<code>[Dialog.*]</code>) and standalone <code>msiexec</code> SQL tables (<code>[MsiDialog.*]</code> / <code>[MsiControl.*]</code>).</li>
-            <li><strong><code>RsDialog</code> Standard Library + <code>.rssc</code> Event Hooks</strong>: Lifecycle hooks paired with procedural <code>RsWelcome()</code>, <code>RsLicense()</code>, <code>RsSetupType()</code>, <code>RsFeatureTree()</code>, <code>RsAskDestPath()</code>, and <code>RsFinish()</code> dialogs.</li>
           </ul>
         </div>
       </section>
@@ -358,6 +361,7 @@
           <a href="/localization-studio">Localization Studio</a>
           <a href="/launcher-studio">Launcher Studio</a>
           <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/editions">Installer Editions</a>
           <a href="/installer-studio/screenshots">Installer Screenshots</a>
           <a href="/installer-studio/roadmap">Installer Roadmap</a>
           <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>

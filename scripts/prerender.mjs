@@ -11,11 +11,12 @@
  *        can execute our TypeScript route renderers cleanly.
  *     2. Pre-renders all Suite-level and `/installer-studio/*` routes defined
  *        in `STUDIO_ROUTES` (`/`, `/launcher-studio`, `/showcase-studio`,
- *        `/installer-studio`, `/installer-studio/screenshots`,
- *        `/installer-studio/roadmap`, `/installer-studio/docs`,
- *        `/installer-studio/faq`, `/installer-studio/changelog`,
- *        `/installer-studio/vpat`, `/installer-studio/accessibility`, and
- *        `/installer-studio/security`) PLUS `/404.html` into static HTML5!
+ *        `/installer-studio`, `/installer-studio/editions`,
+ *        `/installer-studio/screenshots`, `/installer-studio/roadmap`,
+ *        `/installer-studio/docs`, `/installer-studio/faq`,
+ *        `/installer-studio/changelog`, `/installer-studio/vpat`,
+ *        `/installer-studio/accessibility`, and `/installer-studio/security`)
+ *        PLUS `/404.html` into static HTML5!
  *     3. Enforces `<= 60` character `<title>` and `<= 155` character
  *        `<meta description>`, emits OpenGraph + Twitter Card tags and
  *        Schema.org `SoftwareApplication` / `ItemList` JSON-LD.
@@ -332,13 +333,15 @@ function buildSuiteOverviewLlmsTxt() {
     '',
     '1. **RaggieSoft Installer Studio (`v0.5.0` — Flagship Shipping Now)**:',
     '   - Product Portal: https://raggiesoftstudio.com/installer-studio',
+    '   - Editions & Product Matrix (Community == Architect, Essentials, Developer, Architect): https://raggiesoftstudio.com/installer-studio/editions',
+    '   - Raw Editions & RaggieScript Spec: https://raggiesoftstudio.com/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md',
     '   - Visual Tour (14 Captures): https://raggiesoftstudio.com/installer-studio/screenshots',
     '   - Engineering Roadmap: https://raggiesoftstudio.com/installer-studio/roadmap',
     '   - User Manual & Schema: https://raggiesoftstudio.com/installer-studio/docs',
     '   - Concise AI Spec: https://raggiesoftstudio.com/installer-studio/llms.txt',
     '   - Complete Grammar Spec: https://raggiesoftstudio.com/installer-studio/llms-full.txt',
     '   - Agent Skill File: https://raggiesoftstudio.com/installer-studio/SKILL.md',
-    '   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 10 selectable Wizard Styles, WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.',
+    '   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP, SFX & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 4 editions (Community == 100% Architect parity), RaggieScript (.rssc — v0.7), WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.',
     '',
     '2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now on .NET 11)**:',
     '   - Product Portal: https://raggiesoftstudio.com/accessibility-studio',
@@ -446,6 +449,13 @@ async function main() {
   if (fs.existsSync(srcRoadmap)) {
     fs.copyFileSync(srcRoadmap, path.join(installerDistDir, 'ROADMAP.md'));
     fs.copyFileSync(srcRoadmap, path.join(distDir, 'ROADMAP.md'));
+  }
+
+  // Publish the authoritative Editions Matrix & RaggieScript (.rssc) Markdown specification
+  // so both developers and AI agents can read `/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md`.
+  const srcEditionsSpec = path.join(installerStudioRoot, 'EDITIONS_AND_RAGGIESCRIPT.md');
+  if (fs.existsSync(srcEditionsSpec)) {
+    fs.copyFileSync(srcEditionsSpec, path.join(installerDistDir, 'EDITIONS_AND_RAGGIESCRIPT.md'));
   }
 
   // 5B. Publish Training Studio AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), live compiled
