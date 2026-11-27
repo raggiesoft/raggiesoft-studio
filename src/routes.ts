@@ -911,12 +911,13 @@ function renderSuiteEditionsBody(): string {
       <div class="lms-sim-card" aria-live="polite">
         <div x-show="toolScope === 'sfx_only'">
           <span class="release-badge">Recommended: Standalone Self-Extractor Utility (rswsfx.exe)</span>
-          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Coming in <code>v0.6.0</code>)</h3>
+          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Built &amp; Staged in <code>v0.6.0</code>)</h3>
           <p style="margin-bottom: 0;">
             If you only need to wrap a folder or <code>.zip</code> into a signed <code>LZMS</code> single-file <code>.exe</code>
             (including silent extraction to <code>%TEMP%</code>, launching an inner setup, waiting on child cleanup helpers like
             <code>_ISDEL.EXE</code>, and scrubbing <code>%TEMP%</code> afterward), our standalone <strong>Self-Extractor</strong>
-            utility handles the job without needing a full MSI authoring IDE—and is also bundled inside every edition of Installer Studio!
+            desktop &amp; CLI utility (<code>rswsfx.exe --pack</code>) handles the job without needing a full MSI authoring IDE—and
+            is also bundled inside every edition of Installer Studio!
           </p>
         </div>
         <div x-show="toolScope !== 'sfx_only' && orgType === 'indie'" style="display: none;">

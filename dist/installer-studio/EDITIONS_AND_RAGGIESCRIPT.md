@@ -68,9 +68,9 @@ This canonical comparison table is synchronized between `EDITIONS_AND_RAGGIESCRI
 
 ---
 
-## 3. Standalone Folder / `.ZIP` Self-Extractor Utility (`RaggieSoft Self-Extractor`)
+## 3. Standalone Folder / `.ZIP` Self-Extractor Utility (`RaggieSoft Self-Extractor` — `rswsfx.exe`)
 
-Alongside the integrated `PackageKind = sfx` workflow inside `InstallerStudio.exe` and `instbuild.exe`, **RaggieSoft Self-Extractor** is also offered as a dedicated, single-purpose standalone utility (inspired by classic late-1990s web-delivery self-extractor tools):
+Alongside the integrated `PackageKind = sfx` workflow inside `InstallerStudio.exe` and `instbuild.exe`, **RaggieSoft Self-Extractor (`rswsfx.exe`)** ships both inside every edition of Installer Studio and as its own standalone desktop & CLI utility (`projects/apps/self-extractor/self-extractor.rsip`, `rswsfx.exe --pack <folder-or-zip> <output.exe>`):
 
 1. **Two Focused Delivery Modes**:
    - **Mode A — Standard Folder / Archive Extractor**: Compresses any directory or `.zip` archive with Windows `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) into a single native `.exe` with Dark/Light/High-Contrast UI, destination folder picker, `DefaultExtractSubdir`, overwrite prompt policy, and optional `PostExtractRun` or `PostExtractOpen` (`ShellExecuteExW` document launch).

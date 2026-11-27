@@ -60,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.5.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/editions#webpage","url":"https://raggiesoftstudio.com/editions","name":"Suite Editions & Licensing Matrix | RaggieSoft Studio","description":"Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Fq5_HHX1.js"></script>
+    <script type="module" crossorigin src="/assets/index-H9ApBRVa.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -204,12 +204,13 @@
       <div class="lms-sim-card" aria-live="polite">
         <div x-show="toolScope === 'sfx_only'">
           <span class="release-badge">Recommended: Standalone Self-Extractor Utility (rswsfx.exe)</span>
-          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Coming in <code>v0.6.0</code>)</h3>
+          <h3>Standalone RaggieSoft Self-Extractor (<code>rswsfx.exe</code> — Built &amp; Staged in <code>v0.6.0</code>)</h3>
           <p style="margin-bottom: 0;">
             If you only need to wrap a folder or <code>.zip</code> into a signed <code>LZMS</code> single-file <code>.exe</code>
             (including silent extraction to <code>%TEMP%</code>, launching an inner setup, waiting on child cleanup helpers like
             <code>_ISDEL.EXE</code>, and scrubbing <code>%TEMP%</code> afterward), our standalone <strong>Self-Extractor</strong>
-            utility handles the job without needing a full MSI authoring IDE—and is also bundled inside every edition of Installer Studio!
+            desktop &amp; CLI utility (<code>rswsfx.exe --pack</code>) handles the job without needing a full MSI authoring IDE—and
+            is also bundled inside every edition of Installer Studio!
           </p>
         </div>
         <div x-show="toolScope !== 'sfx_only' && orgType === 'indie'" style="display: none;">
