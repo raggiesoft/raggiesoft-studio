@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.6.0
+# RaggieSoft Installer Studio (Install Without Limits) — v0.7.0
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 12-view Visual IDE + 6 Guided AeroWizards, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` 11-style WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Editions Matrix: https://raggiesoftstudio.com/installer-studio/editions | Open-source dev hub: https://raggiesoft.dev
 
@@ -30,7 +30,7 @@
 - `RaggieSoftHelp.exe [--module raggiesoft.installer-studio] [--topic <id>]`: Opens the offline C++20 Help Viewer.
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
 
-## `.rsip` Manifest Sections (`v0.6`)
+## `.rsip` Manifest Sections (`v0.7`)
 - `[Package]`: Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
 - `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
@@ -50,6 +50,10 @@
 - `[FileAssociation.<id>]`: Registers a file extension, ProgId, document icon, MIME type, and Explorer shell verbs ([FileAssociation.<id>]).
 - `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE38 HKCU KeyPath & ICE64 RemoveFolder.
 - `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto or explicit 64-bit MSI Component.
+- `[Environment.<id>]`: Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal via the MSI Environment table & Native Engine.
+- `[IniFile.<id>]`: Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) via the MSI IniFile table & Native Engine.
+- `[Dialog.<id>]`: Defines a custom C++ SetupWizard.exe page ([Dialog.<id>]) edited in the WYSIWYG Visual Dialog Designer and spliced into the runtime setup flow.
+- `[Control.<id>]`: Places a Per-Monitor V2 DPI Win32 control ([Control.<id>]: Label, Edit, PathEdit, CheckBox, RadioGroup, ComboBox, GroupBox) onto a custom C++ [Dialog.<id>] page.
 - `[MsiDialog.<id>]`: Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.
 - `[MsiControl.<id>]`: Adds a native MSI control ([MsiControl.<id>]: Text, Edit, CheckBox, RadioButtonGroup, etc.) to a new or built-in MSI Dialog.
 

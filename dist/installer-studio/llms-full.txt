@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.6.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.7.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.6.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.7.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.6.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.7.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
@@ -14,7 +14,7 @@ Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.6.0
 9. **Multi-Engine Packaging (`v0.6` `PackageKind = msi|msm|sfx|suite` & `Engine = msi|native`)**: Build enterprise `.msi` databases (including `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), zero-MSI `Engine = native` direct transactional setups (`WizardLayout = simple`), or Unified Suite setups (`PackageKind = suite` with dynamic `ARPSYSTEMCOMPONENT` adoption).
 10. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.6`)
+## 2. Complete `.rsip` Project Schema (`v0.7`)
 
 ### `[Package]` (*Required*)
 Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
@@ -303,6 +303,62 @@ Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto o
 | `Type` | `enum` | No | `string` | Allowed: `string|expand_string|dword`. Registry value type (`string` = REG_SZ, `expand_string` = REG_EXPAND_SZ, `dword` = REG_DWORD). |
 | `Feature` | `string` | No | `Main` | Feature ID owning this registry value. |
 | `Component` | `string` | No | — | Optional `[Component.<id>]` owning this registry row (used when grouping registry values or setting a Registry KeyPath). |
+
+### `[Environment.<id>]` (*Optional*)
+Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal via the MSI Environment table & Native Engine.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Name` | `string` | **Yes** | `PATH` | Environment variable name (e.g. `PATH` or `RAGGIESOFT_STUDIO_HOME`). |
+| `Value` | `string` | **Yes** | `[INSTALLDIR]` | Formatted value or directory path to set/append (e.g. `[INSTALLDIR]` or `[INSTALLDIR]bin`). |
+| `Action` | `enum` | No | `append_path` | Allowed: `append_path|prepend_path|set|create_if_absent`. `append_path` (`[~];Value`) appends safely without clobbering existing entries and removes only its own entry on uninstall; `prepend_path` (`Value;[~]`) prepends; `set` overwrites; `create_if_absent` (`+Name`) sets only if unset. |
+| `Scope` | `enum` | No | `auto` | Allowed: `auto|machine|user`. `auto` matches `[Package] Scope`, `machine` writes to System (`*Name`), and `user` writes to `HKCU\Environment`. |
+| `RemoveOnUninstall` | `bool (true|false)` | No | `true` | When `true` (default), removes this variable or `PATH` segment cleanly on uninstallation (`=-Name`). |
+| `Condition` | `string` | No | — | Optional MSI component condition (e.g. `ADD_TO_PATH = "1"` bound to a custom wizard checkbox!). |
+| `Feature` | `string` | No | `Main` | Feature ID owning this environment variable rule. |
+| `Component` | `string` | No | — | Optional explicit `[Component.<id>]` name. |
+
+### `[IniFile.<id>]` (*Optional*)
+Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) via the MSI IniFile table & Native Engine.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `FileName` | `string` | **Yes** | `settings.ini` | Target `.ini` filename inside `TargetRoot` / `TargetSubdir`. |
+| `TargetRoot` | `enum` | No | `INSTALLDIR` | Allowed: `INSTALLDIR|CommonFiles64Folder|CommonAppDataFolder|AppDataFolder|LocalAppDataFolder|ProgramMenuFolder|ApplicationProgramsFolder|DesktopFolder|System64Folder|FontsFolder`. Destination root folder containing `FileName` (`INSTALLDIR`, `AppDataFolder`, `LocalAppDataFolder`, `CommonAppDataFolder`, etc.). |
+| `TargetSubdir` | `relpath` | No | — | Optional subfolder inside `TargetRoot`. |
+| `Section` | `string` | **Yes** | `General` | INI `[Section]` header name. |
+| `Key` | `string` | **Yes** | — | INI key name within `[Section]`. |
+| `Value` | `string` | **Yes** | — | Formatted INI value (supports `[INSTALLDIR]`, `[ProductVersion]`, and custom dialog properties). |
+| `Action` | `enum` | No | `add_line` | Allowed: `add_line|create_line|add_tag`. `add_line` (`0` = create or update key), `create_line` (`1` = write only if key does not exist), or `add_tag` (`3` = append comma-separated tag). |
+| `Feature` | `string` | No | `Main` | Feature ID owning this INI rule. |
+| `Component` | `string` | No | — | Optional explicit `[Component.<id>]` name. |
+
+### `[Dialog.<id>]` (*Optional*)
+Defines a custom C++ SetupWizard.exe page ([Dialog.<id>]) edited in the WYSIWYG Visual Dialog Designer and spliced into the runtime setup flow.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Title` | `string` | **Yes** | `Custom Configuration` | Heading displayed on this custom `SetupWizard.exe` page. |
+| `Subtitle` | `string` | No | — | Supporting subtitle displayed beneath `Title`. |
+| `AfterPage` | `enum` | No | `SetupType` | Allowed: `Welcome|License|SetupType|CustomFeatures|CustomFolder|CustomShortcuts`. Wizard step after which this custom page appears in `SetupWizard.exe`. |
+| `ShowInModes` | `enum` | No | `all` | Allowed: `all|custom_only`. `all` displays this page in Express & Custom flows; `custom_only` displays it only when Custom Setup is selected. |
+
+### `[Control.<id>]` (*Optional*)
+Places a Per-Monitor V2 DPI Win32 control ([Control.<id>]: Label, Edit, PathEdit, CheckBox, RadioGroup, ComboBox, GroupBox) onto a custom C++ [Dialog.<id>] page.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Dialog` | `string` | **Yes** | — | Target `[Dialog.<id>]` page owning this control. |
+| `Type` | `enum` | **Yes** | `CheckBox` | Allowed: `Label|Heading|Edit|PasswordEdit|PathEdit|CheckBox|RadioGroup|ComboBox|GroupBox`. Control widget kind rendered in `SetupWizard.exe` and the IDE Visual Dialog Designer. |
+| `X` | `integer` | No | `24` | Horizontal position in 96-DPI logical pixels inside the wizard content area (`0..560`). |
+| `Y` | `integer` | No | `20` | Vertical position in 96-DPI logical pixels inside the wizard content area (`0..240`). |
+| `Width` | `integer` | No | `500` | Control width in 96-DPI logical pixels. |
+| `Height` | `integer` | No | `26` | Control height in 96-DPI logical pixels. |
+| `Property` | `string` | No | — | Uppercase MSI / Native property bound two-way to this control (automatically added to `SecureCustomProperties`!). |
+| `DefaultValue` | `string` | No | — | Initial value assigned to `Property` before the dialog opens. |
+| `Text` | `string` | No | — | Control caption or prompt (include a `&` keyboard mnemonic on interactive inputs/checkboxes!). |
+| `Items` | `string` | No | — | Pipe-separated `Value:Caption` options for `RadioGroup` or `ComboBox` controls. |
+| `TabOrder` | `integer` | No | `0` | Explicit keyboard `Tab` focus sequence order (`0` = document order). |
 
 ### `[MsiDialog.<id>]` (*Optional*)
 Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.
