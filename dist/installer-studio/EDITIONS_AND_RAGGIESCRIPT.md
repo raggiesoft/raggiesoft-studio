@@ -233,6 +233,59 @@ uninstall (bool purgeUserData) {
 
 ---
 
+## 5. Suite-Wide Four-Edition Architecture Across All 8 RaggieSoft Studio Tools & All-Access Bundles
+
+Every single application in the **8-tool RaggieSoft Studio ecosystem** adopts the exact same four-edition structure (**`Community` • `Essentials` • `Developer` • `Architect`**) AND can be licensed either standalone or through matching **All-Access RaggieSoft Studio Suite** editions (**Studio Community** `[Free — 100% Studio Architect Parity]`, **Studio Essentials**, **Studio Developer**, and **Studio Architect**).
+
+### 5.1 `RaggieScript` (`.rssc`) Across All 8 Studio Products (Unified Language, Host-Specific Subsets)
+
+Rather than forcing teams to learn a different macro syntax for installers, autorun launchpads, launchers, and training courses, **`RaggieScript` (`.rssc`)** serves as the **single unified scripting & automation language across all 8 RaggieSoft Studio products** (unlocked in **Community**, **Developer**, and **Architect** editions across every tool):
+
+- **Win32 C++20 Static `/MT` Bytecode Host (`RSWBC1` VM)**:
+  - **Installer Studio (`installer.*`)**: Zero-MSI standalone `.rssc` projects & hybrid `.rsip` hooks (`wizard`, `install`, `uninstall`, automatic rollback journal).
+  - **Showcase Studio (`showcase.*`)**: Event-driven interactive `.BMP` & `FluentMica` collector/suite menus (`onShow`, `onClick`, live `msi.isInstalled` *"Install" ↔ "Launch"* button state switching, dynamic drawers, and compile-time WCAG `.vtt` caption enforcement).
+  - **Help Studio (`help.*`)**: Conditional topic/role filtering and context-routing hooks.
+- **`.NET 11` Managed AST & Bytecode Host**:
+  - **Launcher Studio (`launcher.*`)**: Pre-launch hardware/GPU checks, custom shelf filters, and channel rules.
+  - **Document Studio (`document.*`)**: Programmatic JSON/CSV batch data-merge expressions and calculated form fields for Tagged `PDF/UA-1` generation.
+  - **Localization Studio (`localization.*`)**: Custom token validators, pluralization rules, and terminology transforms.
+  - **Accessibility Studio (`a11y.*`)**: Organization-specific custom WCAG / design-system lint rules emitting SARIF 2.1.0 diagnostics.
+- **Safe Sandboxed ES2022 Transpiler Target (`Zero eval()`)**:
+  - **Training Studio (`training.*`)**: Compiles branching interactive courseware scenarios, adaptive remediation paths, and custom weighted quiz rubrics into deterministic `< 50 KB` browser-safe ES2022 JavaScript inside SCORM 1.2 & SCORM 2004 packages!
+
+### 5.2 Complete 8-Tool RaggieSoft Studio Edition Matrix
+
+*(Across all 8 tools, **Community Edition** is free for hobbyists, solo creators, students, educators, non-profits, and open source with **100% `Architect` parity** and zero watermarks; runtime accessibility and code signing are never paywalled in any tier.)*
+
+| Studio Product | **Essentials** *(Tier 1: Guided 1-Seat Workstation)* | **Developer** *(Tier 2: `RaggieScript`, Importers & CI/CD)* | **Architect** *(Tier 3: Suites, Scale & Auto-VPAT 2.5)* |
+| :--- | :--- | :--- | :--- |
+| **1. Installer Studio** | `.MSI` + `Setup.exe`, `sfx`, consume `.MSM`, Major Upgrades | + Compile `.MSM`, **`RaggieScript`**, Custom Dialogs, `.slnx`/`.vbp` Importers, `msiprism`, CI/CD | + `.rsis` Suites, `.MSP`/`.MST` deltas, Spanning/`msiexec /a`, `.rswpak`, **Auto-VPAT 2.5**, `.wsb` Capture |
+| **2. Showcase Studio** | Visual `.rssp` `.BMP` & `FluentMica` menus, declarative actions, 4-way focus | + **`RaggieScript`** reactive menus (`msi.isInstalled`), custom templates, CI/CD | + Direct `.rsis` Suite Chainer front-door, **Kiosk Lockdown Mode**, multi-disc/ISO hooks, **Auto-VPAT 2.5** |
+| **3. Launcher Studio** | Guided `.rslp` single-channel app/media hub + static `catalog.json` | + **`RaggieScript`** pre-launch/hardware hooks, `stable`/`beta` rings, `RsPatch` deltas, CI/CD | + Air-gapped Intranet/UNC mirror mode, GPO policy templates, multi-brand hubs, **Auto-VPAT 2.5** |
+| **4. Help Studio** | Visual `.rshp` Markdown/HTML5 -> `.rshm` module + branded `Help.exe` + web docs | + **Legacy `.CHM` / `.hhp` Decompiler & Importer**, `RaggieScript` filters, C++/C#/VB6 `F1` SDK, CI/CD | + **Cross-Suite Federated Help Search** (merging N products), conditional OEM tags, **Auto-VPAT 2.5** |
+| **5. Training Studio** | Visual `.rstp` + Markdown + `.vtt` -> `< 50 KB` SCORM 1.2 & 2004 `.zip` | + **`RaggieScript`** branching scenarios & custom quiz rubrics, Hostile LMS Simulator, CI/CD | + **`audit-scorm` Legacy Third-Party SCORM `.zip` Auditor**, multi-course curricula, **Auto-VPAT 2.5** |
+| **6. Document Studio** | Visual `.rsdp` + Markdown -> verified Tagged `PDF/UA-1` + HTML5 | + **Accessible Fillable AcroForm Builder**, `RaggieScript` JSON/CSV batch data-merge, CI/CD | + Full Matterhorn Audit Certificate, `PDF/A-2a + PDF/UA-1` archival dual-stamp, **Auto-VPAT 2.5** |
+| **7. Localization Studio** | Side-by-side `.RESX`, `XLIFF 2.1`, `.rsip`, `.rstp` & `.vtt` editor + token lock | + Automated Win32 `&` mnemonic clash solver, `<= 22 CPS` `.vtt` gate, `RaggieScript` rules, CI/CD | + **Cross-Suite Shared Translation Memory & Glossary** across apps/help/SCORM + Multilingual VPAT |
+| **8. Accessibility Studio** | Desktop IDE (`AccessibilityStudio.exe`) single-project source audit & Guided Fix diffs | + **`RaggieScript`** custom org rules, headless `a11y-studio-cli` **CI/CD gates** & **SARIF 2.1.0** | + **Executive HTML5 VPAT 2.5 Generator**, multi-repo portfolio rollups, & Enterprise GPO MSI |
+
+---
+
+## 6. Unified Suite Project Type (`PackageKind = suite` / `.rsis`) & Monotonic Dual-Bar Progress Rule
+
+Because **RaggieSoft Studio** (including **RaggieSoft Studio Community Edition**) ships as an 8-tool unified Suite installer built by Installer Studio itself, our Suite engine enforces strict UX and accessibility rules:
+
+1. **Two Authoring Paths for Unified Suites**:
+   - **Standalone Suite Manifest (`PackageKind = suite` in `.rsip`)**: Explicitly lists `[SuitePackage.<Id>]` entries (`.msi` and/or `Engine = native` child setups), supporting single-arch or `BuildUniversal = true` (`x64 + ARM64` combined EXE + Smart Web Stub).
+   - **One-Command `.rsis` Workspace Suite Compilation (`[Suite] BuildSuiteInstaller = true`)**: Compiles every member `.rsip` project in deterministic `BuildOrder` (`10 -> 20 -> ...`) and then automatically packages all non-`.msm` member outputs into one unified `<SuiteOutputName>-setup.exe` chainer!
+2. **Permanent Ban on Single-Bar Sawtooth Resets (`Monotonic Dual-Bar Progress + Overall Taskbar`)**:
+   - Legacy suite chainers that reuse a single progress bar—jumping `0% → 100%`, snapping back to `0%`, and repeating 8 times—mislead sighted users, confuse screen-reader percentage announcements, and violate Microsoft's Windows Taskbar UX Guidelines.
+   - Every RaggieSoft Unified Suite Setup renders **two distinct, clearly labeled progress bars**:
+     - **Primary Bar — `Overall Suite Progress` (`0%–100%`, Strictly Monotonic)**: Weighted by each selected child package's uncompressed byte size ($\max(256\text{ KB}, \text{bytes}_k)$) and guarded by a high-water-mark clamp so overall progress advances smoothly from `0%` to `100%` across the entire Suite and **never resets or drops backward** between components.
+     - **Windows 11 Taskbar Progress (`ITaskbarList3`)**: Synchronized **1:1 with `Overall Suite Progress`** (`TBPF_NORMAL` green monotonic fill, `TBPF_PAUSED` amber if politely waiting on `Global\_MSIExecute`, `TBPF_ERROR` red on fault).
+     - **Secondary Bar — `Current Component` (`0%–100%`, Optional via `[UI] ShowComponentProgressBar = true`)**: Streams live intra-package progress (`MsiSetExternalUIRecord` `INSTALLMESSAGE_PROGRESS` ticks for `.msi` children and `RSW_CHILD_PROGRESS_FILE` IPC for `Engine = native` children) for whichever component is currently installing (`"Component 5 of 8: RaggieSoft Showcase Studio — 64%"`).
+
+---
+
 ## Fictitious Persons & Entities Disclaimer
 
 All narrative characters (including *Zoë* and her in-universe language *Fin#*), bands (including *The Stardust Engine*), biographies, universities (including *Commonwealth Polytechnic Institute / CPI*, *Virginia Dominion University / VDU*, *The Forgers*, and *The Crucible*), corporations (including *OmniCorp*, *Apex Records*, *Prairie Coachworks*, and *Sainte-Claire*), transit agencies (*BRT* and *CVTA*), in-universe legal filings, and events referenced across RaggieSoft works and sample content packs are works of fiction. In real life, **RaggieSoft**, **RaggieSoft Media**, **Engine Room Records**, **Ocean View Archives**, and **RaggieSoft Story Crossroads** are unincorporated creative imprints of Michael P. Ragsdale.

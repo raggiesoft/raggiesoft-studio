@@ -740,9 +740,9 @@ function renderSuiteHomeBody(): string {
               <td>Cryptographic tamper protection across inner payloads, outer bootstrappers, and static-CDN catalog updates.</td>
             </tr>
             <tr>
-              <th scope="row">Zero Telemetry &amp; 100% White-Label</th>
-              <td><a href="/installer-studio/editions"><code>Community == Architect</code></a> feature parity, MIT open-source code, zero license phone-home, and publisher-owned <code>VERSIONINFO</code></td>
-              <td>Your customers see your organization name, your artwork, and your product identity—never third-party adware or nag screens.</td>
+              <th scope="row">Zero Telemetry &amp; 4-Tier Suite Symmetry</th>
+              <td>All 8 tools &amp; All-Access Suite bundles share <a href="/installer-studio/editions"><code>Community == Architect</code></a>, <code>Essentials</code>, <code>Developer</code> (with <strong><code>RaggieScript</code></strong> across all 8 tools!), and <code>Architect</code></td>
+              <td>Hobbyists, students, educators, and OSS maintainers get the full 8-tool <strong>RaggieSoft Studio Community Suite</strong> free with zero watermarks, while commercial teams scale cleanly.</td>
             </tr>
           </tbody>
         </table>
@@ -2046,12 +2046,13 @@ function renderEditionsBody(): string {
 
         <article class="card">
           <div>
-            <h3>4. Runtime Accessibility &amp; Signing Are Never Paywalled</h3>
+            <h3>4. Suite-Wide Editions, <code>RaggieScript</code> Everywhere &amp; Dual-Bar Suites</h3>
             <p>
-              End-user screen-reader accessibility and cryptographic tamper protection should never be gated behind an enterprise
-              invoice. Every installer built in <strong>Essentials</strong> includes full UI Automation semantics, automatic OS
-              Dark/Light/High-Contrast rendering, <code>RSW055</code> contrast linting, and Dual-Layer Authenticode / Microsoft
-              Azure Artifact Signing.
+              All <strong>8 RaggieSoft Studio products</strong> (plus All-Access <strong>Studio Suite</strong> bundles,
+              including free <em>RaggieSoft Studio Community</em>) share the exact same <code>Community</code>,
+              <code>Essentials</code>, <code>Developer</code>, and <code>Architect</code> tiers—with
+              <strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> spanning all 8 tools via host-specific subsets and
+              Unified Suite Setups rendering <strong>monotonic Overall + Current Component dual progress bars</strong>!
             </p>
           </div>
         </article>
@@ -2306,7 +2307,7 @@ function renderRoadmapBody(): string {
           <ul class="feature-list">
             <li><strong>Lightweight Self-Extracting Archive <code>.EXE</code> Builder (<code>PackageKind = sfx</code>)</strong>: Turn any folder or <code>.zip</code> archive into a zero-dependency, Dark-Mode-aware <code>LZMS</code> self-extracting <code>.exe</code> with optional <code>PostExtractRun</code> or <code>PostExtractOpen</code>.</li>
             <li><strong>Multi-Volume Disk Spanning, Uncompressed Loose Source Media &amp; Administrative Installs (<code>msiexec.exe /a</code>)</strong>: Split multi-gigabyte distributions across numbered external <code>CAB1..CABN.cab</code> volumes, publish uncompressed side-by-side source trees supporting <em>Run from Media</em> and <em>Run from Network</em>, and support <code>msiexec.exe /a</code> network extractions.</li>
-            <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>), Multi-Engine Suites (<code>.rsis</code>) &amp; Dynamic <code>ARPSYSTEMCOMPONENT</code> Adoption</strong>: Chain transactional <code>.msi</code> desktop apps alongside <code>Engine = native</code> libraries under one Visual Studio Installer-style Suite Maintenance Hub (<strong>Add / Repair / Remove</strong>)—keeping standalone installs visible in <em>Installed apps</em> while dynamically adopting pre-existing standalone sibling MSIs into <code>ARPSYSTEMCOMPONENT=1</code> when the Suite is installed so <em>Programs and Features</em> stays clutter-free.</li>
+            <li><strong>Granular On-Demand Feature Packs (<code>.rswpak</code>), Multi-Engine Suites (<code>.rsis</code>) &amp; Monotonic Dual-Bar Suite Progress</strong>: Chain transactional <code>.msi</code> desktop apps alongside <code>Engine = native</code> libraries under one Suite Maintenance Hub featuring <strong>two distinct progress bars</strong>—a byte-weighted, strictly monotonic <strong>Overall Suite Progress</strong> bar (<code>0%&ndash;100%</code>, bound 1:1 to Windows Taskbar <code>ITaskbarList3</code> with zero per-component resets!) above a live <strong>Current Component</strong> bar—plus dynamic <code>ARPSYSTEMCOMPONENT=1</code> standalone adoption.</li>
           </ul>
         </div>
       </section>
