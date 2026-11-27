@@ -314,6 +314,7 @@ Configures a user or system Environment Variable ([Environment.<id>]), including
 | `Action` | `enum` | No | `append_path` | Allowed: `append_path|prepend_path|set|create_if_absent`. `append_path` (`[~];Value`) appends safely without clobbering existing entries and removes only its own entry on uninstall; `prepend_path` (`Value;[~]`) prepends; `set` overwrites; `create_if_absent` (`+Name`) sets only if unset. |
 | `Scope` | `enum` | No | `auto` | Allowed: `auto|machine|user`. `auto` matches `[Package] Scope`, `machine` writes to System (`*Name`), and `user` writes to `HKCU\Environment`. |
 | `RemoveOnUninstall` | `bool (true|false)` | No | `true` | When `true` (default), removes this variable or `PATH` segment cleanly on uninstallation (`=-Name`). |
+| `OnUninstall` | `enum` | No | `remove` | Allowed: `remove|keep`. Alias for `RemoveOnUninstall` (`remove` removes this variable or `PATH` segment on uninstallation; `keep` leaves it intact). |
 | `Condition` | `string` | No | — | Optional MSI component condition (e.g. `ADD_TO_PATH = "1"` bound to a custom wizard checkbox!). |
 | `Feature` | `string` | No | `Main` | Feature ID owning this environment variable rule. |
 | `Component` | `string` | No | — | Optional explicit `[Component.<id>]` name. |
@@ -329,7 +330,7 @@ Writes or updates a [Section] Key = Value entry inside a target .ini configurati
 | `Section` | `string` | **Yes** | `General` | INI `[Section]` header name. |
 | `Key` | `string` | **Yes** | — | INI key name within `[Section]`. |
 | `Value` | `string` | **Yes** | — | Formatted INI value (supports `[INSTALLDIR]`, `[ProductVersion]`, and custom dialog properties). |
-| `Action` | `enum` | No | `add_line` | Allowed: `add_line|create_line|add_tag`. `add_line` (`0` = create or update key), `create_line` (`1` = write only if key does not exist), or `add_tag` (`3` = append comma-separated tag). |
+| `Action` | `enum` | No | `add_line` | Allowed: `add_line|set|create_line|create_only|add_tag|remove_key`. `add_line` / `set` (`0` = create or update key), `create_line` / `create_only` (`1` = write only if key does not exist), `add_tag` (`3` = append comma-separated tag), or `remove_key`. |
 | `Feature` | `string` | No | `Main` | Feature ID owning this INI rule. |
 | `Component` | `string` | No | — | Optional explicit `[Component.<id>]` name. |
 
@@ -349,7 +350,7 @@ Places a Per-Monitor V2 DPI Win32 control ([Control.<id>]: Label, Edit, PathEdit
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
 | `Dialog` | `string` | **Yes** | — | Target `[Dialog.<id>]` page owning this control. |
-| `Type` | `enum` | **Yes** | `CheckBox` | Allowed: `Label|Heading|Edit|PasswordEdit|PathEdit|CheckBox|RadioGroup|ComboBox|GroupBox`. Control widget kind rendered in `SetupWizard.exe` and the IDE Visual Dialog Designer. |
+| `Type` | `enum` | **Yes** | `CheckBox` | Allowed: `Text|Label|Heading|Edit|PasswordEdit|PathEdit|CheckBox|RadioGroup|RadioButtonGroup|ComboBox|ListBox|GroupBox|Line`. Control widget kind rendered in `SetupWizard.exe` and the IDE Visual Dialog Designer. |
 | `X` | `integer` | No | `24` | Horizontal position in 96-DPI logical pixels inside the wizard content area (`0..560`). |
 | `Y` | `integer` | No | `20` | Vertical position in 96-DPI logical pixels inside the wizard content area (`0..240`). |
 | `Width` | `integer` | No | `500` | Control width in 96-DPI logical pixels. |
@@ -357,8 +358,9 @@ Places a Per-Monitor V2 DPI Win32 control ([Control.<id>]: Label, Edit, PathEdit
 | `Property` | `string` | No | — | Uppercase MSI / Native property bound two-way to this control (automatically added to `SecureCustomProperties`!). |
 | `DefaultValue` | `string` | No | — | Initial value assigned to `Property` before the dialog opens. |
 | `Text` | `string` | No | — | Control caption or prompt (include a `&` keyboard mnemonic on interactive inputs/checkboxes!). |
-| `Items` | `string` | No | — | Pipe-separated `Value:Caption` options for `RadioGroup` or `ComboBox` controls. |
+| `Items` | `string` | No | — | Pipe-separated `Value:Caption` options for `RadioGroup`, `RadioButtonGroup`, `ComboBox`, or `ListBox` controls. |
 | `TabOrder` | `integer` | No | `0` | Explicit keyboard `Tab` focus sequence order (`0` = document order). |
+| `Required` | `bool (true|false)` | No | `false` | When `true`, blocks `&Next >` on this custom page until the user supplies a non-empty value. |
 
 ### `[MsiDialog.<id>]` (*Optional*)
 Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.
