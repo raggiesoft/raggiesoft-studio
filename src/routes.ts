@@ -1645,7 +1645,7 @@ function renderHelpStudioBody(): string {
             that opens and decompiles raw <strong><code>.chm</code>, <code>.hhp</code>, <code>.hlp</code>, <code>.cnt</code>,
             and Word footnote <code>.rtf</code></strong> archives, scrubs legacy Word <code>MsoNormal</code> inline black styles,
             and compiles modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> viewers, <strong>complete standalone
-            <code>learn.microsoft.com</code>-style documentation websites</strong>, and VPAT 2.5!
+            three-column RaggieSoft Reference Portal websites</strong>, and VPAT 2.5!
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">See Live Dogfood Site: raggiescript.raggiesoft.dev &rarr;</a>
