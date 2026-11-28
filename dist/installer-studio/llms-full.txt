@@ -1,10 +1,10 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.9.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.9.1)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.9.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.9.1) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.9.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.9.1)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
@@ -38,7 +38,7 @@ Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggie
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
 | `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|addon|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe`, `addon` builds a Host-Aware Add-On / Content Pack Installer (`[HostApp]` locates the parent app and drops books/albums/plugins directly into its library directory), and `suite` builds a single-UAC Unified Suite / Web Workload Chainer. |
-| `SuiteRollbackPolicy` | `enum` | No | `keep_completed` | Allowed: `keep_completed|rollback_new`. Controls failure recovery in `PackageKind = suite`: `keep_completed` leaves already-finished member packages installed for fast resume; `rollback_new` automatically uninstalls packages newly added in the current Suite session back to the start or last `RollbackBoundary = true` savepoint. |
+| `SuiteRollbackPolicy` | `enum` | No | `rollback_new` | Allowed: `keep_completed|rollback_new`. Controls failure & cancel recovery in `PackageKind = suite`: `rollback_new` (default) automatically uninstalls packages newly added in the current Suite session (up to the last `RollbackBoundary = true` savepoint on unexpected error, or 100% of session additions when the user confirms Cancel); `keep_completed` leaves already-finished member packages installed for fast resume. |
 | `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `raggiescript` (alias `native`) builds a **RaggieScript EXE** zero-`msi.dll` transactional LZMS installer with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
 | `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls Windows UAC level stamped onto PE `RT_MANIFEST` `#1` across `msi`, `native`, `sfx`, and `suite` EXEs: `asInvoker` (default — un-elevated launch; prompts UAC only if per-machine install begins), `highestAvailable` (elevates upfront for Admins while letting Standard Users run), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
@@ -234,6 +234,7 @@ Child .msi or RaggieScript EXE setup package ([SuitePackage.<id>]) chained under
 | `InstallArgs` | `string` | No | — | Optional extra properties or CLI switches passed to this child package during Suite install. |
 | `Required` | `bool (true|false)` | No | `false` | When `true`, locks this core Suite package as required in the Suite Setup checklist. |
 | `SelectedByDefault` | `bool (true|false)` | No | `true` | Whether this child package is pre-checked by default on fresh Suite installations. |
+| `Inclusion` | `enum` | No | `typical` | Allowed: `minimal|typical|complete`. Controls which Suite Setup Type presets automatically select this package: `minimal` (included in Compact/Minimal, Express/Typical, & Complete), `typical` (included in Express/Typical & Complete), or `complete` (included in Complete or when checked in Custom Setup). `Required = true` always implies `minimal`. |
 | `AdoptStandalone` | `bool (true|false)` | No | `true` | When `true` (default), dynamically adopts any already-installed standalone sibling (`REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1`) under the single Suite Installed Apps entry. |
 | `RollbackBoundary` | `bool (true|false)` | No | `false` | When `true` under `SuiteRollbackPolicy = rollback_new`, commits all packages up through this item as a savepoint so a later failure does not uninstall earlier foundational prerequisites/tools. |
 | `ForwardInstallDir` | `bool (true|false)` | No | `false` | When `true`, passes `SUITE_INSTALLDIR="<SuiteDir>"` into this child package so member apps or add-ons align under a shared Suite root. |
