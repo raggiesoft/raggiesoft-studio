@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "moduleId": "raggiesoft.installer-studio",
   "productName": "RaggieSoft Installer Studio",
-  "productVersion": "0.6.0",
+  "productVersion": "0.8.0",
   "publisher": "RaggieSoft",
-  "description": "Offline documentation for RaggieSoft Installer Studio (InstallerStudio.exe, instbuild.exe, SetupWizard.exe, msiprism.exe, and RaggieSoftHelp.exe).",
+  "description": "Offline documentation for RaggieSoft Installer Studio (InstallerStudio.exe, instbuild.exe, SetupWizard.exe, RsPatch.exe, RsUpdate.exe, msiprism.exe, rswsfx.exe, and RaggieSoftHelp.exe).",
   "defaultTopicId": "welcome-overview",
   "onlineDocsUrl": "https://raggiesoftstudio.com/installer-studio/docs",
   "topics": [
@@ -71,6 +71,14 @@
       "title": "MSI Prism SQL Inspector, Signing, .MST & .MSP",
       "summary": "Inspect .msi/.msm/.msp relational tables in msiprism.exe, apply Dual-Layer Authenticode signing, and emit .mst/.msp deltas.",
       "keywords": ["msiprism", "sql", "mst", "transform", "msp", "patch", "signing", "authenticode", "azure"]
+    },
+    {
+      "id": "updates-and-patching",
+      "fileName": "topics/updates-and-patching.html",
+      "category": "Updates & Servicing",
+      "title": "Updates, Servicing, RsPatch.exe & RsUpdate.exe",
+      "summary": "Configure [Upgrade] Major/Minor/Small servicing, run --plan-update Component-Rule checks, compile msdelta.dll .MSP & RaggieScript EXE .rswpatch deltas, and ship DRY apps-manifest.json updates with RsUpdate.exe.",
+      "keywords": ["upgrade", "minor upgrade", "major upgrade", "small update", "rspatch", "rsupdate", "msdelta", "rswpatch", "raggiescript exe", "1638", "apps-manifest"]
     }
   ],
   "indexEntries": [

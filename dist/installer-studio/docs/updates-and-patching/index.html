@@ -1,0 +1,307 @@
+<!doctype html>
+<!--
+  ============================================================================
+  FILE: index.html
+  PROPERTY: https://raggiesoftstudio.com (installwithoutlimits.com 301s -> /installer-studio)
+  STACK: Alpine.js 3 + TypeScript + Vite Static SSG
+  LICENSE: MIT License (Copyright (c) 2026 Michael P. Ragsdale / RaggieSoft)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW FOR 100-LEVEL READERS:
+    This HTML5 document is the master shell for `raggiesoftstudio.com`
+    (RaggieSoft Studio: Eight-Tool Developer, Packaging & Compliance Suite —
+    Home of Installer Studio, Accessibility Studio, Training Studio, Help Studio,
+    Document Studio, Localization Studio, Launcher Studio, and Showcase Studio;
+    `installwithoutlimits.com` 301s to `/installer-studio` and
+    `a11y.raggiesoft.com` 301s to `/accessibility-studio`).
+      1. Loads the shared `raggiesoft-network.css` and `raggiesoft-network.js`
+         ecosystem layer so desktop visitors get the top RaggieSoft Network
+         omnibar and mobile visitors (`< 768px`) get a unified single-hamburger
+         navigation & property switcher drawer (`#header-navigation-panel`).
+      2. During `npm run build`, `scripts/prerender.mjs` replaces the two
+         placeholder markers below with pre-rendered route SEO/OpenGraph tags
+         and semantic HTML5 page content (and mounts the IBM Carbon Design System
+         Accessibility Studio sub-portal under `/accessibility-studio`) so every
+         visitor, screen reader, and search engine receives complete HTML on the
+         very first network packet!
+  ============================================================================
+-->
+<html lang="en">
+  <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe | Installer…</title>
+    <meta name="description" content="Configure [Upgrade] Major/Minor/Small servicing, run --plan-update Component-Rule checks, compile msdelta.dll .MSP &amp; RaggieScript EXE .rswpatch deltas,…" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://raggiesoftstudio.com/installer-studio/docs/updates-and-patching" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RaggieSoft Studio" />
+    <meta property="og:title" content="Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe | Installer…" />
+    <meta property="og:description" content="Configure [Upgrade] Major/Minor/Small servicing, run --plan-update Component-Rule checks, compile msdelta.dll .MSP &amp; RaggieScript EXE .rswpatch deltas,…" />
+    <meta property="og:url" content="https://raggiesoftstudio.com/installer-studio/docs/updates-and-patching" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe | Installer…" />
+    <meta name="twitter:description" content="Configure [Upgrade] Major/Minor/Small servicing, run --plan-update Component-Rule checks, compile msdelta.dll .MSP &amp; RaggieScript EXE .rswpatch deltas,…" />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg" />
+    <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/docs/updates-and-patching#webpage","url":"https://raggiesoftstudio.com/installer-studio/docs/updates-and-patching","name":"Updates, Servicing, RsPatch.exe & RsUpdate.exe | Installer…","description":"Configure [Upgrade] Major/Minor/Small servicing, run --plan-update Component-Rule checks, compile msdelta.dll .MSP & RaggieScript EXE .rswpatch deltas,…","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
+    <script type="module" crossorigin src="/assets/index-DrMik9Xr.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+  </head>
+  <body>
+    <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared RaggieSoft Ecosystem Network Bar (auto-hidden on < 768px in favor of single mobile hamburger) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://launcher.raggiesoft.com">🚀 Launcher</a></li>
+          <li><a href="https://raggiesoftstudio.com" aria-current="page" class="is-active">🧰 RaggieSoft Studio</a></li>
+          <li><a href="https://raggiesoft.dev">💻 Developer Hub</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Directory</a></li>
+          <li><a href="https://michaelpragsdale.com">👔 Portfolio</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+    <header class="site-header" data-theme="dark">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <img class="brand-mark" src="https://assets.raggiesoft.com/raggiesoft-studio/logo/raggiesoft-studio-logo.svg" width="36" height="36" alt="" aria-hidden="true" />
+          <span class="brand-text-col">
+            <span class="brand-title">RaggieSoft Studio</span>
+            <span class="brand-sub">Installer Studio v0.8.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64</span>
+          </span>
+        </a>
+
+        <button
+          type="button"
+          class="rs-mobile-header-toggle studio-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open RaggieSoft Studio and RaggieSoft network menu"
+          data-close-label="Close RaggieSoft Studio and RaggieSoft network menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open RaggieSoft Studio and RaggieSoft network menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div id="header-navigation-panel" class="header-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Studio Suite Navigation">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="/">Suite</a></li>
+              <li><a class="nav-link" href="/download">Download</a></li>
+              <li><a class="nav-link is-section-active" href="/installer-studio">Installer</a></li>
+              <li><a class="nav-link" href="/accessibility-studio">Accessibility</a></li>
+              <li><a class="nav-link" href="/training-studio">Training</a></li>
+              <li><a class="nav-link" href="/help-studio">Help</a></li>
+              <li><a class="nav-link" href="/document-studio">Document</a></li>
+              <li><a class="nav-link" href="/localization-studio">Localization</a></li>
+              <li><a class="nav-link" href="/launcher-studio">Launcher</a></li>
+              <li><a class="nav-link" href="/showcase-studio">Showcase</a></li>
+              <li><a class="nav-link" href="/editions">Editions</a></li>
+              <li><a class="nav-link" href="/raggiescript">RaggieScript</a></li>
+            </ul>
+          </nav>
+          <div class="mobile-product-subnav">
+            <span class="mobile-product-subnav-title">Installer Studio v0.8.0 Pages</span>
+            <nav aria-label="Installer Studio Mobile Sub-Pages">
+              <ul class="nav-list">
+                <li><a class="nav-link" href="/installer-studio">Overview</a></li>
+                <li><a class="nav-link" href="/installer-studio/download">Download</a></li>
+                <li><a class="nav-link" href="/installer-studio/download/previous-versions">Previous Versions</a></li>
+                <li><a class="nav-link" href="/installer-studio/editions">Editions</a></li>
+                <li><a class="nav-link" href="/installer-studio/screenshots">Screenshots</a></li>
+                <li><a class="nav-link" href="/installer-studio/roadmap">Roadmap</a></li>
+                <li><a class="nav-link" href="/installer-studio/docs" aria-current="page">Docs & AI Spec</a></li>
+                <li><a class="nav-link" href="/installer-studio/faq">FAQ</a></li>
+                <li><a class="nav-link" href="/installer-studio/changelog">Changelog</a></li>
+                <li><a class="nav-link" href="/installer-studio/vpat">Accessibility & VPAT</a></li>
+                <li><a class="nav-link" href="/installer-studio/security">Security</a></li>
+                <li><a class="nav-link" href="/download#installer-studio">Suite Downloads (v0.8.0)</a></li>
+                <li><a class="nav-link" href="/download/previous-versions#installer-studio">Previous Versions</a></li>
+                <li><a class="nav-link" href="https://github.com/raggiesoft/installer-studio">Installer Studio GitHub</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="product-subnav">
+        <div class="product-subnav-inner">
+          <span class="product-subnav-label">Installer Studio v0.8.0:</span>
+          <nav aria-label="Installer Studio Product Pages">
+            <ul class="product-subnav-list">
+              <li><a class="product-subnav-link" href="/installer-studio">Overview</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/download">Download</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/download/previous-versions">Previous Versions</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/editions">Editions</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/screenshots">Screenshots</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/roadmap">Roadmap</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/docs" aria-current="page">Docs & AI Spec</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/faq">FAQ</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/changelog">Changelog</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/vpat">Accessibility & VPAT</a></li>
+              <li><a class="product-subnav-link" href="/installer-studio/security">Security</a></li>
+              <li><a class="product-subnav-link" href="/download#installer-studio">Suite Downloads</a></li>
+              <li><a class="product-subnav-link" href="/download/previous-versions#installer-studio">Previous Versions</a></li>
+              <li><a class="product-subnav-link" href="https://github.com/raggiesoft/installer-studio">GitHub</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
+      
+        <div class="docs-reader-grid">
+          <aside class="docs-sidebar" aria-label="Installer Studio Documentation Chapters">
+            <span class="eyebrow">F1 Help Manual (v0.8.0)</span>
+            <h2 style="font-size: 1.05rem; margin: 0.15rem 0 0.5rem;">Chapters</h2>
+            <ul class="docs-toc-list">
+              <li><a class="docs-toc-link" href="/installer-studio/docs">Documentation Index</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/welcome-overview">1. Overview, Editions &amp; Hybrid .rsip Architecture</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/ide-and-aerowizards">2. 12-View Tree-First Visual IDE &amp; 5 Guided AeroWizards</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/components-and-keypaths">3. Destination Folders, Components &amp; KeyPath Rules</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/runtimes-and-merge-modules">4. Pre-MSI Runtime Prerequisites &amp; .MSM Merge Modules</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/selection-tree-and-dialogs">5. MSI SelectionTree, Execution Level (UAC) &amp; MSI.DLL Dialogs</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/cli-and-ai-agents">6. Headless CLI (instbuild.exe) &amp; AI Agent Authoring</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/accessibility-and-vpat">7. WCAG 2.2 AA Accessibility, Dark Mode &amp; VPAT 2.5</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/msiprism-and-patches">8. MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a></li>
+              <li><a class="docs-toc-link" href="/installer-studio/docs/updates-and-patching" aria-current="page">9. Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe</a></li>
+            </ul>
+          </aside>
+          <article class="docs-article">
+            <span class="eyebrow">Chapter 9 of 9 • Updates &amp; Servicing</span>
+            <h1>Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe</h1>
+  <p>
+    <strong>RaggieSoft Installer Studio v0.8.0</strong> provides a complete, zero-service software update and servicing
+    architecture spanning <strong>Enterprise MSI</strong>, <strong>Windows Installer Patches (.MSP)</strong>, and
+    <strong>RaggieScript EXE</strong> installers (<code>Engine = raggiescript</code> and <code>.rssc</code>).
+  </p>
+
+  
+  <h2 id="update-strategies">1. Major Upgrades vs. Minor Upgrades vs. Small Updates</h2>
+  <ul>
+    <li><strong>Major Upgrade (Default Across All 4 Editions — <code>[Upgrade] Strategy = major</code>)</strong>: Mints a fresh deterministic <code>ProductCode</code> whenever <code>Version</code> increments while preserving your permanent <code>UpgradeCode</code>. Supports freely adding, renaming, moving, or retiring files and components via <code>RemoveExistingProducts</code> (configurable as <code>Schedule = early</code> at Sequence <code>1525</code> or <code>Schedule = late</code> at Sequence <code>6550</code>, with <code>MigrateFeatures = true</code> setting <code>Attributes = 257</code>).</li>
+    <li><strong>Minor Upgrade (Architect &amp; Community — <code>[Upgrade] Strategy = minor</code>)</strong>: Preserves <code>BaselineMsi</code>'s <code>ProductCode</code> while incrementing <code>Version</code>. Can be delivered either as a compact <code>.MSP</code> patch or via <code>SetupWizard.exe</code> (which automatically detects the installed <code>ProductCode</code> via <code>MsiGetProductInfoW</code> and appends <code>REINSTALL=ALL REINSTALLMODE=vomus</code> so MSI Error <code>1638</code> never occurs).</li>
+    <li><strong>Small Update Hotfix (Architect &amp; Community — Opt-In <code>--allow-small-update</code>)</strong>: Emergency hotfix <code>.MSP</code> where both <code>ProductCode</code> and <code>ProductVersion</code> remain unchanged. Blocked by default (<code>RSW084</code>) unless <code>--allow-small-update</code> is explicitly passed.</li>
+  </ul>
+
+  
+  <h2 id="plan-update">2. Diff &amp; Component-Rule Planner (<code>--plan-update</code>)</h2>
+  <p>
+    Run <code>instbuild.exe --plan-update &lt;old.msi|.exe&gt; &lt;new.msi|.exe&gt; [--diagnostics=json]</code> (or <code>RsPatch.exe plan</code>)
+    before building a patch. The planner audits Microsoft's Windows Installer Component Rules automatically:
+  </p>
+  <ul>
+    <li><strong>RSW080</strong>: Mismatched <code>UpgradeCode</code> between baseline and target packages.</li>
+    <li><strong>RSW081</strong>: Deleted baseline <code>ComponentId</code> GUID (illegal in Minor/Small <code>.MSP</code> patches; requires a Major Upgrade).</li>
+    <li><strong>RSW082</strong>: Changed <code>KeyPath</code> on an existing <code>ComponentId</code>.</li>
+    <li><strong>RSW083</strong>: Moved an existing <code>ComponentId</code> to a different <code>Directory_</code>.</li>
+    <li><strong>RSW084</strong>: Unchanged <code>ProductVersion</code> without <code>--allow-small-update</code>.</li>
+  </ul>
+
+  
+  <h2 id="rspatch">3. Binary-Delta Patching (<code>RsPatch.exe</code> via Windows <code>msdelta.dll</code>)</h2>
+  <p>
+    <code>RsPatch.exe</code> calls Windows 11's built-in <code>System32\msdelta.dll</code> (<code>CreateDeltaB</code> with PE executable
+    call/jump preprocessing and <code>ApplyDeltaB</code>) with zero third-party dependencies:
+  </p>
+  <ul>
+    <li><strong>MSI Patches (<code>.MSP</code>)</strong>: <code>RsPatch.exe build-msp base.msi target.msi update.msp</code> validates Component Rules, populates <code>MsiPatchMetadata</code> (<code>AllowRemoval = 1</code>), and embeds the transform substorage.</li>
+    <li><strong>RaggieScript EXE Deltas (<code>.rswpatch</code>)</strong>: <code>RsPatch.exe build-exe old-setup.exe new-setup.exe update.rswpatch</code> builds a SHA-256-sealed <code>RSWPATCH1</code> container recording <code>Keep</code>, <code>Add</code>, <code>Delta</code>, and <code>Delete</code> (retired file) operations. Applying via <code>RsPatch.exe apply update.rswpatch "C:\Program Files\..."</code> verifies baseline SHA-256 digests and rolls back 100% atomically via <code>.rsw-rollback.jnl</code> on any fault.</li>
+  </ul>
+
+  
+  <h2 id="rsupdate">4. Zero-Service Static-CDN Updater (<code>RsUpdate.exe</code> — 100% DRY with Launcher)</h2>
+  <p>
+    <code>RsUpdate.exe</code> (included in Developer, Architect, and Community Editions) consumes the exact same static
+    <code>apps-manifest.json</code> array schema used by <strong>RaggieSoft Launcher</strong>—requiring zero background
+    <code>SYSTEM</code> services and zero database servers. When a matching <code>patches</code> entry exists for the user's
+    <code>installedVersion</code> and silicon architecture (<code>x64</code> or <code>ARM64</code>), <code>RsUpdate.exe</code>
+    downloads and SHA-256-verifies the compact <code>.msp</code> or <code>.rswpatch</code> delta; otherwise it seamlessly
+    falls back to the full Major Upgrade installer.
+  </p>
+            <nav class="docs-pager" aria-label="Chapter Pagination">
+              <a class="btn btn-outline" href="/installer-studio/docs/msiprism-and-patches">&larr; MSI Prism SQL Inspector, Signing, .MST &amp; .MSP</a>
+              <a class="btn btn-primary" href="/installer-studio/roadmap">Explore Engineering Roadmap &rarr;</a>
+            </nav>
+          </article>
+        </div>
+      
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="/">Suite Overview (8 Tools)</a>
+          <a href="/download">Suite Download Center (v0.8.0)</a>
+          <a href="/download/previous-versions">Previous Versions Archive</a>
+          <a href="/editions">Suite Editions &amp; Bundles</a>
+          <a href="/raggiescript">RaggieScript (.rssc)</a>
+          <a href="/installer-studio">Installer Studio (v0.8.0)</a>
+          <a href="/accessibility-studio">Accessibility Studio (v1.0.1)</a>
+          <a href="/training-studio">Training Studio (v0.1.0)</a>
+          <a href="/help-studio">Help Studio (.CHM / F1)</a>
+          <a href="/document-studio">Document Studio (PDF/UA-1)</a>
+          <a href="/localization-studio">Localization Studio</a>
+          <a href="/launcher-studio">Launcher Studio</a>
+          <a href="/showcase-studio">Showcase Studio</a>
+          <a href="/installer-studio/editions">Installer Editions</a>
+          <a href="/installer-studio/screenshots">Installer Screenshots</a>
+          <a href="/installer-studio/roadmap">Installer Roadmap</a>
+          <a href="/installer-studio/docs">Installer Docs &amp; Spec</a>
+          <a href="/installer-studio/faq">Installer FAQ</a>
+          <a href="/installer-studio/changelog">Changelog</a>
+          <a href="/installer-studio/vpat">VPAT 2.5</a>
+          <a href="/installer-studio/security">Security</a>
+          <a href="/llms.txt">Suite /llms.txt</a>
+          <a href="/installer-studio/llms-full.txt">Installer /llms-full.txt</a>
+          <a href="/training-studio/llms-full.txt">Training /llms-full.txt</a>
+          <a href="https://github.com/raggiesoft/installer-studio">Installer GitHub</a>
+          <a href="https://github.com/raggiesoft/accessibility-studio">Accessibility GitHub</a>
+          <a href="https://raggiesoft.dev">Engineered by RaggieSoft (raggiesoft.dev)</a>
+          <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+          <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+          <a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a>
+        </div>
+        <p>
+          Copyright &copy; 2026 Michael P. Ragsdale / RaggieSoft. Open-source software code licensed under the MIT License;
+          documentation licensed under CC BY-SA 4.0. Feedback &amp; engineering inquiries:
+          <a href="mailto:hello@michaelpragsdale.com">hello@michaelpragsdale.com</a>.
+        </p>
+        <p class="disclaimer-box">Fictitious Persons & Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine), biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</p>
+      </div>
+    </footer>
+  </div>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261126a" defer></script>
+  </body>
+</html>

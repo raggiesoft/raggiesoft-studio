@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.7.0
+# RaggieSoft Installer Studio (Install Without Limits) — v0.8.0
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 12-view Visual IDE + 6 Guided AeroWizards, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` 11-style WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Editions Matrix: https://raggiesoftstudio.com/installer-studio/editions | Open-source dev hub: https://raggiesoft.dev
 
@@ -30,9 +30,10 @@
 - `RaggieSoftHelp.exe [--module raggiesoft.installer-studio] [--topic <id>]`: Opens the offline C++20 Help Viewer.
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
 
-## `.rsip` Manifest Sections (`v0.7`)
-- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
+## `.rsip` Manifest Sections (`v0.8`)
+- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
+- `[Upgrade]`: Declarative update & servicing policy ([Upgrade]): Strategy (major|minor|small_hotfix), RemoveExistingProducts Schedule (early 1525 vs late 6550), MigrateFeatures (257), BaselineMsi, and RsUpdate.exe UpdateFeedUrl.
 - `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
 - `[Media]`: Multi-volume cabinet disk spanning (MaxCabinetSizeMB -> CAB1.cab..CABN.cab), external vs. embedded cabinets, and uncompressed loose source media (Compression = none | cab).
 - `[SFX]`: Lightweight LZMS self-extracting archive (.exe) post-extraction launch (PostExtractRun), document open (PostExtractOpen), temp staging, and folder options (PackageKind = sfx).
@@ -41,7 +42,7 @@
 - `[SetupType.<id>]`: Custom author-defined setup mode card ([SetupType.<id>]: Typical, Compact, Complete, Developer Workstation, etc.) with '&' mnemonic, description, feature tier, and icon.
 - `[Billboard.<id>]`: Optional rotating feature highlight card ([Billboard.<id>]) displayed during installation on FullScreenBlue, FullScreenTeal, and progress views.
 - `[Prerequisite.<id>]`: Runtime prerequisite ([Prerequisite.<id>]: .NET 11, .NET 10 LTS, WebView2, VC++ Redist, or Custom .exe/.msi) executed BEFORE msiexec with download/embedded/side-by-side delivery and reboot exit-code tracking.
-- `[SuitePackage.<id>]`: Child .msi or native setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
+- `[SuitePackage.<id>]`: Child .msi or RaggieScript EXE setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
 - `[MergeModule.<id>]`: Consumes a Windows Installer Merge Module ([MergeModule.<id>]: .msm) merging its Components, Files, Registry, and MergeModule.CABinet directly into Product.msi.
 - `[Feature.<id>]`: Named Feature or Sub-Feature ([Feature.<id>]) with plain-English Inclusion tiers, optional Run-from-Source (MenuCD/MenuNetwork), and embedded vs. external .rswpak on-demand delivery.
 - `[Component.<id>]`: Explicit MSI Component ([Component.<id>]) enforcing Microsoft Single-Directory & KeyPath rules (File, Registry, or CreateFolder).
@@ -50,8 +51,8 @@
 - `[FileAssociation.<id>]`: Registers a file extension, ProgId, document icon, MIME type, and Explorer shell verbs ([FileAssociation.<id>]).
 - `[Shortcut.<id>]`: Creates an advertised-free Start Menu or Desktop shortcut ([Shortcut.<id>]) with ICE38 HKCU KeyPath & ICE64 RemoveFolder.
 - `[Registry.<id>]`: Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto or explicit 64-bit MSI Component.
-- `[Environment.<id>]`: Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal via the MSI Environment table & Native Engine.
-- `[IniFile.<id>]`: Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) via the MSI IniFile table & Native Engine.
+- `[Environment.<id>]`: Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal across MSI & RaggieScript EXE.
+- `[IniFile.<id>]`: Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) across MSI & RaggieScript EXE.
 - `[Dialog.<id>]`: Defines a custom C++ SetupWizard.exe page ([Dialog.<id>]) edited in the WYSIWYG Visual Dialog Designer and spliced into the runtime setup flow.
 - `[Control.<id>]`: Places a Per-Monitor V2 DPI Win32 control ([Control.<id>]: Label, Edit, PathEdit, CheckBox, RadioGroup, ComboBox, GroupBox) onto a custom C++ [Dialog.<id>] page.
 - `[MsiDialog.<id>]`: Defines a custom 370x270 Windows Installer SQL Dialog ([MsiDialog.<id>]) spliced into the MSI.DLL UI sequence.

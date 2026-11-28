@@ -1,27 +1,27 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.7.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.8.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.7.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.8.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.7.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.8.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
 6. **Microsoft Component Rules (`RSW031` & `RSW032`)**: Every `[Payload.*]` assigned to an explicit `[Component.<Id>]` must share one destination directory (`RSW031`), and components targeting per-user folders (`AppDataFolder`, `LocalAppDataFolder`, `StartMenu`, `Desktop`) must use `KeyPathKind = registry` (`HKCU`, `RSW032`).
 7. **Pre-MSI `[Prerequisite.<Id>]` Execution**: Runtimes (`DotNet11Desktop`, `DotNet11AspNet`, `DotNet11Runtime`, `DotNet10Desktop`, `DotNet10AspNet`, `DotNet10Runtime`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`, or `Custom`) execute BEFORE `msiexec` under a single UAC prompt (`download`, `embedded` LZMS, or `side-by-side` `Redist\`) and latch `RebootExitCodes` (`3010, 1641, 23`).
 8. **64-Bit Silicon & `PID_TEMPLATE` Rules (`x64;1033` vs `Arm64;1033` — Zero `IA-64` / `x86` Host Builds)**: Host toolchain & outer Universal `Setup.exe` stubs are strictly 64-bit (`IMAGE_FILE_MACHINE_AMD64` `0x8664` outer stub using `IsWow64Process2` to pierce Windows 11 Prism and dispatch native `ARM64` `0xAA64` vs `x64` `0x8664`). MSI `SummaryInformation` `PID_TEMPLATE` MUST strictly use `x64;1033` (AMD64/Intel 64-bit) or `Arm64;1033` (64-bit ARM)—NEVER `Intel64;1033` (deceased IA-64 Itanium!).
-9. **Multi-Engine Packaging (`v0.6` `PackageKind = msi|msm|sfx|suite` & `Engine = msi|native`)**: Build enterprise `.msi` databases (including `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), zero-MSI `Engine = native` direct transactional setups (`WizardLayout = simple`), or Unified Suite setups (`PackageKind = suite` with dynamic `ARPSYSTEMCOMPONENT` adoption).
+9. **Multi-Engine Packaging (`v0.8` `PackageKind = msi|msm|sfx|suite`, `Engine = msi|raggiescript`, `RsPatch.exe` & `RsUpdate.exe`)**: Build enterprise `.msi` databases (including `[Upgrade]` Major/Minor/Small servicing, `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), zero-MSI **RaggieScript EXE** (`Engine = raggiescript`) direct transactional setups with retired-file pruning & `RsPatch.exe` `msdelta.dll` `.rswpatch` deltas, `RsUpdate.exe` DRY `apps-manifest.json` client updates, or Unified Suite setups (`PackageKind = suite` with dynamic `ARPSYSTEMCOMPONENT` adoption).
 10. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.7`)
+## 2. Complete `.rsip` Project Schema (`v0.8`)
 
 ### `[Package]` (*Required*)
-Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
+Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| `SchemaVersion` | `string` | No | `0.6` | Manifest grammar version (`0.6`). |
+| `SchemaVersion` | `string` | No | `0.8` | Manifest grammar version (`0.8`). |
 | `Name` | `string` | **Yes** | — | Consumer-facing ProductName written to MSI Property table and VERSIONINFO. |
 | `Version` | `msi_version (Major.Minor.Build)` | **Yes** | — | Three-part Windows Installer version (`Major.Minor.Build`, max `255.255.65535`). |
 | `Manufacturer` | `string` | **Yes** | — | Publisher name written to MSI `Manufacturer` property and VERSIONINFO `CompanyName`. |
@@ -38,7 +38,7 @@ Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/native), UAC
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
 | `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe` (zero Installed Apps clutter), and `suite` builds a single-UAC Unified Suite Chainer (`ARPSYSTEMCOMPONENT` adoption). |
-| `Engine` | `enum` | No | `msi` | Allowed: `msi|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `native` uses RaggieSoft's zero-`msi.dll` transactional LZMS extraction engine with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `raggiescript` (alias `native`) builds a **RaggieScript EXE** zero-`msi.dll` transactional LZMS installer with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
 | `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls Windows UAC level stamped onto PE `RT_MANIFEST` `#1` across `msi`, `native`, `sfx`, and `suite` EXEs: `asInvoker` (default — un-elevated launch; prompts UAC only if per-machine install begins), `highestAvailable` (elevates upfront for Admins while letting Standard Users run), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
 | `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)`. |
@@ -55,6 +55,19 @@ Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade p
 | `OsLaunchMessage` | `string` | No | `This application requires Windows 11 (Build 22000) or later.` | Friendly message shown by LaunchCondition / SetupWizard.exe when the host OS is older than MinWindowsBuild. |
 | `BlockDowngrades` | `bool (true|false)` | No | `true` | Adds a newer-version Upgrade row + LaunchCondition preventing accidental downgrades. |
 | `SilentRebootExitCode` | `integer` | No | `3010` | Process exit code returned in silent mode (`/s` / `/qn`) when a runtime prerequisite or MSI requests a Windows restart (`3010` standard MSI). |
+
+### `[Upgrade]` (*Optional*)
+Declarative update & servicing policy ([Upgrade]): Strategy (major|minor|small_hotfix), RemoveExistingProducts Schedule (early 1525 vs late 6550), MigrateFeatures (257), BaselineMsi, and RsUpdate.exe UpdateFeedUrl.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Strategy` | `enum` | No | `major` | Allowed: `major|minor|small_hotfix`. `major` (default, all editions) mints a fresh `ProductCode` per version and runs `RemoveExistingProducts`; `minor` (Architect/Community) preserves `BaselineMsi`'s `ProductCode` for `.MSP` / `REINSTALLMODE=vomus` Minor Upgrades; `small_hotfix` (Architect/Community) preserves both `ProductCode` and `Version` for emergency hotfix `.MSP` patches. |
+| `Schedule` | `enum` | No | `early` | Allowed: `early|late`. Controls when `RemoveExistingProducts` executes in `InstallExecuteSequence`: `early` (`Sequence = 1525`, right after `InstallInitialize` — cleanest default) or `late` (`Sequence = 6550`, right before `InstallFinalize` — atomic in-place overwrite). |
+| `MigrateFeatures` | `bool (true|false)` | No | `true` | When `true` (default), sets `msidbUpgradeAttributesMigrateFeatures` (`0x001` -> `Attributes = 257`) so `MigrateFeatureStates` preserves custom feature selections across Major Upgrades. |
+| `AllowSameVersion` | `bool (true|false)` | No | `false` | When `true`, sets `msidbUpgradeAttributesVersionMaxInclusive` (`0x200`) on the `Upgrade` table row so rebuilt packages with the same 3-part `Version` and a new `ProductCode` upgrade cleanly. |
+| `BaselineMsi` | `path (supports $(ARCH))` | No | — | Optional path to the baseline `.msi` (supports `$(ARCH)`) used to inherit `ProductCode` and verify Microsoft Component Rules (`RSW081`–`RSW086`) when `Strategy = minor` or `small_hotfix`. |
+| `UpdateFeedUrl` | `string` | No | — | Optional HTTPS URL to a `RaggieSoft Launcher`-compatible `apps-manifest.json` feed written to `<InstallDir>\UpdateConfig.json` for `RsUpdate.exe`. |
+| `UpdateChannel` | `enum` | No | `stable` | Allowed: `stable|preview`. Release channel tag written to `UpdateConfig.json` (`stable` or `preview`). |
 
 ### `[Install]` (*Required*)
 Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
@@ -182,7 +195,7 @@ Runtime prerequisite ([Prerequisite.<id>]: .NET 11, .NET 10 LTS, WebView2, VC++ 
 | `Optional` | `bool (true|false)` | No | `false` | When `true`, logs a warning and continues installing `Product.msi` even if this prerequisite fails. |
 
 ### `[SuitePackage.<id>]` (*Optional*)
-Child .msi or native setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
+Child .msi or RaggieScript EXE setup package ([SuitePackage.<id>]) chained under a single UAC prompt in Unified Suite Setup (PackageKind = suite) with dynamic ARPSYSTEMCOMPONENT adoption.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -190,7 +203,7 @@ Child .msi or native setup package ([SuitePackage.<id>]) chained under a single 
 | `Description` | `string` | No | — | Plain-English description of this child package in the Suite checklist. |
 | `Source` | `path (supports $(ARCH))` | **Yes** | — | Path to the compiled child `.msi` or native `-setup.exe` binary on the build machine (supports `$(ARCH)`). |
 | `UpgradeCode` | `guid ({XXXXXXXX-...})` | No | — | Permanent `{UpgradeCode}` of this child package used to detect & dynamically adopt already-installed standalone siblings (`RS_SUITE_MANAGED=1`). |
-| `Engine` | `enum` | No | `msi` | Allowed: `msi|native|exe`. Child installer engine (`msi` passes `RS_SUITE_MANAGED=1` via `MsiInstallProductW`; `native` / `exe` passes `/s RS_SUITE_MANAGED=1`). |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native|exe`. Child installer engine (`msi` passes `RS_SUITE_MANAGED=1` via `MsiInstallProductW`; `raggiescript` / `native` / `exe` passes `/s RS_SUITE_MANAGED=1`). |
 | `InstallArgs` | `string` | No | — | Optional extra properties or CLI switches passed to this child package during Suite install. |
 | `Required` | `bool (true|false)` | No | `false` | When `true`, locks this core Suite package as required in the Suite Setup checklist. |
 | `SelectedByDefault` | `bool (true|false)` | No | `true` | Whether this child package is pre-checked by default on fresh Suite installations. |
@@ -305,7 +318,7 @@ Writes an HKLM/HKCU/HKCR/HKMU registry value ([Registry.<id>]) tied to an auto o
 | `Component` | `string` | No | — | Optional `[Component.<id>]` owning this registry row (used when grouping registry values or setting a Registry KeyPath). |
 
 ### `[Environment.<id>]` (*Optional*)
-Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal via the MSI Environment table & Native Engine.
+Configures a user or system Environment Variable ([Environment.<id>]), including non-clobbering PATH append/prepend with exact uninstall removal across MSI & RaggieScript EXE.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -320,7 +333,7 @@ Configures a user or system Environment Variable ([Environment.<id>]), including
 | `Component` | `string` | No | — | Optional explicit `[Component.<id>]` name. |
 
 ### `[IniFile.<id>]` (*Optional*)
-Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) via the MSI IniFile table & Native Engine.
+Writes or updates a [Section] Key = Value entry inside a target .ini configuration file ([IniFile.<id>]) across MSI & RaggieScript EXE.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |

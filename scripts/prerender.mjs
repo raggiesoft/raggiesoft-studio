@@ -227,7 +227,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, routePath = '/',
         image: INSTALLER_OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
-        softwareVersion: '0.7.0',
+        softwareVersion: '0.8.0',
         license: 'https://opensource.org/licenses/MIT',
         author: {
           '@type': 'Organization',
@@ -334,19 +334,20 @@ function buildSuiteOverviewLlmsTxt() {
     '',
     '## Suite Product Lineup (8 Cohesive Developer, Compliance & Publishing Tools)',
     '',
-    '1. **RaggieSoft Installer Studio (`v0.7.0` — Flagship Shipping Now)**:',
+    '1. **RaggieSoft Installer Studio (`v0.8.0` — Flagship Shipping Now)**:',
     '   - Product Portal: https://raggiesoftstudio.com/installer-studio',
-    '   - Download Center (Latest `v0.7.0` & Companion Tools): https://raggiesoftstudio.com/download',
-    '   - Previous Versions & Complete Binary Archive (`v0.5.0`–`v0.7.0`): https://raggiesoftstudio.com/download/previous-versions',
+    '   - Centralized Suite Download Center (`v0.8.0` & All Studio Tools): https://raggiesoftstudio.com/download',
+    '   - Previous Versions & Complete Suite Archive (`v0.5.0`–`v0.8.0`): https://raggiesoftstudio.com/download/previous-versions',
+    '   - Shared DRY Static-CDN Update Manifest (`RsUpdate.exe` & Launcher): https://assets.raggiesoft.com/desktop-apps/windows/studio-apps-manifest.json',
     '   - Editions & Product Matrix (Community == Architect, Essentials, Developer, Architect): https://raggiesoftstudio.com/installer-studio/editions',
     '   - Raw Editions & RaggieScript Spec: https://raggiesoftstudio.com/installer-studio/EDITIONS_AND_RAGGIESCRIPT.md',
-    '   - Visual Tour (14 Captures): https://raggiesoftstudio.com/installer-studio/screenshots',
+    '   - Visual Tour (17 Captures): https://raggiesoftstudio.com/installer-studio/screenshots',
     '   - Engineering Roadmap: https://raggiesoftstudio.com/installer-studio/roadmap',
-    '   - User Manual & Schema: https://raggiesoftstudio.com/installer-studio/docs',
+    '   - User Manual & Schema (9 Chapters): https://raggiesoftstudio.com/installer-studio/docs',
     '   - Concise AI Spec: https://raggiesoftstudio.com/installer-studio/llms.txt',
     '   - Complete Grammar Spec: https://raggiesoftstudio.com/installer-studio/llms-full.txt',
     '   - Agent Skill File: https://raggiesoftstudio.com/installer-studio/SKILL.md',
-    '   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP, SFX & Universal Setup.exe IDE and CLI (`x64` & `ARM64`) with 4 editions (Community == 100% Architect parity), shared cross-Studio 2D visual dialog designers (`RaggieSoftVisualCanvas.hpp`), turnkey `RsDialog` wizard functions, declarative `[Environment.*]` & `[IniFile.*]`, RaggieScript (.rssc — Deferred UAC, direct MSI SQL DDL/DML, 64-bit FFI, Restart Manager, `RSWBC2`, `fmt`, VS Code .vsix & multi-editor syntax packs), standalone read/write RaggieSoft MSI Prism (`msiprism.exe`), WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.',
+    '   - Summary: Zero-dependency static `/MT` Win32 C++20 MSI, MSM, MST, MSP, SFX, RaggieScript EXE, RsPatch.exe (`msdelta.dll` `.msp` & `.rswpatch` binary deltas), & DRY RsUpdate.exe (`apps-manifest.json` shared with RaggieSoft Launcher) IDE and CLI (`x64` & `ARM64`) with 4 editions (Community == 100% Architect parity), `[Upgrade]` Major/Minor/Small servicing, `--plan-update`, shared cross-Studio 2D visual dialog designers (`RaggieSoftVisualCanvas.hpp`), turnkey `RsDialog` wizard functions, declarative `[Environment.*]` & `[IniFile.*]`, standalone read/write RaggieSoft MSI Prism (`msiprism.exe`), WCAG 2.2 AA Auto-Contrast, and VPAT 2.5 export.',
     '',
     '2. **RaggieSoft Accessibility Studio (`v1.0.0` — Shipping Now on .NET 11)**:',
     '   - Product Portal: https://raggiesoftstudio.com/accessibility-studio',
@@ -430,6 +431,32 @@ async function main() {
       .replace('<!--SSR_OUTLET-->', html);
 
     writeStaticRouteHtml(route.path, finalPage);
+  }
+
+  // 3B. Emit lightweight `noindex` redirect stubs for legacy `/installer-studio/download` and
+  //     `/installer-studio/download/previous-versions` bookmarks pointing to centralized `/download`!
+  for (const [legacyPath, targetHref, title] of [
+    ['/installer-studio/download', '/download#installer-studio', 'Redirecting to Suite Download Center'],
+    ['/installer-studio/download/previous-versions', '/download/previous-versions#installer-studio', 'Redirecting to Previous Versions Archive']
+  ]) {
+    const stubHtml = [
+      '<!DOCTYPE html>',
+      '<html lang="en">',
+      '<head>',
+      '  <meta charset="utf-8" />',
+      `  <title>${title} | RaggieSoft Studio</title>`,
+      '  <meta name="robots" content="noindex,follow" />',
+      `  <link rel="canonical" href="${SITE_ORIGIN}${targetHref.split('#')[0]}" />`,
+      `  <meta http-equiv="refresh" content="0; url=${targetHref}" />`,
+      `  <script>window.location.replace(${JSON.stringify(targetHref)});</script>`,
+      '</head>',
+      '<body>',
+      `  <p>Redirecting to centralized <a href="${targetHref}">${title}</a>...</p>`,
+      '</body>',
+      '</html>',
+      ''
+    ].join('\n');
+    writeStaticRouteHtml(legacyPath, stubHtml);
   }
 
   // 4. Generate genuine `/404.html` (`noindex,follow`) for Nginx `error_page 404 /404.html`.

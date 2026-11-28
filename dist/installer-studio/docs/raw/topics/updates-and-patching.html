@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  FILE: help/raggiesoft.installer-studio/topics/updates-and-patching.html
+  OVERVIEW: Offline Help Topic 9 covering Windows Installer Major Upgrades,
+  Minor Upgrades, Small Update Hotfixes, Component Rules (RSW081-RSW086),
+  RsPatch.exe (msdelta.dll .MSP & RaggieScript EXE .rswpatch binary deltas),
+  and RsUpdate.exe (DRY RaggieSoft Launcher apps-manifest.json client).
+-->
+<html lang="en">
+<body>
+  <!-- Primary topic heading rendered by RaggieSoftHelp.exe -->
+  <h1>Updates, Servicing, RsPatch.exe &amp; RsUpdate.exe</h1>
+  <p>
+    <strong>RaggieSoft Installer Studio v0.8.0</strong> provides a complete, zero-service software update and servicing
+    architecture spanning <strong>Enterprise MSI</strong>, <strong>Windows Installer Patches (.MSP)</strong>, and
+    <strong>RaggieScript EXE</strong> installers (<code>Engine = raggiescript</code> and <code>.rssc</code>).
+  </p>
+
+  <!-- Section 1: Choosing between Major, Minor, and Small updates -->
+  <h2 id="update-strategies">1. Major Upgrades vs. Minor Upgrades vs. Small Updates</h2>
+  <ul>
+    <li><strong>Major Upgrade (Default Across All 4 Editions — <code>[Upgrade] Strategy = major</code>)</strong>: Mints a fresh deterministic <code>ProductCode</code> whenever <code>Version</code> increments while preserving your permanent <code>UpgradeCode</code>. Supports freely adding, renaming, moving, or retiring files and components via <code>RemoveExistingProducts</code> (configurable as <code>Schedule = early</code> at Sequence <code>1525</code> or <code>Schedule = late</code> at Sequence <code>6550</code>, with <code>MigrateFeatures = true</code> setting <code>Attributes = 257</code>).</li>
+    <li><strong>Minor Upgrade (Architect &amp; Community — <code>[Upgrade] Strategy = minor</code>)</strong>: Preserves <code>BaselineMsi</code>'s <code>ProductCode</code> while incrementing <code>Version</code>. Can be delivered either as a compact <code>.MSP</code> patch or via <code>SetupWizard.exe</code> (which automatically detects the installed <code>ProductCode</code> via <code>MsiGetProductInfoW</code> and appends <code>REINSTALL=ALL REINSTALLMODE=vomus</code> so MSI Error <code>1638</code> never occurs).</li>
+    <li><strong>Small Update Hotfix (Architect &amp; Community — Opt-In <code>--allow-small-update</code>)</strong>: Emergency hotfix <code>.MSP</code> where both <code>ProductCode</code> and <code>ProductVersion</code> remain unchanged. Blocked by default (<code>RSW084</code>) unless <code>--allow-small-update</code> is explicitly passed.</li>
+  </ul>
+
+  <!-- Section 2: Automated Component-Rule Verification (--plan-update) -->
+  <h2 id="plan-update">2. Diff &amp; Component-Rule Planner (<code>--plan-update</code>)</h2>
+  <p>
+    Run <code>instbuild.exe --plan-update &lt;old.msi|.exe&gt; &lt;new.msi|.exe&gt; [--diagnostics=json]</code> (or <code>RsPatch.exe plan</code>)
+    before building a patch. The planner audits Microsoft's Windows Installer Component Rules automatically:
+  </p>
+  <ul>
+    <li><strong>RSW080</strong>: Mismatched <code>UpgradeCode</code> between baseline and target packages.</li>
+    <li><strong>RSW081</strong>: Deleted baseline <code>ComponentId</code> GUID (illegal in Minor/Small <code>.MSP</code> patches; requires a Major Upgrade).</li>
+    <li><strong>RSW082</strong>: Changed <code>KeyPath</code> on an existing <code>ComponentId</code>.</li>
+    <li><strong>RSW083</strong>: Moved an existing <code>ComponentId</code> to a different <code>Directory_</code>.</li>
+    <li><strong>RSW084</strong>: Unchanged <code>ProductVersion</code> without <code>--allow-small-update</code>.</li>
+  </ul>
+
+  <!-- Section 3: RsPatch.exe Binary-Delta Compiler & Applier -->
+  <h2 id="rspatch">3. Binary-Delta Patching (<code>RsPatch.exe</code> via Windows <code>msdelta.dll</code>)</h2>
+  <p>
+    <code>RsPatch.exe</code> calls Windows 11's built-in <code>System32\msdelta.dll</code> (<code>CreateDeltaB</code> with PE executable
+    call/jump preprocessing and <code>ApplyDeltaB</code>) with zero third-party dependencies:
+  </p>
+  <ul>
+    <li><strong>MSI Patches (<code>.MSP</code>)</strong>: <code>RsPatch.exe build-msp base.msi target.msi update.msp</code> validates Component Rules, populates <code>MsiPatchMetadata</code> (<code>AllowRemoval = 1</code>), and embeds the transform substorage.</li>
+    <li><strong>RaggieScript EXE Deltas (<code>.rswpatch</code>)</strong>: <code>RsPatch.exe build-exe old-setup.exe new-setup.exe update.rswpatch</code> builds a SHA-256-sealed <code>RSWPATCH1</code> container recording <code>Keep</code>, <code>Add</code>, <code>Delta</code>, and <code>Delete</code> (retired file) operations. Applying via <code>RsPatch.exe apply update.rswpatch "C:\Program Files\..."</code> verifies baseline SHA-256 digests and rolls back 100% atomically via <code>.rsw-rollback.jnl</code> on any fault.</li>
+  </ul>
+
+  <!-- Section 4: RsUpdate.exe Zero-Service Static-CDN Updater -->
+  <h2 id="rsupdate">4. Zero-Service Static-CDN Updater (<code>RsUpdate.exe</code> — 100% DRY with Launcher)</h2>
+  <p>
+    <code>RsUpdate.exe</code> (included in Developer, Architect, and Community Editions) consumes the exact same static
+    <code>apps-manifest.json</code> array schema used by <strong>RaggieSoft Launcher</strong>—requiring zero background
+    <code>SYSTEM</code> services and zero database servers. When a matching <code>patches</code> entry exists for the user's
+    <code>installedVersion</code> and silicon architecture (<code>x64</code> or <code>ARM64</code>), <code>RsUpdate.exe</code>
+    downloads and SHA-256-verifies the compact <code>.msp</code> or <code>.rswpatch</code> delta; otherwise it seamlessly
+    falls back to the full Major Upgrade installer.
+  </p>
+
+  <hr />
+  <blockquote>
+    Fictitious Persons &amp; Entities Disclaimer: All sample narrative characters, bands (including The Stardust Engine),
+    biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU,
+    The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire),
+    transit agencies (BRT and CVTA), in-universe legal filings, and events referenced in RaggieSoft sample content packs are
+    works of fiction.
+  </blockquote>
+</body>
+</html>
