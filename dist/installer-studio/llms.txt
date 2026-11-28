@@ -8,9 +8,9 @@
 - **`.rsii` (*RaggieSoft Installer Include*)**: Optional `@include "shared.rsii"` header inherited losslessly across projects.
 - **`.rssc` (*RaggieScript* — `v0.7.0`)**: Modern C#/TypeScript-style curly-brace native scripting language compiling to `RSWBC1` bytecode for zero-MSI setups (standalone `.rssc` or hybrid `.rsip` + `ScriptFile = setup.rssc`).
 
-## Official Four Editions (`Community` • `Essentials` • `Developer` • `Architect`)
-- **Community Edition (`Community == 100% Architect Parity`)**: Free for hobbyists, solo creators, open-source maintainers, students, educators, and non-profits—100% unlocked with zero watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
-- **Essentials / Developer / Architect Editions**: Commercial tiers (`Essentials`: guided `.MSI` + `Setup.exe`, `.ZIP`/Folder `sfx`, WCAG 2.2 AA UI, Signing, `.MSM` consumption, & Major Upgrades; `Developer`: adds `.MSM` creation, `RaggieScript`, Custom Dialog Designers, VS/VB6 Importers, & CI/CD agents; `Architect`: adds `.rsis` Suites, `.MSP`/`.MST` deltas, Disk Spanning/`msiexec /a`, & VPAT 2.5).
+## Official Four Editions & Offline Cryptographic `.rswlic` Licensing (`No License File == Community`)
+- **No `.rswlic` License File == Community Edition (`Community == 100% Architect Parity`)**: Free for hobbyists, solo creators, open-source maintainers, students, educators, and non-profits—presented automatically whenever no `.rswlic` file is installed, 100% unlocked with zero watermarks (`VERSIONINFO` & wizard footers belong 100% to `[Package] Manufacturer`).
+- **Commercial `.rswlic` Licenses (`Essentials` • `Developer` • `Architect`)**: Verified 100% offline via Windows `System32\bcrypt.dll` (`BCRYPT_ECDSA_P256_ALGORITHM`) across `--license-file=<file.rswlic>`, `RSW_LICENSE_KEY`, `%LOCALAPPDATA%\RaggieSoft\Licenses\`, and `%PROGRAMDATA%\RaggieSoft\Licenses\` with zero telemetry and zero hardware lock-in.
 
 ## Why Comment-Preserving `.rsip` Excels for AI Coding Agents & Git
 - **Zero Backslash Escaping**: Write Windows paths naturally (`DefaultSubdir = Sample Studio\My App`) with full `;` and `#` inline/block comments.

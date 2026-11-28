@@ -60,7 +60,7 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/docs/welcome-overview#webpage","url":"https://raggiesoftstudio.com/installer-studio/docs/welcome-overview","name":"Overview, Editions & Hybrid .rsip Architecture | Installer…","description":"Meet the 5 static /MT C++20 executables, the 4 official editions (Community == Architect parity, Essentials, Developer, Architect), and .rsip / .rsis /…","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-BshOeObG.js"></script>
+    <script type="module" crossorigin src="/assets/index-71WNzcSz.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
   </head>
   <body>
@@ -228,6 +228,16 @@
     <li><strong>Developer Edition (Commercial Tier 2)</strong>: Everything in Essentials plus <strong>compiling new <code>.MSM</code> Merge Modules</strong>, <strong>RaggieScript (<code>.rssc</code>) &amp; RaggieScript EXE (<code>Engine = raggiescript</code>)</strong>, <strong>RaggieSoft Updater (<code>RsUpdate.exe</code>)</strong>, From-Scratch C++ &amp; <code>370x270</code> <code>MSI.DLL</code> Dialog Designers, Visual Studio <code>.slnx</code> &amp; VB6 <code>.vbp</code> Reg-Free COM importers, <code>msiprism.exe</code>, <code>--emit-winget</code>, and commercial CI/CD build agent rights.</li>
     <li><strong>Architect Edition (Commercial Tier 3)</strong>: Everything in Developer plus <strong>Multi-Product Unified <code>.rsis</code> Suites</strong> (<code>Showcase Studio</code> front-door + dynamic <code>ARPSYSTEMCOMPONENT</code> adoption), <strong><code>RsPatch.exe</code> <code>.MSP</code> &amp; <code>.rswpatch</code> Binary-Delta Patches (<code>--plan-update</code>) &amp; <code>.MST</code> Transforms</strong>, Multi-Volume Disk Spanning &amp; <code>msiexec /a</code> Admin Installs, <code>.rswpak</code> On-Demand CDN Packs, and <strong>Automated HTML5 VPAT 2.5 Conformance Reports (<code>--emit-vpat</code>)</strong>.</li>
   </ul>
+  <p>
+    <strong>Offline Cryptographic <code>.rswlic</code> Licensing (No License File = Community Edition)</strong>: When no
+    <code>.rswlic</code> commercial license file is present on your PC, <code>InstallerStudio.exe</code> and <code>instbuild.exe</code>
+    automatically present <strong>Community Edition</strong>. Commercial licenses (<code>Essentials</code>, <code>Developer</code>,
+    <code>Architect</code>, and All-Access <code>RaggieSoft Studio</code> Suite keys) are verified 100% offline in
+    <code>&lt; 0.2ms</code> via Windows <code>System32\bcrypt.dll</code> (NIST P-256 ECDSA) with zero telemetry and zero hardware
+    fingerprinting—drag and drop your <code>.rswlic</code> file onto <code>InstallerStudio.exe</code>, choose
+    <strong>Help &rarr; Activate / Import License File (.rswlic)...</strong>, place it in
+    <code>%PROGRAMDATA%\RaggieSoft\Licenses\</code>, or set <code>RSW_LICENSE_KEY</code> in CI/CD.
+  </p>
 
   
   <h2>Hybrid Project Files (.rsip + .rsis + .rsii + .rssc)</h2>

@@ -1084,10 +1084,10 @@ function renderRaggieScriptHubBody(): string {
         (<code>RaggieScript.Core</code> v1.3)</strong>, and a zero-<code>eval()</code> <code>ES2022</code> transpiler!
       </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">Open Full 17-Chapter Language Portal (raggiescript.raggiesoft.dev) &rarr;</a>
+        <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">Open RaggieScript Reference Portal (raggiescript.raggiesoft.dev) &rarr;</a>
         <a class="btn btn-outline" href="#rssc-playground">Try 7-Profile Code Playground &darr;</a>
         <a class="btn btn-outline" href="https://raggiescript.raggiesoft.dev/storescript-and-crossroads.html">StoreScript &amp; Story Crossroads &rarr;</a>
-        <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">Explore Sibling Fin# Portal (finsharp.raggiesoft.dev) &rarr;</a>
+        <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">Explore Fin# Reference Portal (finsharp.raggiesoft.dev) &rarr;</a>
       </div>
     </section>
 
@@ -1634,8 +1634,8 @@ function renderHelpStudioBody(): string {
     <section class="hero" aria-labelledby="help-studio-title">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Help Studio v0.6.0 • Static /MT Win32 C++20 • .CHM/.HLP Rescue &amp; Standalone Learn Web Compiler</span>
-          <h1 id="help-studio-title">Context Help That Wakes Up on F1 — Plus Turnkey .CHM/.HLP Rescue &amp; Full Learn Websites.</h1>
+          <span class="eyebrow">RaggieSoft Help Studio v0.6.0 • Static /MT Win32 C++20 • .CHM/.HLP Rescue &amp; RaggieSoft Reference Portal Compiler</span>
+          <h1 id="help-studio-title">Context Help That Wakes Up on F1 — Plus Turnkey .CHM/.HLP Rescue &amp; RaggieSoft Reference Portals.</h1>
           <p class="lead">
             Millions of desktop, CAD, laboratory, and industrial Windows applications still depend on 1990s Compiled HTML Help
             (<code>.chm</code> — blocked over network shares under Mark-of-the-Web) or classic WinHelp (<code>.hlp</code> +
@@ -1645,11 +1645,11 @@ function renderHelpStudioBody(): string {
             that opens and decompiles raw <strong><code>.chm</code>, <code>.hhp</code>, <code>.hlp</code>, <code>.cnt</code>,
             and Word footnote <code>.rtf</code></strong> archives, scrubs legacy Word <code>MsoNormal</code> inline black styles,
             and compiles modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> viewers, <strong>complete standalone
-            <code>learn.microsoft.com</code>-style documentation websites</strong>, and VPAT 2.5!
+            RaggieSoft Reference Portals</strong> (three-column searchable developer documentation websites), and VPAT 2.5!
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">See Live Dogfood Site: raggiescript.raggiesoft.dev &rarr;</a>
-            <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">See Live Dogfood Site: finsharp.raggiesoft.dev &rarr;</a>
+            <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">Live Reference Portal: raggiescript.raggiesoft.dev &rarr;</a>
+            <a class="btn btn-outline" href="https://finsharp.raggiesoft.dev">Live Reference Portal: finsharp.raggiesoft.dev &rarr;</a>
             <a class="btn btn-outline" href="/help-studio/web-manual/index.html">Help Studio Manual</a>
             <a class="btn btn-outline" href="/help-studio/raggiesoft-help-studio-help-vpat-2.5.html">Auto-VPAT 2.5</a>
             <a class="btn btn-outline" href="/help-studio/llms-full.txt">.rshp Grammar (llms-full.txt)</a>
@@ -1694,12 +1694,14 @@ function renderHelpStudioBody(): string {
           </p>
         </article>
         <article class="card">
-          <h3>4. Single-Source Offline Help + Full Standalone Learn Websites + VPAT 2.5</h3>
+          <h3>4. Single-Source Offline Help + RaggieSoft Reference Portals + VPAT 2.5</h3>
           <p>
-            Every <code>.rshp</code> build compiles offline desktop help, a complete 3-column standalone web portal (powering
+            Every <code>.rshp</code> build compiles offline desktop help, a complete three-column standalone
+            <strong>RaggieSoft Reference Portal</strong> (powering
             <a href="https://raggiescript.raggiesoft.dev"><code>raggiescript.raggiesoft.dev</code></a> and
-            <a href="https://finsharp.raggiesoft.dev"><code>finsharp.raggiesoft.dev</code></a> with <code>Ctrl+K</code> instant
-            symbol search, A&ndash;Z API index, <code>sitemap.xml</code>, &amp; <code>llms-full.txt</code>), and HTML5 VPAT 2.5.
+            <a href="https://finsharp.raggiesoft.dev"><code>finsharp.raggiesoft.dev</code></a> with live TOC filtering,
+            <code>Ctrl+K</code> instant symbol search, A&ndash;Z API index, <code>sitemap.xml</code>, &amp; <code>llms-full.txt</code>),
+            and HTML5 VPAT 2.5.
           </p>
         </article>
       </div>
@@ -3254,7 +3256,7 @@ function renderRoadmapBody(): string {
           <span class="status-pill">Target v1.0.0 GA &amp; v1.1+</span>
           <h2 id="phase-v10-heading" style="margin-top: 0.5rem;"><code>v1.0.0 GA</code> Offline <code>.rswlic</code> Edition Paygating, 8-Product Suite Dogfood Cutover &amp; Post-1.0 Expansion</h2>
           <ul class="feature-list">
-            <li><strong><code>v1.0.0 GA</code> Production Edition Paygating &amp; Offline Cryptographic <code>.rswlic</code> Licensing (<code>bcrypt.dll</code>)</strong>: Transitions Technical Preview's open <code>Editions &amp; Help</code> QA switcher into retail zero-telemetry ECDSA/Ed25519 signed <code>.rswlic</code> license certificates for <strong>Essentials</strong>, <strong>Developer</strong>, <strong>Architect</strong>, and All-Access <strong>RaggieSoft Studio</strong> Suite keys—verified 100% offline in <code>&lt;0.2ms</code> across <code>%LOCALAPPDATA%</code>, <code>%PROGRAMDATA%</code>, and headless <code>RSW_LICENSE_KEY</code> CI/CD secrets (with perpetual fallback, explicit <strong>Community Edition</strong> non-commercial/solo/EDU/OSS eligibility attestation, zero end-user watermarks, and a <em>Simulate Lower Tier</em> QA preview toggle).</li>
+            <li><strong>Shipped in <code>v0.8.0</code> — Zero-Telemetry Offline Cryptographic <code>.rswlic</code> Licensing (<code>bcrypt.dll</code> — No License File = Community Edition)</strong>: Verified 100% offline in <code>&lt;0.2ms</code> via Windows <code>System32\bcrypt.dll</code> (NIST P-256 ECDSA) across <strong>Essentials</strong>, <strong>Developer</strong>, <strong>Architect</strong>, and All-Access <strong>RaggieSoft Studio</strong> Suite keys in <code>%LOCALAPPDATA%\RaggieSoft\Licenses\</code>, <code>%PROGRAMDATA%\RaggieSoft\Licenses\</code>, <code>--license-file</code>, and headless <code>RSW_LICENSE_KEY</code> CI/CD secrets—automatically presenting <strong>Community Edition</strong> (<code>100% Architect Parity</code>, zero watermarks) whenever no <code>.rswlic</code> file is present, with zero activation servers and zero hardware fingerprinting.</li>
             <li><strong><code>v1.0.0 GA</code> 8-Tool Suite Dogfood Architecture</strong>: All 8 RaggieSoft Studio tools ship as individual <code>.msi</code> packages under <code>C:\Program Files\RaggieSoft\RaggieSoft Studio\&lt;Product&gt;\</code> (with unified <code>RaggieSoftHelp.exe</code> <code>F1</code> module discovery), fronted by a <strong>Showcase Studio</strong> interactive intro stub that installs either standalone tools or the full <code>.rsis</code> Suite under a single UAC elevation—plus first-party GitHub Actions and <code>--emit-winget</code>.</li>
             <li><strong><code>v1.1+</code> Post-1.0</strong>: Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20+ language <code>I18N</code> + RTL, and SPDX / CycloneDX <code>--emit-sbom</code>.</li>
           </ul>

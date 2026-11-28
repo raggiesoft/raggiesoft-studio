@@ -40,6 +40,16 @@
     <li><strong>Developer Edition (Commercial Tier 2)</strong>: Everything in Essentials plus <strong>compiling new <code>.MSM</code> Merge Modules</strong>, <strong>RaggieScript (<code>.rssc</code>) &amp; RaggieScript EXE (<code>Engine = raggiescript</code>)</strong>, <strong>RaggieSoft Updater (<code>RsUpdate.exe</code>)</strong>, From-Scratch C++ &amp; <code>370x270</code> <code>MSI.DLL</code> Dialog Designers, Visual Studio <code>.slnx</code> &amp; VB6 <code>.vbp</code> Reg-Free COM importers, <code>msiprism.exe</code>, <code>--emit-winget</code>, and commercial CI/CD build agent rights.</li>
     <li><strong>Architect Edition (Commercial Tier 3)</strong>: Everything in Developer plus <strong>Multi-Product Unified <code>.rsis</code> Suites</strong> (<code>Showcase Studio</code> front-door + dynamic <code>ARPSYSTEMCOMPONENT</code> adoption), <strong><code>RsPatch.exe</code> <code>.MSP</code> &amp; <code>.rswpatch</code> Binary-Delta Patches (<code>--plan-update</code>) &amp; <code>.MST</code> Transforms</strong>, Multi-Volume Disk Spanning &amp; <code>msiexec /a</code> Admin Installs, <code>.rswpak</code> On-Demand CDN Packs, and <strong>Automated HTML5 VPAT 2.5 Conformance Reports (<code>--emit-vpat</code>)</strong>.</li>
   </ul>
+  <p>
+    <strong>Offline Cryptographic <code>.rswlic</code> Licensing (No License File = Community Edition)</strong>: When no
+    <code>.rswlic</code> commercial license file is present on your PC, <code>InstallerStudio.exe</code> and <code>instbuild.exe</code>
+    automatically present <strong>Community Edition</strong>. Commercial licenses (<code>Essentials</code>, <code>Developer</code>,
+    <code>Architect</code>, and All-Access <code>RaggieSoft Studio</code> Suite keys) are verified 100% offline in
+    <code>&lt; 0.2ms</code> via Windows <code>System32\bcrypt.dll</code> (NIST P-256 ECDSA) with zero telemetry and zero hardware
+    fingerprinting—drag and drop your <code>.rswlic</code> file onto <code>InstallerStudio.exe</code>, choose
+    <strong>Help &rarr; Activate / Import License File (.rswlic)...</strong>, place it in
+    <code>%PROGRAMDATA%\RaggieSoft\Licenses\</code>, or set <code>RSW_LICENSE_KEY</code> in CI/CD.
+  </p>
 
   <!-- Explanation of standalone .rsip projects, .rsis suites, .rsii includes, and .rssc scripts -->
   <h2>Hybrid Project Files (.rsip + .rsis + .rsii + .rssc)</h2>

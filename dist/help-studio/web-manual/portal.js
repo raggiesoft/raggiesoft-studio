@@ -47,7 +47,7 @@ const RSH_SEARCH_INDEX_URL = '/help-studio/web-manual/search-index.json';
     });
   }
 
-  // 3. Left-Rail Instant Table of Contents Filter (`learn.microsoft.com` style)
+  // 3. Left-Rail Instant Table of Contents Filter (RaggieSoft Reference Portal)
   const tocFilter = document.getElementById('rsh-toc-filter');
   if (tocFilter) {
     tocFilter.addEventListener('input', function () {

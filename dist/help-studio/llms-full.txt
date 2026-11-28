@@ -1,4 +1,4 @@
-# RaggieSoft Help Studio v0.5.0 — Complete `.rshp` & CLI Reference (`llms-full.txt`)
+# RaggieSoft Help Studio v0.6.0 — Complete `.rshp` & RaggieSoft Reference Portal Guide (`llms-full.txt`)
 
 ## 1. CLI Commands (`rshbuild.exe`)
 
