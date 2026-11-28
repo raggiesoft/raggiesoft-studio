@@ -173,13 +173,13 @@ const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-help',
     imgUrl: `${STUDIO_BOXES_BASE}/box-help-studio.png`,
-    badge: '4 • v0.5.0 Static C++20 Built • .rshp / .chm / .hlp',
+    badge: '4 • v0.7.0 Static C++20 Shipping • .rshp / .rssc / .chm / .hlp',
     title: 'RaggieSoft Help Studio',
     alt: '3D 1990s-style retail box for RaggieSoft Help Studio featuring an illuminated crystal codex on a bronze pedestal beneath floating golden index folders and a brass compass rose.',
     summaryHtml:
-      '<strong>Modern Offline F1 Help + .CHM &amp; WinHelp .HLP Rescue.</strong> Imports legacy HTML Help (<code>.chm</code>, <code>.hhp</code>) AND 1990s WinHelp (<code>.hlp</code>, <code>.cnt</code>, Word <code>.rtf</code>) into modular <code>.rshm</code> packs OR a standalone zero-dependency C++20 <code>Help.exe</code>.',
+      '<strong>Modern Offline F1 Help + 3-Column Reference Portals + .CHM/.HLP Rescue.</strong> Imports legacy HTML Help (<code>.chm</code>, <code>.hhp</code>) AND 1990s WinHelp (<code>.hlp</code>, <code>.cnt</code>, Word <code>.rtf</code>) into modular <code>.rshm</code> packs, single-EXE <code>Help.exe</code> viewers, and searchable Reference Portals.',
     detailHtml:
-      '100% static <code>/MT</code> Win32 C++20 across <code>x64</code> &amp; <code>ARM64</code>: scrubs Microsoft Word <code>MsoNormal</code> Dark-Mode hazards, opens raw <code>.chm</code> &amp; <code>.hlp</code> files live on Windows 11, routes <code>F1</code> in <code>&lt;5ms</code> via Named Pipes, and emits static web portals + Auto-VPAT 2.5.',
+      '100% static <code>/MT</code> Win32 C++20 across <code>x64</code> &amp; <code>ARM64</code>: 9-view IDE with <code>use help;</code> <code>RaggieScript</code> sandbox, offline <code>.rswlic</code> ECDSA P-256 licensing, Cross-Suite Federated Search, sub-5ms Named Pipe <code>F1</code> routing, and Auto-VPAT 2.5.',
     actionHref: '/help-studio',
     actionLabel: 'Explore Help Studio →'
   },
@@ -1029,9 +1029,9 @@ function renderSuiteEditionsBody(): string {
               <td>+ Air-gapped Intranet / UNC mirror mode, enterprise GPO templates, multi-brand hubs, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
             <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> • C++20 / .NET 11</small></th>
-              <td>Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + static web manual</td>
-              <td>+ <strong>Legacy <code>.CHM</code> / <code>.hhp</code> Decompiler &amp; Importer</strong>, <strong><code>RaggieScript</code></strong> (<code>help.*</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
+              <th scope="row"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> + <code>.rssc</code> • Static /MT C++20</small></th>
+              <td>Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + 3-column Reference Portal</td>
+              <td>+ <strong>Legacy <code>.CHM</code> / WinHelp <code>.HLP</code>+<code>.CNT</code> Decompilers</strong>, <strong><code>RaggieScript</code></strong> (<code>use help;</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
               <td>+ <strong>Cross-Suite Federated Help Search</strong> (merging N product manuals), conditional OEM tags, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
             <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
@@ -1634,18 +1634,17 @@ function renderHelpStudioBody(): string {
     <section class="hero" aria-labelledby="help-studio-title">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Help Studio v0.6.0 • Static /MT Win32 C++20 • .CHM/.HLP Rescue &amp; Standalone Learn Web Compiler</span>
+          <span class="eyebrow">RaggieSoft Help Studio v0.7.0 • Static /MT Win32 C++20 • .CHM/.HLP Rescue, RaggieScript ('use help;') &amp; Federated Search</span>
           <h1 id="help-studio-title">Context Help That Wakes Up on F1 — Plus Turnkey .CHM/.HLP Rescue &amp; Full Learn Websites.</h1>
           <p class="lead">
             Millions of desktop, CAD, laboratory, and industrial Windows applications still depend on 1990s Compiled HTML Help
             (<code>.chm</code> — blocked over network shares under Mark-of-the-Web) or classic WinHelp (<code>.hlp</code> +
             <code>.cnt</code> — completely removed from Windows 10 and 11).
-            <strong>RaggieSoft Help Studio (<code>v0.6.0</code>)</strong> is a 100% zero-dependency static <code>/MT</code>
-            Win32 C++20 suite (<code>HelpStudio.exe</code>, <code>rshbuild.exe</code>, &amp; <code>RaggieSoftHelp.exe</code>)
-            that opens and decompiles raw <strong><code>.chm</code>, <code>.hhp</code>, <code>.hlp</code>, <code>.cnt</code>,
-            and Word footnote <code>.rtf</code></strong> archives, scrubs legacy Word <code>MsoNormal</code> inline black styles,
-            and compiles modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> viewers, <strong>complete standalone
-            three-column RaggieSoft Reference Portal websites</strong>, and VPAT 2.5!
+            <strong>RaggieSoft Help Studio (<code>v0.7.0</code>)</strong> is a 100% zero-dependency static <code>/MT</code>
+            Win32 C++20 suite (<code>HelpStudio.exe</code> 9-View IDE, <code>rshbuild.exe</code>, &amp; <code>RaggieSoftHelp.exe</code>)
+            with offline ECDSA P-256 <code>.rswlic</code> licensing, sandboxed <strong><code>RaggieScript v1.3</code> (<code>use help;</code>)</strong>
+            hooks, <strong>Cross-Suite Federated Search</strong>, raw <strong><code>.chm</code> / <code>.hlp</code> / <code>.cnt</code> /
+            Word footnote <code>.rtf</code></strong> decompilers, <strong>3-column RaggieSoft Reference Portals</strong>, and VPAT 2.5!
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://raggiescript.raggiesoft.dev">See Live Dogfood Site: raggiescript.raggiesoft.dev &rarr;</a>
@@ -1668,7 +1667,7 @@ function renderHelpStudioBody(): string {
 
     <section aria-labelledby="help-pillars-heading">
       <span class="eyebrow">100% Zero-Dependency Static /MT Win32 C++20 Across x64 &amp; ARM64</span>
-      <h2 id="help-pillars-heading" style="margin-top: 0.25rem;">Four Core Capabilities of RaggieSoft Help Studio v0.5.0</h2>
+      <h2 id="help-pillars-heading" style="margin-top: 0.25rem;">Core Capabilities of RaggieSoft Help Studio v0.7.0</h2>
       <div class="grid-2x2">
         <article class="card card-highlight">
           <h3>1. Raw <code>.CHM</code> (<code>ITSF/LZX</code>) &amp; WinHelp <code>.HLP</code>/<code>.CNT</code> Decompilers</h3>
@@ -1710,14 +1709,14 @@ function renderHelpStudioBody(): string {
       <h2 id="help-shots-heading" style="margin-top: 0.25rem;">Inside <code>HelpStudio.exe</code> &amp; Live WinHelp <code>.HLP</code> Rescue</h2>
       <div class="grid-2x2">
         <article class="card">
-          <img src="${STUDIO_PREVIEWS_BASE}/helpstudio-ide-topics.png" alt="Real Windows 11 Dark Mode capture of HelpStudio.exe v0.5.0 showing the 8-view tree-first sidebar, TOC hierarchy, Markdown/HTML5 source editor, and live in-process Msftedit.dll F1 preview." style="width:100%;height:auto;border-radius:8px;margin-bottom:0.75rem;" />
-          <h3>8-View Tree-First C++20 IDE &amp; Live <code>Msftedit.dll</code> Preview</h3>
-          <p style="margin-bottom:0;">What you preview in the bottom pane is pixel-for-pixel what wakes up on <code>F1</code> across Dark Mode, Light Mode, and <code>SPI_GETHIGHCONTRAST</code>.</p>
+          <img src="${STUDIO_PREVIEWS_BASE}/helpstudio-ide-topics.png" alt="Real Windows 11 Dark Mode capture of HelpStudio.exe v0.7.0 showing the 9-view tree-first sidebar, TOC hierarchy, Markdown/HTML5 source editor, and live in-process Msftedit.dll F1 preview." style="width:100%;height:auto;border-radius:8px;margin-bottom:0.75rem;" />
+          <h3>9-View Tree-First C++20 IDE, <code>use help;</code> Scripting &amp; Live Preview</h3>
+          <p style="margin-bottom:0;">Includes 2-column Reference Portal settings, sandboxed <code>RaggieScript v1.3</code> (<code>use help;</code>) editor, offline <code>.rswlic</code> P-256 activation, and live <code>Msftedit.dll</code> preview.</p>
         </article>
         <article class="card">
-          <img src="${STUDIO_PREVIEWS_BASE}/helpstudio-viewer-legacy-rescue.png" alt="Real Windows 11 Dark Mode capture of RaggieSoftHelp.exe opening StoreTrainer 1.1 Classic WinHelp .HLP and .CNT directly in Legacy WinHelp Rescue Mode without WinHlp32.exe." style="width:100%;height:auto;border-radius:8px;margin-bottom:0.75rem;" />
-          <h3>Direct Windows 11 Rescue Mode for Classic <code>.HLP</code> + <code>.CNT</code> &amp; <code>.CHM</code></h3>
-          <p style="margin-bottom:0;">Opens 1990s <code>3F 5F 03 00</code> WinHelp binaries and UNC-share <code>.chm</code> archives directly in memory with zero <code>WinHlp32.exe</code> or <code>mshtml.dll</code> dependencies.</p>
+          <img src="${STUDIO_PREVIEWS_BASE}/helpstudio-viewer-legacy-rescue.png" alt="Real Windows 11 Dark Mode capture of RaggieSoftHelp.exe v0.7.0 opening StoreTrainer 1.1 Classic WinHelp .HLP and .CNT directly in Legacy WinHelp Rescue Mode with Cross-Suite Federated Search." style="width:100%;height:auto;border-radius:8px;margin-bottom:0.75rem;" />
+          <h3>Federated Suite Search &amp; Direct <code>.HLP</code> + <code>.CNT</code> / <code>.CHM</code> Rescue</h3>
+          <p style="margin-bottom:0;">Searches across all installed Studio <code>HelpModules</code> at once and opens 1990s <code>3F 5F 03 00</code> WinHelp binaries and UNC-share <code>.chm</code> archives directly in memory.</p>
         </article>
       </div>
     </section>
@@ -1752,11 +1751,11 @@ function renderHelpStudioBody(): string {
 
     ${renderProductFourEditionStrip({
       productName: 'RaggieSoft Help Studio',
-      statusNote: 'v0.5.0 Static /MT Win32 C++20 IDE, CLI & .CHM/.HLP Rescue Built',
+      statusNote: 'v0.7.0 Shipping • Static /MT Win32 C++20 IDE, RaggieScript, Federated Search & .CHM/.HLP Rescue',
       essentialsSummary:
-        'Visual <code>.rshp</code> Markdown/HTML5 IDE compiling modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> <code>Help.exe</code> clients, &amp; static web portals.',
+        'Visual <code>.rshp</code> Markdown/HTML5 IDE compiling modular <code>.rshm</code> packs, single-EXE <code>LZMS</code> <code>Help.exe</code> clients, &amp; 3-column Reference Portals.',
       developerSummary:
-        'Adds turnkey raw <code>.CHM</code> / <code>.hhp</code> &amp; WinHelp <code>.HLP</code> / <code>.cnt</code> / Word <code>.rtf</code> decompilers, <code>RaggieScript</code> filters, &amp; C++/C#/VB6/TS <code>F1</code> SDKs.',
+        'Adds turnkey raw <code>.CHM</code> / <code>.hhp</code> &amp; WinHelp <code>.HLP</code> / <code>.cnt</code> / Word <code>.rtf</code> decompilers, <code>RaggieScript v1.3</code> (<code>use help;</code>), &amp; C++/C#/VB6/TS <code>F1</code> SDKs.',
       architectSummary:
         'Adds Cross-Suite Federated Help Search across multi-product installations, OEM conditional build tags, &amp; Auto-VPAT 2.5.'
     })}
