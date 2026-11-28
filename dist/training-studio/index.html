@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Training Studio — Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 and 2004 Courseware Compiler." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/training-studio#webpage","url":"https://raggiesoftstudio.com/training-studio","name":"RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler","description":"Compile plain-text .rstp + Markdown slides into bandwidth-proof <50 KB SCORM 1.2 & 2004 packages with offline checkpointing and Auto-VPAT 2.5.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -275,40 +275,40 @@
       <span class="eyebrow">Why Municipalities, Hospitals, Universities &amp; Enterprises Switch</span>
       <h2 id="captivate-vs-rsts" style="margin-top: 0.25rem;">Legacy Video-Heavy eLearning vs. RaggieSoft Training Studio</h2>
       <div class="table-wrap" style="margin-bottom: 0;">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>Architectural Comparison Between Legacy SCORM Exports and RaggieSoft Training Studio</caption>
-          <thead>
-            <tr>
-              <th scope="col">Enterprise Failure Mode</th>
-              <th scope="col">Legacy Video-Baked SCORM Packages</th>
-              <th scope="col">RaggieSoft Training Studio (<code>.rstp</code>)</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Enterprise Failure Mode</th>
+              <th scope="col" role="columnheader">Legacy Video-Baked SCORM Packages</th>
+              <th scope="col" role="columnheader">RaggieSoft Training Studio (<code>.rstp</code>)</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Slide Payload Size</th>
-              <td><code>400+ MB</code> progressive <code>.mp4</code> per static slide</td>
-              <td>Semantic HTML5/CSS3 + <code>48 kbps</code> Opus audio (<code>~181 KB</code> entire 3-slide sample!)</td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Slide Payload Size</th>
+              <td role="cell" data-label="Legacy Video-Baked SCORM Packages"><code>400+ MB</code> progressive <code>.mp4</code> per static slide</td>
+              <td role="cell" data-label="RaggieSoft Training Studio ( .rstp )">Semantic HTML5/CSS3 + <code>48 kbps</code> Opus audio (<code>~181 KB</code> entire 3-slide sample!)</td>
             </tr>
-            <tr>
-              <th scope="row">Congested Proxy / WAN Behavior</th>
-              <td>Silent <code>HTTP 206</code> byte-range freezes requiring Chrome <code>F12</code></td>
-              <td>Visible buffer telemetry + automatic exponential-backoff chunk recovery &amp; HLS skit slicing</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Congested Proxy / WAN Behavior</th>
+              <td role="cell" data-label="Legacy Video-Baked SCORM Packages">Silent <code>HTTP 206</code> byte-range freezes requiring Chrome <code>F12</code></td>
+              <td role="cell" data-label="RaggieSoft Training Studio ( .rstp )">Visible buffer telemetry + automatic exponential-backoff chunk recovery &amp; HLS skit slicing</td>
             </tr>
-            <tr>
-              <th scope="row">SCORM Bookmark Reliability</th>
-              <td>Lost watch time if session drops before slide exit</td>
-              <td>Atomic 10-second cue <code>LMSCommit()</code> + <code>localStorage</code>/<code>IndexedDB</code> Write-Ahead Queue</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">SCORM Bookmark Reliability</th>
+              <td role="cell" data-label="Legacy Video-Baked SCORM Packages">Lost watch time if session drops before slide exit</td>
+              <td role="cell" data-label="RaggieSoft Training Studio ( .rstp )">Atomic 10-second cue <code>LMSCommit()</code> + <code>localStorage</code>/<code>IndexedDB</code> Write-Ahead Queue</td>
             </tr>
-            <tr>
-              <th scope="row">LMS Compatibility</th>
-              <td>Single brittle wrapper exceeding <code>4,096</code>-char limits</td>
-              <td>Dual <strong>SCORM 1.2</strong> (Oracle Taleo) &amp; <strong>SCORM 2004 4th Ed.</strong> (Workday / DoD)</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">LMS Compatibility</th>
+              <td role="cell" data-label="Legacy Video-Baked SCORM Packages">Single brittle wrapper exceeding <code>4,096</code>-char limits</td>
+              <td role="cell" data-label="RaggieSoft Training Studio ( .rstp )">Dual <strong>SCORM 1.2</strong> (Oracle Taleo) &amp; <strong>SCORM 2004 4th Ed.</strong> (Workday / DoD)</td>
             </tr>
-            <tr>
-              <th scope="row">ADA Title II &amp; Section 508 Proof</th>
-              <td>Allows exporting uncaptioned, unlabeled slides</td>
-              <td>Compile-time WCAG 2.2 AA gate (<code>Exit Code 2</code>) + tailored HTML5 <strong>VPAT 2.5</strong> bundled</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">ADA Title II &amp; Section 508 Proof</th>
+              <td role="cell" data-label="Legacy Video-Baked SCORM Packages">Allows exporting uncaptioned, unlabeled slides</td>
+              <td role="cell" data-label="RaggieSoft Training Studio ( .rstp )">Compile-time WCAG 2.2 AA gate (<code>Exit Code 2</code>) + tailored HTML5 <strong>VPAT 2.5</strong> bundled</td>
             </tr>
           </tbody>
         </table>

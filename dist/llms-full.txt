@@ -17,7 +17,7 @@ Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.9.1
 ## 2. Complete `.rsip` Project Schema (`v0.9`)
 
 ### `[Package]` (*Required*)
-Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
+Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript-msi/raggiescript), Script (.rssc), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
@@ -39,13 +39,36 @@ Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggie
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
 | `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|addon|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe`, `addon` builds a Host-Aware Add-On / Content Pack Installer (`[HostApp]` locates the parent app and drops books/albums/plugins directly into its library directory), and `suite` builds a single-UAC Unified Suite / Web Workload Chainer. |
 | `SuiteRollbackPolicy` | `enum` | No | `rollback_new` | Allowed: `keep_completed|rollback_new`. Controls failure & cancel recovery in `PackageKind = suite`: `rollback_new` (default) automatically uninstalls packages newly added in the current Suite session (up to the last `RollbackBoundary = true` savepoint on unexpected error, or 100% of session additions when the user confirms Cancel); `keep_completed` leaves already-finished member packages installed for fast resume. |
-| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `raggiescript` (alias `native`) builds a **RaggieScript EXE** zero-`msi.dll` transactional LZMS installer with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript-msi|raggiescript|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `raggiescript-msi` builds a **RaggieScript MSI** hybrid installer combining a relational `Product.msi` (+ static `/MT` `RsscMsiCa.dll` inside-the-MSI Custom Actions for `msiexec /qn` GPO/Intune parity) with RaggieScript `.rssc` wizard & property/feature orchestration; `raggiescript` (alias `native`) builds a **RaggieScript EXE** zero-`msi.dll` transactional LZMS installer. |
+| `Script` | `path (supports $(ARCH))` | No | — | Optional RaggieScript source file (`setup.rssc`) driving wizard steps, property/feature bridging, and `[CustomAction.*]` functions when `Engine = raggiescript-msi`. |
 | `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls Windows UAC level stamped onto PE `RT_MANIFEST` `#1` across `msi`, `native`, `sfx`, and `suite` EXEs: `asInvoker` (default — un-elevated launch; prompts UAC only if per-machine install begins), `highestAvailable` (elevates upfront for Admins while letting Standard Users run), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
 | `UniversalOutputName` | `string` | No | — | Optional base filename stem for universal combined installers; defaults to `OutputName` stripped of `-$(ARCH)`. |
 | `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe`, `<OutputName>-arm64-setup.exe`, and `.rswpak` feature packs. |
 | `Tagline` | `string` | No | — | Short subtitle displayed beneath the product title in `SetupWizard.exe` and `InstallerStudio.exe`. |
 | `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
+
+### `[RaggieScript]` (*Optional*)
+Optional RaggieScript (.rssc) configuration ([RaggieScript] Source = setup.rssc) for RaggieScript MSI (Engine = raggiescript-msi) wizard orchestration and inside-the-MSI Custom Actions.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Source` | `path (supports $(ARCH))` | No | — | RaggieScript source file (`setup.rssc`) compiled into `Setup.exe` (`#225`) and/or `Product.msi` (`Binary.RsscBytecode`). |
+
+### `[CustomAction.<id>]` (*Optional*)
+Declares a native inside-the-MSI RaggieScript Custom Action ([CustomAction.<id>]: immediate, deferred, rollback, or commit) executed via embedded static /MT RsscMsiCa.dll with full msiexec /qn GPO parity and atomic rollback.
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Type` | `enum` | No | `raggiescript` | Allowed: `raggiescript`. Custom Action engine (`raggiescript` executes via zero-dependency static `/MT` `RsscMsiCa.dll` embedded in `Product.msi`'s `Binary` table). |
+| `Function` | `string` | **Yes** | — | Top-level RaggieScript `fn <Name>()` invoked inside `Product.msi` when this Custom Action runs. |
+| `RollbackFunction` | `string` | No | — | Optional companion `fn <RollbackName>()` invoked after automatic `.jnl` LIFO rollback if `msiexec` aborts after a `deferred` Custom Action. |
+| `Execution` | `enum` | No | `immediate` | Allowed: `immediate|deferred|rollback|commit`. Windows Installer execution phase: `immediate` (live `MSIHANDLE` properties & feature states), `deferred` (elevated/impersonated inside transaction with `CustomActionData` & automatic rollback pairing), `rollback`, or `commit`. |
+| `Impersonate` | `bool (true|false)` | No | `false` | When `false` (default on `deferred`), sets `msidbCustomActionTypeNoImpersonate` (`0x0800`) to run under elevated `SYSTEM` privileges during per-machine installs; `true` impersonates the launching user. |
+| `After` | `string` | No | `InstallFiles` | Schedules this Custom Action immediately after a standard MSI action (`LaunchConditions`, `CostFinalize`, `InstallInitialize`, `InstallFiles`, `WriteRegistryValues`, `InstallFinalize`). |
+| `Before` | `string` | No | — | Schedules this Custom Action immediately before a standard MSI action (overrides `After` when set). |
+| `Sequence` | `integer` | No | `0` | Optional explicit `InstallExecuteSequence` number (`> 0` overrides `After`/`Before`). |
+| `Condition` | `string` | No | `NOT REMOVE~="ALL"` | Windows Installer conditional expression gating when this Custom Action runs (use `""` or `1` to run on both install and uninstall). |
 
 ### `[HostApp]` (*Optional*)
 Host application discovery & automatic content placement rules ([HostApp]) for PackageKind = addon (locates an installed Host App such as Book Reader or Listening Room via UpgradeCode/Registry/Executable and places books, albums, plugins, or DLC into the right directory with zero full-installer ceremony).

@@ -65,7 +65,7 @@ This canonical comparison table is synchronized between `EDITIONS_AND_RAGGIESCRI
 | **Consume Existing `.MSM` Merge Modules (`[MergeModule.*]`)** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Application Version Servicing (`1.0.0` → `1.0.1`)** | Major Upgrade + `.MSP` Delta | **Major Upgrade Only** *(Fresh `ProductCode`)* | **Major Upgrade Only** *(Fresh `ProductCode`)* | **Major Upgrade + `.MSP` Binary-Delta Patches** |
 | **Create / Compile New `.MSM` Merge Modules (`PackageKind = msm`)** | **Yes** | — | **Yes** | **Yes** |
-| **`RaggieScript` (`.rssc`) & `RaggieScript EXE` (`Engine = raggiescript`)** | **Yes** | — | **Yes** | **Yes** |
+| **`RaggieScript` (`.rssc`), `RaggieScript MSI` (`Engine = raggiescript-msi` + `RsscMsiCa.dll`), & `RaggieScript EXE` (`Engine = raggiescript`)** | **Yes** | — | **Yes** | **Yes** |
 | **From-Scratch C++ (`[Dialog.*]`) & `370×270` `MSI.DLL` Dialog Designers** | **Yes** | — | **Yes** | **Yes** |
 | **Custom Author-Defined `[SetupType.<Id>]` Cards & `@include` `.rsii` Libraries** | **Yes** | — | **Yes** | **Yes** |
 | **Solution & Legacy Importers (`.slnx`, `.csproj`, VB6 `.vbp` Reg-Free COM, `.msi`)** | **Yes** | — | **Yes** | **Yes** |

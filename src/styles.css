@@ -690,7 +690,12 @@ h3 {
   color: var(--ok);
 }
 
-/* Accessible Data Tables (`<th scope="col/row">`) */
+/* Accessible Data Tables (`<th scope="col/row">`) + Mobile Stacked Cards (`< 768px`)
+ * - Desktop & Tablet (`>= 768px`): Traditional multi-column semantic `<table>`.
+ * - Mobile Phones (`< 768px`): Drops `min-width: 38rem` so zero horizontal scrolling
+ *   occurs, stacking each `<tr>` into a clean card with `td[data-label]::before` headers
+ *   (note: `display: block` on `tbody tr` intentionally omits `!important` so Alpine.js
+ *   `x-show` inline `style="display: none"` filtering keeps working seamlessly!). */
 .table-wrap {
   overflow-x: auto;
   margin: 1.25rem 0 2rem;
@@ -724,6 +729,86 @@ td {
 thead th {
   background: var(--surface-alt);
   font-weight: 700;
+}
+
+@media (max-width: 767.98px) {
+  .table-wrap {
+    overflow-x: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .table-wrap table.rs-mobile-cards,
+  .table-wrap table.rs-mobile-cards tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .table-wrap table.rs-mobile-cards caption {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .table-wrap table.rs-mobile-cards thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody tr {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody th[scope='row'] {
+    display: block;
+    padding: 0 0 0.55rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    font-size: 0.98rem;
+    overflow-wrap: anywhere;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody td {
+    display: block;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--border);
+    overflow-wrap: anywhere;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody td:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .table-wrap table.rs-mobile-cards tbody td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.18rem;
+  }
 }
 
 pre {

@@ -44,8 +44,8 @@
       gtag('js', new Date());
       gtag('config', 'G-P9RG9JVYB6');
     </script>
-    <script type="module" crossorigin src="/accessibility-studio/assets/index-CamjGOc3.js"></script>
-    <link rel="stylesheet" crossorigin href="/accessibility-studio/assets/index-BFLEhWaR.css">
+    <script type="module" crossorigin src="/accessibility-studio/assets/index-DeKRZ4Lx.js"></script>
+    <link rel="stylesheet" crossorigin href="/accessibility-studio/assets/index-Dns8h4YN.css">
   </head>
   <body>
     <a href="#main-content" class="cs-skip-link">Skip to main content</a>
@@ -201,51 +201,51 @@
   ADD_CLI_TO_PATH="1"</code></pre>
 
         <div style="margin-top: 1.5rem;" class="cs-table-region" tabindex="0" role="region" aria-labelledby="msi-table-caption">
-          <table class="cs-table">
+          <table class="cs-table" role="table">
             <caption id="msi-table-caption">Public Windows Installer (MSI) &amp; Group Policy Registry Matrix</caption>
-            <thead>
-              <tr>
-                <th scope="col">Public MSI Property</th>
-                <th scope="col">Default Value</th>
-                <th scope="col">Windows Policy Registry Path</th>
-                <th scope="col">Enterprise Behavior</th>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th scope="col" role="columnheader">Public MSI Property</th>
+                <th scope="col" role="columnheader">Default Value</th>
+                <th scope="col" role="columnheader">Windows Policy Registry Path</th>
+                <th scope="col" role="columnheader">Enterprise Behavior</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody role="rowgroup">
               
-                <tr>
-                  <th scope="row"><code class="cs-mono">INSTALLDIR</code></th>
-                  <td><code class="cs-mono">C:\Program Files\RaggieSoft\Accessibility Studio\</code></td>
-                  <td><code class="cs-mono">HKLM\Software\RaggieSoft\AccessibilityStudio\InstallDir</code></td>
-                  <td>Target workstation installation directory for `AccessibilityStudio.exe` and headless `a11y-studio-cli.exe`.</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">INSTALLDIR</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">C:\Program Files\RaggieSoft\Accessibility Studio\</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">HKLM\Software\RaggieSoft\AccessibilityStudio\InstallDir</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">Target workstation installation directory for `AccessibilityStudio.exe` and headless `a11y-studio-cli.exe`.</td>
                 </tr>
 
-                <tr>
-                  <th scope="row"><code class="cs-mono">COMPLIANCE_PROFILE</code></th>
-                  <td><code class="cs-mono">Wcag22AA_Section508</code></td>
-                  <td><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\ComplianceProfile</code></td>
-                  <td>Sets organization-wide default rule profile (`Wcag22AA_Section508`, `Wcag22LevelA`, `AdaTitleIIWeb`, or `StrictEnterpriseAll`).</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">COMPLIANCE_PROFILE</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">Wcag22AA_Section508</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\ComplianceProfile</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">Sets organization-wide default rule profile (`Wcag22AA_Section508`, `Wcag22LevelA`, `AdaTitleIIWeb`, or `StrictEnterpriseAll`).</td>
                 </tr>
 
-                <tr>
-                  <th scope="row"><code class="cs-mono">BATCH_THROTTLE_MS</code></th>
-                  <td><code class="cs-mono">1500</code></td>
-                  <td><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\BatchThrottleMs</code></td>
-                  <td>Default polite inter-request delay (`0`–`30000` ms) for authenticated portal and sitemap batch queues.</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">BATCH_THROTTLE_MS</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">1500</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\BatchThrottleMs</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">Default polite inter-request delay (`0`–`30000` ms) for authenticated portal and sitemap batch queues.</td>
                 </tr>
 
-                <tr>
-                  <th scope="row"><code class="cs-mono">DISABLE_TELEMETRY</code></th>
-                  <td><code class="cs-mono">1</code></td>
-                  <td><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\DisableTelemetry</code></td>
-                  <td>Enforces 100% air-gapped zero-telemetry workstation operation across regulated public-sector and enterprise fleets.</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">DISABLE_TELEMETRY</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">1</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">HKLM\Software\Policies\RaggieSoft\AccessibilityStudio\DisableTelemetry</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">Enforces 100% air-gapped zero-telemetry workstation operation across regulated public-sector and enterprise fleets.</td>
                 </tr>
 
-                <tr>
-                  <th scope="row"><code class="cs-mono">ADD_CLI_TO_PATH</code></th>
-                  <td><code class="cs-mono">1</code></td>
-                  <td><code class="cs-mono">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path</code></td>
-                  <td>Appends the CLI directory to system `PATH` so PowerShell, GitHub Actions, and Azure DevOps runners can invoke `a11y-studio-cli` directly.</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">ADD_CLI_TO_PATH</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">1</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">Appends the CLI directory to system `PATH` so PowerShell, GitHub Actions, and Azure DevOps runners can invoke `a11y-studio-cli` directly.</td>
                 </tr>
             </tbody>
           </table>

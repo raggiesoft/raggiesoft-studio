@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/accessibility#webpage","url":"https://raggiesoftstudio.com/installer-studio/accessibility","name":"Accessible Windows Installer Architecture | RaggieSoft","description":"Native Win32 UI Automation, NVDA/JAWS/Narrator progress, High Contrast themes, and automated --emit-vpat reports in RaggieSoft Installer Studio.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -228,46 +228,46 @@
       </div>
 
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>Automated --emit-vpat Contrast &amp; Section 508 Verification Matrix</caption>
-          <thead>
-            <tr>
-              <th scope="col">Audit Criterion</th>
-              <th scope="col">Measured Runtime Behavior</th>
-              <th scope="col">Standard</th>
-              <th scope="col">Status</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Audit Criterion</th>
+              <th scope="col" role="columnheader">Measured Runtime Behavior</th>
+              <th scope="col" role="columnheader">Standard</th>
+              <th scope="col" role="columnheader">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Header Banner &amp; ListView Column Headers (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
-              <td>17.4:1 relative luminance ratio</td>
-              <td>WCAG 2.2 SC 1.4.3 / 1.4.6</td>
-              <td><strong>Supports (AAA)</strong></td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Header Banner &amp; ListView Column Headers (<code>#F8FAFC</code> on <code>#0B132B</code>)</th>
+              <td role="cell" data-label="Measured Runtime Behavior">17.4:1 relative luminance ratio</td>
+              <td role="cell" data-label="Standard">WCAG 2.2 SC 1.4.3 / 1.4.6</td>
+              <td role="cell" data-label="Status"><strong>Supports (AAA)</strong></td>
             </tr>
-            <tr>
-              <th scope="row">Dark Mode Surface, TreeView &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
-              <td>16.9:1 relative luminance ratio + Mica frame</td>
-              <td>WCAG 2.2 SC 1.4.3</td>
-              <td><strong>Supports (AAA)</strong></td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Dark Mode Surface, TreeView &amp; Checkbox Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th>
+              <td role="cell" data-label="Measured Runtime Behavior">16.9:1 relative luminance ratio + Mica frame</td>
+              <td role="cell" data-label="Standard">WCAG 2.2 SC 1.4.3</td>
+              <td role="cell" data-label="Status"><strong>Supports (AAA)</strong></td>
             </tr>
-            <tr>
-              <th scope="row">Light Mode Surface Text (<code>#0F172A</code> on <code>#F4F7FB</code>)</th>
-              <td>16.1:1 relative luminance ratio</td>
-              <td>WCAG 2.2 SC 1.4.3</td>
-              <td><strong>Supports (AAA)</strong></td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Light Mode Surface Text (<code>#0F172A</code> on <code>#F4F7FB</code>)</th>
+              <td role="cell" data-label="Measured Runtime Behavior">16.1:1 relative luminance ratio</td>
+              <td role="cell" data-label="Standard">WCAG 2.2 SC 1.4.3</td>
+              <td role="cell" data-label="Status"><strong>Supports (AAA)</strong></td>
             </tr>
-            <tr>
-              <th scope="row">Forced High Contrast Themes (<code>SPI_GETHIGHCONTRAST</code>)</th>
-              <td>Switches decorative gradients to <code>COLOR_WINDOW</code> / <code>COLOR_WINDOWTEXT</code> / <code>COLOR_HIGHLIGHT</code></td>
-              <td>WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
-              <td><strong>Supports</strong></td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Forced High Contrast Themes (<code>SPI_GETHIGHCONTRAST</code>)</th>
+              <td role="cell" data-label="Measured Runtime Behavior">Switches decorative gradients to <code>COLOR_WINDOW</code> / <code>COLOR_WINDOWTEXT</code> / <code>COLOR_HIGHLIGHT</code></td>
+              <td role="cell" data-label="Standard">WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
+              <td role="cell" data-label="Status"><strong>Supports</strong></td>
             </tr>
-            <tr>
-              <th scope="row">Automated Per-Product ACR Generation</th>
-              <td><code>instbuild.exe --emit-vpat &lt;project.rsip&gt; &lt;out-dir&gt;</code> emits product-specific HTML5 VPAT 2.5</td>
-              <td>ADA Title II &amp; Revised Section 508</td>
-              <td><strong>Built Into CLI &amp; IDE</strong></td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Automated Per-Product ACR Generation</th>
+              <td role="cell" data-label="Measured Runtime Behavior"><code>instbuild.exe --emit-vpat &lt;project.rsip&gt; &lt;out-dir&gt;</code> emits product-specific HTML5 VPAT 2.5</td>
+              <td role="cell" data-label="Standard">ADA Title II &amp; Revised Section 508</td>
+              <td role="cell" data-label="Status"><strong>Built Into CLI &amp; IDE</strong></td>
             </tr>
           </tbody>
         </table>

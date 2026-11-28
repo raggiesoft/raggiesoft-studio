@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Showcase Studio — 1990s Painted .BMP CD-ROM Menus with WCAG 2.2 AA Safeguards and Modern Windows 11 FluentMica Launchpads." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/showcase-studio#webpage","url":"https://raggiesoftstudio.com/showcase-studio","name":"RaggieSoft Showcase Studio — Accessible Collector Menus","description":"Author classic 1990s .BMP CD-ROM menus with WCAG 2.2 AA safeguards and modern Windows 11 FluentMica launchpads in zero-dependency Win32 C++20.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -349,45 +349,45 @@
       <span class="eyebrow">Accessibility Engineering Deep Dive</span>
       <h2 id="a11y-rescue-heading" style="margin-top: 0.25rem;">How Showcase Studio Solves Six Classic 1990s Multimedia Accessibility Failures</h2>
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>1990s Bitmap Menu Limitations vs. RaggieSoft Showcase Studio Win32 C++20 Safeguards</caption>
-          <thead>
-            <tr>
-              <th scope="col">1990s CD-ROM Menu Failure</th>
-              <th scope="col">Showcase Studio Runtime Safeguard</th>
-              <th scope="col">Standard Met</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">1990s CD-ROM Menu Failure</th>
+              <th scope="col" role="columnheader">Showcase Studio Runtime Safeguard</th>
+              <th scope="col" role="columnheader">Standard Met</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Flat painted pixels invisible to screen readers</th>
-              <td>Every canvas hotspot spawns a synchronized Win32 child <code>BUTTON</code> / <code>IAccessible</code> UI Automation proxy exposing <code>Name</code>, <code>Description</code>, <code>Role</code>, and <code>Shortcut</code> to Narrator, NVDA, and JAWS</td>
-              <td>WCAG 2.2 SC 4.1.2 &amp; Section 508 502.3</td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Flat painted pixels invisible to screen readers</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Every canvas hotspot spawns a synchronized Win32 child <code>BUTTON</code> / <code>IAccessible</code> UI Automation proxy exposing <code>Name</code>, <code>Description</code>, <code>Role</code>, and <code>Shortcut</code> to Narrator, NVDA, and JAWS</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 4.1.2 &amp; Section 508 502.3</td>
             </tr>
-            <tr>
-              <th scope="row">Mouse-only hover regions with zero keyboard access</th>
-              <td>Deterministic <code>Tab</code> order plus explicit 4-way <code>FocusUp / Down / Left / Right</code> arrow &amp; Xbox/D-pad focus matrix rendered with a high-contrast dual black/gold outer/inner focus frame</td>
-              <td>WCAG 2.2 SC 2.1.1 &amp; SC 2.4.11</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Mouse-only hover regions with zero keyboard access</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Deterministic <code>Tab</code> order plus explicit 4-way <code>FocusUp / Down / Left / Right</code> arrow &amp; Xbox/D-pad focus matrix rendered with a high-contrast dual black/gold outer/inner focus frame</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 2.1.1 &amp; SC 2.4.11</td>
             </tr>
-            <tr>
-              <th scope="row">Hardcoded bitmaps illegible in High Contrast</th>
-              <td>Listens for <code>SPI_GETHIGHCONTRAST</code> and <code>WM_SYSCOLORCHANGE</code>, automatically replacing decorative bitmaps with crisp <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, and <code>2px</code> <code>COLOR_HIGHLIGHT</code> semantic cards</td>
-              <td>WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Hardcoded bitmaps illegible in High Contrast</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Listens for <code>SPI_GETHIGHCONTRAST</code> and <code>WM_SYSCOLORCHANGE</code>, automatically replacing decorative bitmaps with crisp <code>COLOR_WINDOW</code>, <code>COLOR_WINDOWTEXT</code>, and <code>2px</code> <code>COLOR_HIGHLIGHT</code> semantic cards</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 1.4.11 &amp; Section 508 502.2</td>
             </tr>
-            <tr>
-              <th scope="row">Tiny fixed <code>640&times;480</code> postage stamp on 4K displays</th>
-              <td>Per-Monitor V2 DPI scaling with selectable integer nearest-neighbor pixel-art upscaling (preserving razor-sharp retro pixels!) or vector layout reflow</td>
-              <td>WCAG 2.2 SC 1.4.4 &amp; SC 1.4.10</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Tiny fixed <code>640&times;480</code> postage stamp on 4K displays</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Per-Monitor V2 DPI scaling with selectable integer nearest-neighbor pixel-art upscaling (preserving razor-sharp retro pixels!) or vector layout reflow</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 1.4.4 &amp; SC 1.4.10</td>
             </tr>
-            <tr>
-              <th scope="row">Unstoppable loud startup music loops</th>
-              <td>Audio is muted or opt-in by default (<code>AutoPlayAudio = false</code>), provides a persistent <code>Alt+M</code> Mute toggle, and supports synchronized <code>.vtt</code> caption overlays for spoken commentary</td>
-              <td>WCAG 2.2 SC 1.4.2 &amp; SC 1.2.2</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Unstoppable loud startup music loops</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Audio is muted or opt-in by default (<code>AutoPlayAudio = false</code>), provides a persistent <code>Alt+M</code> Mute toggle, and supports synchronized <code>.vtt</code> caption overlays for spoken commentary</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 1.4.2 &amp; SC 1.2.2</td>
             </tr>
-            <tr>
-              <th scope="row">Flashing transitions &amp; forced animations</th>
-              <td>Queries OS animation preferences (<code>SPI_GETCLIENTAREAANIMATION</code>) to disable wipes/particles automatically when reduced motion is enabled</td>
-              <td>WCAG 2.2 SC 2.3.3</td>
+            <tr role="row">
+              <th scope="row" role="rowheader">Flashing transitions &amp; forced animations</th>
+              <td role="cell" data-label="Showcase Studio Runtime Safeguard">Queries OS animation preferences (<code>SPI_GETCLIENTAREAANIMATION</code>) to disable wipes/particles automatically when reduced motion is enabled</td>
+              <td role="cell" data-label="Standard Met">WCAG 2.2 SC 2.3.3</td>
             </tr>
           </tbody>
         </table>

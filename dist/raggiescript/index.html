@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/raggiescript#webpage","url":"https://raggiesoftstudio.com/raggiescript","name":"RaggieScript (.rssc) — Studio & Micro-App Language","description":"Explore RaggieScript (.rssc): our C-family bytecode scripting language spanning all 8 RaggieSoft Studio tools, bespoke installers, and Windows micro-apps.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -377,65 +377,65 @@ fn applyCreditsBoost(requestedCredits: int) : map {
         <input id="rssc-ns-search" type="search" x-model="nsFilter" placeholder="Filter 31 namespaces &amp; CLI subcommands..." style="border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: 0.5rem 0.75rem;" />
       </div>
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>RaggieScript v1.3 31-Namespace Standard Library &amp; CLI Subcommands</caption>
-          <thead>
-            <tr>
-              <th scope="col">Namespace / CLI</th>
-              <th scope="col">Key Methods &amp; Primitives</th>
-              <th scope="col">Architectural Advantage</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Namespace / CLI</th>
+              <th scope="col" role="columnheader">Key Methods &amp; Primitives</th>
+              <th scope="col" role="columnheader">Architectural Advantage</th>
             </tr>
           </thead>
-          <tbody>
-            <tr x-show="!nsFilter || 'raggiescript cli check test json compile disasm run fmt lsp transpile-es2022 pack-exe support'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>raggiescript.exe</code></th>
-              <td><code>check [--diagnostics=json]</code>, <strong><code>test [--json]</code></strong>, <code>compile</code> (<code>RSWBC2</code>), <code>disasm</code>, <code>fmt</code>, <code>lsp</code>, <code>transpile-es2022</code>, <code>run</code>, <code>pack-exe</code></td>
-              <td>Gradual static binder (<code>RSW701</code>&ndash;<code>RSW715</code>), built-in unit test runner, formatter, JSON-RPC 2.0 LSP, &amp; zero-<code>eval()</code> ES2022!</td>
+          <tbody role="rowgroup">
+            <tr x-show="!nsFilter || 'raggiescript cli check test json compile disasm run fmt lsp transpile-es2022 pack-exe support'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>raggiescript.exe</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>check [--diagnostics=json]</code>, <strong><code>test [--json]</code></strong>, <code>compile</code> (<code>RSWBC2</code>), <code>disasm</code>, <code>fmt</code>, <code>lsp</code>, <code>transpile-es2022</code>, <code>run</code>, <code>pack-exe</code></td>
+              <td role="cell" data-label="Architectural Advantage">Gradual static binder (<code>RSW701</code>&ndash;<code>RSW715</code>), built-in unit test runner, formatter, JSON-RPC 2.0 LSP, &amp; zero-<code>eval()</code> ES2022!</td>
             </tr>
-            <tr x-show="!nsFilter || 'sys time math map array defer optional chaining scorm stopwatch clamp lerp arch arm64 x64 prism osbuild osversion'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>sys.*</code>, <code>time.*</code>, <code>math.*</code>, <code>map.*</code>, <code>array.*</code></th>
-              <td><code>sys.isEmulatedUnderPrism()</code>, <code>time.{nowUtc,stopwatchMs,formatScormDuration}</code>, <code>math.{clamp,lerp,round}</code>, <code>map.{keys,entries,merge}</code>, <code>array.{map,filter,reduce,find,sort,unique}</code></td>
-              <td>Pierces ARM64 Prism via <code>IsWow64Process2</code> + SCORM 2004 ISO durations + functional collection pipelines!</td>
+            <tr x-show="!nsFilter || 'sys time math map array defer optional chaining scorm stopwatch clamp lerp arch arm64 x64 prism osbuild osversion'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>sys.*</code>, <code>time.*</code>, <code>math.*</code>, <code>map.*</code>, <code>array.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>sys.isEmulatedUnderPrism()</code>, <code>time.{nowUtc,stopwatchMs,formatScormDuration}</code>, <code>math.{clamp,lerp,round}</code>, <code>map.{keys,entries,merge}</code>, <code>array.{map,filter,reduce,find,sort,unique}</code></td>
+              <td role="cell" data-label="Architectural Advantage">Pierces ARM64 Prism via <code>IsWow64Process2</code> + SCORM 2004 ISO durations + functional collection pipelines!</td>
             </tr>
-            <tr x-show="!nsFilter || 'com regfree manifest vb6 activex ocx font ttf otf sign cert authenticode thumbprint mutex port activesetup'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>com.*</code>, <code>font.*</code>, <code>sign.*</code>, <code>cert.*</code>, <code>mutex.*</code>, <code>activesetup.*</code></th>
-              <td><code>com.{inspectTypeLib,generateRegFreeManifest}</code>, <code>font.{isInstalled,install}</code>, <code>sign.inspect</code>, <code>cert.importTrustedPublisher</code>, <code>mutex.{isHeld,waitRelease}</code>, <code>net.findFreePort</code>, <code>activesetup.register</code></td>
-              <td>Zero-<code>HKCR</code> VB6/ActiveX Reg-Free COM Side-by-Side <code>.manifest</code> generation, zero-reboot fonts, &amp; <code>&lt;1ms</code> Wizard port/mutex probes!</td>
+            <tr x-show="!nsFilter || 'com regfree manifest vb6 activex ocx font ttf otf sign cert authenticode thumbprint mutex port activesetup'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>com.*</code>, <code>font.*</code>, <code>sign.*</code>, <code>cert.*</code>, <code>mutex.*</code>, <code>activesetup.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>com.{inspectTypeLib,generateRegFreeManifest}</code>, <code>font.{isInstalled,install}</code>, <code>sign.inspect</code>, <code>cert.importTrustedPublisher</code>, <code>mutex.{isHeld,waitRelease}</code>, <code>net.findFreePort</code>, <code>activesetup.register</code></td>
+              <td role="cell" data-label="Architectural Advantage">Zero-<code>HKCR</code> VB6/ActiveX Reg-Free COM Side-by-Side <code>.manifest</code> generation, zero-reboot fonts, &amp; <code>&lt;1ms</code> Wizard port/mutex probes!</td>
             </tr>
-            <tr x-show="!nsFilter || 'fs extract copy copytree readjson writejson islocked fileversion ntfs'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>fs.*</code></th>
-              <td><code>extract</code>, <code>copy</code>, <code>copyTree</code>, <code>isLocked</code>, <code>fileVersion</code>, <code>readJson</code>/<code>writeJson</code>, <code>setNtfsCompression</code></td>
-              <td>Every mutating file operation backs up existing files to <code>.rswbak</code> for instant LIFO rollback!</td>
+            <tr x-show="!nsFilter || 'fs extract copy copytree readjson writejson islocked fileversion ntfs'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>fs.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>extract</code>, <code>copy</code>, <code>copyTree</code>, <code>isLocked</code>, <code>fileVersion</code>, <code>readJson</code>/<code>writeJson</code>, <code>setNtfsCompression</code></td>
+              <td role="cell" data-label="Architectural Advantage">Every mutating file operation backs up existing files to <code>.rswbak</code> for instant LIFO rollback!</td>
             </tr>
-            <tr x-show="!nsFilter || 'reg registry wow32 native64 both hklm hkcu listsubkeys'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>reg.*</code></th>
-              <td><code>exists</code>, <code>readString</code>, <code>readDword</code>, <code>listSubkeys</code>, <code>writeString</code>, <code>writeDword</code>, <code>deleteKeyTree</code></td>
-              <td>Stateless <code>view: RegView.Native64 | Wow32 | Both</code> eliminates global 32/64-bit mode toggle bugs!</td>
+            <tr x-show="!nsFilter || 'reg registry wow32 native64 both hklm hkcu listsubkeys'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>reg.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>exists</code>, <code>readString</code>, <code>readDword</code>, <code>listSubkeys</code>, <code>writeString</code>, <code>writeDword</code>, <code>deleteKeyTree</code></td>
+              <td role="cell" data-label="Architectural Advantage">Stateless <code>view: RegView.Native64 | Wow32 | Both</code> eliminates global 32/64-bit mode toggle bugs!</td>
             </tr>
-            <tr x-show="!nsFilter || 'proc run elevated desktop token de-elevate explorer dll ffi restart manager rstrtmgr lock'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>proc.*</code> &amp; <code>ffi.*</code></th>
-              <td><code>run(..., token: Token.Current | Elevated | Desktop)</code>, <code>getLockingProcesses</code>, <code>restartManagerShutdown</code>, <code>ffi.call</code></td>
-              <td><code>Token.Desktop</code> Explorer de-elevation, Windows Restart Manager (<code>Rstrtmgr.dll</code>), &amp; 64-bit native DLL FFI!</td>
+            <tr x-show="!nsFilter || 'proc run elevated desktop token de-elevate explorer dll ffi restart manager rstrtmgr lock'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>proc.*</code> &amp; <code>ffi.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>run(..., token: Token.Current | Elevated | Desktop)</code>, <code>getLockingProcesses</code>, <code>restartManagerShutdown</code>, <code>ffi.call</code></td>
+              <td role="cell" data-label="Architectural Advantage"><code>Token.Desktop</code> Explorer de-elevation, Windows Restart Manager (<code>Rstrtmgr.dll</code>), &amp; 64-bit native DLL FFI!</td>
             </tr>
-            <tr x-show="!nsFilter || 'msi sql query execsql createtable property summary stream transform mst externalui'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>msi.*</code> (SQL &amp; Runtime)</th>
-              <td><code>createDatabase</code>, <code>query</code>, <code>execSql</code>, <code>getProperty</code>/<code>setProperty</code>, <code>setSummary</code>, <code>importStream</code>, <code>generateTransform</code>, <code>install</code>, <code>repair</code></td>
-              <td>Direct relational MSI SQL table DDL/DML + <code>.mst</code> transforms + live <code>MsiSetExternalUIRecord</code> progress!</td>
+            <tr x-show="!nsFilter || 'msi sql query execsql createtable property summary stream transform mst externalui'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>msi.*</code> (SQL &amp; Runtime)</th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>createDatabase</code>, <code>query</code>, <code>execSql</code>, <code>getProperty</code>/<code>setProperty</code>, <code>setSummary</code>, <code>importStream</code>, <code>generateTransform</code>, <code>install</code>, <code>repair</code></td>
+              <td role="cell" data-label="Architectural Advantage">Direct relational MSI SQL table DDL/DML + <code>.mst</code> transforms + live <code>MsiSetExternalUIRecord</code> progress!</td>
             </tr>
-            <tr x-show="!nsFilter || 'ui taskdialog commandlinks shield pickfolder progress deferred uac'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>ui.*</code>, <code>wizard.*</code> &amp; <code>Uac.Deferred</code></th>
-              <td><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code>, <code>Uac.Deferred</code></td>
-              <td>Runs <code>wizard { ... }</code> un-elevated (<code>asInvoker</code>) and spawns <code>--elevated-rssc-worker</code> only on Install!</td>
+            <tr x-show="!nsFilter || 'ui taskdialog commandlinks shield pickfolder progress deferred uac'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>ui.*</code>, <code>wizard.*</code> &amp; <code>Uac.Deferred</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>ui.taskDialog</code> (Command Links, UAC shields, <code>detailsBody</code>, <code>verifyText</code>), <code>pickFolder</code>, <code>progress</code>, <code>wizard.back()</code>, <code>Uac.Deferred</code></td>
+              <td role="cell" data-label="Architectural Advantage">Runs <code>wizard { ... }</code> un-elevated (<code>asInvoker</code>) and spawns <code>--elevated-rssc-worker</code> only on Install!</td>
             </tr>
-            <tr x-show="!nsFilter || 'prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive 7z lzma zip cab tar zst iso wim rswpak net compile'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>archive.*</code>, <code>compile.*</code>, <code>prereq.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
-              <td><code>archive.{create,extract,create7z,extract7z,createLzma,extractLzma,createZip,createPak,createCab,createTar,createZst,createIso,createWim,list,verify}</code>, <code>compile.json</code>, <code>env.appendPath</code>, <code>crypto.verifyAuthenticode</code></td>
-              <td>Zero-DLL Windows 11 multi-format archiving (<code>.7z</code>, <code>.zip</code>, <code>.rswpak</code>, <code>.cab</code>, <code>.tar.zst</code>, <code>.iso</code>, <code>.wim</code>) with Zip-Slip &amp; LIFO rollback protection!</td>
+            <tr x-show="!nsFilter || 'prereq dotnet webview2 shortcut shell env appendpath arp svc task firewall acl ini xml json crypto archive 7z lzma zip cab tar zst iso wim rswpak net compile'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>archive.*</code>, <code>compile.*</code>, <code>prereq.*</code>, <code>env.*</code>, <code>arp.*</code>, <code>svc.*</code>, <code>net.*</code>, <code>crypto.*</code></th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>archive.{create,extract,create7z,extract7z,createLzma,extractLzma,createZip,createPak,createCab,createTar,createZst,createIso,createWim,list,verify}</code>, <code>compile.json</code>, <code>env.appendPath</code>, <code>crypto.verifyAuthenticode</code></td>
+              <td role="cell" data-label="Architectural Advantage">Zero-DLL Windows 11 multi-format archiving (<code>.7z</code>, <code>.zip</code>, <code>.rswpak</code>, <code>.cab</code>, <code>.tar.zst</code>, <code>.iso</code>, <code>.wim</code>) with Zip-Slip &amp; LIFO rollback protection!</td>
             </tr>
-            <tr x-show="!nsFilter || 'storescript storetrainer save crc32 findpatternhex crossroads book reader interactive novel showcase training scorm a11y localization vtt document launcher help'.includes(nsFilter.toLowerCase())">
-              <th scope="row"><code>storescript.*</code>, <code>crossroads.*</code> &amp; 7 Studio Sandboxes</th>
-              <td><code>storescript.{profile,backupSave,findPatternHex,writeI32LE,writeU32LE,crc32Range,setJson}</code>, <code>crossroads.{visit,adjustStat,offerOption}</code>, <code>showcase.*</code>, <code>training.*</code>, <code>a11y.parseVttCues</code>, <code>localization.tokensMatch</code></td>
-              <td><code>RSW702</code> capability-sandboxed save-file trainer DSL for <em>StoreTrainer</em>, branching scenes for <em>Story Crossroads</em>, &amp; 8-tool Studio automation!</td>
+            <tr x-show="!nsFilter || 'storescript storetrainer save crc32 findpatternhex crossroads book reader interactive novel showcase training scorm a11y localization vtt document launcher help'.includes(nsFilter.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>storescript.*</code>, <code>crossroads.*</code> &amp; 7 Studio Sandboxes</th>
+              <td role="cell" data-label="Key Methods & Primitives"><code>storescript.{profile,backupSave,findPatternHex,writeI32LE,writeU32LE,crc32Range,setJson}</code>, <code>crossroads.{visit,adjustStat,offerOption}</code>, <code>showcase.*</code>, <code>training.*</code>, <code>a11y.parseVttCues</code>, <code>localization.tokensMatch</code></td>
+              <td role="cell" data-label="Architectural Advantage"><code>RSW702</code> capability-sandboxed save-file trainer DSL for <em>StoreTrainer</em>, branching scenes for <em>Story Crossroads</em>, &amp; 8-tool Studio automation!</td>
             </tr>
           </tbody>
         </table>

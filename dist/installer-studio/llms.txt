@@ -31,7 +31,9 @@
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
 
 ## `.rsip` Manifest Sections (`v0.9`)
-- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
+- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript-msi/raggiescript), Script (.rssc), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
+- `[RaggieScript]`: Optional RaggieScript (.rssc) configuration ([RaggieScript] Source = setup.rssc) for RaggieScript MSI (Engine = raggiescript-msi) wizard orchestration and inside-the-MSI Custom Actions.
+- `[CustomAction.<id>]`: Declares a native inside-the-MSI RaggieScript Custom Action ([CustomAction.<id>]: immediate, deferred, rollback, or commit) executed via embedded static /MT RsscMsiCa.dll with full msiexec /qn GPO parity and atomic rollback.
 - `[HostApp]`: Host application discovery & automatic content placement rules ([HostApp]) for PackageKind = addon (locates an installed Host App such as Book Reader or Listening Room via UpgradeCode/Registry/Executable and places books, albums, plugins, or DLC into the right directory with zero full-installer ceremony).
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
 - `[Upgrade]`: Declarative update & servicing policy ([Upgrade]): Strategy (major|minor|small_hotfix), RemoveExistingProducts Schedule (early 1525 vs late 6550), MigrateFeatures (257), BaselineMsi, and RsUpdate.exe UpdateFeedUrl.

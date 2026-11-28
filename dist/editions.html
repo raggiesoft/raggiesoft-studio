@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D Collector’s Edition boxed software showcase of RaggieSoft Studio Suite — Eight Cohesive Windows 11 Developer, Compliance, and Publishing Tools." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/editions#webpage","url":"https://raggiesoftstudio.com/editions","name":"Suite Editions & Licensing Matrix | RaggieSoft Studio","description":"Compare Community (100% Architect parity), Essentials, Developer, and Architect editions across all 8 RaggieSoft Studio tools and All-Access Suites.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -264,64 +264,64 @@
       </div>
 
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>Suite-Wide Edition Capabilities Across All 8 RaggieSoft Studio Tools (Community Permanently Equals Architect)</caption>
-          <thead>
-            <tr>
-              <th scope="col">RaggieSoft Studio Product</th>
-              <th scope="col">Essentials<br /><small>(Tier 1: Guided 1-Seat)</small></th>
-              <th scope="col">Developer<br /><small>(Tier 2: RaggieScript &amp; CI/CD)</small></th>
-              <th scope="col">Architect &amp; Community<br /><small>(Tier 3 / Free Community Parity)</small></th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">RaggieSoft Studio Product</th>
+              <th scope="col" role="columnheader">Essentials<br /><small>(Tier 1: Guided 1-Seat)</small></th>
+              <th scope="col" role="columnheader">Developer<br /><small>(Tier 2: RaggieScript &amp; CI/CD)</small></th>
+              <th scope="col" role="columnheader">Architect &amp; Community<br /><small>(Tier 3 / Free Community Parity)</small></th>
             </tr>
           </thead>
-          <tbody>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
-              <th scope="row"><a href="/installer-studio">1. Installer Studio</a><br /><small><code>.rsip</code> / <code>.rsis</code> • C++20</small></th>
-              <td><code>.MSI</code> + <code>Setup.exe</code>, <code>sfx</code> + <code>rswsfx.exe</code>, consume <code>.MSM</code>, Major Upgrades, 11 Wizard Styles, Azure Signing</td>
-              <td>+ Compile <code>.MSM</code>, <strong><code>RaggieScript</code></strong> (<code>installer.*</code>), Custom C++ &amp; SQL Dialogs, <code>.slnx</code>/VB6 <code>.vbp</code> importers, <code>msiprism</code>, CI/CD</td>
-              <td>+ <strong>Unified <code>.rsis</code> Dual-Bar Suites</strong>, <code>.MSP</code> binary-delta patches &amp; <code>.MST</code>, Disk Spanning / <code>msiexec /a</code>, <code>.rswpak</code>, <strong>Auto-VPAT 2.5</strong></td>
+          <tbody role="rowgroup">
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'" role="row">
+              <th scope="row" role="rowheader"><a href="/installer-studio">1. Installer Studio</a><br /><small><code>.rsip</code> / <code>.rsis</code> • C++20</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)"><code>.MSI</code> + <code>Setup.exe</code>, <code>sfx</code> + <code>rswsfx.exe</code>, consume <code>.MSM</code>, Major Upgrades, 11 Wizard Styles, Azure Signing</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ Compile <code>.MSM</code>, <strong><code>RaggieScript</code></strong> (<code>installer.*</code>), Custom C++ &amp; SQL Dialogs, <code>.slnx</code>/VB6 <code>.vbp</code> importers, <code>msiprism</code>, CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong>Unified <code>.rsis</code> Dual-Bar Suites</strong>, <code>.MSP</code> binary-delta patches &amp; <code>.MST</code>, Disk Spanning / <code>msiexec /a</code>, <code>.rswpak</code>, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
-              <th scope="row"><a href="/showcase-studio">2. Showcase Studio</a><br /><small><code>.rssp</code> • C++20</small></th>
-              <td>Visual 1990s <code>.BMP</code> &amp; <code>FluentMica</code> menus, declarative launch actions, 4-way focus matrix, High-Contrast fallback</td>
-              <td>+ <strong><code>RaggieScript</code></strong> (<code>showcase.*</code> reactive menus, <code>msi.isInstalled</code> Install &harr; Launch states), custom templates, CI/CD</td>
-              <td>+ <strong>Bespoke Full-Canvas Self-Extracting Installers</strong> (<code>_support\</code> staging, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC manifest, rollback), Suite front-door, Kiosk Mode, <strong>Auto-VPAT 2.5</strong></td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'" role="row">
+              <th scope="row" role="rowheader"><a href="/showcase-studio">2. Showcase Studio</a><br /><small><code>.rssp</code> • C++20</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Visual 1990s <code>.BMP</code> &amp; <code>FluentMica</code> menus, declarative launch actions, 4-way focus matrix, High-Contrast fallback</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong><code>RaggieScript</code></strong> (<code>showcase.*</code> reactive menus, <code>msi.isInstalled</code> Install &harr; Launch states), custom templates, CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong>Bespoke Full-Canvas Self-Extracting Installers</strong> (<code>_support\</code> staging, <code>fs.*</code>, <code>reg.*</code>, <code>shortcut.*</code>, UAC manifest, rollback), Suite front-door, Kiosk Mode, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'">
-              <th scope="row"><a href="/launcher-studio">3. Launcher Studio</a><br /><small><code>.rslp</code> • .NET 11</small></th>
-              <td>Guided single-channel branded desktop app/media hub + static <code>catalog.json</code> + SHA-256 / Authenticode check</td>
-              <td>+ <strong><code>RaggieScript</code></strong> (<code>launcher.*</code> pre-launch/GPU checks), <code>stable</code>/<code>beta</code> rings, delta updates, CI/CD</td>
-              <td>+ Air-gapped Intranet / UNC mirror mode, enterprise GPO templates, multi-brand hubs, <strong>Auto-VPAT 2.5</strong></td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'pkg'" role="row">
+              <th scope="row" role="rowheader"><a href="/launcher-studio">3. Launcher Studio</a><br /><small><code>.rslp</code> • .NET 11</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Guided single-channel branded desktop app/media hub + static <code>catalog.json</code> + SHA-256 / Authenticode check</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong><code>RaggieScript</code></strong> (<code>launcher.*</code> pre-launch/GPU checks), <code>stable</code>/<code>beta</code> rings, delta updates, CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ Air-gapped Intranet / UNC mirror mode, enterprise GPO templates, multi-brand hubs, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> + <code>.rssc</code> • Static /MT C++20</small></th>
-              <td>Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + 3-column Reference Portal</td>
-              <td>+ <strong>Legacy <code>.CHM</code> / WinHelp <code>.HLP</code>+<code>.CNT</code> Decompilers</strong>, <strong><code>RaggieScript</code></strong> (<code>use help;</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
-              <td>+ <strong>Cross-Suite Federated Help Search</strong> (merging N product manuals), conditional OEM tags, <strong>Auto-VPAT 2.5</strong></td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'" role="row">
+              <th scope="row" role="rowheader"><a href="/help-studio">4. Help Studio</a><br /><small><code>.rshp</code> + <code>.rssc</code> • Static /MT C++20</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Visual Markdown/HTML5 &rarr; <code>.rshm</code> module + standalone zero-dependency <code>Help.exe</code> + 3-column Reference Portal</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong>Legacy <code>.CHM</code> / WinHelp <code>.HLP</code>+<code>.CNT</code> Decompilers</strong>, <strong><code>RaggieScript</code></strong> (<code>use help;</code>), C++/C#/VB6 <code>F1</code> SDK, CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong>Cross-Suite Federated Help Search</strong> (merging N product manuals), conditional OEM tags, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/training-studio">5. Training Studio</a><br /><small><code>.rstp</code> • .NET 11</small></th>
-              <td>Visual <code>.rstp</code> + Markdown + <code>.vtt</code> &rarr; <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 <code>.zip</code></td>
-              <td>+ <strong><code>RaggieScript</code></strong> (<code>training.*</code> ES2022 branching scenarios &amp; custom rubrics), Hostile LMS Simulator, CI/CD</td>
-              <td>+ <strong><code>audit-scorm</code> Third-Party SCORM <code>.zip</code> Auditor</strong>, multi-course curricula, <strong>Auto-VPAT 2.5</strong></td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'" role="row">
+              <th scope="row" role="rowheader"><a href="/training-studio">5. Training Studio</a><br /><small><code>.rstp</code> • .NET 11</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Visual <code>.rstp</code> + Markdown + <code>.vtt</code> &rarr; <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 <code>.zip</code></td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong><code>RaggieScript</code></strong> (<code>training.*</code> ES2022 branching scenarios &amp; custom rubrics), Hostile LMS Simulator, CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong><code>audit-scorm</code> Third-Party SCORM <code>.zip</code> Auditor</strong>, multi-course curricula, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/document-studio">6. Document Studio</a><br /><small><code>.rsdp</code> • .NET 11</small></th>
-              <td>Visual <code>.rsdp</code> + Markdown &rarr; machine-verified ISO 14289-1 Tagged <code>PDF/UA-1</code> + accessible HTML5</td>
-              <td>+ <strong>Accessible Fillable AcroForm Builder</strong>, <strong><code>RaggieScript</code></strong> (<code>document.*</code> JSON/CSV batch merge), CI/CD</td>
-              <td>+ Full Matterhorn Protocol Certificate, <code>PDF/A-2a + PDF/UA-1</code> dual archival stamp, <strong>Auto-VPAT 2.5</strong></td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'" role="row">
+              <th scope="row" role="rowheader"><a href="/document-studio">6. Document Studio</a><br /><small><code>.rsdp</code> • .NET 11</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Visual <code>.rsdp</code> + Markdown &rarr; machine-verified ISO 14289-1 Tagged <code>PDF/UA-1</code> + accessible HTML5</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong>Accessible Fillable AcroForm Builder</strong>, <strong><code>RaggieScript</code></strong> (<code>document.*</code> JSON/CSV batch merge), CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ Full Matterhorn Protocol Certificate, <code>PDF/A-2a + PDF/UA-1</code> dual archival stamp, <strong>Auto-VPAT 2.5</strong></td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/localization-studio">7. Localization Studio</a><br /><small><code>.rsloc</code> • .NET 11</small></th>
-              <td>Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code> &amp; <code>.vtt</code> editor + locked placeholder tokens</td>
-              <td>+ Automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <strong><code>RaggieScript</code></strong> (<code>localization.*</code>), CI/CD</td>
-              <td>+ <strong>Cross-Suite Shared Translation Memory &amp; Glossary</strong> across apps/help/SCORM + Multilingual VPAT 2.5</td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'" role="row">
+              <th scope="row" role="rowheader"><a href="/localization-studio">7. Localization Studio</a><br /><small><code>.rsloc</code> • .NET 11</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Side-by-side <code>.RESX</code>, <code>XLIFF 2.1</code>, <code>.rsip</code>, <code>.rstp</code> &amp; <code>.vtt</code> editor + locked placeholder tokens</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ Automated Win32 <code>&amp;</code> mnemonic clash solver, <code>&le;22 CPS</code> caption gate, <strong><code>RaggieScript</code></strong> (<code>localization.*</code>), CI/CD</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong>Cross-Suite Shared Translation Memory &amp; Glossary</strong> across apps/help/SCORM + Multilingual VPAT 2.5</td>
             </tr>
-            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'">
-              <th scope="row"><a href="/accessibility-studio">8. Accessibility Studio</a><br /><small><code>.a11yproj</code> • .NET 11</small></th>
-              <td>Desktop IDE (<code>AccessibilityStudio.exe</code>) single-project WCAG 2.2 AA source audit &amp; Monaco Guided Fix diffs</td>
-              <td>+ <strong><code>RaggieScript</code></strong> (<code>a11y.*</code> custom org rules), headless <code>a11y-studio-cli</code> CI/CD gates &amp; SARIF 2.1.0</td>
-              <td>+ <strong>Executive HTML5 VPAT 2.5 Generator</strong>, multi-repo portfolio rollups, &amp; Enterprise GPO MSI</td>
+            <tr x-show="suiteCat === 'all' || suiteCat === 'docs'" role="row">
+              <th scope="row" role="rowheader"><a href="/accessibility-studio">8. Accessibility Studio</a><br /><small><code>.a11yproj</code> • .NET 11</small></th>
+              <td role="cell" data-label="Essentials (Tier 1: Guided 1-Seat)">Desktop IDE (<code>AccessibilityStudio.exe</code>) single-project WCAG 2.2 AA source audit &amp; Monaco Guided Fix diffs</td>
+              <td role="cell" data-label="Developer (Tier 2: RaggieScript & CI/CD)">+ <strong><code>RaggieScript</code></strong> (<code>a11y.*</code> custom org rules), headless <code>a11y-studio-cli</code> CI/CD gates &amp; SARIF 2.1.0</td>
+              <td role="cell" data-label="Architect & Community (Tier 3 / Free Community Parity)">+ <strong>Executive HTML5 VPAT 2.5 Generator</strong>, multi-repo portfolio rollups, &amp; Enterprise GPO MSI</td>
             </tr>
           </tbody>
         </table>

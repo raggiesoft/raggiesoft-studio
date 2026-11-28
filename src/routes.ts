@@ -2809,7 +2809,7 @@ function renderEditionsBody(): string {
               <td><strong>Yes</strong></td>
             </tr>
             <tr x-show="matrixCat === 'all' || matrixCat === 'dev'">
-              <th scope="row"><code>RaggieScript</code> (<code>.rssc</code>) &amp; <strong>RaggieScript EXE</strong> (<code>Engine = raggiescript</code>)</th>
+              <th scope="row"><code>RaggieScript</code> (<code>.rssc</code>), <strong>RaggieScript MSI</strong> (<code>Engine = raggiescript-msi</code> + <code>RsscMsiCa.dll</code>), &amp; <strong>RaggieScript EXE</strong> (<code>Engine = raggiescript</code>)</th>
               <td><strong>Yes</strong></td>
               <td>&mdash;</td>
               <td><strong>Yes</strong></td>
@@ -3696,12 +3696,12 @@ function renderChangelogBody(): string {
     </section>
 
     <section aria-labelledby="v091-heading" class="calc-panel">
-      <span class="release-badge">Latest Release • November 27, 2026</span>
-      <h2 id="v091-heading" style="margin-top: 0.25rem;">v0.9.1 — Multi-Step Suite Wizard, Suite Maintenance Mode, Universal Cancel LIFO Rollback &amp; WCAG 2.2 AA Hardening</h2>
+      <span class="release-badge">Latest Release • November 28, 2026</span>
+      <h2 id="v091-heading" style="margin-top: 0.25rem;">v0.9.1 — RaggieScript MSI Hybrid Engine (RsscMsiCa.dll), All 11 Suite Wizard Styles, Suite Maintenance Mode &amp; Universal Cancel LIFO Rollback</h2>
       <ul class="feature-list">
-        <li><strong>Multi-Step Suite Setup Wizard (<code>SuiteSetupWizardApp</code>)</strong>: Replaced the single-screen Suite checklist with a full multi-page Win32 C++20 wizard (<code>Welcome &rarr; License &rarr; SetupType &rarr; CustomSuite &rarr; VerifyReady &rarr; Installing &rarr; Finished</code>)—supporting both modern <code>express_custom</code> (<em>Express / Compact / Custom</em>) and classic <code>win95_classic</code> (<em>Typical / Compact / Complete / Custom</em>) Setup Types, <code>[SuitePackage] Inclusion = minimal | typical | complete</code>, interactive <code>Select &amp;All</code> + <code>&amp;Reset</code> + destination folder <code>Browse...</code>, and rotating <code>[Billboard.*]</code> cards above the monotonic Dual Progress Bars (with zero disabled <code>SysListView32</code> on the Installing page).</li>
-        <li><strong>Suite Maintenance Mode &amp; Windows <em>Settings &rarr; Apps</em> Uninstall Fix (<code>--suite-manage</code> vs. <code>--suite-uninstall</code>)</strong>: Re-launching an installed Suite setup or clicking <em>Modify</em> in Windows <em>Installed apps</em> opens <strong>Suite Maintenance Mode</strong> (<em>&amp;Modify</em>, <em>&amp;Repair</em>, <em>&amp;Remove</em>, including rescuing/upgrading prior <code>v0.9.0</code> Suite installations cleanly via shared <code>UpgradeCode</code>), while clicking <em>Uninstall</em> in <em>Settings &rarr; Apps</em> routes directly to the Suite Uninstall confirmation page via <code>--suite-uninstall</code> and schedules deferred self-cleanup of <code>&lt;SuiteInstallDir&gt;\SuiteSetup.exe</code>.</li>
-        <li><strong>Universal <em>&ldquo;Are You Sure? (Yes/No)&rdquo;</em> Cancel Confirmation + 100% Full LIFO Rollback &amp; WCAG 2.2 AA Contrast Fixes</strong>: Clicking <em>Cancel</em> across <code>.msi</code> (<code>SetupWizardApp</code>), <strong>RaggieScript EXE</strong> / <strong>Add-On</strong> (<code>SimpleCompactDialogApp</code> + <code>ExecuteNativeOrSfxTransaction</code>), scripted <code>.rssc</code> (<code>Rs*</code> dialogs + <code>--elevated-rssc-worker</code>), and <strong>Unified Suites</strong> prompts with a safe <code>IDNO</code>-default <code>TaskDialogIndirect</code> confirmation, pauses taskbar progress (<code>TBPF_PAUSED</code>), signals graceful child rollback via <code>RSW_CHILD_CANCEL_FILE</code>, and unwinds 100% of newly installed session packages in LIFO order—paired with hardened <code>&ge; 4.5:1</code> disabled control and <code>ES_READONLY</code> Dark/Light contrast (85/85 self-tests passing).</li>
+        <li><strong>Mode 3: &ldquo;RaggieScript MSI&rdquo; Hybrid Engine (<code>Engine = raggiescript-msi</code> + Static <code>/MT</code> <code>RsscMsiCa.dll</code>)</strong>: Combines a full <code>ICE18</code>/<code>38</code>/<code>64</code>/<code>80</code>-verified <code>Product.msi</code> (<code>#201</code>) with RaggieScript v1.3 un-elevated <code>wizard { ... }</code> UI (<code>#225 RSWBC2</code> + <code>msi.setSessionProperty</code> + <code>feature.select</code>/<code>deselect</code> property handoff) AND our zero-dependency static <code>/MT</code> C++20 <code>Type 1</code> Custom Action runner (<strong><code>RsscMsiCa.dll</code></strong>, <code>x64</code> &amp; <code>ARM64</code>) embedded straight inside <code>Product.msi</code>'s <code>Binary</code> table—executing <code>[CustomAction.&lt;Id&gt;]</code> Immediate, Deferred, Rollback (<code>.jnl</code> LIFO undo + <code>RollbackFunction</code>), and Commit actions with 100% headless <code>msiexec /i Product.msi /qn</code> GPO &amp; Intune parity!</li>
+        <li><strong>All 11 Wizard Styles on Multi-Step Suites + Formatted MSI <code>ActionData</code> &amp; Hidden Finish <code>Cancel</code></strong>: <code>SuiteSetupWizardApp</code> now supports all 11 <code>[UI] WizardLayout</code> styles (<code>standard</code>, <code>wizard95</code>, <code>wizard97</code>, <code>aerowizard</code>, <code>fluentmica</code>, <code>oneclick</code>, <code>passivetoast</code>, <code>fullscreenblue</code>, <code>fullscreenteal</code>, <code>autorun16x9</code>, <code>simple</code>), formats child MSI <code>INSTALLLOGMODE_ACTIONDATA</code> records cleanly via <code>MsiFormatRecordW</code> so raw <code>[1]</code> placeholders never appear, and both disables and hides <code>Cancel</code> on every Finish dialog across Suite, MSI, Add-On, and RaggieScript wizards.</li>
+        <li><strong>Suite Maintenance Mode (<code>--suite-manage</code> vs. <code>--suite-uninstall</code>) &amp; Universal Cancel 100% LIFO Rollback</strong>: Re-launching an installed Suite or clicking <em>Modify</em> opens <strong>Suite Maintenance Mode</strong> (<em>&amp;Modify</em>, <em>&amp;Repair</em>, <em>&amp;Remove</em>), clicking <em>Uninstall</em> in Windows <em>Settings &rarr; Apps</em> routes directly to <code>--suite-uninstall</code>, and clicking <em>Cancel</em> across MSI, RaggieScript EXE, RaggieScript MSI, Add-On, and Suite runtimes asks <em>&ldquo;Are You Sure? (Yes/No)&rdquo;</em> and unwinds 100% of session changes in LIFO order.</li>
       </ul>
     </section>
 
@@ -5272,5 +5272,85 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
     </footer>
   `;
 
-  return { html };
+/**
+ * Build-time & dev-time responsive table post-processor (`enhanceTablesForMobile`):
+ * Walks every `<table>` in rendered HTML, extracts `<thead>` column header labels,
+ * attaches explicit ARIA table roles (`role="table"`, `role="row"`, `role="rowheader"`,
+ * `role="cell"`), and stamps `data-label="..."` onto every `<tbody>` `<td>` cell so
+ * `src/styles.css` can stack multi-column tables into zero-scroll cards on phones (`< 768px`)
+ * while preserving 100% of desktop table layout, screen-reader navigation, and Alpine `x-show`!
+ */
+function enhanceTablesForMobile(rawHtml: string): string {
+  return rawHtml.replace(/<table\b([^>]*)>([\s\S]*?)<\/table>/gi, (_full, tableAttrs: string, inner: string) => {
+    const headers: string[] = [];
+    const theadMatch = inner.match(/<thead\b[^>]*>([\s\S]*?)<\/thead>/i);
+    if (theadMatch) {
+      const thRe = /<th\b[^>]*>([\s\S]*?)<\/th>/gi;
+      let m: RegExpExecArray | null;
+      while ((m = thRe.exec(theadMatch[1])) !== null) {
+        const clean = m[1]
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&bull;/g, '•')
+          .replace(/&ndash;/g, '–')
+          .replace(/&mdash;/g, '—')
+          .replace(/\s+/g, ' ')
+          .trim();
+        headers.push(clean);
+      }
+    }
+
+    let upgradedInner = inner
+      .replace(/<thead\b([^>]*)>/gi, (_m, a: string) => (/\brole=/i.test(a) ? `<thead${a}>` : `<thead${a} role="rowgroup">`))
+      .replace(/<tbody\b([^>]*)>/gi, (_m, a: string) => (/\brole=/i.test(a) ? `<tbody${a}>` : `<tbody${a} role="rowgroup">`));
+
+    upgradedInner = upgradedInner.replace(/<thead\b([^>]*)>([\s\S]*?)<\/thead>/gi, (_tm, ta: string, tbodyStr: string) => {
+      const fixedRows = tbodyStr.replace(/<tr\b([^>]*)>([\s\S]*?)<\/tr>/gi, (_rm, ra: string, rInner: string) => {
+        const rAttr = /\brole=/i.test(ra) ? ra : `${ra} role="row"`;
+        const fixedThs = rInner.replace(/<th\b([^>]*)>/gi, (_hm, ha: string) =>
+          /\brole=/i.test(ha) ? `<th${ha}>` : `<th${ha} role="columnheader">`
+        );
+        return `<tr${rAttr}>${fixedThs}</tr>`;
+      });
+      return `<thead${ta}>${fixedRows}</thead>`;
+    });
+
+    upgradedInner = upgradedInner.replace(/<tbody\b([^>]*)>([\s\S]*?)<\/tbody>/gi, (_bm, ba: string, tbodyStr: string) => {
+      const fixedRows = tbodyStr.replace(/<tr\b([^>]*)>([\s\S]*?)<\/tr>/gi, (_rm, ra: string, rInner: string) => {
+        const rAttr = /\brole=/i.test(ra) ? ra : `${ra} role="row"`;
+        let cellIdx = 0;
+        const fixedCells = rInner.replace(/<(th|td)\b([^>]*)>([\s\S]*?)<\/\1>/gi, (_cm, tag: string, ca: string, cInner: string) => {
+          const idx = cellIdx++;
+          const lowerTag = tag.toLowerCase();
+          if (lowerTag === 'th') {
+            const hAttr = /\brole=/i.test(ca) ? ca : `${ca} role="rowheader"`;
+            return `<th${hAttr}>${cInner}</th>`;
+          }
+          let dAttr = /\brole=/i.test(ca) ? ca : `${ca} role="cell"`;
+          const hdr = headers[idx] || '';
+          if (hdr && !/\bdata-label=/i.test(dAttr)) {
+            const safeHdr = hdr.replace(/"/g, '&quot;');
+            dAttr += ` data-label="${safeHdr}"`;
+          }
+          return `<td${dAttr}>${cInner}</td>`;
+        });
+        return `<tr${rAttr}>${fixedCells}</tr>`;
+      });
+      return `<tbody${ba}>${fixedRows}</tbody>`;
+    });
+
+    let finalTableAttrs = tableAttrs;
+    if (!/\brole=/i.test(finalTableAttrs)) {
+      finalTableAttrs += ' role="table"';
+    }
+    if (/\bclass="([^"]*)"/i.test(finalTableAttrs)) {
+      finalTableAttrs = finalTableAttrs.replace(/\bclass="([^"]*)"/i, 'class="$1 rs-mobile-cards"');
+    } else {
+      finalTableAttrs += ' class="rs-mobile-cards"';
+    }
+    return `<table${finalTableAttrs}>${upgradedInner}</table>`;
+  });
+}
+
+  return { html: enhanceTablesForMobile(html) };
 }

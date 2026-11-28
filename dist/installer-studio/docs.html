@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/docs#webpage","url":"https://raggiesoftstudio.com/installer-studio/docs","name":"Documentation & .rsip v0.9 Spec | Installer Studio","description":"Searchable .rsip v0.9 project and .rsis suite reference covering [SuitePackage], [HostApp] Add-Ons, [Upgrade], RsPatch, RsUpdate, and /llms.txt.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -310,95 +310,95 @@
       </div>
 
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>Complete .rsip v0.5 Project, .rsis Suite &amp; .rsii Include Sections</caption>
-          <thead>
-            <tr>
-              <th scope="col">Section / Directive</th>
-              <th scope="col">File Type</th>
-              <th scope="col">Key Fields &amp; Purpose</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Section / Directive</th>
+              <th scope="col" role="columnheader">File Type</th>
+              <th scope="col" role="columnheader">Key Fields &amp; Purpose</th>
             </tr>
           </thead>
-          <tbody>
-            <tr x-show="!q || 'include rsii shared template dialog'.includes(q.toLowerCase())">
-              <th scope="row"><code>@include "file.rsii"</code></th>
-              <td><code>.rsip</code> / <code>.rsii</code></td>
-              <td>Inherits shared dialog workflows, <code>[Requirements]</code>, or <code>[Signing]</code> blocks without losing comments on IDE save.</td>
+          <tbody role="rowgroup">
+            <tr x-show="!q || 'include rsii shared template dialog'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>@include "file.rsii"</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> / <code>.rsii</code></td>
+              <td role="cell" data-label="Key Fields & Purpose">Inherits shared dialog workflows, <code>[Requirements]</code>, or <code>[Signing]</code> blocks without losing comments on IDE save.</td>
             </tr>
-            <tr x-show="!q || 'package name version upgradecode msi msm raggiescript uac requestedexecutionlevel requireadministrator highestavailable asinvoker enablelua'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Package]</code> &amp; <code>[Install]</code></th>
-              <td><code>.rsip</code> (Required)</td>
-              <td><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Engine</code> (<code>msi|raggiescript</code>), <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>RequestedExecutionLevel</code> (<code>asInvoker|highestAvailable|requireAdministrator</code>), <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
+            <tr x-show="!q || 'package name version upgradecode msi msm raggiescript uac requestedexecutionlevel requireadministrator highestavailable asinvoker enablelua'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Package]</code> &amp; <code>[Install]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Required)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Name</code>, 3-part <code>Version</code>, <code>Manufacturer</code>, <code>UpgradeCode</code>, <code>Engine</code> (<code>msi|raggiescript</code>), <code>Architecture</code> (<code>x64|arm64</code>), <code>Scope</code>, <code>RequestedExecutionLevel</code> (<code>asInvoker|highestAvailable|requireAdministrator</code>), <code>DefaultSubdir</code>, <code>MainExecutable</code>.</td>
             </tr>
-            <tr x-show="!q || 'upgrade servicing major minor small hotfix baselinemsi msp rswpatch rsupdate updatefeedurl migratefeatures removeexistingproducts'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Upgrade]</code></th>
-              <td><code>.rsip</code> (v0.8.0+)</td>
-              <td><code>Strategy</code> (<code>major|minor|small_hotfix</code>), <code>Schedule</code> (<code>early</code> <code>1525</code> | <code>late</code> <code>6550</code>), <code>MigrateFeatures</code> (<code>257</code>), <code>BaselineMsi</code>, and DRY <code>UpdateFeedUrl</code> (<code>apps-manifest.json</code> for <code>RsUpdate.exe</code> &amp; Launcher).</td>
+            <tr x-show="!q || 'upgrade servicing major minor small hotfix baselinemsi msp rswpatch rsupdate updatefeedurl migratefeatures removeexistingproducts'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Upgrade]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (v0.8.0+)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Strategy</code> (<code>major|minor|small_hotfix</code>), <code>Schedule</code> (<code>early</code> <code>1525</code> | <code>late</code> <code>6550</code>), <code>MigrateFeatures</code> (<code>257</code>), <code>BaselineMsi</code>, and DRY <code>UpdateFeedUrl</code> (<code>apps-manifest.json</code> for <code>RsUpdate.exe</code> &amp; Launcher).</td>
             </tr>
-            <tr x-show="!q || 'feature parent subfeature inclusion level minimal typical complete disallowabsent selectiontree'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Feature.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td><code>Title</code>, <code>Description</code>, plain-English <code>Inclusion</code> (<code>minimal|typical|complete|hidden</code>), <code>Parent</code> hierarchy, <code>DisallowAbsent</code>, and <code>AllowAdvertise</code>.</td>
+            <tr x-show="!q || 'feature parent subfeature inclusion level minimal typical complete disallowabsent selectiontree'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Feature.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Title</code>, <code>Description</code>, plain-English <code>Inclusion</code> (<code>minimal|typical|complete|hidden</code>), <code>Parent</code> hierarchy, <code>DisallowAbsent</code>, and <code>AllowAdvertise</code>.</td>
             </tr>
-            <tr x-show="!q || 'registry hklm hkcu hkcr hku hkmu dword reg'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Registry.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td><code>Root</code> (<code>HKLM|HKCU|HKCR|HKU|HKMU</code>), <code>Key</code>, <code>Name</code>, <code>Type</code> (<code>string|expand_string|dword</code>), <code>Value</code>, <code>Feature</code>, and optional <code>Component</code>.</td>
+            <tr x-show="!q || 'registry hklm hkcu hkcr hku hkmu dword reg'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Registry.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Root</code> (<code>HKLM|HKCU|HKCR|HKU|HKMU</code>), <code>Key</code>, <code>Name</code>, <code>Type</code> (<code>string|expand_string|dword</code>), <code>Value</code>, <code>Feature</code>, and optional <code>Component</code>.</td>
             </tr>
-            <tr x-show="!q || 'prerequisite runtime dotnet webview2 vcredist reboot lzms'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Prerequisite.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td><code>Preset</code> (<code>DotNet10Desktop</code>, <code>EdgeWebView2</code>, <code>VcRedist2022</code>, <code>Custom</code>), <code>Distribution</code> (<code>download|embedded|side-by-side</code>), and <code>RebootExitCodes</code>.</td>
+            <tr x-show="!q || 'prerequisite runtime dotnet webview2 vcredist reboot lzms'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Prerequisite.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Preset</code> (<code>DotNet10Desktop</code>, <code>EdgeWebView2</code>, <code>VcRedist2022</code>, <code>Custom</code>), <code>Distribution</code> (<code>download|embedded|side-by-side</code>), and <code>RebootExitCodes</code>.</td>
             </tr>
-            <tr x-show="!q || 'mergemodule msm shared library cab'.includes(q.toLowerCase())">
-              <th scope="row"><code>[MergeModule.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td>Merges 64-bit <code>.msm</code> SQL tables and CAB payloads into <code>TargetRoot</code> / <code>Feature</code> using native C++20 <code>msi.dll</code> + <code>Cabinet.lib</code> FDI.</td>
+            <tr x-show="!q || 'mergemodule msm shared library cab'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[MergeModule.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose">Merges 64-bit <code>.msm</code> SQL tables and CAB payloads into <code>TargetRoot</code> / <code>Feature</code> using native C++20 <code>msi.dll</code> + <code>Cabinet.lib</code> FDI.</td>
             </tr>
-            <tr x-show="!q || 'component keypath keyfile ice18 ice38 permanent'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Component.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td>Enforces Microsoft Component Rules: single <code>TargetRoot</code>/<code>TargetSubdir</code>, <code>KeyPathKind</code> (<code>auto|file|registry|folder</code>), <code>KeyPathTarget</code>, <code>Permanent</code>, <code>NeverOverwrite</code>.</td>
+            <tr x-show="!q || 'component keypath keyfile ice18 ice38 permanent'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Component.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose">Enforces Microsoft Component Rules: single <code>TargetRoot</code>/<code>TargetSubdir</code>, <code>KeyPathKind</code> (<code>auto|file|registry|folder</code>), <code>KeyPathTarget</code>, <code>Permanent</code>, <code>NeverOverwrite</code>.</td>
             </tr>
-            <tr x-show="!q || 'folder createfolder removefolder ice64'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Folder.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td>Creates destination subdirectories under any of 9 standard MSI roots via <code>CreateFolder</code> + automatic ICE64 <code>RemoveFolder</code> cleanup.</td>
+            <tr x-show="!q || 'folder createfolder removefolder ice64'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Folder.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose">Creates destination subdirectories under any of 9 standard MSI roots via <code>CreateFolder</code> + automatic ICE64 <code>RemoveFolder</code> cleanup.</td>
             </tr>
-            <tr x-show="!q || 'payload source targetroot cab'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Payload.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (1+ Required)</td>
-              <td><code>Source</code> (supports <code>$(ARCH)</code>), <code>TargetRoot</code>, <code>TargetSubdir</code>, optional explicit <code>Component</code> (or automatic 1-file UUIDv5 Component).</td>
+            <tr x-show="!q || 'payload source targetroot cab'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Payload.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (1+ Required)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Source</code> (supports <code>$(ARCH)</code>), <code>TargetRoot</code>, <code>TargetSubdir</code>, optional explicit <code>Component</code> (or automatic 1-file UUIDv5 Component).</td>
             </tr>
-            <tr x-show="!q || 'fileassociation extension progid verb mime icon'.includes(q.toLowerCase())">
-              <th scope="row"><code>[FileAssociation.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td><code>Extension</code>, <code>ProgId</code>, <code>Description</code>, <code>TargetFile</code>, <code>Verbs</code>, <code>ContentType</code>, and <code>Advertise</code>.</td>
+            <tr x-show="!q || 'fileassociation extension progid verb mime icon'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[FileAssociation.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Extension</code>, <code>ProgId</code>, <code>Description</code>, <code>TargetFile</code>, <code>Verbs</code>, <code>ContentType</code>, and <code>Advertise</code>.</td>
             </tr>
-            <tr x-show="!q || 'shortcut startmenu desktop lnk'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Shortcut.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (Optional)</td>
-              <td><code>Name</code>, <code>TargetFile</code>, <code>Location</code> (<code>StartMenu|Desktop</code>), <code>Arguments</code>, and <code>Feature</code> with automatic <code>ICE38</code> KeyPaths.</td>
+            <tr x-show="!q || 'shortcut startmenu desktop lnk'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Shortcut.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (Optional)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Name</code>, <code>TargetFile</code>, <code>Location</code> (<code>StartMenu|Desktop</code>), <code>Arguments</code>, and <code>Feature</code> with automatic <code>ICE38</code> KeyPaths.</td>
             </tr>
-            <tr x-show="!q || 'ui aerowizard glass wizardlayout wizard95 fluentmica fullscreenblue fullscreenteal acme setuptype billboard msidialogpreset'.includes(q.toLowerCase())">
-              <th scope="row"><code>[UI]</code>, <code>[SetupType.*]</code>, <code>[Billboard.*]</code> &amp; <code>[MsiDialog.*]</code></th>
-              <td><code>.rsip</code> / <code>.rsii</code></td>
-              <td>10 <code>WizardLayout</code> styles (<code>standard|wizard95|wizard97|aerowizard|fluentmica|oneclick|passivetoast|fullscreenblue|fullscreenteal|autorun16x9</code>), <code>SetupTypePreset</code> (<code>express_custom|win95_classic</code>), custom <code>[SetupType.*]</code> &amp; <code>[Billboard.*]</code> cards, plus custom <code>370&times;270</code> SQL dialogs!</td>
+            <tr x-show="!q || 'ui aerowizard glass wizardlayout wizard95 fluentmica fullscreenblue fullscreenteal acme setuptype billboard msidialogpreset'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[UI]</code>, <code>[SetupType.*]</code>, <code>[Billboard.*]</code> &amp; <code>[MsiDialog.*]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> / <code>.rsii</code></td>
+              <td role="cell" data-label="Key Fields & Purpose">10 <code>WizardLayout</code> styles (<code>standard|wizard95|wizard97|aerowizard|fluentmica|oneclick|passivetoast|fullscreenblue|fullscreenteal|autorun16x9</code>), <code>SetupTypePreset</code> (<code>express_custom|win95_classic</code>), custom <code>[SetupType.*]</code> &amp; <code>[Billboard.*]</code> cards, plus custom <code>370&times;270</code> SQL dialogs!</td>
             </tr>
-            <tr x-show="!q || 'hostapp addon content pack book music plugin upgradecode registrykey refreshargs'.includes(q.toLowerCase())">
-              <th scope="row"><code>[HostApp]</code></th>
-              <td><code>.rsip</code> (<code>PackageKind = addon</code>, v0.9.0+)</td>
-              <td>Verifies installed host app (<code>Name</code>, <code>UpgradeCode</code>, <code>RegistryKey</code>, <code>Executable</code>), exits with <code>1605</code> silently when missing or offers <code>&amp;Get Host App...</code>, unpacks to <code>ContentTargetRoot</code>/<code>ContentSubdir</code>, and pings live hosts via <code>RefreshArgs</code>.</td>
+            <tr x-show="!q || 'hostapp addon content pack book music plugin upgradecode registrykey refreshargs'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[HostApp]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (<code>PackageKind = addon</code>, v0.9.0+)</td>
+              <td role="cell" data-label="Key Fields & Purpose">Verifies installed host app (<code>Name</code>, <code>UpgradeCode</code>, <code>RegistryKey</code>, <code>Executable</code>), exits with <code>1605</code> silently when missing or offers <code>&amp;Get Host App...</code>, unpacks to <code>ContentTargetRoot</code>/<code>ContentSubdir</code>, and pings live hosts via <code>RefreshArgs</code>.</td>
             </tr>
-            <tr x-show="!q || 'suitepackage suite embedded side-by-side web workload sha256 rollbackboundary rollback_new arpsystemcomponent'.includes(q.toLowerCase())">
-              <th scope="row"><code>[SuitePackage.&lt;Id&gt;]</code></th>
-              <td><code>.rsip</code> (<code>PackageKind = suite</code>, v0.9.0+)</td>
-              <td><code>Delivery</code> (<code>embedded|side-by-side|web</code>), <code>Engine</code> (<code>msi|raggiescript|addon|exe</code>), <code>DownloadUrl</code>, <code>Sha256X64</code>/<code>Sha256Arm64</code>, <code>RollbackBoundary</code>, <code>ForwardInstallDir</code>, and <code>SuiteRollbackPolicy = rollback_new</code> LIFO session rollback.</td>
+            <tr x-show="!q || 'suitepackage suite embedded side-by-side web workload sha256 rollbackboundary rollback_new arpsystemcomponent'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[SuitePackage.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsip</code> (<code>PackageKind = suite</code>, v0.9.0+)</td>
+              <td role="cell" data-label="Key Fields & Purpose"><code>Delivery</code> (<code>embedded|side-by-side|web</code>), <code>Engine</code> (<code>msi|raggiescript|addon|exe</code>), <code>DownloadUrl</code>, <code>Sha256X64</code>/<code>Sha256Arm64</code>, <code>RollbackBoundary</code>, <code>ForwardInstallDir</code>, and <code>SuiteRollbackPolicy = rollback_new</code> LIFO session rollback.</td>
             </tr>
-            <tr x-show="!q || 'suite project buildorder rsis slnx'.includes(q.toLowerCase())">
-              <th scope="row"><code>[Suite]</code> &amp; <code>[Project.&lt;Id&gt;]</code></th>
-              <td><code>.rsis</code> Suite</td>
-              <td>Groups multiple <code>.rsip</code> projects with <code>[Variable]</code> tokens, <code>Category</code> filters, ordered <code>BuildOrder</code> execution, and direct <code>F5</code> Suite compilation in <code>InstallerStudio.exe</code>.</td>
+            <tr x-show="!q || 'suite project buildorder rsis slnx'.includes(q.toLowerCase())" role="row">
+              <th scope="row" role="rowheader"><code>[Suite]</code> &amp; <code>[Project.&lt;Id&gt;]</code></th>
+              <td role="cell" data-label="File Type"><code>.rsis</code> Suite</td>
+              <td role="cell" data-label="Key Fields & Purpose">Groups multiple <code>.rsip</code> projects with <code>[Variable]</code> tokens, <code>Category</code> filters, ordered <code>BuildOrder</code> execution, and direct <code>F5</code> Suite compilation in <code>InstallerStudio.exe</code>.</td>
             </tr>
           </tbody>
         </table>

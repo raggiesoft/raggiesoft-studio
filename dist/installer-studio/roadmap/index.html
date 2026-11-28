@@ -60,8 +60,8 @@
     <meta name="twitter:image:alt" content="3D boxed software showcase of RaggieSoft Installer Studio v0.5.0 — Install Without Limits (Zero-Dependency Win32 C++20 for Windows 11 x64 and ARM64)." />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/installer-studio#software","name":"RaggieSoft Installer Studio","alternateName":"Install Without Limits","url":"https://raggiesoftstudio.com/installer-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-installer-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"0.8.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"},"offers":{"@type":"Offer","name":"Open-Source Technical Preview (MIT)","price":"0","priceCurrency":"USD"}},{"@type":"SoftwareApplication","@id":"https://raggiesoftstudio.com/accessibility-studio#software","name":"RaggieSoft Accessibility Studio","url":"https://raggiesoftstudio.com/accessibility-studio","image":"https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.dev"}},{"@type":"WebSite","@id":"https://raggiesoftstudio.com/#website","url":"https://raggiesoftstudio.com/","name":"RaggieSoft Studio"},{"@type":"WebPage","@id":"https://raggiesoftstudio.com/installer-studio/roadmap#webpage","url":"https://raggiesoftstudio.com/installer-studio/roadmap","name":"Public Engineering Roadmap | RaggieSoft Installer Studio","description":"Human-readable engineering roadmap for RaggieSoft Installer Studio from v0.5.0 through v1.0 GA across Windows 11 x64 and ARM64.","isPartOf":{"@id":"https://raggiesoftstudio.com/#website"},"about":{"@id":"https://raggiesoftstudio.com/installer-studio#software"}}]}</script>
     <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261126a" />
-    <script type="module" crossorigin src="/assets/index-Dd3envkj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D9SPQ4aq.css">
+    <script type="module" crossorigin src="/assets/index-Bn2wPPw5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v6IJYqtI.css">
   </head>
   <body>
     <!-- Skip-to-main-content link (WCAG 2.4.1 Bypass Blocks) for keyboard & screen-reader users -->
@@ -201,55 +201,55 @@
       <span class="eyebrow">At-a-Glance Schedule</span>
       <h2 id="roadmap-matrix-heading">Milestone Overview Matrix</h2>
       <div class="table-wrap">
-        <table>
+        <table role="table" class="rs-mobile-cards">
           <caption>RaggieSoft Installer Studio Milestones from Technical Preview to v1.0.0 GA and Post-1.0</caption>
-          <thead>
-            <tr>
-              <th scope="col">Milestone</th>
-              <th scope="col">Primary Focus</th>
-              <th scope="col">Status</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Milestone</th>
+              <th scope="col" role="columnheader">Primary Focus</th>
+              <th scope="col" role="columnheader">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><code>v0.1.0</code> – <code>v0.5.0</code></th>
-              <td>10 Wizard Styles (<code>FullScreenBlue</code> &amp; <code>FullScreenTeal</code> <code>#008080</code> ACME Callback, <code>Wizard95</code>..<code>FluentMica</code>), Classic &amp; Custom Setup Types (<code>Typical</code>/<code>Compact</code>/<code>Complete</code>/<code>Custom</code> &amp; <code>[SetupType.*]</code>), WCAG Auto-Contrast, Microsoft Azure Artifact Signing, Universal Web &amp; Offline EXEs (<code>x64 + ARM64</code>), 12-View Tree-First IDE, <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, &amp; native <code>F1</code> Help</td>
-              <td><span class="status-pill status-shipped">Shipped</span></td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.1.0</code> – <code>v0.5.0</code></th>
+              <td role="cell" data-label="Primary Focus">10 Wizard Styles (<code>FullScreenBlue</code> &amp; <code>FullScreenTeal</code> <code>#008080</code> ACME Callback, <code>Wizard95</code>..<code>FluentMica</code>), Classic &amp; Custom Setup Types (<code>Typical</code>/<code>Compact</code>/<code>Complete</code>/<code>Custom</code> &amp; <code>[SetupType.*]</code>), WCAG Auto-Contrast, Microsoft Azure Artifact Signing, Universal Web &amp; Offline EXEs (<code>x64 + ARM64</code>), 12-View Tree-First IDE, <code>SelectionTree</code>, Pre-MSI Runtimes, 64-bit <code>.MSM</code>, &amp; native <code>F1</code> Help</td>
+              <td role="cell" data-label="Status"><span class="status-pill status-shipped">Shipped</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v0.5.1</code></th>
-              <td>Outer <code>Setup.exe</code> <code>RequestedExecutionLevel</code> Stamping (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>), UAC-disabled (<code>EnableLUA = 0</code>) <code>CheckTokenMembership</code> Administrator rights enforcement, de-elevated Finish launch, <code>UpgradeCode</code> single-instance focus &amp; polite cross-product <code>Global_MSIExecute</code> auto-queue, Windows 7+ <code>ITaskbarList3</code> progress bar, &amp; <code>Error 1324</code> + <code>Wizard95</code> polish</td>
-              <td><span class="status-pill status-next">Next Point Release</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.5.1</code></th>
+              <td role="cell" data-label="Primary Focus">Outer <code>Setup.exe</code> <code>RequestedExecutionLevel</code> Stamping (<code>asInvoker</code> | <code>highestAvailable</code> | <code>requireAdministrator</code>), UAC-disabled (<code>EnableLUA = 0</code>) <code>CheckTokenMembership</code> Administrator rights enforcement, de-elevated Finish launch, <code>UpgradeCode</code> single-instance focus &amp; polite cross-product <code>Global_MSIExecute</code> auto-queue, Windows 7+ <code>ITaskbarList3</code> progress bar, &amp; <code>Error 1324</code> + <code>Wizard95</code> polish</td>
+              <td role="cell" data-label="Status"><span class="status-pill status-next">Next Point Release</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v0.6.0</code></th>
-              <td>Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone <code>rswsfx.exe</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Monotonic Dual-Bar Multi-Engine Suites (<code>Engine = native | msi</code>)</td>
-              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.6.0</code></th>
+              <td role="cell" data-label="Primary Focus">Lightweight Self-Extracting <code>.EXE</code> Builder (<code>PackageKind = sfx</code> + <code>%TEMP%</code> Software Installation Wrapper &amp; Standalone <code>rswsfx.exe</code>), Multi-Volume Disk Spanning (<code>CAB1..N.cab</code>), Loose Uncompressed Source Media (<em>Run from Media / Network</em> &amp; <code>msiexec.exe /a</code> Admin Installs), <code>.rswpak</code> Packs, <code>.NET 11</code> presets, &amp; Monotonic Dual-Bar Multi-Engine Suites (<code>Engine = native | msi</code>)</td>
+              <td role="cell" data-label="Status"><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v0.7.0</code></th>
-              <td><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> <code>RSWBC2</code> VM + <code>fmt</code> + Turnkey <strong><code>RsDialog</code> Wizard Suite</strong> (<code>RsWelcome</code>..<code>RsFinish</code>), Shared <code>RaggieSoftVisualCanvas</code> <strong>Dual WYSIWYG Dialog Designers</strong> (C++ <code>SetupWizard.exe</code> + <code>370&times;270</code> <code>MSI.DLL</code> SQL), &amp; Declarative Non-Clobbering <code>[Environment.*]</code> <code>PATH</code> + <code>[IniFile.*]</code></td>
-              <td><span class="status-pill status-shipped">Built &amp; Staged</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.7.0</code></th>
+              <td role="cell" data-label="Primary Focus"><strong><code>RaggieScript</code> (<code>.rssc</code>)</strong> <code>RSWBC2</code> VM + <code>fmt</code> + Turnkey <strong><code>RsDialog</code> Wizard Suite</strong> (<code>RsWelcome</code>..<code>RsFinish</code>), Shared <code>RaggieSoftVisualCanvas</code> <strong>Dual WYSIWYG Dialog Designers</strong> (C++ <code>SetupWizard.exe</code> + <code>370&times;270</code> <code>MSI.DLL</code> SQL), &amp; Declarative Non-Clobbering <code>[Environment.*]</code> <code>PATH</code> + <code>[IniFile.*]</code></td>
+              <td role="cell" data-label="Status"><span class="status-pill status-shipped">Built &amp; Staged</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v0.8.0</code></th>
-              <td>Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code> with strictly <strong>Opt-In</strong> build hook, Classic VB6 <code>.vbp</code> <strong>Reg-Free COM default</strong> + <code>.MSM</code> warning banner for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
-              <td><span class="status-pill status-next">Next Up</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.8.0</code></th>
+              <td role="cell" data-label="Primary Focus">Solution &amp; Legacy Project Importers (Visual Studio <code>.slnx</code>/<code>.csproj</code> with strictly <strong>Opt-In</strong> build hook, Classic VB6 <code>.vbp</code> <strong>Reg-Free COM default</strong> + <code>.MSM</code> warning banner for <em>StoreTrainer</em>, &amp; <code>.msi</code> decompiler) + Windows Restart Manager (<code>Rstrtmgr.dll</code>)</td>
+              <td role="cell" data-label="Status"><span class="status-pill status-next">Next Up</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v0.9.0</code></th>
-              <td>Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater (<strong>100% DRY shared <code>apps-manifest.json</code></strong> with RaggieSoft Launcher), <code>RsPatch.exe</code> (<code>msdelta.dll</code>), &amp; guided <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
-              <td><span class="status-pill">Planned</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v0.9.0</code></th>
+              <td role="cell" data-label="Primary Focus">Interactive Authenticode &amp; Azure Artifact Signing Studio UI, white-label <code>RsUpdate.exe</code> Auto-Updater (<strong>100% DRY shared <code>apps-manifest.json</code></strong> with RaggieSoft Launcher), <code>RsPatch.exe</code> (<code>msdelta.dll</code>), &amp; guided <code>.MSP</code> servicing (<code>--plan-update</code>)</td>
+              <td role="cell" data-label="Status"><span class="status-pill">Planned</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v1.0.0 GA</code></th>
-              <td>Frictionless offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> drag-drop / paste / <code>RSW_LICENSE_KEY</code> CI secrets, zero hardware lock-in), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
-              <td><span class="status-pill">Planned</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v1.0.0 GA</code></th>
+              <td role="cell" data-label="Primary Focus">Frictionless offline cryptographic <code>.rswlic</code> commercial edition paygating (<code>bcrypt.dll</code> drag-drop / paste / <code>RSW_LICENSE_KEY</code> CI secrets, zero hardware lock-in), turnkey GitHub Actions / Azure DevOps tasks, <code>--emit-winget</code>, &amp; 100% RaggieSoft 8-tool production dogfood cutover</td>
+              <td role="cell" data-label="Status"><span class="status-pill">Planned</span></td>
             </tr>
-            <tr>
-              <th scope="row"><code>v1.1+</code> (Post-1.0)</th>
-              <td>Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20-lang <code>I18N</code> + RTL, &amp; <code>--emit-sbom</code></td>
-              <td><span class="status-pill">Post-1.0</span></td>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>v1.1+</code> (Post-1.0)</th>
+              <td role="cell" data-label="Primary Focus">Disposable Windows 11 Pro Sandbox (<code>.wsb</code>) Setup Capture, Visual Studio <code>.vsix</code>, Windows Services/Firewall/Config Patchers, in-process <code>.MSIXBUNDLE</code> (<code>AppxPackaging.dll</code>), 20-lang <code>I18N</code> + RTL, &amp; <code>--emit-sbom</code></td>
+              <td role="cell" data-label="Status"><span class="status-pill">Post-1.0</span></td>
             </tr>
           </tbody>
         </table>
