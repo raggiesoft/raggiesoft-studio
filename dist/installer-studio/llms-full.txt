@@ -1,27 +1,27 @@
-# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.8.0)
+# RaggieSoft Installer Studio — Complete `.rsip`, `.rsis` & `.rsii` Reference (v0.9.0)
 
-Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.8.0) --emit-ai-spec`.
+Generated deterministically by `RaggieSoft Installer Studio (instbuild.exe 0.9.0) --emit-ai-spec`.
 
 ## 1. Architectural Rules & AI Pre-Flight Checklist
 1. **Native MSI, MSM, MST, MSP & LZMS SetupWizard.exe Output**: Calls `msiquery.h` (`msi.lib`), `fci.h`/`fdi.h`, and `COMPRESS_ALGORITHM_LZMS` (`Cabinet.lib`) directly from static `/MT` C++20.
-2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.8.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
+2. **100% White-Label Attribution (`Community == Architect`)**: Visible dialogs and `Setup.exe` `VERSIONINFO` use `[Package] Manufacturer` and `Name` exclusively; `RaggieSoft Installer Studio (instbuild.exe 0.9.0)` is recorded solely in MSI `SummaryInformation` `PID_APPNAME`.
 3. **3-Part MSI Version Rule**: `[Package] Version` MUST use 3-part `Major.Minor.Build` format (`0..255.0..255.0..65535`, e.g., `1.2.0` — never a 4-part `1.2.0.0` string).
 4. **Uppercase Braced `UpgradeCode` GUID**: `[Package] UpgradeCode` MUST be a permanent `{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}` GUID kept identical across all releases of the same product.
 5. **Mandatory `&` Keyboard Mnemonics**: Custom interactive labels (`[UI] InstallButtonText = &Install`, `FinishLaunchCheckbox = &Launch app`) MUST include `&` for WCAG 2.2 AA keyboard access.
 6. **Microsoft Component Rules (`RSW031` & `RSW032`)**: Every `[Payload.*]` assigned to an explicit `[Component.<Id>]` must share one destination directory (`RSW031`), and components targeting per-user folders (`AppDataFolder`, `LocalAppDataFolder`, `StartMenu`, `Desktop`) must use `KeyPathKind = registry` (`HKCU`, `RSW032`).
 7. **Pre-MSI `[Prerequisite.<Id>]` Execution**: Runtimes (`DotNet11Desktop`, `DotNet11AspNet`, `DotNet11Runtime`, `DotNet10Desktop`, `DotNet10AspNet`, `DotNet10Runtime`, `DotNet9Desktop`, `DotNet8Desktop`, `EdgeWebView2`, `VcRedist2022`, or `Custom`) execute BEFORE `msiexec` under a single UAC prompt (`download`, `embedded` LZMS, or `side-by-side` `Redist\`) and latch `RebootExitCodes` (`3010, 1641, 23`).
 8. **64-Bit Silicon & `PID_TEMPLATE` Rules (`x64;1033` vs `Arm64;1033` — Zero `IA-64` / `x86` Host Builds)**: Host toolchain & outer Universal `Setup.exe` stubs are strictly 64-bit (`IMAGE_FILE_MACHINE_AMD64` `0x8664` outer stub using `IsWow64Process2` to pierce Windows 11 Prism and dispatch native `ARM64` `0xAA64` vs `x64` `0x8664`). MSI `SummaryInformation` `PID_TEMPLATE` MUST strictly use `x64;1033` (AMD64/Intel 64-bit) or `Arm64;1033` (64-bit ARM)—NEVER `Intel64;1033` (deceased IA-64 Itanium!).
-9. **Multi-Engine Packaging (`v0.8` `PackageKind = msi|msm|sfx|suite`, `Engine = msi|raggiescript`, `RsPatch.exe` & `RsUpdate.exe`)**: Build enterprise `.msi` databases (including `[Upgrade]` Major/Minor/Small servicing, `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), zero-MSI **RaggieScript EXE** (`Engine = raggiescript`) direct transactional setups with retired-file pruning & `RsPatch.exe` `msdelta.dll` `.rswpatch` deltas, `RsUpdate.exe` DRY `apps-manifest.json` client updates, or Unified Suite setups (`PackageKind = suite` with dynamic `ARPSYSTEMCOMPONENT` adoption).
+9. **Multi-Engine Packaging (`v0.9` `PackageKind = msi|msm|sfx|addon|suite`, `Engine = msi|raggiescript`, `RsPatch.exe` & `RsUpdate.exe`)**: Build enterprise `.msi` databases (including `[Upgrade]` Major/Minor/Small servicing, `[Media]` multi-volume `CAB1.cab..CABN.cab` spanning, `Compression = none` loose source media, `msiexec /a` administrative installs, and `.rswpak` `Delivery = ondemand` feature packs), lightweight self-extracting archives (`PackageKind = sfx` with selectable UAC `RequestedExecutionLevel`), **Host-Aware Add-On / Content Pack Installers (`PackageKind = addon` + `[HostApp]`)** unlocked in ALL 4 Editions for books/albums/plugins, zero-MSI **RaggieScript EXE** (`Engine = raggiescript`) direct transactional setups with retired-file pruning & `RsPatch.exe` `msdelta.dll` `.rswpatch` deltas, `RsUpdate.exe` DRY `apps-manifest.json` client updates, or **Unified Suite & Web Workload Setups (`PackageKind = suite`, `Delivery = embedded|side-by-side|web`, `SuiteRollbackPolicy = rollback_new`, `RollbackBoundary`, & dynamic `ARPSYSTEMCOMPONENT` adoption)**.
 10. **Lossless AST Comments**: `;` and `#` comments plus `@include` directives survive `InstallerStudio.exe` GUI edits byte-for-byte.
 
-## 2. Complete `.rsip` Project Schema (`v0.8`)
+## 2. Complete `.rsip` Project Schema (`v0.9`)
 
 ### `[Package]` (*Required*)
-Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
+Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
 
 | Key | Type | Required | Default | Allowed / Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| `SchemaVersion` | `string` | No | `0.8` | Manifest grammar version (`0.8`). |
+| `SchemaVersion` | `string` | No | `0.9` | Manifest grammar version (`0.9`). |
 | `Name` | `string` | **Yes** | — | Consumer-facing ProductName written to MSI Property table and VERSIONINFO. |
 | `Version` | `msi_version (Major.Minor.Build)` | **Yes** | — | Three-part Windows Installer version (`Major.Minor.Build`, max `255.255.65535`). |
 | `Manufacturer` | `string` | **Yes** | — | Publisher name written to MSI `Manufacturer` property and VERSIONINFO `CompanyName`. |
@@ -37,7 +37,8 @@ Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript
 | `CabinetCompression` | `enum` | No | `lzx` | Allowed: `lzx|mszip`. Compression algorithm for embedded `#payload.cab` (`lzx` = high-ratio LZX:21, `mszip` = fast DEFLATE). |
 | `HideFromInstalledApps` | `bool (true|false)` | No | `false` | Sets `ARPSYSTEMCOMPONENT=1` so content micro-installers do not clutter Windows Installed Apps. |
 | `AboutUrl` | `string` | No | — | Optional support/product website URL written to `ARPURLINFOABOUT`. |
-| `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe` (zero Installed Apps clutter), and `suite` builds a single-UAC Unified Suite Chainer (`ARPSYSTEMCOMPONENT` adoption). |
+| `PackageKind` | `enum` | No | `msi` | Allowed: `msi|msm|sfx|addon|suite`. `msi` builds an Enterprise `.msi` (+ optional `-setup.exe`), `msm` builds a Merge Module (`.msm`), `sfx` builds a lightweight LZMS Self-Extracting `.exe`, `addon` builds a Host-Aware Add-On / Content Pack Installer (`[HostApp]` locates the parent app and drops books/albums/plugins directly into its library directory), and `suite` builds a single-UAC Unified Suite / Web Workload Chainer. |
+| `SuiteRollbackPolicy` | `enum` | No | `keep_completed` | Allowed: `keep_completed|rollback_new`. Controls failure recovery in `PackageKind = suite`: `keep_completed` leaves already-finished member packages installed for fast resume; `rollback_new` automatically uninstalls packages newly added in the current Suite session back to the start or last `RollbackBoundary = true` savepoint. |
 | `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native`. `msi` uses Microsoft Windows Installer (`msi.dll`); `raggiescript` (alias `native`) builds a **RaggieScript EXE** zero-`msi.dll` transactional LZMS installer with rollback journal, `.lnk` shortcuts, `Uninstall` registry registration, and signed `Uninstall.exe`. |
 | `RequestedExecutionLevel` | `enum` | No | `asInvoker` | Allowed: `asInvoker|highestAvailable|requireAdministrator`. Controls Windows UAC level stamped onto PE `RT_MANIFEST` `#1` across `msi`, `native`, `sfx`, and `suite` EXEs: `asInvoker` (default — un-elevated launch; prompts UAC only if per-machine install begins), `highestAvailable` (elevates upfront for Admins while letting Standard Users run), or `requireAdministrator` (requires Admin UAC immediately at `0.0s` launch). |
 | `BuildUniversal` | `bool (true|false)` | No | `false` | When `true` (or when `--universal` is passed to `instbuild.exe`), compiles both `x64` and `arm64` editions and emits `<UniversalOutputName>-offline-setup.exe` plus `<UniversalOutputName>-setup.exe`. |
@@ -45,6 +46,25 @@ Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript
 | `UniversalDownloadBaseUrl` | `string` | No | — | Optional HTTPS folder URL hosting `<OutputName>-x64-setup.exe`, `<OutputName>-arm64-setup.exe`, and `.rswpak` feature packs. |
 | `Tagline` | `string` | No | — | Short subtitle displayed beneath the product title in `SetupWizard.exe` and `InstallerStudio.exe`. |
 | `WebsiteLabel` | `string` | No | — | Optional domain badge shown in the setup wizard footer (left blank if omitted — 100% white-label!). |
+
+### `[HostApp]` (*Optional*)
+Host application discovery & automatic content placement rules ([HostApp]) for PackageKind = addon (locates an installed Host App such as Book Reader or Listening Room via UpgradeCode/Registry/Executable and places books, albums, plugins, or DLC into the right directory with zero full-installer ceremony).
+
+| Key | Type | Required | Default | Allowed / Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| `Name` | `string` | **Yes** | — | Display name of the required parent application (e.g. `RaggieSoft Book Reader` or `The Listening Room`). |
+| `UpgradeCode` | `guid ({XXXXXXXX-...})` | No | — | Optional `{UpgradeCode}` of the host application probed via MSI `MsiEnumRelatedProductsW` and Windows `Uninstall` Registry. |
+| `RegistryHive` | `enum` | No | `auto` | Allowed: `auto|HKCU|HKLM`. Registry hive searched for `RegistryKey` (`auto` probes `HKCU` first, then 64-bit `HKLM`). |
+| `RegistryKey` | `string` | No | — | Optional registry key holding the host install directory (e.g. `Software\RaggieSoft\Book Reader`). |
+| `RegistryValue` | `string` | No | `Install Path` | Registry value name under `RegistryKey` holding the host install folder (also falls back to `InstallLocation` and `InstallDir`). |
+| `FallbackSubdir` | `relpath` | No | — | Optional fallback folder relative to `%ProgramFiles%` or `%LOCALAPPDATA%` (e.g. `RaggieSoft\Book Reader`) checked if Registry/MSI keys are absent. |
+| `Executable` | `relpath` | No | — | Optional executable relative to the detected host folder (e.g. `BookReader.exe`) verified on disk to confirm the host is genuinely installed. |
+| `ContentTargetRoot` | `enum` | No | `LocalAppData` | Allowed: `HostInstallDir|LocalAppData|CommonAppData|AppData`. Where to place the add-on content once the host is verified: `HostInstallDir` (`<DetectedHostDir>\<ContentSubdir>` for plugins/mods/help packs), `LocalAppData` (`%LOCALAPPDATA%\<ContentSubdir>` for zero-UAC per-user books & albums), `CommonAppData` (`%ProgramData%`), or `AppData` (`%APPDATA%`). |
+| `ContentSubdir` | `relpath` | No | — | Destination subfolder under `ContentTargetRoot` (e.g. `RaggieSoft\Books\cedar-run` or `Plugins\SynthPack`; defaults to `[Install] DefaultSubdir`). |
+| `DownloadUrl` | `string` | No | — | Optional HTTPS URL opened when the user clicks `&Get Host...` if the required host application is not yet installed. |
+| `LaunchUri` | `string` | No | — | Optional URI or host CLI argument launched when the user leaves `&Open in <HostName>` checked on completion (e.g. `raggiesoft-books://cedar-run`). |
+| `RefreshArgs` | `string` | No | — | Optional CLI switch passed silently to `Executable` if the host app is already running during add-on installation (e.g. `--refresh-library`). |
+| `RequireHostInstalled` | `bool (true|false)` | No | `true` | When `true` (default), verifies the host application is installed before unpacking content (returning `1605` in `/s` silent mode or offering `DownloadUrl` interactively if missing). |
 
 ### `[Requirements]` (*Optional*)
 Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
@@ -201,13 +221,21 @@ Child .msi or RaggieScript EXE setup package ([SuitePackage.<id>]) chained under
 | :--- | :--- | :---: | :--- | :--- |
 | `Name` | `string` | **Yes** | — | Consumer-facing child tool title displayed in the Unified Suite Setup & Maintenance Hub. |
 | `Description` | `string` | No | — | Plain-English description of this child package in the Suite checklist. |
-| `Source` | `path (supports $(ARCH))` | **Yes** | — | Path to the compiled child `.msi` or native `-setup.exe` binary on the build machine (supports `$(ARCH)`). |
+| `Delivery` | `enum` | No | `embedded` | Allowed: `embedded|side-by-side|web`. `embedded` packs the child installer inside the offline Suite `.exe`; `side-by-side` stages verified child packages in `<OutputDir>\packages\` for multi-gigabyte DVD/Boxset suites without the 2 GB PE resource limit; `web` downloads selected packages (`DownloadUrl`) via WinHTTP and verifies `Sha256` before installing. |
+| `Source` | `path (supports $(ARCH))` | No | — | Path to the compiled child `.msi`, `-setup.exe`, or `addon` binary on the build machine (required when `Delivery = embedded`; optional when `Delivery = web` to auto-fill `Sha256` & `FileName`). |
+| `DownloadUrl` | `string` | No | — | HTTPS (or `file:///`) URL for `Delivery = web` on-demand workload downloading (supports `$(ARCH)` expansion). |
+| `Sha256` | `string` | No | — | Expected 64-character SHA-256 hex digest verified via `bcrypt.dll` before executing a `Delivery = web` Suite package (supports `$(ARCH)` or `Sha256X64`/`Sha256Arm64`). |
+| `Sha256X64` | `string` | No | — | Optional `x64`-specific SHA-256 hex digest when `DownloadUrl` uses `$(ARCH)`. |
+| `Sha256Arm64` | `string` | No | — | Optional `arm64`-specific SHA-256 hex digest when `DownloadUrl` uses `$(ARCH)`. |
+| `FileName` | `string` | No | — | Optional staged filename when `Delivery = web` (defaults to the URL's filename leaf; supports `$(ARCH)`). |
 | `UpgradeCode` | `guid ({XXXXXXXX-...})` | No | — | Permanent `{UpgradeCode}` of this child package used to detect & dynamically adopt already-installed standalone siblings (`RS_SUITE_MANAGED=1`). |
-| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native|exe`. Child installer engine (`msi` passes `RS_SUITE_MANAGED=1` via `MsiInstallProductW`; `raggiescript` / `native` / `exe` passes `/s RS_SUITE_MANAGED=1`). |
+| `Engine` | `enum` | No | `msi` | Allowed: `msi|raggiescript|native|addon|exe`. Child installer engine (`msi` passes `RS_SUITE_MANAGED=1` via `MsiInstallProductW`; `raggiescript` / `native` / `addon` / `exe` passes `/s RS_SUITE_MANAGED=1`). |
 | `InstallArgs` | `string` | No | — | Optional extra properties or CLI switches passed to this child package during Suite install. |
 | `Required` | `bool (true|false)` | No | `false` | When `true`, locks this core Suite package as required in the Suite Setup checklist. |
 | `SelectedByDefault` | `bool (true|false)` | No | `true` | Whether this child package is pre-checked by default on fresh Suite installations. |
 | `AdoptStandalone` | `bool (true|false)` | No | `true` | When `true` (default), dynamically adopts any already-installed standalone sibling (`REINSTALL=ALL REINSTALLMODE=vomus RS_SUITE_MANAGED=1`) under the single Suite Installed Apps entry. |
+| `RollbackBoundary` | `bool (true|false)` | No | `false` | When `true` under `SuiteRollbackPolicy = rollback_new`, commits all packages up through this item as a savepoint so a later failure does not uninstall earlier foundational prerequisites/tools. |
+| `ForwardInstallDir` | `bool (true|false)` | No | `false` | When `true`, passes `SUITE_INSTALLDIR="<SuiteDir>"` into this child package so member apps or add-ons align under a shared Suite root. |
 | `Category` | `string` | No | `Suite` | Optional category badge displayed for this application in the Unified Suite Setup checklist. |
 | `Version` | `string` | No | — | Optional display version (`X.Y.Z`) shown alongside this child package in the Suite checklist. |
 | `EstimatedSizeKB` | `integer` | No | `0` | Optional uncompressed size override in kilobytes used to weight Overall Suite Progress (`0` uses actual payload size). |

@@ -1,4 +1,4 @@
-# RaggieSoft Installer Studio (Install Without Limits) — v0.8.0
+# RaggieSoft Installer Studio (Install Without Limits) — v0.9.0
 
 > First-party, zero-dependency native Win32 C++20 Windows packaging suite (`InstallerStudio.exe` 12-view Visual IDE + 6 Guided AeroWizards, `instbuild.exe` CLI compiler & JSON linter, `SetupWizard.exe` 11-style WCAG 2.2 AA runtime wizard, `msiprism.exe` 64-bit MSI/MSM/MST/MSP SQL inspector, and `RaggieSoftHelp.exe` native offline Help Viewer) targeting Windows 11 `x64` and `ARM64`. Official portal: https://raggiesoftstudio.com | Editions Matrix: https://raggiesoftstudio.com/installer-studio/editions | Open-source dev hub: https://raggiesoft.dev
 
@@ -30,8 +30,9 @@
 - `RaggieSoftHelp.exe [--module raggiesoft.installer-studio] [--topic <id>]`: Opens the offline C++20 Help Viewer.
 - `<product>-setup.exe --extract-msi <dir>`: Extracts the embedded `Product.msi` for enterprise deployment.
 
-## `.rsip` Manifest Sections (`v0.8`)
-- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/suite), Engine (msi/raggiescript), UAC execution level, target CPU architecture (x64/arm64), and universal output settings.
+## `.rsip` Manifest Sections (`v0.9`)
+- `[Package]`: Core product identity, PackageKind (msi/msm/sfx/addon/suite), Engine (msi/raggiescript), UAC execution level, SuiteRollbackPolicy, target CPU architecture (x64/arm64), and universal output settings.
+- `[HostApp]`: Host application discovery & automatic content placement rules ([HostApp]) for PackageKind = addon (locates an installed Host App such as Book Reader or Listening Room via UpgradeCode/Registry/Executable and places books, albums, plugins, or DLC into the right directory with zero full-installer ceremony).
 - `[Requirements]`: Minimum Windows 11 build gate (RtlGetVersion & MSI LaunchCondition), downgrade protection, and silent reboot exit code.
 - `[Upgrade]`: Declarative update & servicing policy ([Upgrade]): Strategy (major|minor|small_hotfix), RemoveExistingProducts Schedule (early 1525 vs late 6550), MigrateFeatures (257), BaselineMsi, and RsUpdate.exe UpdateFeedUrl.
 - `[Install]`: Default installation subfolder under ProgramFiles64Folder/LocalAppDataFolder and Start Menu group (optional when PackageKind = sfx or suite).
