@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Accessibility Conformance Report (VPAT 2.5) — RaggieSoft Installer Studio Setup</title>
+  <title>Accessibility Conformance Report (VPAT 2.5) — Hello RaggieSoft Setup</title>
   <style>
     :root { --bg: #f8fafc; --card: #ffffff; --fg: #0f172a; --muted: #334155; --border: #cbd5e1; --accent: #1d4ed8; --ok: #047857; }
     @media (prefers-color-scheme: dark) {
@@ -29,22 +29,23 @@
   <h1>Accessibility Conformance Report (ACR)</h1>
   <p><strong>Based on VPAT&reg; Version 2.5 (Revised Section 508, WCAG 2.2 Level A &amp; AA, and ADA Title II Edition)</strong></p>
   <div class="meta-grid" role="region" aria-label="Product and Audit Metadata">
-    <div class="meta-box"><strong>Name of Product / Version:</strong><br>RaggieSoft Installer Studio v0.6.0 (Windows Installer &amp; Setup Wizard)</div>
+    <div class="meta-box"><strong>Name of Product / Version:</strong><br>Hello RaggieSoft v1.0.0 (Windows Installer &amp; Setup Wizard)</div>
     <div class="meta-box"><strong>Vendor / Publisher:</strong><br>RaggieSoft</div>
-    <div class="meta-box"><strong>Installer Runtime Engine:</strong><br>RaggieSoft Setup Wizard (aerowizard layout) + Windows Installer 5.0 (<code>.msi</code>)</div>
+    <div class="meta-box"><strong>Installer Runtime Engine:</strong><br>RaggieSoft Setup Wizard (standard layout) + Windows Installer 5.0 (<code>.msi</code>)</div>
     <div class="meta-box"><strong>Evaluation Methods Used:</strong><br>Deterministic WCAG 2.2 Luminance Math, Keyboard Mnemonic Static Analysis, Per-Monitor V2 DPI &amp; Contrast-Theme Inspection, UI Automation / Narrator / NVDA Verification</div>
+    <div class="meta-box"><strong>Compliance Tooling Provenance:</strong><br>RaggieSoft Installer Studio v0.8.0 (Community Edition)</div>
   </div>
 
   <h2>1. Automated Contrast &amp; Keyboard Mnemonic Verification Summary</h2>
   <table>
-    <caption>Measured Visual Contrast &amp; Keyboard Access Telemetry for RaggieSoft Installer Studio</caption>
+    <caption>Measured Visual Contrast &amp; Keyboard Access Telemetry for Hello RaggieSoft</caption>
     <thead><tr><th scope="col">Surface / Check</th><th scope="col">Measured Value</th><th scope="col">WCAG 2.2 / 508 Threshold</th><th scope="col">Result</th></tr></thead>
     <tbody>
       <tr><th scope="row">Header Banner Text (<code>#F8FAFC</code> on <code>#0B132B</code>)</th><td>17.6:1</td><td>&ge; 4.5:1 (AA) / 7.0:1 (AAA)</td><td class="badge-ok">Supports (AAA)</td></tr>
       <tr><th scope="row">Dark Mode Body Text (<code>#F8FAFC</code> on <code>#0D1426</code>)</th><td>17.5:1</td><td>&ge; 4.5:1 (AA) / 7.0:1 (AAA)</td><td class="badge-ok">Supports (AAA)</td></tr>
       <tr><th scope="row">Light Mode Body Text (<code>#0F172A</code> on <code>#F4F7FB</code>)</th><td>16.6:1</td><td>&ge; 4.5:1 (AA) / 7.0:1 (AAA)</td><td class="badge-ok">Supports (AAA)</td></tr>
       <tr><th scope="row">Decorative Accent Bar (<code>#2563EB</code>) + OS High Contrast Override</th><td>3.6:1 (auto-switches to <code>COLOR_HIGHLIGHT</code> under <code>SPI_GETHIGHCONTRAST</code>)</td><td>OS Contrast Themes Honored</td><td class="badge-ok">Supports</td></tr>
-      <tr><th scope="row">Keyboard Accelerator Mnemonics (<code>&amp;</code> Access Keys)</th><td><code>&amp;Install</code>, <code>&amp;Open RaggieSoft Installer Studio when setup finishes</code></td><td>100% Interactive Controls Reachable via Keyboard</td><td class="badge-ok">Supports</td></tr>
+      <tr><th scope="row">Keyboard Accelerator Mnemonics (<code>&amp;</code> Access Keys)</th><td><code>&amp;Install</code>, <code>&amp;Launch Hello RaggieSoft when setup finishes</code></td><td>100% Interactive Controls Reachable via Keyboard</td><td class="badge-ok">Supports</td></tr>
     </tbody>
   </table>
 
