@@ -17,9 +17,9 @@
  *       1. `/`                     — Suite Overview: 8-Product Quick Cards,
  *                                    3D Collector's Box Showcase, Publisher
  *                                    Pipeline, & Live Downloads / Demos
- *       2. `/training-studio`      — RaggieSoft Training Studio (`v0.1.0`):
- *                                    Plain-text `.rstp` SCORM 1.2 & 2004
- *                                    compiler + interactive Hostile LMS Demo
+ *       2. `/training-studio`      — RaggieSoft Training Studio (`v0.7.0`):
+ *                                    Plain-text `.rstp` & `.pptx` SCORM / xAPI /
+ *                                    cmi5 IDE + interactive Hostile LMS Demo
  *       3. `/help-studio`          — RaggieSoft Help Studio: Offline `F1`
  *                                    Help & turnkey `.hhp`/`.chm` migration
  *       4. `/document-studio`      — RaggieSoft Document Studio: Tagged
@@ -123,7 +123,7 @@ const SUITE_SLIPCASE_BOX_ITEM: ScreenshotFeatureItem = {
   summaryHtml:
     'Eight focused developer, compliance, documentation, and publishing tools built on plain-text Git-diffable manifests, code-level WCAG 2.2 Level AA &amp; Section 508 accessibility, native <code>x64</code> &amp; <code>ARM64</code> performance, and automated HTML5 VPAT 2.5 conformance reports.',
   detailHtml:
-    'Anchored by our flagship <strong>Installer Studio v0.8.0</strong> and <strong>Accessibility Studio v1.0.1</strong>, expanded with <strong>Training Studio v0.5.1</strong> (bandwidth-proof SCORM 1.2 &amp; 2004 courseware), <strong>Help Studio v0.6.1</strong> (<code>.CHM</code> / <code>.hlp</code> migration &amp; native <code>F1</code> clients), <strong>Showcase Studio v0.5.1</strong>, <strong>Document Studio</strong> (<code>PDF/UA-1</code>), <strong>Localization Studio</strong>, and <strong>Launcher Studio</strong>.'
+    'Anchored by our flagship <strong>Installer Studio v0.8.0</strong> and <strong>Accessibility Studio v1.0.1</strong>, expanded with <strong>Training Studio v0.7.0</strong> (PowerPoint <code>.pptx</code> migration &amp; bandwidth-proof SCORM 1.2, 2004, xAPI &amp; cmi5 courseware), <strong>Help Studio v0.6.1</strong> (<code>.CHM</code> / <code>.hlp</code> migration &amp; native <code>F1</code> clients), <strong>Showcase Studio v0.5.1</strong>, <strong>Document Studio</strong> (<code>PDF/UA-1</code>), <strong>Localization Studio</strong>, and <strong>Launcher Studio</strong>.'
 };
 
 const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
@@ -160,15 +160,17 @@ const PRODUCT_BOX_GALLERY_ITEMS: readonly ScreenshotFeatureItem[] = [
   {
     dialogId: 'dlg-box-training',
     imgUrl: `${STUDIO_BOXES_BASE}/box-training-studio.png`,
-    badge: '3 • v0.1.0 PoC & Live Demo (.NET 11) • .rstp',
+    badge: '3 • v0.7.0 Visual IDE & CLI Shipping • .rstp / .pptx',
     title: 'RaggieSoft Training Studio',
     alt: '3D 1990s-style retail box for RaggieSoft Training Studio featuring a brushed-brass and royal-amethyst crystal lighthouse-chronometer beacon radiating golden checkpoint rings and soundwave arcs.',
     summaryHtml:
-      '<strong>Bandwidth-Proof SCORM 1.2 &amp; 2004.</strong> Compiles plain-text <code>.rstp</code> + Markdown slides, compact Opus/AAC audio, and verified <code>.vtt</code> captions into <code>&lt;50 KB</code> proxy-resilient players with offline checkpoint queues and Auto-VPAT 2.5.',
+      '<strong>Bandwidth-Proof SCORM, xAPI &amp; cmi5 + .pptx Import.</strong> Converts PowerPoint decks or plain-text <code>.rstp</code> + Markdown + <code>RaggieScript</code> into <code>&lt;50 KB</code> proxy-resilient players with Question Banks, Role Branching, and Auto-VPAT 2.5.',
     detailHtml:
-      'Built to replace 400 MB progressive MP4 compliance courses that stall on Oracle Taleo and Workday WAN links—featuring atomic 10-second cue commits, locked forward scrubbers, and a compile-time WCAG 2.2 AA gate.',
+      'Replaces 400 MB progressive MP4 compliance courses that stall on Oracle Taleo and Workday WAN links—adding turnkey <code>.pptx</code> speaker-note-to-WebVTT import, Split Live Preview, atomic WAL cue commits, and a compile-time WCAG 2.2 AA gate.',
     actionHref: '/training-studio',
-    actionLabel: 'Try Live LMS Demo →'
+    actionLabel: 'Training Studio v0.7.0 →',
+    secondaryHref: '/download#training-studio',
+    secondaryLabel: 'Download v0.7.0'
   },
   {
     dialogId: 'dlg-box-help',
@@ -628,8 +630,8 @@ function renderSuiteHomeBody(): string {
             Anchored by our pride-and-joy <strong>Installer Studio <code>v0.5.0</code></strong> (28 years in the making since
             the 1998 Visual Basic 6.0 Package &amp; Deployment Wizard) and <strong>Accessibility Studio <code>v1.0.0</code></strong>,
             <strong>RaggieSoft Studio</strong> unites <strong>eight</strong> focused tools that replace bloated, legacy enterprise
-            authoring suites—now joined by <strong>Training Studio <code>v0.1.0</code></strong> (bandwidth-proof SCORM 1.2 &amp;
-            2004 courseware), <strong>Help Studio</strong> (turnkey <code>.CHM</code> / HTML Help migration &amp; native <code>F1</code>
+            authoring suites—now joined by <strong>Training Studio <code>v0.7.0</code></strong> (PowerPoint <code>.pptx</code>
+            migration &amp; bandwidth-proof SCORM 1.2, 2004, xAPI &amp; cmi5 courseware), <strong>Help Studio</strong> (turnkey <code>.CHM</code> / HTML Help migration &amp; native <code>F1</code>
             clients), <strong>Document Studio</strong>, <strong>Localization Studio</strong>, <strong>Launcher Studio</strong>,
             and <strong>Showcase Studio</strong>.
           </p>
@@ -714,10 +716,10 @@ function renderSuiteHomeBody(): string {
         </div>
         <div class="pipeline-step">
           <span class="pipeline-num">3 • Training Studio</span>
-          <h3>Resilient SCORM</h3>
+          <h3>Resilient SCORM &amp; xAPI</h3>
           <p style="margin-bottom: 0;">
-            Compile <code>.rstp</code> + Markdown into <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 compliance courses
-            with offline queues &amp; Auto-VPAT.
+            Migrate <code>.pptx</code> decks or compile <code>.rstp</code> + Markdown into <code>&lt;50 KB</code> proxy-proof
+            SCORM 1.2, 2004, xAPI &amp; cmi5 courses with Auto-VPAT.
           </p>
         </div>
         <div class="pipeline-step">
@@ -1431,28 +1433,38 @@ fn applyCreditsBoost(requestedCredits: int) : map {
 }
 
 /**
- * Renders `/training-studio` — RaggieSoft Training Studio (`v0.1.0` .NET 11 Compiler + Interactive Hostile LMS Demo).
+ * Renders `/training-studio` — RaggieSoft Training Studio (`v0.7.0` Visual IDE, .pptx Importer, SCORM/xAPI/cmi5 Compiler & Roadmap).
  */
 function renderTrainingStudioBody(): string {
   return `
     <section class="hero" aria-labelledby="training-studio-title">
       <div class="hero-split">
         <div>
-          <span class="eyebrow">RaggieSoft Training Studio • v0.1.0 .NET 11 Compiler &amp; SCORM 1.2 / 2004 Runtime</span>
+          <span class="eyebrow">RaggieSoft Training Studio v0.7.0 • Visual IDE, .pptx Importer &amp; SCORM / xAPI / cmi5 Compiler</span>
           <h1 id="training-studio-title">Bandwidth-Proof WCAG 2.2 AA Compliance Courseware — Zero 400 MB MP4 Stalls.</h1>
           <p class="lead">
             Born from rescuing a 14-slide municipal ADA Title II training module that baked static slides into 400+ MB
             progressive <code>.mp4</code> files and stalled across congested enterprise WAN proxies,
-            <strong>RaggieSoft Training Studio</strong> (<code>rstbuild</code>) compiles Git-diffable <code>.rstp</code>
-            manifests, Markdown slides, compact <code>48 kbps</code> Opus / AAC voiceovers, and verified <code>.vtt</code>
-            captions into self-contained <strong>SCORM 1.2</strong> and <strong>SCORM 2004 (4th Ed.)</strong> packages
-            (<code>&lt;50 KB</code> player) with an <strong>automatic HTML5 VPAT 2.5 report</strong> in the box.
+            <strong>RaggieSoft Training Studio <code>v0.7.0</code></strong> (<code>TrainingStudio.exe</code> &amp; <code>rstbuild</code>)
+            migrates Microsoft PowerPoint (<code>.pptx</code>) decks or compiles Git-diffable <code>.rstp</code> manifests,
+            Markdown slides, Question Banks, Role Branching, <code>RaggieScript</code>, compact <code>48 kbps</code> Opus/AAC
+            voiceovers, and verified <code>.vtt</code> captions into <strong>SCORM 1.2</strong>, <strong>SCORM 2004 (4th Ed.)</strong>,
+            <strong>xAPI (Tin Can)</strong>, and <strong>cmi5</strong> packages (<code>49.80 KB &lt; 50 KB</code> player) with an
+            <strong>automatic HTML5 VPAT 2.5 report</strong> in the box.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="#hostile-lms-demo">Try Interactive Proxy-Drop Simulator &darr;</a>
-            <a class="btn btn-outline" href="/training-studio/live-player/index.html">Launch Full Compiled 3-Slide Player &rarr;</a>
+            <a class="btn btn-primary" href="/download#training-studio">Download Training Studio v0.7.0 (x64 &amp; ARM64) &rarr;</a>
+            <a class="btn btn-outline" href="#hostile-lms-demo">Try Interactive Proxy-Drop Simulator &darr;</a>
+            <a class="btn btn-outline" href="/training-studio/live-player/index.html">Launch Compiled 3-Slide Player &rarr;</a>
             <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-vpat-2.5.html">View Auto-Generated VPAT 2.5</a>
-            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-scorm12.zip">Download SCORM 1.2 Sample (181 KB)</a>
+            <a class="btn btn-outline" href="#training-roadmap">View v0.8 &ndash; v1.0 Roadmap &darr;</a>
+          </div>
+          <div class="btn-row" style="margin-top: 0.6rem;">
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-scorm12.zip">SCORM 1.2 Sample (.zip)</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-scorm2004.zip">SCORM 2004 Sample (.zip)</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-xapi.zip">xAPI Sample (.zip)</a>
+            <a class="btn btn-outline" href="/training-studio/ada-title-ii-fundamentals-cmi5.zip">cmi5 Sample (.zip)</a>
+            <a class="btn btn-outline" href="/training-studio/llms-full.txt">.rstp v0.7 Spec (llms-full.txt)</a>
           </div>
         </div>
         <figure class="hero-box-showcase">
@@ -1460,9 +1472,62 @@ function renderTrainingStudioBody(): string {
             src="${TRAINING_BOX_URL}"
             width="1200"
             height="960"
-            alt="3D boxed software render of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2 and 2004 Courseware Compiler."
+            alt="3D boxed software render of RaggieSoft Training Studio — Zero-Bloat SCORM 1.2, 2004, xAPI, and cmi5 Courseware IDE."
           />
         </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="ts-v07-features-heading">
+      <span class="eyebrow">New in RaggieSoft Training Studio v0.7.0 • Windows 11 Native x64 &amp; ARM64</span>
+      <h2 id="ts-v07-features-heading" style="margin-top: 0.25rem;">Six Major Capabilities Shipped in <code>v0.7.0</code></h2>
+      <div class="card-grid">
+        <article class="card card-highlight">
+          <h3>1. Turnkey PowerPoint (<code>.pptx</code>) &amp; Legacy SCORM Importer</h3>
+          <p>
+            Press <code>Ctrl+I</code> in <code>TrainingStudio.exe</code> or run <code>rstbuild import-pptx deck.pptx ./course</code>.
+            Extracts OpenXML slide order, headings, bullets, <code>cNvPr/@descr</code> image alt-text, and speaker notes—converting
+            speaker notes directly into verified <code>&lt;= 22 CPS</code> WebVTT <code>.vtt</code> captions!
+          </p>
+        </article>
+        <article class="card card-highlight">
+          <h3>2. Side-by-Side Split Live Slide &amp; CPS Preview</h3>
+          <p>
+            Author Markdown slides, <code>.rstp</code> manifests, and <code>.vtt</code> caption files on the left while inspecting
+            live rendered callouts, remediation branch routes, and per-cue Characters-Per-Second (<code>CPS</code>) reading speeds
+            on the right in real time.
+          </p>
+        </article>
+        <article class="card">
+          <h3>3. Randomized Question Banks &amp; Choice Shuffling</h3>
+          <p>
+            Declare <code>[QuestionBank.&lt;Id&gt;]</code> pools with <code>DrawCount</code> and <code>ShuffleChoices = true</code>.
+            Uses a deterministic PRNG seed stored compactly inside <code>cmi.suspend_data</code> so cold LMS restarts preserve the
+            exact drawn assessment subset under SCORM 1.2's <code>4,096</code>-byte limit.
+          </p>
+        </article>
+        <article class="card">
+          <h3>4. Role-Based Tracks &amp; Remediation Branching</h3>
+          <p>
+            Define <code>[Track.frontline]</code> vs. <code>[Track.supervisor]</code> role paths inside one package and route missed
+            scenario choices directly to targeted review slides via <code>- [ ] a -&gt; 01-foundations | Choice</code>.
+          </p>
+        </article>
+        <article class="card">
+          <h3>5. CSP-Safe <code>RaggieScript</code> (<code>use training;</code>)</h3>
+          <p>
+            Attach custom scoring and scenario rubrics via <code>RaggieScriptSource</code>—type-checked at compile time by
+            <code>RaggieScript.Core</code> and transpiled into 100% <code>eval()</code>-free ES2022 JavaScript (<code>RST030</code>).
+          </p>
+        </article>
+        <article class="card">
+          <h3>6. Quad-Standard LMS Output (<code>49.80 KB</code> Runtime)</h3>
+          <p>
+            Press <code>F6</code> or pass <code>--scorm=all</code> to emit <strong>SCORM 1.2</strong>, <strong>SCORM 2004 4th Ed.</strong>,
+            <strong>xAPI (Tin Can)</strong> (<code>tincan.xml</code>), and <strong>cmi5</strong> (<code>cmi5.xml</code>) alongside a
+            tailored HTML5 <strong>VPAT 2.5</strong> conformance report.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -1599,9 +1664,9 @@ function renderTrainingStudioBody(): string {
               <td>Atomic 10-second cue <code>LMSCommit()</code> + <code>localStorage</code>/<code>IndexedDB</code> Write-Ahead Queue</td>
             </tr>
             <tr>
-              <th scope="row">LMS Compatibility</th>
+              <th scope="row">LMS &amp; LRS Compatibility</th>
               <td>Single brittle wrapper exceeding <code>4,096</code>-char limits</td>
-              <td>Dual <strong>SCORM 1.2</strong> (Oracle Taleo) &amp; <strong>SCORM 2004 4th Ed.</strong> (Workday / DoD)</td>
+              <td>Quad-Standard: <strong>SCORM 1.2</strong>, <strong>SCORM 2004 4th Ed.</strong>, <strong>xAPI (Tin Can)</strong> &amp; <strong>cmi5</strong></td>
             </tr>
             <tr>
               <th scope="row">ADA Title II &amp; Section 508 Proof</th>
@@ -1613,13 +1678,62 @@ function renderTrainingStudioBody(): string {
       </div>
     </section>
 
+    <section id="training-roadmap" class="calc-panel" aria-labelledby="ts-roadmap-heading">
+      <span class="eyebrow">Public Engineering Roadmap • From v0.1 PoC to Suite-Wide v1.0 GA</span>
+      <h2 id="ts-roadmap-heading" style="margin-top: 0.25rem;">RaggieSoft Training Studio Roadmap (<code>v0.7.0</code> &rarr; <code>v1.0.0 GA</code>)</h2>
+      <p>
+        Every milestone keeps our learner runtime strictly <code>&lt; 50 KB</code> uncompressed while maintaining permanent
+        <strong>100% Community == Architect feature parity</strong>. Read the raw Markdown specification at
+        <a href="/training-studio/ROADMAP.md"><code>/training-studio/ROADMAP.md</code></a>.
+      </p>
+      <div class="grid-2x2">
+        <article class="card card-highlight">
+          <span class="status-pill status-shipped">Shipped • v0.7.0 Current Release</span>
+          <h3>PowerPoint Migration, Split Preview, Question Banks &amp; xAPI / cmi5</h3>
+          <p style="margin-bottom: 0;">
+            Zero-dependency OpenXML <code>.pptx</code> &amp; legacy SCORM migration importers, side-by-side Split Live Slide &amp;
+            Caption CPS Preview, pooled <code>[QuestionBank.*]</code> assessments with deterministic PRNG seeds,
+            <code>[Track.*]</code> role routing, CSP-safe <code>RaggieScript</code> (<code>use training;</code>), and quad-standard
+            SCORM 1.2 / 2004 / xAPI / cmi5 export.
+          </p>
+        </article>
+        <article class="card">
+          <span class="status-pill status-next">Next Milestone • v0.8.0</span>
+          <h3>Visual Audio Waveform, In-IDE Voiceover Recorder &amp; Cue Stamper</h3>
+          <p style="margin-bottom: 0;">
+            Record per-slide narration directly inside <code>TrainingStudio.exe</code> via native WASAPI with automatic
+            <code>-16 LUFS</code> loudness normalization, scrub visual Opus/WAV waveforms, and press Spacebar while listening to
+            stamp exact <code>MM:SS.mmm</code> timestamps into <code>.vtt</code> cues and <code>:::cue</code> callouts.
+          </p>
+        </article>
+        <article class="card">
+          <span class="status-pill status-next">Planned • v0.9.0</span>
+          <h3>Multi-Language Track Switcher &amp; SHA-256 Completion Receipt</h3>
+          <p style="margin-bottom: 0;">
+            Zero-reload learner language toggle (<code>en-US</code>, <code>es-US</code>, <code>fr-CA</code>) swapping localized
+            Markdown, <code>.vtt</code> captions, and audio mid-slide, plus an offline-printable HTML5 Employee Completion Receipt
+            stamped with a deterministic SHA-256 verification digest.
+          </p>
+        </article>
+        <article class="card">
+          <span class="status-pill status-next">Planned • v1.0.0 GA</span>
+          <h3>Tagged <code>PDF/UA-1</code> VPATs, <code>XLIFF 2.1</code> Sync &amp; Unified Suite 1.0</h3>
+          <p style="margin-bottom: 0;">
+            Direct pipeline integration with <strong>Document Studio</strong> (emitting Matterhorn-verified Tagged
+            <code>PDF/UA-1</code> VPAT 2.5 procurement packets), <strong>Localization Studio</strong> (round-trip
+            <code>XLIFF 2.1</code> caption translation with CPS expansion guards), and Unified 8-Tool Suite 1.0 orchestration.
+          </p>
+        </article>
+      </div>
+    </section>
+
     ${renderProductFourEditionStrip({
       productName: 'RaggieSoft Training Studio',
-      statusNote: 'v0.5.0 Visual IDE & CLI Built • Live SCORM Demo Above',
+      statusNote: 'v0.7.0 Visual IDE & CLI Shipping • Community == 100% Architect Parity',
       essentialsSummary:
-        'Visual <code>.rstp</code> + Markdown + verified <code>.vtt</code> compiler emitting <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 packages.',
+        'Visual <code>.rstp</code> + PowerPoint <code>.pptx</code> importer + verified <code>.vtt</code> compiler emitting <code>&lt;50 KB</code> SCORM 1.2 &amp; 2004 packages.',
       developerSummary:
-        'Adds <code>RaggieScript</code> (<code>training.*</code> branching scenarios &amp; custom rubrics), embedded Hostile LMS Simulator, &amp; CI/CD.',
+        'Adds <code>[QuestionBank.*]</code> pools, <code>[Track.*]</code> role routing, <code>RaggieScript</code> (<code>use training;</code>), xAPI/cmi5, Hostile LMS Simulator, &amp; CI/CD.',
       architectSummary:
         'Adds <code>rstbuild audit-scorm</code> legacy third-party SCORM <code>.zip</code> compliance auditor, multi-course curricula, &amp; Auto-VPAT 2.5.'
     })}
@@ -3957,15 +4071,15 @@ function renderSecurityBody(): string {
 /**
  * Renders `/download` — Centralized Suite-Wide Download Center for the entire RaggieSoft Studio
  * product family (`Installer Studio v0.8.0`, `MSI Prism v0.8.0`, `Self-Extractor v0.8.0`,
- * `Accessibility Studio v1.0.1`, `Help Studio v0.6.1`, `Training Studio v0.5.1`,
+ * `Accessibility Studio v1.0.1`, `Help Studio v0.7.0`, `Training Studio v0.7.0`,
  * `Showcase Studio v0.5.1`, `RaggieScript v1.3.0 SDK`, and shared DRY `studio-apps-manifest.json`).
  */
 function renderDownloadCenterBody(): string {
   const msiPrismBase = `${APPS_CDN_BASE}/msi-prism/releases/v0.8.0`;
   const sfxBase = `${APPS_CDN_BASE}/self-extractor/releases/v0.8.0`;
   const a11yBase = `${APPS_CDN_BASE}/accessibility-studio/releases/v1.0.1`;
-  const helpBase = `${APPS_CDN_BASE}/help-studio/releases/v0.6.1`;
-  const trainBase = `${APPS_CDN_BASE}/training-studio/releases/v0.5.1`;
+  const helpBase = `${APPS_CDN_BASE}/help-studio/releases/v0.7.0`;
+  const trainBase = `${APPS_CDN_BASE}/training-studio/releases/v0.7.0`;
   const showcaseBase = `${APPS_CDN_BASE}/showcase-studio/releases/v0.5.1`;
   const rsscBase = `${APPS_CDN_BASE}/raggiescript/releases`;
 
@@ -3983,7 +4097,7 @@ function renderDownloadCenterBody(): string {
       <div class="btn-row">
         <a class="btn btn-primary" href="${DOWNLOAD_WEB_SETUP_URL}">Installer Studio v0.8.0 Smart Web Setup</a>
         <a class="btn btn-outline" href="${DOWNLOAD_OFFLINE_UNIV_URL}">Full Offline Universal v0.8.0 (x64 + ARM64)</a>
-        <a class="btn btn-outline" href="/download/previous-versions">Previous Versions Archive (18 Releases) &rarr;</a>
+        <a class="btn btn-outline" href="/download/previous-versions">Previous Versions Archive (19 Releases) &rarr;</a>
         <a class="btn btn-outline" href="${STUDIO_MANIFEST_URL}">DRY studio-apps-manifest.json</a>
       </div>
       ${renderAzureSigningAssuranceNotice()}
@@ -4117,35 +4231,36 @@ function renderDownloadCenterBody(): string {
 
         <article id="help-studio" class="card">
           <div>
-            <span class="release-badge">Static /MT C++20 • v0.6.1</span>
+            <span class="release-badge">Static /MT C++20 • v0.7.0</span>
             <h3>RaggieSoft Help Studio</h3>
             <p>
-              Zero-dependency <code>HelpStudio.exe</code> IDE, <code>rshbuild.exe</code> compiler, and <code>RaggieSoftHelp.exe</code>
-              importing <code>.chm</code> / WinHelp <code>.hlp</code> archives into offline <code>F1</code> packs and Learn web portals.
+              Zero-dependency 9-view <code>HelpStudio.exe</code> IDE, <code>rshbuild.exe</code> (<code>use help;</code> RaggieScript + offline <code>.rswlic</code>),
+              and <code>RaggieSoftHelp.exe</code> federated viewer importing <code>.chm</code> / WinHelp <code>.hlp</code> into <code>F1</code> packs &amp; Reference Portals.
             </p>
           </div>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${helpBase}/raggiesoft-help-studio-v0.6.1-setup.exe">Smart Web Setup</a>
-            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.6.1-offline-setup.exe">Universal Offline v0.6.1</a>
-            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.6.1-x64.msi">x64 .MSI</a>
-            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.6.1-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-primary" href="${helpBase}/raggiesoft-help-studio-v0.7.0-setup.exe">Smart Web Setup</a>
+            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.7.0-offline-setup.exe">Universal Offline v0.7.0</a>
+            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.7.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${helpBase}/raggiesoft-help-studio-v0.7.0-arm64.msi">ARM64 .MSI</a>
           </div>
         </article>
 
         <article id="training-studio" class="card">
           <div>
-            <span class="release-badge">.NET 11 SCORM Compiler • v0.5.1</span>
+            <span class="release-badge">.NET 10/11 Visual IDE &amp; Compiler • v0.7.0</span>
             <h3>RaggieSoft Training Studio</h3>
             <p>
-              Visual IDE (<code>TrainingStudio.exe</code>) and <code>rstbuild</code> CLI compiling plain-text <code>.rstp</code> +
-              Markdown + verified <code>.vtt</code> captions into <code>&lt;50 KB</code> proxy-proof SCORM 1.2 &amp; 2004 packages.
+              Visual IDE (<code>TrainingStudio.exe</code> with Split Live Preview &amp; PowerPoint <code>.pptx</code> Importer) and
+              <code>rstbuild</code> CLI compiling <code>.rstp</code> + Question Banks + <code>RaggieScript</code> into
+              <code>&lt;50 KB</code> SCORM 1.2, 2004, xAPI &amp; cmi5 packages.
             </p>
           </div>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${trainBase}/raggiesoft-training-studio-v0.5.1-setup.exe">Smart Web Setup</a>
-            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.5.1-offline-setup.exe">Universal Offline v0.5.1</a>
-            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.5.1-x64.msi">x64 .MSI</a>
-            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.5.1-arm64.msi">ARM64 .MSI</a>
+            <a class="btn btn-primary" href="${trainBase}/raggiesoft-training-studio-v0.7.0-setup.exe">Smart Web Setup</a>
+            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.7.0-offline-setup.exe">Universal Offline v0.7.0</a>
+            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.7.0-x64.msi">x64 .MSI</a>
+            <a class="btn btn-outline" href="${trainBase}/raggiesoft-training-studio-v0.7.0-arm64.msi">ARM64 .MSI</a>
           </div>
         </article>
 
@@ -4465,7 +4580,27 @@ function renderPreviousVersionsBody(): string {
             </tr>
 
             <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
-              <th scope="row"><strong>Help Studio <code>v0.6.1</code></strong><br /><small>Current • Rebuilt with Installer Studio v0.8.0 Engine</small></th>
+              <th scope="row"><strong>Help Studio <code>v0.7.0</code></strong><br /><small>Current • 9-View IDE, RaggieScript ('use help;'), .rswlic &amp; Federated Search</small></th>
+              <td>
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-setup.exe">Smart Web Setup</a> •
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-v0.7.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${helpRel('v0.7.0')}/raggiesoft-help-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${helpRel('v0.7.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Help Studio <code>v0.6.1</code></strong><br /><small>Previous Release • Rebuilt with Installer Studio v0.8.0 Engine</small></th>
               <td>
                 <a href="${helpRel('v0.6.1')}/raggiesoft-help-studio-v0.6.1-setup.exe">Smart Web Setup</a> •
                 <a href="${helpRel('v0.6.1')}/raggiesoft-help-studio-v0.6.1-offline-setup.exe">Offline Universal EXE</a>
@@ -4519,7 +4654,27 @@ function renderPreviousVersionsBody(): string {
             </tr>
 
             <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
-              <th scope="row"><strong>Training Studio <code>v0.5.1</code></strong><br /><small>Current • Rebuilt with Installer Studio v0.8.0 Engine</small></th>
+              <th scope="row"><strong>Training Studio <code>v0.7.0</code></strong><br /><small>Current • .pptx Importer, Split Preview, Question Banks, RaggieScript &amp; xAPI/cmi5</small></th>
+              <td>
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-setup.exe">Smart Web Setup</a> •
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-offline-setup.exe">Offline Universal EXE</a>
+              </td>
+              <td>
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-x64-setup.exe">x64 Setup.exe</a> •
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-x64.msi">x64 .MSI</a>
+              </td>
+              <td>
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-arm64-setup.exe">ARM64 Setup.exe</a> •
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-v0.7.0-arm64.msi">ARM64 .MSI</a>
+              </td>
+              <td>
+                <a href="${trainRel('v0.7.0')}/raggiesoft-training-studio-installer-vpat-2.5.html">VPAT 2.5</a> •
+                <a href="${trainRel('v0.7.0')}/SHA256SUMS.txt">SHA256SUMS</a>
+              </td>
+            </tr>
+
+            <tr x-show="prodFilter === 'all' || prodFilter === 'studios'">
+              <th scope="row"><strong>Training Studio <code>v0.5.1</code></strong><br /><small>Previous Release • Rebuilt with Installer Studio v0.8.0 Engine</small></th>
               <td>
                 <a href="${trainRel('v0.5.1')}/raggiesoft-training-studio-v0.5.1-setup.exe">Smart Web Setup</a> •
                 <a href="${trainRel('v0.5.1')}/raggiesoft-training-studio-v0.5.1-offline-setup.exe">Offline Universal EXE</a>
@@ -4740,9 +4895,9 @@ export const STUDIO_ROUTES: readonly StudioRoute[] = [
     path: '/training-studio',
     navGroup: 'suite',
     navLabel: 'Training Studio',
-    seoTitle: 'RaggieSoft Training Studio — WCAG 2.2 AA SCORM Compiler',
+    seoTitle: 'RaggieSoft Training Studio v0.7 — WCAG SCORM & xAPI IDE',
     seoDescription:
-      'Compile plain-text .rstp + Markdown slides into bandwidth-proof <50 KB SCORM 1.2 & 2004 packages with offline checkpointing and Auto-VPAT 2.5.',
+      'Convert PowerPoint .pptx or .rstp slides into <50 KB WCAG 2.2 AA SCORM 1.2, 2004, xAPI & cmi5 courses with Question Banks and Auto-VPAT 2.5.',
     renderBody: renderTrainingStudioBody
   },
   {
@@ -4909,7 +5064,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
   const brandSubtitle = inInstallerStudio
     ? 'Installer Studio v0.8.0 • Zero-Dependency Win32 C++20 for x64 &amp; ARM64'
     : routePath === '/training-studio'
-      ? 'Training Studio v0.1.0 • Bandwidth-Proof WCAG 2.2 AA SCORM 1.2 &amp; 2004'
+      ? 'Training Studio v0.7.0 • WCAG 2.2 AA SCORM 1.2, 2004, xAPI &amp; cmi5 IDE'
       : routePath === '/help-studio'
         ? 'Help Studio • Native Offline F1 Help &amp; Legacy .CHM / .HHP Migration'
         : routePath === '/document-studio'
@@ -4982,7 +5137,7 @@ export function renderStudioPage(routePath: string, customMainInnerHtml?: string
           <a href="/raggiescript">RaggieScript (.rssc)</a>
           <a href="/installer-studio">Installer Studio (v0.8.0)</a>
           <a href="/accessibility-studio">Accessibility Studio (v1.0.1)</a>
-          <a href="/training-studio">Training Studio (v0.1.0)</a>
+          <a href="/training-studio">Training Studio (v0.7.0)</a>
           <a href="/help-studio">Help Studio (.CHM / F1)</a>
           <a href="/document-studio">Document Studio (PDF/UA-1)</a>
           <a href="/localization-studio">Localization Studio</a>

@@ -1,19 +1,23 @@
-# RaggieSoft Training Studio — Plain-Text WCAG 2.2 AA SCORM 1.2 & 2004 Compiler (`rstbuild`)
+# RaggieSoft Training Studio v0.7.0 — Plain-Text WCAG 2.2 AA SCORM / xAPI / cmi5 Compiler (`rstbuild`)
 
 > Product Portal: https://raggiesoftstudio.com/training-studio
+> Developer Hub: https://raggiesoft.dev
 > Suite Hub: https://raggiesoftstudio.com
-> License: MIT License (Compiler & Runtime Code)
+> License: MIT License (Compiler, IDE & Runtime Code)
 
 ## Core Capabilities
-- **Plain-Text `.rstp` + Markdown + WebVTT Authoring**: Comment-preserving `[Course]`, `[Compliance]`, `[Branding]`, and `[Slide.<Id>]` sections paired with Markdown slides (`:::cue`, `:::question`, `:::attestation`).
-- **Zero-Dependency `< 50 KB` SCORM 1.2 & SCORM 2004 4th Ed. Runtime**: Vanilla ES2022 JS + `@layer` CSS3 (`prefers-color-scheme`, `prefers-reduced-motion`, `forced-colors: active`).
-- **Proxy-Proof Telemetry & WAL Recovery**: Atomic sub-slide `LMSCommit()` checkpoints backed by a `localStorage` + `IndexedDB` Write-Ahead Log and `HTTP 206` exponential-backoff recovery.
-- **Compile-Time WCAG 2.2 AA Gate + Auto-VPAT 2.5**: Powered by `AccessibilityStudio.Core`; refuses to build uncaptioned or low-contrast slides and emits a tailored HTML5 VPAT 2.5 report alongside every `.zip`.
+- **Plain-Text `.rstp` + Markdown + WebVTT + `RaggieScript` Authoring**: Comment-preserving `[Course]`, `[Compliance]`, `[Branding]`, `[Track.<Id>]`, `[QuestionBank.<Id>]`, and `[Slide.<Id>]` sections paired with Markdown slides (`:::cue`, `:::question` with `-> slide-id` branching, `:::attestation`) and optional `RaggieScriptSource` (`use training;`).
+- **Turnkey `.pptx` & Legacy SCORM Importer**: Converts PowerPoint decks + speaker notes directly into `.rstp` + Markdown + verified `<= 22 CPS` WebVTT `.vtt` captions (`rstbuild import-pptx` / `import-scorm`).
+- **Zero-Dependency `< 50 KB` 4-Standard Runtime**: Packages **SCORM 1.2**, **SCORM 2004 4th Ed.**, **xAPI (Tin Can)**, and **cmi5** in `49.80 KB` of Vanilla ES2022 JS + `@layer` CSS3 (`prefers-color-scheme`, `prefers-reduced-motion`, `forced-colors: active`).
+- **Proxy-Proof Telemetry & WAL Recovery**: Atomic sub-slide `LMSCommit()` / xAPI checkpoints backed by a `localStorage` + `IndexedDB` Write-Ahead Log and `HTTP 206` exponential-backoff recovery.
+- **Compile-Time WCAG 2.2 AA Gate + Auto-VPAT 2.5**: Powered by `AccessibilityStudio.Core`; blocks uncaptioned or low-contrast slides (`Exit 2`) and emits a tailored HTML5 VPAT 2.5 report alongside every `.zip`.
 
 ## CLI Commands & Visual IDE
-- `TrainingStudio.exe [course.rstp]` (Windows 11 `x64` & `ARM64` Visual Courseware IDE + Live Hostile LMS Tab)
+- `TrainingStudio.exe [course.rstp]` (Windows 11 `x64` & `ARM64` Visual Courseware IDE + Split Live Preview + Hostile LMS Tab)
 - `rstbuild validate <course.rstp> [--json]`
-- `rstbuild build <course.rstp> [--scorm=1.2|2004] [--with-vpat]`
+- `rstbuild build <course.rstp> [--scorm=1.2|2004|xapi|cmi5|all] [--with-vpat]`
+- `rstbuild import-pptx <deck.pptx> <dest-dir>`
+- `rstbuild import-scorm <legacy.zip> <dest-dir>`
 - `rstbuild audit-scorm <legacy.zip> [--json]`
 - `rstbuild transcode <input.wav|mp4> <out-dir> [--hls]`
 - `rstbuild serve-lms <package-dir-or-zip> [--port=5095]`

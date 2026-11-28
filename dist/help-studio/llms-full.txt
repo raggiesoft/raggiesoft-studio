@@ -1,13 +1,14 @@
-# RaggieSoft Help Studio v0.6.0 — Complete `.rshp` & RaggieSoft Reference Portal Guide (`llms-full.txt`)
+# RaggieSoft Help Studio v0.7.0 — Complete `.rshp`, `use help;` RaggieScript & RaggieSoft Reference Portal Guide (`llms-full.txt`)
 
 ## 1. CLI Commands (`rshbuild.exe`)
 
-- `rshbuild.exe <project.rshp> [--out-dir=<dir>] [--with-vpat]`
-- `rshbuild.exe --validate [--diagnostics=json] <project.rshp>`
+- `rshbuild.exe <project.rshp> [--out-dir=<dir>] [--with-vpat] [--oem-filter=<tag>] [--license-file=<file.rswlic>]`
+- `rshbuild.exe --validate [--diagnostics=json] <project.rshp> [--oem-filter=<tag>]`
 - `rshbuild.exe --import <input.chm|.hhp|.hlp|.cnt|.hpj> --out-dir=<dir> [--format=markdown|html]`
+- `rshbuild.exe --license-status [--diagnostics=json] [--license-file=<file.rswlic>]`
 - `rshbuild.exe --emit-ai-spec <dir>`
 
-## 2. Canonical `.rshp` Manifest Grammar
+## 2. Canonical `.rshp` Manifest Grammar (`v0.7.0`)
 
 ```ini
 ; Plain-text comment-preserving RaggieSoft Help Studio project (.rshp)
@@ -20,9 +21,13 @@ Description              = Offline F1 context help and web documentation.
 DefaultTopic             = welcome
 Language                 = en-US
 OnlineDocsUrl            = https://raggiesoftstudio.com/help-studio
+CanonicalSiteUrl         = https://docs.raggiesoft.dev
+SourceRepoUrl            = https://github.com/raggiesoft
+CompanionUrl             = https://raggiesoft.dev
+CompanionLabel           = Open-Source Hub
 
 [UI]
-AccentPrimaryHex         = #0F766E
+AccentPrimaryHex         = #107C74
 AccentSecondaryHex       = #D97706
 
 [Build]
@@ -33,6 +38,10 @@ BuildStandaloneExe       = true
 BuildWebPortal           = true
 BuildSdkHeaders          = true
 BuildVpatReport          = true
+WebBasePath              = 
+IncludeNetworkBar        = true
+ActiveOemFilter          = 
+RaggieScript             = scripts/help-rules.rssc
 
 [Topic.welcome]
 Title                    = Welcome & Quick Start
@@ -40,6 +49,7 @@ Category                 = Getting Started
 Source                   = topics/welcome.md
 Summary                  = Overview and keyboard shortcuts.
 Keywords                 = welcome, f1, shortcuts
+OemTags                  = 
 
 [Index.idx-f1]
 Term                     = F1 Context Help
@@ -53,7 +63,22 @@ IDH_MAIN_WINDOW = 0x1001 | welcome
 IDH_SETTINGS    = 0x1002 | welcome#f1-routing
 ```
 
-## 3. Diagnostic Codes (`RSH001` – `RSH055`)
+## 3. Sandboxed `RaggieScript` (`use help;`) Hooks
+
+```csharp
+use help;
+
+// Conditionally include/exclude topics, register search aliases, and wire F1 Context IDs:
+help.includeWhen("enterprise-sso", OEM_FILTER != "lite");
+help.registerSearchAlias("welcome", "hotkey");
+help.routeContextId(0x2040, "welcome#f1-routing");
+
+test "F1 routing hook smoke test" {
+    assert(MODULE_ID != "", "Expected active MODULE_ID define");
+}
+```
+
+## 4. Diagnostic Codes (`RSH001` – `RSH099` & `RSW700` – `RSW715`)
 - `RSH001`: Malformed `.rshp` manifest syntax.
 - `RSH002` / `RSH003` / `RSH008`: Missing `ModuleId`, zero topics, or invalid `DefaultTopic`.
 - `RSH010`: Missing topic `.md` / `.html` source file on disk.
@@ -63,3 +88,5 @@ IDH_SETTINGS    = 0x1002 | welcome#f1-routing
 - `RSH030`: Broken internal topic link (`<a href="...">`).
 - `RSH040` / `RSH041` / `RSH045`: Duplicate numeric `ContextId`, duplicate `IDH_*` symbol, or unknown target topic.
 - `RSH055`: `AccentPrimaryHex` contrast below 4.5:1 vs `#FFFFFF` or 3.0:1 vs `#15203A` Dark Mode card.
+- `RSH060`–`RSH065` / `RSW700`–`RSW715`: `RaggieScript` (`use help;`) static type, `RSW702` capability sandbox, `test` assertion, or `reportBrokenAnchor` failure.
+- `RSH098` / `RSH099`: Offline `.rswlic` ECDSA P-256 signature error or `Essentials` headless CI/CD scope check.

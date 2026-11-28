@@ -1,6 +1,6 @@
-# RaggieSoft Training Studio — Complete `.rstp` & Slide Markdown Reference (`v0.5.0`)
+# RaggieSoft Training Studio — Complete `.rstp` & Slide Markdown Reference (`v0.7.0`)
 
-Generated deterministically by `RaggieSoft Training Studio (rstbuild 0.5.0) emit-ai-spec`.
+Generated deterministically by `RaggieSoft Training Studio (rstbuild 0.7.0) emit-ai-spec`.
 
 ## 1. Root `.rstp` Manifest Grammar
 Uses the RaggieSoft Studio comment-preserving `[Section]` syntax (`;` comments and `@include "shared.rsti"` directives survive AST edits byte-for-byte):
@@ -8,13 +8,15 @@ Uses the RaggieSoft Studio comment-preserving `[Section]` syntax (`;` comments a
 ```ini
 ; Mandatory root course identity
 [Course]
+SchemaVersion = 0.7
 Id = gov.oceanview.ada-title-ii-2026
 Title = ADA Title II & Digital Accessibility Fundamentals
 Organization = City of Ocean View — Department of Human Resources
 Version = 1.0.0
 DefaultLanguage = en-US
-ScormStandard = 1.2
+ScormStandard = 1.2 ; 1.2 | 2004 | xapi | cmi5
 MasteryScore = 80
+RaggieScriptSource = scripts/mastery.rssc ; optional CSP-safe ES2022 module
 OutputDir = out
 OutputName = ada-title-ii-fundamentals
 
@@ -22,15 +24,25 @@ OutputName = ada-title-ii-fundamentals
 LockForwardScrubbing = true
 SubSlideCommitIntervalSeconds = 10
 RequireCaptionsOnAllMedia = true
+MaxPlaybackRate = 2.0
 TargetConformance = WCAG-2.2-AA
 
 [Branding]
 AccentPrimaryHex = #5B21B6
 
+[Track.frontline]
+Title = Frontline Public Counter Staff
+
+[QuestionBank.core-ada]
+Source = banks/core-ada.md
+DrawCount = 2
+ShuffleChoices = true
+
 [Slide.01-foundations]
 Type = narrated-html
 Title = Why Bandwidth-Light Accessible Courseware Matters
 Lang = en-US
+Tracks = frontline
 Source = slides/01-foundations.md
 AudioOpus = media/01-foundations.opus
 AudioM4a = media/01-foundations.m4a
@@ -41,6 +53,6 @@ CompletionRule = media-ended
 
 ## 2. Slide Markdown Directives
 - **Timed DOM Callouts**: `:::cue MM:SS.mmm | Callout Heading` ... `:::`
-- **Knowledge Checks**: `:::question <id> | <Prompt>` with `- [ ] id | Choice`, `- [x] id | Correct Choice`, `pass:`, `retry:`, closed by `:::`.
+- **Knowledge Checks & Remediation Branching**: `:::question <id> | <Prompt>` with `- [ ] a -> 01-foundations | Choice (branches on miss)`, `- [x] b | Correct Choice`, `pass:`, `retry:`, closed by `:::`.
 - **Formal Attestation**: `:::attestation` with `statement:`, `checkbox:`, `button:`, closed by `:::`.
 - **Explicit Alt Metadata**: `![Descriptive alt](img.svg)` or `![](divider.svg){decorative=true}` (omitting both fails `RST014`).
