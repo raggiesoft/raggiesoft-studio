@@ -355,14 +355,13 @@ function buildSuiteOverviewLlmsTxt() {
     '   - Enterprise MSI & GPO Matrix: https://raggiesoftstudio.com/accessibility-studio/enterprise',
     '   - Summary: C# 13 / .NET 11 WinForms + Monaco side-by-side refactoring diff workstation and headless OASIS SARIF 2.1.0 CLI for WCAG 2.2 AA & Revised Section 508 source remediation.',
     '',
-    '3. **RaggieSoft Training Studio (`v0.7.0` — Visual Courseware IDE, .pptx Importer & SCORM / xAPI / cmi5 Compiler)**:',
+    '3. **RaggieSoft Training Studio (`v0.1.0` — .NET 11 Compiler & Live SCORM 1.2/2004 PoC)**:',
     '   - Product Portal & Interactive Demo: https://raggiesoftstudio.com/training-studio',
-    '   - Engineering Roadmap (`v0.8.0`–`v1.0.0`): https://raggiesoftstudio.com/training-studio/ROADMAP.md',
     '   - Concise AI Spec: https://raggiesoftstudio.com/training-studio/llms.txt',
-    '   - Complete `.rstp` v0.7 Grammar Spec: https://raggiesoftstudio.com/training-studio/llms-full.txt',
+    '   - Complete `.rstp` Grammar Spec: https://raggiesoftstudio.com/training-studio/llms-full.txt',
     '   - Agent Skill File: https://raggiesoftstudio.com/training-studio/SKILL.md',
     '   - Sample Auto-VPAT 2.5: https://raggiesoftstudio.com/training-studio/ada-title-ii-fundamentals-vpat-2.5.html',
-    '   - Summary: Native `x64` & `ARM64` `TrainingStudio.exe` IDE (with Split Live Preview & PowerPoint `.pptx` speaker-note-to-WebVTT importer) and `rstbuild` CLI compiling `.rstp` manifests, Question Banks, Role Branching, and CSP-safe `RaggieScript` (`use training;`) into `<50 KB` SCORM 1.2, SCORM 2004, xAPI, and cmi5 packages with WAL checkpointing and Auto-VPAT 2.5.',
+    '   - Summary: Compiles plain-text `.rstp` manifests, Markdown slides, compact Opus/AAC audio, and verified `.vtt` captions into bandwidth-proof `<50 KB` SCORM 1.2 & 2004 packages with offline Write-Ahead Queue checkpointing and Auto-VPAT 2.5.',
     '',
     '4. **RaggieSoft Help Studio (`v0.7.0` — Static /MT Win32 C++20 9-View F1 Help IDE, RaggieScript `use help;`, Federated Search, .CHM/.HLP Rescue & RaggieSoft Reference Portal Compiler)**:',
     '   - Product Portal: https://raggiesoftstudio.com/help-studio',
@@ -513,8 +512,8 @@ async function main() {
     fs.copyFileSync(srcRsscSpec, path.join(rsscDistDir, 'llms-raggiescript.txt'));
   }
 
-  // 5B. Publish Training Studio v0.7.0 AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), `ROADMAP.md`,
-  //     live compiled 3-slide SCORM player (`/training-studio/live-player/`), 4-standard `.zip` downloads, and Auto-VPAT 2.5!
+  // 5B. Publish Training Studio AI specs (`llms.txt`, `llms-full.txt`, `SKILL.md`), live compiled
+  //     3-slide SCORM player (`/training-studio/live-player/`), `.zip` downloads, and Auto-VPAT 2.5!
   const trainingDistDir = path.join(distDir, 'training-studio');
   fs.mkdirSync(trainingDistDir, { recursive: true });
   const trainingSpecsDir = path.join(trainingStudioRoot, 'specs');
@@ -524,17 +523,11 @@ async function main() {
       fs.copyFileSync(srcSpec, path.join(trainingDistDir, specFile));
     }
   }
-  const srcTrainingRoadmap = path.join(trainingStudioRoot, 'ROADMAP.md');
-  if (fs.existsSync(srcTrainingRoadmap)) {
-    fs.copyFileSync(srcTrainingRoadmap, path.join(trainingDistDir, 'ROADMAP.md'));
-  }
   const trainingSampleOut = path.join(trainingStudioRoot, 'samples', 'municipal-ada-title-ii', 'out');
   for (const artifactFile of [
     'ada-title-ii-fundamentals-vpat-2.5.html',
     'ada-title-ii-fundamentals-scorm12.zip',
-    'ada-title-ii-fundamentals-scorm2004.zip',
-    'ada-title-ii-fundamentals-xapi.zip',
-    'ada-title-ii-fundamentals-cmi5.zip'
+    'ada-title-ii-fundamentals-scorm2004.zip'
   ]) {
     const srcArt = path.join(trainingSampleOut, artifactFile);
     if (fs.existsSync(srcArt)) {
