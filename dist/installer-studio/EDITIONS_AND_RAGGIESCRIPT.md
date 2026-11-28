@@ -55,8 +55,9 @@ This canonical comparison table is synchronized between `EDITIONS_AND_RAGGIESCRI
 | **Native `x64`, `ARM64` & CPU-Aware Universal `Setup.exe`** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Relational `.MSI` Compiler + `ICE18`/`38`/`64`/`80` Validator** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **WCAG 2.2 AA Runtime UI, Dark/Light Mode & Contrast Themes** | **Yes** | **Yes** | **Yes** | **Yes** |
-| **6 Guided AeroWizards & All 11 Built-In Wizard Styles** | **Yes** | **Yes** | **Yes** | **Yes** |
+| **8 Guided AeroWizards & All 11 Built-In Wizard Styles** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Built-In Setup Types (`Express/Custom` & `Typical/Compact/Complete`)** | **Yes** | **Yes** | **Yes** | **Yes** |
+| **Host-Aware Add-On / Content Pack Installers (`PackageKind = addon` + `[HostApp]`)** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Basic Folder / `.ZIP` Self-Extractor (`PackageKind = sfx` + `%TEMP%` Wrapper)** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Standalone Self-Extractor Desktop Utility (`rswsfx.exe`)** | **Yes** | **Yes** | **Yes** | **Yes** |
 | **Pre-MSI Runtime Prerequisites (`.NET 11 / 10`, `WebView2`, `VC++`)** | **Yes** | **Yes** | **Yes** | **Yes** |
